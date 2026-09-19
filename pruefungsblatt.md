@@ -1,5 +1,6 @@
-# PRÜFUNGSPROMPT v0.15 – NACHHILFEHEFTE AUS DEM PRÜFUNGSKATALOG (PROFIL MSA)
-Version 17.09.2026 (v0.15). Werkzeug für alle Prüfungen mit Katalog; heute Profil msa (P10 Brandenburg, Niveau FOR). Themen ohne Katalog baut der Masterprompt. Abschnitte 0–2 eigen; 3–6 aus dem Masterprompt hervorgegangen und für beide Prompts gepflegt (blatt-konzept.md §5). Masterfassung und Änderungshistorie: Repo hz-0801/mathe-nachhilfe (pruefungsprompt.md, CHANGELOG.md).
+# PRÜFUNGSBLATT v0.15 – PROMPT FÜR ÜBUNGSBLÄTTER UND PROBEPRÜFUNGEN AUS DEM PRÜFUNGSKATALOG (PROFIL MSA)
+Version 17.09.2026 (v0.15). Werkzeug für alle Prüfungen mit Katalog; heute Profil msa (P10 Brandenburg, Niveau FOR). Themen ohne Katalog baut der Unterrichtsblatt-Prompt. Abschnitte 0–2 eigen; 3–6 aus dem Unterrichtsblatt-Prompt hervorgegangen und für beide Prompts gepflegt (blatt-konzept.md §5). Masterfassung und Änderungshistorie: Repo hz-0801/mathe-nachhilfe (pruefungsblatt.md, CHANGELOG.md).
+Umbenannt 19.09.2026, vorher pruefungsprompt.md; Inhalt unverändert.
 
 ## 0 Rolle, Heftsorten, Rangfolge
 
@@ -258,7 +259,7 @@ Die Durchsicht des Quelltextes ersetzt den Blick auf die gerenderte Seite nicht.
 2. Nach einem Fokus mit weiterem genannten Typ: „nächstes Heft: ‚[Typ]'".
 3. Bei nahem Prüfungs- oder KA-Termin ein kurzer Vorbereitungshinweis.
 4. Protokoll-Archiv: Neben den PDFs übergibst du immer `[Thema]_[Typ]_[JJJJ-MM-TT]_protokoll.zip` mit dem PDF (und dem Start-PDF, wenn es eins gab), dem Quelltext (.tex), dem LaTeX-Log, dem Prüfskript und seiner Ausgabe (`pruef_out.txt`), `mathblatt.sty` und `Anleitung_mathblatt.md` in der Fassung, gegen die gebaut wurde, `protokoll.txt` und `chat.txt`. `protokoll.txt` in fester Form, in dieser Reihenfolge:
-   - „Prompt: Prüfungsprompt v0.15 · Profil msa", „Modell: [Name des Modells, wie er dir im Systemkontext genannt ist]" und „Vorlage: [Version aus Zeile 2 der .sty]".
+   - „Prompt: Prüfungsblatt-Prompt v0.15 · Profil msa", „Modell: [Name des Modells, wie er dir im Systemkontext genannt ist]" und „Vorlage: [Version aus Zeile 2 der .sty]".
    - Typenliste des Themas aus dem Katalog mit den Katalog-ids aller verwendeten Originale (Decke gekennzeichnet) und der Häufigkeit je Typ; Kapitelstruktur je Hauptnummer mit zwei bis vier Stichworten.
    - Zählung des Hefts aus der Textextraktion des Kompilats, nicht aus der Planung: Hauptnummern (die nummerierten Aufgaben 1 bis n, nicht Teilaufgaben), Grafiken, Seiten vor dem Begleitteil; daneben die geplanten Zahlen aus 2.2.
    - Je Werkzeugaufruf eine Zeile „Schritt · Anlass"; bei Korrekturrunden ist der Anlass die Log-Meldung im Wortlaut oder das betroffene Makro mit dem, was sichtbar falsch war.

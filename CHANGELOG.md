@@ -1,6 +1,8 @@
 # CHANGELOG – Prompts und Vorlage
 
-Repo hz-0801/mathe-nachhilfe (bis 2026-09-07 pruefungskatalog; Vorlage und Anleitung bis dahin im Repo nachhilfe-arbeitsblatt-vorlage). Ältere Fassungen (v3.27, v0.7) liegen in der Werkstatt; ab v3.28/v0.8 hält die Git-Historie jede Fassung. Masterfassungen: `masterprompt.md` (Themen ohne Katalog) und `pruefungsprompt.md` (Prüfungsprompt, Themen mit Katalog; bis v0.7 `blatt-prompt.md`). Die Projektanweisungen in den Claude-Projekten sind Kopien; Zeile 2 nennt die Version. Änderungen an den gemeinsamen Abschnitten 3–6 werden in beiden Prompts gemacht und hier je einmal genannt.
+Repo hz-0801/mathe-nachhilfe (bis 2026-09-07 pruefungskatalog; Vorlage und Anleitung bis dahin im Repo nachhilfe-arbeitsblatt-vorlage). Ältere Fassungen (v3.27, v0.7) liegen in der Werkstatt; ab v3.28/v0.8 hält die Git-Historie jede Fassung. Masterfassungen: `unterrichtsblatt.md` (Unterrichtsblatt-Prompt, Themen ohne Katalog; bis 19.09.2026 `masterprompt.md`) und `pruefungsblatt.md` (Prüfungsblatt-Prompt, Themen mit Katalog; bis 19.09.2026 `pruefungsprompt.md`, bis v0.7 `blatt-prompt.md`). Die Projektanweisungen in den Claude-Projekten sind Kopien; Zeile 2 nennt die Version. Änderungen an den gemeinsamen Abschnitten 3–6 werden in beiden Prompts gemacht und hier je einmal genannt.
+
+- 19.09.2026: masterprompt.md → unterrichtsblatt.md, pruefungsprompt.md → pruefungsblatt.md (Umbenennung, Inhalt unverändert)
 
 ## masterprompt.md
 - 2026-09-17 v3.35: 6.3 Versionszeile nachgezogen (stand auf v3.33). Sonst unverändert (Auftrag G, Punkt 2: Versionsbindungen). Die Projektanweisung im Masterprompt-Projekt ist eine Kopie – nachziehen, wenn ohnehin eine Änderung ansteht; inhaltlich gleich v3.34.
