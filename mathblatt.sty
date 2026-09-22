@@ -1,4 +1,6 @@
 % mathblatt.sty – Vorlage für Nachhilfe-Arbeitsblätter, Stufe 3 (Sek I und Oberstufe)
+% Version 2026-09-22f (neu: \einheitskopf als Alias auf \einheitenkopf* (Sternform) – Altlast für
+%                      abgelegte Blätter, in der Anleitung bewusst nicht dokumentiert; Gegenprobe mit xelatex)
 % Version 2026-09-22e (neu: Bausteine aus den eigene.sty der Blätter daten und prozentrechnung –
 %                      \saeulenab/\balkenab/\liniendia (Diagramme zum Ablesen, ohne Wertebeschriftung),
 %                      Streifen-Familie \streifenleer/\streifenvoll/\streifen/\streifenfrage/\streifenreihe/
@@ -106,6 +108,10 @@
   \IfBooleanTF{#1}
     {\par\medskip\noindent{\large\bfseries #2}\par\vspace{1mm}\noindent\rule{\textwidth}{0.6pt}\par\smallskip}
     {\par\noindent{\large\bfseries #2}\par\medskip}}
+% \einheitskopf{...}: Weiterleitung auf \einheitenkopf* (gleiches Bild wie die alte eigene.sty von
+%   blaetter/prozentrechnung/2026-09-22). Altlast für abgelegte Blätter, in der Anleitung bewusst
+%   nicht dokumentiert – neue Blätter verwenden \einheitenkopf.
+\newcommand{\einheitskopf}[1]{\einheitenkopf*{#1}}
 
 % Übersichtskasten: \uebersichtskasten{Text}  oder  \uebersichtskasten[Grafik]{Text}
 % Mit Grafik: Text links (60 %), Grafik rechts, beide oben bündig.
