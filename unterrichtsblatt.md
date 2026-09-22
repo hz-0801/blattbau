@@ -535,15 +535,19 @@ Keine Punkte, keine Zeitangabe.
 Rückfrage dazwischen:
 1. Blatt 0 – geprüft (5.1), als PDF, sobald es steht. Live
    rechnet der Schüler daran, während der Rest entsteht.
-2. Einheit 1 bis n – je Einheit ein eigener Quelltext für
+2. Einheit 1 – geprüft (5.1), als PDF, sobald sie steht: das
+   Material für den Schüler, der mit Blatt 0 fertig ist, bevor
+   das Gesamt da ist.
+3. Einheit 2 bis n – je Einheit ein eigener Quelltext für
    Aufgaben und einer für Lösungen, jede Einheit geprüft (5.1),
    bevor die nächste beginnt; kein eigenes PDF.
-3. Gesamt – Verzeichnis, Blatt 0, alle Einheiten; ohne Lösungen.
-4. Lösungen – Blatt 0 und alle Einheiten, Lösungstiefe nach 3.4.
-Drei Dateien: Blatt 0, Gesamt, Lösungen. Der Lehrer druckt aus
-dem Gesamt nach den Seitenbereichen des Verzeichnisses und
-entscheidet am Drucker, ob der Schüler die Lösungen bekommt. Ein
-Einheits-PDF nur auf Zuruf „E n": die Einheit allein, ohne
+4. Gesamt – Verzeichnis, Blatt 0, alle Einheiten; ohne Lösungen.
+5. Lösungen – Blatt 0 und alle Einheiten, Lösungstiefe nach 3.4.
+Vier Dateien: Blatt 0, Einheit 1, Gesamt, Lösungen. Der Lehrer
+druckt aus dem Gesamt nach den Seitenbereichen des Verzeichnisses
+und entscheidet am Drucker, ob der Schüler die Lösungen bekommt.
+Ein weiteres Einheits-PDF nur auf Zuruf „E n": die Einheit
+allein, ohne
 Verzeichnis, ohne Lösungen. Bricht der Bau ab, liefert „gesamt"
 das Gesamt aus den fertigen Einheiten und „lösungen" die
 Lösungen dazu – die Quelltexte liegen. Beim Fokus zwei Dateien:
@@ -659,7 +663,8 @@ Variablen in Textaufgaben überschneiden sich nicht.
   ein Abschnitt mit demselben Kopf wie im Gesamt; bei Blatt 0
   dazu die Zuordnung zu den Einheiten (2.2); Tipps und Lösungs-
   grafiken nur nach 3.3/3.5.
-- Einheits-PDF auf Zuruf: wie im Gesamt, ohne Verzeichnis.
+- Einheits-PDF (Einheit 1 immer, weitere auf Zuruf): wie im
+  Gesamt, ohne Verzeichnis; Kopfzeile „Thema · Einheit n".
 - Fokus: Kopfzeile „Thema · Fokus [Typ]", erste Seite Blatt 0,
   dann Beispiel und Aufgaben; Lösungen eigene Datei.
 Kein Namens- oder Datumsfeld, keine Hilfe-Seite.
@@ -802,8 +807,9 @@ Vorlagen-Makro prüfst du den Aufruf, nicht die Vorlage.
 
 Bau in Reihe (2.7): je Blatt 0 und je Einheit eine Datei für die
 Aufgaben (`blatt0_a.tex`, `e1_a.tex`, …) und eine für die
-Lösungen (`blatt0_l.tex`, `e1_l.tex`, …); Blatt 0, Gesamt und
-Lösungen sind Rahmendateien, die mit `\input` einbinden. Die
+Lösungen (`blatt0_l.tex`, `e1_l.tex`, …); Blatt 0, Einheit 1,
+Gesamt und Lösungen sind Rahmendateien, die mit `\input`
+einbinden. Die
 Hauptnummern laufen über die Einheiten durch; jede Einheitsdatei
 setzt den Zähler auf ihre erste Nummer. Verzeichnis: das Makro
 der Vorlage, wenn die Anleitung eines führt; sonst `hyperref`
@@ -821,9 +827,10 @@ mit `$\square$` (amssymb). A4, ausreichende Ränder, gut lesbare
 Schrift. Dateiname: `[Thema]_[Blatt].pdf` – Thema in CamelCase,
 nur a–z, A–Z, Ziffern, Umlaute/ß ausgeschrieben, feste Kürzel
 Funktion→Fkt, Gleichung→Glg, Rechnung→Rechng; Blatt: `Blatt0`,
-`Gesamt`, `Loesungen`, `E1`, `E2`, … (nur auf Zuruf),
-`Fokus_[Typ]` und `Fokus_[Typ]_Loesungen`. Beispiele:
-`Prozentrechnung_Blatt0.pdf`, `Prozentrechnung_Gesamt.pdf`,
+`E1` (immer), `E2`, `E3`, … (nur auf Zuruf), `Gesamt`,
+`Loesungen`, `Fokus_[Typ]` und `Fokus_[Typ]_Loesungen`.
+Beispiele: `Prozentrechnung_Blatt0.pdf`,
+`Prozentrechnung_E1.pdf`, `Prozentrechnung_Gesamt.pdf`,
 `Prozentrechnung_Loesungen.pdf`, `LinFkt_Fokus_Nullstellen.pdf`.
 Das Datum tragen nur Archiv und Protokoll (6.3). Bei
 personalisierten Blättern höchstens Initialen im Namen. Läuft
@@ -935,8 +942,9 @@ geschrieben. Das gilt auch für Nachsteuerung nach der Übergabe.
 
 ## 6 Ausgabe
 
-6.1 Drei PDFs. Blatt 0, sobald es steht; Gesamt und Lösungen am
-Ende (2.7); dazwischen kein Text außer dem Dateinamen. Nach den
+6.1 Vier PDFs. Blatt 0 und Einheit 1, sobald sie stehen; Gesamt
+und Lösungen am Ende (2.7); dazwischen kein Text außer dem
+Dateinamen. Nach den
 Lösungen folgen das Protokoll-Archiv (6.3) und der Ausgabeblock.
 Eine Chat-Fassung nur auf „chat", höchstens 70–80 Zeichen je
 Zeile, Mathematik als Unicode-Text. Nachsteuerung am bestehenden

@@ -19,7 +19,8 @@ mathblatt.sty wird in diesem Auftrag nicht angefasst; ihr Umbau
 
 1. Datei 2 (unterrichtsblatt.md) und Datei 3
    (Testauswertung_2026-09-22.md) liegen aus dem Block in der
-   Wurzel. Prüfe: Die erste Zeile von unterrichtsblatt.md lautet
+   Wurzel; unterrichtsblatt.md hat die vorhandene Datei ersetzt.
+   Prüfe: Die erste Zeile von unterrichtsblatt.md lautet
    „# UNTERRICHTSBLATT v4.1 – PROMPT FÜR LERNBLATT UND FOKUS",
    und die Datei enthält die Zeichenkette
    „Unterrichtsblatt-Prompt v4.1" in Abschnitt 6.3. Beides im
@@ -29,7 +30,7 @@ mathblatt.sty wird in diesem Auftrag nicht angefasst; ihr Umbau
    folgenden Zeilen einfügen (wortgleich, je eine Zeile, mit dem
    Aufzählungsstrich wie die vorhandenen Einträge):
 
-   - 2026-09-22 v4.1 (nach Lauf 2 Prozentrechnung mit v4.0, Opus 5): Bereitstellung neu – Blatt 0 früh als PDF, Einheiten ohne eigenes PDF, am Ende Gesamt mit klickbarem Verzeichnis und Seitenbereichen je Einheit, Lösungen als eigene Datei mit Lösungstiefe nach ziel.md § 4; Einheits-PDF nur auf Zuruf „E n", „gesamt" und „lösungen" nach Abbruch. 2.3 a Vorstufe einmal bei der ersten Einheit ihres Bereichs, im Fokus bei der fokussierten Einheit. 2.3 e Titelregel „Kurzname – Formwort" auch für Pflichtelemente, keine Werkstattnamen. 2.2 Dreisatz-Zahlen im Kopf rechenbar. 4.3 Streifen: Antwortfeld in der Streifenzeile, Zwanzigerstreifen für Anteile außerhalb der Zehnerschritte. 4.5 eigene Bausteine in eigene.sty, ins Archiv. 6.3 Zeitstempel je Übergabe in zeiten.txt, Archiv entsteht auch ohne Messung. Ungetestet.
+   - 2026-09-22 v4.1 (nach Lauf 2 Prozentrechnung mit v4.0, Opus 5): Bereitstellung neu – Blatt 0 und Einheit 1 früh als eigene PDFs, weitere Einheiten ohne eigenes PDF, am Ende Gesamt mit klickbarem Verzeichnis und Seitenbereichen je Einheit, Lösungen als eigene Datei mit Lösungstiefe nach ziel.md § 4; weitere Einheits-PDFs nur auf Zuruf „E n", „gesamt" und „lösungen" nach Abbruch. 2.3 a Vorstufe einmal bei der ersten Einheit ihres Bereichs, im Fokus bei der fokussierten Einheit. 2.3 e Titelregel „Kurzname – Formwort" auch für Pflichtelemente, keine Werkstattnamen. 2.2 Dreisatz-Zahlen im Kopf rechenbar. 4.3 Streifen: Antwortfeld in der Streifenzeile, Zwanzigerstreifen für Anteile außerhalb der Zehnerschritte. 4.5 eigene Bausteine in eigene.sty, ins Archiv. 6.3 Zeitstempel je Übergabe in zeiten.txt, Archiv entsteht auch ohne Messung. Ungetestet.
    - 2026-09-22 v4.0 (Katalogumbau, nach Lauf 1 Prozentrechnung mit v3.34, Opus 5; Grundlage ziel.md in mathe-nachhilfe): Abschnitt 0–2 neu. Quelle ist der Themenkatalog (1.2 Abruf über katalog/index.md, genau ein Eintrag; Rückfall ohne Katalog). Zwei Blätter: Lernblatt mit allen Einheiten und Blatt 0, Fokus. Kein Budget, kein Schnitt, Bau in Reihe (2.7). Blatt 0 nur aus Fertigkeiten, je eine Hauptnummer, Reihenfolge nach erster Verwendung; Erkennungsschritte als Vorstufe der Einheit. Kette aus den Sprossen des Eintrags; Prüfungshöhe als verfremdetes Original mit Jahr; keine Zahl aus Kasten, Beispiel oder Original in einer Teilaufgabe. Titel je Hauptnummer, Einheitenkopf, Verzeichnis. Gestrichen: Übung als Aufgabe 1, Teilauswahl und „weiter", Eingangscheck, Lernblatt kurz und lang, Testformat, Sterne und Legende, Übersichtskasten (nur „mit kasten"), Hilfe-Seite. Vorlagen-URL zeigt auf blattbau. Getestet mit Lauf 2, siehe Testauswertung_2026-09-22.md.
 
 3. README.md, drei Änderungen, sonst nichts:
@@ -75,4 +76,6 @@ wurde, oder „nichts". Letzte Zeile: „Push origin drücken".
 Keine Rückfragen; bei Unklarheit die naheliegende Annahme, im
 Bericht genannt. mathblatt.sty, Anleitung_mathblatt.md,
 pruefungsblatt.md und referenz/ werden nicht angefasst. Nichts
-wird gelöscht. Dateien UTF-8 mit LF.
+wird gelöscht. Dateien UTF-8 mit LF. git liegt nicht im PATH der
+Shell; nutze die git.exe von GitHub Desktop wie beim letzten
+Auftrag in mathe-nachhilfe.

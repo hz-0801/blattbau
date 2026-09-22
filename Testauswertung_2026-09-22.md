@@ -61,9 +61,12 @@ Bestätigt:
 
 Befunde, in v4.1 umgesetzt:
 - Einzel-PDFs je Einheit nicht gebraucht; Lehrer druckt aus dem
-  Gesamt nach Seitenbereichen. → drei Dateien: Blatt 0, Gesamt
-  (Verzeichnis klickbar, Seitenbereiche), Lösungen; „E n" auf
-  Zuruf; „gesamt"/„lösungen" nach Abbruch.
+  Gesamt nach Seitenbereichen. Aber: Der Lehrer baut am Stunden-
+  anfang, und während des Baus ist kein Zuruf möglich – nach
+  Blatt 0 fehlt Material. → vier Dateien: Blatt 0, Einheit 1
+  (früh), Gesamt (Verzeichnis klickbar, Seitenbereiche),
+  Lösungen; weitere „E n" auf Zuruf; „gesamt"/„lösungen" nach
+  Abbruch.
 - Lösungen auf jeder Einheit stören beim Drucken. → eigene
   Lösungsdatei, Lösungstiefe nach ziel.md § 4.
 - Erkennungsschritte mehrfach vergeben („vor Einheit 2 bis 5");
@@ -89,5 +92,9 @@ Befunde, in v4.1 umgesetzt:
 - hyperref gegen mathblatt.sty ungetestet; Vorlage Stufe 4
   (Streifen, gerahmter Dreisatz, Einheitenkopf, Verzeichnis)
   steht als eigener Auftrag an.
-- Prompt hat rund 40 000 Zeichen; ob lange Läufe hinten
+- Prompt hat rund 55 000 Zeichen; ob lange Läufe hinten
   verlieren, hat Lauf 2 nicht gezeigt, aber nicht widerlegt.
+- Ablage der Blätter im Repo (blaetter/<thema>/, PDFs und
+  Quelltexte, Index) als Einsortier-Auftrag; Aktualisieren aus
+  Quelltext erst, wenn der Prompt zwischen zwei Versionen nur
+  noch in Abschnitt 3–6 ändert.
