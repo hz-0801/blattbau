@@ -1,4 +1,9 @@
 % mathblatt.sty – Vorlage für Nachhilfe-Arbeitsblätter, Stufe 3 (Sek I und Oberstufe)
+% Version 2026-09-22h (Beschriftung bei \balkenab und \liniendia: \balkenab misst die Kategorienamen
+%                      links an der Achse und den Achsentitel rechts, hält den Platz frei und kürzt
+%                      die Balken, damit die Grafik im Satzspiegel bleibt; \liniendia rückt die Punkte
+%                      wie \saeulenab nach der Namensbreite auseinander. Beide brechen die Namen um,
+%                      wenn der Platz nicht reicht; \saeulenab unverändert)
 % Version 2026-09-22g (vier Layoutfehler aus dem Lernblatt Daten: teilezwei fluchtet mit teile
 %                      (Buchstabe 1,4 em rechtsbündig, Text ab 1,6 em, Folgezeilen hängen ein),
 %                      neu \winkelstrahl (Strahl zum Antragen mit Platz darüber), \strichliste
@@ -718,18 +723,40 @@
 % Balkendiagramm (waagerecht), ohne Wertebeschriftung – Gegenstück zu \saeulenab mit vertauschten Achsen.
 %   \balkenab[xmax=50,xstep=10,xfein=2,xlabel=Anzahl]{Rot/32,Blau/18}
 %   Schlüssel: xmax (10), xstep, xfein, xlabel, breite (Balkenlänge max., 8 cm), hoehe (Balkenhöhe, 1.1 cm)
+%   breite ist ein Höchstmaß: Das Makro misst die Kategorienamen links an der Achse und den
+%   Achsentitel rechts, hält den Platz dafür frei und kürzt die Balken so weit, dass alles zusammen
+%   in den Satzspiegel passt. Kurze Namen ändern daran nichts. Bräuchte der breiteste Name mehr als
+%   die für die Namen vorgesehene Spalte (45 % des Satzspiegels), wird er umbrochen; die Zeilenhöhe
+%   wächst dann mit, damit die Namen nicht aneinanderstoßen. Das \hspace{0pt} vor dem Namen erlaubt
+%   TeX, dabei auch ein einzelnes langes Wort zu trennen (sonst bleibt das erste Wort ungetrennt).
 \pgfkeys{/bab/.is family, /bab,
   xmax/.estore in=\babxmax, xstep/.estore in=\babxstep, xfein/.estore in=\babxfein,
   xlabel/.estore in=\babxlabel, breite/.estore in=\babbreite, hoehe/.estore in=\babhoehe,
   default/.style={xmax=10,xstep=2,xfein=1,xlabel=Anzahl,breite=8,hoehe=1.1}}
 \NewDocumentCommand{\balkenab}{O{} m}{%
   \pgfkeys{/bab,default,#1}%
-  \pgfmathsetmacro{\babsk}{\babbreite/\babxmax}%
   \def\babn{0}%
   \foreach \k/\w [count=\i] in {#2}{\xdef\babn{\i}}%
   \pgfmathsetmacro{\babo}{\babn+0.7}%
   \pgfmathsetmacro{\babr}{\babxmax+0.9*\babxstep}%
-  \begin{tikzpicture}[x=\babsk cm,y=\babhoehe cm,baseline=(current bounding box.north),line width=0.6pt]
+  % Kategorienamen (links) und Achsentitel (rechts) messen: Der Platz links richtet sich nach dem
+  % längsten Namen, der Rest des Satzspiegels bleibt für Balken, Gitter und Achsentitel.
+  \xdef\mbbabwmax{0pt}%
+  \foreach \k/\w in {#2}{\sbox{\mbsabbox}{\small\k}%
+    \ifdim\wd\mbsabbox>\mbbabwmax\xdef\mbbabwmax{\the\wd\mbsabbox}\fi}%
+  \sbox{\mbsabbox}{\small\babxlabel}\xdef\mbbabwtitel{\the\wd\mbsabbox}%
+  \pgfmathsetmacro{\mbbablw}{\linewidth/28.4528}%
+  \pgfmathsetmacro{\mbbabnoetig}{(\mbbabwmax+9)/28.4528}%
+  \pgfmathsetmacro{\mbbabdeckel}{max(1.2,0.45*\mbbablw)}%
+  \pgfmathsetmacro{\mbbabplatz}{min(\mbbabnoetig,\mbbabdeckel)}%
+  \pgfmathtruncatemacro{\mbbabum}{\mbbabnoetig>\mbbabplatz}%
+  \pgfmathsetmacro{\mbbabtw}{\mbbabplatz-0.32}%
+  \pgfmathsetmacro{\mbbabzeilen}{max(1,ceil(\mbbabnoetig/\mbbabplatz))}%
+  \pgfmathsetmacro{\mbbabho}{max(\babhoehe,0.48*\mbbabzeilen+0.25)}%
+  \pgfmathsetmacro{\mbbabrand}{(\mbbabwtitel+6)/28.4528}%
+  \pgfmathsetmacro{\mbbabfrei}{max(0.35*\mbbablw,\mbbablw-\mbbabplatz-\mbbabrand)}%
+  \pgfmathsetmacro{\babsk}{min(\babbreite/\babxmax,\mbbabfrei/\babr)}%
+  \begin{tikzpicture}[x=\babsk cm,y=\mbbabho cm,baseline=(current bounding box.north),line width=0.6pt]
     \foreach \x in {0,\babxfein,...,\babxmax}{\draw[mbgitter,line width=0.3pt] (\x,0) -- (\x,\babo);}
     \foreach \x in {0,\babxstep,...,\babxmax}{%
       \draw[black!45,line width=0.3pt] (\x,0) -- (\x,\babo);
@@ -737,7 +764,11 @@
     \foreach \k/\w [count=\i] in {#2}{%
       \ifx\w\empty\else\filldraw[fill=mbkasten,draw=black,line width=0.7pt]
         (0,\i-0.3) rectangle (\w,\i+0.3);\fi%
-      \node[left,font=\small,inner sep=4pt] at (0,\i) {\k};}
+      \ifnum\mbbabum=1
+        \node[left,font=\small,inner sep=4pt,align=flush right,text width=\mbbabtw cm] at (0,\i) {\hspace{0pt}\k};
+      \else
+        \node[left,font=\small,inner sep=4pt] at (0,\i) {\k};
+      \fi}
     \draw[-{Stealth[length=2mm]}] (0,0) -- (\babr,0) node[below right,font=\small,inner sep=2pt] {\babxlabel};
     \draw[-{Stealth[length=2mm]}] (0,0) -- (0,\babo);
   \end{tikzpicture}}
@@ -745,6 +776,11 @@
 % Liniendiagramm über Kategorien, ohne Wertebeschriftung; nutzt dieselben Schlüssel wie \saeulenab
 % (ymax, ystep, yfein, ylabel, hoehe, breite je Kategorie), \sabymin bleibt dabei 0.
 %   \liniendia[ymax=20,ystep=5,yfein=1,ylabel=Temperatur]{2019/12,2020/15,...}
+%   breite ist – wie bei \saeulenab – ein Mindestmaß: Das Makro misst die Kategorienamen unter der
+%   Achse und rückt die Punkte so weit auseinander, dass der breiteste Name mit Lücke danebenpasst.
+%   Reicht der Satzspiegel dafür nicht, bleibt es bei der größten Breite, die noch hineinpasst, und
+%   die Namen werden zusätzlich umbrochen. Kurze Namen ändern daran nichts. Das \hspace{0pt} vor dem
+%   Namen erlaubt TeX, dabei auch ein einzelnes langes Wort zu trennen.
 \NewDocumentCommand{\liniendia}{O{} m}{%
   \mbsabohnefalse\pgfkeys{/sab,default,#1}%
   \pgfmathsetmacro{\sabsk}{\sabhoehe/\sabymax}%
@@ -752,14 +788,28 @@
   \foreach \k/\w [count=\i] in {#2}{\xdef\sabn{\i}}%
   \pgfmathsetmacro{\sabr}{\sabn+0.7}%
   \pgfmathsetmacro{\sabo}{\sabymax+0.9*\sabystep}%
-  \begin{tikzpicture}[x=\sabbreite cm,y=\sabsk cm,baseline=(current bounding box.north),line width=0.6pt]
+  % Kategorienamen messen und die Punkte danach auseinanderrücken (Mindestmaß bleibt breite),
+  % gedeckelt durch den Satzspiegel; bindet der Deckel, werden die Namen umbrochen.
+  \xdef\mblinwmax{0pt}%
+  \foreach \k/\w in {#2}{\sbox{\mbsabbox}{\small\k}%
+    \ifdim\wd\mbsabbox>\mblinwmax\xdef\mblinwmax{\the\wd\mbsabbox}\fi}%
+  \pgfmathsetmacro{\mblinnoetig}{(\mblinwmax+4)/28.4528}%
+  \pgfmathsetmacro{\mblindeckel}{max(\sabbreite,(\linewidth/28.4528-1.6)/(\sabn+0.7))}%
+  \pgfmathsetmacro{\mblinbr}{min(max(\sabbreite,\mblinnoetig),\mblindeckel)}%
+  \pgfmathtruncatemacro{\mblinum}{\mblinnoetig>\mblinbr}%
+  \pgfmathsetmacro{\mblintw}{\mblinbr-0.35}%
+  \begin{tikzpicture}[x=\mblinbr cm,y=\sabsk cm,baseline=(current bounding box.north),line width=0.6pt]
     \foreach \y in {0,\sabyfein,...,\sabymax}{\draw[mbgitter,line width=0.3pt] (0,\y) -- (\sabr,\y);}
     \foreach \y in {0,\sabystep,...,\sabymax}{%
       \draw[black!45,line width=0.3pt] (0,\y) -- (\sabr,\y);
       \node[left,font=\small,inner sep=3pt] at (0,\y) {\pgfmathprintnumber{\y}};}
     \foreach \k/\w [count=\i] in {#2}{%
       \draw[mbgitter,line width=0.3pt] (\i,0) -- (\i,\sabymax);
-      \node[below,font=\small,inner sep=4pt] at (\i,0) {\k};}
+      \ifnum\mblinum=1
+        \node[below,font=\small,inner sep=4pt,align=center,text width=\mblintw cm] at (\i,0) {\hspace{0pt}\k};
+      \else
+        \node[below,font=\small,inner sep=4pt] at (\i,0) {\k};
+      \fi}
     \xdef\mblinpath{}%
     \foreach \k/\w [count=\i] in {#2}{%
       \ifnum\i=1\xdef\mblinpath{(\i,\w)}\else\xdef\mblinpath{\mblinpath -- (\i,\w)}\fi}%
