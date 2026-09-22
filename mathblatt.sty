@@ -1,4 +1,9 @@
 % mathblatt.sty – Vorlage für Nachhilfe-Arbeitsblätter, Stufe 3 (Sek I und Oberstufe)
+% Version 2026-09-22g (vier Layoutfehler aus dem Lernblatt Daten: teilezwei fluchtet mit teile
+%                      (Buchstabe 1,4 em rechtsbündig, Text ab 1,6 em, Folgezeilen hängen ein),
+%                      neu \winkelstrahl (Strahl zum Antragen mit Platz darüber), \strichliste
+%                      zeichnet Fünferbündel und nimmt eine Zahl (Strichschreibweise weiter gültig),
+%                      \saeulenab misst die Kategorienamen und rückt die Säulen selbst auseinander)
 % Version 2026-09-22f (neu: \einheitskopf als Alias auf \einheitenkopf* (Sternform) – Altlast für
 %                      abgelegte Blätter, in der Anleitung bewusst nicht dokumentiert; Gegenprobe mit xelatex)
 % Version 2026-09-22e (neu: Bausteine aus den eigene.sty der Blätter daten und prozentrechnung –
@@ -165,10 +170,20 @@
 \newcommand{\teil}{\stepcounter{teil}\item[\alph{teil})]}
 \newcommand{\steil}{\stepcounter{teil}\item[$\star$\,\alph{teil})]}
 % Zweispaltig: Umgebung teilezwei (kurze Teilaufgaben nebeneinander)
+% Buchstabe und Textanfang stehen in denselben Fluchten wie in teile: Buchstabe rechtsbuendig in
+% 1.4 em, dann 0.2 em Abstand, Text ab 1.6 em, Folgezeilen einer Zelle haengen ebenso ein. Damit
+% sieht eine allein stehende letzte Teilaufgabe aus wie eine Zeile aus teile, und ein Block, der
+% auf teilezwei folgt, steht im gleichen Einzug. Breitere Marken (Stern) stehen wie in teile
+% in ihrer natuerlichen Breite und schieben den Text der ersten Zeile nach rechts.
+\newsavebox{\mbtzbox}
+\newcommand{\mbtzkopf}[1]{\hangindent1.6em\hangafter1\relax
+  \sbox{\mbtzbox}{#1}%
+  \ifdim\wd\mbtzbox>1.4em\usebox{\mbtzbox}\else\makebox[1.4em][r]{\usebox{\mbtzbox}}\fi
+  \hspace{0.2em}\ignorespaces}
 \newenvironment{teilezwei}{\mbteilstart\par\nopagebreak
   \begin{tabular}{@{}p{0.48\linewidth}@{}p{0.48\linewidth}@{}}}{\end{tabular}\par}
-\newcommand{\tz}{\stepcounter{teil}\alph{teil})\ }
-\newcommand{\stz}{\stepcounter{teil}$\star$\,\alph{teil})\ }
+\newcommand{\tz}{\stepcounter{teil}\mbtzkopf{\alph{teil})}}
+\newcommand{\stz}{\stepcounter{teil}\mbtzkopf{$\star$\,\alph{teil})}}
 
 % Gleichungsraster: zwei Spalten, unter jeder Gleichung Schreibzeilen (grau, 9 mm) fuer die
 % senkrechte Umformung. Optionales Argument = Schreibzeilen je Gleichung (Standard 2),
@@ -653,12 +668,17 @@
 %   Leere Werte -> nur Achse und Gitter (Schüler zeichnet). Schlüssel: ymin (0), ymax, ystep, yfein
 %   (Feingitter), ylabel, hoehe (Säulenhöhe max., 5 cm), breite (Säulenbreite, 1.5 cm), ohnezahlen
 %   (unterdrückt die y-Achsenzahlen, für Aufgaben zur Achseneinteilung).
+%   breite ist ein Mindestmaß: Das Makro misst die Kategorienamen und rückt die Säulen so weit
+%   auseinander, dass der breiteste mit Lücke danebenpasst. Kurze Namen ändern daran nichts.
+%   Reicht der Satzspiegel dafür nicht, bleibt es bei der größten Breite, die noch hineinpasst,
+%   und die Namen werden zusätzlich auf mehrere Zeilen umbrochen.
 \pgfkeys{/sab/.is family, /sab,
   ymax/.estore in=\sabymax, ystep/.estore in=\sabystep, yfein/.estore in=\sabyfein,
   ylabel/.estore in=\sabylabel, hoehe/.estore in=\sabhoehe, breite/.estore in=\sabbreite,
   ohnezahlen/.is if=mbsabohne, ymin/.estore in=\sabymin,
   default/.style={ymin=0,ymax=10,ystep=2,yfein=1,ylabel=Anzahl,hoehe=5,breite=1.5}}
 \newif\ifmbsabohne
+\newsavebox{\mbsabbox}
 \NewDocumentCommand{\saeulenab}{O{} m}{%
   \mbsabohnefalse\pgfkeys{/sab,default,#1}%
   \pgfmathsetmacro{\sabsk}{\sabhoehe/(\sabymax-\sabymin)}%
@@ -668,7 +688,17 @@
   \foreach \k/\w [count=\i] in {#2}{\xdef\sabn{\i}}%
   \pgfmathsetmacro{\sabr}{\sabn+0.7}%
   \pgfmathsetmacro{\sabo}{\sabymax+0.9*\sabystep}%
-  \begin{tikzpicture}[x=\sabbreite cm,y=\sabsk cm,baseline=(current bounding box.north),line width=0.6pt]
+  % Kategorienamen messen und die Säulen danach auseinanderrücken (Mindestmaß bleibt breite),
+  % gedeckelt durch den Satzspiegel; bindet der Deckel, werden die Namen umbrochen.
+  \xdef\mbsabwmax{0pt}%
+  \foreach \k/\w in {#2}{\sbox{\mbsabbox}{\small\k}%
+    \ifdim\wd\mbsabbox>\mbsabwmax\xdef\mbsabwmax{\the\wd\mbsabbox}\fi}%
+  \pgfmathsetmacro{\mbsabnoetig}{(\mbsabwmax+4)/28.4528}%
+  \pgfmathsetmacro{\mbsabdeckel}{max(\sabbreite,(\linewidth/28.4528-1.6)/(\sabn+0.7))}%
+  \pgfmathsetmacro{\mbsabbr}{min(max(\sabbreite,\mbsabnoetig),\mbsabdeckel)}%
+  \pgfmathtruncatemacro{\mbsabum}{\mbsabnoetig>\mbsabbr}%
+  \pgfmathsetmacro{\mbsabtw}{\mbsabbr-0.35}%
+  \begin{tikzpicture}[x=\mbsabbr cm,y=\sabsk cm,baseline=(current bounding box.north),line width=0.6pt]
     \foreach \y in {\sabymin,\sabya,...,\sabymax}{\draw[mbgitter,line width=0.3pt] (0,\y) -- (\sabr,\y);}
     \foreach \y in {\sabymin,\sabyb,...,\sabymax}{%
       \draw[black!45,line width=0.3pt] (0,\y) -- (\sabr,\y);
@@ -676,7 +706,11 @@
     \foreach \k/\w [count=\i] in {#2}{%
       \ifx\w\empty\else\filldraw[fill=mbkasten,draw=black,line width=0.7pt]
         (\i-0.3,\sabymin) rectangle (\i+0.3,\w);\fi%
-      \node[below,font=\small,inner sep=4pt] at (\i,\sabymin) {\k};}
+      \ifnum\mbsabum=1
+        \node[below,font=\small,inner sep=4pt,align=center,text width=\mbsabtw cm] at (\i,\sabymin) {\k};
+      \else
+        \node[below,font=\small,inner sep=4pt] at (\i,\sabymin) {\k};
+      \fi}
     \draw[-{Stealth[length=2mm]}] (0,\sabymin) -- (0,\sabo) node[above right,font=\small,inner sep=2pt] {\sabylabel};
     \draw[-{Stealth[length=2mm]}] (0,\sabymin) -- (\sabr,\sabymin);
   \end{tikzpicture}}
@@ -891,6 +925,10 @@
 % \parallelenpaar{60}{\alpha}{\beta}{\gamma}{\delta}   zwei Parallelen mit Schnittgerade;
 %   alpha, beta an der oberen Kreuzung (rechts oben, links oben), gamma, delta an der unteren
 % \winkel[4]{40}{\alpha}   ein Winkel, Schenkellaenge 4 cm (Voreinstellung 3)
+% \winkelstrahl            Strahl zum Antragen eines Winkels: Scheitel links (Vorgabe S),
+%   waagerecht nach rechts, Laenge 7 cm; darueber bleiben 4 cm frei fuer den zweiten Schenkel.
+% \winkelstrahl[9]         andere Laenge in cm
+% \winkelstrahl[7][A]      anderer Name des Scheitels
 \NewDocumentCommand{\geradenkreuzung}{m m m m m}{%
   \begin{tikzpicture}[baseline=(current bounding box.north),line width=0.7pt]
     \draw (180:2.4) -- (0:2.4);
@@ -924,6 +962,16 @@
     \mbklabel{#3}{(\wka:1.1)}{}%
     \fill (0,0) circle (1.4pt);
   \end{tikzpicture}}
+% Der Platz ueber dem Strahl steckt in der Bounding Box, deshalb haelt der Umbruch ihn frei;
+% die Grundlinie liegt auf dem Strahl, das Scheitellabel darunter.
+\NewDocumentCommand{\winkelstrahl}{O{7} O{S}}{%
+  \par\addvspace{6pt}\noindent
+  \begin{tikzpicture}[baseline=0pt,line width=0.7pt]
+    \useasboundingbox (-0.4,-0.7) rectangle ({#1+0.6},4);
+    \draw[-{Stealth[length=2.2mm]}] (0,0) -- (#1,0);
+    \fill (0,0) circle (1.7pt);
+    \node[below left,font=\small,inner sep=2pt] at (0,0) {$#2$};
+  \end{tikzpicture}\par\addvspace{6pt}}
 
 % ---------------------------------------------------------------------------
 % I  Koordinatensystem 3D (Kavalierprojektion nach Unterrichtsblatt-Prompt §4.5)
@@ -1248,10 +1296,35 @@
   \end{tabular} }
 \ExplSyntaxOff
 
-% Strichliste: reine Schriftumschaltung auf Festbreite, damit Strichgruppen wie |||| in einer
-% Tabellenzelle nicht durch den Zeilenumbruch der Textschrift verrutschen. Bündelung in Fünfer
-% (Fünferbündel mit Schrägstrich) setzt der Aufrufer selbst, z. B. \strichliste{|||||\ |||}.
-\newcommand{\strichliste}[1]{\texttt{#1}}
+% Strichliste: das Makro zeichnet die Liste in Fünferbündeln – vier senkrechte Striche, der
+% fünfte quer darüber, zwischen den Bündeln eine Lücke.
+%   \strichliste{13}           Anzahl als Zahl (Normalfall)
+%   \strichliste{|||||\ |||}   alte Schreibweise der abgelegten Blätter: besteht das Argument nur
+%                              aus Strichen und Abständen, zählt das Makro die Striche selbst.
+\newcommand{\mbstrichbild}[1]{%
+  \pgfmathtruncatemacro{\mbstrb}{int((#1)/5)}%
+  \pgfmathtruncatemacro{\mbstrr}{(#1)-5*\mbstrb}%
+  \pgfmathtruncatemacro{\mbstrrm}{\mbstrr-1}%
+  \begin{tikzpicture}[x=1mm,y=1mm,line width=0.6pt,baseline=0pt]
+    \ifnum\mbstrb>0
+      \foreach \b in {1,...,\mbstrb}{%
+        \pgfmathsetmacro{\mbstrx}{(\b-1)*6.8}%
+        \foreach \s in {0,...,3}{\draw (\mbstrx+\s*1.4,0) -- (\mbstrx+\s*1.4,3.6);}%
+        \draw (\mbstrx-0.7,0.5) -- (\mbstrx+4.9,3.1);}%
+    \fi
+    \ifnum\mbstrr>0
+      \pgfmathsetmacro{\mbstrq}{\mbstrb*6.8}%
+      \foreach \s in {0,...,\mbstrrm}{\draw (\mbstrq+\s*1.4,0) -- (\mbstrq+\s*1.4,3.6);}%
+    \fi
+    \ifnum\mbstrb=0 \ifnum\mbstrr=0 \path (0,0) rectangle (0.1,3.6);\fi\fi
+  \end{tikzpicture}}
+\ExplSyntaxOn
+\NewDocumentCommand{\strichliste}{m}{
+  \regex_count:nnN { \| } {#1} \l_tmpa_int
+  \int_compare:nNnTF { \l_tmpa_int } > { 0 }
+    { \exp_args:Nx \mbstrichbild { \int_use:N \l_tmpa_int } }
+    { \exp_args:Nx \mbstrichbild { \int_eval:n {#1} } } }
+\ExplSyntaxOff
 
 % \kreisdiagramm*[r]{Label/Wert, ...}   wie \kreisdiagramm, aber statt der Labels führt aus jedem
 %   Sektor eine Linie nach außen auf einen Schreibstrich – für Zuordnungs- und Beschriftungsaufgaben.
