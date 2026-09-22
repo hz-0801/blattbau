@@ -1,4 +1,4 @@
-mathblatt.sty – Anleitung (Stufe 3)
+mathblatt.sty – Anleitung (Stufe 4)
 Gehört zu Vorlagenversion 2026-09-22h. Die Version steht in Zeile 2 der `mathblatt.sty`. Weichen beide ab, gilt die Vorlage: Makros, die sie nicht kennt, benutzt du nicht, und du meldest die Abweichung in einer Zeile im Ausgabeblock.
  
 Datei `mathblatt.sty` neben die .tex-Datei legen, `\usepackage{mathblatt}` im Kopf. Kompilieren mit `xelatex` (nicht pdflatex): nur so sind Umlaute, ß, € und die Textextraktion sauber, weil im Sandbox keine Type-1-T1-Schriften liegen. Das Modell schreibt nur Inhalt; Ränder, Karogrößen, Fluchten, Kopf- und Fußzeile sind fest.
@@ -319,6 +319,6 @@ Die Streifen-Bausteine stellen 100 % immer als 10 cm breites Rechteck dar. `\str
 
 Das Dreisatz-Schema ist die Umgebung `dreisatz` mit den beiden Spaltenüberschriften als Argumente; jede Zeile mit Werten kommt von `\dsz{Menge}{Größe}`, jeder Rechenschritt dazwischen von `\dsp{links}{rechts}` (setzt Pfeil samt Rechenoperation unter beide Spalten, `\phantom{:0}` für einen leeren Schritt). Werte im Mathemodus, Dezimalkomma also `6{,}00\,€`. Ein fehlender Wert wird mit `\dsleer` (Schreiblinie) statt mit `\feld` eingetragen, da das Schema keine eigene Spalte für den Bezeichner hat.
 
-Noch nicht in Stufe 3
+Noch nicht in Stufe 4
  
-Zweitafelprojektion; im 3D-System Spurgeraden, Ebenen ohne Achsenabschnitte, Kegel/Kugel/Zylinder. Die Bausteinliste Stufe 3 ist damit abgearbeitet.
+Zweitafelprojektion; im 3D-System Spurgeraden, Ebenen ohne Achsenabschnitte, Kegel/Kugel/Zylinder. Die Bausteinlisten Stufe 3 und 4 sind damit abgearbeitet.
