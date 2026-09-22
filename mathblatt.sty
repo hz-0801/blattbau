@@ -1,4 +1,10 @@
 % mathblatt.sty – Vorlage für Nachhilfe-Arbeitsblätter, Stufe 3 (Sek I und Oberstufe)
+% Version 2026-09-22e (neu: Bausteine aus den eigene.sty der Blätter daten und prozentrechnung –
+%                      \saeulenab/\balkenab/\liniendia (Diagramme zum Ablesen, ohne Wertebeschriftung),
+%                      Streifen-Familie \streifenleer/\streifenvoll/\streifen/\streifenfrage/\streifenreihe/
+%                      \streifenwertreihe auf gemeinsamem \mbstreifenrahmen, Dreisatz-Schema (\dsleer/\dsz/\dsp,
+%                      Umgebung dreisatz), \einheitenkopf (mit Sternform, ersetzt \einheitskopf), \strichliste,
+%                      \kreisleer)
 % Version 2026-09-07d (neu: gleichungsraster mit \gl/\sgl, \beispiel und \rechnung senkrecht; feld/feldl/leerfeld mit optionaler Einheit im Kasten, Umbruch davor erlaubt mit Strafe statt verboten)
 % Version 2026-09-07c (weit auf 1,6/6 pt; leerfeld 3 cm, feld 2 cm; Felder brechen nicht mehr allein in die nächste Zeile um)
 % Version 2026-09-07b (neu: sachtabelle mit Kopfzeile, leerzelle, kreisdiagrammleer; gerade: Label nicht mehr auf den Achsen)
@@ -92,6 +98,14 @@
   \IfBooleanT{#1}{\mbblattkopflegende}%
 }
 \NewDocumentCommand{\mbblattkopflegende}{m}{\fancyfoot[L]{\footnotesize\color{mbgrau}#1}}
+
+% Einheitenkopf: Zwischenüberschrift über der ersten Hauptnummer einer Einheit innerhalb des Blatts.
+%   \einheitenkopf{Einheit 3 von 5 · Prozentwert berechnen}    fette Zeile
+%   \einheitenkopf*{Einheit 3 von 5 · Prozentwert berechnen}   fette Zeile, zusätzlich Trennstrich darunter
+\NewDocumentCommand{\einheitenkopf}{s m}{%
+  \IfBooleanTF{#1}
+    {\par\medskip\noindent{\large\bfseries #2}\par\vspace{1mm}\noindent\rule{\textwidth}{0.6pt}\par\smallskip}
+    {\par\noindent{\large\bfseries #2}\par\medskip}}
 
 % Übersichtskasten: \uebersichtskasten{Text}  oder  \uebersichtskasten[Grafik]{Text}
 % Mit Grafik: Text links (60 %), Grafik rechts, beide oben bündig.
@@ -580,7 +594,7 @@
   \end{tikzpicture}}
 
 % ---------------------------------------------------------------------------
-% H  Baumdiagramm und Säulendiagramm
+% H  Baumdiagramm, Säulen-, Balken- und Liniendiagramm
 % ---------------------------------------------------------------------------
 % Zweistufig: \baumzwei{Stufe 1}{Stufe 2 nach 1. Ast}{Stufe 2 nach 2. Ast}
 %   Listen als  Label/Wahrscheinlichkeit , leere Wahrscheinlichkeit = Feld zum Eintragen
@@ -624,6 +638,95 @@
       \addplot[draw=none,fill=none] coordinates {\mbpaare};
     \fi
   \end{axis}
+  \end{tikzpicture}}
+
+% Säulendiagramm zum Ablesen: Säulen OHNE Wertebeschriftung, mit feinen Hilfslinien zwischen den
+% bezifferten Linien – Gegenstück zu \saeulen für Aufgaben, in denen der Wert vom Gitter abgelesen
+% werden soll statt an der Säule zu stehen.
+%   \saeulenab[ymax=100,ystep=20,yfein=5,ylabel=Anzahl]{Mo/45,Di/70}
+%   Leere Werte -> nur Achse und Gitter (Schüler zeichnet). Schlüssel: ymin (0), ymax, ystep, yfein
+%   (Feingitter), ylabel, hoehe (Säulenhöhe max., 5 cm), breite (Säulenbreite, 1.5 cm), ohnezahlen
+%   (unterdrückt die y-Achsenzahlen, für Aufgaben zur Achseneinteilung).
+\pgfkeys{/sab/.is family, /sab,
+  ymax/.estore in=\sabymax, ystep/.estore in=\sabystep, yfein/.estore in=\sabyfein,
+  ylabel/.estore in=\sabylabel, hoehe/.estore in=\sabhoehe, breite/.estore in=\sabbreite,
+  ohnezahlen/.is if=mbsabohne, ymin/.estore in=\sabymin,
+  default/.style={ymin=0,ymax=10,ystep=2,yfein=1,ylabel=Anzahl,hoehe=5,breite=1.5}}
+\newif\ifmbsabohne
+\NewDocumentCommand{\saeulenab}{O{} m}{%
+  \mbsabohnefalse\pgfkeys{/sab,default,#1}%
+  \pgfmathsetmacro{\sabsk}{\sabhoehe/(\sabymax-\sabymin)}%
+  \pgfmathsetmacro{\sabya}{\sabymin+\sabyfein}%
+  \pgfmathsetmacro{\sabyb}{\sabymin+\sabystep}%
+  \def\sabn{0}%
+  \foreach \k/\w [count=\i] in {#2}{\xdef\sabn{\i}}%
+  \pgfmathsetmacro{\sabr}{\sabn+0.7}%
+  \pgfmathsetmacro{\sabo}{\sabymax+0.9*\sabystep}%
+  \begin{tikzpicture}[x=\sabbreite cm,y=\sabsk cm,baseline=(current bounding box.north),line width=0.6pt]
+    \foreach \y in {\sabymin,\sabya,...,\sabymax}{\draw[mbgitter,line width=0.3pt] (0,\y) -- (\sabr,\y);}
+    \foreach \y in {\sabymin,\sabyb,...,\sabymax}{%
+      \draw[black!45,line width=0.3pt] (0,\y) -- (\sabr,\y);
+      \ifmbsabohne\else\node[left,font=\small,inner sep=3pt] at (0,\y) {\pgfmathprintnumber{\y}};\fi}
+    \foreach \k/\w [count=\i] in {#2}{%
+      \ifx\w\empty\else\filldraw[fill=mbkasten,draw=black,line width=0.7pt]
+        (\i-0.3,\sabymin) rectangle (\i+0.3,\w);\fi%
+      \node[below,font=\small,inner sep=4pt] at (\i,\sabymin) {\k};}
+    \draw[-{Stealth[length=2mm]}] (0,\sabymin) -- (0,\sabo) node[above right,font=\small,inner sep=2pt] {\sabylabel};
+    \draw[-{Stealth[length=2mm]}] (0,\sabymin) -- (\sabr,\sabymin);
+  \end{tikzpicture}}
+
+% Balkendiagramm (waagerecht), ohne Wertebeschriftung – Gegenstück zu \saeulenab mit vertauschten Achsen.
+%   \balkenab[xmax=50,xstep=10,xfein=2,xlabel=Anzahl]{Rot/32,Blau/18}
+%   Schlüssel: xmax (10), xstep, xfein, xlabel, breite (Balkenlänge max., 8 cm), hoehe (Balkenhöhe, 1.1 cm)
+\pgfkeys{/bab/.is family, /bab,
+  xmax/.estore in=\babxmax, xstep/.estore in=\babxstep, xfein/.estore in=\babxfein,
+  xlabel/.estore in=\babxlabel, breite/.estore in=\babbreite, hoehe/.estore in=\babhoehe,
+  default/.style={xmax=10,xstep=2,xfein=1,xlabel=Anzahl,breite=8,hoehe=1.1}}
+\NewDocumentCommand{\balkenab}{O{} m}{%
+  \pgfkeys{/bab,default,#1}%
+  \pgfmathsetmacro{\babsk}{\babbreite/\babxmax}%
+  \def\babn{0}%
+  \foreach \k/\w [count=\i] in {#2}{\xdef\babn{\i}}%
+  \pgfmathsetmacro{\babo}{\babn+0.7}%
+  \pgfmathsetmacro{\babr}{\babxmax+0.9*\babxstep}%
+  \begin{tikzpicture}[x=\babsk cm,y=\babhoehe cm,baseline=(current bounding box.north),line width=0.6pt]
+    \foreach \x in {0,\babxfein,...,\babxmax}{\draw[mbgitter,line width=0.3pt] (\x,0) -- (\x,\babo);}
+    \foreach \x in {0,\babxstep,...,\babxmax}{%
+      \draw[black!45,line width=0.3pt] (\x,0) -- (\x,\babo);
+      \node[below,font=\small,inner sep=3pt] at (\x,0) {\pgfmathprintnumber{\x}};}
+    \foreach \k/\w [count=\i] in {#2}{%
+      \ifx\w\empty\else\filldraw[fill=mbkasten,draw=black,line width=0.7pt]
+        (0,\i-0.3) rectangle (\w,\i+0.3);\fi%
+      \node[left,font=\small,inner sep=4pt] at (0,\i) {\k};}
+    \draw[-{Stealth[length=2mm]}] (0,0) -- (\babr,0) node[below right,font=\small,inner sep=2pt] {\babxlabel};
+    \draw[-{Stealth[length=2mm]}] (0,0) -- (0,\babo);
+  \end{tikzpicture}}
+
+% Liniendiagramm über Kategorien, ohne Wertebeschriftung; nutzt dieselben Schlüssel wie \saeulenab
+% (ymax, ystep, yfein, ylabel, hoehe, breite je Kategorie), \sabymin bleibt dabei 0.
+%   \liniendia[ymax=20,ystep=5,yfein=1,ylabel=Temperatur]{2019/12,2020/15,...}
+\NewDocumentCommand{\liniendia}{O{} m}{%
+  \mbsabohnefalse\pgfkeys{/sab,default,#1}%
+  \pgfmathsetmacro{\sabsk}{\sabhoehe/\sabymax}%
+  \def\sabn{0}%
+  \foreach \k/\w [count=\i] in {#2}{\xdef\sabn{\i}}%
+  \pgfmathsetmacro{\sabr}{\sabn+0.7}%
+  \pgfmathsetmacro{\sabo}{\sabymax+0.9*\sabystep}%
+  \begin{tikzpicture}[x=\sabbreite cm,y=\sabsk cm,baseline=(current bounding box.north),line width=0.6pt]
+    \foreach \y in {0,\sabyfein,...,\sabymax}{\draw[mbgitter,line width=0.3pt] (0,\y) -- (\sabr,\y);}
+    \foreach \y in {0,\sabystep,...,\sabymax}{%
+      \draw[black!45,line width=0.3pt] (0,\y) -- (\sabr,\y);
+      \node[left,font=\small,inner sep=3pt] at (0,\y) {\pgfmathprintnumber{\y}};}
+    \foreach \k/\w [count=\i] in {#2}{%
+      \draw[mbgitter,line width=0.3pt] (\i,0) -- (\i,\sabymax);
+      \node[below,font=\small,inner sep=4pt] at (\i,0) {\k};}
+    \xdef\mblinpath{}%
+    \foreach \k/\w [count=\i] in {#2}{%
+      \ifnum\i=1\xdef\mblinpath{(\i,\w)}\else\xdef\mblinpath{\mblinpath -- (\i,\w)}\fi}%
+    \draw[line width=0.9pt] \mblinpath;
+    \foreach \k/\w [count=\i] in {#2}{\fill (\i,\w) circle (1.8pt);}
+    \draw[-{Stealth[length=2mm]}] (0,0) -- (0,\sabo) node[above right,font=\small,inner sep=2pt] {\sabylabel};
+    \draw[-{Stealth[length=2mm]}] (0,0) -- (\sabr,0);
   \end{tikzpicture}}
 
 % ---------------------------------------------------------------------------
@@ -1139,6 +1242,11 @@
   \end{tabular} }
 \ExplSyntaxOff
 
+% Strichliste: reine Schriftumschaltung auf Festbreite, damit Strichgruppen wie |||| in einer
+% Tabellenzelle nicht durch den Zeilenumbruch der Textschrift verrutschen. Bündelung in Fünfer
+% (Fünferbündel mit Schrägstrich) setzt der Aufrufer selbst, z. B. \strichliste{|||||\ |||}.
+\newcommand{\strichliste}[1]{\texttt{#1}}
+
 % \kreisdiagramm*[r]{Label/Wert, ...}   wie \kreisdiagramm, aber statt der Labels führt aus jedem
 %   Sektor eine Linie nach außen auf einen Schreibstrich – für Zuordnungs- und Beschriftungsaufgaben.
 \NewDocumentCommand{\kreisdiagrammleer}{O{1.8} m}{%
@@ -1160,6 +1268,17 @@
       \fi
       \xdef\mbwa{\mbwb}}%
     \draw (0,0) circle (#1);
+  \end{tikzpicture}}
+
+% Leerer Kreis mit Mittelpunkt M und einem Radius nach oben (12-Uhr-Stellung) als Nullmarke zum
+% Antragen eigener Sektoren mit dem Geodreieck – Vorstufe zu \kreisdiagramm für Aufgaben, in denen
+% die Sektoren erst berechnet und dann von Hand eingezeichnet werden.
+%   \kreisleer[2.2]   Radius in cm (Voreinstellung 2)
+\NewDocumentCommand{\kreisleer}{O{2}}{%
+  \begin{tikzpicture}[baseline=(current bounding box.north),line width=0.6pt]
+    \draw (0,0) circle (#1);
+    \draw[line width=0.7pt] (0,0) -- (90:#1);
+    \fill (0,0) circle (1.4pt) node[below left,font=\small] {$M$};
   \end{tikzpicture}}
 
 % \kreissektor[r]{Winkel}{Label}   Kreis mit Mittelpunkt M und einem grau gefüllten Sektor von Winkel Grad,
@@ -1566,5 +1685,125 @@
 \pgfkeys{/ksys, pizahlen/.is if=mbpizahlen}
 \NewDocumentCommand{\sinus}{m m m}{\funktion{(#1)*sin(deg((#2)*\x))}{#3}}
 \NewDocumentCommand{\kosinus}{m m m}{\funktion{(#1)*cos(deg((#2)*\x))}{#3}}
+
+% ---------------------------------------------------------------------------
+% P  Prozentrechnung: Streifen und Dreisatz
+% ---------------------------------------------------------------------------
+% Streifen-Familie: alle Bausteine stellen 100 % als 10-cm-Rechteck dar und teilen sich den Rahmen
+% \mbstreifenrahmen{Breite}{Höhe}{Teilstriche} (nur den Umriss mit Teilstrichen, kein Inhalt).
+%   \mbstreifenrahmen{Breite}{Höhe}{Teilstriche}    durchgehende, graue Teilstriche (Lineal zum Ablesen)
+%   \mbstreifenrahmen*{Breite}{Höhe}{Teilstriche}   nur kurze Eckstriche (unter gefüllten Flächen)
+\NewDocumentCommand{\mbstreifenrahmen}{s m m m}{%
+  \draw[line width=0.7pt] (0,0) rectangle (#2,#3);
+  \pgfmathtruncatemacro{\mbstn}{#4}%
+  \ifnum\mbstn>1
+    \pgfmathtruncatemacro{\mbstm}{\mbstn-1}%
+    \foreach \mbsti in {1,...,\mbstm}{\pgfmathsetmacro{\mbstx}{\mbsti/\mbstn*(#2)}%
+      \IfBooleanTF{#1}
+        {\draw[line width=0.4pt] (\mbstx,0) -- (\mbstx,0.18) (\mbstx,#3) -- (\mbstx,{(#3)-0.18});}
+        {\draw[black!50,line width=0.4pt] (\mbstx,0) -- (\mbstx,#3);}}%
+  \fi}
+
+% \streifenleer                     leerer Streifen 10 x 1,2 cm, 0 %/50 %/100 % beschriftet (Schüler trägt ein)
+% \streifenvoll{Rad/40,Bus/25,...}  Streifen komplett gefüllt: Abschnitte nach Prozentwert (müssen sich zu
+%   100 summieren), Label im Abschnitt in wechselnden Grautönen, leeres Label {} lässt es weg
+\newcommand{\streifenleer}{%
+  \begin{tikzpicture}[baseline=(current bounding box.north)]
+    \mbstreifenrahmen*{10}{1.2}{10}
+    \node[below,font=\small] at (0,0) {$0\,\%$};
+    \node[below,font=\small] at (5,0) {$50\,\%$};
+    \node[below,font=\small] at (10,0) {$100\,\%$};
+  \end{tikzpicture}}
+\NewDocumentCommand{\streifenvoll}{m}{%
+  \begin{tikzpicture}[baseline=(current bounding box.north)]
+    \xdef\mbsta{0}%
+    \foreach \l/\w [count=\i] in {#1}{%
+      \edef\mbstb{\fpeval{round(\mbsta+\w/10,3)}}%
+      \pgfmathsetmacro{\mbstg}{100-14*mod(\i-1,4)-4}%
+      \fill[black!\fpeval{round(100-\mbstg)}] (\mbsta,0) rectangle (\mbstb,1.2);
+      \draw[line width=0.5pt] (\mbstb,0) -- (\mbstb,1.2);
+      \ifblank{\l}{}{\node[font=\small] at ({(\mbsta+\mbstb)/2},0.6) {\l};}%
+      \xdef\mbsta{\mbstb}}%
+    \mbstreifenrahmen*{10}{1.2}{10}
+  \end{tikzpicture}}
+
+% \streifen[Teilstriche]{Füllung in %}{Label links unten}{Label rechts unten}   ein Abschnitt 0..Füllung
+% \streifenfrage[Teilstriche]{Füllung}{links}{rechts}    wie \streifen, mit „?“ über der Füllgrenze
+%   (Teilstriche Voreinstellung 10; Streifen 10 x 0,8 cm; Füllung in Prozent, auch als Dezimalzahl)
+\newcommand{\streifen}[4][10]{%
+  \par\smallskip\noindent
+  \begin{tikzpicture}[baseline=0pt]
+    \pgfmathsetmacro{\sfill}{(#2)/100*10}%
+    \ifdim\sfill pt>0pt\fill[black!20] (0,0) rectangle (\sfill,0.8);\fi
+    \mbstreifenrahmen{10}{0.8}{#1}
+    \node[below,font=\small] at (0,-0.05) {#3};
+    \node[below,font=\small] at (10,-0.05) {#4};
+  \end{tikzpicture}
+  \par\smallskip}
+\newcommand{\streifenfrage}[4][10]{%
+  \par\smallskip\noindent
+  \begin{tikzpicture}[baseline=0pt]
+    \pgfmathsetmacro{\sfill}{(#2)/100*10}%
+    \ifdim\sfill pt>0pt\fill[black!20] (0,0) rectangle (\sfill,0.8);\fi
+    \mbstreifenrahmen{10}{0.8}{#1}
+    \draw[line width=1pt] (\sfill,-0.1) -- (\sfill,0.9);
+    \node[above,font=\small] at (\sfill,0.9) {?};
+    \node[below,font=\small] at (0,-0.05) {#3};
+    \node[below,font=\small] at (10,-0.05) {#4};
+  \end{tikzpicture}
+  \par\smallskip}
+
+% \streifenreihe[Teilstriche]{Buchstabe/Füllung, ...}   mehrere Streifen a), b), ... untereinander,
+%   je 100 % (9,5 x 0,62 cm je Zeile)
+\newcommand{\streifenreihe}[2][10]{%
+  \par\smallskip\noindent
+  \begin{tikzpicture}[baseline=0pt]
+    \foreach \lab/\ff [count=\r from 0] in {#2}{%
+      \pgfmathsetmacro{\yy}{-\r*1.04}%
+      \pgfmathsetmacro{\sfill}{\ff/100*9.5}%
+      \begin{scope}[yshift=\yy cm]
+        \ifdim\sfill pt>0pt\fill[black!20] (0,0) rectangle (\sfill,0.62);\fi
+        \mbstreifenrahmen{9.5}{0.62}{#1}
+        \node[left,font=\small] at (-0.15,0.31) {\lab)};
+        \node[right,font=\scriptsize] at (9.65,0.31) {100\,\%};
+      \end{scope}}
+  \end{tikzpicture}
+  \par\smallskip}
+% \streifenwertreihe[Teilstriche]{Buchstabe/Füllung/Teilwert/Ganzwert, ...}   wie \streifenreihe, mit
+%   Markierung an der Füllgrenze und den Werten 0, Teilwert, Ganzwert darunter (9 x 0,62 cm je Zeile);
+%   ein Wert leer bleibt als Feld zum Eintragen (Prozentwert bzw. Grundwert berechnen), \dsleer ebenso
+\newcommand{\streifenwertreihe}[2][10]{%
+  \par\smallskip\noindent
+  \begin{tikzpicture}[baseline=0pt]
+    \foreach \lab/\ff/\tw/\gw [count=\r from 0] in {#2}{%
+      \pgfmathsetmacro{\yy}{-\r*1.34}%
+      \pgfmathsetmacro{\sfill}{\ff/100*9}%
+      \begin{scope}[yshift=\yy cm]
+        \ifdim\sfill pt>0pt\fill[black!20] (0,0) rectangle (\sfill,0.62);\fi
+        \mbstreifenrahmen{9}{0.62}{#1}
+        \draw[line width=1pt] (\sfill,-0.08) -- (\sfill,0.62);
+        \node[left,font=\small] at (-0.15,0.31) {\lab)};
+        \node[below,font=\scriptsize] at (0,-0.05) {0};
+        \node[below,font=\scriptsize] at (\sfill,-0.05) {\tw};
+        \node[below,font=\scriptsize] at (9,-0.05) {\gw};
+      \end{scope}}
+  \end{tikzpicture}
+  \par\smallskip}
+
+% Dreisatz-Schema: zwei beschriftete Spalten, Werte mit \dsz, Rechenschritt mit Pfeilen mit \dsp
+% (Zeilenende jeweils intern, kein \\ nötig), fehlender Wert mit \dsleer.
+%   \begin{dreisatz}{Hefte}{Preis}
+%   \dsz{4}{6{,}00\,€}  \dsp{:4}{:4}  \dsz{1}{1{,}50\,€}  \dsp{\cdot 6}{\cdot 6}  \dsz{6}{9{,}00\,€}
+%   \end{dreisatz}
+\newcommand{\dsleer}{\rule[-0.5ex]{1.5cm}{0.4pt}}
+\newenvironment{dreisatz}[2]{%
+  \par\smallskip\noindent
+  \renewcommand{\arraystretch}{1.05}%
+  \begin{tabular}{@{}r@{\,}c@{\hspace{7mm}}c@{\,}l@{}}
+  \multicolumn{1}{c}{} & \textbf{#1} & \textbf{#2} & \multicolumn{1}{c}{}\\[0.4ex]
+}{%
+  \end{tabular}\par\smallskip}
+\newcommand{\dsz}[2]{ & #1 & #2 & \\}
+\newcommand{\dsp}[2]{ {\footnotesize$#1$}$\big\downarrow$ & & & $\big\downarrow${\footnotesize$#2$} \\}
 
 \endinput

@@ -1,5 +1,5 @@
 mathblatt.sty – Anleitung (Stufe 3)
-Gehört zu Vorlagenversion 2026-09-07d. Die Version steht in Zeile 2 der `mathblatt.sty`. Weichen beide ab, gilt die Vorlage: Makros, die sie nicht kennt, benutzt du nicht, und du meldest die Abweichung in einer Zeile im Ausgabeblock.
+Gehört zu Vorlagenversion 2026-09-22e. Die Version steht in Zeile 2 der `mathblatt.sty`. Weichen beide ab, gilt die Vorlage: Makros, die sie nicht kennt, benutzt du nicht, und du meldest die Abweichung in einer Zeile im Ausgabeblock.
  
 Datei `mathblatt.sty` neben die .tex-Datei legen, `\usepackage{mathblatt}` im Kopf. Kompilieren mit `xelatex` (nicht pdflatex): nur so sind Umlaute, ß, € und die Textextraktion sauber, weil im Sandbox keine Type-1-T1-Schriften liegen. Das Modell schreibt nur Inhalt; Ränder, Karogrößen, Fluchten, Kopf- und Fußzeile sind fest.
  
@@ -17,6 +17,8 @@ Grundgerüst
 ```
 \blattfuss{Lineare Funktionen}{Lernblatt Teil 1 von 3}   → Thema · Bezeichnung unten links, Seite unten rechts
 \blattkopf{...}{...} / \blattkopf*{...}{...}{$\star$ = ...}  → Alternative: oben links; mit * dazu Legende unten links, Text im dritten Argument
+\einheitenkopf{Einheit 3 von 5 · Prozentwert berechnen}   → Zwischenüberschrift über der ersten Hauptnummer einer Einheit: fette Zeile
+\einheitenkopf*{Einheit 3 von 5 · Prozentwert berechnen}  → dieselbe Zeile, zusätzlich ein Trennstrich über die volle Zeilenbreite darunter
 \weit                                                    → Schreibraum: Zeilen im Aufgabenteil gut halb so weit wie eng; Begleitteil und Hilfe-Seite setzen selbst auf eng zurück
 \uebersichtskasten[<Leitgrafik>]{<Formelzeilen>}          Zeilen mit \\ getrennt, kein & (kein tabular – „Misplaced alignment tab" im Log heißt: & im Kasten); Sternlegende nicht hier, sondern über \blattkopf*
    \uebersichtskasten{Plusklammer: \quad $a + (b - c) = a + b - c$ \\ Minusklammer: \quad $a - (b - c) = a - b + c$}
@@ -168,9 +170,15 @@ Stochastik
 \baumzwei{R/,B/}{R/,B/}{R/,B/}                      leere Felder zum Eintragen
 \saeulen{Mo/12,Di/7,Mi/9}{16}{4}{Anzahl}            Werte, ymax, ystep, Achsentitel
 \saeulen{Mo/,Di/,Mi/}{16}{4}{Anzahl}                nur Achsen (Schüler zeichnet)
+\saeulenab[ymax=100,ystep=20,yfein=5,ylabel=Gäste]{Mo/45,Di/70,Mi/30}       Säulen zum Ablesen, ohne Wertebeschriftung
+\saeulenab[ymax=560,ystep=80,yfein=80,ylabel=Mio.,ohnezahlen,breite=1.8]{Spanisch/480,Englisch/}   Achse ohne Zahlen
+\balkenab[xmax=40,xstep=10,xfein=2,xlabel=Nennungen]{Rot/24,Blau/32,Grün/14}    waagerechte Balken zum Ablesen
+\liniendia[ymax=20,ystep=5,yfein=1,ylabel=Temperatur in $^\circ$C]{Jan/2,Feb/5,Mär/4}   Liniendiagramm über Kategorien
 ```
  
 `\baumzwei` trägt genau zwei Äste je Stufe; ein dritter Eintrag in der ersten Stufe wird ohne Folgestufe gezeichnet. Wahrscheinlichkeiten stehen im Mathemodus, Dezimalkomma also als `0{,}4`, Brüche als `\frac{2}{5}`.
+
+`\saeulenab`, `\balkenab` und `\liniendia` ergänzen `\saeulen` um Diagramme zum Ablesen: keine Wertebeschriftung an der Säule/dem Balken/dem Punkt, dafür ein feines Hilfsgitter zwischen den bezifferten Linien (Schlüssel `yfein` bzw. `xfein`), von dem der Wert abgelesen wird. Leerer Wert (`Mi/`) lässt die Säule weg, nur Achse und Gitter bleiben (Schüler zeichnet selbst). `ymin` (Voreinstellung 0) setzt den Startwert der Achse für Aufgaben, bei denen die Achse nicht bei null beginnt; `ohnezahlen` unterdrückt zusätzlich die Achsenbezifferung ganz, für Aufgaben zur Achseneinteilung selbst. `breite`/`hoehe` skalieren Säulen- bzw. Balkenbreite in cm – bei langen Kategorienamen (`\saeulenab`) oder vielen Kategorien großzügig wählen, die Labels brechen nicht um. `\liniendia` nutzt dieselben Schlüssel wie `\saeulenab` (`ymax`, `ystep`, `yfein`, `ylabel`, `breite`), zeichnet aber Punkte über den Kategorien und verbindet sie; die y-Achse beginnt hier immer bei 0.
 
 ```
 \baumdreigleich{R/0{,}4,B/0{,}6}                                   dreistufig, alle Stufen gleich (mit Zurücklegen)
@@ -180,7 +188,9 @@ Stochastik
 \kreisdiagramm[1.2]{A/3, B/5, /2}       Radius in cm (Voreinstellung 1,8); leeres Label = Sektor ohne Text
 \kreisdiagramm{}                         leerer Kreis mit Mittelpunkt (Schüler zeichnet)
 \kreisdiagrammleer{Bus/40, Rad/25, Auto/20, Fuß/15}   wie oben, aber ohne Text: aus jedem Sektor führt eine Linie nach außen auf einen Schreibstrich (Zuordnen, Beschriften)
+\kreisleer[2.2]                          leerer Kreis mit Mittelpunkt M und einem Radius nach oben (12 Uhr) als Nullmarke, Radius in cm (Voreinstellung 2); zum Antragen eigener Sektoren mit dem Geodreieck, bevor \kreisdiagramm das fertige Bild zeigt
 \sachtabelle{lcc}{Medium & Mädchen & Jungen}{Smartphone & 97\,\% & 94\,\%\\ Bücher & 48\,\% & 32\,\%}   Sachtabelle mit Rahmen, Kopfzeile abgesetzt; leere Zelle zum Eintragen: \leerzelle
+\strichliste{|||||\ |||}                 Strichliste in Festbreitenschrift für Tabellenzellen, z. B. in \sachtabelle; Fünferbündel (Schrägstrich durchs fünfte |) selbst mit \ als Leerzeichen schreiben
 \kreissektor{135}{135°}                  Kreis mit einem grauen Sektor von 135° ab oben, Label im Sektor
 \vierfeldertafel{A}{B}{20,30,50,10,40,50,30,70,100}   zeilenweise B, nicht B, Summe; leere Einträge frei
 \vierfeldertafel{A}{B}{}                 alle Felder leer
@@ -282,6 +292,29 @@ Trigonometrie
 
 `trigo` ist ein Stil des `ksys` wie `leit`: weitere Schlüssel dahinter überschreiben ihn. Er setzt die x-Zahlen als Vielfache von π (`\tfrac{\pi}{2}`, `\pi`, `\tfrac{3\pi}{2}`); das funktioniert nur mit `xstep=1.5708` oder ganzen Vielfachen davon. Der Einheitskreis beschriftet immer mit α, sin α, cos α und P – für Aufgaben mit konkreten Werten steht die Gradzahl im Aufgabentext.
 
+Prozentrechnung: Streifen und Dreisatz
+
+```
+\streifenleer                                        leerer Streifen (10 cm = 100 %), mit 0 %/50 %/100 % beschriftet
+\streifenvoll{Rad/40,Bus/25,zu Fuß/20,Auto/15}        vollständig gefüllt, Werte müssen sich zu 100 summieren
+\streifen{30}{$0\,\%$}{$100\,\%$}                     ein Abschnitt 0..30 %, Label links/rechts unten
+\streifen[5]{30}{$0\,\%$}{$100\,\%$}                  wie oben, nur 5 statt 10 Teilstriche
+\streifenfrage{65}{$0\,\%$}{$100\,\%$}                wie \streifen, mit „?“ über der Füllgrenze
+\streifenreihe{a/20,b/60,c/10,d/90}                   mehrere Streifen a), b), ... untereinander, je 100 %
+\streifenwertreihe{a/30/6\,kg/20\,kg, b/70/35\,€/50\,€}   wie \streifenreihe, mit Marke und Werten 0/Teilwert/Ganzwert
+\begin{dreisatz}{Hefte}{Preis}
+\dsz{4}{6{,}00\,€}
+\dsp{:4}{:4}
+\dsz{1}{\dsleer}                                      fehlender Wert als Schreiblinie statt \feld
+\dsp{\cdot 6}{\cdot 6}
+\dsz{6}{9{,}00\,€}
+\end{dreisatz}
+```
+
+Die Streifen-Bausteine stellen 100 % immer als 10 cm breites Rechteck dar. `\streifenleer` und `\streifenvoll` sind die geschlossene Form (Streifen komplett ausgefüllt bzw. leer zum Selbstanlegen), `\streifen`/`\streifenfrage` füllen einen einzelnen Anteil zwischen zwei Textlabels, `\streifenreihe`/`\streifenwertreihe` setzen mehrere solcher Streifen als Teilaufgaben a), b), ... untereinander. Das optionale Argument (Voreinstellung 10) ist bei allen außer `\streifenleer`/`\streifenvoll` die Zahl der Teilstriche; `0` oder `1` lässt sie weg. `\streifenwertreihe` erwartet je Zeile vier durch Schrägstrich getrennte Angaben (Buchstabe/Füllung in %/Teilwert/Ganzwert), Teil- oder Ganzwert leer lassen ergibt ein Feld zum Eintragen (Prozentwert- bzw. Grundwert-Aufgaben).
+
+Das Dreisatz-Schema ist die Umgebung `dreisatz` mit den beiden Spaltenüberschriften als Argumente; jede Zeile mit Werten kommt von `\dsz{Menge}{Größe}`, jeder Rechenschritt dazwischen von `\dsp{links}{rechts}` (setzt Pfeil samt Rechenoperation unter beide Spalten, `\phantom{:0}` für einen leeren Schritt). Werte im Mathemodus, Dezimalkomma also `6{,}00\,€`. Ein fehlender Wert wird mit `\dsleer` (Schreiblinie) statt mit `\feld` eingetragen, da das Schema keine eigene Spalte für den Bezeichner hat.
+
 Noch nicht in Stufe 3
  
-Zweitafelprojektion; im 3D-System Spurgeraden, Ebenen ohne Achsenabschnitte, Kegel/Kugel/Zylinder; Dreisatz-Schema (zwei Spalten mit Pfeilen) als Schreibform für Prozent und Zuordnungen. Die Bausteinliste Stufe 3 ist damit abgearbeitet.
+Zweitafelprojektion; im 3D-System Spurgeraden, Ebenen ohne Achsenabschnitte, Kegel/Kugel/Zylinder. Die Bausteinliste Stufe 3 ist damit abgearbeitet.
