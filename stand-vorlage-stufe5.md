@@ -8,7 +8,7 @@ wie beauftragt). Ein Neustart liest diese Datei zuerst.
 |---|---|---|---|---|
 | 1 .gitattributes und Kompilierbasis | erledigt | 1.2 Basislauf, alle vierzehn Quelltexte | eaa74fc | 2026-09-26 04:05 |
 | 2 Zweigzeile und Verzeichniszeile | erledigt | Gegenprobe: 14 von 14 Seitenzahlen gleich dem Basislauf, 43 von 43 Zweigzeilen direkt unter ihrem Kopf | „vorlage: zweigzeile, verzeichniszeile, einheitenkopf mit Ziel" | 2026-09-26 04:34 |
-| 3 Abhakseite | offen | – | – | – |
+| 3 Abhakseite | erledigt | Gegenprobe: Abhakseite nirgends länger (Eingabe 1: 2 → 1 Seite), „Das kann ich" genau einmal je Gesamt-Blatt, im Fokus gar nicht; \abhakauto sammelt in allen vierzehn Quelltexten genau die Zeilen der Handliste | „vorlage: abhakseite" | 2026-09-26 05:26 |
 | 4 gleichungsraster, streifenfeld, Schwach | offen | – | – | – |
 | 5 Versionszeile, Anleitung, CHANGELOG | offen | – | – | – |
 | Abschluss | offen | – | – | – |

@@ -184,6 +184,7 @@
 \newif\ifmbinaufgabe
 \newenvironment{aufgabe}[1]{%
   \stepcounter{aufgabe}\setcounter{teil}{0}\mbinaufgabetrue\mbnachkopffalse
+  \mbabhakschreiben{\theaufgabe}{#1}%
   \begin{lrbox}{\mbaufgabebox}%
   \begin{minipage}[t]{\linewidth}%
   \noindent\textbf{\theaufgabe.}\ #1\par}%
@@ -320,6 +321,59 @@
 
 % Ergebniszeile: \erg{3}{a) 1 | b) 2 | ...}
 \newcommand{\erg}[2]{\par\noindent\textbf{#1)}\ #2}
+
+% Abhakseite „Das kann ich": letzte Seite des Lernblatts, eine Zeile je Hauptnummer, zum Ankreuzen.
+% Beginnt auf einer neuen Seite, trägt das Sprungziel abhaken (für \verz{abhaken}{Das kann ich}).
+% Die Überschrift steht im optionalen Argument, wenn sie nicht „Das kann ich" heißen soll.
+%   \begin{abhakseite}
+%   \zweigzeile{Hake ab, was du kannst.}
+%   \abhakgruppe{Einheit 2 von 4 · Prozentwert}
+%   \abhak{12}{Ich kann den Prozentsatz am Streifen ablesen}
+%   \abhak{13}{Ich finde den Fehler beim Ablesen}
+%   \end{abhakseite}
+% \abhakgruppe setzt die Zwischenzeile einer Einheit, \abhak die Zeile mit Kästchen, Nummer und
+% Titel; Folgezeilen eines langen Titels hängen unter dem Titel ein. Die Nummer darf auch
+% „Z1" heißen; ist sie breiter als das Feld, rückt der Titel mit.
+\newlength{\mbabhakein}\setlength{\mbabhakein}{2.8em}
+\newsavebox{\mbabhakbox}
+\newlength{\mbabhakbr}\newlength{\mbabhaknr}
+\newenvironment{abhakseite}[1][Das kann ich]{%
+  \clearpage\eng\einheitenkopf[abhaken]{#1}%
+  \begingroup\small\setlength{\parskip}{1pt}\setlength{\parindent}{0pt}}%
+ {\par\endgroup}
+\newcommand{\abhakgruppe}[1]{\par\addvspace{4pt}\noindent\textbf{#1}\par\nobreak}
+\newcommand{\abhak}[2]{\par
+  \settowidth{\mbabhaknr}{#1.}%
+  \ifdim\mbabhaknr<1.4em\setlength{\mbabhaknr}{1.4em}\fi
+  \sbox{\mbabhakbox}{$\square$\hspace{0.45em}\makebox[\mbabhaknr][r]{#1.}\hspace{0.45em}}%
+  \setlength{\mbabhakbr}{\wd\mbabhakbox}%
+  \ifdim\mbabhakbr<\mbabhakein\setlength{\mbabhakbr}{\mbabhakein}\fi
+  \noindent\hangindent\mbabhakbr\hangafter1
+  \makebox[\mbabhakbr][l]{\usebox{\mbabhakbox}}#2\par}
+
+% \abhakauto  (oder \abhakauto[Eigene Überschrift]) setzt dieselbe Seite ohne Handliste: die
+% Titel aller \aufgabe-Köpfe des Blatts sammelt die Vorlage in der Hilfsdatei \jobname.abh (wie
+% ein Inhaltsverzeichnis), der zweite xelatex-Lauf setzt sie. Die Handform oben bleibt; wer
+% Gruppen will oder einzelne Zeilen anders formuliert, schreibt die Liste weiter selbst.
+\newwrite\mbabhakaus
+\newif\ifmbabhakoffen\mbabhakoffenfalse
+\newcommand{\mbabhakliste}{}
+\newcommand{\mbabhaksammle}[2]{\gappto\mbabhakliste{\abhak{#1}{#2}}}
+\newcommand{\mbabhaklesen}{%
+  \begingroup\let\abhak\mbabhaksammle
+    \InputIfFileExists{\jobname.abh}{}{}%
+  \endgroup
+  \immediate\openout\mbabhakaus=\jobname.abh\relax\mbabhakoffentrue}
+\AtBeginDocument{\mbabhaklesen}
+\AtEndDocument{\ifmbabhakoffen\immediate\closeout\mbabhakaus\mbabhakoffenfalse\fi}
+\newcommand{\mbabhakschreiben}[2]{%
+  \ifmbabhakoffen\immediate\write\mbabhakaus{\string\abhak{#1}{\unexpanded{#2}}}\fi}
+\NewDocumentCommand{\abhakauto}{O{Das kann ich}}{%
+  \begin{abhakseite}[#1]%
+  \ifdefempty{\mbabhakliste}
+    {\PackageWarning{mathblatt}{Abhakseite noch leer - zweiter xelatex-Lauf noetig}}
+    {\mbabhakliste}%
+  \end{abhakseite}}
 
 % ---------------------------------------------------------------------------
 % B  Wertetabelle
