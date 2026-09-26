@@ -218,7 +218,7 @@
 % geruest-Bloecke und Listenmakros weiter; ausserhalb einer aufgabe beginnt jeder Block bei a).
 \newcounter{teil}
 \newcommand{\mbteilstart}{\ifmbinaufgabe\else\setcounter{teil}{0}\fi}
-\newenvironment{teile}{\mbteilstart\par\nopagebreak
+\newenvironment{teile}{\mbteilstart\mbanwmodus=1 \par\nopagebreak
   \begin{list}{}{\setlength{\leftmargin}{1.6em}\setlength{\labelwidth}{1.4em}
    \setlength{\labelsep}{0.2em}\setlength{\itemsep}{\mbteilsep}\setlength{\parsep}{0pt}
    \setlength{\topsep}{1pt}}}{\end{list}}
@@ -235,7 +235,7 @@
   \sbox{\mbtzbox}{#1}%
   \ifdim\wd\mbtzbox>1.4em\usebox{\mbtzbox}\else\makebox[1.4em][r]{\usebox{\mbtzbox}}\fi
   \hspace{0.2em}\ignorespaces}
-\newenvironment{teilezwei}{\mbteilstart\par\nopagebreak
+\newenvironment{teilezwei}{\mbteilstart\mbanwmodus=2 \par\nopagebreak
   \begin{tabular}{@{}p{0.48\linewidth}@{}p{0.48\linewidth}@{}}}{\end{tabular}\par}
 \newcommand{\tz}{\stepcounter{teil}\mbtzkopf{\alph{teil})}}
 \newcommand{\stz}{\stepcounter{teil}\mbtzkopf{$\star$\,\alph{teil})}}
@@ -268,7 +268,7 @@
     \hbox{\color{black!40}\vrule\@width\linewidth\@height0.4pt\@depth\z@}%
     \stepcounter{mbsz}\repeat
   \nointerlineskip\hbox{\vrule\@width\z@\@height\z@\@depth\mbschreibtiefe}\prevdepth\z@}
-\newenvironment{gleichungsraster}[1][2]{\mbteilstart\renewcommand{\mbglzeilen}{#1}\par\nopagebreak
+\newenvironment{gleichungsraster}[1][2]{\mbteilstart\mbanwmodus=2 \renewcommand{\mbglzeilen}{#1}\par\nopagebreak
   \begin{tabular}{@{}p{0.46\linewidth}@{\hspace{0.08\linewidth}}p{0.46\linewidth}@{}}}{\end{tabular}\par}
 \newcommand{\gl}[2][\mbglzeilen]{\stepcounter{teil}\alph{teil})\ $#2$\schreibzeilen{#1}}
 \newcommand{\sgl}[2][\mbglzeilen]{\stepcounter{teil}$\star$\,\alph{teil})\ $#2$\schreibzeilen{#1}}
@@ -295,7 +295,7 @@
 %   \gz{a}{$y = 3x + 2$}{\feld{m}\feld{n}}
 %   \gz{b}{$y = -x + 5$}{\feld{m}\feld{n}}
 %   \end{geruest}
-\newenvironment{geruest}{\mbteilstart\par\nopagebreak
+\newenvironment{geruest}{\mbteilstart\mbanwmodus=3 \par\nopagebreak
   \begin{tabular}{@{\hspace{0.4em}}l@{\hspace{0.4em}}l@{\hspace{1.2em}}l@{}}}{\end{tabular}\par}
 % Aufgabentext länger als \mbgzmax (Satzspiegel minus 6 cm für die Felder) wird umbrochen.
 \newlength{\mbgzmax}\newlength{\mbgzw}
@@ -303,6 +303,39 @@
   \ifdim\mbgzw>\mbgzmax\parbox[t]{\mbgzmax}{\strut\raggedright #1\strut\vspace{2pt}}\else #1\fi}
 \newcommand{\gz}[3]{\stepcounter{teil}#1) & \mbgztext{#2} & #3 \\}
 \newcommand{\gzs}[3]{\stepcounter{teil}$\star$\,#1) & \mbgztext{#2} & #3 \\}
+
+% Anweisungszeile zwischen Teilaufgaben (Stufe 6):
+%   \anweisung{Rechne mit dem Taschenrechner. Runde auf eine Stelle.}
+% Eine Zeile über die volle Breite der Hauptnummer, einzeilig oder umbrechend, die in teile,
+% teilezwei, gleichungsraster und geruest zwischen zwei Teilaufgaben steht. Der Buchstabenzähler
+% läuft unverändert weiter. Davor ein kleiner Abstand (\mbanwabstand), danach keiner.
+% In den zweispaltigen Umgebungen beendet die Zeile die laufende Reihe: Sie darf direkt hinter
+% der letzten Teilaufgabe der Reihe stehen (mit oder ohne \\ davor), die nächste Teilaufgabe
+% beginnt links. Nicht als erster Eintrag der rechten Zelle (\tz ... & \anweisung{...}).
+%   \begin{teilezwei}
+%   \tz $3 \cdot 4$ & \tz $5 \cdot 6$ \\
+%   \anweisung{Rechne mit dem Taschenrechner. Runde auf eine Stelle.}
+%   \tz $7{,}3 \cdot 2{,}8$ & \tz $9{,}1 : 3$ \\
+%   \end{teilezwei}
+% Außerhalb der vier Umgebungen (zwischen zwei Blöcken einer Hauptnummer) steht sie als eigener
+% Absatz. Die vier Umgebungen melden sich über \mbanwmodus: 0 frei, 1 teile, 2 zweispaltig
+% (teilezwei, gleichungsraster), 3 geruest; in 2 und 3 ist die Zahl zugleich die Spaltenzahl.
+% \anweisung muss am Reihenanfang einer Tabelle expandierbar bis zum \noalign sein, deshalb
+% \newcommand ohne Argument und Fallunterscheidung mit \ifcase. Reihenanfang erkennt die Vorlage
+% an \currentgrouptype 6 (Ausrichtungsgruppe); mitten in einer p-Zelle ist es die Gruppe der
+% Zelle, dann schließt sie die Reihe zuerst mit \\.
+\newcount\mbanwmodus \mbanwmodus=0
+\newlength{\mbanwabstand}\setlength{\mbanwabstand}{3pt}
+\newcommand{\anweisung}{%
+  \ifcase\mbanwmodus\expandafter\mbanwfrei\or\expandafter\mbanwliste\else
+    \ifnum\currentgrouptype=6 \expandafter\expandafter\expandafter\mbanwtab
+    \else\expandafter\expandafter\expandafter\mbanwtabzu\fi\fi}
+\newcommand{\mbanwfrei}[1]{\par\addvspace{\mbanwabstand}\noindent #1\par}
+\newcommand{\mbanwliste}[1]{\par\addvspace{\mbanwabstand}\item[]\hspace*{-\leftmargin}%
+  \parbox[t]{\dimexpr\linewidth+\leftmargin\relax}{#1}}
+\newcommand{\mbanwtab}[1]{\noalign{\vskip\mbanwabstand}%
+  \multicolumn{\mbanwmodus}{@{}p{\linewidth}@{}}{#1}\\}
+\newcommand{\mbanwtabzu}{\\\mbanwtab}
 
 % Listenmakros: eine Zeile statt eines geruest-Blocks. Eintraege mit Komma getrennt; Dezimalkomma als 0{,}5 schreiben.
 % Optionales Argument = Nummer der ersten Sternaufgabe (Sterne stehen immer am Ende).
