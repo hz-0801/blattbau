@@ -1,0 +1,316 @@
+% Probeblatt der Vorlage mathblatt.sty (seit Stufe 6, Version 2026-09-28a)
+% Zeigt jeden dokumentierten Baustein der Anleitung genau einmal, in der Reihenfolge der Anleitung,
+% je Baustein mit seinem Namen in einer kleinen grauen Zeile darüber (\pbz). Inhalte aus den
+% Beispielen der Anleitung, Grafiken verkleinert.
+% Zweck: Lesestück für den Lehrer und Kompilierprobe jeder künftigen Stufe. Jeder Vorlagen-Auftrag
+% ergänzt hier seine neuen Bausteine (an ihrer Stelle in der Anleitung) und prüft mit
+%   python referenz/probeblatt-pruef.py
+% dass Anleitung und Namenszeilen übereinstimmen. Zählgrenze: höchstens 12 Seiten.
+% Kompilieren: mathblatt.sty neben diese Datei kopieren, zweimal xelatex (Abhakseite und
+% Sprungziele). Das PDF liegt daneben im Repo (einzige Ausnahme von „Kompilate im Scratchpad").
+% Seitenbausteine, die eine neue Seite beginnen (abhakseite, \abhakauto, \begleitteil,
+% \hilfeseite), stehen am Ende, ihre Namenszeile am Fuß der Seite davor („nächste Seite");
+% \blattkopf wirkt ab Seite 2, Seite 1 trägt die Fußzeile von \blattfuss. Mehrere Grafiken
+% stehen nebeneinander (\pbfig); wo die Zeilenbreite es verlangt, weicht die Reihenfolge um
+% wenige Plätze von der Anleitung ab (probeblatt-pruef.py nennt sie).
+\documentclass[11pt]{article}
+\usepackage{mathblatt}
+
+% Namenszeile: \pbz{name1,name2,=umgebung} – eine kleine graue Zeile, je Name eine Randnotiz.
+\newcounter{pbzahl}
+\def\pbform#1#2\relax{\ifx=#1\textbackslash begin\{#2\}\else\textbackslash #1#2\fi}
+\newcommand{\pbname}[1]{\stepcounter{pbzahl}\mbox{\pbform#1\relax}\hspace{1.2em}}
+% (der Absatzabstand nach der Zeile fällt großteils weg, damit sie an ihrem Baustein hängt)
+\newcommand{\pbz}[1]{\par\noindent{\scriptsize\color{mbgrau}\raggedright\foreach \pbn in {#1}{\expandafter\pbname\expandafter{\pbn}}\par}\nobreak\vskip-0.7\parskip}
+% dasselbe für Bausteine, die selbst eine neue Seite beginnen: Zeile am Ende der Seite davor
+\newcommand{\pbzn}[1]{\par\noindent{\scriptsize\color{mbgrau}\raggedright\foreach \pbn in {#1}{\expandafter\pbname\expandafter{\pbn}}(nächste Seite)\par}}
+% Grafik mit Namenszeile in einer Spalte der Breite #1 (Anteil der Zeile)
+\newcommand{\pbfig}[3]{\begin{minipage}[t]{#1\linewidth}\vspace{0pt}\pbz{#2}#3\end{minipage}}
+% Abschnitt der Anleitung als Einheit
+\newcommand{\pbteil}[3]{\einheitenkopf[#1]{Einheit #2 von 14 · #3}}
+
+\begin{document}
+\blattfuss{Probeblatt}{Vorlage Stufe 6}
+\pbz{blattfuss,blattkopf}
+{\small Seite 1 trägt die Fußzeile von \verb|\blattfuss| (unten links), ab Seite 2 gilt
+\verb|\blattkopf*| mit Kopfzeile oben links (samt Einheit, Stufe 6) und Legende unten links.
+Jede graue Zeile nennt die Bausteine, die direkt darunter stehen; Reihenfolge wie in der Anleitung.}
+
+\pbz{einheitenkopf,zweigzeile}
+\einheitenkopf*[e1]{Einheit 1 von 14 · Grundgerüst}
+\zweigzeile{Den Rahmen eines Blatts kennen · Vorlage Stufe 6 · Kompilierprobe}
+\pbz{verz,verzeichniszeile,verztrenn}
+\verzeichniszeile{\verz{e1}{Grundgerüst} \verztrenn \verz{e2}{Wertetabelle} \verztrenn
+  \verz{e3}{Koordinatensystem} \verztrenn \verz{e4}{3D} \verztrenn \verz{e5}{Körper} \verztrenn
+  \verz{e6}{Kreis} \verztrenn \verz{e7}{Vierecke} \verztrenn \verz{e8}{Stochastik} \verztrenn
+  \verz{e9}{Boxplot} \verztrenn \verz{e10}{Analysis} \verztrenn \verz{e11}{Zahlen} \verztrenn
+  \verz{e12}{Trigonometrie} \verztrenn \verz{e13}{Prozent} \verztrenn \verz{e14}{schwach}
+  \verztrenn \verz{abhaken}{Das kann ich}}
+
+\pbz{uebersichtskasten}
+\uebersichtskasten{Plusklammer: \quad $a + (b - c) = a + b - c$ \\ Minusklammer: \quad $a - (b - c) = a - b + c$}
+
+\pbz{verfahren}
+\verfahren{Teilaufgaben in einer Spalte und in zwei Spalten}
+\begin{aufgabe}{Ich kann Teilaufgaben lesen. (Die Nummer bleibt mit allem darunter auf einer Seite.)}
+\pbz{=aufgabe,=teile,teil,steil,=teilezwei,tz,leerfeld,feld,stz}
+\begin{teile}
+\teil $3 \cdot 4 = \leerfeld$
+\steil $12 : 0{,}5 = \leerfeld$
+\end{teile}
+\begin{teilezwei}
+\tz $y = 2x + 3$: \feld{m} & \stz $y = -x$: \feld{m} \\
+\end{teilezwei}
+\end{aufgabe}
+
+\begin{aufgabe}{Ich kann Steigung und y-Achsenabschnitt ablesen.}
+\pbz{=geruest,gz,gzs,=gleichungsraster,gl,sgl,anweisung}
+\begin{geruest}
+\gz{a}{$y = 3x + 2$}{\feld{m}\feld{n}}
+\gzs{b}{$y = -x + 5$}{\feld{m}\feld{n}}
+\end{geruest}
+\begin{gleichungsraster}[2]
+\gl{x + 5 = 9} & \sgl{7 - 2x = 15} \anweisung{Löse jetzt ohne Taschenrechner und mache die Probe.}
+\gl[1]{2x + 3 = 11} & \\
+\end{gleichungsraster}
+\end{aufgabe}
+
+\clearpage
+\blattkopf*{Probeblatt}{Vorlage Stufe 6}{$\star$ = anspruchsvoll, darf übersprungen werden}
+
+\begin{aufgabe}{Ich kann eine Gleichung senkrecht umformen.}
+\pbz{rechenplatz,beispiel,rechnung}
+\rechenplatz[halb]{2}
+\beispiel{x + 5 &= 9 &&\mid -5 \\ x &= 4}
+\rechnung{5x - 8 &= 12 &&\mid +8 \\ 5x &= 20}
+\end{aufgabe}
+
+\begin{aufgabe}{Ich kann am Streifen ablesen, wie viel Prozent ein Teil ist.}
+\pbz{=beispiel,streifen}
+\begin{beispiel}
+Der Streifen sind 10 Kinder, gefärbt sind 4 Kinder. Wie viel Prozent sind gefärbt?
+\streifen{40}{$0$}{10 Kinder}
+\rechnung{1 \text{ Kästchen} &= 10\,\% \\ 4 \text{ Kästchen} &= 40\,\%}
+Antwort: 40\,\% der Kinder sind gefärbt.
+\end{beispiel}
+\end{aufgabe}
+
+\weit
+\begin{aufgabe}{Ich kann Felder, Kästchen und Listen ausfüllen. (Diese Nummer steht unter \texttt{\textbackslash weit}.)}
+\pbz{weit,feldl,punktfeld,janein,kreuz,mnliste,nullstellenliste,punktprobenliste}
+\begin{teile}
+\teil $y = 2x - 6$: \feldl{x_0} \quad Scheitelpunkt \punktfeld \quad Steigt die Gerade? \janein \quad \kreuz{A}\kreuz{B}
+\end{teile}
+\mnliste[2]{2x+3, -x}
+\nullstellenliste{x-4}
+\punktprobenliste{2x-1/A(3|5)}
+\end{aufgabe}
+\eng
+
+\pbteil{e2}{2}{Wertetabelle}
+\pbfig{0.55}{wertetabelle}{\wertetabelle[,4,,-2,-5]{x}{f(x)}{-2,-1,0,1,2}}\hfill
+\pbfig{0.4}{wertetabelleleer}{\wertetabelleleer{x}{y}{4}}
+
+\pbteil{e3}{3}{Koordinatensystem 2D}
+\pbz{=ksys,gerade,punkt,steigungsdreieck,parabel,funktion,funktionab,ksysabstand}
+\begin{ksys}[xmin=-3,xmax=4,ymin=-3,ymax=4,ablesen]
+  \gerade{2}{-1}{g} \punkt{2}{3}{A} \steigungsdreieck{0}{-1}{2}
+\end{ksys}\ksysabstand
+\begin{ksys}[xmin=-3,xmax=4,ymin=-3,ymax=4,ablesen]
+  \parabel{1}{-1}{-2}{p} \funktion{0.5*\x^2-2}{f} \funktionab{1/\x}{h}{0.25}{4}
+\end{ksys}
+
+\pbteil{e4}{4}{Koordinatensystem 3D}
+\pbz{=ksys3,rpunkt,rvektor,rvektorab,rgerade,rebene,rebenepar,rquader,rpyramide}
+\begin{ksys3}[x1min=0,x1max=2,x2min=0,x2max=4,x3min=0,x3max=3]
+  \rebene{2}{4}{2}{E}
+  \rpunkt{1}{2}{1}{A}
+  \rgerade[-0.5:1]{0,1,2}{1,1,0}{g}
+\end{ksys3}\hfill
+\begin{ksys3}[x1min=0,x1max=2,x2min=0,x2max=4,x3min=0,x3max=3]
+  \rvektor{0,3,2.5}{\vec a}
+  \rvektorab[below]{2,0,0}{2,2,0}{\vec u}
+  \rebenepar*{0,0,2}{1,0,0}{0,1,0}{D}
+  \rquader{0,3,0}{1}{1}{1}
+  \rpyramide{1,1.5,0}{1}{1}{1.5,2,2}
+\end{ksys3}
+\pbteil{e5}{5}{Geometrie und Körper}
+\pbfig{0.24}{dreieckrw}{\dreieckrw{3}{2}{a}{b}{c}}\hfill
+\pbfig{0.27}{dreieck}{\dreieck{(0,0)}{(3.5,0)}{(1,2)}{a}{b}{c}{\alpha}{\beta}{\gamma}}\hfill
+\pbfig{0.22}{quader}{\quader{2.5}{1.5}{1.8}{a}{b}{c}}\hfill
+\pbfig{0.18}{zylinder}{\zylinder{0.8}{2}{r}{h}}
+
+\medskip
+\pbfig{0.27}{prismadreieck}{\prismadreieck{2.5}{1.8}{1.5}{g}{h}{l}}\hfill
+\pbfig{0.25}{pyramide}{\pyramide{2.5}{2}{2.5}{a}{b}{h}}\hfill
+\pbfig{0.2}{kegel}{\kegel{1}{2}{r}{h}{s}}\hfill
+\pbfig{0.18}{kugel}{\kugel{1}{r}}
+
+\pbteil{e6}{6}{Kreis und Winkelfiguren}
+\pbfig{0.3}{=kreis,mittelpunkt,kreispunkt,radius,durchmesser,sehne}{%
+\begin{kreis}[1.2]
+  \mittelpunkt{M} \kreispunkt{150}{B} \radius{70}{r} \durchmesser{0}{d} \sehne{200}{300}{s}
+\end{kreis}}\hfill
+\pbfig{0.3}{tangente,sektor,bogen}{%
+\begin{kreis}[1.2]
+  \mittelpunkt{} \tangente{300}{t} \sektor{30}{110}{\alpha} \bogen{150}{230}{b}
+\end{kreis}}\hfill
+\pbfig{0.36}{mittelpunktswinkel,umfangswinkel}{%
+\begin{kreis}[1.2]
+  \mittelpunkt{} \mittelpunktswinkel{200}{340}{\mu} \umfangswinkel{200}{340}{100}{\gamma}
+\end{kreis}}
+
+\medskip
+\pbfig{0.29}{geradenkreuzung}{\geradenkreuzung{35}{\alpha}{\beta}{\gamma}{\delta}}\hfill
+\pbfig{0.26}{parallelenpaar}{\parallelenpaar{60}{\alpha}{\beta}{\gamma}{\delta}}\hfill
+\pbfig{0.13}{winkel}{\winkel[2]{40}{\alpha}}\hfill
+\pbfig{0.28}{winkelstrahl}{\winkelstrahl[3.5]}
+
+\pbteil{e7}{7}{Vierecke, Netze, Strahlensatz}
+\pbfig{0.32}{viereck}{\viereck[seiten={a,b,c,d},diagonalen]{(0,0)}{(3.5,0)}{(4,2)}{(1,2.4)}}\hfill
+\pbfig{0.32}{parallelogramm}{\parallelogramm[seiten={a,b,a,b},hoehe]{3}{2}{60}}\hfill
+\pbfig{0.3}{rechteck}{\rechteck[achsen=beide]{3}{1.8}}
+
+\medskip
+\pbfig{0.32}{trapez}{\trapez[hoehe=h]{3.5}{2}{1.8}}\hfill
+\pbfig{0.32}{raute}{\raute[achsen=diagonalen,diagonalen]{3}{2}}\hfill
+\pbfig{0.3}{drachen}{\drachen[achsen=senkrecht,diagonalen]{3}{2.4}{0.35}}
+
+\medskip
+\pbfig{0.4}{netzquader}{\netzquader{1.5}{1}{1}{a}{b}{c}}\hfill
+\pbfig{0.25}{netzwuerfel}{\netzwuerfel{0.9}{a}}\hfill
+\pbfig{0.3}{netzpyramide}{\netzpyramide{1.5}{1.4}{a}{h_s}}
+
+\medskip
+\pbfig{0.4}{netzzylinder}{\netzzylinder{0.5}{1.5}{r}{h}}\hfill
+\pbfig{0.55}{strahlensatz}{\strahlensatz[strecken={2,3,,5}]{1.6}{4}{35}}
+
+\pbteil{e8}{8}{Stochastik}
+\pbfig{0.48}{baumzwei}{\baumzwei{R/0{,}4,B/0{,}6}{R/0{,}4,B/0{,}6}{R/,B/}}\hfill
+\pbfig{0.48}{saeulen}{\saeulen{Mo/12,Di/7,Mi/9}{16}{4}{Anzahl}}
+
+\medskip
+\pbfig{0.48}{saeulenab}{\saeulenab[ymax=100,ystep=20,yfein=5,ylabel=Gäste,hoehe=3.5]{Mo/45,Di/70,Mi/30}}\hfill
+\pbfig{0.48}{balkenab}{\balkenab[xmax=40,xstep=10,xfein=2,xlabel=Nennungen,breite=5,hoehe=0.8]{Rot/24,Blau/32,Grün/14}}
+
+\medskip
+\pbfig{0.48}{liniendia}{\liniendia[ymax=20,ystep=5,yfein=1,ylabel=Temperatur in $^\circ$C,hoehe=3]{Jan/2,Feb/5,Mär/4,Apr/11}}\hfill
+\pbfig{0.48}{baumdreigleich}{\baumdreigleich{R/0{,}4,B/0{,}6}}
+
+\medskip
+\pbfig{0.45}{baumdrei}{\baumdrei{R/\frac{2}{5},B/\frac{3}{5}}{R/\frac{1}{4},B/\frac{3}{4}}{R/,B/}{R/,B/}{R/,B/}{R/,B/}{R/,B/}}\hfill
+\pbfig{0.27}{kreisdiagramm}{\kreisdiagramm[0.9]{Bus/40, Rad/25, Auto/20, Fuß/15}}\hfill
+\pbfig{0.11}{kreisleer}{\kreisleer[0.9]}\hfill
+\pbfig{0.12}{kreissektor}{\kreissektor[0.9]{135}{135°}}
+
+\medskip
+\pbfig{0.35}{kreisdiagrammleer}{\kreisdiagrammleer[0.9]{Bus/40, Rad/25, Auto/35}}\hfill
+\pbfig{0.4}{sachtabelle,leerzelle,strichliste}{\sachtabelle{lcc}{Medium & M & J}{Handy & 97\,\% & \leerzelle\\ Striche & \strichliste{13} & 32}}
+
+\medskip
+\pbfig{0.39}{vierfeldertafel}{\vierfeldertafel{A}{B}{20,30,50,10,40,50,30,70,100}}\hfill
+\pbfig{0.32}{binomialverteilung}{\binomialverteilung[von=0,bis=6]{10}{0.3}}\hfill
+\pbfig{0.24}{normalverteilung}{\normalverteilung[von=-1,bis=1,karo=0.45]{0}{1}}
+\pbteil{e9}{9}{Boxplot und Histogramm}
+\pbfig{0.5}{=boxplots,bp}{%
+\begin{boxplots}[xmin=0,xmax=20,xstep=2,xlabel=Punkte]
+  \bp{4,7,9,13,18}{Klasse 8a}
+  \bp{}{Klasse 8b}
+\end{boxplots}}\hfill
+\pbfig{0.46}{histogramm}{\histogramm[ymax=10,ystep=2,xstep=10,ylabel=$h$]{0:10/4, 10:20/9, 20:30/6}}
+
+\pbteil{e10}{10}{Analysis}
+\pbfig{0.4}{ableitungspaar}{\ableitungspaar[xmin=-2,xmax=2,ymin=-1,ymax=3,ymin2=-2,ymax2=2,klein]{0.5*\x^2-1}{f}{\x}{f'}}\hfill
+\pbfig{0.56}{flaeche,flaechezwischen,tangentean,hochpunkt,tiefpunkt,wendepunkt,asymptote}{%
+\begin{ksys}[xmin=-2,xmax=4,ymin=-2,ymax=4,ablesen]
+  \funktion{\x^2-4*\x+3}{}
+  \flaeche{\x^2-4*\x+3}{1}{3}{A}
+  \flaechezwischen{-\x^2+2*\x+3}{\x+1}{-1}{2}{B}
+  \tangentean{0.5*\x^2}{1}{t}
+  \hochpunkt{1}{4}{H} \tiefpunkt{2}{-1}{T} \wendepunkt{0}{0}{W}
+  \asymptote{x=3.5}{}
+\end{ksys}}
+
+\pbteil{e11}{11}{Zahlen und Algebra}
+\pbz{zahlenstrahl}
+\zahlenstrahl[xmin=7.6,xmax=8,xstep=0.01,karo=0.4]{7.68/7{,}68}
+
+\pbfig{0.39}{=zahlengerade,intervall,intervallo}{%
+\begin{zahlengerade}[xmin=-4,xmax=6,karo=0.6]
+  \intervall{-2}{3}{[-2;3]}
+  \intervallo[2]{1}{5}{]1;5[}
+  \intervallo*[3]{2}{}{x \ge 2}
+\end{zahlengerade}}\hfill
+\pbfig{0.12}{bruchkreis}{\bruchkreis[0.9]{3}{8}}\hfill
+\pbfig{0.18}{bruchrechteck}{\bruchrechteck[3]{3}{8}}\hfill
+\pbfig{0.26}{termbaum,tb}{\termbaum{+}{3x}{\tb{\cdot}{2}{y}}}
+
+\pbteil{e12}{12}{Trigonometrie}
+\pbfig{0.3}{einheitskreis}{\einheitskreis[karo=1.3]{50}}\hfill
+\pbfig{0.66}{sinus,kosinus}{%
+\begin{ksys}[trigo,karo=0.7]
+  \sinus{1}{1}{f} \kosinus{2}{0.5}{g}
+\end{ksys}}
+
+\pbteil{e13}{13}{Prozentrechnung: Streifen und Dreisatz}
+\pbz{streifenleer}
+\streifenleer[0]
+
+\pbz{streifenvoll}
+\streifenvoll{Rad/40,Bus/25,zu Fuß/20,Auto/15}
+
+\pbz{streifenfrage}
+\streifenfrage{65}{$0\,\%$}{$100\,\%$}
+\pbz{streifenfeld}
+\streifenfeld[4]{75}{$0\,\%$}{$100\,\%$}
+\begin{minipage}[t]{0.66\linewidth}\vspace{0pt}
+\pbz{streifenreihe}
+\streifenreihe{a/20,b/60}
+\pbz{streifenwertreihe}
+\streifenwertreihe{a/30/6\,kg/, b/70//50\,€}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.3\linewidth}\vspace{0pt}\pbz{=dreisatz,dsz,dsp,dsleer}
+\begin{dreisatz}{Hefte}{Preis}
+\dsz{4}{6{,}00\,€}
+\dsp{:4}{:4}
+\dsz{1}{\dsleer}
+\dsp{\cdot 6}{\cdot 6}
+\dsz{6}{9{,}00\,€}
+\end{dreisatz}
+\end{minipage}
+
+\pbteil{e14}{14}{Option schwach}
+\begin{aufgabe}{Ich kann den Anteil am Streifen ausrechnen. (Option schwach)}
+\pbz{swz,swa,swb,swfrage}
+\swb{\beispiel{20 \text{ von } 100 &= \tfrac{20}{100} = 20\,\%}}{\bruchrechteck[5]{1}{5}}
+\swz[1]{Der Streifen sind 20\,€, gefärbt sind 6\,€.}{\streifen{30}{$0\,€$}{$20\,€$}}
+\swa{Ist mehr als die Hälfte gefärbt?}{\kreuz{ja}\kreuz{nein}}
+\swfrage{Was bleibt gleich, was ändert sich?}
+\end{aufgabe}
+
+\pbzn{=abhakseite,abhakgruppe,abhak}
+\begin{abhakseite}[Das kann ich (Handform)]
+\zweigzeile{Hake ab, was du kannst.}
+\abhakgruppe{Einheit 1 · Grundgerüst}
+\abhak{1}{Ich kann Teilaufgaben lesen.}
+\abhak{Z1}{Ich kann einen langen Titel lesen, der umbricht und unter dem Titel einhängt, nicht unter dem Kästchen, auch wenn die Nummer breiter ist.}
+\end{abhakseite}
+
+\pbzn{abhakauto}
+\abhakauto
+
+\pbzn{begleitteil,erg}
+\begleitteil
+\erg{1}{a) 12 \quad b) 24 \quad c) $m = 2$ \quad d) $m = -1$}
+
+\pbzn{hilfeseite,=schritte,schritt,achtung}
+\hilfeseite
+\verfahren{Gleichung lösen}
+\begin{schritte}
+\schritt Klammern auflösen.
+\schritt Alles mit $x$ auf eine Seite bringen.
+\achtung{Beim Teilen durch eine negative Zahl das Vorzeichen beachten.}
+\end{schritte}
+
+\bigskip\noindent{\small\color{mbgrau}Randnotizen auf diesem Probeblatt: \thepbzahl}
+\end{document}

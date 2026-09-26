@@ -141,7 +141,7 @@
 % zurücknehmen kann (Stufe 5).
 % Kopfzeile mit Einheit (Stufe 6): Der Kopf merkt sich seine Kurzform, und die Seitenkopfzeile von
 % \blattkopf zeigt ab der Seite, auf der er steht, „Thema · Bezeichnung · Kurzform" (beginnen
-% auf einer Seite mehrere Einheiten, die letzte). Kurzform = Nummer und Titel ohne „Einheit" und
+% auf einer Seite mehrere Einheiten, die erste). Kurzform = Nummer und Titel ohne „Einheit" und
 % ohne „von n": aus „Einheit 2 von 4 · Prozentwert berechnen" wird „2 Prozentwert berechnen",
 % aus „Einheit 1 · Nullstellen" (Fokus) „1 Nullstellen", aus „Ausblick Einheit 4 von 4 · …"
 % „Ausblick 4 …". Köpfe ohne „Einheit n" („Kennst du schon", „Inhalt") stehen wörtlich; die
@@ -174,14 +174,16 @@
 \ExplSyntaxOff
 % Die Marke trägt nur die laufende Nummer des Kopfs; die Kurzform liegt in \mbkurz@<Nummer>.
 % Eigene Markenklasse ab LaTeX 2022-06 (\NewMarkClass), in älteren Kernen \markboth/\leftmark.
+% Gezeigt wird die erste Marke der Seite (ohne Marke auf der Seite die letzte davor): Beginnen auf
+% einer Seite mehrere Einheiten, steht die erste da, mit der die Seite anfängt.
 \IfFormatAtLeastTF{2022-06-01}
   {\NewMarkClass{mbeinheit}%
    \newcommand{\mbkopfmarke}[1]{\InsertMark{mbeinheit}{#1}}%
-   \newcommand{\mbkopfletzte}{\LastMark{mbeinheit}}}
+   \newcommand{\mbkopfseite}{\FirstMark{mbeinheit}}}
   {\newcommand{\mbkopfmarke}[1]{\markboth{#1}{#1}}%
-   \newcommand{\mbkopfletzte}{\leftmark}}
+   \newcommand{\mbkopfseite}{\rightmark}}
 \newcommand{\mbkopfeinheit}{%
-  \ifnum0\mbkopfletzte>\z@\,\textperiodcentered\,\csname mbkurz@\mbkopfletzte\endcsname\fi}
+  \ifnum0\mbkopfseite>\z@\,\textperiodcentered\,\csname mbkurz@\mbkopfseite\endcsname\fi}
 \newcommand{\mbkopfohneeinheit}{\mbkopfmarke{0}}
 \NewDocumentCommand{\einheitenkopf}{s o o m}{%
   \def\mbkopfziel{}\IfValueT{#2}{\ifblank{#2}{}{\def\mbkopfziel{\hypertarget{#2}{}}}}%
