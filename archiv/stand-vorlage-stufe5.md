@@ -11,7 +11,7 @@ wie beauftragt). Ein Neustart liest diese Datei zuerst.
 | 3 Abhakseite | erledigt | Gegenprobe: Abhakseite nirgends länger (Eingabe 1: 2 → 1 Seite), „Das kann ich" genau einmal je Gesamt-Blatt, im Fokus gar nicht; \abhakauto sammelt in allen vierzehn Quelltexten genau die Zeilen der Handliste | „vorlage: abhakseite" | 2026-09-26 05:26 |
 | 4 gleichungsraster, streifenfeld, Schwach | erledigt | Gegenprobe: Eingabe 3 mit den Vorlagenbausteinen 32 Seiten (Auftrag: 32 ± 1); Probeblatt mit drei Reihen ohne Zusatzabstand, keine Linie berührt den Folgetext | „vorlage: gleichungsraster-Tiefe, streifenfeld, Schwach-Bausteine" | 2026-09-26 06:31 |
 | 5 Versionszeile, Anleitung, CHANGELOG | erledigt | mathblatt.sty Zeile 1 „Stufe 5", Versionszeile 2026-09-27a je Baustein; Anleitung, CHANGELOG-Abschnitt Vorlage, README | „vorlage: Stufe 5, Anleitung, CHANGELOG" | 2026-09-26 06:58 |
-| Abschluss | offen | – | – | – |
+| Abschluss | erledigt | Bericht `bericht-vorlage-stufe5-2026-09-27.md`, README-Zeile, Auftrag und Standdatei nach `archiv/` | „archiv: auftrag-vorlage-stufe5, Bericht" | 2026-09-26 07:12 |
 
 ## Basislauf (Teil 1.2)
 

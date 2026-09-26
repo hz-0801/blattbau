@@ -8,6 +8,7 @@ Repo `mathe-nachhilfe`.
 - `pruefungsblatt.md` – P10-Hefte aus dem msa-Katalog. Lädt die Kataloge per Abruf aus `mathe-nachhilfe/msa/`.
 - `mathblatt.sty`, `Anleitung_mathblatt.md` – die LaTeX-Vorlage und ihre Anleitung. Beide Prompts laden sie per Abruf aus diesem Repo. Stufe 5 (Version 2026-09-27a) führt die Bausteine, die sich die Blattsitzungen des Testlaufs vom 25.09.2026 noch selbst gebaut hatten: `\zweigzeile`, Sprungziel am `\einheitenkopf`, `\verzeichniszeile` mit `\verz`, die Umgebung `abhakseite` mit `\abhak` (dazu `\abhakauto`), `\streifenfeld` und die Schwach-Bausteine `\swz`, `\swa`, `\swb`, `\swfrage`; im `gleichungsraster` steht jetzt auch unter der letzten Schreibzeile Platz.
 - `CHANGELOG.md` – Versionsgeschichte des Unterrichtsblatt-Prompts und der Vorlage.
+- `bericht-vorlage-stufe5-2026-09-27.md` – Bericht zum Umbau der Vorlage auf Stufe 5 (Bausteine aus dem Testlauf vom 25.09.2026, Tiefe im `gleichungsraster`); Auftrag und Standdatei liegen unter `archiv/`.
 - `Bewertung_Masterprompt_v3-34.md`, `Testauswertung_Masterprompt_Mathe_2026-09-07.md`, `Testauswertung_Masterprompt_Mathe_2026-09-08.md`, `Testauswertung_2026-09-22.md` – Werkstattzettel aus dem Testzyklus, eingefroren.
 
 Die Heft-Phase ist in `mathe-nachhilfe/blatt-konzept.md` geregelt; bei Widerspruch zum Prüfungsblatt-Prompt gilt sie.
