@@ -1,4 +1,18 @@
-% mathblatt.sty – Vorlage für Nachhilfe-Arbeitsblätter, Stufe 3 (Sek I und Oberstufe)
+% mathblatt.sty – Vorlage für Nachhilfe-Arbeitsblätter, Stufe 5 (Sek I und Oberstufe)
+% Version 2026-09-27a (Stufe 5: die Bausteine, die sich die zehn Blattsitzungen des Testlaufs vom
+%                      25.09.2026 je im Vorspann selbst gebaut haben, dazu zwei Altposten:
+%                      \zweigzeile{...} – zweite Zeile unter \einheitenkopf, kleiner Grad, hängt am
+%                        Kopf (ziel.md § 2 „Überschriften" im Repo mathe-nachhilfe)
+%                      \einheitenkopf[e2]{...} – optionales Sprungziel, Sternform gleich
+%                      \verzeichniszeile{\verz{e1}{...} \verztrenn \verz{e2}{...}} – klickbare Zeile
+%                        am Blattanfang; hyperref lädt die Vorlage selbst, wenn das Blatt es nicht tut
+%                      Umgebung abhakseite mit \abhakgruppe und \abhak – Seite „Das kann ich";
+%                        \abhakauto sammelt die Titel der \aufgabe-Köpfe über \jobname.abh
+%                      gleichungsraster: Tiefe unter der letzten Schreibzeile (\mbschreibtiefe),
+%                        der Aufruf braucht keinen Zusatzabstand mehr
+%                      \streifenfeld – Streifen mit Antwortfeld daneben (Blatt prozentrechnung 24.09.)
+%                      Option „schwach": \swz, \swa, \swb, \swfrage – Teilaufgabe mit Raster links,
+%                        Darstellung rechts (Abschnitt Q, ziel.md § 2))
 % Version 2026-09-22h (Beschriftung bei \balkenab und \liniendia: \balkenab misst die Kategorienamen
 %                      links an der Achse und den Achsentitel rechts, hält den Platz frei und kürzt
 %                      die Balken, damit die Grafik im Satzspiegel bleibt; \liniendia rückt die Punkte
@@ -45,7 +59,7 @@
 % Inhalt; Layout, Grafikgrößen und Ausrichtung sind hier festgelegt.
 %
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{mathblatt}[2026/09/06 Nachhilfe-Arbeitsblatt 2026-09-06e]
+\ProvidesPackage{mathblatt}[2026/09/27 Nachhilfe-Arbeitsblatt 2026-09-27a]
 
 \RequirePackage[a4paper,margin=18mm,top=16mm,bottom=18mm]{geometry}
 \RequirePackage{iftex}

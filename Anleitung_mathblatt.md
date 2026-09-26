@@ -1,5 +1,5 @@
-mathblatt.sty – Anleitung (Stufe 4)
-Gehört zu Vorlagenversion 2026-09-22h. Die Version steht in Zeile 2 der `mathblatt.sty`. Weichen beide ab, gilt die Vorlage: Makros, die sie nicht kennt, benutzt du nicht, und du meldest die Abweichung in einer Zeile im Ausgabeblock.
+mathblatt.sty – Anleitung (Stufe 5)
+Gehört zu Vorlagenversion 2026-09-27a. Die Version steht in Zeile 2 der `mathblatt.sty`. Weichen beide ab, gilt die Vorlage: Makros, die sie nicht kennt, benutzt du nicht, und du meldest die Abweichung in einer Zeile im Ausgabeblock.
  
 Datei `mathblatt.sty` neben die .tex-Datei legen, `\usepackage{mathblatt}` im Kopf. Kompilieren mit `xelatex` (nicht pdflatex): nur so sind Umlaute, ß, € und die Textextraktion sauber, weil im Sandbox keine Type-1-T1-Schriften liegen. Das Modell schreibt nur Inhalt; Ränder, Karogrößen, Fluchten, Kopf- und Fußzeile sind fest.
  
@@ -19,6 +19,11 @@ Grundgerüst
 \blattkopf{...}{...} / \blattkopf*{...}{...}{$\star$ = ...}  → Alternative: oben links; mit * dazu Legende unten links, Text im dritten Argument
 \einheitenkopf{Einheit 3 von 5 · Prozentwert berechnen}   → Zwischenüberschrift über der ersten Hauptnummer einer Einheit: fette Zeile
 \einheitenkopf*{Einheit 3 von 5 · Prozentwert berechnen}  → dieselbe Zeile, zusätzlich ein Trennstrich über die volle Zeilenbreite darunter
+\einheitenkopf[e3]{Einheit 3 von 5 · Prozentwert berechnen}  → dieselbe Zeile, dazu das Sprungziel e3 für \verz{e3}{...}; Sternform: \einheitenkopf*[e3]{...}
+\zweigzeile{Den Prozentwert ausrechnen · neu in diesem Jahr · P10 oft}   → zweite Zeile des Einheitenkopfs, kleiner, direkt darunter
+\verzeichniszeile{\verz{zone}{Kennst du schon} \verztrenn \verz{e1}{Einheit 1 · Prozentsatz} \verztrenn \verz{abhaken}{Das kann ich}}   → klickbare Verzeichniszeile am Blattanfang
+\begin{abhakseite} \abhakgruppe{Einheit 1 · Prozentsatz} \abhak{11}{Ich kann ...} \end{abhakseite}   → Seite „Das kann ich" zum Abhaken
+\abhakauto     → dieselbe Seite, aus den Titeln aller \aufgabe-Köpfe gesammelt (zweiter xelatex-Lauf)
 \weit                                                    → Schreibraum: Zeilen im Aufgabenteil gut halb so weit wie eng; Begleitteil und Hilfe-Seite setzen selbst auf eng zurück
 \uebersichtskasten[<Leitgrafik>]{<Formelzeilen>}          Zeilen mit \\ getrennt, kein & (kein tabular – „Misplaced alignment tab" im Log heißt: & im Kasten); Sternlegende nicht hier, sondern über \blattkopf*
    \uebersichtskasten{Plusklammer: \quad $a + (b - c) = a + b - c$ \\ Minusklammer: \quad $a - (b - c) = a - b + c$}
@@ -43,6 +48,18 @@ In `geruest` wird ein Aufgabentext, der breiter als der Satzspiegel minus 6 cm i
 Innerhalb einer Hauptnummer läuft die Buchstabenzählung über alle `teile`-, `teilezwei`-, `geruest`-, `gleichungsraster`-Blöcke und Listenmakros weiter: Du kannst einen `teile`-Block beenden, Text oder eine Grafik setzen und mit einem neuen `teile`-Block bei d) fortfahren. Erst die nächste `\begin{aufgabe}` beginnt wieder bei a). Das optionale Argument der Listenmakros zählt in dieser Reihenfolge: `[7]` setzt ab dem siebten Buchstaben (g) den Stern, auch wenn die Liste erst bei d) beginnt.
  
 Alles, was zur Hauptnummer gehört – Teilaufgaben, Wertetabelle, Koordinatensystem –, steht zwischen `\begin{aufgabe}` und `\end{aufgabe}`; nur dann hält der Umbruch die Nummer zusammen. Passt sie nicht mehr auf die Seite, rückt sie als Ganzes weiter. Ist eine einzelne Nummer höher als eine Seite, bricht sie doch und meldet das als `Package mathblatt Warning` im Log.
+ 
+Im `gleichungsraster` steht seit Stufe 5 auch unter der letzten Schreibzeile einer Reihe Platz (1 mm plus die Strebe der Reihe, zusammen etwa so viel wie zwischen zwei Schreibzeilen). Bis Stufe 4 fehlte er, und die letzte Linie lag auf der nächsten Reihe oder auf dem Folgetext; wer das im Aufruf mit einer Zusatzzeile (`\rule{0pt}{2mm} & \\`) oder mit `\noalign{\vspace{5mm}}` ausgeglichen hat, kann das jetzt weglassen. Lässt du es stehen, wird der Abstand nur größer, nie kleiner.
+ 
+`\zweigzeile{...}` setzt die zweite Zeile des Einheitenkopfs: kleinere Schrift, unmittelbar unter dem Kopf, danach ein Absatzabstand. Sie steht direkt hinter `\einheitenkopf` (beide Formen); dann nimmt sie dessen Abstand zurück und rückt an den Kopf heran, und zwischen Kopf und Zeile bricht die Seite nicht um. Bild: fette Kopfzeile, darunter eine kleine, einzeilige Zeile, dann der Abstand zur ersten Hauptnummer. Was hineingehört – was hier gelernt wird · die Zeitmarke · das Prüfungswort, dazu „baut auf: …" –, steht in `ziel.md` § 2 („Überschriften") im Repo `mathe-nachhilfe`; die Vorlage legt nur die Form fest, nicht den Inhalt.
+ 
+`\einheitenkopf[e3]{...}` setzt zusätzlich das Sprungziel `e3` an den Kopf; ohne die Option bleibt alles wie bisher, und die Sternform nimmt sie genauso (`\einheitenkopf*[e3]{...}`). Das Ziel braucht kein eigenes `\hypertarget` mehr. `hyperref` lädt die Vorlage selbst (mit `hidelinks`), wenn das Blatt es nicht schon vorher geladen hat; ein `\usepackage[hidelinks]{hyperref}` im Blatt bleibt trotzdem erlaubt.
+ 
+`\verzeichniszeile{...}` ist die Verzeichniszeile am Blattanfang: eine Zeile mit allen Einheiten, jede über `\verz{ziel}{Text}` klickbar auf den zugehörigen Einheitenkopf, `\verztrenn` als Trennpunkt dazwischen. Bild: eine fortlaufende, bei Bedarf umbrechende Zeile unter der Überschrift „Inhalt". Wer statt der einen Zeile eine Zeile je Einheit will, ruft `\verzeichniszeile` mehrfach auf – je Aufruf ein Absatz.
+ 
+Die Abhakseite ist die Umgebung `abhakseite`: Sie beginnt auf einer neuen Seite mit der Überschrift „Das kann ich" (`\begin{abhakseite}[Eigene Überschrift]` überschreibt sie) und trägt das Sprungziel `abhaken`. Darin setzt `\abhakgruppe{Einheit 2 · Prozentwert}` die fette Zwischenzeile einer Einheit und `\abhak{12}{Ich kann den Prozentsatz am Streifen ablesen}` die Zeile zum Abhaken: Kästchen, rechtsbündige Nummer, Titel; ein langer Titel bricht um und hängt unter dem Titel ein, nicht unter dem Kästchen. Die Nummer darf auch `Z1` heißen – die Vorlage misst ihre Breite. Der Satz steht klein und eng, damit die Seite nicht länger wird als nötig.
+ 
+`\abhakauto` setzt dieselbe Seite ohne Handliste: Die Vorlage schreibt die Titel aller `\aufgabe`-Köpfe des Blatts in `\jobname.abh` und setzt sie beim zweiten `xelatex`-Lauf als `\abhak`-Zeilen – wie ein Inhaltsverzeichnis, also erst nach dem zweiten Lauf vollständig (der erste meldet `Abhakseite noch leer`). Die Handform bleibt und ist die erste Wahl, sobald Gruppen dazukommen oder eine Zeile anders heißen soll als der Aufgabentitel.
  
 Wertetabelle
  
@@ -304,6 +321,7 @@ Prozentrechnung: Streifen und Dreisatz
 \streifen{30}{$0\,\%$}{$100\,\%$}                     ein Abschnitt 0..30 %, Label links/rechts unten
 \streifen[5]{30}{$0\,\%$}{$100\,\%$}                  wie oben, nur 5 statt 10 Teilstriche
 \streifenfrage{65}{$0\,\%$}{$100\,\%$}                wie \streifen, mit „?“ über der Füllgrenze
+\streifenfeld{40}{$0$}{10 Kinder}                     wie \streifen, rechts daneben ein Feld für den abgelesenen Prozentsatz
 \streifenreihe{a/20,b/60,c/10,d/90}                   mehrere Streifen a), b), ... untereinander, je 100 %
 \streifenwertreihe{a/30/6\,kg/20\,kg, b/70/35\,€/50\,€}   wie \streifenreihe, mit Marke und Werten 0/Teilwert/Ganzwert
 \begin{dreisatz}{Hefte}{Preis}
@@ -317,8 +335,24 @@ Prozentrechnung: Streifen und Dreisatz
 
 Die Streifen-Bausteine stellen 100 % immer als 10 cm breites Rechteck dar. `\streifenleer` und `\streifenvoll` sind die geschlossene Form (Streifen komplett ausgefüllt bzw. leer zum Selbstanlegen), `\streifen`/`\streifenfrage` füllen einen einzelnen Anteil zwischen zwei Textlabels, `\streifenreihe`/`\streifenwertreihe` setzen mehrere solcher Streifen als Teilaufgaben a), b), ... untereinander. Das optionale Argument (Voreinstellung 10) ist bei allen außer `\streifenleer`/`\streifenvoll` die Zahl der Teilstriche; `0` oder `1` lässt sie weg. `\streifenwertreihe` erwartet je Zeile vier durch Schrägstrich getrennte Angaben (Buchstabe/Füllung in %/Teilwert/Ganzwert), Teil- oder Ganzwert leer lassen ergibt ein Feld zum Eintragen (Prozentwert- bzw. Grundwert-Aufgaben).
 
+`\streifenfeld[Teilstriche]{Füllung}{links}{rechts}` ist `\streifen` mit einem Antwortfeld: Bild ist der gewohnte Streifen, dahinter im gleichen Zeilenabstand `\leerfeld[\%]`, also eine 3 cm lange Linie mit Prozentzeichen. Es ist der Baustein für „lies am Streifen ab und trage ein" – ohne ihn steht das Feld sonst in einer eigenen Zeile unter der Grafik. Rahmen und Teilstriche kommen vom selben `\mbstreifenrahmen` wie bei der übrigen Streifen-Familie, das optionale Argument ist wieder die Zahl der Teilstriche.
+ 
 Das Dreisatz-Schema ist die Umgebung `dreisatz` mit den beiden Spaltenüberschriften als Argumente; jede Zeile mit Werten kommt von `\dsz{Menge}{Größe}`, jeder Rechenschritt dazwischen von `\dsp{links}{rechts}` (setzt Pfeil samt Rechenoperation unter beide Spalten, `\phantom{:0}` für einen leeren Schritt). Werte im Mathemodus, Dezimalkomma also `6{,}00\,€`. Ein fehlender Wert wird mit `\dsleer` (Schreiblinie) statt mit `\feld` eingetragen, da das Schema keine eigene Spalte für den Bezeichner hat.
 
-Noch nicht in Stufe 4
+Option schwach
  
-Zweitafelprojektion; im 3D-System Spurgeraden, Ebenen ohne Achsenabschnitte, Kegel/Kugel/Zylinder. Die Bausteinlisten Stufe 3 und 4 sind damit abgearbeitet.
+```
+\swz{Der Streifen sind 20\,€, gefärbt sind 6\,€.}{\streifen{30}{$0\,€$}{$20\,€$}}   Teilaufgabe mit Raster links, Darstellung rechts
+\swz[3]{...}{...}                                        drei Schreibzeilen statt zwei
+\swa{in 25-\%-Schritte}{\streifen[0]{0}{$0\,\%$}{$100\,\%$}}   Ablese- oder Zeichenteilaufgabe, ohne Raster
+\swb{\beispiel{20 \text{ von } 100 &= \tfrac{20}{100} \\ &= 20\,\%}}{\streifenfrage{20}{$0$}{$100$}}   vorgerechnetes Beispiel
+\swfrage{Was bleibt gleich, was ändert sich?}            Erklärzeile über die ganze Breite mit zwei Schreibzeilen
+```
+ 
+Die Option „schwach" ändert die Form, nicht den Stoff (`ziel.md` § 2 im Repo `mathe-nachhilfe`): neben jeder Teilaufgabe steht die Darstellung, aus der der Rechenweg entsteht, und statt einer Antwortlinie ein Raster mit einer Zeile je Schritt. Alle vier Bausteine setzen dasselbe Bild: links ein gutes Drittel der Textbreite für die Teilaufgabe, rechts knapp zwei Drittel für die Darstellung, beide oben bündig; die Breiten stehen in `\mbswlinks` und `\mbswrechts`.
+ 
+`\swz` ist die Rechenteilaufgabe: Buchstabe, Text, darunter die Schreibzeilen (Voreinstellung zwei, im optionalen Argument je Aufgabe änderbar). `\swa` ist die Teilaufgabe ohne Raster – ablesen, ankreuzen, einzeichnen –, sie setzt den Text als einzelne `teile`-Zeile. `\swb` ist das vorgerechnete Beispiel vor einem Päckchen und trägt deshalb keinen Buchstaben. `\swfrage` steht über die ganze Breite und stellt die Erklärfrage zu einem Päckchen. `\swz`, `\swa` und `\swfrage` zählen mit dem Buchstabenzähler der Vorlage weiter und fluchten wie `teile` und `teilezwei`; `\swb` zählt nicht mit.
+ 
+Noch nicht in Stufe 5
+ 
+Zweitafelprojektion; im 3D-System Spurgeraden, Ebenen ohne Achsenabschnitte, Kegel/Kugel/Zylinder. Die Bausteinlisten Stufe 3 und 4 sind damit abgearbeitet; die Stufe 5 hat die Bausteine aus dem Testlauf vom 25.09.2026 nachgetragen.

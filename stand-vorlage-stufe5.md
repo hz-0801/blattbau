@@ -10,7 +10,7 @@ wie beauftragt). Ein Neustart liest diese Datei zuerst.
 | 2 Zweigzeile und Verzeichniszeile | erledigt | Gegenprobe: 14 von 14 Seitenzahlen gleich dem Basislauf, 43 von 43 Zweigzeilen direkt unter ihrem Kopf | „vorlage: zweigzeile, verzeichniszeile, einheitenkopf mit Ziel" | 2026-09-26 04:34 |
 | 3 Abhakseite | erledigt | Gegenprobe: Abhakseite nirgends länger (Eingabe 1: 2 → 1 Seite), „Das kann ich" genau einmal je Gesamt-Blatt, im Fokus gar nicht; \abhakauto sammelt in allen vierzehn Quelltexten genau die Zeilen der Handliste | „vorlage: abhakseite" | 2026-09-26 05:26 |
 | 4 gleichungsraster, streifenfeld, Schwach | erledigt | Gegenprobe: Eingabe 3 mit den Vorlagenbausteinen 32 Seiten (Auftrag: 32 ± 1); Probeblatt mit drei Reihen ohne Zusatzabstand, keine Linie berührt den Folgetext | „vorlage: gleichungsraster-Tiefe, streifenfeld, Schwach-Bausteine" | 2026-09-26 06:31 |
-| 5 Versionszeile, Anleitung, CHANGELOG | offen | – | – | – |
+| 5 Versionszeile, Anleitung, CHANGELOG | erledigt | mathblatt.sty Zeile 1 „Stufe 5", Versionszeile 2026-09-27a je Baustein; Anleitung, CHANGELOG-Abschnitt Vorlage, README | „vorlage: Stufe 5, Anleitung, CHANGELOG" | 2026-09-26 06:58 |
 | Abschluss | offen | – | – | – |
 
 ## Basislauf (Teil 1.2)
