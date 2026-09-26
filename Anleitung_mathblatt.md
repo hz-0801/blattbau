@@ -1,5 +1,5 @@
-mathblatt.sty – Anleitung (Stufe 5)
-Gehört zu Vorlagenversion 2026-09-27a. Die Version steht in Zeile 2 der `mathblatt.sty`. Weichen beide ab, gilt die Vorlage: Makros, die sie nicht kennt, benutzt du nicht, und du meldest die Abweichung in einer Zeile im Ausgabeblock.
+mathblatt.sty – Anleitung (Stufe 6)
+Gehört zu Vorlagenversion 2026-09-28a. Die Version steht in Zeile 2 der `mathblatt.sty`. Weichen beide ab, gilt die Vorlage: Makros, die sie nicht kennt, benutzt du nicht, und du meldest die Abweichung in einer Zeile im Ausgabeblock.
  
 Datei `mathblatt.sty` neben die .tex-Datei legen, `\usepackage{mathblatt}` im Kopf. Kompilieren mit `xelatex` (nicht pdflatex): nur so sind Umlaute, ß, € und die Textextraktion sauber, weil im Sandbox keine Type-1-T1-Schriften liegen. Das Modell schreibt nur Inhalt; Ränder, Karogrößen, Fluchten, Kopf- und Fußzeile sind fest.
  
@@ -381,6 +381,10 @@ Die Option „schwach" ändert die Form, nicht den Stoff (`ziel.md` § 2 im Repo
  
 `\swz` ist die Rechenteilaufgabe: Buchstabe, Text, darunter die Schreibzeilen (Voreinstellung zwei, im optionalen Argument je Aufgabe änderbar). `\swa` ist die Teilaufgabe ohne Raster – ablesen, ankreuzen, einzeichnen –, sie setzt den Text als einzelne `teile`-Zeile. `\swb` ist das vorgerechnete Beispiel vor einem Päckchen und trägt deshalb keinen Buchstaben. `\swfrage` steht über die ganze Breite und stellt die Erklärfrage zu einem Päckchen. `\swz`, `\swa` und `\swfrage` zählen mit dem Buchstabenzähler der Vorlage weiter und fluchten wie `teile` und `teilezwei`; `\swb` zählt nicht mit.
  
-Noch nicht in Stufe 5
+Probeblatt der Vorlage
+
+`referenz/probeblatt.tex` (mit `referenz/probeblatt.pdf`) zeigt jeden Baustein dieser Anleitung genau einmal, in ihrer Reihenfolge, mit den Beispielen von hier; über jedem Baustein steht sein Name in einer kleinen grauen Zeile. Es ist das Lesestück, an dem der Lehrer die Vorlage prüft, und die Kompilierprobe jeder Stufe: Wer der Vorlage einen Baustein hinzufügt, ergänzt ihn hier (Namenszeile und Beispiel), kompiliert das Probeblatt (höchstens 12 Seiten) und prüft mit `python referenz/probeblatt-pruef.py`, dass Anleitung und Probeblatt dieselben Bausteine führen. Für ein Arbeitsblatt brauchst du das Probeblatt nicht.
+
+Noch nicht in Stufe 6
  
-Zweitafelprojektion; im 3D-System Spurgeraden, Ebenen ohne Achsenabschnitte, Kegel/Kugel/Zylinder. Die Bausteinlisten Stufe 3 und 4 sind damit abgearbeitet; die Stufe 5 hat die Bausteine aus dem Testlauf vom 25.09.2026 nachgetragen.
+Zweitafelprojektion; im 3D-System Spurgeraden, Ebenen ohne Achsenabschnitte, Kegel/Kugel/Zylinder. Die Bausteinlisten Stufe 3 und 4 sind damit abgearbeitet; die Stufe 5 hat die Bausteine aus dem Testlauf vom 25.09.2026 nachgetragen, die Stufe 6 die sechs aus den Lesebefunden vom 26.09.2026 (`\anweisung`, `\rechenplatz`, `\verfahren`, Kopfzeile mit Einheit, Umgebung `beispiel`, `\streifenleer[0]`) und das Probeblatt.

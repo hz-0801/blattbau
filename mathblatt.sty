@@ -1,4 +1,21 @@
-% mathblatt.sty – Vorlage für Nachhilfe-Arbeitsblätter, Stufe 5 (Sek I und Oberstufe)
+% mathblatt.sty – Vorlage für Nachhilfe-Arbeitsblätter, Stufe 6 (Sek I und Oberstufe)
+% Version 2026-09-28a (Stufe 6: Bausteine aus den Lesebefunden des Lehrers vom 26.09.2026 zu zwei
+%                      Testlauf-Blättern, dazu das Probeblatt der Vorlage:
+%                      \anweisung{...} – Anweisungszeile zwischen Teilaufgaben in teile, teilezwei,
+%                        gleichungsraster, geruest; volle Breite, Zähler unberührt, beendet die Reihe
+%                      \rechenplatz{4}, \rechenplatz[halb]{4} – leerer Block, Zeilen à 12 mm, hellgraue
+%                        Linien, ein Kasten; steht dort, wo früher das Beispiel stand
+%                      \verfahren{...} – Verfahrensüberschrift zwischen Einheitenkopf und Hauptnummern,
+%                        halbfett, hängt an der folgenden Hauptnummer; \abhakauto sammelt sie als Gruppe
+%                      \einheitenkopf[Ziel][Kurzform]{...} – Kopfzeile von \blattkopf mit der Einheit
+%                        („Thema · Bezeichnung · 2 Prozentwert berechnen"), eigene Markenklasse mbeinheit
+%                      Umgebung beispiel – eingerückter Block mit hellgrauem Rahmen, „Beispiel:", kein
+%                        Umbruch; \beispiel{...} und \rechnung bleiben
+%                      \streifenleer[n] – Zahl der Teile, [0] ohne Teilstriche (\streifen[0] dokumentiert);
+%                        zahlengerade/\zahlenstrahl: Endstrich auf dem Raster, relativ zu xmin gezeichnet
+%                        (kein „Dimension too large"), karo passt sich der Zeile an; \streifenwertreihe:
+%                        Feld bei leerem Teil- oder Ganzwert
+%                      Probeblatt referenz/probeblatt.tex: jeder dokumentierte Baustein genau einmal)
 % Version 2026-09-27a (Stufe 5: die Bausteine, die sich die zehn Blattsitzungen des Testlaufs vom
 %                      25.09.2026 je im Vorspann selbst gebaut haben, dazu zwei Altposten:
 %                      \zweigzeile{...} – zweite Zeile unter \einheitenkopf, kleiner Grad, hängt am
@@ -59,7 +76,7 @@
 % Inhalt; Layout, Grafikgrößen und Ausrichtung sind hier festgelegt.
 %
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{mathblatt}[2026/09/27 Nachhilfe-Arbeitsblatt 2026-09-27a]
+\ProvidesPackage{mathblatt}[2026/09/28 Nachhilfe-Arbeitsblatt 2026-09-28a]
 
 \RequirePackage[a4paper,margin=18mm,top=16mm,bottom=18mm]{geometry}
 \RequirePackage{iftex}
