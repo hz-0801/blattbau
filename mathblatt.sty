@@ -201,10 +201,12 @@
   \mbabhakschreiben{\theaufgabe}{#1}%
   \begin{lrbox}{\mbaufgabebox}%
   \begin{minipage}[t]{\linewidth}%
+  \ifmbverfwartet\mbverfahrenzeile{\mbverfahrentext}\vskip3pt\fi
   \noindent\textbf{\theaufgabe.}\ #1\par}%
  {\end{minipage}\end{lrbox}%
   \setlength{\mbaufgabehoehe}{\dimexpr\ht\mbaufgabebox+\dp\mbaufgabebox\relax}%
-  \par\addvspace{5pt}%
+  % mit wartender Verfahrensüberschrift (\verfahren, Stufe 6) deren Abstand statt 5 pt
+  \par\ifmbverfwartet\addvspace{\mbverfahrenabstand}\global\mbverfwartetfalse\else\addvspace{5pt}\fi
   \ifdim\mbaufgabehoehe>\textheight
     \PackageWarning{mathblatt}{Hauptnummer \theaufgabe\space ist hoeher als eine
       Seite und wird umbrochen}%
@@ -393,7 +395,34 @@
 \newcommand{\begleitteil}{\clearpage\eng\setcounter{aufgabe}{0}%
   \section*{\normalsize Ergebnisse}}
 \newcommand{\hilfeseite}{\clearpage\eng\section*{\normalsize Hilfe: Lösungsstrategie}}
-\newcommand{\verfahren}[1]{\par\medskip\noindent\textbf{#1}\par\nopagebreak}
+% Verfahrensüberschrift (Stufe 6; bis Stufe 5 nur die fette Zwischenzeile der Hilfe-Seite):
+%   \verfahren{Nullstellen aus der Scheitelpunktform}
+% Zwischenzeile zwischen Einheitenkopf und Hauptnummern, wenn eine Einheit mehrere Verfahren
+% nacheinander übt: halbfett (Latin Modern Roman Demi, ohne diese Schrift fett), Schriftgrad in
+% der Mitte zwischen Text und Einheitenkopf, Abstand davor (\mbverfahrenabstand), kein Umbruch
+% danach. Folgt direkt ein \begin{aufgabe} (Leerzeilen dazwischen erlaubt), setzt die Vorlage die
+% Zeile oben in den Kasten dieser Hauptnummer; beide rücken dann nur zusammen auf die nächste
+% Seite. Sonst (Hilfe-Seite vor \begin{schritte}) steht sie sofort, mit \nobreak danach.
+% \abhakauto übernimmt sie als Gruppenzeile vor den Hauptnummern des Verfahrens.
+%   \einheitenkopf[e2]{Einheit 2 von 3 · Nullstellen}
+%   \verfahren{Nullstellen aus der Scheitelpunktform}
+%   \begin{aufgabe}{Ich kann die Nullstellen aus der Scheitelpunktform ablesen.} ... \end{aufgabe}
+\ifPDFTeX\let\mbhalbfett\bfseries\else
+  \IfFontExistsTF{Latin Modern Roman Demi}{\newfontfamily\mbhalbfett{Latin Modern Roman Demi}}
+    {\let\mbhalbfett\bfseries}\fi
+\newcommand{\mbverfahrenschrift}{\begingroup\large\xdef\mbverfgrad{\f@size}\endgroup
+  \fontsize{\fpeval{(\f@size+\mbverfgrad)/2}}{\fpeval{1.2*(\f@size+\mbverfgrad)/2}}\selectfont
+  \mbhalbfett}
+\newlength{\mbverfahrenabstand}\setlength{\mbverfahrenabstand}{10pt plus 2pt minus 2pt}
+\newif\ifmbverfwartet\mbverfwartetfalse
+\newcommand{\mbverfahrentext}{}
+\newcommand{\mbverfahrenzeile}[1]{\noindent{\mbverfahrenschrift #1\par}}
+\newcommand{\verfahren}[1]{\mbabhakgruppeschreiben{#1}\gdef\mbverfahrentext{#1}\mbverfschau}
+\newcommand{\mbverfschau}{\@ifnextchar\par{\mbverfpar}{\@ifnextchar\begin{\mbverfbegin}{\mbverfsofort}}}
+\def\mbverfpar\par{\mbverfschau}
+\def\mbverfbegin\begin#1{\ifstrequal{#1}{aufgabe}{\global\mbverfwartettrue}{\mbverfsofort}\begin{#1}}
+\newcommand{\mbverfsofort}{\par\addvspace{\mbverfahrenabstand}%
+  \mbverfahrenzeile{\mbverfahrentext}\nobreak\vskip3pt\nobreak}
 \newcounter{schritt}
 \newenvironment{schritte}{\begin{list}{}{\setlength{\leftmargin}{1.6em}\setlength{\labelwidth}{1.4em}
    \setlength{\labelsep}{0.2em}\setlength{\itemsep}{1pt}\setlength{\parsep}{0pt}\setlength{\topsep}{1pt}}
@@ -437,12 +466,23 @@
 % Titel aller \aufgabe-Köpfe des Blatts sammelt die Vorlage in der Hilfsdatei \jobname.abh (wie
 % ein Inhaltsverzeichnis), der zweite xelatex-Lauf setzt sie. Die Handform oben bleibt; wer
 % Gruppen will oder einzelne Zeilen anders formuliert, schreibt die Liste weiter selbst.
+% Seit Stufe 6 sammelt \abhakauto auch die Verfahrensüberschriften (\verfahren) als Gruppenzeile
+% (\abhakgruppe) zwischen den Hauptnummern. Eine Gruppe ohne folgende Hauptnummer (etwa ein
+% \verfahren auf der Hilfe-Seite am Blattende) fällt weg.
 \newwrite\mbabhakaus
 \newif\ifmbabhakoffen\mbabhakoffenfalse
 \newcommand{\mbabhakliste}{}
-\newcommand{\mbabhaksammle}[2]{\gappto\mbabhakliste{\abhak{#1}{#2}}}
+\newcommand{\mbabhakgruppewartet}{}
+\newcommand{\mbabhaksammle}[2]{%
+  \ifdefempty{\mbabhakgruppewartet}{}{%
+    \expandafter\gappto\expandafter\mbabhakliste\expandafter{\mbabhakgruppewartet}%
+    \gdef\mbabhakgruppewartet{}}%
+  \gappto\mbabhakliste{\abhak{#1}{#2}}}
+\newcommand{\mbabhaksammlegruppe}[1]{\gdef\mbabhakgruppewartet{\abhakgruppe{#1}}}
+\newcommand{\mbabhakgruppeschreiben}[1]{%
+  \ifmbabhakoffen\immediate\write\mbabhakaus{\string\abhakgruppe{\unexpanded{#1}}}\fi}
 \newcommand{\mbabhaklesen}{%
-  \begingroup\let\abhak\mbabhaksammle
+  \begingroup\let\abhak\mbabhaksammle\let\abhakgruppe\mbabhaksammlegruppe
     \InputIfFileExists{\jobname.abh}{}{}%
   \endgroup
   \immediate\openout\mbabhakaus=\jobname.abh\relax\mbabhakoffentrue}

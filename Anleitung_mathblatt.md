@@ -21,9 +21,10 @@ Grundgerüst
 \einheitenkopf*{Einheit 3 von 5 · Prozentwert berechnen}  → dieselbe Zeile, zusätzlich ein Trennstrich über die volle Zeilenbreite darunter
 \einheitenkopf[e3]{Einheit 3 von 5 · Prozentwert berechnen}  → dieselbe Zeile, dazu das Sprungziel e3 für \verz{e3}{...}; Sternform: \einheitenkopf*[e3]{...}
 \zweigzeile{Den Prozentwert ausrechnen · neu in diesem Jahr · P10 oft}   → zweite Zeile des Einheitenkopfs, kleiner, direkt darunter
+\verfahren{Nullstellen aus der Scheitelpunktform}   → Zwischenzeile zwischen Einheitenkopf und Hauptnummern, wenn eine Einheit mehrere Verfahren nacheinander übt: halbfett, etwas größer als der Text, hängt an der folgenden Hauptnummer
 \verzeichniszeile{\verz{zone}{Kennst du schon} \verztrenn \verz{e1}{Einheit 1 · Prozentsatz} \verztrenn \verz{abhaken}{Das kann ich}}   → klickbare Verzeichniszeile am Blattanfang
 \begin{abhakseite} \abhakgruppe{Einheit 1 · Prozentsatz} \abhak{11}{Ich kann ...} \end{abhakseite}   → Seite „Das kann ich" zum Abhaken
-\abhakauto     → dieselbe Seite, aus den Titeln aller \aufgabe-Köpfe gesammelt (zweiter xelatex-Lauf)
+\abhakauto     → dieselbe Seite, aus den Titeln aller \aufgabe-Köpfe gesammelt, \verfahren als Gruppenzeile (zweiter xelatex-Lauf)
 \weit                                                    → Schreibraum: Zeilen im Aufgabenteil gut halb so weit wie eng; Begleitteil und Hilfe-Seite setzen selbst auf eng zurück
 \uebersichtskasten[<Leitgrafik>]{<Formelzeilen>}          Zeilen mit \\ getrennt, kein & (kein tabular – „Misplaced alignment tab" im Log heißt: & im Kasten); Sternlegende nicht hier, sondern über \blattkopf*
    \uebersichtskasten{Plusklammer: \quad $a + (b - c) = a + b - c$ \\ Minusklammer: \quad $a - (b - c) = a - b + c$}
@@ -42,7 +43,7 @@ Grundgerüst
 \nullstellenliste[7]{x-4, 2x-6, ...}    x_0 je Gerade
 \punktprobenliste[7]{2x-1/A(3|5), ...}  Punktprobe mit ja/nein
 \begleitteil   \erg{3}{a) ... \quad b) ...}     Teillösungen durch \quad getrennt, kein |
-\hilfeseite    \verfahren{Name} \begin{schritte} \schritt ... \achtung{...} \end{schritte}
+\hilfeseite    \verfahren{Name} \begin{schritte} \schritt ... \achtung{...} \end{schritte}   (\verfahren wie oben)
 ```
  
 In `geruest` wird ein Aufgabentext, der breiter als der Satzspiegel minus 6 cm ist, umbrochen; die Felder bleiben in der Flucht. Die drei Listenmakros ersetzen den `geruest`-Block bei den häufigsten Aufgabentypen und sparen etwa drei Viertel des Quelltextes. Einträge werden mit Komma getrennt, das Dezimalkomma als `0{,}5` geschrieben, damit es nicht als Trenner gilt. Das optionale Argument ist die Nummer der ersten Sternaufgabe; ohne Angabe gibt es keine Sterne. Der Term steht ohne `y =`, das setzt das Makro. Bei `\punktprobenliste` trennt ein Schrägstrich Term und Punkt. Für Typen ohne passendes Listenmakro bleibt `geruest`.
@@ -65,7 +66,9 @@ Im `gleichungsraster` steht seit Stufe 5 auch unter der letzten Schreibzeile ein
  
 Die Abhakseite ist die Umgebung `abhakseite`: Sie beginnt auf einer neuen Seite mit der Überschrift „Das kann ich" (`\begin{abhakseite}[Eigene Überschrift]` überschreibt sie) und trägt das Sprungziel `abhaken`. Darin setzt `\abhakgruppe{Einheit 2 · Prozentwert}` die fette Zwischenzeile einer Einheit und `\abhak{12}{Ich kann den Prozentsatz am Streifen ablesen}` die Zeile zum Abhaken: Kästchen, rechtsbündige Nummer, Titel; ein langer Titel bricht um und hängt unter dem Titel ein, nicht unter dem Kästchen. Die Nummer darf auch `Z1` heißen – die Vorlage misst ihre Breite. Der Satz steht klein und eng, damit die Seite nicht länger wird als nötig.
  
-`\abhakauto` setzt dieselbe Seite ohne Handliste: Die Vorlage schreibt die Titel aller `\aufgabe`-Köpfe des Blatts in `\jobname.abh` und setzt sie beim zweiten `xelatex`-Lauf als `\abhak`-Zeilen – wie ein Inhaltsverzeichnis, also erst nach dem zweiten Lauf vollständig (der erste meldet `Abhakseite noch leer`). Die Handform bleibt und ist die erste Wahl, sobald Gruppen dazukommen oder eine Zeile anders heißen soll als der Aufgabentitel.
+`\abhakauto` setzt dieselbe Seite ohne Handliste: Die Vorlage schreibt die Titel aller `\aufgabe`-Köpfe des Blatts in `\jobname.abh` und setzt sie beim zweiten `xelatex`-Lauf als `\abhak`-Zeilen – wie ein Inhaltsverzeichnis, also erst nach dem zweiten Lauf vollständig (der erste meldet `Abhakseite noch leer`). Die Handform bleibt und ist die erste Wahl, sobald Gruppen dazukommen, die keine Verfahrensüberschrift sind, oder eine Zeile anders heißen soll als der Aufgabentitel. Seit Stufe 6 sammelt `\abhakauto` auch jedes `\verfahren` als Gruppenzeile (wie `\abhakgruppe`) über den Hauptnummern dieses Verfahrens; eine Überschrift ohne folgende Hauptnummer fällt weg.
+
+`\verfahren{...}` ist die Zwischenzeile, wenn eine Einheit mehrere Verfahren nacheinander übt (im Fokus etwa „Nullstellen aus der Scheitelpunktform", „Nullstellen mit der p-q-Formel"). Bild: nach einem Abstand eine halbfette Zeile, kleiner als der Einheitenkopf und etwas größer als der Aufgabentext, direkt darunter die erste Hauptnummer des Verfahrens. Die Zeile hängt an dieser Hauptnummer: Steht `\begin{aufgabe}` direkt dahinter (Leerzeilen dürfen dazwischen stehen), rücken beide nur gemeinsam auf die nächste Seite. Das Verfahren hat keine Nummer und keinen Zähler. Auf der Hilfe-Seite (`\hilfeseite`) benennt `\verfahren` weiterhin das Verfahren über den `schritte`; dort sieht es seit Stufe 6 genauso aus.
  
 Wertetabelle
  
