@@ -337,6 +337,26 @@
   \multicolumn{\mbanwmodus}{@{}p{\linewidth}@{}}{#1}\\}
 \newcommand{\mbanwtabzu}{\\\mbanwtab}
 
+% Rechenplatz (Stufe 6): leerer Block zum Hineinschreiben, n Zeilen à 12 mm mit hellgrauen Linien
+% wie \schreibzeilen (die bleiben bei 9 mm). Er steht nach dem Titel der Hauptnummer und der
+% Anweisung an der Stelle, an der früher das gedruckte Beispiel stand; der Lehrer schreibt das
+% Gerüst hinein. Der Block ist ein einziger Kasten: kein Seitenumbruch darin, passt er nicht
+% mehr, rutscht er ganz.
+%   \rechenplatz{4}         vier Zeilen über die volle Zeilenbreite (48 mm hoch)
+%   \rechenplatz[halb]{4}   knapp halbe Textbreite (0,46 wie die Spalten des gleichungsraster), für
+%                           die zweispaltige Umgebung; in teilezwei bleibt zur Nachbarzelle eine Lücke
+\newlength{\mbrechenhoehe}\setlength{\mbrechenhoehe}{12mm}
+\newlength{\mbrechenbreite}
+\NewDocumentCommand{\rechenplatz}{O{} m}{%
+  \ifstrequal{#1}{halb}{\setlength{\mbrechenbreite}{0.46\textwidth}}{\setlength{\mbrechenbreite}{\linewidth}}%
+  \par\addvspace{1pt}%
+  {\parskip\z@\noindent
+   \vbox{\hsize\mbrechenbreite\setcounter{mbsz}{0}%
+     \loop\ifnum\value{mbsz}<#2\relax
+       \nointerlineskip\vskip\dimexpr\mbrechenhoehe-0.4pt\relax
+       \hbox{\color{black!40}\vrule\@width\mbrechenbreite\@height0.4pt\@depth\z@}%
+       \stepcounter{mbsz}\repeat}\par}}
+
 % Listenmakros: eine Zeile statt eines geruest-Blocks. Eintraege mit Komma getrennt; Dezimalkomma als 0{,}5 schreiben.
 % Optionales Argument = Nummer der ersten Sternaufgabe (Sterne stehen immer am Ende).
 %   \mnliste[7]{2x+3; 5x-1; ...}          a) y = 2x+3    m = __  n = __
