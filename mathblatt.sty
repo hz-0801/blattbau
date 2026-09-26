@@ -75,6 +75,10 @@
 \RequirePackage{needspace}
 \IfFileExists{parskip.sty}{\RequirePackage{parskip}}{\setlength{\parindent}{0pt}\setlength{\parskip}{4pt}}
 \IfFileExists{ngerman.ldf}{\RequirePackage[ngerman]{babel}}{}
+% hyperref zuletzt (Sprungziele der Verzeichniszeile und des Einheitenkopfs, Stufe 5).
+% Nur laden, wenn das Blatt es nicht schon selbst geladen hat; \usepackage[hidelinks]{hyperref}
+% nach \usepackage{mathblatt} bleibt erlaubt (gleiche Option, kein Optionsstreit).
+\@ifpackageloaded{hyperref}{}{\RequirePackage[hidelinks]{hyperref}}
 
 % Alle Achsenzahlen mit Dezimalkomma und ohne Tausendertrennung
 \pgfkeys{/pgf/number format/.cd,use comma,1000 sep={},precision=3,fixed,fixed zerofill=false}
@@ -112,12 +116,43 @@
 \NewDocumentCommand{\mbblattkopflegende}{m}{\fancyfoot[L]{\footnotesize\color{mbgrau}#1}}
 
 % Einheitenkopf: Zwischenüberschrift über der ersten Hauptnummer einer Einheit innerhalb des Blatts.
-%   \einheitenkopf{Einheit 3 von 5 · Prozentwert berechnen}    fette Zeile
-%   \einheitenkopf*{Einheit 3 von 5 · Prozentwert berechnen}   fette Zeile, zusätzlich Trennstrich darunter
-\NewDocumentCommand{\einheitenkopf}{s m}{%
+%   \einheitenkopf{Einheit 3 von 5 · Prozentwert berechnen}      fette Zeile
+%   \einheitenkopf*{Einheit 3 von 5 · Prozentwert berechnen}     fette Zeile, zusätzlich Trennstrich darunter
+%   \einheitenkopf[e3]{Einheit 3 von 5 · Prozentwert berechnen}  dazu das Sprungziel e3 für \verz{e3}{…};
+%   Sternform gleich: \einheitenkopf*[e3]{…}. Ohne die Option wie bisher.
+% Der Kopf hängt am Folgenden: zwischen Kopf und Zweigzeile bricht die Seite nicht um. Wie weit
+% der Kopf vom Folgetext absteht, merkt sich \mbkopfsprung, damit \zweigzeile diesen Abstand
+% zurücknehmen kann (Stufe 5).
+\newlength{\mbkopfsprung}
+\newif\ifmbnachkopf\mbnachkopffalse
+\NewDocumentCommand{\einheitenkopf}{s o m}{%
+  \IfNoValueTF{#2}{\def\mbkopfziel{}}{\def\mbkopfziel{\hypertarget{#2}{}}}%
   \IfBooleanTF{#1}
-    {\par\medskip\noindent{\large\bfseries #2}\par\vspace{1mm}\noindent\rule{\textwidth}{0.6pt}\par\smallskip}
-    {\par\noindent{\large\bfseries #2}\par\medskip}}
+    {\par\medskip\noindent{\large\bfseries\mbkopfziel #3}\par\vspace{1mm}%
+     \noindent\rule{\textwidth}{0.6pt}\par\setlength{\mbkopfsprung}{\smallskipamount}}
+    {\par\noindent{\large\bfseries\mbkopfziel #3}\par\setlength{\mbkopfsprung}{\medskipamount}}%
+  \nobreak\vskip\mbkopfsprung\mbnachkopftrue}
+
+% \zweigzeile{Was hier gelernt wird · Zeitmarke · Prüfungswort}
+%   Zweite Zeile des Einheitenkopfs: kleiner Grad, unmittelbar unter dem Kopf, danach \medskip.
+%   Steht sie direkt hinter \einheitenkopf (beide Formen), nimmt sie dessen Abstand zurück und
+%   rückt so an den Kopf heran; die Seite bricht zwischen Kopf und Zweigzeile nicht um.
+%   Was in die Zeile gehört, sagt ziel.md § 2 „Überschriften" (Repo mathe-nachhilfe).
+%   \einheitenkopf[e2]{Einheit 2 von 5 · Prozentwert berechnen}
+%   \zweigzeile{Den Prozentwert ausrechnen · neu in diesem Jahr · P10 oft}
+\newcommand{\zweigzeile}[1]{\par
+  \ifmbnachkopf\vskip-\mbkopfsprung\mbnachkopffalse\fi
+  \nobreak\noindent{\small #1}\par\nobreak\medskip}
+
+% Verzeichniszeile (Blattanfang, unter dem Blattkopf): eine Zeile mit den Einheiten des Blatts,
+% jede klickbar auf das Ziel ihres Einheitenkopfs. Die Zeile darf umbrechen; die Trennzeichen
+% setzt der Aufruf, damit er die Zeile auch auf mehrere Zeilen verteilen kann.
+%   \verzeichniszeile{\verz{zone}{Kennst du schon} \verztrenn
+%                     \verz{e1}{Einheit 1 · Prozentsatz} \verztrenn \verz{abhaken}{Das kann ich}}
+\newcommand{\verz}[2]{\hyperlink{#1}{#2}}
+\newcommand{\verztrenn}{\nobreak\hspace{0.5em}\textbullet\hspace{0.5em}}
+\newcommand{\verzeichniszeile}[1]{\par\mbnachkopffalse
+  \noindent{\raggedright #1\par}\addvspace{\medskipamount}}
 % \einheitskopf{...}: Weiterleitung auf \einheitenkopf* (gleiches Bild wie die alte eigene.sty von
 %   blaetter/prozentrechnung/2026-09-22). Altlast für abgelegte Blätter, in der Anleitung bewusst
 %   nicht dokumentiert – neue Blätter verwenden \einheitenkopf.
@@ -148,7 +183,7 @@
 \newlength{\mbaufgabehoehe}
 \newif\ifmbinaufgabe
 \newenvironment{aufgabe}[1]{%
-  \stepcounter{aufgabe}\setcounter{teil}{0}\mbinaufgabetrue
+  \stepcounter{aufgabe}\setcounter{teil}{0}\mbinaufgabetrue\mbnachkopffalse
   \begin{lrbox}{\mbaufgabebox}%
   \begin{minipage}[t]{\linewidth}%
   \noindent\textbf{\theaufgabe.}\ #1\par}%

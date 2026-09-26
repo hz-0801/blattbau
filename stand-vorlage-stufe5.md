@@ -6,8 +6,8 @@ wie beauftragt). Ein Neustart liest diese Datei zuerst.
 
 | Teil | Stand | Letzter fertiger Punkt | Commit | Zeit |
 |---|---|---|---|---|
-| 1 .gitattributes und Kompilierbasis | erledigt | 1.2 Basislauf, alle vierzehn Quelltexte | „vorlage: .gitattributes" | 2026-09-26 04:05 |
-| 2 Zweigzeile und Verzeichniszeile | offen | – | – | – |
+| 1 .gitattributes und Kompilierbasis | erledigt | 1.2 Basislauf, alle vierzehn Quelltexte | eaa74fc | 2026-09-26 04:05 |
+| 2 Zweigzeile und Verzeichniszeile | erledigt | Gegenprobe: 14 von 14 Seitenzahlen gleich dem Basislauf, 43 von 43 Zweigzeilen direkt unter ihrem Kopf | „vorlage: zweigzeile, verzeichniszeile, einheitenkopf mit Ziel" | 2026-09-26 04:34 |
 | 3 Abhakseite | offen | – | – | – |
 | 4 gleichungsraster, streifenfeld, Schwach | offen | – | – | – |
 | 5 Versionszeile, Anleitung, CHANGELOG | offen | – | – | – |
