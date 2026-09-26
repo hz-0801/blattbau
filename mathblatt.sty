@@ -120,10 +120,12 @@
 \newcommand{\weit}{\renewcommand{\arraystretch}{1.6}\setlength{\mbteilsep}{6pt}}
 \newcommand{\eng}{\renewcommand{\arraystretch}{1.0}\setlength{\mbteilsep}{0pt}}
 \newlength{\mbteilsep}\setlength{\mbteilsep}{0pt}
+%   Seit Stufe 6 trägt die Kopfzeile ab der Seite, auf der eine Einheit beginnt, deren Kurzform
+%   (\einheitenkopf, siehe dort): „Prozentrechnung · Lernblatt · 2 Prozentwert berechnen".
 \NewDocumentCommand{\blattkopf}{s m m}{%
   \pagestyle{fancy}\fancyhf{}%
   \renewcommand{\headrulewidth}{0pt}%
-  \fancyhead[L]{\footnotesize\color{mbgrau}#2 \,\textperiodcentered\, #3}%
+  \fancyhead[L]{\footnotesize\color{mbgrau}#2 \,\textperiodcentered\, #3\mbkopfeinheit}%
   \fancyfoot[R]{\footnotesize\color{mbgrau}Seite \thepage}%
   \IfBooleanT{#1}{\mbblattkopflegende}%
 }
@@ -137,14 +139,56 @@
 % Der Kopf hängt am Folgenden: zwischen Kopf und Zweigzeile bricht die Seite nicht um. Wie weit
 % der Kopf vom Folgetext absteht, merkt sich \mbkopfsprung, damit \zweigzeile diesen Abstand
 % zurücknehmen kann (Stufe 5).
+% Kopfzeile mit Einheit (Stufe 6): Der Kopf merkt sich seine Kurzform, und die Seitenkopfzeile von
+% \blattkopf zeigt ab der Seite, auf der er steht, „Thema · Bezeichnung · Kurzform" (beginnen
+% auf einer Seite mehrere Einheiten, die letzte). Kurzform = Nummer und Titel ohne „Einheit" und
+% ohne „von n": aus „Einheit 2 von 4 · Prozentwert berechnen" wird „2 Prozentwert berechnen",
+% aus „Einheit 1 · Nullstellen" (Fokus) „1 Nullstellen", aus „Ausblick Einheit 4 von 4 · …"
+% „Ausblick 4 …". Köpfe ohne „Einheit n" („Kennst du schon", „Inhalt") stehen wörtlich; die
+% Abhakseite trägt so „Das kann ich". Ein zweites optionales Argument setzt die Kurzform selbst:
+%   \einheitenkopf[e2][2 Prozentwert]{Einheit 2 von 4 · Prozentwert berechnen}
+%   \einheitenkopf*[][Zone]{Das kennst du schon}      (leeres erstes Argument: ohne Sprungziel)
+% \begleitteil und \hilfeseite setzen die Kopfzeile wieder auf „Thema · Bezeichnung" zurück.
+% Unter pdflatex bleibt der Mittelpunkt in der Kurzform stehen („2 · Prozentwert berechnen").
 \newlength{\mbkopfsprung}
 \newif\ifmbnachkopf\mbnachkopffalse
-\NewDocumentCommand{\einheitenkopf}{s o m}{%
-  \IfNoValueTF{#2}{\def\mbkopfziel{}}{\def\mbkopfziel{\hypertarget{#2}{}}}%
+\ExplSyntaxOn
+\tl_new:N \l__mb_kurz_tl
+\int_new:N \g__mb_einheit_int
+\cs_new_protected:Npn \__mb_kurz_merken:
+  {
+    \int_gincr:N \g__mb_einheit_int
+    \tl_gset_eq:cN { mbkurz@ \int_use:N \g__mb_einheit_int } \l__mb_kurz_tl
+    \exp_args:Nx \mbkopfmarke { \int_use:N \g__mb_einheit_int }
+  }
+\cs_new_protected:Npn \mbkopfkurzsetzen #1
+  { \tl_set:Nn \l__mb_kurz_tl {#1} \__mb_kurz_merken: }
+\cs_new_protected:Npn \mbkopfkurzbilden #1
+  {
+    \tl_set:Nn \l__mb_kurz_tl {#1}
+    \regex_replace_once:nnNF
+      { Einheit \s+ (\d+) (?: \s+ von \s+ \d+ )? \s* \x{B7} \s* } { \1 \cS\  } \l__mb_kurz_tl
+      { \regex_replace_once:nnN { Einheit \s+ (\d+) (?: \s+ von \s+ \d+ )? } { \1 } \l__mb_kurz_tl }
+    \__mb_kurz_merken:
+  }
+\ExplSyntaxOff
+% Die Marke trägt nur die laufende Nummer des Kopfs; die Kurzform liegt in \mbkurz@<Nummer>.
+% Eigene Markenklasse ab LaTeX 2022-06 (\NewMarkClass), in älteren Kernen \markboth/\leftmark.
+\IfFormatAtLeastTF{2022-06-01}
+  {\NewMarkClass{mbeinheit}%
+   \newcommand{\mbkopfmarke}[1]{\InsertMark{mbeinheit}{#1}}%
+   \newcommand{\mbkopfletzte}{\LastMark{mbeinheit}}}
+  {\newcommand{\mbkopfmarke}[1]{\markboth{#1}{#1}}%
+   \newcommand{\mbkopfletzte}{\leftmark}}
+\newcommand{\mbkopfeinheit}{%
+  \ifnum0\mbkopfletzte>\z@\,\textperiodcentered\,\csname mbkurz@\mbkopfletzte\endcsname\fi}
+\newcommand{\mbkopfohneeinheit}{\mbkopfmarke{0}}
+\NewDocumentCommand{\einheitenkopf}{s o o m}{%
+  \def\mbkopfziel{}\IfValueT{#2}{\ifblank{#2}{}{\def\mbkopfziel{\hypertarget{#2}{}}}}%
   \IfBooleanTF{#1}
-    {\par\medskip\noindent{\large\bfseries\mbkopfziel #3}\par\vspace{1mm}%
+    {\par\medskip\noindent{\large\bfseries\mbkopfziel\IfValueTF{#3}{\mbkopfkurzsetzen{#3}}{\mbkopfkurzbilden{#4}}#4}\par\vspace{1mm}%
      \noindent\rule{\textwidth}{0.6pt}\par\setlength{\mbkopfsprung}{\smallskipamount}}
-    {\par\noindent{\large\bfseries\mbkopfziel #3}\par\setlength{\mbkopfsprung}{\medskipamount}}%
+    {\par\noindent{\large\bfseries\mbkopfziel\IfValueTF{#3}{\mbkopfkurzsetzen{#3}}{\mbkopfkurzbilden{#4}}#4}\par\setlength{\mbkopfsprung}{\medskipamount}}%
   \nobreak\vskip\mbkopfsprung\mbnachkopftrue}
 
 % \zweigzeile{Was hier gelernt wird · Zeitmarke · Prüfungswort}
@@ -392,9 +436,10 @@
 \newcommand{\kreuz}[1]{$\square$ #1\quad}
 
 % Begleitteil / Hilfe
-\newcommand{\begleitteil}{\clearpage\eng\setcounter{aufgabe}{0}%
+% (seit Stufe 6 setzen beide die Kopfzeile ohne Einheit fort, \mbkopfohneeinheit)
+\newcommand{\begleitteil}{\clearpage\eng\mbkopfohneeinheit\setcounter{aufgabe}{0}%
   \section*{\normalsize Ergebnisse}}
-\newcommand{\hilfeseite}{\clearpage\eng\section*{\normalsize Hilfe: Lösungsstrategie}}
+\newcommand{\hilfeseite}{\clearpage\eng\mbkopfohneeinheit\section*{\normalsize Hilfe: Lösungsstrategie}}
 % Verfahrensüberschrift (Stufe 6; bis Stufe 5 nur die fette Zwischenzeile der Hilfe-Seite):
 %   \verfahren{Nullstellen aus der Scheitelpunktform}
 % Zwischenzeile zwischen Einheitenkopf und Hauptnummern, wenn eine Einheit mehrere Verfahren
