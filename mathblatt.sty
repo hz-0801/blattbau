@@ -1995,36 +1995,51 @@
 \pgfkeys{/zst/.is family, /zst,
   xmin/.estore in=\zsxmin, xmax/.estore in=\zsxmax, xstep/.estore in=\zsxstep, karo/.estore in=\zskaro,
   default/.style={xmin=-5,xmax=5,xstep=1,karo=0.8}}
+% Stufe 6, drei Reparaturen (Befunde Testlauf Eingabe 3):
+%   - Die Striche laufen über eine ganze Zahl von Schritten (0 … n, n = (xmax−xmin)/xstep abgerundet).
+%     Bis Stufe 5 zählte \foreach in Dezimalschritten und verfehlte durch Rundung oft den letzten
+%     Wert: der Strich bei xmax fehlte, wenn xmax genau auf dem Raster lag.
+%   - Gezeichnet wird relativ zu xmin. Bis Stufe 5 lag etwa 7,6 bei xstep 0.01 (80 cm je Einheit)
+%     jenseits der größten TeX-Länge (575 cm): „Dimension too large", der Strahl fehlte.
+%     Eigenes TikZ in der Umgebung zahlengerade rechnet deshalb ebenso relativ: ({7.7-\zsxmin},0).
+%   - Wäre der Strahl breiter als die Zeile, setzt die Vorlage karo so weit herab, dass er passt.
 \newenvironment{zahlengerade}[1][]{%
   \pgfkeys{/zst,default,#1}%
-  \pgfmathsetmacro{\zsk}{\zskaro/\zsxstep}%
-  \pgfmathsetmacro{\zsxa}{\zsxmin+\zsxstep}\pgfmathsetmacro{\zspfeil}{\zsxmax+0.5*\zsxstep}%
-  \pgfmathsetmacro{\zsl}{\zsxmin-0.3*\zsxstep}%
+  \pgfmathtruncatemacro{\zsn}{floor((\zsxmax-\zsxmin)/\zsxstep+0.01)}%
+  \pgfmathsetmacro{\zskaroeff}{min(\zskaro,(\linewidth/28.4528-0.6)/(\zsn+0.8))}%
+  \pgfmathsetmacro{\zsk}{\zskaroeff/\zsxstep}%
+  \pgfmathsetmacro{\zspfeil}{\zsxmax-\zsxmin+0.5*\zsxstep}%
+  \pgfmathsetmacro{\zsl}{-0.3*\zsxstep}%
+  \pgfmathtruncatemacro{\zsko}{round(\zsxmin/\zsxstep)}%
   \xdef\mbwmax{0pt}% Ausduennung wie beim ksys
-  \foreach \x in {\zsxmin,\zsxa,...,\zsxmax}{\sbox\mbmessbox{\scriptsize$\pgfmathprintnumber{\x}$}%
+  \foreach \mbzi in {0,...,\zsn}{\pgfmathsetmacro{\mbzv}{\zsxmin+\mbzi*\zsxstep}%
+    \sbox\mbmessbox{\scriptsize$\pgfmathprintnumber{\mbzv}$}%
     \ifdim\wd\mbmessbox>\mbwmax\xdef\mbwmax{\the\wd\mbmessbox}\fi}%
-  \pgfmathtruncatemacro{\zsxl}{max(1,ceil((\mbwmax+2pt)/(\zskaro cm)))}%
+  \pgfmathtruncatemacro{\zsxl}{max(1,ceil((\mbwmax+2pt)/(\zskaroeff cm)))}%
   \begin{tikzpicture}[x=\zsk cm,y=1cm,baseline=(current bounding box.north)]
     \draw[-{Stealth[length=2mm]},line width=0.6pt] (\zsl,0) -- (\zspfeil,0);
-    \foreach \x in {\zsxmin,\zsxa,...,\zsxmax}{%
-      \pgfmathtruncatemacro{\mbrest}{mod(abs(round(\x/\zsxstep)),\zsxl)}%
-      \draw (\x,0.1) -- (\x,-0.1)
-      \ifnum\mbrest=0 node[below,inner sep=2pt,font=\scriptsize] {$\pgfmathprintnumber{\x}$}\fi;}
+    \foreach \mbzi in {0,...,\zsn}{%
+      \pgfmathsetmacro{\mbzv}{\zsxmin+\mbzi*\zsxstep}%
+      \pgfmathsetmacro{\mbzr}{\mbzi*\zsxstep}%
+      \pgfmathtruncatemacro{\mbrest}{mod(abs(\zsko+\mbzi),\zsxl)}%
+      \draw (\mbzr,0.1) -- (\mbzr,-0.1)
+      \ifnum\mbrest=0 node[below,inner sep=2pt,font=\scriptsize] {$\pgfmathprintnumber{\mbzv}$}\fi;}
 }{\end{tikzpicture}}
 \NewDocumentCommand{\zahlenstrahl}{O{} m}{%
   \begin{zahlengerade}[#1]
-    \ifblank{#2}{}{\foreach \v/\l in {#2}{\fill (\v,0) circle (1.6pt);
-      \ifdefempty{\l}{}{\node[above,inner sep=3pt,font=\small] at (\v,0) {$\l$};}}}
+    \ifblank{#2}{}{\foreach \v/\l in {#2}{\fill ({\v-\zsxmin},0) circle (1.6pt);
+      \ifdefempty{\l}{}{\node[above,inner sep=3pt,font=\small] at ({\v-\zsxmin},0) {$\l$};}}}
   \end{zahlengerade}}
 % Intervall in der Umgebung zahlengerade; Ende leer = Pfeil
 \newcommand{\mbivende}[3]{% x, offen(0/1), Richtung fuer Pfeil (-1 links, 1 rechts) wenn x leer
-  \ifblank{#1}{}{\ifnum#2=1 \filldraw[fill=white,line width=0.8pt] (#1,\mbivy) circle (2pt);
-    \else\fill (#1,\mbivy) circle (2pt);\fi}}
+  \ifblank{#1}{}{\ifnum#2=1 \filldraw[fill=white,line width=0.8pt] ({(#1)-\zsxmin},\mbivy) circle (2pt);
+    \else\fill ({(#1)-\zsxmin},\mbivy) circle (2pt);\fi}}
 \NewDocumentCommand{\intervall}{s O{1} m m m}{\mbintervall{#2}{#3}{#4}{#5}{\IfBooleanTF{#1}{1}{0}}{0}}
 \NewDocumentCommand{\intervallo}{s O{1} m m m}{\mbintervall{#2}{#3}{#4}{#5}{1}{\IfBooleanTF{#1}{0}{1}}}
 \newcommand{\mbintervall}[6]{% Zeile, a, b, Label, links offen, rechts offen
   \pgfmathsetmacro{\mbivy}{0.65*#1}%
-  \ifblank{#2}{\def\mbiva{\zsl}}{\def\mbiva{#2}}\ifblank{#3}{\def\mbivb{\zspfeil}}{\def\mbivb{#3}}%
+  \ifblank{#2}{\def\mbiva{\zsl}}{\pgfmathsetmacro{\mbiva}{(#2)-\zsxmin}}%
+  \ifblank{#3}{\def\mbivb{\zspfeil}}{\pgfmathsetmacro{\mbivb}{(#3)-\zsxmin}}%
   \ifblank{#2}{\def\mbivl{Stealth}}{\def\mbivl{}}\ifblank{#3}{\def\mbivr{Stealth}}{\def\mbivr{}}%
   \edef\mbivarr{\mbivl-\mbivr}%
   \draw[line width=1.6pt,arrows/.expanded=\mbivarr,>={Stealth[length=2.5mm]}] (\mbiva,\mbivy) -- (\mbivb,\mbivy);
@@ -2121,13 +2136,16 @@
   \fi}
 
 % \streifenleer                     leerer Streifen 10 x 1,2 cm, 0 %/50 %/100 % beschriftet (Schüler trägt ein)
+% \streifenleer[4]                  mit 4 statt 10 Teilen (kurze Eckstriche wie bisher)
+% \streifenleer[0]                  ohne Teilstriche, nur 0 % und 100 % beschriftet: der Schüler teilt
+%                                   selbst ein (Stufe 6; Befund Testlauf Eingabe 3 Nr. 12)
 % \streifenvoll{Rad/40,Bus/25,...}  Streifen komplett gefüllt: Abschnitte nach Prozentwert (müssen sich zu
 %   100 summieren), Label im Abschnitt in wechselnden Grautönen, leeres Label {} lässt es weg
-\newcommand{\streifenleer}{%
+\newcommand{\streifenleer}[1][10]{%
   \begin{tikzpicture}[baseline=(current bounding box.north)]
-    \mbstreifenrahmen*{10}{1.2}{10}
+    \mbstreifenrahmen*{10}{1.2}{#1}
     \node[below,font=\small] at (0,0) {$0\,\%$};
-    \node[below,font=\small] at (5,0) {$50\,\%$};
+    \ifnum#1>0 \node[below,font=\small] at (5,0) {$50\,\%$};\fi
     \node[below,font=\small] at (10,0) {$100\,\%$};
   \end{tikzpicture}}
 \NewDocumentCommand{\streifenvoll}{m}{%
@@ -2146,6 +2164,8 @@
 % \streifen[Teilstriche]{Füllung in %}{Label links unten}{Label rechts unten}   ein Abschnitt 0..Füllung
 % \streifenfrage[Teilstriche]{Füllung}{links}{rechts}    wie \streifen, mit „?“ über der Füllgrenze
 %   (Teilstriche Voreinstellung 10; Streifen 10 x 0,8 cm; Füllung in Prozent, auch als Dezimalzahl)
+%   \streifen[0]{0}{$0\,\%$}{$100\,\%$}   Streifen ohne Teilstriche zum Einteilen durch den Schüler
+%   (0 oder 1 lässt die Teilstriche weg; so seit Stufe 4, in Stufe 6 nur dokumentiert)
 \newcommand{\streifen}[4][10]{%
   \par\smallskip\noindent
   \begin{tikzpicture}[baseline=0pt]
@@ -2203,6 +2223,10 @@
 % \streifenwertreihe[Teilstriche]{Buchstabe/Füllung/Teilwert/Ganzwert, ...}   wie \streifenreihe, mit
 %   Markierung an der Füllgrenze und den Werten 0, Teilwert, Ganzwert darunter (9 x 0,62 cm je Zeile);
 %   ein Wert leer bleibt als Feld zum Eintragen (Prozentwert bzw. Grundwert berechnen), \dsleer ebenso
+%   Stufe 6: Bis Stufe 5 stand bei leerem Teil- oder Ganzwert gar nichts; jetzt steht dort das Feld
+%   \mbstreifenwertfeld (Schreiblinie 1,2 cm).
+\newcommand{\mbstreifenwertfeld}{\rule[-0.4ex]{1.2cm}{0.4pt}}
+\newcommand{\mbstreifenwert}[1]{\expandafter\ifblank\expandafter{#1}{\mbstreifenwertfeld}{#1}}
 \newcommand{\streifenwertreihe}[2][10]{%
   \par\smallskip\noindent
   \begin{tikzpicture}[baseline=0pt]
@@ -2215,8 +2239,8 @@
         \draw[line width=1pt] (\sfill,-0.08) -- (\sfill,0.62);
         \node[left,font=\small] at (-0.15,0.31) {\lab)};
         \node[below,font=\scriptsize] at (0,-0.05) {0};
-        \node[below,font=\scriptsize] at (\sfill,-0.05) {\tw};
-        \node[below,font=\scriptsize] at (9,-0.05) {\gw};
+        \node[below,font=\scriptsize] at (\sfill,-0.05) {\mbstreifenwert{\tw}};
+        \node[below,font=\scriptsize] at (9,-0.05) {\mbstreifenwert{\gw}};
       \end{scope}}
   \end{tikzpicture}
   \par\smallskip}

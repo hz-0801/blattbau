@@ -52,7 +52,7 @@ In `geruest` wird ein Aufgabentext, der breiter als der Satzspiegel minus 6 cm i
  
 Innerhalb einer Hauptnummer läuft die Buchstabenzählung über alle `teile`-, `teilezwei`-, `geruest`-, `gleichungsraster`-Blöcke und Listenmakros weiter: Du kannst einen `teile`-Block beenden, Text oder eine Grafik setzen und mit einem neuen `teile`-Block bei d) fortfahren. Erst die nächste `\begin{aufgabe}` beginnt wieder bei a). Das optionale Argument der Listenmakros zählt in dieser Reihenfolge: `[7]` setzt ab dem siebten Buchstaben (g) den Stern, auch wenn die Liste erst bei d) beginnt.
  
-Alles, was zur Hauptnummer gehört – Teilaufgaben, Wertetabelle, Koordinatensystem –, steht zwischen `\begin{aufgabe}` und `\end{aufgabe}`; nur dann hält der Umbruch die Nummer zusammen. Passt sie nicht mehr auf die Seite, rückt sie als Ganzes weiter. Ist eine einzelne Nummer höher als eine Seite, bricht sie doch und meldet das als `Package mathblatt Warning` im Log.
+Alles, was zur Hauptnummer gehört – Teilaufgaben, Wertetabelle, Koordinatensystem –, steht zwischen `\begin{aufgabe}` und `\end{aufgabe}`; nur dann hält der Umbruch die Nummer zusammen. Passt sie nicht mehr auf die Seite, rückt sie als Ganzes weiter. Ist eine einzelne Nummer höher als eine Seite, bricht sie doch und meldet das als `Package mathblatt Warning` im Log. Die Nummern zählt der Zähler `aufgabe`, und jede `\begin{aufgabe}` erhöht ihn zuerst: `\setcounter{aufgabe}{21}` vor einer Einheit ergibt als nächste Nummer 22. Das ist gewollt – du setzt den Zähler auf die letzte Nummer davor, nicht auf die gewünschte.
  
 Im `gleichungsraster` steht seit Stufe 5 auch unter der letzten Schreibzeile einer Reihe Platz (1 mm plus die Strebe der Reihe, zusammen etwa so viel wie zwischen zwei Schreibzeilen). Bis Stufe 4 fehlte er, und die letzte Linie lag auf der nächsten Reihe oder auf dem Folgetext; wer das im Aufruf mit einer Zusatzzeile (`\rule{0pt}{2mm} & \\`) oder mit `\noalign{\vspace{5mm}}` ausgeglichen hat, kann das jetzt weglassen. Lässt du es stehen, wird der Abstand nur größer, nie kleiner.
 
@@ -320,7 +320,7 @@ Zahlen und Algebra
 \termbaum{}{\tb{}{5}{x}}{\tb{}{}{}}          leere Knoten = Felder zum Eintragen
 ```
 
-Der Zahlenstrahl setzt die Zahlen mit Komma und dünnt sie wie das `ksys` aus, wenn sie nicht in einen Schritt passen. Punkte und Labels stehen oben, Labels im Mathemodus. `zahlengerade` ist die Umgebung dahinter: darin liegen die Intervalle als dicke Striche über der Achse, Zeile 1 direkt darüber, weitere Zeilen mit dem optionalen Argument. Ungleichungen (`x < -1`, `x \ge 2`) sind Intervalle mit leerer Grenze. Die Grenzen selbst schreibst du mit Dezimalpunkt.
+Der Zahlenstrahl setzt die Zahlen mit Komma und dünnt sie wie das `ksys` aus, wenn sie nicht in einen Schritt passen. Seit Stufe 6 steht der letzte Strich auch dann, wenn `xmax` genau auf dem Raster liegt (`xmax=1` bei `xstep=0.1` – ein `xmax=1.05` als Umweg ist nicht mehr nötig), und feine Einteilungen weit weg von null zeichnen (`\zahlenstrahl[xmin=7.6,xmax=8,xstep=0.01]{7.68/}`). Wäre der Strahl breiter als die Zeile, verkleinert die Vorlage `karo`, bis er hineinpasst; der Strahl steht dafür in einem eigenen Absatz. Eigenes TikZ in `zahlengerade` rechnet relativ zu `xmin`: `({7.7-\zsxmin},0)`. Punkte und Labels stehen oben, Labels im Mathemodus. `zahlengerade` ist die Umgebung dahinter: darin liegen die Intervalle als dicke Striche über der Achse, Zeile 1 direkt darüber, weitere Zeilen mit dem optionalen Argument. Ungleichungen (`x < -1`, `x \ge 2`) sind Intervalle mit leerer Grenze. Die Grenzen selbst schreibst du mit Dezimalpunkt.
 
 Im `\termbaum` stehen alle Knoten im Mathemodus (`\cdot`, `\frac{d}{2}`, `x^2`); die Tiefe ist frei, ab vier Ebenen werden die Blätter eng. Der Baum ist nur binär.
 
@@ -343,9 +343,11 @@ Prozentrechnung: Streifen und Dreisatz
 
 ```
 \streifenleer                                        leerer Streifen (10 cm = 100 %), mit 0 %/50 %/100 % beschriftet
+\streifenleer[4]   \streifenleer[0]                   4 statt 10 Teile; [0] ohne Teilstriche, nur 0 % und 100 % (Schüler teilt selbst ein)
 \streifenvoll{Rad/40,Bus/25,zu Fuß/20,Auto/15}        vollständig gefüllt, Werte müssen sich zu 100 summieren
 \streifen{30}{$0\,\%$}{$100\,\%$}                     ein Abschnitt 0..30 %, Label links/rechts unten
 \streifen[5]{30}{$0\,\%$}{$100\,\%$}                  wie oben, nur 5 statt 10 Teilstriche
+\streifen[0]{0}{$0\,\%$}{$100\,\%$}                   ohne Teilstriche und ohne Füllung: zum Einteilen durch den Schüler
 \streifenfrage{65}{$0\,\%$}{$100\,\%$}                wie \streifen, mit „?“ über der Füllgrenze
 \streifenfeld{40}{$0$}{10 Kinder}                     wie \streifen, rechts daneben ein Feld für den abgelesenen Prozentsatz
 \streifenreihe{a/20,b/60,c/10,d/90}                   mehrere Streifen a), b), ... untereinander, je 100 %
@@ -359,7 +361,7 @@ Prozentrechnung: Streifen und Dreisatz
 \end{dreisatz}
 ```
 
-Die Streifen-Bausteine stellen 100 % immer als 10 cm breites Rechteck dar. `\streifenleer` und `\streifenvoll` sind die geschlossene Form (Streifen komplett ausgefüllt bzw. leer zum Selbstanlegen), `\streifen`/`\streifenfrage` füllen einen einzelnen Anteil zwischen zwei Textlabels, `\streifenreihe`/`\streifenwertreihe` setzen mehrere solcher Streifen als Teilaufgaben a), b), ... untereinander. Das optionale Argument (Voreinstellung 10) ist bei allen außer `\streifenleer`/`\streifenvoll` die Zahl der Teilstriche; `0` oder `1` lässt sie weg. `\streifenwertreihe` erwartet je Zeile vier durch Schrägstrich getrennte Angaben (Buchstabe/Füllung in %/Teilwert/Ganzwert), Teil- oder Ganzwert leer lassen ergibt ein Feld zum Eintragen (Prozentwert- bzw. Grundwert-Aufgaben).
+Die Streifen-Bausteine stellen 100 % immer als 10 cm breites Rechteck dar. `\streifenleer` und `\streifenvoll` sind die geschlossene Form (Streifen komplett ausgefüllt bzw. leer zum Selbstanlegen), `\streifen`/`\streifenfrage` füllen einen einzelnen Anteil zwischen zwei Textlabels, `\streifenreihe`/`\streifenwertreihe` setzen mehrere solcher Streifen als Teilaufgaben a), b), ... untereinander. Das optionale Argument (Voreinstellung 10) ist bei allen außer `\streifenvoll` die Zahl der Teile; `0` oder `1` lässt die Teilstriche weg. Seit Stufe 6 gilt das auch für `\streifenleer`: `\streifenleer[0]` ist ein leerer Streifen ohne Teilstriche, nur mit 0 % und 100 % beschriftet, für Aufgaben wie „Teile den Streifen in 25-%-Schritte ein"; mit einer anderen Zahl bleiben die kurzen Eckstriche und die Marke 50 %. Bild von `\streifen[0]{0}{…}{…}`: derselbe leere Rahmen mit den beiden Labels, die du setzt. `\streifenwertreihe` erwartet je Zeile vier durch Schrägstrich getrennte Angaben (Buchstabe/Füllung in %/Teilwert/Ganzwert), Teil- oder Ganzwert leer lassen ergibt ein Feld zum Eintragen (Prozentwert- bzw. Grundwert-Aufgaben): eine 1,2 cm lange Schreiblinie an der Stelle des Werts (bis Stufe 5 blieb die Stelle leer).
 
 `\streifenfeld[Teilstriche]{Füllung}{links}{rechts}` ist `\streifen` mit einem Antwortfeld: Bild ist der gewohnte Streifen, dahinter im gleichen Zeilenabstand `\leerfeld[\%]`, also eine 3 cm lange Linie mit Prozentzeichen. Es ist der Baustein für „lies am Streifen ab und trage ein" – ohne ihn steht das Feld sonst in einer eigenen Zeile unter der Grafik. Rahmen und Teilstriche kommen vom selben `\mbstreifenrahmen` wie bei der übrigen Streifen-Familie, das optionale Argument ist wieder die Zahl der Teilstriche.
  
