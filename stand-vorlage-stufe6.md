@@ -8,8 +8,8 @@ Beginn: 2026-09-26 05:54 (Get-Date).
 | 1 Anweisungszeile | erledigt | Gegenprobe: Probestück in allen vier Umgebungen, c) beginnt links unter der Anweisung; elf Quelltexte gleich der Basis | d33f77b |
 | 2 Rechenplatz | erledigt | Gegenprobe: \rechenplatz{4} misst 48,0 mm (600 dpi), bei 100 dpi 189 px vom Blockanfang bis zur letzten Linie, 192 px ab der Zeile davor; elf Quelltexte gleich der Basis | 0c42126 |
 | 3 Verfahrensüberschrift | erledigt | Gegenprobe: zwei Verfahren à zwei Hauptnummern, \abhakauto zeigt zwei Gruppenzeilen mit je zwei Zeilen; Überschrift rückt mit ihrer Hauptnummer um; elf Quelltexte gleich der Basis | 4e602cd |
-| 4 Kopfzeile mit Einheit | erledigt | Gegenprobe: Eingabe 3 kompiliert (32 Seiten); Kopfzeile „2 Prozentwert berechnen" ab Seite 15 im Gesamt-Blatt (Verzeichnis: Einheit 2 Seiten 15–19), ab Seite 9 im Lernblatt; elf Quelltexte gleich der Basis | „vorlage: Kopfzeile mit Einheit" |
-| 5 Beispielblock | offen | – | – |
+| 4 Kopfzeile mit Einheit | erledigt | Gegenprobe: Eingabe 3 kompiliert (32 Seiten); Kopfzeile „2 Prozentwert berechnen" ab Seite 15 im Gesamt-Blatt (Verzeichnis: Einheit 2 Seiten 15–19), ab Seite 9 im Lernblatt; elf Quelltexte gleich der Basis | fdfa1b9 |
+| 5 Beispielblock | erledigt | Gegenprobe: Probestück mit Angabe, Streifen, \rechnung, Antwortzeile – ein Block, Rahmen schließt alles ein; \beispiel als Befehl unverändert; elf Quelltexte gleich der Basis | „vorlage: beispiel-Umgebung" |
 | 6 Streifen | offen | – | – |
 | 7 Probeblatt | offen | – | – |
 | 8 Versionszeile, Anleitung, CHANGELOG | offen | – | – |
@@ -23,3 +23,4 @@ Beginn: 2026-09-26 05:54 (Get-Date).
 - 2026-09-26 06:09 Teil 2 fertig.
 - 2026-09-26 06:14 Teil 3 fertig.
 - 2026-09-26 06:20 Teil 4 fertig. Die „Seite 9" des Auftrags ist die Seitenzahl im Lernblatt (ohne die sechs Zonen-Seiten); im Gesamt-Blatt beginnt Einheit 2 auf Seite 15.
+- 2026-09-26 06:23 Teil 5 fertig.

@@ -38,6 +38,7 @@ Grundgerüst
 \rechenplatz{4}   \rechenplatz[halb]{4}   → leerer Block mit vier Zeilen à 12 mm und hellgrauen Linien, volle bzw. knapp halbe Breite; steht nach Titel und Anweisung dort, wo früher das Beispiel stand
 \beispiel{x + 5 &= 9 &&\mid -5 \\ x + 5 - 5 &= 9 - 5 \\ x &= 4}   → „Beispiel:“ und senkrechte Rechnung: & vor dem Gleichheitszeichen, && vor der Umformung oder dem Kommentar, \\ trennt die Zeilen; Text in \text{...}: \beispiel{x + 4 &= 7 && x = 3 \\ 3 + 4 &= 7 \\ 7 &= 7 && \text{(wA)}\quad x = 3 \text{ ist Lösung}}
 \rechnung{5x - 8 &= 12 &&\mid -8 \\ 5x &= 4}   → dieselbe Rechnung ohne „Beispiel:“ (Vorgabe in Fehler-finden-Aufgaben, Rechenweg im Begleitteil)
+\begin{beispiel} Angabe \streifen{40}{$0$}{10 Kinder} \rechnung{...} Antwort: ... \end{beispiel}   → Beispielblock: eingerückt, hellgrauer Rahmen, erste Zeile „Beispiel:", alles an einem Blickort
 \feld{W} → „W = ___" (2 cm); \leerfeld → „___" (3 cm) ohne Bezeichner (nie \feld{} – das ergibt „= ___"); Einheit als optionales Argument: \leerfeld[\%] → „___ %“, \feld[cm]{l} → „l = ___ cm“ – Feld und Einheit bleiben zusammen, kein \mbox nötig; ein Umbruch vor dem Feld ist erlaubt, aber teuer, TeX dehnt die Zeile nur, wenn der Umbruch schlechter wäre; ist die Zeile vor dem Feld im Render sichtbar gedehnt, setze \\ vor den Feldtext („\\ Gesamtpreis: \leerfeld[€]" in eigener Zeile) – nie den Aufgabentext kürzen
 \feld{m}  \feldl{y}  \punktfeld  \janein  \kreuz{Text}      \janein ohne Argument → „☐ ja ☐ nein"; andere Beschriftungen mit \kreuz{A}\kreuz{B} – ein \janein[...] gibt es nicht; ab drei Kästchen oder bei Aussagen länger als ein paar Wörter jedes \kreuz in eigener Zeile (\\ dazwischen), nebeneinander bricht die Aussage mitten im Satz um
 \mnliste[9]{2x+3, 5x-1, ...}            m und n je Gerade, eine Zeile statt geruest
@@ -58,6 +59,19 @@ Im `gleichungsraster` steht seit Stufe 5 auch unter der letzten Schreibzeile ein
 `\anweisung{...}` setzt eine Anweisung, die für die folgenden Teilaufgaben gilt („Rechne mit dem Taschenrechner.", „Der Streifen sind jetzt immer 60 kg."), zwischen zwei Teilaufgaben statt in den Titel der Hauptnummer („bei b) …"). Bild: nach einem kleinen Abstand eine Zeile über die volle Breite der Hauptnummer, links bündig mit der Nummer, bei langem Text umbrechend; direkt darunter geht es mit dem nächsten Buchstaben weiter, der Zähler wird nicht berührt. Sie steht in `teile`, `teilezwei`, `gleichungsraster` und `geruest` an der Stelle, an der sie gilt. In den zweispaltigen Umgebungen beendet sie die laufende Reihe: Du setzt sie hinter die letzte Teilaufgabe der Reihe (mit oder ohne `\\` davor), die nächste Teilaufgabe beginnt links. Als erster Eintrag der rechten Zelle (`\tz ... & \anweisung{...}`) geht sie nicht. Zwischen zwei Blöcken einer Hauptnummer steht sie als eigener Absatz.
 
 `\rechenplatz{4}` ist der Platz, in den der Lehrer das Gerüst schreibt (Beschluss vom 26.09.2026: im Regelfall kein gedrucktes Beispiel). Er steht nach dem Ich-kann-Titel der Hauptnummer und der Anweisung, an der Stelle, an der bisher das Beispiel stand. Bild: ein leerer Block über die volle Zeilenbreite mit vier hellgrauen Linien im Abstand von 12 mm – dieselben Linien wie bei den Schreibzeilen, aber weiter auseinander (die Schreibzeilen im `gleichungsraster` bleiben bei 9 mm); vier Zeilen sind 48 mm hoch. `\rechenplatz[halb]{4}` ist knapp halb so breit (0,46 der Textbreite) und passt in eine Zelle von `teilezwei` oder neben eine Grafik. Die Zahl der Zeilen ist frei. Der Block bricht nie über die Seite; passt er nicht mehr, rutscht er ganz auf die nächste.
+
+Die Umgebung `beispiel` fasst ein gedrucktes Beispiel zu einem Block zusammen, wenn es eins gibt (Regelfall ist der `\rechenplatz`). Bild: um 1 em eingerückt, hellgrauer dünner Rahmen, erste Zeile „Beispiel:", darunter frei die Gestalt einer Teilaufgabe – Angabe, Darstellung (Streifen, Tabelle), Rechnung mit `\rechnung` oder `\beispiel{...}`, Antwortzeile – untereinander, alles im Rahmen. So liest der Schüler das Beispiel an einem Ort statt an vier (Angabe links, „Beispiel:" darunter, Streifen rechts, Rechnung links). Der Block bricht nicht über die Seite. Teilaufgaben darin (`teile`, `\teil`) verbrauchen keinen Buchstaben; nach dem Block zählt die Hauptnummer weiter, wo sie davor stand.
+
+```
+\begin{beispiel}
+Der Streifen sind 10 Kinder, gefärbt sind 4 Kinder. Wie viel Prozent sind gefärbt?
+\streifen{40}{$0$}{10 Kinder}
+\rechnung{1 \text{ Kästchen} &= 10\,\% \\ 4 \text{ Kästchen} &= 40\,\%}
+Antwort: 40\,\% der Kinder sind gefärbt.
+\end{beispiel}
+```
+
+Der Befehl `\beispiel{...}` (senkrechte Rechnung mit „Beispiel:" davor) und `\rechnung{...}` bleiben unverändert und dürfen in der Umgebung stehen.
  
 `\zweigzeile{...}` setzt die zweite Zeile des Einheitenkopfs: kleinere Schrift, unmittelbar unter dem Kopf, danach ein Absatzabstand. Sie steht direkt hinter `\einheitenkopf` (beide Formen); dann nimmt sie dessen Abstand zurück und rückt an den Kopf heran, und zwischen Kopf und Zeile bricht die Seite nicht um. Bild: fette Kopfzeile, darunter eine kleine, einzeilige Zeile, dann der Abstand zur ersten Hauptnummer. Was hineingehört – was hier gelernt wird · die Zeitmarke · das Prüfungswort, dazu „baut auf: …" –, steht in `ziel.md` § 2 („Überschriften") im Repo `mathe-nachhilfe`; die Vorlage legt nur die Form fest, nicht den Inhalt.
  
