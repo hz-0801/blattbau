@@ -235,10 +235,25 @@
 %   \end{gleichungsraster}
 \newcounter{mbsz}
 \newcommand{\mbglzeilen}{2}
-\newcommand{\schreibzeilen}[1]{\par\nointerlineskip\setcounter{mbsz}{0}%
+% Schreibzeilen: je Zeile 9 mm Platz und darunter die graue Linie.
+% Unter der letzten Linie fehlte bis Stufe 4 die Tiefe, die Linie lag auf der nächsten Reihe des
+% Rasters bzw. auf dem Folgetext. Grund: Die Zeilen stehen in einer p-Spalte, die LaTeX mit
+% \@finalstrut schließt. Steht dort \prevdepth auf dem Wert von \nointerlineskip (-1000 pt, den
+% jede Schreibzeile setzt), zieht \@finalstrut eine ganze \baselineskip ab, ohne dass der
+% Abschlussstrebe eine Zeilenschaltung gegenübersteht - die Spalte endet also oberhalb der
+% letzten Linie. Deshalb schließt \schreibzeilen mit einem unsichtbaren Kasten der Tiefe
+% \mbschreibtiefe und setzt \prevdepth auf null zurück; dann zählt die Tiefe wieder.
+% \mbschreibtiefe ist 1 mm: zusammen mit der Strebe der Rasterreihe steht unter der letzten Linie
+% etwa so viel Platz wie zwischen zwei Linien. Reihen mit eigenem Zusatzabstand
+% (\rule{0pt}{2mm}, \noalign{\vspace{5mm}} u. ä.) bekommen dadurch mehr Luft, nie weniger.
+\newlength{\mbschreibhoehe}\setlength{\mbschreibhoehe}{9mm}
+\newlength{\mbschreibtiefe}\setlength{\mbschreibtiefe}{1mm}
+\newcommand{\schreibzeilen}[1]{\par\setcounter{mbsz}{0}%
   \loop\ifnum\value{mbsz}<#1\relax
-    \vspace*{9mm}\noindent{\color{black!40}\rule{\linewidth}{0.4pt}}\par\nointerlineskip
-    \stepcounter{mbsz}\repeat\vspace{3pt}}
+    \nointerlineskip\vskip\mbschreibhoehe
+    \hbox{\color{black!40}\vrule\@width\linewidth\@height0.4pt\@depth\z@}%
+    \stepcounter{mbsz}\repeat
+  \nointerlineskip\hbox{\vrule\@width\z@\@height\z@\@depth\mbschreibtiefe}\prevdepth\z@}
 \newenvironment{gleichungsraster}[1][2]{\mbteilstart\renewcommand{\mbglzeilen}{#1}\par\nopagebreak
   \begin{tabular}{@{}p{0.46\linewidth}@{\hspace{0.08\linewidth}}p{0.46\linewidth}@{}}}{\end{tabular}\par}
 \newcommand{\gl}[2][\mbglzeilen]{\stepcounter{teil}\alph{teil})\ $#2$\schreibzeilen{#1}}
@@ -1971,6 +1986,21 @@
   \end{tikzpicture}
   \par\smallskip}
 
+% \streifenfeld[Teilstriche]{Füllung in %}{Label links unten}{Label rechts unten}
+%   wie \streifen, rechts daneben ein leeres Feld für den abgelesenen Prozentsatz
+%   (\leerfeld[\%]); für Aufgaben „lies am Streifen ab und trage ein".
+%   \streifenfeld[4]{75}{$0\,\%$}{$100\,\%$}
+\newcommand{\streifenfeld}[4][10]{%
+  \par\smallskip\noindent
+  \begin{tikzpicture}[baseline=0pt]
+    \pgfmathsetmacro{\sfill}{(#2)/100*10}%
+    \ifdim\sfill pt>0pt\fill[black!20] (0,0) rectangle (\sfill,0.8);\fi
+    \mbstreifenrahmen{10}{0.8}{#1}
+    \node[below,font=\small] at (0,-0.05) {#3};
+    \node[below,font=\small] at (10,-0.05) {#4};
+  \end{tikzpicture}\quad\leerfeld[\%]%
+  \par\smallskip}
+
 % \streifenreihe[Teilstriche]{Buchstabe/Füllung, ...}   mehrere Streifen a), b), ... untereinander,
 %   je 100 % (9,5 x 0,62 cm je Zeile)
 \newcommand{\streifenreihe}[2][10]{%
@@ -2023,5 +2053,33 @@
   \end{tabular}\par\smallskip}
 \newcommand{\dsz}[2]{ & #1 & #2 & \\}
 \newcommand{\dsp}[2]{ {\footnotesize$#1$}$\big\downarrow$ & & & $\big\downarrow${\footnotesize$#2$} \\}
+
+% ---------------------------------------------------------------------------
+% Q  Option „schwach" (ziel.md § 2 im Repo mathe-nachhilfe)
+% ---------------------------------------------------------------------------
+% Die Option ändert die Form, nicht den Stoff: zwei bis drei Aufgaben je Seite, neben jeder
+% Teilaufgabe die Darstellung (Streifen, Tabelle, Skizze), aus der der Rechenweg entsteht, und
+% statt einer Antwortlinie ein Raster mit einer Schreibzeile je Schritt.
+% Alle vier Bausteine setzen links die Teilaufgabe, rechts die Darstellung.
+% \swz und \swa zählen mit dem teil-Zähler der Vorlage (Buchstabe a), b), …), \swb nicht:
+% es ist das vorgerechnete Beispiel.
+\newcommand{\mbswlinks}{0.34}   % Anteil der Textbreite links (Teilaufgabe)
+\newcommand{\mbswrechts}{0.62}  % Anteil der Textbreite rechts (Darstellung)
+\newcommand{\mbswpaar}[2]{\par\noindent
+  \begin{minipage}[t]{\mbswlinks\linewidth}\vspace{0pt}\raggedright #1\end{minipage}\hfill
+  \begin{minipage}[t]{\mbswrechts\linewidth}\vspace{2pt}#2\end{minipage}\par\addvspace{3mm}}
+% \swz[Schreibzeilen]{Teilaufgabe}{Darstellung}   Rechenteilaufgabe mit Raster (Vorgabe 2 Zeilen)
+%   \swz{Der Streifen sind 20\,€, gefärbt sind 6\,€.}{\streifen{30}{$0\,€$}{$20\,€$}}
+\newcommand{\swz}[3][2]{\mbswpaar{\stepcounter{teil}\mbtzkopf{\alph{teil})}#2\schreibzeilen{#1}}{#3}}
+% \swa{Teilaufgabe}{Darstellung}   Ablese- oder Zeichenteilaufgabe, ohne Raster
+%   \swa{in 25-\%-Schritte}{\streifen[0]{0}{$0\,\%$}{$100\,\%$}}
+\newcommand{\swa}[2]{\mbswpaar{\begin{teile}\teil #1\end{teile}}{#2}}
+% \swb{Beispiel}{Darstellung}   durchgerechnetes Beispiel vor dem Päckchen, ohne Buchstabe
+%   \swb{\beispiel{20 \text{ von } 100 &= \tfrac{20}{100} \\ &= 20\,\%}}{\streifenfrage{20}{$0$}{$100$}}
+\newcommand{\swb}[2]{\mbswpaar{#1}{#2}}
+% \swfrage{Was bleibt gleich, was ändert sich?}   Erklärzeile über die ganze Breite mit zwei
+%   Schreibzeilen; zählt als Teilaufgabe.
+\newcommand{\swfrage}[1]{\par\nopagebreak\noindent
+  \stepcounter{teil}\mbtzkopf{\alph{teil})}#1\schreibzeilen{2}\par\addvspace{3mm}}
 
 \endinput
