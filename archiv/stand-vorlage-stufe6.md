@@ -12,8 +12,8 @@ Beginn: 2026-09-26 05:54 (Get-Date).
 | 5 Beispielblock | erledigt | Gegenprobe: Probestück mit Angabe, Streifen, \rechnung, Antwortzeile – ein Block, Rahmen schließt alles ein; \beispiel als Befehl unverändert; elf Quelltexte gleich der Basis | 8cde209 |
 | 6 Streifen | erledigt | Gegenprobe: \streifenleer[0] ohne Teilstriche mit 0 %/100 %, \zahlenstrahl[xmin=7.6,xmax=8,xstep=0.01]{} zeichnet (vorher „Dimension too large"), Endstrich bei xmax auf dem Raster, \streifenwertreihe mit leerem Ganz- und Teilwert zeigt Felder; elf Quelltexte gleich der Basis | 0482e82 |
 | 7 Probeblatt | erledigt | Gegenprobe: 154 Bausteine der Anleitung, 154 Randnotizen, keine fehlt, keine doppelt (probeblatt-pruef.py); 23 →-Zeilen im Kopfteil decken 35 Bausteine; 12 Seiten; elf Quelltexte gleich der Basis | a160dea |
-| 8 Versionszeile, Anleitung, CHANGELOG | erledigt | mathblatt.sty Zeile 1 „Stufe 6", Versionszeile 2026-09-28a je Baustein, \ProvidesPackage; Anleitung Kopf, Absatz Probeblatt, „Noch nicht in Stufe 6"; CHANGELOG, README; elf Quelltexte und Probeblatt kompilieren | „vorlage: Stufe 6, Anleitung, CHANGELOG" |
-| Abschluss | offen | – | – |
+| 8 Versionszeile, Anleitung, CHANGELOG | erledigt | mathblatt.sty Zeile 1 „Stufe 6", Versionszeile 2026-09-28a je Baustein, \ProvidesPackage; Anleitung Kopf, Absatz Probeblatt, „Noch nicht in Stufe 6"; CHANGELOG, README; elf Quelltexte und Probeblatt kompilieren | dbac9c1 |
+| Abschluss | erledigt | Standdatei und Auftrag nach archiv/ (git mv), Bericht bericht-vorlage-stufe6-2026-09-28.md, README-Zeile | „archiv: auftrag-vorlage-stufe6, Bericht" |
 
 ## Verlauf
 
@@ -27,3 +27,9 @@ Beginn: 2026-09-26 05:54 (Get-Date).
 - 2026-09-26 06:29 Teil 6 fertig. Seitenzahlen nach Teil 6: 21, 17, 32, 24, 12, 18, 7, 23, 20, 20, 4 (gleich der Basis).
 - 2026-09-26 06:49 Teil 7 fertig. Dabei die Kopfzeile (Teil 4) von der letzten auf die erste Einheit der Seite umgestellt (\FirstMark): im Probeblatt beginnen auf einer Seite drei Einheiten, die Kopfzeile nannte die dritte. Eingabe 3 unverändert (Seite 15/Lernblatt Seite 9).
 - 2026-09-26 06:52 Teil 8 fertig.
+- 2026-09-26 06:53 Abschluss: Verschieben nach archiv/, Bericht.
+
+## Offene Punkte
+
+Keiner der Teile ist nach der Fehlerregel offen geblieben. Offene Punkte außerhalb des Auftrags
+stehen im Bericht.

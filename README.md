@@ -10,6 +10,7 @@ Repo `mathe-nachhilfe`.
 - `referenz/probeblatt.tex`, `referenz/probeblatt.pdf` – Probeblatt der Vorlage (seit Stufe 6): jeder Baustein der Anleitung genau einmal mit seinem Namen; Lesestück für den Lehrer und Kompilierprobe jeder Stufe, `referenz/probeblatt-pruef.py` gleicht es mit der Anleitung ab. Die übrigen Dateien in `referenz/` sind Vergleichsblätter von v3.35.
 - `CHANGELOG.md` – Versionsgeschichte des Unterrichtsblatt-Prompts und der Vorlage.
 - `bericht-vorlage-stufe5-2026-09-27.md` – Bericht zum Umbau der Vorlage auf Stufe 5 (Bausteine aus dem Testlauf vom 25.09.2026, Tiefe im `gleichungsraster`); Auftrag und Standdatei liegen unter `archiv/`.
+- `bericht-vorlage-stufe6-2026-09-28.md` – Bericht zur Stufe 6 (sechs Bausteine aus den Lesebefunden vom 26.09.2026, Streifen-Reparaturen, Probeblatt); Auftrag und Standdatei liegen unter `archiv/`.
 - `Bewertung_Masterprompt_v3-34.md`, `Testauswertung_Masterprompt_Mathe_2026-09-07.md`, `Testauswertung_Masterprompt_Mathe_2026-09-08.md`, `Testauswertung_2026-09-22.md` – Werkstattzettel aus dem Testzyklus, eingefroren.
 
 Die Heft-Phase ist in `mathe-nachhilfe/blatt-konzept.md` geregelt; bei Widerspruch zum Prüfungsblatt-Prompt gilt sie.
