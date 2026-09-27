@@ -1,0 +1,508 @@
+% vorschlag-bausteine-sek2.sty – Entwurf: Bausteine, die die Sek-II-Einträge der Aufgabenbank vermissen
+% Vorschlag 2026-09-27 zu mathblatt.sty Version 2026-09-28a. NICHT KOMPILIERT (kein LaTeX in der
+% Sitzung); Prüfung im Code-Tab. Begründung, Häufigkeit und offene Fragen: vorschlag-bausteine-sek2.md.
+%
+% Zum Probieren:  \usepackage{mathblatt}  \usepackage{vorschlag-bausteine-sek2}
+% Beim Einbau wandert jeder Block in den genannten Abschnitt von mathblatt.sty, die Anleitung
+% bekommt je Baustein eine Zeile, das Probeblatt je Baustein Namenszeile und Beispiel.
+% Alle Label-Argumente setzen die Makros selbst in Mathematik, wie in der Vorlage: `g`, `\vec a`,
+% `\text{Larve}`, nicht `$g$`. Grafikwerte mit Dezimalpunkt, Satzwerte mit `0{,}5`.
+%
+% Neu, elf Bausteine:
+%   \spaltenvektor, \matrize                      Satz im Mathemodus          (neben \termbaum)
+%   \vektor, \vektorab                            Objekte im ksys             (D)
+%   ksys-Schlüssel ohnezahlen, Umgebung karofeld  Koordinatensystem 2D        (D)
+%   \verteilungsfunktion                          Objekt im ksys              (M, Stochastik)
+%   \rvieleck                                     Objekt im ksys3             (I)
+%   \baummehr                                     Baumdiagramm                (H)
+%   \uebergangsdiagramm, \verflechtungsdiagramm   Matrizen, neuer Abschnitt
+% Die Beispielaufrufe stammen aus Bankzeilen von hz-0801/aufgabenbank (id in Klammern).
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{vorschlag-bausteine-sek2}[2026/09/27 Vorschlag Sek-II-Bausteine zu mathblatt 2026-09-28a]
+\@ifpackageloaded{mathblatt}{}{\PackageError{vorschlag-bausteine-sek2}{mathblatt.sty muss vorher geladen sein}{}}
+
+% ---------------------------------------------------------------------------
+% S1  Spaltenvektor und Matrix (Satz, im Text wie eine Formel)
+% ---------------------------------------------------------------------------
+% \spaltenvektor{Komponenten}     Komponenten mit Komma getrennt, Dezimalkomma als 0{,}5
+%   \spaltenvektor{2,2,1}          senkrecht in runden Klammern
+%   \spaltenvektor{3,,-1}          leere Komponente = Schreiblinie zum Eintragen
+% \matrize{Zeilen}                Zeilen mit Semikolon, Einträge einer Zeile mit Komma getrennt
+%   \matrize{2,1;3,4}              2×2-Matrix;  \matrize{0{,}9,;,0{,}85}  mit zwei Schreiblinien
+% Beide sind Makros, keine Umgebung: das Prüfskript sperrt \begin in aufgabe, ein Baustein-
+% makro nicht. Sie stehen mit oder ohne Dollarzeichen (\ensuremath). Im Fließtext wird die
+% Zeile höher; bei drei Komponenten den Satz nicht in eine enge Zeile (\feld, \kreuz) stellen.
+% Beispiel (matrizen-und-uebergangsprozesse-e1-k1-s1-v1, bisher A = ((2 | 1), (3 | 4)), v = (1 | 2)):
+%   Berechne $A \cdot v$ für $A = \matrize{2,1;3,4}$ und $v = \spaltenvektor{1,2}$.
+% Beispiel (vektoren-und-rechenoperationen-e2-k2-s1-v3, bisher \vec r = (2 | 2 | 1)):
+%   … im Abstand 6 in Richtung $\vec r = \spaltenvektor{2,2,1}$.
+\newcommand{\mbmatrixfeld}{\rule[-0.3ex]{6mm}{0.4pt}}
+\ExplSyntaxOn
+\seq_new:N \l__mb_mzeilen_seq
+\seq_new:N \l__mb_mzellen_seq
+\tl_new:N \l__mb_matrix_tl
+\cs_new_protected:Npn \__mb_matrix_eintrag:n #1
+  {
+    \tl_if_blank:nTF {#1}
+      { \tl_put_right:Nn \l__mb_matrix_tl { \mbmatrixfeld } }
+      { \tl_put_right:Nn \l__mb_matrix_tl {#1} }
+  }
+\cs_new_protected:Npn \__mb_matrix_bauen:n #1
+  {
+    \tl_clear:N \l__mb_matrix_tl
+    \seq_set_split:Nnn \l__mb_mzeilen_seq { ; } {#1}
+    \seq_map_indexed_inline:Nn \l__mb_mzeilen_seq
+      {
+        \int_compare:nNnT {##1} > { 1 } { \tl_put_right:Nn \l__mb_matrix_tl { \\ } }
+        \seq_set_split:Nnn \l__mb_mzellen_seq { , } {##2}
+        \seq_map_indexed_inline:Nn \l__mb_mzellen_seq
+          {
+            \int_compare:nNnT {####1} > { 1 } { \tl_put_right:Nn \l__mb_matrix_tl { & } }
+            \__mb_matrix_eintrag:n {####2}
+          }
+      }
+  }
+\cs_new_protected:Npn \__mb_spalte_bauen:n #1
+  {
+    \tl_clear:N \l__mb_matrix_tl
+    \seq_set_split:Nnn \l__mb_mzellen_seq { , } {#1}
+    \seq_map_indexed_inline:Nn \l__mb_mzellen_seq
+      {
+        \int_compare:nNnT {##1} > { 1 } { \tl_put_right:Nn \l__mb_matrix_tl { \\ } }
+        \__mb_matrix_eintrag:n {##2}
+      }
+  }
+\NewDocumentCommand{\spaltenvektor}{m}
+  {
+    \__mb_spalte_bauen:n {#1}
+    \ensuremath { \begin{pmatrix} \tl_use:N \l__mb_matrix_tl \end{pmatrix} }
+  }
+\NewDocumentCommand{\matrize}{m}
+  {
+    \__mb_matrix_bauen:n {#1}
+    \ensuremath { \begin{pmatrix} \tl_use:N \l__mb_matrix_tl \end{pmatrix} }
+  }
+\ExplSyntaxOff
+
+% ---------------------------------------------------------------------------
+% D  Objekte im ksys: Vektorpfeile (Gegenstück zu \rvektor und \rvektorab im ksys3)
+% ---------------------------------------------------------------------------
+% \vektor{x,y}{Label}                  Ortsvektor vom Ursprung zum Punkt (x|y), Label in der Pfeilmitte
+% \vektor[below right]{x,y}{Label}     Labelposition wie bei TikZ-Knoten (Voreinstellung above right)
+% \vektorab{x1,y1}{x2,y2}{Label}       Pfeil von (x1|y1) nach (x2|y2); Label leer {} = ohne Label
+% Argumentfolge wie \rvektor/\rvektorab, nur Paare statt Tripel.
+% Beispiel (vektoren-und-rechenoperationen-e1-k3-s3-v2, Lösungsgrafik bisher leer):
+%   \begin{ksys}[xmin=-1,xmax=5,ymin=-2,ymax=4,klein] \punkt{3}{-1}{P} \vektorab{3,-1}{1,2}{} \end{ksys}
+% Beispiel (spiegelung-e2-k1-s5-v1, Lösungsgrafik bisher leer: Raute aus PB und PA auf Länge 2):
+%   \begin{ksys}[xmin=-1,xmax=7,ymin=-1,ymax=6,klein] \punkt{1}{1}{P} \punkt{4}{5}{A} \punkt{3}{1}{B}
+%     \vektorab{1,1}{3,1}{} \vektorab{1,1}{2.2,2.6}{} \gerade{0.5}{0.5}{h} \end{ksys}
+% Beispiel (vektoren-und-rechenoperationen-zone-f1-v2, Punkt A(−2 | 3) mit Ortsvektor):
+%   \begin{ksys}[xmin=-4,xmax=4,ymin=-4,ymax=4,ablesen] \punkt{-2}{3}{A} \vektor[below left]{-2,3}{\vec a} \end{ksys}
+\NewDocumentCommand{\vektor}{O{above right} m m}{%
+  \draw[-{Stealth[length=2mm]},line width=0.8pt] (0,0) -- (#2) node[midway,#1,font=\small] {$#3$};}
+\NewDocumentCommand{\vektorab}{O{above right} m m m}{%
+  \draw[-{Stealth[length=2mm]},line width=0.8pt] (#2) -- (#3) node[midway,#1,font=\small] {$#4$};}
+
+% ---------------------------------------------------------------------------
+% D  Koordinatensystem ohne Achsenzahlen, Karofeld ohne Achsen
+% ---------------------------------------------------------------------------
+% \begin{ksys}[...,ohnezahlen]   Achsen, Teilstriche und Achsentitel wie immer, aber keine Zahlen
+%   (wie ohnezahlen bei \saeulenab). Für Aufgaben, in denen die Skalierung selbst gesucht ist.
+% Umsetzung: ohnezahlen setzt die Ausdünnung auf „jede 100000. Zahl“; die Null setzt die Vorlage
+% ohnehin nicht, also bleibt keine Zahl übrig. Beim Einbau in \mbksysrechnen übernehmen.
+% Beispiel (kenngroessen-von-verteilungen-e3-k1-s5-v1, grafik bisher leer, Graph „in Kästchen
+% beschrieben“; 20 Kästchen bis p = 1, drei Einheiten je Kästchen):
+%   \begin{ksys}[xmin=0,xmax=1,ymin=0,ymax=18,xstep=0.05,ystep=3,karo=0.5,ohnezahlen,xlabel=$p$,ylabel=$\sigma$]
+%     \funktion{sqrt(max(0,1200*\x*(1-\x)))}{}
+%   \end{ksys}
+\newif\ifmbksohnezahlen
+\pgfkeys{/ksys, ohnezahlen/.is if=mbksohnezahlen, default/.append style={ohnezahlen=false}}
+\apptocmd{\mbksysrechnen}{\ifmbksohnezahlen\def\ksxl{100000}\def\ksyl{100000}\fi}{}
+  {\PackageWarning{vorschlag-bausteine-sek2}{\string\mbksysrechnen\space nicht erweiterbar, ohnezahlen wirkt nicht}}
+% \begin{karofeld}[Schlüssel wie ksys] ... \end{karofeld}
+%   nur das Gitter, ohne Achsen, ohne Zahlen, ohne Achsentitel. Leer ist es die Zeichenfläche für
+%   „lege die Achsen selbst an“; mit \funktion, \funktionab, \punkt darin zeigt es einen Graphen
+%   ohne Achsen (die Koordinaten rechnen wie im ksys, man sieht nur den Ursprung nicht).
+% Beispiel (funktionsklassen-und-eigenschaften-e6-k1-s4-v1, grafik bisher nur \wertetabelleleer):
+%   \wertetabelleleer{t}{B(t)}{5}
+%
+%   \begin{karofeld}[xmin=0,xmax=16,ymin=0,ymax=12,karo=0.5]\end{karofeld}
+% Beispiel (funktionsklassen-und-eigenschaften-e6-k1-s6-v2, grafik bisher leer; 1 LE = 1 cm):
+%   \begin{karofeld}[xmin=-4,xmax=4,ymin=-1,ymax=5.5,xstep=0.5,ystep=0.5,karo=0.5]
+%     \funktionab{-0.5*\x^2+4.5}{}{-3}{3}
+%   \end{karofeld}
+\newenvironment{karofeld}[1][]{%
+  \mbksyssetup{#1}%
+  \begin{tikzpicture}[x=\ksxk cm,y=\ksyk cm,baseline=(current bounding box.north)]
+  \draw[mbgitter,line width=0.3pt] (\ksxmin,\ksymin) grid[xstep=\ksxstep,ystep=\ksystep] (\ksxmax,\ksymax);
+  \mbksysclip
+}{\end{scope}\end{tikzpicture}}
+
+% ---------------------------------------------------------------------------
+% M  Verteilungsfunktion der Normalverteilung (Objekt im ksys)
+% ---------------------------------------------------------------------------
+% \verteilungsfunktion{mu}{sigma}{Label}      Graph von F(x) = Phi((x - mu)/sigma), Werte 0 bis 1
+% \verteilungsfunktion[x]{mu}{sigma}{Label}   Label an der Stelle x (wie \funktion[x])
+% Im ksys mit ymin=0, ymax=1, ystep=0.1; die Achsen setzt der Nutzer wie bei jedem ksys.
+% pgf kennt keine Fehlerfunktion. Näherung Phi(z) = 1/(1 + e^(-1,5976 z - 0,07056 z^3))
+% (Bowling u. a. 2009, Fehler unter 0,00015), für z < 0 als 1 - Phi(-z) gerechnet und bei
+% |z| = 3,5 gekappt, damit exp im Bereich von pgf bleibt; dort fehlen bis 1 weniger als 0,0003.
+% Die Bank zeichnet bisher 1/(1 + e^(-1,702 z)) (Fehler bis 0,01).
+% Beispiel (normalverteilung-und-sigma-regeln-e3-k1-s1-v4, bisher \funktion mit logistischer Näherung):
+%   \begin{ksys}[xmin=30,xmax=70,ymin=0,ymax=1,xstep=5,ystep=0.1,ablesen,xlabel=x,ylabel=F(x)]
+%     \verteilungsfunktion{50}{5}{F}
+%   \end{ksys}
+\newcommand{\mbphi}[2]{(0.5+sign(\x-(#1))*(1/(1+exp(-1.5976*min(abs((\x-(#1))/(#2)),3.5)-0.07056*min(abs((\x-(#1))/(#2)),3.5)^3))-0.5))}
+\NewDocumentCommand{\verteilungsfunktion}{o m m m}{%
+  \IfNoValueTF{#1}{\funktion{\mbphi{#2}{#3}}{#4}}{\funktion[#1]{\mbphi{#2}{#3}}{#4}}}
+
+% ---------------------------------------------------------------------------
+% I  Objekt im ksys3: Vieleck (Schnittfigur, Grundfläche, Dreieck im Raum)
+% ---------------------------------------------------------------------------
+% \rvieleck{P1; P2; P3; ...}{Label}      Ecken als Tripel, mit Semikolon getrennt, in Umlauf-
+%                                        reihenfolge; Fläche grau wie \rebene, Rand durchgezogen,
+%                                        Label im Schwerpunkt der Ecken; {} = ohne Label
+% \rvieleck[above right]{...}{S}         Knotenoptionen für das Label (wie \rebene)
+% Ecken setzt der Nutzer wie bei den Körpern mit \rpunkt* dazu.
+% Beispiel (scharen-von-geraden-und-ebenen-e4-k1-s1-v1, Lösungsgrafik bisher leer):
+%   \begin{ksys3}\rquader{0,0,0}{4}{4}{4}\rvieleck{2,0,0; 0,2,0; 0,0,2}{}\end{ksys3}
+% Beispiel (spiegelung-e3-k1-s3-v2, Lösungsgrafik bisher leer):
+%   \begin{ksys3}\rpyramide{0,0,0}{4}{4}{2,2,4}\rvieleck{0,2,0; 4,2,0; 2,2,4}{}\end{ksys3}
+\newcommand{\mbrvzeichnen}[6]{% Knotenoptionen, Pfad, Schwerpunkt x1, x2, x3, Label
+  \filldraw[fill=mbgrau,fill opacity=0.15,line width=0.6pt] #2 -- cycle;
+  \ifblank{#6}{}{\node[font=\small,#1] at (#3,#4,#5) {$#6$};}}
+\ExplSyntaxOn
+\seq_new:N \l__mb_rv_seq
+\tl_new:N \l__mb_rv_pfad_tl
+\fp_new:N \l__mb_rv_a_fp
+\fp_new:N \l__mb_rv_b_fp
+\fp_new:N \l__mb_rv_c_fp
+\NewDocumentCommand{\rvieleck}{O{} m m}
+  {
+    \seq_set_split:Nnn \l__mb_rv_seq { ; } {#2}
+    \seq_remove_all:Nn \l__mb_rv_seq { }  % Semikolon am Ende schadet nicht
+    \tl_clear:N \l__mb_rv_pfad_tl
+    \fp_zero:N \l__mb_rv_a_fp
+    \fp_zero:N \l__mb_rv_b_fp
+    \fp_zero:N \l__mb_rv_c_fp
+    \seq_map_inline:Nn \l__mb_rv_seq
+      {
+        \tl_if_empty:NF \l__mb_rv_pfad_tl { \tl_put_right:Nn \l__mb_rv_pfad_tl { -- } }
+        \tl_put_right:Nn \l__mb_rv_pfad_tl { (##1) }
+        \mbrdrei ##1 \relax
+        \fp_add:Nn \l__mb_rv_a_fp { \mbrA }
+        \fp_add:Nn \l__mb_rv_b_fp { \mbrB }
+        \fp_add:Nn \l__mb_rv_c_fp { \mbrC }
+      }
+    \use:x
+      {
+        \exp_not:N \mbrvzeichnen { \exp_not:n {#1} } { \l__mb_rv_pfad_tl }
+          { \fp_eval:n { \l__mb_rv_a_fp / \seq_count:N \l__mb_rv_seq } }
+          { \fp_eval:n { \l__mb_rv_b_fp / \seq_count:N \l__mb_rv_seq } }
+          { \fp_eval:n { \l__mb_rv_c_fp / \seq_count:N \l__mb_rv_seq } }
+          { \exp_not:n {#3} }
+      }
+  }
+\ExplSyntaxOff
+
+% ---------------------------------------------------------------------------
+% H  Baumdiagramm mit beliebig vielen Ästen je Knoten und Pfadwahrscheinlichkeiten
+% ---------------------------------------------------------------------------
+% \baummehr{Stufe 1}{Stufe 2 nach Ast 1; Stufe 2 nach Ast 2; ...}
+%   Listen wie bei \baumzwei: Label/Wahrscheinlichkeit, leere Wahrscheinlichkeit = Feld.
+%   Je Knoten beliebig viele Äste (drei, vier …). Die Listen der zweiten Stufe stehen in der
+%   Reihenfolge der Äste der ersten Stufe, mit Semikolon getrennt; eine leere Liste lässt den Ast
+%   ohne Folgestufe. Zweites Argument {} = einstufiger Baum.
+%   Ein dritter Eintrag an einem Pfadende ist die Pfadwahrscheinlichkeit, rechts neben dem Ende:
+%     K/0{,}4/0{,}12   Ast 0,4, Pfad 0,12
+%     K/0{,}4/         Feld für den Pfadwert
+%     K/0{,}4          kein Pfadwert
+%   Höhe: bis vier Pfadenden wie \baumzwei (1,1 cm Abstand), darüber 0,8 cm je Pfadende
+%   (drei mal drei Äste: rund 7 cm hoch). Breite wie \baumzwei, dazu die Pfadwerte.
+% Beispiel (zufallsexperimente-und-pfadregeln-e6-k1-s1-v1, Lösungsgrafik mit Pfadwerten):
+%   \baummehr{H/0{,}3,N/0{,}7}{K/0{,}4/0{,}12,O/0{,}6/0{,}18; K/0{,}2/0{,}14,O/0{,}8/0{,}56}
+% Beispiel drei Äste (zufallsexperimente-und-pfadregeln-e2-k1-s0-v2, Glücksrad 180°, 90°, 90°,
+%   bisher ohne Grafik; Labels A, B, C gesetzt):
+%   \baummehr{A/\frac{1}{2},B/\frac{1}{4},C/\frac{1}{4}}{}
+\newcommand{\mbbmanfang}{\begin{tikzpicture}[baseline=(current bounding box.north),line width=0.6pt,
+     ast/.style={font=\small,inner sep=1.5pt}, wk/.style={font=\scriptsize,fill=white,inner sep=1pt},
+     pf/.style={font=\scriptsize,anchor=west,inner sep=1pt}]}
+\newcommand{\mbbmende}{\end{tikzpicture}}
+\newcommand{\mbbmwurzel}[1]{\coordinate (mbbmS) at (0,#1);}
+\newcommand{\mbbmknoten}[4]{\node[ast] (#1) at (#2,#3) {$#4$};}% Name, x, y, Label
+\newcommand{\mbbmast}[3]{\draw (#1) -- (#2) node[wk,pos=0.5] {\ifblank{#3}{\underline{\hspace{5mm}}}{$#3$}};}
+\newcommand{\mbbmpfad}[2]{\node[pf] at ([xshift=3mm]#1.east) {\ifblank{#2}{\underline{\hspace{7mm}}}{$#2$}};}
+\ExplSyntaxOn
+\seq_new:N \l__mb_bm_eins_seq
+\seq_new:N \l__mb_bm_zwei_seq
+\seq_new:N \l__mb_bm_kinder_seq
+\seq_new:N \l__mb_bm_teil_seq
+\seq_new:N \l__mb_bm_teilk_seq
+\seq_new:N \l__mb_bm_p_seq
+\int_new:N \l__mb_bm_blatt_int
+\int_new:N \l__mb_bm_n_int
+\fp_new:N \l__mb_bm_d_fp
+\fp_new:N \l__mb_bm_ysum_fp
+\tl_new:N \l__mb_bm_y_tl
+\tl_new:N \l__mb_bm_yk_tl
+\tl_new:N \l__mb_bm_liste_tl
+% Kinder des i-ten Astes der ersten Stufe nach \l__mb_bm_kinder_seq
+\cs_new_protected:Npn \__mb_bm_kinder:n #1
+  {
+    \seq_clear:N \l__mb_bm_kinder_seq
+    \int_compare:nNnF {#1} > { \seq_count:N \l__mb_bm_zwei_seq }
+      {
+        \tl_set:Nx \l__mb_bm_liste_tl { \seq_item:Nn \l__mb_bm_zwei_seq {#1} }
+        \exp_args:No \tl_if_blank:nF { \l__mb_bm_liste_tl }
+          { \exp_args:NNno \seq_set_split:Nnn \l__mb_bm_kinder_seq { , } { \l__mb_bm_liste_tl } }
+      }
+  }
+\NewDocumentCommand{\baummehr}{m m}
+  {
+    \seq_set_split:Nnn \l__mb_bm_eins_seq { , } {#1}
+    \tl_if_blank:nTF {#2}
+      { \seq_clear:N \l__mb_bm_zwei_seq }
+      { \seq_set_split:Nnn \l__mb_bm_zwei_seq { ; } {#2} }
+    % erster Durchgang: Pfadenden zählen, Abstand wählen
+    \int_zero:N \l__mb_bm_blatt_int
+    \seq_map_indexed_inline:Nn \l__mb_bm_eins_seq
+      {
+        \__mb_bm_kinder:n {##1}
+        \int_add:Nn \l__mb_bm_blatt_int { \int_max:nn { 1 } { \seq_count:N \l__mb_bm_kinder_seq } }
+      }
+    \fp_set:Nn \l__mb_bm_d_fp
+      { \int_compare:nNnTF { \l__mb_bm_blatt_int } > { 4 } { 0.8 } { 1.1 } }
+    % zweiter Durchgang: Knoten der ersten Stufe in der Mitte ihrer Pfadenden, dann die Kinder
+    \int_zero:N \l__mb_bm_blatt_int
+    \fp_zero:N \l__mb_bm_ysum_fp
+    \seq_clear:N \l__mb_bm_p_seq
+    \mbbmanfang
+    \seq_map_indexed_inline:Nn \l__mb_bm_eins_seq
+      {
+        \__mb_bm_kinder:n {##1}
+        \int_set:Nn \l__mb_bm_n_int { \int_max:nn { 1 } { \seq_count:N \l__mb_bm_kinder_seq } }
+        \tl_set:Nx \l__mb_bm_y_tl
+          {
+            \fp_eval:n
+              { - ( \int_use:N \l__mb_bm_blatt_int + ( \int_use:N \l__mb_bm_n_int - 1 ) / 2 ) * \l__mb_bm_d_fp }
+          }
+        \fp_add:Nn \l__mb_bm_ysum_fp { \l__mb_bm_y_tl }
+        \seq_set_split:Nnn \l__mb_bm_teil_seq { / } {##2}
+        \seq_put_right:Nx \l__mb_bm_p_seq { \seq_item:Nn \l__mb_bm_teil_seq { 2 } }
+        \use:x
+          {
+            \exp_not:N \mbbmknoten { mbbmA##1 } { 2.4 } { \l__mb_bm_y_tl }
+              { \seq_item:Nn \l__mb_bm_teil_seq { 1 } }
+          }
+        \seq_if_empty:NTF \l__mb_bm_kinder_seq
+          {
+            \int_compare:nNnT { \seq_count:N \l__mb_bm_teil_seq } > { 2 }
+              { \use:x { \exp_not:N \mbbmpfad { mbbmA##1 } { \seq_item:Nn \l__mb_bm_teil_seq { 3 } } } }
+          }
+          {
+            \seq_map_indexed_inline:Nn \l__mb_bm_kinder_seq
+              {
+                \seq_set_split:Nnn \l__mb_bm_teilk_seq { / } {####2}
+                \tl_set:Nx \l__mb_bm_yk_tl
+                  { \fp_eval:n { - ( \int_use:N \l__mb_bm_blatt_int + ####1 - 1 ) * \l__mb_bm_d_fp } }
+                \use:x
+                  {
+                    \exp_not:N \mbbmknoten { mbbmB##1x####1 } { 4.8 } { \l__mb_bm_yk_tl }
+                      { \seq_item:Nn \l__mb_bm_teilk_seq { 1 } }
+                    \exp_not:N \mbbmast { mbbmA##1 } { mbbmB##1x####1 }
+                      { \seq_item:Nn \l__mb_bm_teilk_seq { 2 } }
+                  }
+                \int_compare:nNnT { \seq_count:N \l__mb_bm_teilk_seq } > { 2 }
+                  {
+                    \use:x
+                      { \exp_not:N \mbbmpfad { mbbmB##1x####1 } { \seq_item:Nn \l__mb_bm_teilk_seq { 3 } } }
+                  }
+              }
+          }
+        \int_add:Nn \l__mb_bm_blatt_int { \l__mb_bm_n_int }
+      }
+    % Wurzel in der Mitte der ersten Stufe, dann die Äste der ersten Stufe
+    \tl_set:Nx \l__mb_bm_y_tl { \fp_eval:n { \l__mb_bm_ysum_fp / \seq_count:N \l__mb_bm_eins_seq } }
+    \exp_args:NV \mbbmwurzel \l__mb_bm_y_tl
+    \seq_map_indexed_inline:Nn \l__mb_bm_p_seq
+      { \mbbmast { mbbmS } { mbbmA##1 } {##2} }
+    \mbbmende
+  }
+\ExplSyntaxOff
+
+% ---------------------------------------------------------------------------
+% P  Pfeildiagramme zu Matrizen: Übergangsdiagramm und Verflechtungsdiagramm (neuer Abschnitt)
+% ---------------------------------------------------------------------------
+% \uebergangsdiagramm{Zustände}{Pfeile}
+%   Zustände mit Komma (Mathelabels; Wörter als \text{Larve}). Sie liegen auf einem Kreis:
+%   zwei nebeneinander, drei als Dreieck mit der Spitze oben, vier als Quadrat usw.
+%   Pfeile mit Komma, je Pfeil Von>Nach/Wert; Von = Nach ist die Schleife (nach außen).
+%   Leerer Wert (A>B/) = Feld zum Eintragen. Gibt es zwischen zwei Zuständen beide Richtungen,
+%   werden beide Pfeile gebogen, sonst sind sie gerade.
+% \uebergangsdiagramm[2.4]{...}{...}   Abstand Mitte–Zustand in cm (Voreinstellung 1,8)
+% Beispiel (matrizen-und-uebergangsprozesse-e4-k1-s1-v1, Lösungsgrafik; Studio A, Studio B):
+%   \uebergangsdiagramm{A,B}{A>A/0{,}9, A>B/0{,}1, B>A/0{,}15, B>B/0{,}85}
+% Beispiel (matrizen-und-uebergangsprozesse-e4-k1-s1-v2, Lösungsgrafik; kein Pfeil C → B):
+%   \uebergangsdiagramm{A,B,C}{A>A/0{,}6, A>B/0{,}3, A>C/0{,}1, B>B/0{,}5, B>A/0{,}25, B>C/0{,}25,
+%     C>C/0{,}8, C>A/0{,}2}
+% \verflechtungsdiagramm{Stufen}{Pfeile}
+%   Stufen mit Semikolon, Knoten einer Stufe mit Komma; die Stufen stehen von links nach rechts,
+%   ihre Knoten untereinander. Pfeile wie oben (Von>Nach/Wert), gerade, Wert im ersten Drittel.
+% Beispiel (matrizen-und-uebergangsprozesse-e3-k1-s2-v1, bisher Pfeilliste im Aufgabentext):
+%   \verflechtungsdiagramm{R_1,R_2,R_3;Z_1,Z_2}{R_1>Z_1/2, R_1>Z_2/5, R_2>Z_2/1, R_3>Z_1/4}
+\newcommand{\mbpdanfang}{\begin{tikzpicture}[baseline=(current bounding box.north),line width=0.6pt,
+     zst/.style={draw,circle,minimum size=8mm,inner sep=1pt,font=\small},
+     wk/.style={font=\scriptsize,fill=white,inner sep=1pt},
+     pf/.style={-{Stealth[length=2mm]},line width=0.7pt}]}
+\newcommand{\mbpdende}{\end{tikzpicture}}
+\newcommand{\mbpdknoten}[4]{\node[zst] (#1) at (#2,#3) {$#4$};}% Name, x, y, Label
+\newcommand{\mbpdwert}[1]{\ifblank{#1}{\underline{\hspace{5mm}}}{$#1$}}
+% Pfeil: von, nach, Biegung in Grad (0 = gerade), Wert, Lage des Werts entlang des Pfeils
+\newcommand{\mbpdpfeil}[5]{\draw[pf] (#1) to[bend left=#3] node[wk,pos=#5] {\mbpdwert{#4}} (#2);}
+% Schleife: Knoten, Austrittswinkel, Eintrittswinkel, Wert
+\newcommand{\mbpdschleife}[4]{\draw[pf] (#1) to[loop,out=#2,in=#3,min distance=6mm] node[wk] {\mbpdwert{#4}} (#1);}
+\ExplSyntaxOn
+\seq_new:N \l__mb_pd_knoten_seq
+\seq_new:N \l__mb_pd_stufen_seq
+\seq_new:N \l__mb_pd_pfeile_seq
+\seq_new:N \l__mb_pd_teil_seq
+\seq_new:N \l__mb_pd_ab_seq
+\seq_new:N \l__mb_pd_paare_seq
+\prop_new:N \l__mb_pd_name_prop
+\prop_new:N \l__mb_pd_winkel_prop
+\int_new:N \l__mb_pd_n_int
+\int_new:N \l__mb_pd_k_int
+\tl_new:N \l__mb_pd_von_tl
+\tl_new:N \l__mb_pd_nach_tl
+\tl_new:N \l__mb_pd_wert_tl
+\tl_new:N \l__mb_pd_x_tl
+\tl_new:N \l__mb_pd_y_tl
+\tl_new:N \l__mb_pd_w_tl
+\tl_new:N \l__mb_pd_hilf_tl
+\tl_new:N \l__mb_pd_bieg_tl
+\tl_new:N \l__mb_pd_pos_tl
+% Knoten: Label, Nummer, x, y, Winkel nach außen (für die Schleife)
+\cs_new_protected:Npn \__mb_pd_knoten:nnnnn #1#2#3#4#5
+  {
+    \prop_put:Nnn \l__mb_pd_name_prop {#1} {#2}
+    \prop_put:Nnn \l__mb_pd_winkel_prop {#2} {#5}
+    \mbpdknoten { mbpd#2 } {#3} {#4} {#1}
+  }
+% Nummer des Knotens mit dem Label an Stelle #1 von \l__mb_pd_ab_seq nach #2
+\cs_new_protected:Npn \__mb_pd_nummer:nN #1#2
+  {
+    \tl_set:Nx \l__mb_pd_hilf_tl { \seq_item:Nn \l__mb_pd_ab_seq {#1} }
+    \exp_args:NNo \prop_get:NnNF \l__mb_pd_name_prop { \l__mb_pd_hilf_tl } #2
+      {
+        \tl_set:Nn #2 { 0 }
+        \PackageWarning { vorschlag-bausteine-sek2 } { Pfeil~mit~unbekanntem~Knoten }
+      }
+  }
+% Ein Pfeil „Von>Nach/Wert“ nach \l__mb_pd_von_tl, \l__mb_pd_nach_tl (Nummern), \l__mb_pd_wert_tl
+\cs_new_protected:Npn \__mb_pd_lesen:n #1
+  {
+    \seq_set_split:Nnn \l__mb_pd_teil_seq { / } {#1}
+    \tl_set:Nx \l__mb_pd_wert_tl { \seq_item:Nn \l__mb_pd_teil_seq { 2 } }
+    \tl_set:Nx \l__mb_pd_hilf_tl { \seq_item:Nn \l__mb_pd_teil_seq { 1 } }
+    \exp_args:NNno \seq_set_split:Nnn \l__mb_pd_ab_seq { > } { \l__mb_pd_hilf_tl }
+    \__mb_pd_nummer:nN { 1 } \l__mb_pd_von_tl
+    \__mb_pd_nummer:nN { 2 } \l__mb_pd_nach_tl
+  }
+% Alle Pfeile zeichnen; #2 = u (Übergang: Schleifen, Gegenrichtung gebogen) oder v (Verflechtung)
+\cs_new_protected:Npn \__mb_pd_pfeile:nn #1#2
+  {
+    \seq_set_split:Nnn \l__mb_pd_pfeile_seq { , } {#1}
+    \seq_clear:N \l__mb_pd_paare_seq
+    \seq_map_inline:Nn \l__mb_pd_pfeile_seq
+      {
+        \__mb_pd_lesen:n {##1}
+        \seq_put_right:Nx \l__mb_pd_paare_seq { \l__mb_pd_von_tl > \l__mb_pd_nach_tl }
+      }
+    \seq_map_inline:Nn \l__mb_pd_pfeile_seq
+      {
+        \__mb_pd_lesen:n {##1}
+        \tl_if_eq:NNTF \l__mb_pd_von_tl \l__mb_pd_nach_tl
+          {
+            \prop_get:NVN \l__mb_pd_winkel_prop \l__mb_pd_von_tl \l__mb_pd_w_tl
+            \use:x
+              {
+                \exp_not:N \mbpdschleife { mbpd \l__mb_pd_von_tl }
+                  { \fp_eval:n { \l__mb_pd_w_tl + 25 } } { \fp_eval:n { \l__mb_pd_w_tl - 25 } }
+                  { \exp_not:V \l__mb_pd_wert_tl }
+              }
+          }
+          {
+            % gebogen nur im Übergangsdiagramm und nur, wenn es die Gegenrichtung gibt
+            \tl_set:Nx \l__mb_pd_hilf_tl { \l__mb_pd_nach_tl > \l__mb_pd_von_tl }
+            \tl_set:Nn \l__mb_pd_bieg_tl { 0 }
+            \tl_set:Nn \l__mb_pd_pos_tl { 0.3 }
+            \str_if_eq:nnT {#2} { u }
+              {
+                \tl_set:Nn \l__mb_pd_pos_tl { 0.5 }
+                \seq_if_in:NVT \l__mb_pd_paare_seq \l__mb_pd_hilf_tl
+                  { \tl_set:Nn \l__mb_pd_bieg_tl { 18 } }
+              }
+            \use:x
+              {
+                \exp_not:N \mbpdpfeil { mbpd \l__mb_pd_von_tl } { mbpd \l__mb_pd_nach_tl }
+                  { \l__mb_pd_bieg_tl } { \exp_not:V \l__mb_pd_wert_tl } { \l__mb_pd_pos_tl }
+              }
+          }
+      }
+  }
+\NewDocumentCommand{\uebergangsdiagramm}{O{1.8} m m}
+  {
+    \seq_set_split:Nnn \l__mb_pd_knoten_seq { , } {#2}
+    \prop_clear:N \l__mb_pd_name_prop
+    \prop_clear:N \l__mb_pd_winkel_prop
+    \int_set:Nn \l__mb_pd_n_int { \seq_count:N \l__mb_pd_knoten_seq }
+    \mbpdanfang
+    \seq_map_indexed_inline:Nn \l__mb_pd_knoten_seq
+      {
+        \tl_set:Nx \l__mb_pd_w_tl
+          {
+            \int_compare:nNnTF { \l__mb_pd_n_int } = { 2 }
+              { \int_eval:n { 180 - 180 * ( ##1 - 1 ) } }
+              { \fp_eval:n { 90 - 360 * ( ##1 - 1 ) / \int_use:N \l__mb_pd_n_int } }
+          }
+        \tl_set:Nx \l__mb_pd_x_tl { \fp_eval:n { round ( #1 * cosd ( \l__mb_pd_w_tl ) , 3 ) } }
+        \tl_set:Nx \l__mb_pd_y_tl { \fp_eval:n { round ( #1 * sind ( \l__mb_pd_w_tl ) , 3 ) } }
+        \use:x
+          {
+            \exp_not:N \__mb_pd_knoten:nnnnn { \exp_not:n {##2} } {##1}
+              { \l__mb_pd_x_tl } { \l__mb_pd_y_tl } { \l__mb_pd_w_tl }
+          }
+      }
+    \__mb_pd_pfeile:nn {#3} { u }
+    \mbpdende
+  }
+\NewDocumentCommand{\verflechtungsdiagramm}{m m}
+  {
+    \seq_set_split:Nnn \l__mb_pd_stufen_seq { ; } {#1}
+    \prop_clear:N \l__mb_pd_name_prop
+    \prop_clear:N \l__mb_pd_winkel_prop
+    \int_zero:N \l__mb_pd_k_int
+    \mbpdanfang
+    \seq_map_indexed_inline:Nn \l__mb_pd_stufen_seq
+      {
+        \seq_set_split:Nnn \l__mb_pd_knoten_seq { , } {##2}
+        \int_set:Nn \l__mb_pd_n_int { \seq_count:N \l__mb_pd_knoten_seq }
+        \seq_map_indexed_inline:Nn \l__mb_pd_knoten_seq
+          {
+            \int_incr:N \l__mb_pd_k_int
+            \tl_set:Nx \l__mb_pd_x_tl { \fp_eval:n { 3.2 * ( ##1 - 1 ) } }
+            \tl_set:Nx \l__mb_pd_y_tl
+              { \fp_eval:n { 1.3 * ( ( \int_use:N \l__mb_pd_n_int + 1 ) / 2 - ####1 ) } }
+            \use:x
+              {
+                \exp_not:N \__mb_pd_knoten:nnnnn { \exp_not:n {####2} } { \int_use:N \l__mb_pd_k_int }
+                  { \l__mb_pd_x_tl } { \l__mb_pd_y_tl } { 0 }
+              }
+          }
+      }
+    \__mb_pd_pfeile:nn {#2} { v }
+    \mbpdende
+  }
+\ExplSyntaxOff
+
+\endinput
