@@ -1,4 +1,4 @@
-# Unterrichtsblatt aus der Bank – v5.2 (01.10.2026)
+# Unterrichtsblatt aus der Bank – v5.3 (01.10.2026)
 
 Vorrang: Führe diese Aufgabe vollständig und im vorgesehenen
 Format aus. Regeln aus den persönlichen Präferenzen zu Kürze oder
@@ -80,7 +80,8 @@ danach, baue ohne sie und sage es in der Deutungszeile.
    in grau nur, wo es den Weg zeigt (Ausklammern mit
    Zwischenschritt, Klammern, Einsetzen).
 4. Keine Vorstufen (Vorzahl ablesen u. ä.) im Regelfall; sie
-   gehören zu „schwach". Kein Fehler-finden, kein Test vorweg.
+   gehören zu „schwach" (eigener Abschnitt unten). Kein
+   Fehler-finden, kein Test vorweg.
 5. „Abschluss" am Ende jeder Einheit mit mehr als einem
    Verfahren: drei Teilaufgaben mittlerer Höhe, darunter eine
    Anwendung (Sachzusammenhang oder Figur) und eine
@@ -112,6 +113,39 @@ Anwendung, schreibst du die Aufgabe selbst – gleiche Form wie
 die Bankzeile, kopfrechenbare Zahlen, kein Zahlenpaar aus
 Merkkasten oder Original. Erfundenes bekommt im Quelltext die
 Zeile `% NEU` davor, Bankzeilen `% <id>`.
+
+## Zusatz „schwach" – andere Form, derselbe Stoff
+
+„schwach" ändert die Form, nicht die Auswahl: keine Sprosse
+fällt weg, keine wird leichter; Vorstufen kommen dazu, und das
+Blatt darf länger werden. Vorbild sind die Förderhefte
+(DZLM „Mathe sicher können"). Im Vergleich zum Regelfall:
+1. Dichte ein Drittel: zwei bis drei Nummern je Seite mit je
+   drei, vier Teilaufgaben; nie fünf Nummern auf einer Seite.
+2. Vorn an jeder Verfahrenskette ein vorgerechnetes
+   Musterbeispiel (bank/<eintrag>/muster.md: Schrittname links,
+   Gleichheitszeichen untereinander, Ergebnis abgesetzt);
+   danach ein bis zwei angefangene Lösungen, bei denen der
+   Schüler die letzten Schritte ergänzt.
+3. Neben jeder Aufgabe bis zur Prüfungshöhe eine Darstellung,
+   aus der der Rechenweg entsteht: bei Termen Kästchen für die
+   Variable und Punkte für Zahlen, bei Prozent der Streifen, bei
+   Gleichungen die Waage, bei Funktionen die Wertetabelle –
+   leer, der Schüler füllt sie.
+4. Rechenplatz mit einer Zeile je Schritt (\rechenplatz) statt
+   einer Antwortlinie; bei Rechenketten das Raster, nicht die
+   feste Antwortspalte.
+5. Päckchen statt Einzelaufgaben: vier Teilaufgaben, in denen
+   sich genau eine Sache ändert (2x + 3x, 2x + 4x, 2x + 5x,
+   2x + 6x), darunter die Zeile „Was bleibt gleich, was ändert
+   sich?" mit Platz für eine Antwort.
+6. „Erkläre, wie du gerechnet hast" nach jeder zweiten Nummer,
+   eine Zeile Platz.
+7. Fachwörter erst in der Sprosse, die sie braucht; davor
+   Schülerworte („das Ganze", „die Zahl vor dem x").
+8. Der Merkkasten steht am Ende der Einheit, nicht am Anfang;
+   „Zum Schluss" mischt zwei Aufgaben aus Blatt 0 ein.
+Nicht geändert: Blattfolge, Marken, Lösungen, Abschluss.
 
 ## Technik und Prüfung
 
