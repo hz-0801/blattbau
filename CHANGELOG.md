@@ -4,6 +4,11 @@ Repo hz-0801/mathe-nachhilfe (bis 2026-09-07 pruefungskatalog; Vorlage und Anlei
 
 - 19.09.2026: masterprompt.md → unterrichtsblatt.md, pruefungsprompt.md → pruefungsblatt.md (Umbenennung, Inhalt unverändert)
 
+## Bank-Prompt (`bankblatt.md`)
+
+- 2026-10-01 v5.1 (Anlass: Test v5.0 am 01.10. – 44 erfundene Aufgaben blieben im Archiv beim Lehrer; Werkstatt-Beschluss Eingang): Quellen aus dem Klon statt je Datei per Abruf; `eingang.jsonl` früherer Blätter mitnutzen; vor dem Bau nachsehen, ob das Blatt schon liegt; Abschluss mit Anwendung und Begründeaufgabe, Form wechselt; höchstens acht Teilaufgaben je Nummer; Ablage von PDF, Quelltext, `neu.jsonl` (mit Herkunft) und `protokoll.txt` in `aufgabenbank/eingang/<eintrag>-<datum>/` mit Commit und Push durch den Blatt-Chat; nie direkt in `e<n>.jsonl`.
+- 2026-10-01 v5.0 (Test): erste Fassung, nur als Projektanweisung; Blatt und `neu.jsonl` als Archiv zum Herunterladen.
+
 ## Vorlage
 
 Ältere Vorlagenversionen stehen im Kopf von `mathblatt.sty`, eine Zeile je Version; hier stehen nur die Stufen.
