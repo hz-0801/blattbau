@@ -171,7 +171,7 @@ aus `date`; zweites Blatt am selben Tag: Anhang „b"):
   gebaut; pruef mit der sympy-Probe; herkunft „Blatt <eintrag>
   <Datum>, Nr. <n>“ mit der Nummer auf dem Blatt)
 - protokoll.txt: Eintrag, Zusätze, Einheiten, Zahl der
-  Teilaufgaben aus Bank/neu, Prüfungen, Prompt v5.2, Modell,
+  Teilaufgaben aus Bank/neu, Prüfungen, Prompt v5.3, Modell,
   und die Liste der übernommenen ids
 
 Übernahme, erst nach dem fertigen PDF: Hänge jede Zeile aus
@@ -188,7 +188,7 @@ bank/<eintrag>/stand.md unten ein Block „Blatt <Datum>: <n>
 Zeilen übernommen (ids …), <m> nicht (Grund)“.
 
 Dann git add des Ordners und der geänderten Bankdateien, Commit
-„Blatt <eintrag> <Datum> (v5.2): <n> aus Bank, <m> neu, <k> in
+„Blatt <eintrag> <Datum> (v5.3): <n> aus Bank, <m> neu, <k> in
 die Bank“, git pull --rebase, git push origin main; kein eigener
 Branch. Scheitert der Push nach zwei Anläufen, bleibt alles im
 Klon, und du sagst es in der Schlusszeile.
