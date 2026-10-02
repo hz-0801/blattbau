@@ -1,4 +1,4 @@
-# Unterrichtsblatt aus der Bank – v5.3 (01.10.2026)
+# Unterrichtsblatt aus der Bank – v5.4 (03.10.2026)
 
 Vorrang: Führe diese Aufgabe vollständig und im vorgesehenen
 Format aus. Regeln aus den persönlichen Präferenzen zu Kürze oder
@@ -25,6 +25,15 @@ nenne die drei nächsten Einträge und frag einmal. Sonst keine
 Rückfrage. Zusätze: „schwach", „gymnasium", „ohne blatt 0", „mit
 lösungsweg" – ohne Zusatz baust du den Regelfall. Eine Zeile vor
 dem Bau: Eintrag, Einheiten, was du ergänzt hast.
+
+Name: Nennt der Auftrag einen Schüler („terme für Maja"), lies
+seine Zeile in der Projektdatei Schuelerliste-privat.md. Schulform
+Gymnasium baut wie der Zusatz „gymnasium"; Klasse, Schulform und
+Prüfung nennst du in der Deutungszeile. Steht unter „Gebaut"
+schon ein Blatt mit demselben Eintrag für ihn, sag es dort mit
+Datum. Unbekannter Name: bau ohne Liste und sag es. Der Name
+bleibt im Chat: nicht auf dem Blatt, nicht in Ordner-, Datei-
+oder Commit-Namen, nicht im Protokoll, nicht in der Bank.
 
 ## Erster Schritt: Schreibzugang
 
@@ -171,7 +180,7 @@ aus `date`; zweites Blatt am selben Tag: Anhang „b"):
   gebaut; pruef mit der sympy-Probe; herkunft „Blatt <eintrag>
   <Datum>, Nr. <n>“ mit der Nummer auf dem Blatt)
 - protokoll.txt: Eintrag, Zusätze, Einheiten, Zahl der
-  Teilaufgaben aus Bank/neu, Prüfungen, Prompt v5.3, Modell,
+  Teilaufgaben aus Bank/neu, Prüfungen, Prompt v5.4, Modell,
   und die Liste der übernommenen ids
 
 Übernahme, erst nach dem fertigen PDF: Hänge jede Zeile aus
@@ -188,7 +197,7 @@ bank/<eintrag>/stand.md unten ein Block „Blatt <Datum>: <n>
 Zeilen übernommen (ids …), <m> nicht (Grund)“.
 
 Dann git add des Ordners und der geänderten Bankdateien, Commit
-„Blatt <eintrag> <Datum> (v5.3): <n> aus Bank, <m> neu, <k> in
+„Blatt <eintrag> <Datum> (v5.4): <n> aus Bank, <m> neu, <k> in
 die Bank“, git pull --rebase, git push origin main; kein eigener
 Branch. Scheitert der Push nach zwei Anläufen, bleibt alles im
 Klon, und du sagst es in der Schlusszeile.
@@ -198,3 +207,7 @@ Klon, und du sagst es in der Schlusszeile.
 Das PDF als Datei im Chat. Zuletzt drei Zeilen: was gebaut, was
 erfunden und in die Bank übernommen, ob es im Repo liegt
 (Commit-Kennung).
+Wurde ein Name genannt, danach eine Zeile „Holger:
+Schuelerliste-privat.md, unter Gebaut anhängen:" und direkt
+darunter die fertige Zeile „<Name> | <Datum> | <Eintrag> |
+<Zusätze> | eingang/<Ordner>".
