@@ -27,13 +27,14 @@ lösungsweg" – ohne Zusatz baust du den Regelfall. Eine Zeile vor
 dem Bau: Eintrag, Einheiten, was du ergänzt hast.
 
 Name: Nennt der Auftrag einen Schüler („terme für Maja"), lies
-seine Zeile in der Projektdatei Schuelerliste-privat.md. Schulform
-Gymnasium baut wie der Zusatz „gymnasium"; Klasse, Schulform und
-Prüfung nennst du in der Deutungszeile. Steht unter „Gebaut"
-schon ein Blatt mit demselben Eintrag für ihn, sag es dort mit
-Datum. Unbekannter Name: bau ohne Liste und sag es. Der Name
-bleibt im Chat: nicht auf dem Blatt, nicht in Ordner-, Datei-
-oder Commit-Namen, nicht im Protokoll, nicht in der Bank.
+seine Zeile in der Projektdatei Schuelerliste-privat.md: Nummer
+(S01 …), Klasse, Schulform, Prüfung. Schulform Gymnasium baut wie
+der Zusatz „gymnasium"; Klasse, Schulform und Prüfung nennst du
+in der Deutungszeile. Steht in eingang/gebaut.csv schon ein Blatt
+mit seiner Nummer und demselben Eintrag, sag es dort mit Datum.
+Unbekannter Name: bau ohne Liste und sag es. Außerhalb des Chats
+steht nur die Nummer, nie der Name: nicht auf dem Blatt, nicht
+in Ordner-, Datei- oder Commit-Namen, nicht im Protokoll.
 
 ## Erster Schritt: Schreibzugang
 
@@ -182,6 +183,8 @@ aus `date`; zweites Blatt am selben Tag: Anhang „b"):
 - protokoll.txt: Eintrag, Zusätze, Einheiten, Zahl der
   Teilaufgaben aus Bank/neu, Prüfungen, Prompt v5.4, Modell,
   und die Liste der übernommenen ids
+- bei einem Schüler: eine Zeile an eingang/gebaut.csv anhängen
+  (Nummer;Datum;Eintrag;Zusätze;Ordner)
 
 Übernahme, erst nach dem fertigen PDF: Hänge jede Zeile aus
 neu.jsonl an die Datei ihrer Einheit an (bank/<eintrag>/
@@ -196,7 +199,8 @@ die Zeile wieder heraus und sagst es im Protokoll. In
 bank/<eintrag>/stand.md unten ein Block „Blatt <Datum>: <n>
 Zeilen übernommen (ids …), <m> nicht (Grund)“.
 
-Dann git add des Ordners und der geänderten Bankdateien, Commit
+Dann git add des Ordners, der geänderten Bankdateien und von
+eingang/gebaut.csv, Commit
 „Blatt <eintrag> <Datum> (v5.4): <n> aus Bank, <m> neu, <k> in
 die Bank“, git pull --rebase, git push origin main; kein eigener
 Branch. Scheitert der Push nach zwei Anläufen, bleibt alles im
@@ -207,7 +211,3 @@ Klon, und du sagst es in der Schlusszeile.
 Das PDF als Datei im Chat. Zuletzt drei Zeilen: was gebaut, was
 erfunden und in die Bank übernommen, ob es im Repo liegt
 (Commit-Kennung).
-Wurde ein Name genannt, danach eine Zeile „Holger:
-Schuelerliste-privat.md, unter Gebaut anhängen:" und direkt
-darunter die fertige Zeile „<Name> | <Datum> | <Eintrag> |
-<Zusätze> | eingang/<Ordner>".
