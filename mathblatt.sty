@@ -1,4 +1,6 @@
 % mathblatt.sty – Vorlage für Nachhilfe-Arbeitsblätter, Stufe 6 (Sek I und Oberstufe)
+% Version 2026-10-03a (rechter Winkel in ebenen Figuren als Viertelkreisbogen mit Punkt, wie in
+% deutschen Lehrwerken – \dreieckrw und \tangente; Lehrer 03.10.2026. Körper behalten das Winkeleck.)
 % Version 2026-09-28a (Stufe 6: Bausteine aus den Lesebefunden des Lehrers vom 26.09.2026 zu zwei
 %                      Testlauf-Blättern, dazu das Probeblatt der Vorlage:
 %                      \anweisung{...} – Anweisungszeile zwischen Teilaufgaben in teile, teilezwei,
@@ -769,12 +771,26 @@
 % E  Dreieck
 % ---------------------------------------------------------------------------
 % \dreieck{(0,0)}{(5,0)}{(1.5,3)}{a}{b}{c}{\alpha}{\beta}{\gamma}   allgemein
+% \rwbei{C}\dreieck{...}   markiert den rechten Winkel bei A, B oder C (Bogen mit Punkt)
 % \dreieckrw{4}{3}{a}{b}{c}    rechtwinklig bei C, Katheten a (waagerecht), b (senkrecht)
 %   Leere Beschriftung {} lässt das Label weg. Koordinaten in cm.
+\ExplSyntaxOn
+\cs_new_eq:NN \mbStrIfEq \str_if_eq:eeTF
+\ExplSyntaxOff
+% \mbrwmarke{(Scheitel)}{(Punkt 1)}{(Punkt 2)}: Viertelkreisbogen mit Punkt im rechten Winkel
+\newcommand{\mbrwmarke}[3]{%
+  \draw let \p1=($#2-#1$), \p2=($#3-#1$), \n1={atan2(\y1,\x1)}, \n2={atan2(\y2,\x2)},
+    \n3={ifthenelse(mod(\n2-\n1+360,360)<180,\n1,\n2)} in
+    ($#1+(\n3:0.4)$) arc (\n3:\n3+90:0.4) ($#1+(\n3+45:0.2)$) circle (0.8pt);}
+\def\mbrwecke{}
+\newcommand{\rwbei}[1]{\def\mbrwecke{#1}}
 \NewDocumentCommand{\dreieck}{m m m m m m m m m}{%
   \begin{tikzpicture}[baseline=(current bounding box.north)]
     \coordinate (A) at #1; \coordinate (B) at #2; \coordinate (C) at #3;
     \draw[line width=0.8pt] (A) -- (B) -- (C) -- cycle;
+    \mbStrIfEq{\mbrwecke}{A}{\mbrwmarke{(A)}{(B)}{(C)}}{}%
+    \mbStrIfEq{\mbrwecke}{B}{\mbrwmarke{(B)}{(C)}{(A)}}{}%
+    \mbStrIfEq{\mbrwecke}{C}{\mbrwmarke{(C)}{(A)}{(B)}}{}%
     \node[below left,font=\small] at (A) {$A$};
     \node[below right,font=\small] at (B) {$B$};
     \node[above,font=\small] at (C) {$C$};
@@ -784,12 +800,12 @@
     \node[font=\small] at ($(A)+(0.55,0.22)$) {$#7$};
     \node[font=\small] at ($(B)+(-0.55,0.22)$) {$#8$};
     \node[font=\small] at ($(C)+(0,-0.45)$) {$#9$};
-  \end{tikzpicture}}
+  \end{tikzpicture}\gdef\mbrwecke{}}
 \NewDocumentCommand{\dreieckrw}{m m m m m}{%
   \begin{tikzpicture}[baseline=(current bounding box.north)]
     \coordinate (C) at (0,0); \coordinate (B) at (#1,0); \coordinate (A) at (0,#2);
     \draw[line width=0.8pt] (A) -- (B) -- (C) -- cycle;
-    \draw (0.35,0) -- (0.35,0.35) -- (0,0.35); \fill (0.17,0.17) circle (0.8pt);
+    \draw (0.4,0) arc (0:90:0.4); \fill (45:0.2) circle (0.8pt);
     \node[above,font=\small] at (A) {$A$};
     \node[right,font=\small] at (B) {$B$};
     \node[below left,font=\small] at (C) {$C$};
@@ -1262,8 +1278,8 @@
   \pgfmathsetmacro{\krl}{0.85*\krr}%
   \draw[dashed,line width=0.5pt] (0,0) -- (#1:\krr);
   \draw[line width=0.7pt] ($(#1:\krr)+({#1+90}:\krl)$) -- ($(#1:\krr)+({#1-90}:\krl)$);
-  \draw[line width=0.4pt] ($(#1:\krr)+({#1+90}:0.22)$) -- ($(#1:\krr)+({#1+90}:0.22)+({#1+180}:0.22)$)
-    -- ($(#1:\krr)+({#1+180}:0.22)$);
+  \draw[line width=0.4pt] ($(#1:\krr)+({#1+90}:0.3)$) arc ({#1+90}:{#1+180}:0.3);
+  \fill ($(#1:\krr)+({#1+135}:0.15)$) circle (0.6pt);
   \fill (#1:\krr) circle (1.4pt);
   \mbklabel{#2}{($(#1:\krr)+({#1-90}:{0.75*\krl})$)}{fill=white,inner sep=1pt}}
 \newcommand{\sektor}[3]{%
@@ -1869,7 +1885,7 @@
     \ifdefempty{\vrhoehe}{}{%
       \coordinate (F) at ($(A)!(D)!(B)$);
       \draw[dashed,line width=0.5pt] (D) -- (F);
-      \draw[line width=0.4pt] ($(F)!0.22cm!(D)$) -- ($(F)!0.22cm!(D)+($(F)!0.22cm!(B)$)-(F)$) -- ($(F)!0.22cm!(B)$);
+      \mbrwmarke{(F)}{(B)}{(D)}
       \fill ($(F)!0.11cm!(D)+($(F)!0.11cm!(B)$)-(F)$) circle (0.6pt);
       \node[right,font=\small,inner sep=2pt] at ($(D)!0.5!(F)$) {$\vrhoehe$};}
     \ifdefempty{\vrseiten}{}{\expandafter\mbvier\vrseiten\relax
@@ -1988,8 +2004,7 @@
   \draw[line width=0.7pt] (kA) -- (kC) -- (kB);
   \pgfmathtruncatemacro{\krd}{abs(#2-#1)}%
   \ifnum\krd=180
-    \draw[line width=0.4pt] ($(kC)!0.25cm!(kA)$) -- ($(kC)!0.25cm!(kA)+($(kC)!0.25cm!(kB)$)-(kC)$) -- ($(kC)!0.25cm!(kB)$);
-    \fill ($(kC)!0.12cm!(kA)+($(kC)!0.12cm!(kB)$)-(kC)$) circle (0.6pt);
+    \mbrwmarke{(kC)}{(kA)}{(kB)}
     \pgfmathanglebetweenpoints{\pgfpointanchor{kC}{center}}{\pgfpointanchor{kA}{center}}\let\mbwa\pgfmathresult
     \pgfmathanglebetweenpoints{\pgfpointanchor{kC}{center}}{\pgfpointanchor{kB}{center}}\let\mbwb\pgfmathresult
     \pgfmathsetmacro{\mbwb}{ifthenelse(\mbwb<\mbwa,\mbwb+360,\mbwb)}\pgfmathsetmacro{\mbwm}{(\mbwa+\mbwb)/2}%
