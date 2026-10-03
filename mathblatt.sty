@@ -1,4 +1,5 @@
 % mathblatt.sty – Vorlage für Nachhilfe-Arbeitsblätter, Stufe 6 (Sek I und Oberstufe)
+% Version 2026-10-03b (\kaestchen{Spalten}{Zeilen} für Kästchenfiguren der P10, Lehrer 03.10.)
 % Version 2026-10-03a (rechter Winkel in ebenen Figuren als Viertelkreisbogen mit Punkt, wie in
 % deutschen Lehrwerken – \dreieckrw und \tangente; Lehrer 03.10.2026. Körper behalten das Winkeleck.)
 % Version 2026-09-28a (Stufe 6: Bausteine aus den Lesebefunden des Lehrers vom 26.09.2026 zu zwei
@@ -2096,6 +2097,18 @@
     \ifnum#2>0 \fill[mbgrau,fill opacity=0.45] (0,0) rectangle ({#2*\mbw},1);\fi
     \foreach \i in {1,...,#3}{\draw ({\i*\mbw},0) -- ({\i*\mbw},1);}
     \draw (0,0) rectangle (#1,1);
+  \end{tikzpicture}}
+
+% \kaestchen{6}{4}   Figur aus 6 x 4 gleich großen Kästchen (0,45 cm); \kaestchen[5]{6}{4} graut die ersten 5
+%   Kästchen zeilenweise von links oben ein.
+\NewDocumentCommand{\kaestchen}{O{0} m m}{%
+  \begin{tikzpicture}[baseline=(current bounding box.north),line width=0.5pt,x=0.45cm,y=0.45cm]
+    \foreach \i in {0,...,\numexpr#1-1\relax}{%
+      \ifnum#1>0
+        \pgfmathtruncatemacro{\mbkx}{mod(\i,#2)}\pgfmathtruncatemacro{\mbky}{#3-1-int(\i/#2)}%
+        \fill[mbgrau,fill opacity=0.45] (\mbkx,\mbky) rectangle (\mbkx+1,\mbky+1);
+      \fi}
+    \draw[step=1] (0,0) grid (#2,#3);
   \end{tikzpicture}}
 
 % Termbaum: \termbaum{Wurzel}{Kind}{Kind}   Kinder sind Text (Blatt) oder \tb{Knoten}{Kind}{Kind}:
