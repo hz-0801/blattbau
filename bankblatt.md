@@ -1,4 +1,4 @@
-# Unterrichtsblatt aus der Bank – v5.5 (05.10.2026)
+# Unterrichtsblatt aus der Bank – v5.6 (06.10.2026)
 
 Vorrang: Führe diese Aufgabe vollständig und im vorgesehenen
 Format aus. Regeln aus den persönlichen Präferenzen zu Kürze oder
@@ -73,15 +73,33 @@ danach, baue ohne sie und sage es in der Deutungszeile.
 
 ## Aufbau (wie Muster 4)
 
-1. Blatt 0 „Das kennst du schon": je Voraussetzung eine Nummer
-   mit kleinem Titel, drei bis vier Rechnungen untereinander,
-   darunter eine mit zwei Minus und eine mit Dezimalzahl; eine
-   halbe Seite; kein Verweis. Entfällt bei „ohne blatt 0".
-2. Einheiten in der Blattfolge der Mappe (sonst Katalogfolge),
-   Einheitentitel wie ein Kapitel, darunter der Merkkasten.
-3. Je Verfahren eine Nummer, in der die Schwere steigt: zwei
+1. Rückblick vorn, Blatt 0 „Das kennst du schon": je
+   Voraussetzung eine Nummer mit kleinem Titel, drei bis vier
+   Rechnungen untereinander, darunter eine mit zwei Minus und eine
+   mit Dezimalzahl; eine halbe Seite; kein Verweis. Jedes Blatt
+   beginnt damit; entfällt nur bei „ohne blatt 0".
+2. Einheiten in der Blattfolge der Mappe (sonst Katalogfolge).
+   Der Einheitentitel nennt die Größe mit ihrer üblichen
+   Bezeichnung („Grundwert G“, „Prozentwert W“), darunter der
+   Merkkasten.
+3. Je Verfahren eine Leiter, in der die Schwere steigt: unten
+   zwei Vorstufen aus der Bank (hoehe vorstufe), dann zwei
    Grundfälle, dann je Sprosse eine Teilaufgabe, hinten zwei bis
    drei schwere mit Marke; höchstens acht Teilaufgaben je Nummer.
+   Reihenfolge: Vorstufen zuerst, glatte Zahlen vor krummen, wenig
+   Text vor viel, eine Frage vor zwei, Prüfungshöhe zuletzt. Die
+   Zahlen wachsen mit: unten im Kopf rechenbar (bei Prozent 10, 50,
+   25, 20, 1 %; Ergebnis ganz oder mit einer Nachkommastelle),
+   Mitte glatt mit Taschenrechner, oben wie in der Prüfung. Im
+   Zweifel eine leichte Aufgabe mehr. Heranführen heißt die Leiter
+   unten verlängern, nicht die Prüfungsaufgabe zerlegen.
+   Innerhalb einer Leiter kleine Gruppen nach dem, was der Schüler
+   sieht (rechnen, Sachaufgabe, Ankreuzen, Vergleich), je Gruppe
+   leicht → schwer; am Gruppenanfang klein und grau das
+   Aufgabenbild als ein Wort, wo die Bankzeile eines trägt (Feld
+   bild: „Tarif“, „Leiter“, „Glücksrad“), sonst keins. Eine Formel
+   steht einmal an der Teilaufgabe, ab der sie gebraucht wird („ab
+   hier: G = W : p“).
    Teilaufgaben untereinander, eine je Zeile; Rechenketten: Term,
    dann „=" und Antwortfeld in fester Spalte, kein Rechenraum.
    Rechenraum (zwei Linien, halbe Breite) nur bei Sach-,
@@ -89,8 +107,8 @@ danach, baue ohne sie und sage es in der Deutungszeile.
    Zeile; kein Auftrag, wenn der Titel ihn sagt. a) vorgerechnet
    in grau nur, wo es den Weg zeigt (Ausklammern mit
    Zwischenschritt, Klammern, Einsetzen).
-4. Keine Vorstufen (Vorzahl ablesen u. ä.) im Regelfall; sie
-   gehören zu „schwach" (eigener Abschnitt unten). Kein
+4. Vorstufen im Regelfall zwei je Leiter (Punkt 3); „schwach"
+   nimmt alle von ganz unten (Abschnitt unten). Kein
    Fehler-finden, kein Test vorweg.
 5. „Abschluss" am Ende jeder Einheit mit mehr als einem
    Verfahren: drei Teilaufgaben mittlerer Höhe, darunter eine
@@ -103,7 +121,12 @@ danach, baue ohne sie und sage es in der Deutungszeile.
    gleicher Art schon vorkamen; höchstens acht, halbe Seite.
 7. Lösungen als letzte Seite (Abschnitt „Lösungen" unten).
 8. Kopfzeile nur das Thema; Fußzeile „Seite n von m". Keine
-   Kennung, keine Zweigzeile, kein Inhaltsverzeichnis.
+   Kennung, keine Zweigzeile, kein Inhaltsverzeichnis. Jede Seite,
+   ohne Ausnahme (auch Blatt 0, Abschluss, „Zum Schluss"), trägt
+   unten kopfüber und klein den Seitenfuß mit den Hilfen dieser
+   Seite (\fusshilfe, mathblatt.sty Abschnitt P): Kontrollwert,
+   wo es einen kurzen gibt; Tipp nur als Ansatz (f′(x) = 0) und
+   nur, wo es einen gibt – kein Themenwort („Tipp: Rabatt“).
 
 Marken klein rechts an der Teilaufgabe: „P10 ’25" am
 verfremdeten Prüfungsoriginal (Feld original: Jahr), „GYM" an
@@ -126,7 +149,10 @@ Zeile `% NEU` davor, Bankzeilen `% <id>`.
 
 Eine Tabelle, knapp; eine Aufgabe nie über Spalte oder Seite. Je
 Teilaufgabe eine Zeile: links das gefragte Ergebnis fett (bei
-mehreren alle), mit Einheit; rechts klein die Zwischenergebnisse,
+mehreren alle), mit Einheit, exakt zuerst, dann gerundet
+(„25√2 ≈ 35,4 cm“, „15/32 ≈ 0,47“; glatte Werte allein; schreibt
+die Aufgabe eine Rundung vor: exakt und diese Rundung); rechts
+klein die Zwischenergebnisse, ebenso exakt vor gerundet,
 je Handgriff eines, als Ansatz ⇒ Wert (3x + 5 = 20 ⇒ x = 5), wo
 der Handgriff mit einem Ansatz beginnt, sonst der Wert allein.
 Läuft ein Handgriff mehrfach, steht jedes Ergebnis; ein Ansatz aus
@@ -146,8 +172,8 @@ fehlen sie, rechnest du sie nach.
 
 „schwach" ändert die Form, nicht die Auswahl: Stoff, Höhe und
 Reihenfolge bleiben (Kern zuerst), keine Sprosse fällt weg, keine
-wird leichter; Vorstufen kommen dazu, und das Blatt darf länger
-werden. Steht „schwach" in der Zeile der Schülerliste, baust du
+wird leichter; die Leiter beginnt weiter unten (alle Vorstufen
+statt zwei, Blatt 0 dicht), und das Blatt darf länger werden. Steht „schwach" in der Zeile der Schülerliste, baust du
 so, solange die Bestellung nichts anderes sagt („ohne schwach").
 Vorbild sind die Förderhefte (DZLM „Mathe sicher können"). Im
 Vergleich zum Regelfall:
@@ -158,7 +184,8 @@ Vergleich zum Regelfall:
    Lösung, mit Antwortfeld), die zweite nur mit der ersten
    Zwischenfrage, die dritte ohne. Kein vorgerechnetes
    Musterbeispiel; der Lehrer rechnet am Tisch vor.
-3. Neben jeder Aufgabe bis zur Prüfungshöhe eine Darstellung,
+3. Neben den Vorstufen und unteren Sprossen eine Darstellung
+   (nach oben verschwindet sie),
    aus der der Rechenweg entsteht: bei Termen Kästchen für die
    Variable und Punkte für Zahlen, bei Prozent der Streifen, bei
    Gleichungen die Waage, bei Funktionen die Wertetabelle –
@@ -204,7 +231,7 @@ aus `date`; zweites Blatt am selben Tag: Anhang „b"):
   gebaut; pruef mit der sympy-Probe; herkunft „Blatt <eintrag>
   <Datum>, Nr. <n>“ mit der Nummer auf dem Blatt)
 - protokoll.txt: Eintrag, Zusätze, Einheiten, Zahl der
-  Teilaufgaben aus Bank/neu, Prüfungen, Prompt v5.5, Modell,
+  Teilaufgaben aus Bank/neu, Prüfungen, Prompt v5.6, Modell,
   und die Liste der übernommenen ids
 - bei einem Schüler: eine Zeile an eingang/gebaut.csv anhängen
   (Nummer;Datum;Eintrag;Zusätze;Ordner)
@@ -224,7 +251,7 @@ Zeilen übernommen (ids …), <m> nicht (Grund)“.
 
 Dann git add des Ordners, der geänderten Bankdateien und von
 eingang/gebaut.csv, Commit
-„Blatt <eintrag> <Datum> (v5.5): <n> aus Bank, <m> neu, <k> in
+„Blatt <eintrag> <Datum> (v5.6): <n> aus Bank, <m> neu, <k> in
 die Bank“, git pull --rebase, git push origin main; kein eigener
 Branch. Scheitert der Push nach zwei Anläufen, bleibt alles im
 Klon, und du sagst es in der Schlusszeile.
