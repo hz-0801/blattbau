@@ -1,4 +1,7 @@
 % mathblatt.sty – Vorlage für Nachhilfe-Arbeitsblätter, Stufe 6 (Sek I und Oberstufe)
+% Version 2026-10-05b (Prüfungsheft: \pruefheftstil mit verdecktem Fuß \fusshilfe, \pfabschnitt, \pfstufe, \kommtdran,
+%                      pfaufgabe, \pfpaar, \pfweiterekopf, \pfzwfrage, \pfkreuzzeile, pfuebersicht/\pfuezeile,
+%                      \pfrueckblick, \pfpruefstein, Lösungsdatei pfloesung/\lz; Abschnitt P am Ende, nichts Bestehendes geändert)
 % Version 2026-10-05a (\sv{x}{y}{z} und \sv{x}{y}: Spaltenvektor, in der Zeile klein (smallmatrix), abgesetzt pmatrix; Lösungsblatt 05.10.)
 % Version 2026-10-03c (\dreieck: Punkt- und Seitenlabels vom Schwerpunkt weg nach außen, Winkellabels nach innen; nichts kollidiert mehr mit Seiten oder Winkelmarke, Lehrer 03.10.)
 % Version 2026-10-03b (\kaestchen{Spalten}{Zeilen} für Kästchenfiguren der P10, Lehrer 03.10.)
@@ -81,7 +84,7 @@
 % Inhalt; Layout, Grafikgrößen und Ausrichtung sind hier festgelegt.
 %
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{mathblatt}[2026/10/05 Nachhilfe-Arbeitsblatt 2026-10-05a]
+\ProvidesPackage{mathblatt}[2026/10/05 Nachhilfe-Arbeitsblatt 2026-10-05b]
 
 \RequirePackage[a4paper,margin=18mm,top=16mm,bottom=18mm]{geometry}
 \RequirePackage{iftex}
@@ -2351,5 +2354,83 @@
 \newcommand{\sv}[2]{\def\mbsvzwei{\mbsvsetz{#1\\#2}}\def\mbsvdrei##1{\mbsvsetz{#1\\#2\\##1}}%
   \futurelet\mbsvnext\mbsvwahl}
 \newcommand{\mbsvwahl}{\ifx\mbsvnext\bgroup\expandafter\mbsvdrei\else\expandafter\mbsvzwei\fi}
+
+% ---------------------------------------------------------------------------
+% P  Prüfungsheft (Version 2026-10-05b, Bauprogramm aufgabenbank/werkzeuge/pruefheft.py)
+% ---------------------------------------------------------------------------
+% Das Prüfungsheft (Skript) setzt ein Programm aus Daten, kein Modell. Die Bausteine hier sind neu;
+% nichts Bestehendes ändert sich. Reihenfolge auf der Seite:
+%   \pruefheftstil{Prozent}{Prüfungsheft P10}   Fuß: Thema · Bezeichnung links, Seite rechts, darüber
+%                                               kopfüber die Hilfen dieser Seite (\fusshilfe)
+%   \pfabschnitt{Prozent}                       Abschnittsüberschrift (Prüfungsformulierung)
+%   \pfstufe[Ziel]{Grundwert}                   Zwischenüberschrift „neu: Grundwert“, Sprungziel optional
+%   \kommtdran{2023, 2025 · zuletzt 2025 · 1 BE}  graue Zeile „kommt das dran?“ unter der Stufe
+%   \begin{pfaufgabe}{12}{1 BE · P10 2025 · 1a} Text \end{pfaufgabe}   Hauptnummer mit Kopfzeile,
+%                                               bleibt auf einer Seite (wie aufgabe)
+%   \pfpaar{<links>}{<rechts>}                  zwei kompakte Aufgaben nebeneinander („weitere dieser Art“)
+%   \pfweiterekopf                              Zeile „weitere dieser Art“
+%   \fusshilfe{12: 30 €, Tipp: Rabatt}          Eintrag für den Fuß DIESER Seite (zweiter xelatex-Lauf)
+%   \pfzwfrage{Text}                            Zwischenfrage mit Antwortlinie („schwach“)
+%   \pfkreuzzeile{Text}                         Ankreuzzeile, ein Kästchen, eigene Zeile
+%   \begin{pfuebersicht} \pfuezeile{Ziel}{Stufe}{Stichwörter} \end{pfuebersicht}   Übersicht vorn
+%   \pfrueckblick                               Zwischenüberschrift „Rückblick“ (Serie)
+%   \pfpruefstein{P10 2023 · 6}                 Kopf des Prüfsteins am Kapitelende
+% Lösungsdatei:
+%   \begin{pfloesung}{Kopf oder leer} \lz{12.}{Ergebnis}{Zwischenergebnisse}{2 BE} \end{pfloesung}
+%     eine Tabelle je Hauptnummer, nie über Seitenwechsel; Kopf (gemeinsam Benutztes, bei mehreren
+%     Teilaufgaben Nummer und Fundstelle) nur, wenn nicht leer; je Teilaufgabe \lz: Marke, links
+%     fett das Ergebnis, rechts klein die Zwischenergebnisse, ganz rechts die BE.
+\newcommand{\mbfhsep}{}
+\newcommand{\mbfhadd}[2]{\ifcsdef{mbfh@#1}{\csgappto{mbfh@#1}{\quad\textbar\quad #2}}{\csgdef{mbfh@#1}{#2}}}
+\newcommand{\fusshilfe}[1]{\protected@write\@auxout{}{\string\mbfhadd{\thepage}{\unexpanded{#1}}}}
+\newcommand{\mbfhbox}{\ifcsdef{mbfh@\thepage}{%
+    \rotatebox{180}{\parbox{\textwidth}{\raggedright\scriptsize\color{black!70}\csuse{mbfh@\thepage}}}}{}}
+\newcommand{\pruefheftstil}[2]{%
+  \newgeometry{a4paper,margin=18mm,top=16mm,bottom=30mm,footskip=8mm}%
+  \pagestyle{fancy}\fancyhf{}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \fancyfoot[C]{\parbox[t]{\textwidth}{\mbfhbox\par\vspace{1.5mm}%
+    {\footnotesize\color{mbgrau}#1 \,\textperiodcentered\, #2\hfill Seite \thepage}}}%
+}
+\newcommand{\pfabschnitt}[1]{\par\addvspace{6pt}\noindent{\large\bfseries #1}\par\nobreak\vspace{2pt}}
+\NewDocumentCommand{\pfstufe}{o m}{\par\addvspace{8pt}\Needspace*{16\baselineskip}%
+  \noindent\IfValueT{#1}{\hypertarget{#1}{}\label{#1}}{\bfseries neu: #2}\par\nobreak}
+\newcommand{\kommtdran}[1]{\noindent{\small\color{mbgrau}kommt das dran? #1}\par\nobreak\vspace{2pt}}
+\newcommand{\pfkopfzeile}[2]{\noindent\textbf{#1}\ {\small\color{mbgrau}#2}\par\nobreak}
+\newenvironment{pfaufgabe}[2]{%
+  \begin{lrbox}{\mbaufgabebox}\begin{minipage}[t]{\linewidth}\pfkopfzeile{#1}{#2}}%
+ {\end{minipage}\end{lrbox}%
+  \setlength{\mbaufgabehoehe}{\dimexpr\ht\mbaufgabebox+\dp\mbaufgabebox\relax}%
+  \par\addvspace{5pt}\Needspace*{\mbaufgabehoehe}%
+  \noindent\usebox{\mbaufgabebox}\par\addvspace{5pt}}
+\newcommand{\pfweiterekopf}{\par\addvspace{3pt}\Needspace*{5\baselineskip}\noindent{\small\itshape weitere dieser Art}\par\nobreak}
+\newsavebox{\mbpfpaarbox}
+\newcommand{\pfpaar}[2]{\par\addvspace{3pt}%
+  \sbox{\mbpfpaarbox}{\begin{minipage}[t]{0.475\linewidth}\small #1\end{minipage}\hspace{0.05\linewidth}%
+                     \begin{minipage}[t]{0.475\linewidth}\small #2\end{minipage}}%
+  \Needspace*{\dimexpr\ht\mbpfpaarbox+\dp\mbpfpaarbox\relax}%
+  \noindent\usebox{\mbpfpaarbox}\par\addvspace{3pt}}
+\newcommand{\pfzwfrage}[1]{\par\noindent\hangindent1.6em\hangafter0\relax
+  {\small$\triangleright$\ #1}\ \hrulefill\par}
+\newcommand{\pfkreuzzeile}[1]{\par\noindent\hspace*{1.6em}$\square$\ #1\par}
+\newenvironment{pfuebersicht}{\par\noindent\textbf{Übersicht}\par\nobreak\vspace{2pt}\small
+  \begin{tabular}{@{}r@{\hspace{0.6em}}p{0.36\linewidth}@{\hspace{0.8em}}p{0.46\linewidth}@{\hspace{0.6em}}r@{}}}
+ {\end{tabular}\par\addvspace{6pt}}
+\newcounter{mbpfue}
+\newcommand{\pfuezeile}[3]{\stepcounter{mbpfue}\arabic{mbpfue} & \hyperlink{#1}{#2} & {\leavevmode\color{black!60}#3} & S.\,\pageref{#1}\\}
+\newcommand{\pfrueckblick}{\par\addvspace{4pt}\noindent{\bfseries Rückblick}\par\nobreak}
+\newcommand{\pfpruefstein}[1]{\clearpage
+  \noindent\rule{\linewidth}{0.6pt}\par\nobreak\noindent{\large\bfseries Prüfstein}\hfill{\small\color{mbgrau}#1}\par\nobreak\vspace{2pt}}
+% Lösungsdatei
+\newenvironment{pfloesung}[1]{\par\addvspace{3pt}%
+  \begin{lrbox}{\mbaufgabebox}\begin{minipage}[t]{\linewidth}%
+  \ifblank{#1}{}{\noindent #1\par\nobreak\vspace{1pt}}%
+  \renewcommand{\arraystretch}{1.2}%
+  \begin{tabular}{@{}>{\bfseries}p{0.06\linewidth}@{}>{\raggedright\arraybackslash}p{0.36\linewidth}@{\hspace{0.02\linewidth}}>{\raggedright\arraybackslash\small}p{0.46\linewidth}@{}>{\raggedleft\arraybackslash\small}p{0.1\linewidth}@{}}}%
+ {\end{tabular}\end{minipage}\end{lrbox}%
+  \setlength{\mbaufgabehoehe}{\dimexpr\ht\mbaufgabebox+\dp\mbaufgabebox\relax}%
+  \Needspace*{\mbaufgabehoehe}\noindent\usebox{\mbaufgabebox}\par}
+\newcommand{\lz}[4]{#1 & \textbf{\boldmath #2} & #3 & #4\\}
+
 
 \endinput
