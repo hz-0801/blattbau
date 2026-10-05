@@ -1,5 +1,5 @@
 mathblatt.sty – Anleitung (Stufe 6)
-Gehört zu Vorlagenversion 2026-10-05a. Die Version steht in Zeile 2 der `mathblatt.sty`. Weichen beide ab, gilt die Vorlage: Makros, die sie nicht kennt, benutzt du nicht, und du meldest die Abweichung in einer Zeile im Ausgabeblock.
+Gehört zu Vorlagenversion 2026-10-05b. Die Version steht in Zeile 2 der `mathblatt.sty`. Weichen beide ab, gilt die Vorlage: Makros, die sie nicht kennt, benutzt du nicht, und du meldest die Abweichung in einer Zeile im Ausgabeblock.
  
 Datei `mathblatt.sty` neben die .tex-Datei legen, `\usepackage{mathblatt}` im Kopf. Kompilieren mit `xelatex` (nicht pdflatex): nur so sind Umlaute, ß, € und die Textextraktion sauber, weil im Sandbox keine Type-1-T1-Schriften liegen. Das Modell schreibt nur Inhalt; Ränder, Karogrößen, Fluchten, Kopf- und Fußzeile sind fest.
  
@@ -392,3 +392,23 @@ Probeblatt der Vorlage
 Noch nicht in Stufe 6
  
 Zweitafelprojektion; im 3D-System Spurgeraden, Ebenen ohne Achsenabschnitte, Kegel/Kugel/Zylinder. Die Bausteinlisten Stufe 3 und 4 sind damit abgearbeitet; die Stufe 5 hat die Bausteine aus dem Testlauf vom 25.09.2026 nachgetragen, die Stufe 6 die sechs aus den Lesebefunden vom 26.09.2026 (`\anweisung`, `\rechenplatz`, `\verfahren`, Kopfzeile mit Einheit, Umgebung `beispiel`, `\streifenleer[0]`) und das Probeblatt.
+
+Prüfungsheft (2026-10-05b, nur für das Bauprogramm aufgabenbank/werkzeuge/pruefheft.py)
+
+```
+\pruefheftstil{Prozent}{Prüfungsheft P10}      Fuß: Thema · Bezeichnung, Seite; darüber kopfüber die Hilfen der Seite
+\fusshilfe{12: 30 €, Tipp: Rabatt}             Eintrag für den Fuß der Seite, auf der er steht (zweiter Lauf)
+\pfabschnitt{Prozent}                          Abschnittsüberschrift
+\pfstufe[ziel]{Grundwert}                      „neu: Grundwert“, Sprungziel und Label ziel
+\kommtdran{in 2 von 13 Jahren … · 1 BE}        graue Zeile „kommt das dran?“
+\begin{pfaufgabe}{12.}{1 BE · P10 2025 · 1a} … \end{pfaufgabe}   Nummer mit Kopfzeile, bleibt auf einer Seite
+\pfkopfzeile{13.}{eigene Aufgabe}              Kopfzeile ohne Umgebung (kompakte Aufgabe)
+\pfweiterekopf  \pfpaar{links}{rechts}         „weitere dieser Art“, zwei kompakte Aufgaben nebeneinander
+\pfzwfrage{…}  \pfkreuzzeile{…}                Zwischenfrage mit Linie („schwach“), Ankreuzzeile
+\begin{pfuebersicht} \pfuezeile{ziel}{Stufe}{Stichwörter} \end{pfuebersicht}
+\pfrueckblick  \pfpruefstein{P10 2015 · 2}     Rückblick (Serie); Prüfstein auf neuer Seite
+\begin{pfloesung}{Kopf oder leer} \lz{12.}{Ergebnis}{Zwischenergebnisse}{2 BE} \end{pfloesung}
+```
+
+Die Bausteine setzt das Programm, nicht das Modell. `\pruefheftstil` stellt den unteren Rand auf 30 mm, damit die kopfüber gesetzten Hilfen Platz haben. `pfloesung` ist eine Tabelle je Nummer: links fett (auch Mathematik, `\boldmath`) das Ergebnis, rechts klein die Zwischenergebnisse, ganz rechts die BE; sie bricht nie über eine Seite.
+
