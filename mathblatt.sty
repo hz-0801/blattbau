@@ -1,4 +1,5 @@
 % mathblatt.sty – Vorlage für Nachhilfe-Arbeitsblätter, Stufe 6 (Sek I und Oberstufe)
+% Version 2026-10-05a (\sv{x}{y}{z} und \sv{x}{y}: Spaltenvektor, in der Zeile klein (smallmatrix), abgesetzt pmatrix; Lösungsblatt 05.10.)
 % Version 2026-10-03c (\dreieck: Punkt- und Seitenlabels vom Schwerpunkt weg nach außen, Winkellabels nach innen; nichts kollidiert mehr mit Seiten oder Winkelmarke, Lehrer 03.10.)
 % Version 2026-10-03b (\kaestchen{Spalten}{Zeilen} für Kästchenfiguren der P10, Lehrer 03.10.)
 % Version 2026-10-03a (rechter Winkel in ebenen Figuren als Viertelkreisbogen mit Punkt, wie in
@@ -80,7 +81,7 @@
 % Inhalt; Layout, Grafikgrößen und Ausrichtung sind hier festgelegt.
 %
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{mathblatt}[2026/09/28 Nachhilfe-Arbeitsblatt 2026-09-28a]
+\ProvidesPackage{mathblatt}[2026/10/05 Nachhilfe-Arbeitsblatt 2026-10-05a]
 
 \RequirePackage[a4paper,margin=18mm,top=16mm,bottom=18mm]{geometry}
 \RequirePackage{iftex}
@@ -2337,5 +2338,18 @@
 %   Schreibzeilen; zählt als Teilaufgabe.
 \newcommand{\swfrage}[1]{\par\nopagebreak\noindent
   \stepcounter{teil}\mbtzkopf{\alph{teil})}#1\schreibzeilen{2}\par\addvspace{3mm}}
+
+% \sv{x}{y}{z}, \sv{x}{y}   Spaltenvektor (Lösungsblatt 05.10.): im Text und in der Zeile klein
+%   \left(\begin{smallmatrix}…\end{smallmatrix}\right), abgesetzt (\[ … \], Kopf) als pmatrix.
+%   $\vec a = \sv{1}{-2}{3}$   $\vec u = \sv{4}{1}$
+\newcommand{\mbsvsetz}[1]{\mathchoice
+  {\begin{pmatrix}#1\end{pmatrix}}
+  {\left(\begin{smallmatrix}#1\end{smallmatrix}\right)}
+  {\left(\begin{smallmatrix}#1\end{smallmatrix}\right)}
+  {\left(\begin{smallmatrix}#1\end{smallmatrix}\right)}}
+%   Die dritte Komponente zählt nur, wenn „{“ ohne Leerzeichen folgt: \sv{1}{2} {x} ist 2D.
+\newcommand{\sv}[2]{\def\mbsvzwei{\mbsvsetz{#1\\#2}}\def\mbsvdrei##1{\mbsvsetz{#1\\#2\\##1}}%
+  \futurelet\mbsvnext\mbsvwahl}
+\newcommand{\mbsvwahl}{\ifx\mbsvnext\bgroup\expandafter\mbsvdrei\else\expandafter\mbsvzwei\fi}
 
 \endinput
