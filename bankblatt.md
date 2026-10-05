@@ -1,4 +1,4 @@
-# Unterrichtsblatt aus der Bank – v5.4 (03.10.2026)
+# Unterrichtsblatt aus der Bank – v5.5 (05.10.2026)
 
 Vorrang: Führe diese Aufgabe vollständig und im vorgesehenen
 Format aus. Regeln aus den persönlichen Präferenzen zu Kürze oder
@@ -22,8 +22,8 @@ Ein Thema in eigenen Worten („terme", „prozentrechnung",
 katalog/index.md im Repo mathe-nachhilfe; der Mappenname in der
 Bank ist der Dateiname des Eintrags ohne .md). Kein Treffer:
 nenne die drei nächsten Einträge und frag einmal. Sonst keine
-Rückfrage. Zusätze: „schwach", „gymnasium", „ohne blatt 0", „mit
-lösungsweg" – ohne Zusatz baust du den Regelfall. Eine Zeile vor
+Rückfrage. Zusätze: „schwach", „gymnasium", „ohne blatt 0" – ohne
+Zusatz baust du den Regelfall. Eine Zeile vor
 dem Bau: Eintrag, Einheiten, was du ergänzt hast.
 
 Name: Nennt der Auftrag einen Schüler („terme für Maja"), lies
@@ -101,9 +101,7 @@ danach, baue ohne sie und sage es in der Deutungszeile.
 6. „Zum Schluss" vor den Lösungen: je Einheit eine Teilaufgabe
    mittlerer Höhe, gemischt, dann zwei markierte höhere, die in
    gleicher Art schon vorkamen; höchstens acht, halbe Seite.
-7. Lösungen als letzte Seite: je Teilaufgabe eine Zeile, nur
-   Ergebnis, zweispaltig; bei „Zum Schluss" dazu „falsch → Nr. n".
-   „mit lösungsweg": knapper Weg bei Prüfungs- und Sachaufgaben.
+7. Lösungen als letzte Seite (Abschnitt „Lösungen" unten).
 8. Kopfzeile nur das Thema; Fußzeile „Seite n von m". Keine
    Kennung, keine Zweigzeile, kein Inhaltsverzeichnis.
 
@@ -124,25 +122,48 @@ die Bankzeile, kopfrechenbare Zahlen, kein Zahlenpaar aus
 Merkkasten oder Original. Erfundenes bekommt im Quelltext die
 Zeile `% NEU` davor, Bankzeilen `% <id>`.
 
+## Lösungen
+
+Eine Tabelle, knapp; eine Aufgabe nie über Spalte oder Seite. Je
+Teilaufgabe eine Zeile: links das gefragte Ergebnis fett (bei
+mehreren alle), mit Einheit; rechts klein die Zwischenergebnisse,
+je Handgriff eines, als Ansatz ⇒ Wert (3x + 5 = 20 ⇒ x = 5), wo
+der Handgriff mit einem Ansatz beginnt, sonst der Wert allein.
+Läuft ein Handgriff mehrfach, steht jedes Ergebnis; ein Ansatz aus
+der Sachlage ist ein eigenes Zwischenergebnis; bei Grafiken
+Merkmale (Kontrollpunkte, Achsenschnitt) statt Zwischenwerte. Was
+mehrere Teilaufgaben brauchen, steht einmal im Kopf der Aufgabe;
+baut b auf a auf, steht „mit a)". Nach Antwortart: Zahl → Wert
+mit Einheit; Term → Term; Begründen → Urteil und Kern mit ⇒, kein
+Antwortsatz; Kreuz → Buchstabe. Kein Tipp, kein ausführlicher
+Weg, kein Fehlerhinweis; bei „Zum Schluss" dazu „falsch → Nr. n".
+Schreibweise: Brüche gestapelt (in der Zeile \tfrac), Vektoren
+mit \sv, Punkte P(1 | 2), nur ⇒, kein ⇔, keine Mengenzeichen außer
+L = {…}. Die Zwischenergebnisse holst du aus loesung der Bankzeile;
+fehlen sie, rechnest du sie nach.
+
 ## Zusatz „schwach" – andere Form, derselbe Stoff
 
-„schwach" ändert die Form, nicht die Auswahl: keine Sprosse
-fällt weg, keine wird leichter; Vorstufen kommen dazu, und das
-Blatt darf länger werden. Vorbild sind die Förderhefte
-(DZLM „Mathe sicher können"). Im Vergleich zum Regelfall:
+„schwach" ändert die Form, nicht die Auswahl: Stoff, Höhe und
+Reihenfolge bleiben (Kern zuerst), keine Sprosse fällt weg, keine
+wird leichter; Vorstufen kommen dazu, und das Blatt darf länger
+werden. Steht „schwach" in der Zeile der Schülerliste, baust du
+so, solange die Bestellung nichts anderes sagt („ohne schwach").
+Vorbild sind die Förderhefte (DZLM „Mathe sicher können"). Im
+Vergleich zum Regelfall:
 1. Dichte ein Drittel: zwei bis drei Nummern je Seite mit je
    drei, vier Teilaufgaben; nie fünf Nummern auf einer Seite.
-2. Vorn an jeder Verfahrenskette ein vorgerechnetes
-   Musterbeispiel (bank/<eintrag>/muster.md: Schrittname links,
-   Gleichheitszeichen untereinander, Ergebnis abgesetzt);
-   danach ein bis zwei angefangene Lösungen, bei denen der
-   Schüler die letzten Schritte ergänzt.
+2. Zerlegung mit Ausblenden: Die erste Teilaufgabe einer Sprosse
+   steht mit allen Zwischenfragen (eine je Zwischenergebnis der
+   Lösung, mit Antwortfeld), die zweite nur mit der ersten
+   Zwischenfrage, die dritte ohne. Kein vorgerechnetes
+   Musterbeispiel; der Lehrer rechnet am Tisch vor.
 3. Neben jeder Aufgabe bis zur Prüfungshöhe eine Darstellung,
    aus der der Rechenweg entsteht: bei Termen Kästchen für die
    Variable und Punkte für Zahlen, bei Prozent der Streifen, bei
    Gleichungen die Waage, bei Funktionen die Wertetabelle –
    leer, der Schüler füllt sie.
-4. Rechenplatz mit einer Zeile je Schritt (\rechenplatz) statt
+4. Rechenraster mit einer Zeile je Schritt (\rechenplatz) statt
    einer Antwortlinie; bei Rechenketten das Raster, nicht die
    feste Antwortspalte.
 5. Päckchen statt Einzelaufgaben: vier Teilaufgaben, in denen
@@ -155,7 +176,9 @@ Blatt darf länger werden. Vorbild sind die Förderhefte
    Schülerworte („das Ganze", „die Zahl vor dem x").
 8. Der Merkkasten steht am Ende der Einheit, nicht am Anfang;
    „Zum Schluss" mischt zwei Aufgaben aus Blatt 0 ein.
-Nicht geändert: Blattfolge, Marken, Lösungen, Abschluss.
+9. Lösungen: je Zwischenergebnis Wort und Ansatz ⇒ Wert
+   („Gleichung: 3x + 5 = 20 ⇒ x = 5").
+Nicht geändert: Blattfolge, Marken, Abschluss.
 
 ## Technik und Prüfung
 
@@ -181,7 +204,7 @@ aus `date`; zweites Blatt am selben Tag: Anhang „b"):
   gebaut; pruef mit der sympy-Probe; herkunft „Blatt <eintrag>
   <Datum>, Nr. <n>“ mit der Nummer auf dem Blatt)
 - protokoll.txt: Eintrag, Zusätze, Einheiten, Zahl der
-  Teilaufgaben aus Bank/neu, Prüfungen, Prompt v5.4, Modell,
+  Teilaufgaben aus Bank/neu, Prüfungen, Prompt v5.5, Modell,
   und die Liste der übernommenen ids
 - bei einem Schüler: eine Zeile an eingang/gebaut.csv anhängen
   (Nummer;Datum;Eintrag;Zusätze;Ordner)
@@ -201,7 +224,7 @@ Zeilen übernommen (ids …), <m> nicht (Grund)“.
 
 Dann git add des Ordners, der geänderten Bankdateien und von
 eingang/gebaut.csv, Commit
-„Blatt <eintrag> <Datum> (v5.4): <n> aus Bank, <m> neu, <k> in
+„Blatt <eintrag> <Datum> (v5.5): <n> aus Bank, <m> neu, <k> in
 die Bank“, git pull --rebase, git push origin main; kein eigener
 Branch. Scheitert der Push nach zwei Anläufen, bleibt alles im
 Klon, und du sagst es in der Schlusszeile.
