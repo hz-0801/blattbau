@@ -415,7 +415,8 @@ Ergänzung 2026-10-06 (Beschlüsse 05./06.10.; ersetzt im Bauprogramm \pfstufe, 
 ```
 \pfstufekopf[ziel]{Grundwert G}{in 2 der letzten 5 Prüfungen}   Stufenkopf, kein „neu:“, Info grau
 \pfgruppe{Tarif}   \pfgruppe{}                 Gruppenanfang mit Aufgabenbild-Wort (grau) oder nur Abstand
-\pfab{$G = W : p$}                              „ab hier: …“ über der ersten Aufgabe, die die Formel braucht
+\pfab{$G = W : p$}                              „ab hier: …“, steht im Kasten der nächsten pfnr (nie getrennt)
+\rechenraster{3}                               Karo-Raster, eine Zeile (10 mm) je Schritt („schwach“)
 \begin{pfnr}{P10 ’25}{12.}{1 BE} … \end{pfnr}   Marke grau links, Nummer, Aufgabe, Punkte rechts; eine Seite
 ```
 

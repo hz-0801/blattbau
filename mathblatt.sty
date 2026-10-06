@@ -2443,7 +2443,8 @@
 %   \begin{pfnr}{P10 ’26}{12.}{2 BE} Text \end{pfnr}   Aufgabenzeile: Marke grau links, Nummer, Aufgabe,
 %                                       Punkte rechts; bleibt auf einer Seite; \rechenplatz darin hat die
 %                                       Breite der Textspalte
-%   \pfab{$G = W : p$}   Zeile „ab hier: …“ über der ersten Aufgabe, die die Formel braucht
+%   \pfab{$G = W : p$}   Zeile „ab hier: …“, im Kasten der nächsten pfnr (bleibt mit ihr zusammen)
+%   \rechenraster{3}     Karo-Raster mit einer Zeile je Schritt (schwach)
 \newlength{\mbpfmarke}\setlength{\mbpfmarke}{13mm}
 \newlength{\mbpfnr}\setlength{\mbpfnr}{8mm}
 \newlength{\mbpfbe}\setlength{\mbpfbe}{11mm}
@@ -2452,9 +2453,19 @@
   \ifblank{#3}{}{\hspace{0.8em}{\small\color{mbgrau}#3}}\par\nobreak\vspace{2pt}}
 \newcommand{\pfgruppe}[1]{\par\addvspace{7pt}%
   \ifblank{#1}{}{\Needspace*{8\baselineskip}\noindent{\footnotesize\color{mbgrau}#1}\par\nobreak}}
-\newcommand{\pfab}[1]{\par\Needspace*{6\baselineskip}\noindent{\small\color{mbgrau}ab hier:}\ #1\par\nobreak\smallskip}
+\let\mbpfab\empty
+\newcommand{\pfab}[1]{\gdef\mbpfab{#1}}%  wird von der nächsten pfnr in ihren Kasten gesetzt (nie getrennt)
+% \rechenraster{n}   Karo 5 mm über die Textbreite, n Schritte; jede Schrittzeile 10 mm, Schrittgrenze
+%                    etwas dunkler („schwach“: eine Zeile je Schritt, Beschluss 29)
+\newcommand{\rechenraster}[1]{\par\addvspace{2pt}{\parskip\z@\noindent
+  \begin{tikzpicture}\pgfmathsetmacro{\mbrrh}{#1*1.0}%
+    \draw[step=0.5,mbgitter,line width=0.3pt] (0,0) grid (\linewidth-0.5pt,-\mbrrh);
+    \foreach \mbi in {1,...,#1}{\draw[black!45,line width=0.5pt] (0,-\mbi) -- (\linewidth-0.5pt,-\mbi);}
+  \end{tikzpicture}\par}}
 \NewDocumentEnvironment{pfnr}{m m m}{%
   \begin{lrbox}{\mbaufgabebox}\begin{minipage}[t]{\linewidth}%
+  \ifx\mbpfab\empty\else\noindent\hspace*{\dimexpr\mbpfmarke+\mbpfnr\relax}{\small\color{mbgrau}ab hier:}\ \mbpfab\par\smallskip
+    \global\let\mbpfab\empty\fi
   \begin{minipage}[t]{\mbpfmarke}\raggedright\scriptsize\color{mbgrau}\strut#1\end{minipage}%
   \begin{minipage}[t]{\mbpfnr}\strut\textbf{#2}\end{minipage}%
   \begin{minipage}[t]{\dimexpr\linewidth-\mbpfmarke-\mbpfnr-\mbpfbe\relax}\raggedright\strut\ignorespaces}%
