@@ -1,4 +1,7 @@
 % mathblatt.sty – Vorlage für Nachhilfe-Arbeitsblätter, Stufe 6 (Sek I und Oberstufe)
+% Version 2026-10-06b (Kurvenbeschriftung \mbfunklabel: Suche ab einer halben Teilung vor dem rechten Rand,
+%                      belegte Stellen werden übersprungen – Beschriftungen nicht mehr abgeschnitten oder
+%                      übereinander; Nummernbox pfnr 10 mm für dreistellige Nummern)
 % Version 2026-10-06 (Prüfungsheft nach den Beschlüssen 05./06.10.: Umgebung pfnr – grau Marke links,
 %                      Nummer, Aufgabe, Punkte rechts; \pfstufekopf (Name mit Bezeichnung, grau „in 3 der
 %                      letzten 5 Prüfungen“), \pfgruppe (Aufgabenbild-Wort am Gruppenanfang), \pfab (Formel
@@ -701,6 +704,7 @@
   \else\ifnum\mbpk<0 -\fi\ifnum\mbpk=1 \tfrac{\pi}{2}\else\ifnum\mbpk=-1 \tfrac{\pi}{2}\else\tfrac{\the\numexpr\ifnum\mbpk<0 -\fi\mbpk\relax\pi}{2}\fi\fi\fi}
 \newcommand{\mbksysclip}{\begin{scope}\clip (\ksxmin,\ksymin) rectangle (\ksxmax,\ksymax);}
 \newenvironment{ksys}[1][]{%
+  \gdef\mbflabels{}%
   \mbksyssetup{#1}%
   \begin{tikzpicture}[x=\ksxk cm,y=\ksyk cm,baseline=(current bounding box.north)]
   \mbksysachsen
@@ -732,8 +736,11 @@
     \ifnum\mblachse=1 \pgfmathsetmacro{\mblx}{\mblx+2.6*\ksxstep}\pgfmathsetmacro{\mbly}{#2*\mblx+#3}\fi
   \fi
   \pgfmathtruncatemacro{\mblin}{(\mblx>\ksxmin+0.3*\ksxstep)&&(\mblx<\ksxmax-0.3*\ksxstep)&&(\mbly>\ksymin+0.3*\ksystep)&&(\mbly<\ksymax-0.3*\ksystep)}%
+  \ifnum\mblin=1 \let\mbfx\mblx\let\mbfy\mbly\def\mbfok{1}\mbflabelfrei
+    \ifnum\mbfok=0 \def\mblin{0}\fi\fi
   \ifnum\mblin=1
     \node[fill=white,inner sep=1pt,font=\small] at (\mblx,\mbly) {$#4$};
+    \xdef\mbflabels{\mbflabels(\mblx/\mbly)}%
   \else
     \mbfunklabel{#2*\x+#3}{#4}{\ksxmin}{\ksxmax}%
   \fi}
@@ -753,19 +760,33 @@
 % Kurvenlabel: pos= auf plot-Pfaden ist unzuverlässig, deshalb sucht \mbfunklabel vom rechten
 % Rand aus die erste Stelle, an der der Graph innerhalb der Zeichenfläche liegt (40 Schritte).
 \newcommand{\mbfunklabel}[4]{% Term, Label, von, bis
+  % 2026-10-06b: Suche beginnt eine halbe Teilung vor dem rechten Rand (vorher genau am Rand: die
+  % Beschriftung lag halb außerhalb und wurde abgeschnitten, „a“ wirkte wie „c“) und überspringt
+  % Stellen, an denen schon eine Beschriftung desselben Systems steht (\mbflabels).
   \ifblank{#2}{}{%
-    \pgfmathsetmacro{\mbfx}{#4}\pgfmathsetmacro{\mbfd}{((#4)-(#3))/40}%
+    \pgfmathsetmacro{\mbfx}{min(#4,\ksxmax-0.5*\ksxstep)}\pgfmathsetmacro{\mbfd}{((#4)-(#3))/40}%
     \def\mbfn{0}\def\mbfok{0}%
     \loop
       \begingroup\edef\x{(\mbfx)}\pgfmathparse{#1}\global\let\mbfy\pgfmathresult\endgroup
-      \pgfmathtruncatemacro{\mbfok}{(\mbfy<\ksymax-0.3*\ksystep)&&(\mbfy>\ksymin+0.3*\ksystep)}%
+      \pgfmathtruncatemacro{\mbfok}{(\mbfy<\ksymax-0.4*\ksystep)&&(\mbfy>\ksymin+0.4*\ksystep)&&(\mbfx>\ksxmin+0.3*\ksxstep)}%
+      \ifnum\mbfok=1 \mbflabelfrei\fi
       \pgfmathtruncatemacro{\mbfn}{\mbfn+1}%
       \ifnum\mbfok=0 \pgfmathsetmacro{\mbfx}{\mbfx-\mbfd}\fi
       \pgfmathtruncatemacro{\mbfgo}{(\mbfok==0)&&(\mbfn<40)}%
     \ifnum\mbfgo=1 \repeat
     \ifnum\mbfok=1
       \node[fill=white,inner sep=1pt,font=\small] at (\mbfx,\mbfy) {$#2$};
+      \xdef\mbflabels{\mbflabels(\mbfx/\mbfy)}%
     \else\PackageWarning{mathblatt}{Label #2: Graph liegt im Bereich nicht in der Zeichenflaeche}\fi}}
+% schon gesetzte Beschriftungen eines Systems; frei = mindestens 0,8 Teilungen in x oder 0,8 in y Abstand
+\gdef\mbflabels{}
+\newcommand{\mbflabelfrei}{%
+  \ifdefempty{\mbflabels}{}{%
+    \def\mbfpruef##1(##2/##3)##4\relax{%
+      \pgfmathtruncatemacro{\mbfnah}{(abs(\mbfx-(##2))<0.8*\ksxstep)&&(abs(\mbfy-(##3))<0.8*\ksystep)}%
+      \ifnum\mbfnah=1 \def\mbfok{0}\fi
+      \ifx\relax##4\relax\else\mbfpruef##4\relax\fi}%
+    \expandafter\mbfpruef\expandafter{\expandafter}\mbflabels\relax}}
 \NewDocumentCommand{\funktion}{o m m}{%
   \begingroup\mbxsicher
   \draw[mbterm,line width=0.8pt,domain=\ksxmin:\ksxmax,samples=120,smooth] plot (\mbt,{#2});\endgroup
@@ -2446,7 +2467,7 @@
 %   \pfab{$G = W : p$}   Zeile „ab hier: …“, im Kasten der nächsten pfnr (bleibt mit ihr zusammen)
 %   \rechenraster{3}     Karo-Raster mit einer Zeile je Schritt (schwach)
 \newlength{\mbpfmarke}\setlength{\mbpfmarke}{13mm}
-\newlength{\mbpfnr}\setlength{\mbpfnr}{8mm}
+\newlength{\mbpfnr}\setlength{\mbpfnr}{10mm}% 2026-10-06b: drei Ziffern und Punkt („139.“)
 \newlength{\mbpfbe}\setlength{\mbpfbe}{11mm}
 \NewDocumentCommand{\pfstufekopf}{o m m}{\par\addvspace{10pt}\Needspace*{14\baselineskip}%
   \noindent\IfValueT{#1}{\hypertarget{#1}{}\label{#1}}{\large\bfseries #2}%
