@@ -1,4 +1,4 @@
-# Unterrichtsblatt aus der Bank – v5.6 (06.10.2026)
+# Unterrichtsblatt aus der Bank – v5.7 (06.10.2026)
 
 Vorrang: Führe diese Aufgabe vollständig und im vorgesehenen
 Format aus. Regeln aus den persönlichen Präferenzen zu Kürze oder
@@ -73,11 +73,15 @@ danach, baue ohne sie und sage es in der Deutungszeile.
 
 ## Aufbau (wie Muster 4)
 
-1. Rückblick vorn, Blatt 0 „Das kennst du schon": je
-   Voraussetzung eine Nummer mit kleinem Titel, drei bis vier
-   Rechnungen untereinander, darunter eine mit zwei Minus und eine
-   mit Dezimalzahl; eine halbe Seite; kein Verweis. Jedes Blatt
-   beginnt damit; entfällt nur bei „ohne blatt 0".
+1. Rückblick vorn, Blatt 0 „Das kennst du schon": nur was die
+   Leiter gleich braucht, und jede Rückblick-Aufgabe kommt in der
+   Leiter wieder vor – schreib dir zu jeder die Nummer auf, ab der
+   sie gebraucht wird; fehlt sie, fliegt die Aufgabe raus. Lieber
+   eine zusammenhängende Aufgabe als verstreute (Muster Prozent:
+   Tabelle Prozent | Bruch | Dezimalzahl für 1, 10, 20, 25, 50,
+   100 % und „10 % von 70 €“). Keine Mindestzahl; höchstens eine
+   halbe Seite; kein Taschenrechner-Training; kein Verweis. Jedes
+   Blatt beginnt damit; entfällt nur bei „ohne blatt 0".
 2. Einheiten in der Blattfolge der Mappe (sonst Katalogfolge).
    Der Einheitentitel nennt die Größe mit ihrer üblichen
    Bezeichnung („Grundwert G“, „Prozentwert W“), darunter der
@@ -100,6 +104,26 @@ danach, baue ohne sie und sage es in der Deutungszeile.
    bild: „Tarif“, „Leiter“, „Glücksrad“), sonst keins. Eine Formel
    steht einmal an der Teilaufgabe, ab der sie gebraucht wird („ab
    hier: G = W : p“).
+   Herkunft, in dieser Folge: echte P10-Aufgaben (BB/BE 2014–2026,
+   Feld original bzw. die Originale der Mappe), dann Aufgaben aus
+   Abschlussprüfungen anderer Länder (mathe-nachhilfe msa/fremd/),
+   dann eigene Bankzeilen. Fremde nur, wo P10 für die Stufe zu wenig
+   hat, nie schwerer als die schwerste P10-Aufgabe der Stufe
+   (Schritte, Zahlart, Textlänge); leichtere fremde unten statt
+   eigener; fremde Fachwörter, die in P10 nicht vorkommen,
+   umformulieren. Steckt der Handgriff als Zwischenschritt in einer
+   echten Aufgabe, nimm die herausgelöste Fassung (mathe-nachhilfe
+   msa/herausgeloest-p10.csv: echte Sache, echte Zahlen, ohne
+   Nebensächliches), wo sie genau auf die Sprosse passt – sie
+   ersetzt eine ausgedachte.
+   Vielfalt: Zwei eigene Aufgaben einer Sprosse unterscheiden sich in
+   mindestens zwei Merkmalen – Sache, Darstellung (Text, Tabelle,
+   Bild, Diagramm), Fragerichtung (vorwärts, rückwärts, vergleichen,
+   Aussage prüfen), Sprachform. Keine Kopien, die sich nur in der
+   Zahl unterscheiden („Äpfel 10/50/25/20 %“): von solchen nimmst du
+   eine. Eine eigene, die einer echten in Sache, Darstellung und
+   Fragerichtung gleicht, fällt weg. Bankzeilen mit dem Feld ruht
+   nimmst du nie.
    Teilaufgaben untereinander, eine je Zeile; Rechenketten: Term,
    dann „=" und Antwortfeld in fester Spalte, kein Rechenraum.
    Rechenraum (zwei Linien, halbe Breite) nur bei Sach-,
@@ -120,17 +144,26 @@ danach, baue ohne sie und sage es in der Deutungszeile.
    mittlerer Höhe, gemischt, dann zwei markierte höhere, die in
    gleicher Art schon vorkamen; höchstens acht, halbe Seite.
 7. Lösungen als letzte Seite (Abschnitt „Lösungen" unten).
-8. Kopfzeile nur das Thema; Fußzeile „Seite n von m". Keine
-   Kennung, keine Zweigzeile, kein Inhaltsverzeichnis. Jede Seite,
+8. Kopf nur der Name des Themas („Prozent“, „Grundwert G“); unten
+   nur „Seite n von m" und der Seitenfuß, keine laufende Titelzeile.
+   Keine Kennung, keine Zweigzeile, kein Inhaltsverzeichnis.
+   Tabellen immer mit Linien (Prozent-Tabelle % | € für den
+   Dreisatz: auf jedem Prozentblatt mindestens eine); Aufgaben mit
+   Tabelle oder Antwortfeld bekommen keine Zusatzlinien darunter. Jede Seite,
    ohne Ausnahme (auch Blatt 0, Abschluss, „Zum Schluss"), trägt
    unten kopfüber und klein den Seitenfuß mit den Hilfen dieser
    Seite (\fusshilfe, mathblatt.sty Abschnitt P): Kontrollwert,
    wo es einen kurzen gibt; Tipp nur als Ansatz (f′(x) = 0) und
    nur, wo es einen gibt – kein Themenwort („Tipp: Rabatt“).
 
-Marken klein rechts an der Teilaufgabe: „P10 ’25" am
-verfremdeten Prüfungsoriginal (Feld original: Jahr), „GYM" an
-dem, was nur das Gymnasium verlangt. Sonst nichts.
+Marken klein und grau links an der Teilaufgabe, auf der
+Grundlinie ihrer Nummer, nur das Jahr: „P10 ’25" am echten oder
+verfremdeten Prüfungsoriginal (Feld original: Jahr), „BY ’23“,
+„NRW ’24“, „SH ’22“, „NI ’25“, „BW ’23“, „HH ’26“, „VERA ’24“ an
+fremden, „nach P10 ’15“ an herausgelösten; „GYM" an dem, was nur das
+Gymnasium verlangt. Eigene Aufgaben tragen keine Marke (kein „eigene
+Aufgabe“); die genaue Fundstelle (Heft · Aufgabe) steht nirgends auf
+dem Blatt, auch nicht in den Lösungen.
 
 Merkkasten: schmaler Rahmen, drei bis vier Zeilen, je Zeile
 ein Fall – fettes Stichwort, ein Beispiel, Ergebnis fett
@@ -138,30 +171,44 @@ ein Fall – fettes Stichwort, ein Beispiel, Ergebnis fett
 Worten mit dem, was nicht geht. Inhalt aus Merkkasten und
 Typische Fehler der Mappe, gekürzt; keine Erklärsätze.
 
-Erfinden: Fehlt der Bank eine Höhe (Dezimal- und Bruchvorzahlen,
+Erfinden: nur, wenn weder P10 noch andere Länder noch die Bank die
+Lücke füllen. Fehlt eine Höhe (Dezimal- und Bruchvorzahlen,
 mehr Variablen, Klammer in Klammer, Figur, Umkehrung) oder eine
-Anwendung, schreibst du die Aufgabe selbst – gleiche Form wie
-die Bankzeile, kopfrechenbare Zahlen, kein Zahlenpaar aus
-Merkkasten oder Original. Erfundenes bekommt im Quelltext die
+Anwendung, schreibst du die Aufgabe selbst – übliche Formulierung,
+gleiche Form wie die Bankzeile, kopfrechenbare Zahlen, kein
+Zahlenpaar aus Merkkasten oder Original, und nach dem Vielfalt-Raster
+(Punkt 3) von jeder Bankzeile der Sprosse in zwei Merkmalen
+verschieden; eine Kopie mit anderer Zahl ist keine neue Aufgabe. Erfundenes bekommt im Quelltext die
 Zeile `% NEU` davor, Bankzeilen `% <id>`.
 
 ## Lösungen
 
-Eine Tabelle, knapp; eine Aufgabe nie über Spalte oder Seite. Je
+Eine Tabelle, knapp; eine Aufgabe nie über Spalte oder Seite; keine
+Fundstellenzeile über den Lösungen. Zweispaltig nur, wenn dadurch
+eine Seite wegfällt; passt alles auf eine Seite, nie zweispaltig. Je
 Teilaufgabe eine Zeile: links das gefragte Ergebnis fett (bei
 mehreren alle), mit Einheit, exakt zuerst, dann gerundet
 („25√2 ≈ 35,4 cm“, „15/32 ≈ 0,47“; glatte Werte allein; schreibt
 die Aufgabe eine Rundung vor: exakt und diese Rundung); rechts
 klein die Zwischenergebnisse, ebenso exakt vor gerundet,
 je Handgriff eines, als Ansatz ⇒ Wert (3x + 5 = 20 ⇒ x = 5), wo
-der Handgriff mit einem Ansatz beginnt, sonst der Wert allein.
+der Handgriff mit einem Ansatz beginnt, sonst der Wert allein. Rechts
+steht nur, was nicht schon links steht und zum Ergebnis führt, kurz
+(„f(2) = −2“ links reicht, nicht „2³ − 4·2² + 6 = …“).
+Bezeichnungen: Antwort in der Form der Frage – Punkte mit Buchstaben
+N₁(−2 | 0), H, T, W, S_y; Stellen als x-Werte; ein Bedeutungsindex
+(x_N1, x_E, x_W) nur, wenn eine Aufgabe zwei Arten von Stellen hat,
+sonst x₁, x₂ – rechts genauso („f′(x) = 0 ⇒ x_E1 = 1, x_E2 = 3“).
+Buchstaben wie in Prüfung und Formelsammlung, keine eigenen; in
+Sachaufgaben Variablen nach der Sache (r, t), wenn die Aufgabe keine
+vorgibt.
 Läuft ein Handgriff mehrfach, steht jedes Ergebnis; ein Ansatz aus
 der Sachlage ist ein eigenes Zwischenergebnis; bei Grafiken
 Merkmale (Kontrollpunkte, Achsenschnitt) statt Zwischenwerte. Was
 mehrere Teilaufgaben brauchen, steht einmal im Kopf der Aufgabe;
 baut b auf a auf, steht „mit a)". Nach Antwortart: Zahl → Wert
-mit Einheit; Term → Term; Begründen → Urteil und Kern mit ⇒, kein
-Antwortsatz; Kreuz → Buchstabe. Kein Tipp, kein ausführlicher
+mit Einheit; Term → Term; Begründen → links nur das Urteil, rechts der
+Kern mit ⇒, kein Antwortsatz; Kreuz → Buchstabe. Kein Tipp, kein ausführlicher
 Weg, kein Fehlerhinweis; bei „Zum Schluss" dazu „falsch → Nr. n".
 Schreibweise: Brüche gestapelt (in der Zeile \tfrac), Vektoren
 mit \sv, Punkte P(1 | 2), nur ⇒, kein ⇔, keine Mengenzeichen außer
@@ -231,7 +278,7 @@ aus `date`; zweites Blatt am selben Tag: Anhang „b"):
   gebaut; pruef mit der sympy-Probe; herkunft „Blatt <eintrag>
   <Datum>, Nr. <n>“ mit der Nummer auf dem Blatt)
 - protokoll.txt: Eintrag, Zusätze, Einheiten, Zahl der
-  Teilaufgaben aus Bank/neu, Prüfungen, Prompt v5.6, Modell,
+  Teilaufgaben aus Bank/neu/echt/fremd, Prüfungen, Prompt v5.7, Modell,
   und die Liste der übernommenen ids
 - bei einem Schüler: eine Zeile an eingang/gebaut.csv anhängen
   (Nummer;Datum;Eintrag;Zusätze;Ordner)
@@ -251,7 +298,7 @@ Zeilen übernommen (ids …), <m> nicht (Grund)“.
 
 Dann git add des Ordners, der geänderten Bankdateien und von
 eingang/gebaut.csv, Commit
-„Blatt <eintrag> <Datum> (v5.6): <n> aus Bank, <m> neu, <k> in
+„Blatt <eintrag> <Datum> (v5.7): <n> aus Bank, <m> neu, <k> in
 die Bank“, git pull --rebase, git push origin main; kein eigener
 Branch. Scheitert der Push nach zwei Anläufen, bleibt alles im
 Klon, und du sagst es in der Schlusszeile.
