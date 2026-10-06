@@ -1,5 +1,5 @@
 mathblatt.sty – Anleitung (Stufe 6)
-Gehört zu Vorlagenversion 2026-10-05b. Die Version steht in Zeile 2 der `mathblatt.sty`. Weichen beide ab, gilt die Vorlage: Makros, die sie nicht kennt, benutzt du nicht, und du meldest die Abweichung in einer Zeile im Ausgabeblock.
+Gehört zu Vorlagenversion 2026-10-06. Die Version steht in Zeile 2 der `mathblatt.sty`. Weichen beide ab, gilt die Vorlage: Makros, die sie nicht kennt, benutzt du nicht, und du meldest die Abweichung in einer Zeile im Ausgabeblock.
  
 Datei `mathblatt.sty` neben die .tex-Datei legen, `\usepackage{mathblatt}` im Kopf. Kompilieren mit `xelatex` (nicht pdflatex): nur so sind Umlaute, ß, € und die Textextraktion sauber, weil im Sandbox keine Type-1-T1-Schriften liegen. Das Modell schreibt nur Inhalt; Ränder, Karogrößen, Fluchten, Kopf- und Fußzeile sind fest.
  
@@ -408,6 +408,15 @@ Prüfungsheft (2026-10-05b, nur für das Bauprogramm aufgabenbank/werkzeuge/prue
 \begin{pfuebersicht} \pfuezeile{ziel}{Stufe}{Stichwörter} \end{pfuebersicht}
 \pfrueckblick  \pfpruefstein{P10 2015 · 2}     Rückblick (Serie); Prüfstein auf neuer Seite
 \begin{pfloesung}{Kopf oder leer} \lz{12.}{Ergebnis}{Zwischenergebnisse}{2 BE} \end{pfloesung}
+```
+
+Ergänzung 2026-10-06 (Beschlüsse 05./06.10.; ersetzt im Bauprogramm \pfstufe, \kommtdran, pfaufgabe, \pfpaar, \pfweiterekopf und pfuebersicht, die für ältere Quelltexte bleiben):
+
+```
+\pfstufekopf[ziel]{Grundwert G}{in 2 der letzten 5 Prüfungen}   Stufenkopf, kein „neu:“, Info grau
+\pfgruppe{Tarif}   \pfgruppe{}                 Gruppenanfang mit Aufgabenbild-Wort (grau) oder nur Abstand
+\pfab{$G = W : p$}                              „ab hier: …“ über der ersten Aufgabe, die die Formel braucht
+\begin{pfnr}{P10 ’25}{12.}{1 BE} … \end{pfnr}   Marke grau links, Nummer, Aufgabe, Punkte rechts; eine Seite
 ```
 
 Die Bausteine setzt das Programm, nicht das Modell. `\pruefheftstil` stellt den unteren Rand auf 30 mm, damit die kopfüber gesetzten Hilfen Platz haben. `pfloesung` ist eine Tabelle je Nummer: links fett (auch Mathematik, `\boldmath`) das Ergebnis, rechts klein die Zwischenergebnisse, ganz rechts die BE; sie bricht nie über eine Seite.
