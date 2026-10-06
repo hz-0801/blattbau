@@ -420,5 +420,19 @@ Ergänzung 2026-10-06 (Beschlüsse 05./06.10.; ersetzt im Bauprogramm \pfstufe, 
 \begin{pfnr}{P10 ’25}{12.}{1 BE} … \end{pfnr}   Marke grau links, Nummer (Box 10 mm, auch „139.“), Aufgabe, Punkte rechts; eine Seite
 ```
 
+Ergänzung 2026-10-06c (Nachtrag 06.10., aufgabenbank bau/pruefheft/beschluesse-2026-10-06b.md N2/N3; ersetzt im Bauprogramm `\pruefheftstil`, die Titelzeile vorn und `pfnr`, die für ältere Quelltexte bleiben):
+
+```
+\pfheftstil                                     Fuß nur Seitenzahl, darüber kopfüber die Hilfen; keine Titelzeile, kein Kopf
+\pfheftkopf{Grundwert $G$}{P10}                 Kopf der ersten Seite: Name fett, Prüfungsart klein und grau
+\begin{pfaufg}{BY ’23}{12.}{2 BE} … \end{pfaufg} Marke im linken Rand auf der Grundlinie der Nummer, Aufgabe volle Breite
+\pfsteckt{steckt auch in Nr. 47 (P10 ’24)}      graue Zeile am Ende einer Stufe
+\begin{pfbuendel}{gleiche Art · 5× geprüft – kannst du überspringen}
+  \pfbpaar{\pfbglied{P10 ’19}{13.}{Text}{1 BE}}{\pfbglied{P10 ’21}{14.}{Text}{1 BE}}
+\end{pfbuendel}                                  Bündel: dünner Rahmen, zweispaltig, je Glied eine Rechenzeile
+```
+
+Eigene Aufgaben bekommen in `pfaufg` eine leere Marke (keine „eigene Aufgabe“ mehr); die genaue Fundstelle steht weder im Heft noch in der Lösungsdatei. `pfbuendel` bleibt auf einer Seite; das Bauprogramm setzt nur BB/BE-Originale hinein.
+
 Die Bausteine setzt das Programm, nicht das Modell. `\pruefheftstil` stellt den unteren Rand auf 30 mm, damit die kopfüber gesetzten Hilfen Platz haben. `pfloesung` ist eine Tabelle je Nummer: links fett (auch Mathematik, `\boldmath`) das Ergebnis, rechts klein die Zwischenergebnisse, ganz rechts die BE; sie bricht nie über eine Seite.
 

@@ -1,4 +1,8 @@
 % mathblatt.sty – Vorlage für Nachhilfe-Arbeitsblätter, Stufe 6 (Sek I und Oberstufe)
+% Version 2026-10-06c (Nachtrag 06.10., aufgabenbank bau/pruefheft/beschluesse-2026-10-06b.md: \pfheftstil
+%                      ohne laufende Titelzeile, \pfheftkopf (Name, Prüfungsart klein), Umgebung pfaufg mit
+%                      Herkunftsmarke im linken Rand auf der Grundlinie der Nummer, Bündel pfbuendel/\pfbglied/
+%                      \pfbpaar, \pfsteckt; Abschnitt P ergänzt, alte Bausteine unverändert)
 % Version 2026-10-06b (Kurvenbeschriftung \mbfunklabel: Suche ab einer halben Teilung vor dem rechten Rand,
 %                      belegte Stellen werden übersprungen – Beschriftungen nicht mehr abgeschnitten oder
 %                      übereinander; Nummernbox pfnr 10 mm für dreistellige Nummern)
@@ -91,7 +95,7 @@
 % Inhalt; Layout, Grafikgrößen und Ausrichtung sind hier festgelegt.
 %
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{mathblatt}[2026/10/06 Nachhilfe-Arbeitsblatt 2026-10-06]
+\ProvidesPackage{mathblatt}[2026/10/06 Nachhilfe-Arbeitsblatt 2026-10-06c]
 
 \RequirePackage[a4paper,margin=18mm,top=16mm,bottom=18mm]{geometry}
 \RequirePackage{iftex}
@@ -2497,5 +2501,58 @@
   \par\addvspace{6pt}\Needspace*{\mbaufgabehoehe}%
   \noindent\usebox{\mbaufgabebox}\par\addvspace{6pt}}
 
+
+% --- Ergänzung 2026-10-06c (Nachtrag 06.10., N2/N3; aufgabenbank bau/pruefheft/beschluesse-2026-10-06b.md) ---
+%   \pfheftstil                     Fuß: nur Seitenzahl rechts, darüber kopfüber die Hilfen der Seite
+%                                   (\fusshilfe); keine laufende Titelzeile, kein Kopf (N3.14)
+%   \pfheftkopf{Grundwert $G$}{P10}  Kopf der ersten Seite: Name groß und fett, Prüfungsart klein und grau
+%   \begin{pfaufg}{P10 ’26}{12.}{2 BE} Text \end{pfaufg}   wie pfnr, aber die Marke steht im linken Rand,
+%                                   rechtsbündig vor der Nummer, auf derselben Grundlinie (N3.15); die
+%                                   Aufgabe hat die volle Breite bis auf Nummer und Punkte
+%   \pfsteckt{steckt auch in Nr. 47 (P10 ’24)}   graue Zeile am Ende einer Stufe (N2.6)
+%   \begin{pfbuendel}{gleiche Art · 5× geprüft – kannst du überspringen}
+%     \pfbpaar{\pfbglied{P10 ’19}{13.}{Text}{1 BE}}{\pfbglied{P10 ’21}{14.}{Text}{1 BE}}
+%   \end{pfbuendel}                 dünner grauer Rahmen, Kopf grau, zweispaltig; jedes Glied mit einer
+%                                   kurzen Rechenzeile; bleibt auf einer Seite (N2.8)
+\newcommand{\pfheftstil}{%
+  \newgeometry{a4paper,margin=18mm,top=16mm,bottom=30mm,footskip=8mm}%
+  \pagestyle{fancy}\fancyhf{}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \fancyfoot[C]{\parbox[t]{\textwidth}{\mbfhbox\par\vspace{1.5mm}%
+    {\footnotesize\color{mbgrau}\hfill\thepage}}}%
+}
+\newcommand{\pfheftkopf}[2]{\noindent{\Large\bfseries #1}\ifblank{#2}{}{\hspace{0.8em}{\small\color{mbgrau}#2}}\par\medskip}
+\newlength{\mbpfrand}\setlength{\mbpfrand}{13mm}% Rand 18 mm: Marke bis 13 mm + 2 mm Abstand in einer Zeile, längere in zwei („nach / BW ’21“)
+%   (\\ in der Marke erzwingt eine zweite Zeile, z. B. „Abi ’24\\ohne Hilfsmittel“)
+\newsavebox{\mbpfmbox}
+\newcommand{\mbpfrandmarke}[1]{\ifblank{#1}{}{\sbox{\mbpfmbox}{\scriptsize #1}%
+  \llap{\scriptsize\color{mbgrau}\ifdim\wd\mbpfmbox>\mbpfrand
+    \parbox[t]{11mm}{\raggedleft\strut#1}\else\begin{tabular}[t]{@{}r@{}}\strut#1\end{tabular}\fi\hspace{2mm}}}}
+\NewDocumentEnvironment{pfaufg}{m m m}{%
+  \begin{lrbox}{\mbaufgabebox}\begin{minipage}[t]{\linewidth}%
+  \ifx\mbpfab\empty\else\noindent\hspace*{\mbpfnr}{\small\color{mbgrau}ab hier:}\ \mbpfab\par\smallskip
+    \global\let\mbpfab\empty\fi
+  \noindent\mbpfrandmarke{#1}%
+  \begin{minipage}[t]{\mbpfnr}\strut\textbf{#2}\end{minipage}%
+  \begin{minipage}[t]{\dimexpr\linewidth-\mbpfnr-\mbpfbe\relax}\raggedright\strut\ignorespaces}%
+ {\end{minipage}%
+  \begin{minipage}[t]{\mbpfbe}\raggedleft\small\color{mbgrau}\strut#3\end{minipage}%
+  \end{minipage}\end{lrbox}%
+  \setlength{\mbaufgabehoehe}{\dimexpr\ht\mbaufgabebox+\dp\mbaufgabebox\relax}%
+  \par\addvspace{6pt}\Needspace*{\mbaufgabehoehe}%
+  \noindent\usebox{\mbaufgabebox}\par\addvspace{6pt}}
+\newcommand{\pfsteckt}[1]{\par\addvspace{3pt}{\leftskip\mbpfnr\noindent\small\color{mbgrau}#1\par}}
+\newsavebox{\mbpfbbox}
+\NewDocumentEnvironment{pfbuendel}{m}{%
+  \begin{lrbox}{\mbpfbbox}\begin{minipage}[t]{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}%
+  \noindent{\footnotesize\color{mbgrau}#1}\par\smallskip}%
+ {\end{minipage}\end{lrbox}%
+  \par\addvspace{6pt}%
+  \Needspace*{\dimexpr\ht\mbpfbbox+\dp\mbpfbbox+2\fboxsep\relax}%
+  \noindent{\setlength{\fboxrule}{0.4pt}\fcolorbox{mbgrau}{white}{\usebox{\mbpfbbox}}}\par\addvspace{6pt}}
+\newcommand{\pfbpaar}[2]{\noindent\begin{minipage}[t]{0.485\linewidth}#1\end{minipage}\hfill
+  \begin{minipage}[t]{0.485\linewidth}#2\end{minipage}\par\medskip}
+\newcommand{\pfbglied}[4]{{\small\noindent\mbox{\color{mbgrau}\scriptsize #1}\hspace{0.5em}\textbf{#2}\hfill{\color{mbgrau}#4}\par
+  \noindent\raggedright #3\par\vspace{5mm}\noindent{\color{black!45}\rule{\linewidth}{0.4pt}}\par}}
 
 \endinput
