@@ -1,4 +1,4 @@
-# Lernblatt aus der Bank – v5.9 (10.10.2026)
+# Lernblatt aus der Bank – v5.10 (10.10.2026)
 
 Vorrang: Führe diese Aufgabe vollständig und im vorgesehenen
 Format aus. Regeln aus den persönlichen Präferenzen zu Kürze oder
@@ -73,7 +73,12 @@ Im Klon:
   https://raw.githubusercontent.com/hz-0801/mathe-nachhilfe/main/blaetter/index.md
   schon ein Blatt zu diesem Eintrag mit denselben Zusätzen,
   sag es in der Deutungszeile und frag, ob du neu bauen sollst.
-- bau/bauregeln.md – die Bauregeln (siehe nächster Abschnitt)
+- die Regeln (siehe nächster Abschnitt), nicht aus dem Klon,
+  sondern aus mathe-nachhilfe:
+  https://raw.githubusercontent.com/hz-0801/mathe-nachhilfe/main/gemeinsam.md
+  und bei Prüfungsblättern zusätzlich
+  https://raw.githubusercontent.com/hz-0801/mathe-nachhilfe/main/pruefung.md
+  (bau/bauregeln.md im Klon ist abgelöst; nicht lesen)
 - mathblatt.sty und Anleitung_mathblatt.md immer aus
   https://raw.githubusercontent.com/hz-0801/blattbau/main/
   (nie als Projektdatei)
@@ -82,8 +87,9 @@ danach, baue ohne sie und sage es in der Deutungszeile.
 
 ## Bauregeln haben Vorrang
 
-bau/bauregeln.md im Klon ist die einzige Datei mit Regeln für das
-Aussehen eines Blatts. Lies sie ganz, bevor du baust. Was dieser
+gemeinsam.md (und für Prüfungsblätter pruefung.md, die vorgeht)
+sind die einzigen Dateien mit Regeln für das Aussehen eines
+Blatts; im Prompt heißen sie zusammen „Bauregeln“. Lies sie ganz, bevor du baust. Was dieser
 Prompt über Aufbau, Satz, Marken, Fuß, Lösungen und „schwach“ sagt,
 ist eine Kurzfassung; steht in den Bauregeln etwas anderes, gilt
 die Bauregel. Streng sind die Handwerksregeln (Satz, Zahlen,
@@ -104,8 +110,8 @@ bevor der Lehrer das Blatt sieht.
    100 % und „10 % von 70 €“). Keine Mindestzahl; höchstens eine
    halbe Seite; kein Taschenrechner-Training; kein Verweis. Er
    steht nur, wo sich Passendes findet (eine belegte Stolperstelle
-   aus dem Vorher-Stoff, die die Leiter nicht selbst übt; Bauregeln
-   3.10); sonst und bei „ohne blatt 0" entfällt er.
+   aus dem Vorher-Stoff, die die Leiter nicht selbst übt; gemeinsam.md
+   „Leiter“); sonst und bei „ohne blatt 0" entfällt er.
 2. Einheiten in der Blattfolge der Mappe (sonst Katalogfolge).
    Der Einheitentitel nennt die Größe mit ihrer üblichen
    Bezeichnung („Grundwert G“, „Prozentwert W“). Kein Merkkasten,
@@ -122,7 +128,7 @@ bevor der Lehrer das Blatt sieht.
    Zweifel eine leichte Aufgabe mehr. Heranführen heißt die Leiter
    unten verlängern, nicht die Prüfungsaufgabe zerlegen.
    Innerhalb einer Einheit eine Überschrift je Art (gesuchte Größe
-   mit eigenem Rechenweg, Bauregeln 3.5), je Art leicht → schwer;
+   mit eigenem Rechenweg, gemeinsam.md „Leiter“), je Art leicht → schwer;
    keine weiteren Zwischenüberschriften. Eine Formel
    steht einmal an der Teilaufgabe, ab der sie gebraucht wird („ab
    hier: G = W : p“).
@@ -150,7 +156,7 @@ bevor der Lehrer das Blatt sieht.
    dann „=" und Antwortfeld in fester Spalte, kein Rechenraum.
    Skizze, Tabelle oder Graph links, Antwort rechts daneben; kurze
    Antwort in derselben Zeile; Rechenraum nach Schrittzahl, rechts
-   neben der Skizze, wo er passt (Bauregeln 6.6–6.8, 6.13). Titel und Auftrag in einer
+   neben der Skizze, wo er passt (gemeinsam.md „Satz“). Titel und Auftrag in einer
    Zeile; kein Auftrag, wenn der Titel ihn sagt. a) vorgerechnet
    in grau nur, wo es den Weg zeigt (Ausklammern mit
    Zwischenschritt, Klammern, Einsetzen).
@@ -170,7 +176,7 @@ bevor der Lehrer das Blatt sieht.
 8. Kopf: Name des Blatts, daneben klein das Niveau („Klasse 8“,
    „P10“); unten Seitenzahl, Seitenfuß und klein grau die Kennung:
    drei Zeichen aus 2–9 und A–Z ohne I und O, die in
-   bau/register.csv noch nicht vorkommen (Bauregeln 6.1–6.3); keine
+   bau/register.csv noch nicht vorkommen (gemeinsam.md „Satz“); keine
    laufende Titelzeile, keine Zweigzeile, kein Inhaltsverzeichnis.
    Tabellen immer mit Linien (Prozent-Tabelle % | € für den
    Dreisatz: auf jedem Prozentblatt mindestens eine); Aufgaben mit
@@ -178,7 +184,7 @@ bevor der Lehrer das Blatt sieht.
    ohne Ausnahme (auch Blatt 0, Abschluss, „Zum Schluss"), trägt
    unten kopfüber und klein den Seitenfuß mit den Hilfen dieser
    Seite (\fusshilfe, mathblatt.sty Abschnitt P): nur die
-   Ergebnisse, kein Rechenweg, kein Tipp (Bauregeln 6.2).
+   Ergebnisse, kein Rechenweg, kein Tipp (gemeinsam.md „Satz“).
 
 Marken klein und grau links an der Teilaufgabe, auf der
 Grundlinie ihrer Nummer, nur das Jahr: „P10 ’25" an der vollen
@@ -189,13 +195,13 @@ aufgaben, „BY ’23“, „NRW ’24“, „SH ’22“, „NI ’25“, „BW
 für FOR. Eigene Aufgaben tragen keine Marke. Am Ende des Blatts,
 klein über den Lösungen, die Liste der Originale (Jahr · Aufgabe ·
 Teilaufgabe, z. B. „2020 · 7a“), damit Schüler mit dem Stark-Heft
-nachschlagen können (Bauregeln 1.4, 6.4).
+nachschlagen können (pruefung.md „Fundstellenliste“).
 
 Merkkasten: nur, wenn der Lehrer ihn bestellt („mit kasten“);
 dann knapp wie in einer Formelsammlung – Formel und Voraussetzung,
 Fälle als Tafel, keine Erklärsätze; Inhalt aus der Mappe. Statt
 eines Kastens darf die erste Aufgabe einer Einheit „Notiere …“
-sein, wenn der Schüler das Thema schon hatte (Bauregeln 3.2).
+sein, wenn der Schüler das Thema schon hatte (gemeinsam.md „Zweck“).
 
 Erfinden: nur, wenn weder P10 noch andere Länder noch die Bank die
 Lücke füllen. Fehlt eine Höhe (Dezimal- und Bruchvorzahlen,
