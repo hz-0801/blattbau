@@ -1,4 +1,5 @@
 % mathblatt.sty – Vorlage für Nachhilfe-Arbeitsblätter, Stufe 6 (Sek I und Oberstufe)
+% Version 2026-10-11 (Stichprobe P4Z: \pfheftkopf[Kennung], \pfkreuz, \pfkreuzab, \pfblattende)
 % Version 2026-10-06c (Nachtrag 06.10., aufgabenbank bau/pruefheft/beschluesse-2026-10-06b.md: \pfheftstil
 %                      ohne laufende Titelzeile, \pfheftkopf (Name, Prüfungsart klein), Umgebung pfaufg mit
 %                      Herkunftsmarke im linken Rand auf der Grundlinie der Nummer, Bündel pfbuendel/\pfbglied/
@@ -95,7 +96,7 @@
 % Inhalt; Layout, Grafikgrößen und Ausrichtung sind hier festgelegt.
 %
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{mathblatt}[2026/10/06 Nachhilfe-Arbeitsblatt 2026-10-06c]
+\ProvidesPackage{mathblatt}[2026/10/11 Nachhilfe-Arbeitsblatt 2026-10-11]
 
 \RequirePackage[a4paper,margin=18mm,top=16mm,bottom=18mm]{geometry}
 \RequirePackage{iftex}
@@ -2521,7 +2522,9 @@
   \fancyfoot[C]{\parbox[t]{\textwidth}{\mbfhbox\par\vspace{1.5mm}%
     {\footnotesize\color{mbgrau}\hfill\thepage}}}%
 }
-\newcommand{\pfheftkopf}[2]{\noindent{\Large\bfseries #1}\ifblank{#2}{}{\hspace{0.8em}{\small\color{mbgrau}#2}}\par\medskip}
+% 2026-10-11: optional die Kennung, klein und grau rechts außen: \pfheftkopf[P4Z]{Name}{P10}
+\NewDocumentCommand{\pfheftkopf}{o m m}{\noindent{\Large\bfseries #2}\ifblank{#3}{}{\hspace{0.8em}{\small\color{mbgrau}#3}}%
+  \IfValueT{#1}{\hfill{\small\color{mbgrau}#1}}\par\medskip}
 \newlength{\mbpfrand}\setlength{\mbpfrand}{13mm}% Rand 18 mm: Marke bis 13 mm + 2 mm Abstand in einer Zeile, längere in zwei („nach / BW ’21“)
 %   (\\ in der Marke erzwingt eine zweite Zeile, z. B. „Abi ’24\\ohne Hilfsmittel“)
 \newsavebox{\mbpfmbox}
@@ -2554,5 +2557,19 @@
   \begin{minipage}[t]{0.485\linewidth}#2\end{minipage}\par\medskip}
 \newcommand{\pfbglied}[4]{{\small\noindent\mbox{\color{mbgrau}\scriptsize #1}\hspace{0.5em}\textbf{#2}\hfill{\color{mbgrau}#4}\par
   \noindent\raggedright #3\par\vspace{5mm}\noindent{\color{black!45}\rule{\linewidth}{0.4pt}}\par}}
+
+% --- Ergänzung 2026-10-11 (Stichprobe P4Z; mathe-nachhilfe gemeinsam.md „Satz“, pruefung.md § 5) ---
+%   \pfheftkopf[P4Z]{Name}{P10}     Kennung klein und grau rechts außen im Kopf (oben, Definition dort)
+%   \pfkreuz{A}{$w=\sqrt{u^2+v^2}$}  Option zum Ankreuzen mit Buchstabe davor, in einer Zeile nebeneinander
+%   \pfkreuzab{B}{Langer Satz …}     dieselbe als eigener Absatz, lange Texte hängen unter dem Text ein
+%   \pfblattende{11}{26 FOR & 25 & …}{1j 2c & 2a 4a & …}{Weiter: …}
+%                                   Blattende: kleine graue Fundstellentabelle (n Spalten, oben Jahre,
+%                                   darunter Stellen, leer, wo nichts dran kam), darunter die Zeile Vorher/Weiter
+\newcommand{\pfkreuz}[2]{\mbox{#1\,$\square$}\ #2\hspace{1.4em}}
+\newcommand{\pfkreuzab}[2]{\par\noindent\hangindent2.4em\hangafter1\makebox[2.4em][l]{#1\,$\square$}#2\par}
+\newcommand{\pfblattende}[4]{\par\vfill\noindent\begin{minipage}{\linewidth}%
+  {\scriptsize\color{mbgrau}\setlength{\tabcolsep}{4pt}\arrayrulecolor{mbgrau!60}%
+   \begin{tabular}{|*{#1}{c|}}\hline #2\\\hline #3\\\hline\end{tabular}\arrayrulecolor{black}\par}%
+  \ifblank{#4}{}{\smallskip{\footnotesize #4\par}}\end{minipage}}
 
 \endinput

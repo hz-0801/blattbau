@@ -1,5 +1,5 @@
 mathblatt.sty – Anleitung (Stufe 6)
-Gehört zu Vorlagenversion 2026-10-06. Die Version steht in Zeile 2 der `mathblatt.sty`. Weichen beide ab, gilt die Vorlage: Makros, die sie nicht kennt, benutzt du nicht, und du meldest die Abweichung in einer Zeile im Ausgabeblock.
+Gehört zu Vorlagenversion 2026-10-11. Die Version steht in Zeile 2 der `mathblatt.sty`. Weichen beide ab, gilt die Vorlage: Makros, die sie nicht kennt, benutzt du nicht, und du meldest die Abweichung in einer Zeile im Ausgabeblock.
  
 Datei `mathblatt.sty` neben die .tex-Datei legen, `\usepackage{mathblatt}` im Kopf. Kompilieren mit `xelatex` (nicht pdflatex): nur so sind Umlaute, ß, € und die Textextraktion sauber, weil im Sandbox keine Type-1-T1-Schriften liegen. Das Modell schreibt nur Inhalt; Ränder, Karogrößen, Fluchten, Kopf- und Fußzeile sind fest.
  
@@ -431,6 +431,8 @@ Ergänzung 2026-10-06c (Nachtrag 06.10., aufgabenbank bau/pruefheft/beschluesse-
   \pfbpaar{\pfbglied{P10 ’19}{13.}{Text}{1 BE}}{\pfbglied{P10 ’21}{14.}{Text}{1 BE}}
 \end{pfbuendel}                                  Bündel: dünner Rahmen, zweispaltig, je Glied eine Rechenzeile
 ```
+
+Ergänzung 2026-10-11 (Stichprobe P4Z; mathe-nachhilfe gemeinsam.md „Satz“, pruefung.md § 5): `\pfheftkopf[P4Z]{Länge mit Pythagoras}{P10}` setzt die Kennung klein und grau rechts außen in den Kopf (ohne Option wie bisher; die Kennung gehört nicht mehr in den Fuß). `\pfkreuz{A}{Text}` ist eine Option zum Ankreuzen mit Buchstabe davor, nebeneinander in einer Zeile; `\pfkreuzab{B}{Text}` dieselbe als eigener Absatz für lange Optionen; die Lösung nennt den Buchstaben. `\pfblattende{11}{26 FOR & 25 & … & 16}{1j 2c 4a & 2a 4a & … & 7b}{Weiter: …}` setzt am Blattende die kleine graue Fundstellentabelle (Spaltenzahl, Jahre, Stellen) und darunter die Zeile Vorher/Weiter.
 
 Eigene Aufgaben bekommen in `pfaufg` eine leere Marke (keine „eigene Aufgabe“ mehr); die genaue Fundstelle steht weder im Heft noch in der Lösungsdatei. `pfbuendel` bleibt auf einer Seite; das Bauprogramm setzt nur BB/BE-Originale hinein.
 
