@@ -1,4 +1,5 @@
 % mathblatt.sty – Vorlage für Nachhilfe-Arbeitsblätter, Stufe 6 (Sek I und Oberstufe)
+% Version 2026-10-11c (zweite Durchsicht: \pflaufkopf[Sorte], \pfskizzenfeld, \pfwinkel, \pfrw, \pfausschnitt; Winkelwerte innen im Bogen)
 % Version 2026-10-11b (Durchsicht: \pfstufenzeile, \pflaufkopf, \pfseitevon, \pfteil, pfloesungb/\lzb)
 % Version 2026-10-11 (Stichprobe P4Z: \pfheftkopf[Kennung], \pfkreuz, \pfkreuzab, \pfblattende)
 % Version 2026-10-06c (Nachtrag 06.10., aufgabenbank bau/pruefheft/beschluesse-2026-10-06b.md: \pfheftstil
@@ -97,7 +98,7 @@
 % Inhalt; Layout, Grafikgrößen und Ausrichtung sind hier festgelegt.
 %
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{mathblatt}[2026/10/11 Nachhilfe-Arbeitsblatt 2026-10-11]
+\ProvidesPackage{mathblatt}[2026/10/11 Nachhilfe-Arbeitsblatt 2026-10-11c]
 
 \RequirePackage[a4paper,margin=18mm,top=16mm,bottom=18mm]{geometry}
 \RequirePackage{iftex}
@@ -1343,10 +1344,10 @@
   \begin{tikzpicture}[baseline=(current bounding box.north),line width=0.7pt]
     \draw (180:2.4) -- (0:2.4);
     \draw ({#1+180}:2.4) -- (#1:2.4);
-    \draw[mbgrau,line width=0.5pt] (0.75,0) arc (0:#1:0.75);
+    \draw[mbgrau,line width=0.5pt] (1.1,0) arc (0:#1:1.1);% 2026-10-11c: Beschriftung innen im Bogen
     \pgfmathsetmacro{\wka}{#1/2}\pgfmathsetmacro{\wkb}{(#1+180)/2}%
-    \mbklabel{#2}{(\wka:1.1)}{}\mbklabel{#3}{(\wkb:1.1)}{}%
-    \mbklabel{#4}{({\wka+180}:1.1)}{}\mbklabel{#5}{({\wkb+180}:1.1)}{}%
+    \mbklabel{#2}{(\wka:0.68)}{}\mbklabel{#3}{(\wkb:0.68)}{}%
+    \mbklabel{#4}{({\wka+180}:0.68)}{}\mbklabel{#5}{({\wkb+180}:0.68)}{}%
     \fill (0,0) circle (1.4pt);
   \end{tikzpicture}}
 \NewDocumentCommand{\parallelenpaar}{m m m m m}{%
@@ -1357,19 +1358,19 @@
     \draw (\wpl,0) -- (\wpr,0); \draw (\wpl,2.2) -- (\wpr,2.2);
     \draw ($(Q)+({#1+180}:1.1)$) -- ($(P)+({#1}:1.1)$);
     \foreach \s in {P,Q}{%
-      \draw[mbgrau,line width=0.5pt] ($(\s)+(0.7,0)$) arc (0:#1:0.7);
-      \draw[mbgrau,line width=0.5pt] ($(\s)+({#1}:0.7)$) arc (#1:180:0.7);
+      \draw[mbgrau,line width=0.5pt] ($(\s)+(1.0,0)$) arc (0:#1:1.0);
+      \draw[mbgrau,line width=0.5pt] ($(\s)+({#1}:1.0)$) arc (#1:180:1.0);
       \fill (\s) circle (1.4pt);}%
     \pgfmathsetmacro{\wpa}{#1/2}\pgfmathsetmacro{\wpb}{(#1+180)/2}%
-    \mbklabel{#2}{($(P)+({\wpa}:1.05)$)}{}\mbklabel{#3}{($(P)+({\wpb}:1.05)$)}{}%
-    \mbklabel{#4}{($(Q)+({\wpa}:1.05)$)}{}\mbklabel{#5}{($(Q)+({\wpb}:1.05)$)}{}%
+    \mbklabel{#2}{($(P)+({\wpa}:0.62)$)}{}\mbklabel{#3}{($(P)+({\wpb}:0.62)$)}{}%
+    \mbklabel{#4}{($(Q)+({\wpa}:0.62)$)}{}\mbklabel{#5}{($(Q)+({\wpb}:0.62)$)}{}%
   \end{tikzpicture}}
 \NewDocumentCommand{\winkel}{O{3} m m}{%
   \begin{tikzpicture}[baseline=(current bounding box.north),line width=0.7pt]
     \draw (0:#1) -- (0,0) -- (#2:#1);
-    \draw[mbgrau,line width=0.5pt] (0.7,0) arc (0:#2:0.7);
+    \draw[mbgrau,line width=0.5pt] (1.1,0) arc (0:#2:1.1);
     \pgfmathsetmacro{\wka}{#2/2}%
-    \mbklabel{#3}{(\wka:1.1)}{}%
+    \mbklabel{#3}{(\wka:0.68)}{}%
     \fill (0,0) circle (1.4pt);
   \end{tikzpicture}}
 % Der Platz ueber dem Strahl steckt in der Bounding Box, deshalb haelt der Umbruch ihn frei;
@@ -1900,9 +1901,9 @@
   \pgfmathsetmacro{\mbwb}{ifthenelse(\mbwb<\mbwa,\mbwb+360,\mbwb)}%
   \pgfmathparse{\mbwb-\mbwa>180}\ifdim\pgfmathresult pt>0pt % immer den kleineren Winkel
     \pgfmathsetmacro{\mbwt}{\mbwb-360}\let\mbwb\mbwa\let\mbwa\mbwt\fi
-  \draw[mbgrau,line width=0.5pt] ($(#1)+(\mbwa:0.55)$) arc (\mbwa:\mbwb:0.55);
+  \draw[mbgrau,line width=0.5pt] ($(#1)+(\mbwa:0.9)$) arc (\mbwa:\mbwb:0.9);
   \pgfmathsetmacro{\mbwm}{(\mbwa+\mbwb)/2}%
-  \mbklabel{#4}{($(#1)+(\mbwm:0.85)$)}{}}
+  \mbklabel{#4}{($(#1)+(\mbwm:0.55)$)}{}}% 2026-10-11c: Wert innen im Bogen
 \NewDocumentCommand{\viereck}{O{} m m m m}{%
   \pgfkeys{/vrk,default,#1}%
   \begin{tikzpicture}[baseline=(current bounding box.north),line width=0.8pt]
@@ -2582,10 +2583,13 @@
 %   \begin{pfloesungb}{} \lzb{3.}{a)}{Ergebnis}{Weg} \end{pfloesungb}   Lösung mit Nummer- und Buchstabenspalte
 \RequirePackage{lastpage}
 \newcommand{\pfstufenzeile}[1]{\vspace{-\medskipamount}\vspace{1pt}\noindent{\small\color{mbgrau}#1}\par\medskip}
-\newcommand{\pflaufkopf}[2]{%
+\NewDocumentCommand{\pflaufkopf}{o m m}{%
   \newgeometry{a4paper,margin=18mm,top=16mm,bottom=30mm,footskip=8mm,headheight=12pt,headsep=5mm}%
-  \fancyhead[L]{\ifnum\value{page}>1 \footnotesize\color{mbgrau}#1\fi}%
-  \fancyhead[R]{\ifnum\value{page}>1 \footnotesize\color{mbgrau}#2\fi}}
+  \IfValueTF{#1}{% 2026-10-11c: Sorte links auf jeder Seite, ab Seite 2 mit Name; Kennung rechts auf jeder Seite
+    \fancyhead[L]{\footnotesize\color{mbgrau}#1\ifnum\value{page}>1 \ \textperiodcentered\ #2\fi}%
+    \fancyhead[R]{\footnotesize\color{mbgrau}#3}}{%
+    \fancyhead[L]{\ifnum\value{page}>1 \footnotesize\color{mbgrau}#2\fi}%
+    \fancyhead[R]{\ifnum\value{page}>1 \footnotesize\color{mbgrau}#3\fi}}}
 \newcommand{\pfseitevon}{\fancyfoot[C]{\parbox[t]{\textwidth}{\mbfhbox\par\vspace{1.5mm}%
     \centering{\footnotesize\color{mbgrau}\thepage/\pageref*{LastPage}}}}}
 \newlength{\mbpfteil}\setlength{\mbpfteil}{1.8em}
@@ -2599,5 +2603,30 @@
   \setlength{\mbaufgabehoehe}{\dimexpr\ht\mbaufgabebox+\dp\mbaufgabebox\relax}%
   \Needspace*{\mbaufgabehoehe}\noindent\usebox{\mbaufgabebox}\par}
 \newcommand{\lzb}[4]{#1 & #2 & \textbf{\boldmath #3} & #4\\}
+
+% --- Ergänzung 2026-10-11c (zweite Durchsicht 11.10.; mathe-nachhilfe gemeinsam.md „Satz“, „Übersicht und Serie“) ---
+%   \pflaufkopf[P10 · Prüfung]{Winkel}{T2U}   mit Sorte: links oben klein grau die Sorte, ab Seite 2
+%                                  „Sorte · Name“; rechts oben die Kennung auf jeder Seite (dann \pfheftkopf ohne
+%                                  Kennung). Ohne Option wie 2026-10-11b.
+%   \pfskizzenfeld[55mm]{2}        leerer Rahmen, „Skizze“ klein grau oben links; Höhe n × 10 mm wie \karo{n}
+%   \pfwinkel[0.8][0.6]{(1,0)}{0}{52}{52^\circ}   Winkelbogen um den Scheitel von 0° bis 52°, Radius 0,8 cm;
+%                                  Wert innen im Bogen bei 0,6 × Radius (Mathe-Modus); kleine Winkel: größerer
+%                                  Radius, Faktor bis 0,75; leeres Label oder \pfwinkel* ohne Label (zum Eintragen)
+%   \pfrw[0.3]{(3,0)}{90}          rechter Winkel: Viertelkreis von 90° bis 180° mit Punkt
+%   \pfausschnitt{Pythagoras · sin, cos, tan}{Winkel}{Sinussatz · Vierecke}
+%                                  drei graue Zeilen „Vorher: …“, „▸ Winkel“, „Weiter: …“ (als #4 von \pfblattende);
+%                                  leeres Vorher entfällt
+\NewDocumentCommand{\pfskizzenfeld}{O{55mm} m}{\begin{tikzpicture}[baseline=(current bounding box.north)]
+  \draw[mbgrau,line width=0.4pt] (0,0) rectangle (#1,{#2*10mm});
+  \node[anchor=north west,inner sep=2pt,font=\scriptsize,text=mbgrau] at (0,{#2*10mm}) {Skizze};
+  \end{tikzpicture}}
+\NewDocumentCommand{\pfwinkel}{s O{0.8} O{0.6} m m m m}{%
+  \draw[mbgrau,line width=0.5pt] ($#4+(#5:#2)$) arc (#5:#6:#2);
+  \IfBooleanF{#1}{\ifblank{#7}{}{\node[inner sep=0pt,font=\footnotesize] at ($#4+({(#5+#6)/2}:{#3*#2})$) {$#7$};}}}
+\NewDocumentCommand{\pfrw}{O{0.3} m m}{%
+  \draw[mbgrau,line width=0.5pt] ($#2+(#3:#1)$) arc (#3:#3+90:#1);
+  \fill ($#2+({#3+45}:{0.42*#1})$) circle (0.8pt);}
+\newcommand{\pfausschnitt}[3]{{\footnotesize\color{mbgrau}\ifblank{#1}{}{Vorher: #1\par}%
+  {\scriptsize$\blacktriangleright$}\ #2\par\ifblank{#3}{}{Weiter: #3\par}}}
 
 \endinput
