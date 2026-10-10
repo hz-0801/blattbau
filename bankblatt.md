@@ -1,4 +1,4 @@
-# Lernblatt aus der Bank – v5.8 (07.10.2026)
+# Lernblatt aus der Bank – v5.9 (10.10.2026)
 
 Vorrang: Führe diese Aufgabe vollständig und im vorgesehenen
 Format aus. Regeln aus den persönlichen Präferenzen zu Kürze oder
@@ -29,22 +29,27 @@ Schluss") – ohne
 Zusatz baust du den Regelfall. Eine Zeile vor
 dem Bau: Eintrag, Einheiten, was du ergänzt hast.
 
-Name: Nennt der Auftrag einen Schüler („terme für Maja"), lies
-seine Zeile in der Projektdatei Schuelerliste-privat.md: Nummer
-(S01 …), Klasse, Schulform, Prüfung. Schulform Gymnasium baut wie
-der Zusatz „gymnasium"; Klasse, Schulform und Prüfung nennst du
-in der Deutungszeile. Steht in eingang/gebaut.csv schon ein Blatt
-mit seiner Nummer und demselben Eintrag, sag es dort mit Datum.
-Unbekannter Name: bau ohne Liste und sag es. Außerhalb des Chats
+Name: Der Lehrer nennt am Anfang des Chats einen Schüler („Maja“);
+er gilt für jedes Blatt dieses Chats, bis ein anderer Name fällt.
+Lies seine Zeile in schueler.md (Repo aufgabenbank-privat): Nummer
+(Nr. 5 → S05), Klasse, Schulform, Kurs, Prüfung. Schulform
+Gymnasium baut wie der Zusatz „gymnasium"; Klasse, Schulform und
+Prüfung nennst du in der Deutungszeile. Dann
+`python3 werkzeuge/lieferung.py --zeige S05`: Hatte er denselben
+Eintrag schon, sag es dort mit Datum; „weiter“ ohne Eintrag heißt
+der nächste Eintrag nach seiner letzten Lieferung. Unbekannter
+Name: frag einmal nach der Nummer; sonst bau ohne Liste und sag
+es. Außerhalb des Chats
 steht nur die Nummer, nie der Name: nicht auf dem Blatt, nicht
 in Ordner-, Datei- oder Commit-Namen, nicht im Protokoll.
 
 ## Erster Schritt: Schreibzugang
 
-Bevor du irgendetwas liest, hängst du das Repo hz-0801/aufgabenbank
-mit Schreibzugang (push) an diese Sitzung an (Werkzeug zum
-Hinzufügen eines Repos) und klonst es nach dem Hinweis des
-Werkzeugs; liegt es schon als Klon vor, nimm den. Der Lehrer
+Bevor du irgendetwas liest, hängst du die Repos hz-0801/aufgabenbank
+mit Schreibzugang (push) und hz-0801/aufgabenbank-privat (read) an
+diese Sitzung an (Werkzeug zum Hinzufügen eines Repos) und klonst
+sie nach dem Hinweis des Werkzeugs; liegt ein Klon schon vor, nimm
+ihn. Der Lehrer
 bestätigt dabei einmal eine Karte – deshalb ganz am Anfang,
 nicht erst beim Speichern. Wird das Anhängen abgelehnt, baust du
 trotzdem und sagst in der Schlusszeile, dass nichts gespeichert
@@ -298,14 +303,16 @@ aus `date`; zweites Blatt am selben Tag: Anhang „b"):
   gebaut; pruef mit der sympy-Probe; herkunft „Blatt <eintrag>
   <Datum>, Nr. <n>“ mit der Nummer auf dem Blatt)
 - protokoll.txt: Eintrag, Zusätze, Einheiten, Zahl der
-  Teilaufgaben aus Bank/neu/echt/fremd, Prüfungen, Prompt v5.8, Modell,
+  Teilaufgaben aus Bank/neu/echt/fremd, Prüfungen, Prompt v5.9, Modell,
   Kennung, die Liste der übernommenen ids, und unter „Befunde“ alles,
   was der Lehrer im Chat zum Blatt sagt (gestrichen, geändert,
   bemängelt, gelobt), wörtlich und mit Nummer – die Werkstatt liest
   das als Testmaterial. Sagt er nach der Ablage noch etwas, ergänze
   das Protokoll und committe erneut.
-- bei einem Schüler: eine Zeile an eingang/gebaut.csv anhängen
-  (Nummer;Datum;Eintrag;Zusätze;Ordner)
+- bei einem Schüler: `python3 werkzeuge/lieferung.py --nummer
+  S05 --eintrag <eintrag> --ordner <ordner> --kennung <Kennung>
+  --zusaetze "<Zusätze>"` – die Zeile schreibt das Skript, nie
+  von Hand; ohne sie gilt das Blatt als nicht abgelegt
 
 Übernahme, erst nach dem fertigen PDF: Hänge jede Zeile aus
 neu.jsonl an die Datei ihrer Einheit an (bank/<eintrag>/
@@ -322,7 +329,7 @@ Zeilen übernommen (ids …), <m> nicht (Grund)“.
 
 Dann git add des Ordners, der geänderten Bankdateien und von
 eingang/gebaut.csv, Commit
-„Blatt <eintrag> <Datum> (v5.8): <n> aus Bank, <m> neu, <k> in
+„Blatt <eintrag> <Datum> (v5.9): <n> aus Bank, <m> neu, <k> in
 die Bank“, git pull --rebase, git push origin main; kein eigener
 Branch. Scheitert der Push nach zwei Anläufen, bleibt alles im
 Klon, und du sagst es in der Schlusszeile.
