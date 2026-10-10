@@ -1,4 +1,5 @@
 % mathblatt.sty – Vorlage für Nachhilfe-Arbeitsblätter, Stufe 6 (Sek I und Oberstufe)
+% Version 2026-10-11b (Durchsicht: \pfstufenzeile, \pflaufkopf, \pfseitevon, \pfteil, pfloesungb/\lzb)
 % Version 2026-10-11 (Stichprobe P4Z: \pfheftkopf[Kennung], \pfkreuz, \pfkreuzab, \pfblattende)
 % Version 2026-10-06c (Nachtrag 06.10., aufgabenbank bau/pruefheft/beschluesse-2026-10-06b.md: \pfheftstil
 %                      ohne laufende Titelzeile, \pfheftkopf (Name, Prüfungsart klein), Umgebung pfaufg mit
@@ -2571,5 +2572,32 @@
   {\scriptsize\color{mbgrau}\setlength{\tabcolsep}{4pt}\arrayrulecolor{mbgrau!60}%
    \begin{tabular}{|*{#1}{c|}}\hline #2\\\hline #3\\\hline\end{tabular}\arrayrulecolor{black}\par}%
   \ifblank{#4}{}{\smallskip{\footnotesize #4\par}}\end{minipage}}
+
+% --- Ergänzung 2026-10-11b (Durchsicht 11.10.; mathe-nachhilfe gemeinsam.md „Satz“, „Lösungen“) ---
+%   \pfstufenzeile{Stufe 1 · Stufe 2}  graue Zeile mit den Stufen des Blatts unter \pfheftkopf (Seite 1)
+%   \pflaufkopf{Winkel}{T2U}            direkt nach \pfheftstil: ab Seite 2 links oben der Name, rechts oben die
+%                                      Kennung, klein und grau (Seite 1 trägt beides in \pfheftkopf)
+%   \pfseitevon                        nach \pfheftstil: Seitenzahl im Fuß mittig als „1/3“ (lastpage)
+%   \pfteil{a)}{Text}                  Teilaufgabe: Buchstabe in eigener Spalte, Text hängt ein
+%   \begin{pfloesungb}{} \lzb{3.}{a)}{Ergebnis}{Weg} \end{pfloesungb}   Lösung mit Nummer- und Buchstabenspalte
+\RequirePackage{lastpage}
+\newcommand{\pfstufenzeile}[1]{\vspace{-\medskipamount}\vspace{1pt}\noindent{\small\color{mbgrau}#1}\par\medskip}
+\newcommand{\pflaufkopf}[2]{%
+  \newgeometry{a4paper,margin=18mm,top=16mm,bottom=30mm,footskip=8mm,headheight=12pt,headsep=5mm}%
+  \fancyhead[L]{\ifnum\value{page}>1 \footnotesize\color{mbgrau}#1\fi}%
+  \fancyhead[R]{\ifnum\value{page}>1 \footnotesize\color{mbgrau}#2\fi}}
+\newcommand{\pfseitevon}{\fancyfoot[C]{\parbox[t]{\textwidth}{\mbfhbox\par\vspace{1.5mm}%
+    \centering{\footnotesize\color{mbgrau}\thepage/\pageref*{LastPage}}}}}
+\newlength{\mbpfteil}\setlength{\mbpfteil}{1.8em}
+\newcommand{\pfteil}[2]{\par\noindent\hangindent\mbpfteil\hangafter1\makebox[\mbpfteil][l]{\textbf{#1}}#2\par}
+\newenvironment{pfloesungb}[1]{\par\addvspace{3pt}%
+  \begin{lrbox}{\mbaufgabebox}\begin{minipage}[t]{\linewidth}%
+  \ifblank{#1}{}{\noindent #1\par\nobreak\vspace{1pt}}%
+  \renewcommand{\arraystretch}{1.2}%
+  \begin{tabular}{@{}>{\bfseries}p{0.06\linewidth}@{}>{\bfseries}p{0.05\linewidth}@{}>{\raggedright\arraybackslash}p{0.35\linewidth}@{\hspace{0.02\linewidth}}>{\raggedright\arraybackslash\small}p{0.52\linewidth}@{}}}%
+ {\end{tabular}\end{minipage}\end{lrbox}%
+  \setlength{\mbaufgabehoehe}{\dimexpr\ht\mbaufgabebox+\dp\mbaufgabebox\relax}%
+  \Needspace*{\mbaufgabehoehe}\noindent\usebox{\mbaufgabebox}\par}
+\newcommand{\lzb}[4]{#1 & #2 & \textbf{\boldmath #3} & #4\\}
 
 \endinput
