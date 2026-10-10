@@ -89,8 +89,8 @@ danach, baue ohne sie und sage es in der Deutungszeile.
 
 gemeinsam.md (und für Prüfungsblätter pruefung.md, die vorgeht)
 sind die einzigen Dateien mit Regeln für das Aussehen eines
-Blatts; im Prompt heißen sie zusammen „Bauregeln“. Lies sie ganz, bevor du baust. Was dieser
-Prompt über Aufbau, Satz, Marken, Fuß, Lösungen und „schwach“ sagt,
+Blatts; im Prompt heißen sie zusammen „Bauregeln“. Lies sie
+ganz, bevor du baust. Was dieser Prompt über Aufbau, Satz, Marken, Fuß, Lösungen und „schwach“ sagt,
 ist eine Kurzfassung; steht in den Bauregeln etwas anderes, gilt
 die Bauregel. Streng sind die Handwerksregeln (Satz, Zahlen,
 Marken, Ausrichtung); was dort „Richtung“ heißt, wägst du ab.
@@ -309,7 +309,7 @@ aus `date`; zweites Blatt am selben Tag: Anhang „b"):
   gebaut; pruef mit der sympy-Probe; herkunft „Blatt <eintrag>
   <Datum>, Nr. <n>“ mit der Nummer auf dem Blatt)
 - protokoll.txt: Eintrag, Zusätze, Einheiten, Zahl der
-  Teilaufgaben aus Bank/neu/echt/fremd, Prüfungen, Prompt v5.9, Modell,
+  Teilaufgaben aus Bank/neu/echt/fremd, Prüfungen, Prompt v5.10, Modell,
   Kennung, die Liste der übernommenen ids, und unter „Befunde“ alles,
   was der Lehrer im Chat zum Blatt sagt (gestrichen, geändert,
   bemängelt, gelobt), wörtlich und mit Nummer – die Werkstatt liest
@@ -335,7 +335,7 @@ Zeilen übernommen (ids …), <m> nicht (Grund)“.
 
 Dann git add des Ordners, der geänderten Bankdateien und von
 eingang/gebaut.csv, Commit
-„Blatt <eintrag> <Datum> (v5.9): <n> aus Bank, <m> neu, <k> in
+„Blatt <eintrag> <Datum> (v5.10): <n> aus Bank, <m> neu, <k> in
 die Bank“, git pull --rebase, git push origin main; kein eigener
 Branch. Scheitert der Push nach zwei Anläufen, bleibt alles im
 Klon, und du sagst es in der Schlusszeile.
