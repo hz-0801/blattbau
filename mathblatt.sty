@@ -1,4 +1,5 @@
 % mathblatt.sty – Vorlage für Nachhilfe-Arbeitsblätter, Stufe 6 (Sek I und Oberstufe)
+% Version 2026-10-11d (Skizzenfeld ohne Rahmen)
 % Version 2026-10-11c (zweite Durchsicht: \pflaufkopf[Sorte], \pfskizzenfeld, \pfwinkel, \pfrw, \pfausschnitt; Winkelwerte innen im Bogen)
 % Version 2026-10-11b (Durchsicht: \pfstufenzeile, \pflaufkopf, \pfseitevon, \pfteil, pfloesungb/\lzb)
 % Version 2026-10-11 (Stichprobe P4Z: \pfheftkopf[Kennung], \pfkreuz, \pfkreuzab, \pfblattende)
@@ -2608,7 +2609,7 @@
 %   \pflaufkopf[P10 · Prüfung]{Winkel}{T2U}   mit Sorte: links oben klein grau die Sorte, ab Seite 2
 %                                  „Sorte · Name“; rechts oben die Kennung auf jeder Seite (dann \pfheftkopf ohne
 %                                  Kennung). Ohne Option wie 2026-10-11b.
-%   \pfskizzenfeld[55mm]{2}        leerer Rahmen, „Skizze“ klein grau oben links; Höhe n × 10 mm wie \karo{n}
+%   \pfskizzenfeld[55mm]{2}        freier Platz ohne Rahmen (Lehrer 11.10.: Rahmen sieht wie ein Viereck aus), „Skizze“ klein grau oben links; Höhe n × 10 mm wie \karo{n}
 %   \pfwinkel[0.8][0.6]{(1,0)}{0}{52}{52^\circ}   Winkelbogen um den Scheitel von 0° bis 52°, Radius 0,8 cm;
 %                                  Wert innen im Bogen bei 0,6 × Radius (Mathe-Modus); kleine Winkel: größerer
 %                                  Radius, Faktor bis 0,75; leeres Label oder \pfwinkel* ohne Label (zum Eintragen)
@@ -2617,7 +2618,7 @@
 %                                  drei graue Zeilen „Vorher: …“, „▸ Winkel“, „Weiter: …“ (als #4 von \pfblattende);
 %                                  leeres Vorher entfällt
 \NewDocumentCommand{\pfskizzenfeld}{O{55mm} m}{\begin{tikzpicture}[baseline=(current bounding box.north)]
-  \draw[mbgrau,line width=0.4pt] (0,0) rectangle (#1,{#2*10mm});
+  \path (0,0) rectangle (#1,{#2*10mm});
   \node[anchor=north west,inner sep=2pt,font=\scriptsize,text=mbgrau] at (0,{#2*10mm}) {Skizze};
   \end{tikzpicture}}
 \NewDocumentCommand{\pfwinkel}{s O{0.8} O{0.6} m m m m}{%
