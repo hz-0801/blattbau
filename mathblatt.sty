@@ -2652,7 +2652,8 @@
 %   \begin{abiksys}[xmin=-4,xmax=3,ymin=-2,ymax=5]   Koordinatensystem wie im Abiturheft: 1 LE = le cm
 %     (Vorgabe 1; yle = eigener Maßstab der y-Achse), Karo 5 mm über das Fenster, Striche und Zahlen je
 %     xstep/ystep LE (Dezimalkomma); ohnezahlen = Achsen ohne Bezifferung („ohne Skalierung“, das Fenster
-%     verrät dann nichts); ohnegitter = ohne Karo; xlabel/ylabel wie ksys.
+%     verrät dann nichts: keine Zahlen, keine Striche;
+%     mit ohnegitter auch kein Karo zum Abzählen); ohnegitter = ohne Karo; Zahlen enger als 6 mm: nur jede zweite; xlabel/ylabel wie ksys.
 %     Innen gelten \funktion, \funktionab, \punkt, \hochpunkt, \tiefpunkt, \wendepunkt, \asymptote,
 %     \flaeche, \flaechezwischen, \tangentean wie im ksys (Terme in pgf-Syntax, Variable \x, exp(\x)).
 %   \end{abiksys}
@@ -2670,16 +2671,20 @@
   ohnezahlen/.style={zahlen=false}, ohnegitter/.style={gitter=false},
   default/.style={xmin=-4,xmax=4,ymin=-3,ymax=3,xstep=1,ystep=1,le=1,yle=,xlabel=$x$,ylabel=$y$,
                   zahlen=true,gitter=true}}
-\newcommand{\mbastriche}[4]{% Achse (x|y), min, max, Schritt: Striche und Zahlen auf Vielfachen des Schritts
+\newcommand{\mbastriche}[5]{% Achse (x|y), min, max, Schritt, cm je LE: Striche und Zahlen auf Vielfachen des
+  % Schritts; ohnezahlen: weder Striche noch Zahlen (sonst ließe sich die Skalierung abzählen). Liegen die Striche
+  % enger als 6 mm, steht nur an jedem zweiten (dritten …) eine Zahl, ausgehend von 0
   \pgfmathsetmacro{\mbsa}{ceil((#2)/(#4)-0.0001)*(#4)}\pgfmathsetmacro{\mbsb}{\mbsa+(#4)}%
-  \foreach \mbs in {\mbsa,\mbsb,...,#3}{%
+  \pgfmathtruncatemacro{\mbsl}{max(1,ceil(0.6/((#4)*(#5))-0.0001))}%
+  \ifmbazahlen\foreach \mbs in {\mbsa,\mbsb,...,#3}{%
     \pgfmathtruncatemacro{\mbsnull}{abs(\mbs)<0.0001}\pgfmathtruncatemacro{\mbsrand}{\mbs>(#3)+0.0001}%
+    \pgfmathtruncatemacro{\mbsz}{mod(abs(round(\mbs/(#4))),\mbsl)==0}%
     \ifnum\mbsnull=0 \ifnum\mbsrand=0
       \if x#1\draw (\mbs,0) ++(0,-0.6mm) -- ++(0,1.2mm);%
-        \ifmbazahlen\node[below,inner sep=1.5pt,font=\scriptsize] at (\mbs,0) {$\pgfmathprintnumber[use comma,1000 sep={}]{\mbs}$};\fi
+        \ifnum\mbsz=1 \node[below,inner sep=1.5pt,font=\scriptsize] at (\mbs,0) {$\pgfmathprintnumber[use comma,1000 sep={}]{\mbs}$};\fi
       \else\draw (0,\mbs) ++(-0.6mm,0) -- ++(1.2mm,0);%
-        \ifmbazahlen\node[left,inner sep=1.5pt,font=\scriptsize] at (0,\mbs) {$\pgfmathprintnumber[use comma,1000 sep={}]{\mbs}$};\fi
-      \fi\fi\fi}}
+        \ifnum\mbsz=1 \node[left,inner sep=1.5pt,font=\scriptsize] at (0,\mbs) {$\pgfmathprintnumber[use comma,1000 sep={}]{\mbs}$};\fi
+      \fi\fi\fi}\fi}
 \newenvironment{abiksys}[1][]{%
   \gdef\mbflabels{}%
   \pgfkeys{/abiksys,default,#1}%
@@ -2694,7 +2699,7 @@
   \fi
   \draw[-{Stealth[length=2mm]},line width=0.6pt] (\ksxmin,0) -- (\mbaxp,0) node[right] {\small\ksxlabel};
   \draw[-{Stealth[length=2mm]},line width=0.6pt] (0,\ksymin) -- (0,\mbayp) node[above] {\small\ksylabel};
-  \mbastriche{x}{\ksxmin}{\ksxmax}{\ksxstep}\mbastriche{y}{\ksymin}{\ksymax}{\ksystep}%
+  \mbastriche{x}{\ksxmin}{\ksxmax}{\ksxstep}{\mbale}\mbastriche{y}{\ksymin}{\ksymax}{\ksystep}{\mbayle}%
   \begin{scope}\clip (\ksxmin,\ksymin) rectangle (\ksxmax,\ksymax);
 }{\end{scope}\end{tikzpicture}}
 \NewDocumentCommand{\rstrecke}{O{} m m}{\draw[line width=0.7pt,#1] (#2) -- (#3);}
