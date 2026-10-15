@@ -634,7 +634,10 @@
   \expandafter\mbtabstart\expandafter{\mbpre}\hline
   $#2$ \mbkopf \\ \hline
   \IfNoValueTF{#1}{\rule{0pt}{\mbzeile}$#3$ \mbleer \\ \hline}{$#3$ \mbwerte \\ \hline}
-  \end{tabular}\endgroup\par\addvspace{4pt}}
+  \end{tabular}\endgroup\mbtabende}
+% 2026-10-15: \par und Abstand nach Tabellen (Wertetabelle, Vierfeldertafel) nur im Absatz; in einer Box (\gpassend,
+% \sbox) war \addvspace ein Fehler
+\newcommand{\mbtabende}{\ifhmode\ifinner\else\par\fi\fi\ifvmode\addvspace{4pt}\fi}
 \newcounter{mbn}
 \newcommand{\mbtabstart}[1]{\begin{tabular}{#1}}
 % Leere Tabelle zum Selbstanlegen: \wertetabelleleer{x}{y}{5}
@@ -643,7 +646,7 @@
   \begin{tabular}{|>{\columncolor{mbkasten}}c|*{#3}{p{\mbzell}|}}\hline
   $#1$ & \multicolumn{#3}{c|}{} \\ \hline
   \rule{0pt}{\mbzeile}$#2$ & \multicolumn{#3}{c|}{} \\ \hline
-  \end{tabular}\endgroup\par\addvspace{4pt}}
+  \end{tabular}\endgroup\mbtabende}
 
 % ---------------------------------------------------------------------------
 % D  Koordinatensystem 2D
@@ -1799,7 +1802,7 @@
   $#2$ & \mbvfz{\vfa} & \mbvfz{\vfb} & \mbvfz{\vfc} \\ \hline
   $\overline{#2}$ & \mbvfz{\vfd} & \mbvfz{\vfe} & \mbvfz{\vff} \\ \hline
   & \mbvfz{\vfg} & \mbvfz{\vfh} & \mbvfz{\vfi} \\ \hline
-  \end{tabular}\endgroup\par\addvspace{4pt}}
+  \end{tabular}\endgroup\mbtabende}
 
 % \binomialverteilung[Schlüssel]{n}{p}   Stabdiagramm P(X=k) für k = von..bis (Voreinstellung 0..n).
 %   Schlüssel: von, bis, ymax, ystep (ohne Angabe automatisch), karo (0.5), markiere=a:b (Stäbe a..b dunkel).
