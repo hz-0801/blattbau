@@ -768,7 +768,12 @@
   \fill (#2,#3) circle (1.4pt);}
 % Nutzerterme in \x: pgfmath rechnet -2^2 = -4, deshalb wird \x als geklammerter Wert (\mbt)
 % eingesetzt. Alle plot-Aufrufe mit Nutzertermen laufen über mbterm und \mbxsicher.
-\tikzset{mbterm/.style={variable=\mbt}}
+% 2026-10-15 (Abitur GK; Agenten wichen auf variable=\u aus): mbterm setzt \x selbst auf (\mbt), Terme in \x
+% gehen damit auch in eigenen plot-Aufrufen. Regel für eigene Plots (Spalte grafik, auch in abiksys):
+%   \draw[mbterm,domain=a:b,samples=100,smooth] plot (\mbt,{<Term in \x>});   x-Teil der Koordinate ist \mbt,
+%   nicht \x (sonst „No shape named (0“); ohne mbterm geht plot (\x,{…}) wie in TikZ, aber -\x^2 ist bei x < 0
+%   falsch (pgfmath rechnet -(-2)^2 als --2^2). \funktion, \funktionab, \flaeche nehmen den Term direkt.
+\tikzset{mbterm/.style={variable=\mbt,/utils/exec=\mbxsicher}}
 \newcommand{\mbxsicher}{\def\x{(\mbt)}}
 % Kurvenlabel: pos= auf plot-Pfaden ist unzuverlässig, deshalb sucht \mbfunklabel vom rechten
 % Rand aus die erste Stelle, an der der Graph innerhalb der Zeichenfläche liegt (40 Schritte).
