@@ -2646,4 +2646,90 @@
 \newcommand{\pfausschnitt}[3]{{\footnotesize\color{mbgrau}\ifblank{#1}{}{Vorher: #1\par}%
   {\scriptsize$\blacktriangleright$}\ #2\par\ifblank{#3}{}{Weiter: #3\par}}}
 
+% --- Ergänzung 2026-10-15 (plan.md § 7 M5 „Setzer mit Graphen“; Abitur GK) ---
+% Bausteine für Abiturblätter, wiederverwendbar über die Spalte grafik (abitur/mehr-abi-gk/*.csv). Nur
+% ergänzt: ksys, ksys3, \baumzwei, \baumdrei bleiben unverändert.
+%   \begin{abiksys}[xmin=-4,xmax=3,ymin=-2,ymax=5]   Koordinatensystem wie im Abiturheft: 1 LE = le cm
+%     (Vorgabe 1; yle = eigener Maßstab der y-Achse), Karo 5 mm über das Fenster, Striche und Zahlen je
+%     xstep/ystep LE (Dezimalkomma); ohnezahlen = Achsen ohne Bezifferung („ohne Skalierung“, das Fenster
+%     verrät dann nichts); ohnegitter = ohne Karo; xlabel/ylabel wie ksys.
+%     Innen gelten \funktion, \funktionab, \punkt, \hochpunkt, \tiefpunkt, \wendepunkt, \asymptote,
+%     \flaeche, \flaechezwischen, \tangentean wie im ksys (Terme in pgf-Syntax, Variable \x, exp(\x)).
+%   \end{abiksys}
+%   \rstrecke[dashed]{4,0,0}{0,3,2}              Strecke im ksys3 (Kante, Höhe, Diagonale, Lot)
+%   \rvieleck{4,0,0;0,3,0;0,0,2}                 Fläche im ksys3 (Dreieck, Viereck, Schnittfläche), grau
+%   \baumabi{A/{0,3}/{C/{0,2},D/{0,8}},B/{0,7}/{C/,D/}}  zweistufiger Baum mit beliebig vielen Ästen je Stufe;
+%     Wahrscheinlichkeit leer = Feld zum Eintragen; Werte mit Komma in Klammern: A/{0,3}/{…};
+%     \baumabi[pfade]{…} schreibt am Ende jedes Pfads das Ergebnis (AC, AD …).
+\newif\ifmbazahlen\newif\ifmbagitter
+\pgfkeys{/abiksys/.is family, /abiksys,
+  xmin/.estore in=\ksxmin, xmax/.estore in=\ksxmax, ymin/.estore in=\ksymin, ymax/.estore in=\ksymax,
+  xstep/.estore in=\ksxstep, ystep/.estore in=\ksystep, le/.estore in=\mbale, yle/.estore in=\mbayle,
+  xlabel/.estore in=\ksxlabel, ylabel/.estore in=\ksylabel,
+  zahlen/.is if=mbazahlen, gitter/.is if=mbagitter,
+  ohnezahlen/.style={zahlen=false}, ohnegitter/.style={gitter=false},
+  default/.style={xmin=-4,xmax=4,ymin=-3,ymax=3,xstep=1,ystep=1,le=1,yle=,xlabel=$x$,ylabel=$y$,
+                  zahlen=true,gitter=true}}
+\newcommand{\mbastriche}[4]{% Achse (x|y), min, max, Schritt: Striche und Zahlen auf Vielfachen des Schritts
+  \pgfmathsetmacro{\mbsa}{ceil((#2)/(#4)-0.0001)*(#4)}\pgfmathsetmacro{\mbsb}{\mbsa+(#4)}%
+  \foreach \mbs in {\mbsa,\mbsb,...,#3}{%
+    \pgfmathtruncatemacro{\mbsnull}{abs(\mbs)<0.0001}\pgfmathtruncatemacro{\mbsrand}{\mbs>(#3)+0.0001}%
+    \ifnum\mbsnull=0 \ifnum\mbsrand=0
+      \if x#1\draw (\mbs,0) ++(0,-0.6mm) -- ++(0,1.2mm);%
+        \ifmbazahlen\node[below,inner sep=1.5pt,font=\scriptsize] at (\mbs,0) {$\pgfmathprintnumber[use comma,1000 sep={}]{\mbs}$};\fi
+      \else\draw (0,\mbs) ++(-0.6mm,0) -- ++(1.2mm,0);%
+        \ifmbazahlen\node[left,inner sep=1.5pt,font=\scriptsize] at (0,\mbs) {$\pgfmathprintnumber[use comma,1000 sep={}]{\mbs}$};\fi
+      \fi\fi\fi}}
+\newenvironment{abiksys}[1][]{%
+  \gdef\mbflabels{}%
+  \pgfkeys{/abiksys,default,#1}%
+  \ifx\mbayle\empty\let\mbayle\mbale\fi
+  \pgfmathsetmacro{\mbaxp}{\ksxmax+0.45/\mbale}\pgfmathsetmacro{\mbayp}{\ksymax+0.45/\mbayle}%
+  \begin{tikzpicture}[x=\mbale cm,y=\mbayle cm,baseline=(current bounding box.north)]
+  \ifmbagitter
+    \begin{scope}[x=1cm,y=1cm]
+      \clip ({\ksxmin*\mbale},{\ksymin*\mbayle}) rectangle ({\ksxmax*\mbale},{\ksymax*\mbayle});
+      \draw[mbgitter,line width=0.3pt,step=5mm] ({\ksxmin*\mbale-1},{\ksymin*\mbayle-1}) grid ({\ksxmax*\mbale+1},{\ksymax*\mbayle+1});
+    \end{scope}
+  \fi
+  \draw[-{Stealth[length=2mm]},line width=0.6pt] (\ksxmin,0) -- (\mbaxp,0) node[right] {\small\ksxlabel};
+  \draw[-{Stealth[length=2mm]},line width=0.6pt] (0,\ksymin) -- (0,\mbayp) node[above] {\small\ksylabel};
+  \mbastriche{x}{\ksxmin}{\ksxmax}{\ksxstep}\mbastriche{y}{\ksymin}{\ksymax}{\ksystep}%
+  \begin{scope}\clip (\ksxmin,\ksymin) rectangle (\ksxmax,\ksymax);
+}{\end{scope}\end{tikzpicture}}
+\NewDocumentCommand{\rstrecke}{O{} m m}{\draw[line width=0.7pt,#1] (#2) -- (#3);}
+\ExplSyntaxOn
+\NewDocumentCommand{\rvieleck}{O{} m}{
+  \seq_set_split:Nnn \l_tmpa_seq {;} {#2}
+  \edef\mbrvpfad{(\seq_use:Nn \l_tmpa_seq {)~--~(})~--~cycle}
+  \edef\mbrvbefehl{\noexpand\filldraw[fill=mbgrau,fill~opacity=0.18,line~width=0.6pt,#1]~\mbrvpfad;}
+  \mbrvbefehl}
+\ExplSyntaxOff
+\newif\ifmbbaumpfade
+% Wahrscheinlichkeit am Ast: Komma als Dezimalkomma (ohne Abstand dahinter)
+\newcommand{\mbbaumwk}[1]{{\mathcode`\,="002C $#1$}}
+\NewDocumentCommand{\baumabi}{o m}{%
+  \IfNoValueTF{#1}{\mbbaumpfadefalse}{\mbbaumpfadetrue}%
+  \begin{tikzpicture}[baseline=(current bounding box.north),line width=0.6pt,
+     ast/.style={font=\small,inner sep=1.5pt}, wk/.style={font=\scriptsize,fill=white,inner sep=1pt}]
+    \coordinate (S) at (0,0);
+    \xdef\mbbl{0}% Zahl der Blätter
+    \foreach \l/\p/\sub in {#2}{\foreach \m/\q in \sub{\xdef\mbbl{\the\numexpr\mbbl+1}}}%
+    \xdef\mbbk{0}%
+    \foreach \l/\p/\sub [count=\i] in {#2}{%
+      \xdef\mbbanf{\mbbk}\xdef\mbbn{0}%
+      \foreach \m/\q in \sub{\xdef\mbbn{\the\numexpr\mbbn+1}}%
+      \pgfmathsetmacro{\yy}{0.45*(\mbbl-1)-0.9*(\mbbanf+(\mbbn-1)/2)}%
+      \node[ast] (E\i) at (2.4,\yy) {$\l$};
+      \draw (S) -- (E\i) node[wk,pos=0.5] {\ifx\p\empty\underline{\hspace{5mm}}\else\mbbaumwk{\p}\fi};
+      \foreach \m/\q [count=\j] in \sub{%
+        \pgfmathsetmacro{\zz}{0.45*(\mbbl-1)-0.9*(\mbbanf+\j-1)}%
+        \draw (E\i) -- (4.8,\zz) node[wk,pos=0.5] {\ifx\q\empty\underline{\hspace{5mm}}\else\mbbaumwk{\q}\fi}
+              node[ast,right] (F\i\j) {$\m$};
+        \ifmbbaumpfade
+          \node[font=\scriptsize,anchor=west] at (5.6,\zz) {$\l\m$};
+        \fi}%
+      \xdef\mbbk{\the\numexpr\mbbanf+\mbbn}}%
+  \end{tikzpicture}}
+
 \endinput
