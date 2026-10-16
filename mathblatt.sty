@@ -1,5 +1,5 @@
 % mathblatt.sty – Vorlage für Nachhilfe-Arbeitsblätter, Stufe 6 (Sek I und Oberstufe)
-% Version 2026-10-16m (Lösungszeile: lzaufg/\lzz – Nummer dicht vor dem Ergebnis, Punktlinie zum Ansatz; pfloesungb/\lzb unverändert)
+% Version 2026-10-16n (Ansatz an fester Stelle, linksbündig, Handgriffe mit „;“; vorher 16m: Lösungszeile: lzaufg/\lzz – Nummer dicht vor dem Ergebnis, Punktlinie zum Ansatz; pfloesungb/\lzb unverändert)
 % Version 2026-10-13 (Runde 6: \pfohnetr – TR durchgestrichen für „Original ohne Rechner“, ohne Erklärung)
 % Version 2026-10-12 (Stufenkopf deutlicher: Linie, Abstand, 13 pt; \mbpfstufevorhalt; \pfjahre mit Strich und hellen alten Jahren)
 % Version 2026-10-11d (Skizzenfeld ohne Rahmen)
@@ -2637,10 +2637,16 @@
  {\end{minipage}\end{lrbox}%
   \setlength{\mbaufgabehoehe}{\dimexpr\ht\mbaufgabebox+\dp\mbaufgabebox\relax}%
   \Needspace*{\mbaufgabehoehe}\noindent\usebox{\mbaufgabebox}\par}
-\newcommand{\lzz}[4]{\par\noindent\hangindent=\dimexpr\lznr+\lzbu\relax\hangafter=1
-  \makebox[\lznr][l]{\textbf{#1}}\ifblank{#2}{}{\makebox[\lzbu][l]{\textbf{#2}}}\textbf{\boldmath #3}%
-  \ifblank{#4}{}{\hspace{0.3em}{\color{mbgrau}\leaders\hbox to 0.45em{\hss\fontsize{5}{5}\selectfont .\hss}\hskip 1.2em plus 1fill\relax}
-    \hspace{0.3em}{\footnotesize #4}}\par}
+\newlength{\lzspalte}% 16.10. m: Ansatz beginnt an einer festen Stelle, linksbündig
+\newsavebox{\lzbox}
+\newcommand{\lzpunkte}{{\color{mbgrau}\leaders\hbox to 0.45em{\hss\fontsize{5}{5}\selectfont .\hss}\hfill}}
+\newcommand{\lzz}[4]{\par\noindent\setlength{\lzspalte}{0.5\linewidth}%
+  \sbox{\lzbox}{\makebox[\lznr][l]{\textbf{#1}}\ifblank{#2}{}{\makebox[\lzbu][l]{\textbf{#2}}}\textbf{\boldmath #3}}%
+  \ifblank{#4}{\usebox{\lzbox}}{%
+    \ifdim\wd\lzbox<\dimexpr\lzspalte-1.5em\relax
+      \hbox to \lzspalte{\usebox{\lzbox}\hspace{0.3em}\lzpunkte\hspace{0.3em}}%
+    \else\usebox{\lzbox}\hspace{0.3em}\hbox to 1.5em{\lzpunkte}\hspace{0.3em}\fi
+    \parbox[t]{\dimexpr\linewidth-\lzspalte\relax}{\raggedright\footnotesize #4}}\par}
 
 % --- Ergänzung 2026-10-11c (zweite Durchsicht 11.10.; mathe-nachhilfe gemeinsam.md „Satz“, „Übersicht und Serie“) ---
 %   \pflaufkopf[P10 · Prüfung]{Winkel}{T2U}   mit Sorte: links oben klein grau die Sorte, ab Seite 2
