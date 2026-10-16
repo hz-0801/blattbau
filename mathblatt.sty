@@ -2639,7 +2639,7 @@
   \Needspace*{\mbaufgabehoehe}\noindent\usebox{\mbaufgabebox}\par}
 \newcommand{\lzz}[4]{\par\noindent\hangindent=\dimexpr\lznr+\lzbu\relax\hangafter=1
   \makebox[\lznr][l]{\textbf{#1}}\ifblank{#2}{}{\makebox[\lzbu][l]{\textbf{#2}}}\textbf{\boldmath #3}%
-  \ifblank{#4}{}{\hspace{0.3em}\leaders\hbox to 0.45em{\hss\color{mbgrau}\fontsize{5}{5}\selectfont .\hss}\hskip 1.2em plus 1fill\relax
+  \ifblank{#4}{}{\hspace{0.3em}{\color{mbgrau}\leaders\hbox to 0.45em{\hss\fontsize{5}{5}\selectfont .\hss}\hskip 1.2em plus 1fill\relax}
     \hspace{0.3em}{\footnotesize #4}}\par}
 
 % --- Ergänzung 2026-10-11c (zweite Durchsicht 11.10.; mathe-nachhilfe gemeinsam.md „Satz“, „Übersicht und Serie“) ---
