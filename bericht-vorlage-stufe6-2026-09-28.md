@@ -9,7 +9,7 @@ Berichts. Kein Push. Im Repo `mathe-nachhilfe` wurde nur gelesen.
 Die Vorlage heißt jetzt Stufe 6, Version 2026-09-28a. Der Auftrag nennt dieses Datum; die
 Systemuhr zeigte beim Lauf den 26.09.2026 (05:54–06:55). Die Namen bleiben wie beauftragt, die
 Uhrzeiten in der Standdatei stammen aus `Get-Date`. Die Befunddatei
-`mathe-nachhilfe/befund-testlauf-2026-09-25.md` lag beim Lauf noch nicht vor; es galt die Liste
+`mathe-nachhilfe/archiv/befund-testlauf-2026-09-25.md` lag beim Lauf noch nicht vor; es galt die Liste
 des Auftrags.
 
 ## Seitenzahlen der elf Quelltexte

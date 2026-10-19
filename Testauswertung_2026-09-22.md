@@ -3,7 +3,7 @@
 Thema beider Läufe: Prozentrechnung (katalog/prozentrechnung.md,
 Kl. 7, fünf Einheiten), Projekt erzeugeUnterrichtsblatt(), Modell
 Opus 5. Befunde für den Katalog stehen in mathe-nachhilfe/
-befund-testlauf-2026-09-22.md; hier stehen die Befunde für den
+archiv/befund-testlauf-2026-09-22.md; hier stehen die Befunde für den
 Prompt.
 
 ## Lauf 1 – v3.34, Eintrag per Raw-URL als Zuruf-Quelle
@@ -15,8 +15,8 @@ Gesamt; 511 s, 19 Schritte; fachlich fehlerfrei. Vorlage nicht
 erreichbar (URL zeigte noch auf mathe-nachhilfe), Ersatzlayout,
 drei babel-Korrekturrunden.
 
-Befunde gegen ziel.md, alle in v4.0 umgesetzt:
-- Schnitt in drei Teile nach Budget; ziel.md kennt keine Teile.
+Befunde gegen archiv/ziel.md, alle in v4.0 umgesetzt:
+- Schnitt in drei Teile nach Budget; archiv/ziel.md kennt keine Teile.
   → kein Budget, Bau in Reihe.
 - Blatt 0 mit allen fünf Erkennungsschritten, darunter solche zu
   Einheit 4 und 5; führte Begriffe ein, die das Blatt erst lehrt.
@@ -68,7 +68,7 @@ Befunde, in v4.1 umgesetzt:
   Lösungen; weitere „E n" auf Zuruf; „gesamt"/„lösungen" nach
   Abbruch.
 - Lösungen auf jeder Einheit stören beim Drucken. → eigene
-  Lösungsdatei, Lösungstiefe nach ziel.md § 4.
+  Lösungsdatei, Lösungstiefe nach archiv/ziel.md § 4.
 - Erkennungsschritte mehrfach vergeben („vor Einheit 2 bis 5");
   Chat setzte richtig einmal. → Regel in 2.3 a.
 - Drei Titel in Einheit 1 ohne Einheitsbezug, einer ein
