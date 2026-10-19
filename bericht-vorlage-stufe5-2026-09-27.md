@@ -34,7 +34,7 @@ Vorlagennamen. Je Quelltext zwei xelatex-Läufe.
 | b4 | blaetter/prozentrechnung/2026-09-24/src/fokus_a.tex | 4 | 4 | – |
 
 Die zehn Basiswerte stimmen mit der Spalte „Seiten Gesamt" in
-`mathe-nachhilfe/bericht-testlauf-2026-09-25.md` überein.
+`mathe-nachhilfe/archiv/bericht-testlauf-2026-09-25.md` überein.
 
 Alle Zuwächse stammen aus Teil 4: Die behobene Tiefe im `gleichungsraster` gibt jeder
 Rasterreihe die Zeilenhöhe zurück, die vorher fehlte. Das ist gewollt – vorher lag die
@@ -51,7 +51,7 @@ Abstand, den der Kopf selbst gesetzt hat, und der ist bei `\einheitenkopf` und
 `\einheitenkopf*` verschieden. Deshalb merkt sich der Kopf seinen Abstand in
 `\mbkopfsprung`, und `\zweigzeile` nimmt genau ihn zurück; damit sitzt die Zeile in
 beiden Kopfformen gleich. Dazu hängt der Kopf am Folgenden (`\nobreak`), zwischen Kopf
-und Zweigzeile bricht die Seite nicht mehr um. Was in die Zeile gehört, sagt `ziel.md`
+und Zweigzeile bricht die Seite nicht mehr um. Was in die Zeile gehört, sagt `archiv/ziel.md`
 § 2 im Repo `mathe-nachhilfe`; die Vorlage legt nur die Form fest.
 
 **`\einheitenkopf[e2]{...}`** – Vorbild: Eingabe 5
@@ -99,7 +99,7 @@ oder eigene Formulierungen dazukommen.
 
 **`\streifenfeld`** – wortgleich aus `blaetter/prozentrechnung/2026-09-24/src/fokus_a.tex`
 übernommen; es benutzte schon `\mbstreifenrahmen` der Vorlage, angeglichen wurde nur die
-Schreibweise an die übrige Streifen-Familie. Posten aus `faellig.md` § 2, erledigt.
+Schreibweise an die übrige Streifen-Familie. Posten aus `archiv/faellig.md` § 2, erledigt.
 
 **`\swz`, `\swa`, `\swb`, `\swfrage`** – aus
 `blaetter/testlauf-2026-09-25/3-prozent-7-schwach/Prozentrechnung_Gesamt.tex`, Zeile 9–12,
