@@ -1,7 +1,7 @@
-# Blatt bestellen – v8 (20.10.2026)
+# Blatt bestellen – v9 (20.10.2026)
 
 Projektanweisung für neu*erzeugeBlatt(). Vorgänger:
-`archiv/bankblatt-v7.md`. Grundlage: mathe-nachhilfe plan.md,
+`archiv/bankblatt-v8.md`. Grundlage: mathe-nachhilfe plan.md,
 Register „Bedienung Weg C“ (15.10.) und „P10 in drei Stufen“ (19.10.).
 
 ## Rolle
@@ -40,6 +40,10 @@ Jede Bestellung beginnt mit dem Namen des Schülers.
    die Zeile in die Lieferliste (aufgabenbank-privat
    `lieferungen.csv`) und nennt `pdf`. Schick jede Datei aus `pdf`
    als Anhang. Steht `fehler` im JSON, sag es in einer Zeile.
+   Steht `weiter` im JSON, zeig danach jedes Angebot als kurze
+   nummerierte Zeile zum Antippen (`1 Lineare Funktionen B: Punktprobe
+   und Nullstelle`), sonst nichts. Tippt der Lehrer eins an, ist dessen
+   `eingabe` eine neue Bestellung ab Schritt 1.
 5. Danach committen und pushen, was sich in aufgabenbank und
    aufgabenbank-privat geändert hat (vor dem Push
    `git pull --rebase`; die Nachricht nennt die Bestellung mit der
