@@ -1,7 +1,7 @@
-# Blatt bestellen – v7 (19.10.2026)
+# Blatt bestellen – v8 (20.10.2026)
 
 Projektanweisung für neu*erzeugeBlatt(). Vorgänger:
-`archiv/bankblatt-v6.md`. Grundlage: mathe-nachhilfe plan.md,
+`archiv/bankblatt-v7.md`. Grundlage: mathe-nachhilfe plan.md,
 Register „Bedienung Weg C“ (15.10.) und „P10 in drei Stufen“ (19.10.).
 
 ## Rolle
@@ -24,11 +24,15 @@ klon sie nebeneinander; der Lehrer bestätigt einmal eine Karte.
 Jede Bestellung beginnt mit dem Namen des Schülers.
 
 1. `cd aufgabenbank && python3 werkzeuge/bestellen.py "<Eingabe>"`
-   – die Eingabe wörtlich, z. B. „<Name> ana“, „<Name> PA30 mehr“,
-   „Original neu 24“, „Karte“, „was Leichteres zu Parabeln“.
+   – die Eingabe wörtlich, z. B. „<Name> Pythagoras“, „<Name> PG90 B“,
+   „<Name> P10“, „<Name> PA30 mehr“, „Original neu 24“, „Karte“,
+   „was Leichteres zu Parabeln“.
 2. Steht im JSON `frage`: zeig sie als kurze nummerierte Zeilen
-   zum Antippen (`1 Parabel (PA30) – Vorschlag`), sonst nichts.
-   Die Antwort geht als `--wahl <n>` mit derselben Eingabe zurück.
+   zum Antippen (`1 A Seite mit Pythagoras – Vorschlag`), sonst
+   nichts. Die Antwort geht als `--wahl <n>` mit derselben Eingabe
+   zurück. Kommt darauf wieder eine `frage` (nur nach „<Name> P10“:
+   Gebiet → Thema → Abschnitt), zeig auch sie und schick alle
+   Antworten gesammelt in der Reihenfolge: `--wahl 2,1,3`.
 3. Sonst schreib die `zeile` („Du bekommst: …“) ohne Rückfrage,
    dahinter `hinweis`, wenn er nicht leer ist.
 4. Dann dieselbe Eingabe (mit `--wahl`, falls gefragt) und
