@@ -1,4 +1,5 @@
 % mathblatt.sty – Vorlage für Nachhilfe-Arbeitsblätter, Stufe 6 (Sek I und Oberstufe)
+% Version 2026-10-21 (Nachtlauf L1: \pfrw, \pfwinkel mit Mindestgröße wie im Kapitelblatt, plan.md § 5 „Winkelzeichen und Brüche nachziehen“)
 % Version 2026-10-16n (Ansatz an fester Stelle, linksbündig, Handgriffe mit „;“; vorher 16m: Lösungszeile: lzaufg/\lzz – Nummer dicht vor dem Ergebnis, Punktlinie zum Ansatz; pfloesungb/\lzb unverändert)
 % Version 2026-10-13 (Runde 6: \pfohnetr – TR durchgestrichen für „Original ohne Rechner“, ohne Erklärung)
 % Version 2026-10-12 (Stufenkopf deutlicher: Linie, Abstand, 13 pt; \mbpfstufevorhalt; \pfjahre mit Strich und hellen alten Jahren)
@@ -2669,12 +2670,22 @@
 %               und Größe aus der Umgebung (Bedingungen klein grau rechts im Rand)
 \newcommand{\pfohnetr}{\mbox{\tikz[baseline=(t.base)]{\node[inner sep=0.6pt](t){TR};
   \draw[line width=0.55pt] (t.south west)--(t.north east);}}}
-\NewDocumentCommand{\pfwinkel}{s O{0.8} O{0.6} m m m m}{%
-  \draw[mbgrau,line width=0.5pt] ($#4+(#5:#2)$) arc (#5:#6:#2);
-  \IfBooleanF{#1}{\ifblank{#7}{}{\node[inner sep=0pt,font=\footnotesize] at ($#4+({(#5+#6)/2}:{#3*#2})$) {$#7$};}}}
-\NewDocumentCommand{\pfrw}{O{0.3} m m}{%
-  \draw[mbgrau,line width=0.5pt] ($#2+(#3:#1)$) arc (#3:#3+90:#1);
-  \fill ($#2+({#3+45}:{0.42*#1})$) circle (0.8pt);}
+% 2026-10-21 (Nachtlauf L1; aus aufgabenbank werkzeuge/kapitelblatt.py, dort seit 19.10., Kritik Satz pythagoras 5, 8,
+% flaechen 4): Zeichen für den rechten Winkel und Winkelbögen mit fester Mindestgröße (Radius 2,8 mm bzw. 3,5 mm,
+% Punkt 0,8 pt), unabhängig vom Maßstab der Figur. Warum: bei scale=0.045 (Längen in Metern) wurde das Zeichen
+% unsichtbar. Größer als angegeben wird nur, was sonst unter der Mindestgröße läge. \mbpfe = Länge einer
+% Koordinateneinheit auf dem Papier in pt (Einheitsvektor x mal Maßstab der Transformation).
+\newcommand{\mbpfeinheit}{\pgfgettransformentries{\mbpfa}{\mbpfb}{\mbpfc}{\mbpfd}{\mbpfx}{\mbpfy}%
+  \pgfpointxy{1}{0}\pgfgetlastxy{\mbpfux}{\mbpfuy}%
+  \pgfmathsetmacro{\mbpfe}{max(sqrt(abs(\mbpfa*\mbpfd-\mbpfb*\mbpfc))*veclen(\mbpfux,\mbpfuy),0.01)}}
+\NewDocumentCommand{\pfwinkel}{s O{0.8} O{0.6} m m m m}{\mbpfeinheit
+  \pgfmathsetmacro{\mbpfr}{max(#2,10/\mbpfe)}%
+  \draw[mbgrau,line width=0.5pt] ($#4+(#5:\mbpfr)$) arc (#5:#6:\mbpfr);
+  \IfBooleanF{#1}{\ifblank{#7}{}{\node[inner sep=0pt,font=\footnotesize] at ($#4+({(#5+#6)/2}:{#3*\mbpfr})$) {$#7$};}}}
+\NewDocumentCommand{\pfrw}{O{0.3} m m}{\mbpfeinheit
+  \pgfmathsetmacro{\mbpfr}{max(#1,8/\mbpfe)}%
+  \draw[mbgrau,line width=0.5pt] ($#2+(#3:\mbpfr)$) arc (#3:#3+90:\mbpfr);
+  \fill ($#2+({#3+45}:{0.42*\mbpfr})$) circle ({0.8/\mbpfe});}
 \newcommand{\pfausschnitt}[3]{{\footnotesize\color{mbgrau}\ifblank{#1}{}{Vorher: #1\par}%
   {\scriptsize$\blacktriangleright$}\ #2\par\ifblank{#3}{}{Weiter: #3\par}}}
 
