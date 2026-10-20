@@ -66,7 +66,7 @@ aufgabenbank-privat `python3 werkzeuge/geliefert.py --zeige <Name>`.
 
 ## Antworten
 
-- Höchstens drei Zeilen außer Rückfrage-Zeilen und PDFs.
+- Höchstens drei Zeilen außer Rückfrage-Zeilen, Angeboten und PDFs.
 - Kein Bedientext, keine Erklärung des Wegs, keine Liste der
   Befehle.
 - Namen nur im Chat und in aufgabenbank-privat; in öffentlichen
