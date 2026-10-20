@@ -16,7 +16,7 @@ Prompts und LaTeX-Vorlage, die aus den Katalogen (Repo `mathe-nachhilfe`) oder o
 Katalog Arbeitsblätter bauen. Ausgelagert am 19.09.2026; davor lag alles flach im
 Repo `mathe-nachhilfe`.
 
-- `unterrichtsblatt.md` – alter Prompt (Lernblatt und Fokus aus dem Themenkatalog), **nicht mehr aktiv**; nur Steinbruch. Bleibt in der Wurzel, weil `aufgabenbank/werkzeuge/mappe.py` ihn als Maßstab per Raw-URL liest; erst nach Umbau dieses Skripts ins Archiv.
+- `archiv/unterrichtsblatt.md` – alter Prompt v4.4 (Lernblatt und Fokus aus dem Themenkatalog), **nicht mehr aktiv**; nur Steinbruch. Seit 21.10.2026 im Archiv: `aufgabenbank/werkzeuge/mappe.py` liest den Maßstab jetzt aus mathe-nachhilfe `gemeinsam.md`. Der Wortlaut des Projekts alt*erzeugeUnterrichtsblatt() steht in `alt/erzeugeUnterrichtsblatt.md`.
 - `bankblatt.md` – Bank-Prompt v9 (20.10.2026: Kapitelblatt bestellen, Folgeangebot nach der Lieferung; v8, v7, v6 in archiv/): Projektanweisung für neu*erzeugeBlatt(); je Bestellung ruft der Chat aufgabenbank `werkzeuge/bestellen.py` (Rückfragen als Knöpfe, Zeile „Du bekommst: …“, `--ausfuehren` setzt und schreibt die Lieferzeile) und baut nur ein fehlendes Lernblatt nach aufgabenbank `bau/bauauftrag.md`.
 - `alt/erzeugePruefungsblatt.md`, `alt/erzeugeUnterrichtsblatt.md` – Wortlaut der beiden alt*-Projekte (Stand 20.10.2026, vom Lehrer übergeben), nur zum Nachlesen; die alt*-Projekte bleiben in Gebrauch, bis neu*erzeugeBlatt() Alltagsblatt und Sek II liefert.
 - `archiv/pruefungsblatt.md` – alter Prompt für P10-Hefte aus dem msa-Katalog; seit 19.10.2026 im Archiv, **nicht mehr aktiv**; nur Steinbruch.
@@ -27,7 +27,7 @@ Repo `mathe-nachhilfe`.
 - `bericht-vorlage-stufe6-2026-09-28.md` – Bericht zur Stufe 6 (sechs Bausteine aus den Lesebefunden vom 26.09.2026, Streifen-Reparaturen, Probeblatt); Auftrag und Standdatei liegen unter `archiv/`.
 - `Bewertung_Masterprompt_v3-34.md`, `Testauswertung_Masterprompt_Mathe_2026-09-07.md`, `Testauswertung_Masterprompt_Mathe_2026-09-08.md`, `Testauswertung_2026-09-22.md` – Werkstattzettel aus dem Testzyklus, eingefroren.
 
-**Beim Anlegen des Repos prüfen:** Die Abruf-URLs in `unterrichtsblatt.md` (Abschnitt 1.2 und 4.5) und
+**Beim Anlegen des Repos prüfen:** Die Abruf-URLs in `archiv/unterrichtsblatt.md` (Abschnitt 1.2 und 4.5) und
 `archiv/pruefungsblatt.md` (Zeilen 75 und 219) nehmen an, dass dieses Repo `hz-0801/blattbau`
 heißt und der Branch `main`. Heißt es anders, dort ändern.
 
