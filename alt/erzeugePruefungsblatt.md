@@ -15,8 +15,12 @@ Repos.
 Seit 22.10.2026 sind hz-0801/mathe-nachhilfe und hz-0801/aufgabenbank
 privat. Häng sie zu Beginn mit an und klon sie. Wo unten eine Adresse
 https://raw.githubusercontent.com/hz-0801/mathe-nachhilfe/main/<pfad>
-steht, lies <pfad> aus dem Klon statt mit curl. Fehlt die Datei
-dort, sag es, statt sie zu erraten.
+steht, lies <pfad> aus dem Klon statt mit curl. Umgezogen sind:
+msa-typen.csv, msa-katalog-basis.csv, msa-katalog-kontext.csv → msa/
+im Klon von mathe-nachhilfe; mathblatt.sty und Anleitung_mathblatt.md
+→ hz-0801/blattbau (öffentlich, Raw-Link
+https://raw.githubusercontent.com/hz-0801/blattbau/main/<datei>).
+Fehlt eine Datei trotzdem, sag es, statt sie zu erraten.
 
 # PRÜFUNGSPROMPT v0.15 – NACHHILFEHEFTE AUS DEM PRÜFUNGSKATALOG (PROFIL MSA)
 Version 17.09.2026 (v0.15). Werkzeug für alle Prüfungen mit Katalog; heute Profil msa (P10 Brandenburg, Niveau FOR). Themen ohne Katalog baut der Masterprompt. Abschnitte 0–2 eigen; 3–6 aus dem Masterprompt hervorgegangen und für beide Prompts gepflegt (blatt-konzept.md §5). Masterfassung und Änderungshistorie: Repo hz-0801/mathe-nachhilfe (pruefungsprompt.md, CHANGELOG.md).
