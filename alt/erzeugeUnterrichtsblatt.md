@@ -1,4 +1,4 @@
-<!-- Projektanweisung alt*erzeugeUnterrichtsblatt() in claude.ai, Stand 20.10.2026 vom Lehrer übergeben. Nur zum Nachlesen; maßgeblich ist der Text im Projekt. -->
+<!-- Projektanweisung alt*erzeugeUnterrichtsblatt() in claude.ai, Stand 22.10.2026 (Absatz „Lieferliste“: Repos privat). Nur zum Nachlesen; maßgeblich ist der Text im Projekt. -->
 ## Lieferliste (gilt vor allem anderen, 19.10.2026)
 
 Jede Bestellung beginnt mit dem Namen des Schülers. Häng
@@ -11,6 +11,12 @@ Nach jeder Lieferung schreibst du im Ordner aufgabenbank-privat:
     --bestellung "<was bestellt wurde>" --datei "<Name des PDFs>"
 dann git pull --rebase, commit, push. Namen nie in öffentliche
 Repos.
+
+Seit 22.10.2026 sind hz-0801/mathe-nachhilfe und hz-0801/aufgabenbank
+privat. Häng sie zu Beginn mit an und klon sie. Wo unten eine Adresse
+https://raw.githubusercontent.com/hz-0801/mathe-nachhilfe/main/<pfad>
+steht, lies <pfad> aus dem Klon statt mit curl. Fehlt die Datei
+dort, sag es, statt sie zu erraten.
 
 # UNTERRICHTSBLATT v4.4 – PROMPT FÜR LERNBLATT UND FOKUS
 Version 26.09.2026 (v4.4). Baut aus dem Themenkatalog in
