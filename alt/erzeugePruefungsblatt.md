@@ -1,4 +1,4 @@
-<!-- Projektanweisung alt*erzeugePrüfungsblatt() in claude.ai, Stand 20.10.2026 vom Lehrer übergeben. Nur zum Nachlesen; maßgeblich ist der Text im Projekt. -->
+<!-- Projektanweisung alt*erzeugePrüfungsblatt() in claude.ai, Stand 22.10.2026 (Absatz „Lieferliste“: Repos privat). Nur zum Nachlesen; maßgeblich ist der Text im Projekt. -->
 ## Lieferliste (gilt vor allem anderen, 19.10.2026)
 
 Jede Bestellung beginnt mit dem Namen des Schülers. Häng
@@ -11,6 +11,12 @@ Nach jeder Lieferung schreibst du im Ordner aufgabenbank-privat:
     --bestellung "<was bestellt wurde>" --datei "<Name des PDFs>"
 dann git pull --rebase, commit, push. Namen nie in öffentliche
 Repos.
+
+Seit 22.10.2026 sind hz-0801/mathe-nachhilfe und hz-0801/aufgabenbank
+privat. Häng sie zu Beginn mit an und klon sie. Wo unten eine Adresse
+https://raw.githubusercontent.com/hz-0801/mathe-nachhilfe/main/<pfad>
+steht, lies <pfad> aus dem Klon statt mit curl. Fehlt die Datei
+dort, sag es, statt sie zu erraten.
 
 # PRÜFUNGSPROMPT v0.15 – NACHHILFEHEFTE AUS DEM PRÜFUNGSKATALOG (PROFIL MSA)
 Version 17.09.2026 (v0.15). Werkzeug für alle Prüfungen mit Katalog; heute Profil msa (P10 Brandenburg, Niveau FOR). Themen ohne Katalog baut der Masterprompt. Abschnitte 0–2 eigen; 3–6 aus dem Masterprompt hervorgegangen und für beide Prompts gepflegt (blatt-konzept.md §5). Masterfassung und Änderungshistorie: Repo hz-0801/mathe-nachhilfe (pruefungsprompt.md, CHANGELOG.md).
