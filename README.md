@@ -1,22 +1,24 @@
 # blattbau
 
-> **Einstieg (19.10.2026).** Für Blätter, Bank und Katalog gelten diese
+> **Einstieg (25.10.2026).** Für Blätter, Bank und Katalog gelten diese
 > Dateien, in dieser Rangfolge: `mathe-nachhilfe/plan.md` (Ziel, Linien,
 > Offenes, Register der Entscheidungen) → `mathe-nachhilfe/pruefung.md`
-> (Sorte Prüfung; P10-Kapitelblatt) →
+> (Sorte Prüfung; P10-Kapitelblatt) bzw. `mathe-nachhilfe/allgemein.md`
+> (Sorte Alltagsblatt; Bau nach `blattbau/alltagsblatt.md`) →
 > `mathe-nachhilfe/fhr/loesung/auftrag-kurvendiskussion.md` (Lösungen
 > Sek II) → `mathe-nachhilfe/gemeinsam.md` (Handwerk) → aufgabenbank
 > `bank.md` (Zeilenform) → `mathe-nachhilfe/begriffe.md` (Wörter).
-> aufgabenbank `bau/bauauftrag.md` ruht bis zum Lernblatt (plan.md
-> 18.10. q). Betrieb: `blattbau/bankblatt.md`. Ein Chat führt alles
-> (plan.md 19.10. a); eine Übergabe: `mathe-nachhilfe/uebergabe.md`. Alles
-> andere ist Beleg oder Archiv.
+> aufgabenbank `bau/bauauftrag.md` ruht und wird mit dem Pilot des
+> Alltagsblatts abgelöst (plan.md 25.10.5). Betrieb: `blattbau/bankblatt.md`.
+> Ein Chat führt alles (plan.md 19.10. a); eine Übergabe:
+> `mathe-nachhilfe/uebergabe.md`. Alles andere ist Beleg oder Archiv.
 
 Prompts und LaTeX-Vorlage, die aus den Katalogen (Repo `mathe-nachhilfe`) oder ohne
 Katalog Arbeitsblätter bauen. Ausgelagert am 19.09.2026; davor lag alles flach im
 Repo `mathe-nachhilfe`.
 
 - `archiv/unterrichtsblatt.md` – alter Prompt v4.4 (Lernblatt und Fokus aus dem Themenkatalog), **nicht mehr aktiv**; nur Steinbruch. Seit 21.10.2026 im Archiv: `aufgabenbank/werkzeuge/mappe.py` liest den Maßstab jetzt aus mathe-nachhilfe `gemeinsam.md`. Der Wortlaut des Projekts alt*erzeugeUnterrichtsblatt() steht in `alt/erzeugeUnterrichtsblatt.md`.
+- `alltagsblatt.md` – Bauanweisung Alltagsblatt v1 (25.10.2026, Pilot; mathe-nachhilfe `allgemein.md`, Register 25.10.5): baut je Abschnitt einer Lerneinheit ein kurzes Blatt als Daten für den Vorrat oder live; Setzen und Handwerk prüft aufgabenbank `werkzeuge/alltagsblatt-pruef.py`. Nachfolger des Musterauftrags vom 09.10. und von aufgabenbank `bau/bauauftrag.md`.
 - `bankblatt.md` – Bank-Prompt v9 (20.10.2026: Kapitelblatt bestellen, Folgeangebot nach der Lieferung; v8, v7, v6 in archiv/): Projektanweisung für neu*erzeugeBlatt(); je Bestellung ruft der Chat aufgabenbank `werkzeuge/bestellen.py` (Rückfragen als Knöpfe, Zeile „Du bekommst: …“, `--ausfuehren` setzt und schreibt die Lieferzeile) und baut nur ein fehlendes Lernblatt nach aufgabenbank `bau/bauauftrag.md`.
 - `alt/erzeugePruefungsblatt.md`, `alt/erzeugeUnterrichtsblatt.md` – Wortlaut der beiden alt*-Projekte (Stand 20.10.2026, vom Lehrer übergeben), nur zum Nachlesen; die alt*-Projekte bleiben in Gebrauch, bis neu*erzeugeBlatt() Alltagsblatt und Sek II liefert.
 - `archiv/pruefungsblatt.md` – alter Prompt für P10-Hefte aus dem msa-Katalog; seit 19.10.2026 im Archiv, **nicht mehr aktiv**; nur Steinbruch.
