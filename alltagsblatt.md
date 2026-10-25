@@ -1,6 +1,6 @@
 # Alltagsblatt – Bauanweisung v1
 
-Stand 25.10.2026 (v1.1; nach dem Pilot: „Wiederholung“ mit Bezug, Register 25.10.8). Du baust ein Alltagsblatt für einen Abschnitt einer Lerneinheit – für den Vorrat oder live
+Stand 25.10.2026 (v1.1; nach dem Pilot: „Wiederholung“ mit Bezug, Register 25.10.8; Handwerk Tafelbild und Rechenplatz). Du baust ein Alltagsblatt für einen Abschnitt einer Lerneinheit – für den Vorrat oder live
 bei einer Bestellung. Das Warum steht in mathe-nachhilfe `allgemein.md`; hier steht, was du tust. Du schreibst nur den
 Inhalt, als Daten. Setzen, Layout und die Prüfung des Handwerks übernimmt aufgabenbank `werkzeuge/alltagsblatt-pruef.py`.
 
@@ -38,7 +38,8 @@ Unterlage der Anker der obersten Aufgabe.
 **3.3 Ein Block**, in dieser Folge:
 - **Beispiel:** der einfachste Fall, sauber vorgerechnet als Tafelbild – Gleichheitszeichen untereinander, Umformungen mit
   Auftragsstrich, jede Zeile ausgerechnet, am Ende die Antwort; in Geometrie mit Skizze. Ein Beispiel mit einem
-  Rechenschritt bleibt einzeilig. Es zeigt die Schreibweise, die der Schüler übernehmen soll.
+  Rechenschritt bleibt einzeilig. Je Zeile ein Gleichheitszeichen an der Ausrichtung; zwei Ergebnisse schreibst du
+  untereinander (z₁ = 1, darunter z₂ = 9), nicht nebeneinander. Es zeigt die Schreibweise, die der Schüler übernehmen soll.
 - **Merksatz** nur, wo eine Formel den Block trägt: eine Zeile, die Formel genau wie im Tafelwerk. Nie eine umgestellte
   Form zum Merken (das Umstellen zeigt das Beispiel), nie erklärender Text.
 - **Päckchen:** 3–4 Teilaufgaben gleichen Baus mit wenig Text. Die erste ist so leicht wie das Beispiel, mit anderen
@@ -103,7 +104,8 @@ In deinen Ordner schreibst du:
   begruenden, ziel, wiederholung), `typ` (aus den Typen der Unterlage), `merkmale` (Liste aus den Merkmalen der Unterlage,
   leer beim Grundfall), `titel` (Überschrift der Nummer in Schülersprache), `aufgabe` (LaTeX mit den Bausteinen von
   mathblatt.sty; mehrere Teilaufgaben in `teile` mit `\teil`), `grafik` (TikZ oder Baustein, sonst „“), `antwort`
-  (Antwortraum oder „“), `platz` (Rechenzeilen = Schritte der Lösung + 1, höchstens 8; 0 ohne Rechnung), `loesung`
+  (Antwortraum oder „“), `platz` (Rechenzeilen für alle Teilaufgaben des Platzes zusammen, je Teilaufgabe Schritte der Lösung + 1, höchstens 16;
+  0 ohne Rechnung; je Nummer setzt das Skript den größten Platz), `loesung`
   („a) … \quad b) …“ – Ergebnis und Ansatz, kein Satz), `ergebnis` (Liste je Teilaufgabe, kurz, mit Einheit), `pruef`
   (Liste je Teilaufgabe: ein Python-Ausdruck mit sympy, der wahr sein muss, z. B. `"Rational(4+7+9+12, 4) == 8"`;
   bei Begründungen `""`), `haengt_an` (id des Platzes, auf den sich die Aufgabe bezieht, sonst „“), `sache`,
