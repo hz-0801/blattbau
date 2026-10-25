@@ -1,6 +1,6 @@
 # Alltagsblatt – Bauanweisung v1
 
-Stand 25.10.2026 (v1, Pilot). Du baust ein Alltagsblatt für einen Abschnitt einer Lerneinheit – für den Vorrat oder live
+Stand 25.10.2026 (v1.1; nach dem Pilot: „Wiederholung“ mit Bezug, Register 25.10.8). Du baust ein Alltagsblatt für einen Abschnitt einer Lerneinheit – für den Vorrat oder live
 bei einer Bestellung. Das Warum steht in mathe-nachhilfe `allgemein.md`; hier steht, was du tust. Du schreibst nur den
 Inhalt, als Daten. Setzen, Layout und die Prüfung des Handwerks übernimmt aufgabenbank `werkzeuge/alltagsblatt-pruef.py`.
 
@@ -57,8 +57,9 @@ Vorbild für die Form; der Wortlaut ist immer dein eigener.
 
 **3.5 Rahmen.** Auf dem ersten Blatt einer Einheit oder bei „mit Wiederholung“ steht vorn „Das kennst du schon“: nur die
 Vorstufen, die dieses Blatt braucht, je eine kurze Aufgabe mit 2–3 Teilen, zusammen höchstens eine halbe Seite. Am Ende
-„Von früher“: eine oder zwei Aufgaben aus früheren Abschnitten der Einheit (aus der Unterlage); gibt es keine, entfällt
-es. Keine Fundstellen, keine Zeitmarken, kein Satz über das Blatt („kannst du überspringen“).
+„Wiederholung“: eine oder zwei Aufgaben aus früheren Abschnitten der Einheit (aus der Unterlage), die an den Stoff dieses
+Blatts anschließen – dieselben Daten, dieselbe Sache oder der Unterschied zum neuen Verfahren (Mittelwert: der Median an
+denselben Daten). Ohne solchen Bezug keine; gibt es keine früheren Abschnitte, entfällt es. Keine Fundstellen, keine Zeitmarken, kein Satz über das Blatt („kannst du überspringen“).
 
 **3.6 Nicht aufs Blatt:** Fehler-finden-Aufgaben als eigener Typ, Rätsel, Herleitungsbilder, Ergebnisformen, die einen
 Schritt ersparen („c² = __, c = __“), Merkkasten mit Text, Aufgaben über dem Maßstab.
@@ -98,7 +99,7 @@ In deinen Ordner schreibst du:
 - **`plaetze.jsonl`** – eine Zeile je Platz: Teilaufgaben einer Nummer mit gleicher Kennzeichnung (im Päckchen meist eine
   Zeile je Teilaufgabe). Felder:
   `id` (`<eintrag>-e<einheit>-<lauf>-NNN`), `nr`, `teil` („a“, „a-c“ oder „“), `abschnitt` (wie in der Unterlage),
-  `block` (1–3; 0 für „Das kennst du schon“, 9 für „Von früher“), `rolle` (vorstufe, grundfall, sprosse, wechsel,
+  `block` (1–3; 0 für „Das kennst du schon“, 9 für „Wiederholung“), `rolle` (vorstufe, grundfall, sprosse, wechsel,
   begruenden, ziel, wiederholung), `typ` (aus den Typen der Unterlage), `merkmale` (Liste aus den Merkmalen der Unterlage,
   leer beim Grundfall), `titel` (Überschrift der Nummer in Schülersprache), `aufgabe` (LaTeX mit den Bausteinen von
   mathblatt.sty; mehrere Teilaufgaben in `teile` mit `\teil`), `grafik` (TikZ oder Baustein, sonst „“), `antwort`
