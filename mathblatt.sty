@@ -701,19 +701,97 @@
   \pgfmathtruncatemacro{\ksxl}{max(1,ceil((\mbwmax+2pt)/(\kskaro cm)))}%
   \pgfmathtruncatemacro{\ksyl}{max(1,ceil((\mbhh+2pt)/(\kskaro cm)))}}
 % Handwerk Vorrat (Lauf hw 26.10.2026): \mbhandwerktrue schaltet ein (nur werkzeuge/vorrat-satz.py); andere Blätter
-% (P10-Kapitel, Abitur, Lernblätter) bleiben unverändert. Punkt 1: Achsenzahlen nach den Kurven noch einmal mit weißem Hof
-% über alles gezeichnet, damit eine Kurve nahe der Achse die Zahl nicht durchkreuzt. ksys-Schlüssel zahlenoben=false
-% lässt das weg (Figuren mit Ausblendungen von Hand, \fill[white] – vorrat-satz.py setzt ihn dort selbst).
+% (P10-Kapitel, Abitur, Lernblätter) bleiben unverändert. Punkt 1 (Nachbesserung hw2): Kurven, Punkte und Markierungen
+% werden nie überdeckt – kein Hof. Das ksys merkt sich seine Kurven (\funktion, \funktionab, \parabel, \gerade,
+% \asymptote) und Punkte (\punkt, \hochpunkt, \tiefpunkt, \wendepunkt, Scheitel von \parabel) und setzt die Achsenzahlen
+% erst am Ende: Kreuzt eine Kurve oder ein Punkt den Platz der Zahl (Rand 1,2 pt), kommt sie auf die andere Seite der
+% Achse; geht das auch nicht, fällt diese eine Zahl weg – außer ihr Nachbar fehlt schon oder an ihr liegt ein markierter
+% Punkt: dann steht sie eine Stufe kleiner (\tiny) auf der freieren Seite. Jede Entscheidung steht im Log
+% („mbachsenzahl: …“, Prüfung werkzeuge/achsenzahl-pruef.py). Rechnung mit fpu (Polstellen ergeben inf, keine Fehler).
+% ksys-Schlüssel zahlenoben=false: wie ohne Handwerk (Figuren mit Ausblendungen von Hand, \fill[white] – vorrat-satz.py).
 \newif\ifmbhandwerk\mbhandwerkfalse
 \newif\ifmbzahlenoben
+\newif\ifmbhwspaet\mbhwspaetfalse
+\newif\ifmbhwphantom\mbhwphantomfalse% nur für werkzeuge/achsenzahl-pruef.py: Zahlen unsichtbar, Lage gleich
 \pgfkeys{/ksys, zahlenoben/.is if=mbzahlenoben}
-\newcommand{\mbksyszahlenhof}{%
+\usetikzlibrary{fpu}
+\gdef\mbkurven{}\gdef\mbpunkte{}
+\newcommand{\mbhwkurve}[3]{\ifmbhandwerk\gappto\mbkurven{\mbkurve{#1}{#2}{#3}}\fi}
+\newcommand{\mbhwpunkt}[2]{\ifmbhandwerk\xappto\mbpunkte{\noexpand\mbpm{#1}{#2}}\fi}
+% \mbhwtest{x0}{x1}{y0}{y1}: Kasten in Achseneinheiten; \mbkoll = 1, wenn eine Kurve oder ein Punkt ihn trifft
+\newcommand{\mbhwtest}[4]{\gdef\mbkoll{0}%
+  \def\mbkurve##1##2##3{\ifnum\mbkoll=0 \begingroup\pgfkeys{/pgf/fpu=true,/pgf/fpu/output format=fixed}%
+    \pgfmathsetmacro\mbka{max(#1,##2)}\pgfmathsetmacro\mbkb{min(#2,##3)}%
+    \pgfmathsetmacro\mbhwok{\mbka<\mbkb}%
+    \ifdim\mbhwok pt>0.5pt
+      \gdef\mbyprevg{nan}%
+      \foreach \mbhwi in {0,...,16}{%
+        \pgfmathsetmacro\mbxv{\mbka+(\mbkb-\mbka)*\mbhwi/16}\edef\x{(\mbxv)}%
+        \pgfmathsetmacro\mbyv{##1}%
+        \pgfmathsetmacro\mbhwok{((\mbyv>=#3)&&(\mbyv<=#4)&&(\mbyv>=\ksymin)&&(\mbyv<=\ksymax))||((\mbyprevg>#4)&&(\mbyv<#3))||((\mbyprevg<#3)&&(\mbyv>#4))}%
+        \ifdim\mbhwok pt>0.5pt \gdef\mbkoll{1}\fi
+        \global\let\mbyprevg\mbyv}%
+    \fi\endgroup\fi}%
+  \def\mbpm##1##2{\ifnum\mbkoll=0 \pgfmathtruncatemacro\mbhwok{(##1>=#1-\mbhwrx)&&(##1<=#2+\mbhwrx)&&(##2>=#3-\mbhwry)&&(##2<=#4+\mbhwry)}%
+    \ifnum\mbhwok=1 \gdef\mbkoll{1}\fi\fi}%
+  \mbkurven\mbpunkte}
+% markierter Punkt an der Zahl v (Achse x oder y)?
+\newcommand{\mbhwmarkiert}[2]{\gdef\mbmark{0}%
+  \def\mbpm##1##2{\pgfmathtruncatemacro\mbhwok{abs(\if x#1##1\else##2\fi-(#2))<0.001}\ifnum\mbhwok=1 \gdef\mbmark{1}\fi}%
+  \mbpunkte}
+% Kasten einer Zahl prüfen: #1 x|y, #2 Wert, #3 Seite (a = unter/links, b = über/rechts), #4 Zusatzabstand in pt;
+% Breite/Höhe aus \mbmessbox; Ergebnis \mbkoll
+\newcommand{\mbhwseite}[4]{%
+  \pgfmathsetmacro\mbhww{(\wd\mbmessbox/1pt+3)}\pgfmathsetmacro\mbhwh{((\ht\mbmessbox+\dp\mbmessbox)/1pt+3)}%
+  \if x#1%
+    \pgfmathsetmacro\mbaa{#2-(\mbhww/2+1.2)*\mbhwu}\pgfmathsetmacro\mbab{#2+(\mbhww/2+1.2)*\mbhwu}%
+    \if a#3\mbhwtest{\mbaa}{\mbab}{-\ksty-(\mbhwh+1.2+#4)*\mbhwv}{-\ksty-(#4-1.2)*\mbhwv}%
+    \else\mbhwtest{\mbaa}{\mbab}{\ksty+(#4-1.2)*\mbhwv}{\ksty+(\mbhwh+1.2+#4)*\mbhwv}\fi
+  \else
+    \pgfmathsetmacro\mbaa{#2-(\mbhwh/2+1.2)*\mbhwv}\pgfmathsetmacro\mbab{#2+(\mbhwh/2+1.2)*\mbhwv}%
+    \if a#3\mbhwtest{-\kstx-(\mbhww+1.2+#4)*\mbhwu}{-\kstx-(#4-1.2)*\mbhwu}{\mbaa}{\mbab}%
+    \else\mbhwtest{\kstx+(#4-1.2)*\mbhwu}{\kstx+(\mbhww+1.2+#4)*\mbhwu}{\mbaa}{\mbab}\fi
+  \fi}
+% Zahl an Seite #3 mit Zusatzabstand #4 setzen
+\newcommand{\mbhwsetzen}[4]{%
+  \if x#1\if a#3\def\mbna{below}\def\mbpa{#2,-\ksty}\def\mbdx{0}\def\mbdy{-#4}\else\def\mbna{above}\def\mbpa{#2,\ksty}\def\mbdx{0}\def\mbdy{#4}\fi
+  \else\if a#3\def\mbna{left}\def\mbpa{-\kstx,#2}\def\mbdx{-#4}\def\mbdy{0}\else\def\mbna{right}\def\mbpa{\kstx,#2}\def\mbdx{#4}\def\mbdy{0}\fi\fi
+  \node[\mbna,inner sep=1.5pt] at ([xshift=\mbdx pt,yshift=\mbdy pt]\mbpa) {\usebox\mbmessbox};}
+% eine Achsenzahl setzen: #1 x|y, #2 Wert, #3 Text. Reihenfolge: normal unter/links, normal über/rechts, weglassen (nicht
+% neben einer weggelassenen, nicht an einem markierten Punkt), dann \tiny an beiden Seiten mit 0–12 pt Abstand, längs bis 10 pt.
+\newcommand{\mbhwzahl}[3]{%
+  \pgfmathsetmacro\mbhwu{1/(28.4527*\ksxk)}\pgfmathsetmacro\mbhwv{1/(28.4527*\ksyk)}% 1 pt in Achseneinheiten
+  \pgfmathsetmacro\mbhwrx{2.8*\mbhwu}\pgfmathsetmacro\mbhwry{2.8*\mbhwv}% Punkt 1,6 pt + Rand 1,2 pt
+  \sbox\mbmessbox{\mbtf$#3$}\ifmbhwphantom\sbox\mbmessbox{\phantom{\usebox\mbmessbox}}\fi
+  \def\mbhwart{}%
+  \mbhwseite{#1}{#2}{a}{0}\ifnum\mbkoll=0 \mbhwsetzen{#1}{#2}{a}{0}\def\mbhwart{normal}\else
+  \mbhwseite{#1}{#2}{b}{0}\ifnum\mbkoll=0 \mbhwsetzen{#1}{#2}{b}{0}\def\mbhwart{gegenseite}\fi\fi
+  \ifx\mbhwart\empty\mbhwmarkiert{#1}{#2}%
+    \ifnum\mbhwweg\mbmark=00 \def\mbhwart{weg}\fi\fi
+  \ifx\mbhwart\empty
+    \sbox\mbmessbox{\tiny$#3$}\ifmbhwphantom\sbox\mbmessbox{\phantom{\usebox\mbmessbox}}\fi
+    % kleiner, dann auch entlang der Achse versetzt (bis 10 pt): Zahl bleibt ihrem Teilstrich zugeordnet
+    \foreach \mbhwd in {0,-4,4,-7,7,-10,10}{\ifx\mbhwartg\empty
+    \if x#1\pgfmathsetmacro\mbhwvv{#2+\mbhwd*\mbhwu}\else\pgfmathsetmacro\mbhwvv{#2+\mbhwd*\mbhwv}\fi
+    \foreach \mbhwo in {0,3,6,9,12}{\ifx\mbhwartg\empty
+      \foreach \mbhws in {a,b}{\ifx\mbhwartg\empty
+        \mbhwseite{#1}{\mbhwvv}{\mbhws}{\mbhwo}\ifnum\mbkoll=0 \mbhwsetzen{#1}{\mbhwvv}{\mbhws}{\mbhwo}\xdef\mbhwartg{klein \mbhws\space+\mbhwo pt, längs \mbhwd pt}\fi\fi}\fi}\fi}%
+    \ifx\mbhwartg\empty\mbhwsetzen{#1}{#2}{a}{0}\gdef\mbhwartg{KOLLISION}\fi
+    \let\mbhwart\mbhwartg\gdef\mbhwartg{}%
+  \fi
+  \ifx\mbhwart\mbhwwegtext\gdef\mbhwweg{1}\else\gdef\mbhwweg{0}\fi
+  \typeout{mbachsenzahl: #1=#2 \mbhwart}}
+\def\mbhwwegtext{weg}\gdef\mbhwartg{}
+\newcommand{\mbhwzahlen}{%
+  \gdef\mbhwweg{0}%
   \foreach \x in {\ksxmin,\ksxa,...,\ksxmax}{\ifdim \x pt=0pt\else
     \pgfmathtruncatemacro{\mbrest}{mod(abs(round(\x/\ksxstep)),\ksxl)}%
-    \ifnum\mbrest=0 \node[below,inner sep=1.5pt,fill=white] at (\x,-\ksty) {\mbtf$\ifmbpizahlen\mbpizahl{\x}\else\pgfmathprintnumber{\x}\fi$};\fi\fi}
+    \ifnum\mbrest=0 \mbhwzahl{x}{\x}{\ifmbpizahlen\mbpizahl{\x}\else\pgfmathprintnumber{\x}\fi}\fi\fi}%
+  \gdef\mbhwweg{0}%
   \foreach \y in {\ksymin,\ksya,...,\ksymax}{\ifdim \y pt=0pt\else
     \pgfmathtruncatemacro{\mbrest}{mod(abs(round(\y/\ksystep)),\ksyl)}%
-    \ifnum\mbrest=0 \node[left,inner sep=1.5pt,fill=white] at (-\kstx,\y) {\mbtf$\pgfmathprintnumber{\y}$};\fi\fi}}
+    \ifnum\mbrest=0 \mbhwzahl{y}{\y}{\pgfmathprintnumber{\y}}\fi\fi}%
+  \global\mbhwspaetfalse}
 \newcommand{\mbksysachsen}{%
     \draw[mbgitter,line width=0.3pt] (\ksxmin,\ksymin) grid[xstep=\ksxstep,ystep=\ksystep] (\ksxmax,\ksymax);
     \draw[-{Stealth[length=2mm]},line width=0.6pt] (\ksxmin,0) -- (\ksxpfeil,0) node[right] {\small\ksxlabel};
@@ -721,11 +799,11 @@
     \foreach \x in {\ksxmin,\ksxa,...,\ksxmax}{\ifdim \x pt=0pt\else
       \pgfmathtruncatemacro{\mbrest}{mod(abs(round(\x/\ksxstep)),\ksxl)}%
       \draw (\x,\ksty) -- (\x,-\ksty)
-        \ifnum\mbrest=0 node[below,inner sep=1.5pt] {\mbtf$\ifmbpizahlen\mbpizahl{\x}\else\pgfmathprintnumber{\x}\fi$}\fi;\fi}
+        \ifmbhwspaet\else\ifnum\mbrest=0 node[below,inner sep=1.5pt] {\mbtf$\ifmbpizahlen\mbpizahl{\x}\else\pgfmathprintnumber{\x}\fi$}\fi\fi;\fi}
     \foreach \y in {\ksymin,\ksya,...,\ksymax}{\ifdim \y pt=0pt\else
       \pgfmathtruncatemacro{\mbrest}{mod(abs(round(\y/\ksystep)),\ksyl)}%
       \draw (\kstx,\y) -- (-\kstx,\y)
-        \ifnum\mbrest=0 node[left,inner sep=1.5pt] {\mbtf$\pgfmathprintnumber{\y}$}\fi;\fi}}
+        \ifmbhwspaet\else\ifnum\mbrest=0 node[left,inner sep=1.5pt] {\mbtf$\pgfmathprintnumber{\y}$}\fi\fi;\fi}}
 % x-Zahl als Vielfaches von pi/2: \mbpizahl{4.7124} -> \frac{3\pi}{2}
 \newcommand{\mbpizahl}[1]{\pgfmathtruncatemacro{\mbpk}{round(2*(#1)/pi)}%
   \pgfmathtruncatemacro{\mbpg}{\mbpk/2}\pgfmathtruncatemacro{\mbpr}{abs(\mbpk)-2*abs(\mbpg)}%
@@ -733,19 +811,20 @@
   \else\ifnum\mbpk<0 -\fi\ifnum\mbpk=1 \tfrac{\pi}{2}\else\ifnum\mbpk=-1 \tfrac{\pi}{2}\else\tfrac{\the\numexpr\ifnum\mbpk<0 -\fi\mbpk\relax\pi}{2}\fi\fi\fi}
 \newcommand{\mbksysclip}{\begin{scope}\clip (\ksxmin,\ksymin) rectangle (\ksxmax,\ksymax);}
 \newenvironment{ksys}[1][]{%
-  \gdef\mbflabels{}%
+  \gdef\mbflabels{}\gdef\mbkurven{}\gdef\mbpunkte{}%
   \mbksyssetup{#1}%
+  \ifmbhandwerk\ifmbzahlenoben\global\mbhwspaettrue\fi\fi
   \begin{tikzpicture}[x=\ksxk cm,y=\ksyk cm,baseline=(current bounding box.north)]
   \mbksysachsen
   \mbksysclip
-}{\end{scope}\ifmbhandwerk\ifmbzahlenoben\mbksyszahlenhof\fi\fi\end{tikzpicture}}
+}{\end{scope}\ifmbhwspaet\mbhwzahlen\fi\end{tikzpicture}}
 % Objekte im ksys
 \newcommand{\gerade}{}
 % \gerade{m}{n}{Label}  oder  \gerade[x]{m}{n}{Label} – x = Stelle, an der das
 % Label sitzt (Achseneinheiten). Bei mehreren Geraden in einem System die Labels
 % mit verschiedenen x auseinanderziehen, statt die Aufgabenwerte zu aendern.
 \RenewDocumentCommand{\gerade}{o m m m}{%
-  \draw[line width=0.8pt,domain=\ksxmin:\ksxmax,samples=2] plot (\x,{#2*\x+#3});
+  \draw[line width=0.8pt,domain=\ksxmin:\ksxmax,samples=2] plot (\x,{#2*\x+#3});\mbhwkurve{(#2)*\x+(#3)}{\ksxmin}{\ksxmax}%
   \ifblank{#4}{}{\IfNoValueTF{#1}{\mbgeradelabel{\ksxmax-0.6*\ksxstep}{#2}{#3}{#4}}{\mbgeradelabel{#1}{#2}{#3}{#4}}}}
 % Label einer Geraden an der Stelle x. Liegt der Punkt oben oder unten außerhalb der Zeichen-
 % fläche, wandert er auf die Kante, an der er hinausgelaufen ist (nicht nach Vorzeichen von m);
@@ -773,13 +852,14 @@
   \else
     \mbfunklabel{#2*\x+#3}{#4}{\ksxmin}{\ksxmax}%
   \fi}
-\newcommand{\punkt}[3]{\fill (#1,#2) circle (1.6pt) node[above right,font=\small] {$#3$};}
+\newcommand{\punkt}[3]{\mbhwpunkt{#1}{#2}\fill (#1,#2) circle (1.6pt) node[above right,font=\small] {$#3$};}
 \newcommand{\steigungsdreieck}[3]{%
   \draw[mbgrau,dashed] (#1,#2) -- ({#1+1},#2) -- ({#1+1},{#2+#3});
   \node[below,font=\scriptsize,mbgrau] at ({#1+0.5},#2) {1};
   \node[right,font=\scriptsize,mbgrau] at ({#1+1},{#2+#3/2}) {$#3$};}
 \newcommand{\parabel}[4]{%
   \draw[line width=0.8pt,domain=\ksxmin:\ksxmax,samples=80,smooth] plot (\x,{#1*(\x-#2)^2+#3});
+  \mbhwkurve{(#1)*(\x-(#2))^2+(#3)}{\ksxmin}{\ksxmax}\mbhwpunkt{#2}{#3}%
   \mbfunklabel{(#1)*(\x-(#2))^2+(#3)}{#4}{\ksxmin}{\ksxmax}%
   \fill (#2,#3) circle (1.4pt);}
 % Nutzerterme in \x: pgfmath rechnet -2^2 = -4, deshalb wird \x als geklammerter Wert (\mbt)
@@ -828,9 +908,12 @@
   \ifnum\mbfrand=1 \def\mbfrechts{0}\fi
   \pgfmathtruncatemacro{\mbfrand}{(\mbfrechts==0)&&(\mbfx<\ksxmin+1.2*\ksxstep)}%
   \ifnum\mbfrand=1 \def\mbfrechts{1}\fi
-  \ifnum\mbfkonvex=1 \def\mbfanker{north}\else\def\mbfanker{south}\fi
+  % frei neben einer steigenden Kurve sind rechts unten und links oben, neben einer fallenden rechts oben und links unten;
+  % ohne weißen Grund (hw2: Kurven werden nie überdeckt)
+  \pgfmathtruncatemacro{\mbfunten}{\mbfsteigt==\mbfrechts}%
+  \ifnum\mbfunten=1 \def\mbfanker{north}\else\def\mbfanker{south}\fi
   \ifnum\mbfrechts=1 \edef\mbfanker{\mbfanker\space west}\else\edef\mbfanker{\mbfanker\space east}\fi
-  \node[anchor=\mbfanker,fill=white,inner sep=1pt,outer sep=2pt,font=\small] at (\mbfx,\mbfy) {$#2$};}
+  \node[anchor=\mbfanker,inner sep=1pt,outer sep=2pt,font=\small] at (\mbfx,\mbfy) {$#2$};}
 % schon gesetzte Beschriftungen eines Systems; frei = mindestens 0,8 Teilungen in x oder 0,8 in y Abstand
 \gdef\mbflabels{}
 \newcommand{\mbflabelfrei}{%
@@ -843,10 +926,12 @@
 \NewDocumentCommand{\funktion}{o m m}{%
   \begingroup\mbxsicher
   \draw[mbterm,line width=0.8pt,domain=\ksxmin:\ksxmax,samples=120,smooth] plot (\mbt,{#2});\endgroup
+  \mbhwkurve{#2}{\ksxmin}{\ksxmax}%
   \IfNoValueTF{#1}{\mbfunklabel{#2}{#3}{\ksxmin}{\ksxmax}}{\mbfunklabel{#2}{#3}{\ksxmin}{#1}}}
 \NewDocumentCommand{\funktionab}{o m m m m}{% [Labelstelle] Term, Label, von, bis  (bei Definitionslücken)
   \begingroup\mbxsicher
   \draw[mbterm,line width=0.8pt,domain=#4:#5,samples=120,smooth] plot (\mbt,{#2});\endgroup
+  \mbhwkurve{#2}{#4}{#5}%
   \IfNoValueTF{#1}{\mbfunklabel{#2}{#3}{#4}{#5}}{\mbfunklabel{#2}{#3}{#4}{#1}}}
 % Zwei Systeme nebeneinander: \ksysabstand dazwischen
 \newcommand{\ksysabstand}{\hspace{1.0cm}}
@@ -1662,11 +1747,11 @@
       {\ifblank{#2}{$\pgfmathprintnumber[precision=2]{\mbm}$}{$#2$}};}
   \fill (#4,\mbfz) circle (1.6pt);}
 % Markierte Punkte
-\newcommand{\hochpunkt}[3]{\fill (#1,#2) circle (1.6pt); \ifblank{#3}{}{\node[above,font=\small,inner sep=3pt] at (#1,#2) {$#3$};}}
-\newcommand{\tiefpunkt}[3]{\fill (#1,#2) circle (1.6pt); \ifblank{#3}{}{\node[below,font=\small,inner sep=3pt] at (#1,#2) {$#3$};}}
+\newcommand{\hochpunkt}[3]{\mbhwpunkt{#1}{#2}\fill (#1,#2) circle (1.6pt); \ifblank{#3}{}{\node[above,font=\small,inner sep=3pt] at (#1,#2) {$#3$};}}
+\newcommand{\tiefpunkt}[3]{\mbhwpunkt{#1}{#2}\fill (#1,#2) circle (1.6pt); \ifblank{#3}{}{\node[below,font=\small,inner sep=3pt] at (#1,#2) {$#3$};}}
 \NewDocumentCommand{\wendepunkt}{o m m m}{%
   \IfNoValueF{#1}{\draw[mbgrau,dashed] ({(#2)-0.6*\ksxstep},{(#3)-0.6*\ksxstep*(#1)}) -- ({(#2)+0.6*\ksxstep},{(#3)+0.6*\ksxstep*(#1)});}%
-  \fill (#2,#3) circle (1.6pt);
+  \mbhwpunkt{#2}{#3}\fill (#2,#3) circle (1.6pt);
   \ifblank{#4}{}{\node[above right,font=\small,inner sep=2pt] at (#2,#3) {$#4$};}}
 % Asymptote: Argument  x=Wert  (senkrecht) oder  y=Term  (waagerecht/schräg, Term in \x)
 \def\mbasparse#1=#2\relax{\def\mbasl{#1}\def\mbasr{#2}}
@@ -1678,6 +1763,7 @@
   \else
     \begingroup\mbxsicher
     \draw[mbterm,dashed,line width=0.5pt,domain=\ksxmin:\ksxmax,samples=40] plot (\mbt,{\mbasr});\endgroup
+    \expandafter\mbhwkurve\expandafter{\mbasr}{\ksxmin}{\ksxmax}%
     \pgfmathsetmacro{\mbasx}{\ksxmax-0.15*(\ksxmax-\ksxmin)}%
     \mbfunklabel{\mbasr}{#2}{\ksxmin}{\mbasx}%
   \fi}
