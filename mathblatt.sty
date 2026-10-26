@@ -1,4 +1,5 @@
 % mathblatt.sty – Vorlage für Nachhilfe-Arbeitsblätter, Stufe 6 (Sek I und Oberstufe)
+% Version 2026-10-26sz (Lauf sz: Handwerk-Figuren schnell bei gleichen Lagen – Vergleiche ganzzahlig/l3fp, veclen nur für die drei nächsten Stellen, Kurvenwerte je System gemerkt; Gedächtnis der Lagen in \jobname.mbhw, nur mit \mbhandwerktrue)
 % Version 2026-10-21 (Nachtlauf L1: \pfrw, \pfwinkel mit Mindestgröße wie im Kapitelblatt, plan.md § 5 „Winkelzeichen und Brüche nachziehen“)
 % Version 2026-10-16n (Ansatz an fester Stelle, linksbündig, Handgriffe mit „;“; vorher 16m: Lösungszeile: lzaufg/\lzz – Nummer dicht vor dem Ergebnis, Punktlinie zum Ansatz; pfloesungb/\lzb unverändert)
 % Version 2026-10-13 (Runde 6: \pfohnetr – TR durchgestrichen für „Original ohne Rechner“, ohne Erklärung)
@@ -753,9 +754,9 @@
       \begingroup\pgfkeys{/pgf/fpu=true,/pgf/fpu/output format=fixed}\edef\x{(\mbsx)}\pgfmathsetmacro\mbhwy{#1}%
       \mbhwfpif{!(\mbhwy<\mbhwlo) && !(\mbhwy>\mbhwhi) && (\mbhwy==\mbhwy)}{%
         % x-Teil je Stelle einmal je System (gleiche Zahl wie vorher, fpu)
-        \expandafter\ifx\csname mbhwsx\the\mbhwsys @\mbsx\endcsname\relax
-          \pgfmathsetmacro\mbsxc{\mbsx*\ksxk}\expandafter\xdef\csname mbhwsx\the\mbhwsys @\mbsx\endcsname{\mbsxc}%
-        \else\edef\mbsxc{\csname mbhwsx\the\mbhwsys @\mbsx\endcsname}\fi
+        \expandafter\ifx\csname mbhwsx\the\mbhwsys @\ksxk @\mbsx\endcsname\relax
+          \pgfmathsetmacro\mbsxc{\mbsx*\ksxk}\expandafter\xdef\csname mbhwsx\the\mbhwsys @\ksxk @\mbsx\endcsname{\mbsxc}%
+        \else\edef\mbsxc{\csname mbhwsx\the\mbhwsys @\ksxk @\mbsx\endcsname}\fi
         \pgfmathsetmacro\mbsyc{\mbhwy*\ksyk}%
         \xdef\mbhwlistei{\unexpanded\expandafter{\mbhwlistei}\noexpand\mbhwpq{\mbhwcmint{\mbsxc}}{\mbhwcmint{\mbsyc}}{\mbsxc}{\mbsyc}}}{}%
       \endgroup}%
@@ -799,11 +800,15 @@
   \pgfmathsetmacro\mbnr{veclen(\mbnw,\mbnh)+0.03}%
   \pgfmathsetmacro\mbnb{min(#5,\ksxmax-0.3*\ksxstep)}\pgfmathsetmacro\mbna{max(#4,\ksxmin+0.3*\ksxstep)}%
   \gdef\mbhwfound{0}\gdef\mbhwbest{-1}%
+  % sz: Grenzen einmal (fpu, gleiche Zahlen), Vergleich mit l3fp wie fpu („>=“ als „nicht <“)
+  \begingroup\pgfkeys{/pgf/fpu=true,/pgf/fpu/output format=fixed}%
+    \pgfmathsetmacro\mbhwnlo{\ksymin+0.3*\ksystep}\pgfmathsetmacro\mbhwnhi{\ksymax-0.3*\ksystep}%
+    \global\let\mbhwnlo\mbhwnlo\global\let\mbhwnhi\mbhwnhi\endgroup
   \foreach \mbj in {0,...,30}{\ifnum\mbhwfound=0
     \pgfmathsetmacro\mbnx{\mbnb-(\mbnb-\mbna)*\mbj/30}\mbhwf{#2}{\mbnx}\let\mbny\mbhwy
     \pgfmathsetmacro\mbnxh{\mbnx+0.02*\ksxstep}\mbhwf{#2}{\mbnxh}\let\mbnyh\mbhwy
     \begingroup\pgfkeys{/pgf/fpu=true,/pgf/fpu/output format=fixed}%
-      \pgfmathsetmacro\mbhwin{(\mbny>=\ksymin+0.3*\ksystep)&&(\mbny<=\ksymax-0.3*\ksystep)&&(\mbnyh>-10000)&&(\mbnyh<10000)}%
+      \mbhwfpif{!(\mbny<\mbhwnlo) && !(\mbny>\mbhwnhi) && (\mbnyh>-10000) && (\mbnyh<10000)}{\def\mbhwin{1}}{\def\mbhwin{0}}%
       \ifdim\mbhwin pt>0.5pt
         \pgfmathsetmacro\mbtx{0.02*\ksxstep*\ksxk}\pgfmathsetmacro\mbty{(\mbnyh-\mbny)*\ksyk}%
         \pgfmathsetmacro\mbtl{veclen(\mbtx,\mbty)}\pgfmathsetmacro\mbnnx{-\mbty/\mbtl}\pgfmathsetmacro\mbnny{\mbtx/\mbtl}%
@@ -916,7 +921,7 @@
     \pgfmathsetmacro\mbka{max(#1,##2)}\pgfmathsetmacro\mbkb{min(#2,##3)}%
     \pgfmathsetmacro\mbhwok{\mbka<\mbkb}%
     \ifdim\mbhwok pt>0.5pt
-      \expandafter\ifx\csname mbhwc\the\mbhwsys @\detokenize{##1}@\mbka @\mbkb\endcsname\relax
+      \expandafter\ifx\csname mbhwc\the\mbhwsys @\ksystep @\detokenize{##1}@\mbka @\mbkb\endcsname\relax
         \gdef\mbhwyliste{}\mbhwdxc=0
         \loop
           \pgfmathsetmacro\mbxv{\mbka+(\mbkb-\mbka)*\the\mbhwdxc/16}%
@@ -924,9 +929,9 @@
           \xdef\mbhwyliste{\unexpanded\expandafter{\mbhwyliste}\noexpand\mbhwyvtest{\mbhwyint{\mbyv}}}%
           \advance\mbhwdxc1
         \ifnum\mbhwdxc<17 \repeat
-        \expandafter\global\expandafter\let\csname mbhwc\the\mbhwsys @\detokenize{##1}@\mbka @\mbkb\endcsname\mbhwyliste
+        \expandafter\global\expandafter\let\csname mbhwc\the\mbhwsys @\ksystep @\detokenize{##1}@\mbka @\mbkb\endcsname\mbhwyliste
       \fi
-      \mbhwpv=2147483647 \csname mbhwc\the\mbhwsys @\detokenize{##1}@\mbka @\mbkb\endcsname
+      \mbhwpv=2147483647 \csname mbhwc\the\mbhwsys @\ksystep @\detokenize{##1}@\mbka @\mbkb\endcsname
     \fi\fi}%
   \mbkurven\endgroup
   % gesetzte Namen und Zahlen: klar außerhalb (5·10⁻³ cm, in Papier-cm mit Dimensionen) ohne pgfmath, sonst wie vorher
