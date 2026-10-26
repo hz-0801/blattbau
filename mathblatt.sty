@@ -809,9 +809,28 @@
       \pgfmathtruncatemacro{\mbfgo}{(\mbfok==0)&&(\mbfn<40)}%
     \ifnum\mbfgo=1 \repeat
     \ifnum\mbfok=1
-      \node[fill=white,inner sep=1pt,font=\small] at (\mbfx,\mbfy) {$#2$};
+      \ifmbhandwerk\mbfunklabelneben{#1}{#2}\else
+      \node[fill=white,inner sep=1pt,font=\small] at (\mbfx,\mbfy) {$#2$};\fi
       \xdef\mbflabels{\mbflabels(\mbfx/\mbfy)}%
     \else\PackageWarning{mathblatt}{Label #2: Graph liegt im Bereich nicht in der Zeichenflaeche}\fi}}
+% Handwerk hw (26.10.2026, Punkt 2): Beschriftung neben der Kurve statt auf ihr. Steigung und Krümmung an der gefundenen
+% Stelle (Differenzen); die Beschriftung sitzt mit einer Ecke 2 pt neben dem Kurvenpunkt auf der äußeren (konvexen) Seite,
+% wo sich die Kurve von ihr wegbiegt: Linkskurve steigend rechts unten, fallend links unten; Rechtskurve steigend links
+% oben, fallend rechts oben. Liegt diese Seite am Rand der Zeichenfläche, wechselt sie waagerecht.
+\newcommand{\mbfunklabelneben}[2]{%
+  \pgfmathsetmacro{\mbfh}{0.05*\ksxstep}%
+  \begingroup\edef\x{(\mbfx-\mbfh)}\pgfmathparse{#1}\global\let\mbfya\pgfmathresult\endgroup
+  \begingroup\edef\x{(\mbfx+\mbfh)}\pgfmathparse{#1}\global\let\mbfyb\pgfmathresult\endgroup
+  \pgfmathtruncatemacro{\mbfsteigt}{\mbfyb>\mbfya}%
+  \pgfmathtruncatemacro{\mbfkonvex}{\mbfya+\mbfyb-2*\mbfy>=0}%
+  \pgfmathtruncatemacro{\mbfrechts}{\mbfsteigt==\mbfkonvex}% Beschriftung rechts vom Punkt
+  \pgfmathtruncatemacro{\mbfrand}{(\mbfrechts==1)&&(\mbfx>\ksxmax-1.2*\ksxstep)}%
+  \ifnum\mbfrand=1 \def\mbfrechts{0}\fi
+  \pgfmathtruncatemacro{\mbfrand}{(\mbfrechts==0)&&(\mbfx<\ksxmin+1.2*\ksxstep)}%
+  \ifnum\mbfrand=1 \def\mbfrechts{1}\fi
+  \ifnum\mbfkonvex=1 \def\mbfanker{north}\else\def\mbfanker{south}\fi
+  \ifnum\mbfrechts=1 \edef\mbfanker{\mbfanker\space west}\else\edef\mbfanker{\mbfanker\space east}\fi
+  \node[anchor=\mbfanker,fill=white,inner sep=1pt,outer sep=2pt,font=\small] at (\mbfx,\mbfy) {$#2$};}
 % schon gesetzte Beschriftungen eines Systems; frei = mindestens 0,8 Teilungen in x oder 0,8 in y Abstand
 \gdef\mbflabels{}
 \newcommand{\mbflabelfrei}{%
