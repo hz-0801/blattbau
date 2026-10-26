@@ -716,7 +716,83 @@
 \pgfkeys{/ksys, zahlenoben/.is if=mbzahlenoben}
 \usetikzlibrary{fpu}
 \gdef\mbkurven{}\gdef\mbpunkte{}
-\newcommand{\mbhwkurve}[3]{\ifmbhandwerk\gappto\mbkurven{\mbkurve{#1}{#2}{#3}}\fi}
+\newcount\mbhwnk
+\newcommand{\mbhwkurve}[3]{\ifmbhandwerk\gappto\mbkurven{\mbkurve{#1}{#2}{#3}}%
+  \global\advance\mbhwnk1 \expandafter\gdef\csname mbhwk\the\mbhwnk\endcsname{{#1}{#2}{#3}}\fi}
+% hw3 (26.10.2026): Kurvennamen erst am Ende des ksys, wenn alle Kurven bekannt sind. Jede Kurve wird einmal abgetastet
+% (121 Stellen, Papier-cm); ein Name steht an der ersten Stelle von rechts (bzw. von der Labelstelle) entlang seiner Kurve,
+% an der der Abstand der Namensmitte zur eigenen Kurve höchstens halb so groß ist wie zur nächsten fremden Kurve, der Name
+% ganz in der Zeichenfläche liegt und keinen anderen Namen berührt. Seite: beide Normalen. Gibt es keine solche Stelle,
+% steht er an der besten und das Log meldet FEHL (werkzeuge/achsenzahl-pruef.py: HALT). Log „mbname: …“.
+\gdef\mbnamen{}\gdef\mbhwgesetzt{}
+\newcommand{\mbhwf}[2]{% Term, x -> \mbhwy (fpu, global)
+  \begingroup\pgfkeys{/pgf/fpu=true,/pgf/fpu/output format=fixed}\edef\x{(#2)}\pgfmathsetmacro\mbhwt{#1}%
+  \global\let\mbhwy\mbhwt\endgroup}
+\newcommand{\mbhwsample}[4]{% Term, von, bis, Nummer
+  \pgfmathsetmacro\mbsa{max(#2,\ksxmin)}\pgfmathsetmacro\mbsb{min(#3,\ksxmax)}\gdef\mbhwliste{}%
+  \pgfmathtruncatemacro\mbhwok{\mbsa<\mbsb}%
+  \ifnum\mbhwok=1
+    \foreach \mbsi in {0,...,120}{%
+      \pgfmathsetmacro\mbsx{\mbsa+(\mbsb-\mbsa)*\mbsi/120}\mbhwf{#1}{\mbsx}%
+      \begingroup\pgfkeys{/pgf/fpu=true,/pgf/fpu/output format=fixed}%
+        \pgfmathsetmacro\mbhwin{(\mbhwy>=\ksymin-\ksystep)&&(\mbhwy<=\ksymax+\ksystep)}%
+        \ifdim\mbhwin pt>0.5pt \pgfmathsetmacro\mbsxc{\mbsx*\ksxk}\pgfmathsetmacro\mbsyc{\mbhwy*\ksyk}%
+          \ifx\mbhwliste\empty\xdef\mbhwliste{\mbsxc/\mbsyc}\else\xdef\mbhwliste{\mbhwliste,\mbsxc/\mbsyc}\fi\fi
+      \endgroup}%
+  \fi
+  \expandafter\global\expandafter\let\csname mbhwp#4\endcsname\mbhwliste}
+\newcommand{\mbhwmind}[3]{% Liste, cx, cy -> \mbhwdg (cm)
+  \gdef\mbhwdg{99}\ifx#1\empty\else
+  \foreach \mbp/\mbq in #1 {\pgfmathsetmacro\mbt{veclen(\mbp-#2,\mbq-#3)}\ifdim\mbt pt<\mbhwdg pt \xdef\mbhwdg{\mbt}\fi}\fi}
+\newcommand{\mbhwname}[5]{% Nummer, Term, Name, von, bis
+  \sbox\mbmessbox{\small$#3$}%
+  \pgfmathsetmacro\mbnw{\wd\mbmessbox/28.4527/2+0.04}\pgfmathsetmacro\mbnh{(\ht\mbmessbox+\dp\mbmessbox)/28.4527/2+0.04}%
+  \pgfmathsetmacro\mbnr{veclen(\mbnw,\mbnh)+0.03}%
+  \pgfmathsetmacro\mbnb{min(#5,\ksxmax-0.3*\ksxstep)}\pgfmathsetmacro\mbna{max(#4,\ksxmin+0.3*\ksxstep)}%
+  \gdef\mbhwfound{0}\gdef\mbhwbest{-1}%
+  \foreach \mbj in {0,...,30}{\ifnum\mbhwfound=0
+    \pgfmathsetmacro\mbnx{\mbnb-(\mbnb-\mbna)*\mbj/30}\mbhwf{#2}{\mbnx}\let\mbny\mbhwy
+    \pgfmathsetmacro\mbnxh{\mbnx+0.02*\ksxstep}\mbhwf{#2}{\mbnxh}\let\mbnyh\mbhwy
+    \begingroup\pgfkeys{/pgf/fpu=true,/pgf/fpu/output format=fixed}%
+      \pgfmathsetmacro\mbhwin{(\mbny>=\ksymin+0.3*\ksystep)&&(\mbny<=\ksymax-0.3*\ksystep)&&(\mbnyh>-10000)&&(\mbnyh<10000)}%
+      \ifdim\mbhwin pt>0.5pt
+        \pgfmathsetmacro\mbtx{0.02*\ksxstep*\ksxk}\pgfmathsetmacro\mbty{(\mbnyh-\mbny)*\ksyk}%
+        \pgfmathsetmacro\mbtl{veclen(\mbtx,\mbty)}\pgfmathsetmacro\mbnnx{-\mbty/\mbtl}\pgfmathsetmacro\mbnny{\mbtx/\mbtl}%
+        \pgfmathsetmacro\mbpx{\mbnx*\ksxk}\pgfmathsetmacro\mbpy{\mbny*\ksyk}%
+        \xdef\mbhwkand{\mbpx/\mbpy/\mbnnx/\mbnny}\else\gdef\mbhwkand{}\fi
+    \endgroup
+    \ifx\mbhwkand\empty\else
+      \expandafter\mbhwkandidat\mbhwkand\relax{#1}{\mbnr}%
+    \fi\fi}%
+  \ifnum\mbhwfound=1 \def\mbhwurteil{ok}\else\def\mbhwurteil{FEHL}\fi
+  \ifx\mbhwbestc\undefined\typeout{mbname: #3 FEHL keine Stelle}\else
+  \expandafter\mbhwsetzname\mbhwbestc\relax{#3}%
+  \typeout{mbname: #3 eigen=\mbhwbesto\space fremd=\mbhwbestf\space\mbhwurteil}\fi}
+\def\mbhwsetzname#1/#2/#3/#4\relax#5{%
+  \node[inner sep=0pt,font=\small] at ({#1/\ksxk},{#2/\ksyk}) {$#5$};
+  \xappto\mbhwgesetzt{\noexpand\mbhwg{#1}{#2}{#3}{#4}}}
+\newcommand{\mbhwgtest}[4]{\pgfmathtruncatemacro\mbhwx{(abs(\mbcx-#1)<\mbnw+#3)&&(abs(\mbcy-#2)<\mbnh+#4)}\ifnum\mbhwx=1 \gdef\mbhwfrei{0}\fi}
+\def\mbhwkandidat#1/#2/#3/#4\relax#5#6{% px, py (cm), Normale, Nummer, Radius
+  \foreach \mbsd in {1,-1}{\ifnum\mbhwfound=0
+    \pgfmathsetmacro\mbcx{#1+\mbsd*#3*#6}\pgfmathsetmacro\mbcy{#2+\mbsd*#4*#6}%
+    \pgfmathtruncatemacro\mbhwrein{(\mbcx-\mbnw>=\ksxmin*\ksxk)&&(\mbcx+\mbnw<=\ksxmax*\ksxk)&&(\mbcy-\mbnh>=\ksymin*\ksyk)&&(\mbcy+\mbnh<=\ksymax*\ksyk)&&(abs(\mbcy)>\mbnh+0.08)&&(abs(\mbcx)>\mbnw+0.08)}% nicht auf einer Achse
+    \gdef\mbhwfrei{1}%
+    \let\mbhwg\mbhwgtest\mbhwgesetzt
+    \ifnum\mbhwrein\mbhwfrei=11
+      \expandafter\mbhwmind\csname mbhwp#5\endcsname{\mbcx}{\mbcy}\let\mbhwown\mbhwdg
+      \gdef\mbhwfr{99}%
+      \foreach \mbk in {1,...,\the\mbhwnk}{\ifnum\mbk=#5 \else
+        \expandafter\mbhwmind\csname mbhwp\mbk\endcsname{\mbcx}{\mbcy}%
+        \ifdim\mbhwdg pt<\mbhwfr pt \xdef\mbhwfr{\mbhwdg}\fi\fi}%
+      \pgfmathsetmacro\mbhwq{\mbhwfr/max(\mbhwown,0.01)}%
+      \pgfmathtruncatemacro\mbhwgut{(\mbhwfr>=2*\mbhwown)&&(\mbhwfr>=\mbnr)}%
+      \ifdim\mbhwq pt>\mbhwbest pt \xdef\mbhwbest{\mbhwq}\xdef\mbhwbestc{\mbcx/\mbcy/\mbnw/\mbnh}\xdef\mbhwbesto{\mbhwown}\xdef\mbhwbestf{\mbhwfr}\fi
+      \ifnum\mbhwgut=1 \gdef\mbhwfound{1}\xdef\mbhwbestc{\mbcx/\mbcy/\mbnw/\mbnh}\xdef\mbhwbesto{\mbhwown}\xdef\mbhwbestf{\mbhwfr}\fi
+    \fi\fi}}
+\newcommand{\mbhwnamen}{%
+  \foreach \mbk in {1,...,\the\mbhwnk}{\expandafter\expandafter\expandafter\mbhwsample\csname mbhwk\mbk\endcsname{\mbk}}%
+  \def\mbname##1##2##3##4##5{\global\let\mbhwbestc\undefined\mbhwname{##1}{##2}{##3}{##4}{##5}}%
+  \mbnamen\gdef\mbnamen{}}
 \newcommand{\mbhwpunkt}[2]{\ifmbhandwerk\xappto\mbpunkte{\noexpand\mbpm{#1}{#2}}\fi}
 % \mbhwtest{x0}{x1}{y0}{y1}: Kasten in Achseneinheiten; \mbkoll = 1, wenn eine Kurve oder ein Punkt ihn trifft
 \newcommand{\mbhwtest}[4]{\gdef\mbkoll{0}%
@@ -732,6 +808,8 @@
         \ifdim\mbhwok pt>0.5pt \gdef\mbkoll{1}\fi
         \global\let\mbyprevg\mbyv}%
     \fi\endgroup\fi}%
+  \def\mbhwg##1##2##3##4{\ifnum\mbkoll=0 \pgfmathtruncatemacro\mbhwok{((##1+##3)/\ksxk>=#1)&&((##1-##3)/\ksxk<=#2)&&((##2+##4)/\ksyk>=#3)&&((##2-##4)/\ksyk<=#4)}%
+    \ifnum\mbhwok=1 \gdef\mbkoll{1}\fi\fi}\mbhwgesetzt
   \def\mbpm##1##2{\ifnum\mbkoll=0 \pgfmathtruncatemacro\mbhwok{(##1>=#1-\mbhwrx)&&(##1<=#2+\mbhwrx)&&(##2>=#3-\mbhwry)&&(##2<=#4+\mbhwry)}%
     \ifnum\mbhwok=1 \gdef\mbkoll{1}\fi\fi}%
   \mbkurven\mbpunkte}
@@ -756,7 +834,11 @@
 \newcommand{\mbhwsetzen}[4]{%
   \if x#1\if a#3\def\mbna{below}\def\mbpa{#2,-\ksty}\def\mbdx{0}\def\mbdy{-#4}\else\def\mbna{above}\def\mbpa{#2,\ksty}\def\mbdx{0}\def\mbdy{#4}\fi
   \else\if a#3\def\mbna{left}\def\mbpa{-\kstx,#2}\def\mbdx{-#4}\def\mbdy{0}\else\def\mbna{right}\def\mbpa{\kstx,#2}\def\mbdx{#4}\def\mbdy{0}\fi\fi
-  \node[\mbna,inner sep=1.5pt] at ([xshift=\mbdx pt,yshift=\mbdy pt]\mbpa) {\usebox\mbmessbox};}
+  \node[\mbna,inner sep=1.5pt] at ([xshift=\mbdx pt,yshift=\mbdy pt]\mbpa) {\usebox\mbmessbox};
+  \pgfmathsetmacro\mbzw{(\wd\mbmessbox/1pt+3)/28.4527/2}\pgfmathsetmacro\mbzh{((\ht\mbmessbox+\dp\mbmessbox)/1pt+3)/28.4527/2}%
+  \if x#1\pgfmathsetmacro\mbzx{#2*\ksxk}\if a#3\pgfmathsetmacro\mbzy{-\ksty*\ksyk-(#4)/28.4527-\mbzh}\else\pgfmathsetmacro\mbzy{\ksty*\ksyk+(#4)/28.4527+\mbzh}\fi
+  \else\pgfmathsetmacro\mbzy{#2*\ksyk}\if a#3\pgfmathsetmacro\mbzx{-\kstx*\ksxk-(#4)/28.4527-\mbzw}\else\pgfmathsetmacro\mbzx{\kstx*\ksxk+(#4)/28.4527+\mbzw}\fi\fi
+  \xappto\mbhwgesetzt{\noexpand\mbhwg{\mbzx}{\mbzy}{\mbzw}{\mbzh}}}
 % eine Achsenzahl setzen: #1 x|y, #2 Wert, #3 Text. Reihenfolge: normal unter/links, normal über/rechts, weglassen (nicht
 % neben einer weggelassenen, nicht an einem markierten Punkt), dann \tiny an beiden Seiten mit 0–12 pt Abstand, längs bis 10 pt.
 \newcommand{\mbhwzahl}[3]{%
@@ -811,13 +893,13 @@
   \else\ifnum\mbpk<0 -\fi\ifnum\mbpk=1 \tfrac{\pi}{2}\else\ifnum\mbpk=-1 \tfrac{\pi}{2}\else\tfrac{\the\numexpr\ifnum\mbpk<0 -\fi\mbpk\relax\pi}{2}\fi\fi\fi}
 \newcommand{\mbksysclip}{\begin{scope}\clip (\ksxmin,\ksymin) rectangle (\ksxmax,\ksymax);}
 \newenvironment{ksys}[1][]{%
-  \gdef\mbflabels{}\gdef\mbkurven{}\gdef\mbpunkte{}%
+  \gdef\mbflabels{}\gdef\mbkurven{}\gdef\mbpunkte{}\gdef\mbnamen{}\gdef\mbhwgesetzt{}\global\mbhwnk=0 %
   \mbksyssetup{#1}%
   \ifmbhandwerk\ifmbzahlenoben\global\mbhwspaettrue\fi\fi
   \begin{tikzpicture}[x=\ksxk cm,y=\ksyk cm,baseline=(current bounding box.north)]
   \mbksysachsen
   \mbksysclip
-}{\end{scope}\ifmbhwspaet\mbhwzahlen\fi\end{tikzpicture}}
+}{\ifmbhandwerk\ifx\mbnamen\empty\else\mbhwnamen\fi\fi\end{scope}\ifmbhwspaet\mbhwzahlen\fi\end{tikzpicture}}
 % Objekte im ksys
 \newcommand{\gerade}{}
 % \gerade{m}{n}{Label}  oder  \gerade[x]{m}{n}{Label} – x = Stelle, an der das
@@ -831,6 +913,10 @@
 % liegt er dann seitlich außerhalb, sucht \mbfunklabel vom rechten Rand her eine Stelle im Bild.
 % Vorher konnte der Ausweichpunkt außerhalb liegen und wurde vom Clipping stumm entfernt.
 \newcommand{\mbgeradelabel}[4]{% x, m, n, Label
+  \ifmbhandwerk\pgfmathsetmacro\mbglx{min(max(#1+0.5*\ksxstep,\ksxmin+\ksxstep),\ksxmax)}%
+    \xappto\mbnamen{\noexpand\mbname{\the\mbhwnk}{\unexpanded{(#2)*\x+(#3)}}{\unexpanded{#4}}{\ksxmin}{\mbglx}}\else
+  \mbgeradelabelalt{#1}{#2}{#3}{#4}\fi}
+\newcommand{\mbgeradelabelalt}[4]{%
   \pgfmathsetmacro{\mblx}{#1}\pgfmathsetmacro{\mbly}{#2*\mblx+#3}%
   \pgfmathtruncatemacro{\mbltop}{\mbly>\ksymax-0.3*\ksystep}%
   \pgfmathtruncatemacro{\mblbot}{\mbly<\ksymin+0.3*\ksystep}%
@@ -877,6 +963,8 @@
   % 2026-10-06b: Suche beginnt eine halbe Teilung vor dem rechten Rand (vorher genau am Rand: die
   % Beschriftung lag halb außerhalb und wurde abgeschnitten, „a“ wirkte wie „c“) und überspringt
   % Stellen, an denen schon eine Beschriftung desselben Systems steht (\mbflabels).
+  % hw3: im Handwerk nur vormerken (\mbhwnamen am Ende des ksys)
+  \ifmbhandwerk\ifblank{#2}{}{\xappto\mbnamen{\noexpand\mbname{\the\mbhwnk}{\unexpanded{#1}}{\unexpanded{#2}}{#3}{#4}}}\else
   \ifblank{#2}{}{%
     \pgfmathsetmacro{\mbfx}{min(#4,\ksxmax-0.5*\ksxstep)}\pgfmathsetmacro{\mbfd}{((#4)-(#3))/40}%
     \def\mbfn{0}\def\mbfok{0}%
@@ -892,7 +980,7 @@
       \ifmbhandwerk\mbfunklabelneben{#1}{#2}\else
       \node[fill=white,inner sep=1pt,font=\small] at (\mbfx,\mbfy) {$#2$};\fi
       \xdef\mbflabels{\mbflabels(\mbfx/\mbfy)}%
-    \else\PackageWarning{mathblatt}{Label #2: Graph liegt im Bereich nicht in der Zeichenflaeche}\fi}}
+    \else\PackageWarning{mathblatt}{Label #2: Graph liegt im Bereich nicht in der Zeichenflaeche}\fi}\fi}
 % Handwerk hw (26.10.2026, Punkt 2): Beschriftung neben der Kurve statt auf ihr. Steigung und Krümmung an der gefundenen
 % Stelle (Differenzen); die Beschriftung sitzt mit einer Ecke 2 pt neben dem Kurvenpunkt auf der äußeren (konvexen) Seite,
 % wo sich die Kurve von ihr wegbiegt: Linkskurve steigend rechts unten, fallend links unten; Rechtskurve steigend links
@@ -1683,7 +1771,7 @@
   \begin{tikzpicture}[x=\ksxk cm,y=\ksyk cm,baseline=(current bounding box.north)]
     \mbksysachsen
     \mbksysclip
-      \ifblank{#2}{}{\funktion{#2}{#3}}
+      \gdef\mbnamen{}\global\mbhwnk=0 \ifblank{#2}{}{\funktion{#2}{#3}}\ifmbhandwerk\ifx\mbnamen\empty\else\mbhwnamen\fi\fi
     \end{scope}
     \pgfmathsetmacro{\mbyu}{\ksymin*\ksyk}% untere Kante des oberen Systems in cm
     \pgfkeys{/ksys,default,#1}%
@@ -1696,7 +1784,7 @@
     \begin{scope}[y=\ksyk cm,yshift=\mbys cm]
       \mbksysachsen
       \mbksysclip
-        \ifblank{#4}{}{\funktion{#4}{#5}}
+        \gdef\mbnamen{}\global\mbhwnk=0 \ifblank{#4}{}{\funktion{#4}{#5}}\ifmbhandwerk\ifx\mbnamen\empty\else\mbhwnamen\fi\fi
       \end{scope}
     \end{scope}
   \end{tikzpicture}}
@@ -2862,8 +2950,8 @@
   \draw[-{Stealth[length=2mm]},line width=0.6pt] (\ksxmin,0) -- (\mbaxp,0) node[right] {\small\ksxlabel};
   \draw[-{Stealth[length=2mm]},line width=0.6pt] (0,\ksymin) -- (0,\mbayp) node[above] {\small\ksylabel};
   \mbastriche{x}{\ksxmin}{\ksxmax}{\ksxstep}{\mbale}\mbastriche{y}{\ksymin}{\ksymax}{\ksystep}{\mbayle}%
-  \begin{scope}\clip (\ksxmin,\ksymin) rectangle (\ksxmax,\ksymax);
-}{\end{scope}\end{tikzpicture}}
+  \begin{scope}\clip (\ksxmin,\ksymin) rectangle (\ksxmax,\ksymax);\gdef\mbnamen{}\global\mbhwnk=0 
+}{\ifmbhandwerk\ifx\mbnamen\empty\else\mbhwnamen\fi\fi\end{scope}\end{tikzpicture}}
 \NewDocumentCommand{\rstrecke}{O{} m m}{\draw[line width=0.7pt,#1] (#2) -- (#3);}
 \ExplSyntaxOn
 \NewDocumentCommand{\rvieleck}{O{} m}{
