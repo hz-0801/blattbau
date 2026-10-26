@@ -1,4 +1,5 @@
 % mathblatt.sty – Vorlage für Nachhilfe-Arbeitsblätter, Stufe 6 (Sek I und Oberstufe)
+% Version 2026-10-26w3 (Lauf w3: \tangentean übergibt Steigung und Achsenabschnitt ausgeschrieben an \gerade – im Handwerksmodus brach es mit „Undefined control sequence“ ab, \mbm nicht expandiert; Befund v3g, seit hw2 0cf7f6d)
 % Version 2026-10-26sz (Lauf sz: Handwerk-Figuren schnell bei gleichen Lagen – Vergleiche ganzzahlig/l3fp, veclen nur für die drei nächsten Stellen, Kurvenwerte je System gemerkt; Gedächtnis der Lagen in \jobname.mbhw, nur mit \mbhandwerktrue)
 % Version 2026-10-21 (Nachtlauf L1: \pfrw, \pfwinkel mit Mindestgröße wie im Kapitelblatt, plan.md § 5 „Winkelzeichen und Brüche nachziehen“)
 % Version 2026-10-16n (Ansatz an fester Stelle, linksbündig, Handgriffe mit „;“; vorher 16m: Lösungszeile: lzaufg/\lzz – Nummer dicht vor dem Ergebnis, Punktlinie zum Ansatz; pfloesungb/\lzb unverändert)
@@ -1965,7 +1966,9 @@
   \endgroup
   \pgfmathsetmacro{\mbm}{(\mbfp-\mbfq)/0.02}%
   \pgfmathsetmacro{\mbn}{\mbfz-\mbm*(#4)}%
-  \gerade{\mbm}{\mbn}{#5}%
+  % w3 26.10.2026: Werte ausgeschrieben übergeben – \gerade merkt sich den Term für das Handwerk (\mbhwkurve, seit hw2),
+  % ausgewertet erst am Ende des ksys, wo das lokale \mbm nicht mehr gilt („Undefined control sequence“, Befund v3g).
+  \edef\mbtgaufruf{\noexpand\gerade{\mbm}{\mbn}}\mbtgaufruf{#5}%
   \IfBooleanF{#1}{%
     \pgfmathsetmacro{\mbdx}{ifthenelse((#4)+1.3*\ksxstep>\ksxmax,-1,1)}%
     \pgfmathsetmacro{\mbxv}{(#4)+\mbdx}% senkrechte Seite des Dreiecks
