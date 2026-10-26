@@ -1,6 +1,6 @@
 # Alltagsblatt – Bauanweisung v1
 
-Stand 26.10.2026 (v1.2: keine „Wiederholung“ am Ende, Register 26.10.2; Gruppenprofil als Eingabe, Register 26.10.3; v1.1 25.10.). Du baust ein Alltagsblatt für einen Abschnitt einer Lerneinheit – für den Vorrat oder live
+Stand 26.10.2026 (v1.2a: § 5 ohne Block 9 und Rahmenart vonfrueher, das Prüfskript hält dort an; v1.2: keine „Wiederholung“ am Ende, Register 26.10.2; Gruppenprofil als Eingabe, Register 26.10.3; v1.1 25.10.). Du baust ein Alltagsblatt für einen Abschnitt einer Lerneinheit – für den Vorrat oder live
 bei einer Bestellung. Das Warum steht in mathe-nachhilfe `allgemein.md`; hier steht, was du tust. Du schreibst nur den
 Inhalt, als Daten. Setzen, Layout und die Prüfung des Handwerks übernimmt aufgabenbank `werkzeuge/alltagsblatt-pruef.py`.
 
@@ -101,8 +101,8 @@ In deinen Ordner schreibst du:
 - **`plaetze.jsonl`** – eine Zeile je Platz: Teilaufgaben einer Nummer mit gleicher Kennzeichnung (im Päckchen meist eine
   Zeile je Teilaufgabe). Felder:
   `id` (`<eintrag>-e<einheit>-<lauf>-NNN`), `nr`, `teil` („a“, „a-c“ oder „“), `abschnitt` (wie in der Unterlage),
-  `block` (1–3; 0 für „Das kennst du schon“, 9 für „Wiederholung“), `rolle` (vorstufe, grundfall, sprosse, wechsel,
-  begruenden, ziel, wiederholung), `typ` (aus den Typen der Unterlage), `merkmale` (Liste aus den Merkmalen der Unterlage,
+  `block` (1–3; 0 für „Das kennst du schon“), `rolle` (vorstufe, grundfall, sprosse, wechsel,
+  begruenden, ziel), `typ` (aus den Typen der Unterlage), `merkmale` (Liste aus den Merkmalen der Unterlage,
   leer beim Grundfall), `titel` (Überschrift der Nummer in Schülersprache), `aufgabe` (LaTeX mit den Bausteinen von
   mathblatt.sty; mehrere Teilaufgaben in `teile` mit `\teil`), `grafik` (TikZ oder Baustein, sonst „“), `antwort`
   (Antwortraum oder „“), `platz` (Rechenzeilen für alle Teilaufgaben des Platzes zusammen, je Teilaufgabe Schritte der Lösung + 1, höchstens 16;
@@ -112,8 +112,8 @@ In deinen Ordner schreibst du:
   bei Begründungen `""`), `haengt_an` (id des Platzes, auf den sich die Aufgabe bezieht, sonst „“), `sache`,
   `ursprung` (`{"art": "eigen" | "zwilling" | "verfremdet", "werk": "", "seite": "", "nr": ""}`), `eintrag`, `einheit`.
   Ein Merkmal, das in der Unterlage fehlt, trägst du in `merkmale_neu` ein (kennung;abschnitt;merkmal;art;hinweis).
-- **`rahmen.jsonl`** – eine Zeile je Rahmenteil in Blattfolge: `pos`, `art` (zone, block, beispiel, merksatz,
-  vonfrueher), `vor_nr` (die Nummer, vor der er steht), `tex`. `block` ist die Überschrift des Blocks in Schülersprache
+- **`rahmen.jsonl`** – eine Zeile je Rahmenteil in Blattfolge: `pos`, `art` (zone, block, beispiel,
+  merksatz), `vor_nr` (die Nummer, vor der er steht), `tex`. `block` ist die Überschrift des Blocks in Schülersprache
   (der Handgriff, nicht der Typname), `beispiel` das Tafelbild (mit `\rechnung{…}`), `merksatz` die eine Formelzeile.
 - **`titel.txt`** (Name des Blatts, kurz: das Werkzeug oder die Sache, z. B. „Mittelwert“) und **`klasse.txt`** (Klasse
   der Bestellung).
