@@ -743,25 +743,27 @@
 \ExplSyntaxOff
 \newcount\mbhwsys
 \newcommand{\mbhwsample}[4]{% Term, von, bis, Nummer
-  \pgfmathsetmacro\mbsa{max(#2,\ksxmin)}\pgfmathsetmacro\mbsb{min(#3,\ksxmax)}\gdef\mbhwliste{}\gdef\mbhwlistei{}%
+  \pgfmathsetmacro\mbsa{max(#2,\ksxmin)}\pgfmathsetmacro\mbsb{min(#3,\ksxmax)}\gdef\mbhwlistei{}%
   \pgfmathtruncatemacro\mbhwok{\mbsa<\mbsb}%
   \ifnum\mbhwok=1
     \begingroup\pgfkeys{/pgf/fpu=true,/pgf/fpu/output format=fixed}%
       \pgfmathsetmacro\mbhwlo{\ksymin-\ksystep}\pgfmathsetmacro\mbhwhi{\ksymax+\ksystep}\global\let\mbhwlo\mbhwlo\global\let\mbhwhi\mbhwhi\endgroup
     \foreach \mbsi in {0,...,120}{%
-      \pgfmathsetmacro\mbsx{\mbsa+(\mbsb-\mbsa)*\mbsi/120}\mbhwf{#1}{\mbsx}%
+      \pgfmathsetmacro\mbsx{\mbsa+(\mbsb-\mbsa)*\mbsi/120}%
+      \begingroup\pgfkeys{/pgf/fpu=true,/pgf/fpu/output format=fixed}\edef\x{(\mbsx)}\pgfmathsetmacro\mbhwy{#1}%
       \mbhwfpif{!(\mbhwy<\mbhwlo) && !(\mbhwy>\mbhwhi) && (\mbhwy==\mbhwy)}{%
-        \begingroup\pgfkeys{/pgf/fpu=true,/pgf/fpu/output format=fixed}%
-          \pgfmathsetmacro\mbsxc{\mbsx*\ksxk}\pgfmathsetmacro\mbsyc{\mbhwy*\ksyk}%
-          \ifx\mbhwliste\empty\xdef\mbhwliste{\mbsxc/\mbsyc}\else\xdef\mbhwliste{\mbhwliste,\mbsxc/\mbsyc}\fi
-          \xdef\mbhwlistei{\unexpanded\expandafter{\mbhwlistei}\noexpand\mbhwpq{\mbhwcmint{\mbsxc}}{\mbhwcmint{\mbsyc}}{\mbsxc}{\mbsyc}}%
-        \endgroup}{}}%
+        % x-Teil je Stelle einmal je System (gleiche Zahl wie vorher, fpu)
+        \expandafter\ifx\csname mbhwsx\the\mbhwsys @\mbsx\endcsname\relax
+          \pgfmathsetmacro\mbsxc{\mbsx*\ksxk}\expandafter\xdef\csname mbhwsx\the\mbhwsys @\mbsx\endcsname{\mbsxc}%
+        \else\edef\mbsxc{\csname mbhwsx\the\mbhwsys @\mbsx\endcsname}\fi
+        \pgfmathsetmacro\mbsyc{\mbhwy*\ksyk}%
+        \xdef\mbhwlistei{\unexpanded\expandafter{\mbhwlistei}\noexpand\mbhwpq{\mbhwcmint{\mbsxc}}{\mbhwcmint{\mbsyc}}{\mbsxc}{\mbsyc}}}{}%
+      \endgroup}%
   \fi
-  \expandafter\global\expandafter\let\csname mbhwp#4\endcsname\mbhwliste
   \expandafter\global\expandafter\let\csname mbhwpi#4\endcsname\mbhwlistei}
-% Abstand von (#2,#3) zur Kurve #1 -> \mbhwdg (cm), Wert wie vorher: die drei nächsten Stellen nach ganzzahligem
-% Abstandsquadrat (1/16384 cm; ab 1,4 cm je Komponente gröber, aber hinter allen näheren), dann für diese drei veclen wie bisher über alle 121 –
-% gleiche Zahl, ein Vierzigstel der Rechnungen. Keine Stelle: 99 wie vorher.
+% Abstand von (#2,#3) zur Kurve #1: \mbhwdq = kleinstes ganzzahliges Abstandsquadrat (1/16384 cm; ab 1,4 cm je Komponente
+% gröber, aber hinter allen näheren; keine Stelle 2147483647), die drei nächsten Stellen in \mbhwtop<#1>.
+% \mbhwexakt{#1}{cx}{cy} -> \mbhwdg (cm) mit veclen wie bisher, aber nur über diese drei statt alle 121 – gleiche Zahl.
 \newcount\mbhwdqc \newcount\mbhwdxc \newcount\mbhwdyc \newcount\mbhwcxi \newcount\mbhwcyi \newcount\mbhwdqb \newcount\mbhwdqd
 \newcommand{\mbhwmindi}[3]{\mbhwdqc=2147483647 \mbhwdqb=2147483647 \mbhwdqd=2147483647
   \def\mbhwka{}\def\mbhwkb{}\def\mbhwkc{}%
@@ -779,11 +781,15 @@
       \else \mbhwdqd=\mbhwdyc \def\mbhwkc{##3/##4}\fi
     \fi}%
   \csname mbhwpi#1\endcsname
-  \gdef\mbhwdg{99}%
-  \def\mbhwkv##1/##2\relax{\pgfmathsetmacro\mbt{veclen(##1-#2,##2-#3)}\ifdim\mbt pt<\mbhwdg pt \xdef\mbhwdg{\mbt}\fi}%
-  \ifx\mbhwka\empty\else\expandafter\mbhwkv\mbhwka\relax\fi
-  \ifx\mbhwkb\empty\else\expandafter\mbhwkv\mbhwkb\relax\fi
-  \ifx\mbhwkc\empty\else\expandafter\mbhwkv\mbhwkc\relax\fi}
+  \xdef\mbhwdq{\the\mbhwdqc}%
+  \expandafter\xdef\csname mbhwtop#1\endcsname{{\mbhwka}{\mbhwkb}{\mbhwkc}}}
+\newcommand{\mbhwexakt}[3]{\gdef\mbhwdg{99}%
+  \def\mbhwkv##1{\ifblank{##1}{}{\mbhwkvv##1\relax}}%
+  \def\mbhwkvv##1/##2\relax{\pgfmathsetmacro\mbt{veclen(##1-#2,##2-#3)}\ifdim\mbt pt<\mbhwdg pt \xdef\mbhwdg{\mbt}\fi}%
+  \expandafter\expandafter\expandafter\mbhwkvdrei\csname mbhwtop#1\endcsname}
+\def\mbhwkvdrei#1#2#3{\mbhwkv{#1}\mbhwkv{#2}\mbhwkv{#3}}
+% ganzzahliges Quadrat -> cm (für die Vorauswahl)
+\def\mbhwqcm#1{(((#1)>=2147483647) ? 99 : sqrt(((#1)<1073741824) ? (#1) : ((#1)-1073741824)*512)/16384)}
 \newcommand{\mbhwmind}[3]{% Liste, cx, cy -> \mbhwdg (cm)
   \gdef\mbhwdg{99}\ifx#1\empty\else
   \foreach \mbp/\mbq in #1 {\pgfmathsetmacro\mbt{veclen(\mbp-#2,\mbq-#3)}\ifdim\mbt pt<\mbhwdg pt \xdef\mbhwdg{\mbt}\fi}\fi}
@@ -819,6 +825,9 @@
   \node[inner sep=0pt,font=\small] at ({#1/\ksxk},{#2/\ksyk}) {$#5$};
   \xappto\mbhwgesetzt{\noexpand\mbhwg{#1}{#2}{#3}{#4}}}
 \newcommand{\mbhwgtest}[4]{\pgfmathtruncatemacro\mbhwx{(abs(\mbcx-#1)<\mbnw+#3)&&(abs(\mbcy-#2)<\mbnh+#4)}\ifnum\mbhwx=1 \gdef\mbhwfrei{0}\fi}
+% sz: Vorauswahl ganzzahlig. Nur wo ein Kandidat neu der beste werden kann (q über 99 % des bisher besten), wo die
+% Entscheidung ok/nicht ok knapp ist (2 · 10⁻³ cm) oder wo er klar ok ist, rechnet veclen die genauen Abstände wie
+% bisher (\mbhwexakt) und entscheidet mit genau den alten Ausdrücken; klar schlechte Kandidaten fallen ohne veclen weg.
 \def\mbhwkandidat#1/#2/#3/#4\relax#5#6{% px, py (cm), Normale, Nummer, Radius
   \foreach \mbsd in {1,-1}{\ifnum\mbhwfound=0
     \pgfmathsetmacro\mbcx{#1+\mbsd*#3*#6}\pgfmathsetmacro\mbcy{#2+\mbsd*#4*#6}%
@@ -826,15 +835,22 @@
     \gdef\mbhwfrei{1}%
     \let\mbhwg\mbhwgtest\mbhwgesetzt
     \ifnum\mbhwrein\mbhwfrei=11
-      \mbhwmindi{#5}{\mbcx}{\mbcy}\let\mbhwown\mbhwdg
-      \gdef\mbhwfr{99}%
+      \mbhwmindi{#5}{\mbcx}{\mbcy}\let\mbhwownq\mbhwdq
+      \gdef\mbhwfrq{2147483647}%
       \foreach \mbk in {1,...,\the\mbhwnk}{\ifnum\mbk=#5 \else
         \mbhwmindi{\mbk}{\mbcx}{\mbcy}%
+        \ifnum\mbhwdq<\mbhwfrq\relax\global\let\mbhwfrq\mbhwdq\fi\fi}%
+      \mbhwfpif{((\mbhwqcm{\mbhwfrq}<2*\mbhwqcm{\mbhwownq}-0.002) || (\mbhwqcm{\mbhwfrq}<\mbnr-0.002))
+        && !(\mbhwqcm{\mbhwfrq}/max(\mbhwqcm{\mbhwownq},0.01) > 0.99*\mbhwbest)}{}{%
+      \mbhwexakt{#5}{\mbcx}{\mbcy}\let\mbhwown\mbhwdg
+      \gdef\mbhwfr{99}%
+      \foreach \mbk in {1,...,\the\mbhwnk}{\ifnum\mbk=#5 \else
+        \mbhwexakt{\mbk}{\mbcx}{\mbcy}%
         \ifdim\mbhwdg pt<\mbhwfr pt \xdef\mbhwfr{\mbhwdg}\fi\fi}%
       \pgfmathsetmacro\mbhwq{\mbhwfr/max(\mbhwown,0.01)}%
       \pgfmathtruncatemacro\mbhwgut{(\mbhwfr>=2*\mbhwown)&&(\mbhwfr>=\mbnr)}%
       \ifdim\mbhwq pt>\mbhwbest pt \xdef\mbhwbest{\mbhwq}\xdef\mbhwbestc{\mbcx/\mbcy/\mbnw/\mbnh}\xdef\mbhwbesto{\mbhwown}\xdef\mbhwbestf{\mbhwfr}\fi
-      \ifnum\mbhwgut=1 \gdef\mbhwfound{1}\xdef\mbhwbestc{\mbcx/\mbcy/\mbnw/\mbnh}\xdef\mbhwbesto{\mbhwown}\xdef\mbhwbestf{\mbhwfr}\fi
+      \ifnum\mbhwgut=1 \gdef\mbhwfound{1}\xdef\mbhwbestc{\mbcx/\mbcy/\mbnw/\mbnh}\xdef\mbhwbesto{\mbhwown}\xdef\mbhwbestf{\mbhwfr}\fi}%
     \fi\fi}}
 \newcommand{\mbhwnamen}{\ifnum\mbhwmodus=2 \mbhwrecn\gdef\mbnamen{}\else\mbhwnamenrechnen\fi}
 \newcommand{\mbhwnamenrechnen}{%
@@ -913,11 +929,20 @@
       \mbhwpv=2147483647 \csname mbhwc\the\mbhwsys @\detokenize{##1}@\mbka @\mbkb\endcsname
     \fi\fi}%
   \mbkurven\endgroup
-  \def\mbhwg##1##2##3##4{\ifnum\mbkoll=0 \pgfmathtruncatemacro\mbhwok{((##1+##3)/\ksxk>=#1)&&((##1-##3)/\ksxk<=#2)&&((##2+##4)/\ksyk>=#3)&&((##2-##4)/\ksyk<=#4)}%
-    \ifnum\mbhwok=1 \gdef\mbkoll{1}\fi\fi}\mbhwgesetzt
+  % gesetzte Namen und Zahlen: klar außerhalb (5·10⁻³ cm, in Papier-cm mit Dimensionen) ohne pgfmath, sonst wie vorher
+  \ifnum\mbkoll=0
+    \edef\mbhwXa{\mbhwfpe{(#1)*\ksxk-0.005}}\edef\mbhwXb{\mbhwfpe{(#2)*\ksxk+0.005}}%
+    \edef\mbhwYa{\mbhwfpe{(#3)*\ksyk-0.005}}\edef\mbhwYb{\mbhwfpe{(#4)*\ksyk+0.005}}%
+  \fi
+  \def\mbhwg##1##2##3##4{\ifnum\mbkoll=0
+    \ifdim\dimexpr##1pt+##3pt\relax<\mbhwXa pt \else\ifdim\dimexpr##1pt-##3pt\relax>\mbhwXb pt \else
+    \ifdim\dimexpr##2pt+##4pt\relax<\mbhwYa pt \else\ifdim\dimexpr##2pt-##4pt\relax>\mbhwYb pt \else
+    \mbhwgexakt{##1}{##2}{##3}{##4}{#1}{#2}{#3}{#4}\fi\fi\fi\fi\fi}\mbhwgesetzt
   \def\mbpm##1##2{\ifnum\mbkoll=0 \pgfmathtruncatemacro\mbhwok{(##1>=#1-\mbhwrx)&&(##1<=#2+\mbhwrx)&&(##2>=#3-\mbhwry)&&(##2<=#4+\mbhwry)}%
     \ifnum\mbkoll=0 \ifnum\mbhwok=1 \gdef\mbkoll{1}\fi\fi\fi}%
   \mbpunkte}
+\newcommand{\mbhwgexakt}[8]{\pgfmathtruncatemacro\mbhwok{((#1+#3)/\ksxk>=#5)&&((#1-#3)/\ksxk<=#6)&&((#2+#4)/\ksyk>=#7)&&((#2-#4)/\ksyk<=#8)}%
+    \ifnum\mbhwok=1 \gdef\mbkoll{1}\fi}
 % markierter Punkt an der Zahl v (Achse x oder y)?
 \newcommand{\mbhwmarkiert}[2]{\gdef\mbmark{0}%
   \def\mbpm##1##2{\pgfmathtruncatemacro\mbhwok{abs(\if x#1##1\else##2\fi-(#2))<0.001}\ifnum\mbhwok=1 \gdef\mbmark{1}\fi}%
