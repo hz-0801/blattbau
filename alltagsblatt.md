@@ -1,6 +1,6 @@
 # Alltagsblatt – Bauanweisung v1
 
-Stand 25.10.2026 (v1.1; nach dem Pilot: „Wiederholung“ mit Bezug, Register 25.10.8; Handwerk Tafelbild und Rechenplatz). Du baust ein Alltagsblatt für einen Abschnitt einer Lerneinheit – für den Vorrat oder live
+Stand 26.10.2026 (v1.2: keine „Wiederholung“ am Ende, Register 26.10.2; Gruppenprofil als Eingabe, Register 26.10.3; v1.1 25.10.). Du baust ein Alltagsblatt für einen Abschnitt einer Lerneinheit – für den Vorrat oder live
 bei einer Bestellung. Das Warum steht in mathe-nachhilfe `allgemein.md`; hier steht, was du tust. Du schreibst nur den
 Inhalt, als Daten. Setzen, Layout und die Prüfung des Handwerks übernimmt aufgabenbank `werkzeuge/alltagsblatt-pruef.py`.
 
@@ -17,6 +17,9 @@ Tisch legt.
 - **Bestellung** (im Auftrag oder in der Nachricht): Katalogeintrag und Einheit, Abschnitt, Klasse, Schulform oder
   Bildungsgang (OS, GYM; Sek II: Abitur GK oder LK, FOS), das Buch des Schülers, wenn bekannt, Zusätze („schwach“,
   „mit Wiederholung“, Foto einer Schulaufgabe) und einen Kurznamen für den Lauf.
+- **Gruppenprofil** (Register 26.10.3), wenn der Auftrag eines nennt: wenige Zeilen zur Jahrgangsgruppe – Schule und Buch,
+  was die Klassenarbeit fragt, typische Fehler, Schreibweisen des Lehrers. Nutze es wie eine Angabe der Bestellung; es
+  ändert nicht Abschnitt und Maßstab.
 - **Unterlage:** `python3 werkzeuge/unterlage.py <eintrag> <einheit> <abschnitt> --klasse <k> --schulform <s>
   [--werk <werk>] --aus <ordner>` schreibt `unterlage.md` in deinen Ordner. Lies sie ganz; sie ist deine Quelle. Sie
   enthält: Einheit und Abschnitt mit Typen und Kette aus dem Katalog, die Voraussetzungen, typische Fehler, Originale mit
@@ -57,10 +60,8 @@ prüfen und begründen, schätzen. Zwei Nachbarn beginnen nie mit derselben Auff
 Vorbild für die Form; der Wortlaut ist immer dein eigener.
 
 **3.5 Rahmen.** Auf dem ersten Blatt einer Einheit oder bei „mit Wiederholung“ steht vorn „Das kennst du schon“: nur die
-Vorstufen, die dieses Blatt braucht, je eine kurze Aufgabe mit 2–3 Teilen, zusammen höchstens eine halbe Seite. Am Ende
-„Wiederholung“: eine oder zwei Aufgaben aus früheren Abschnitten der Einheit (aus der Unterlage), die an den Stoff dieses
-Blatts anschließen – dieselben Daten, dieselbe Sache oder der Unterschied zum neuen Verfahren (Mittelwert: der Median an
-denselben Daten). Ohne solchen Bezug keine; gibt es keine früheren Abschnitte, entfällt es. Keine Fundstellen, keine Zeitmarken, kein Satz über das Blatt („kannst du überspringen“).
+Vorstufen, die dieses Blatt braucht, je eine kurze Aufgabe mit 2–3 Teilen, zusammen höchstens eine halbe Seite. Am Ende keine
+„Wiederholung“ (Lehrer 26.10. Weg A, Register 26.10.2): das Wiederholen früherer Abschnitte leistet das Mischblatt. Keine Fundstellen, keine Zeitmarken, kein Satz über das Blatt („kannst du überspringen“).
 
 **3.6 Nicht aufs Blatt:** Fehler-finden-Aufgaben als eigener Typ, Rätsel, Herleitungsbilder, Ergebnisformen, die einen
 Schritt ersparen („c² = __, c = __“), Merkkasten mit Text, Aufgaben über dem Maßstab.
