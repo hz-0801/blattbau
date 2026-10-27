@@ -81,7 +81,9 @@ knapp ein Drittel Klassenarbeitshöhe (Sache, Spitze, „Stimmt das?“, Schluss
 die Niveaustufe der Unterlage und die schwersten regulären Buchaufgaben des Kapitels, nicht Vertiefung oder Knobelei. Geht
 das nur am Gymnasium oder im Erweiterungskurs dran, darfst du die Aufgabe so kennzeichnen (Feld `kennzeichen`). Im
 Prüfungsjahr (Kl. 10 Oberschule bei einem P10-Thema, Q-Phase bei Abitur oder FHR) ist ein verfremdetes Original der
-Unterlage ein guter Anker – aber nur, wo es zum Block passt; Prüfungshöhe ist nicht immer richtig.
+Unterlage ein guter Anker – aber nur, wo es zum Block passt; Prüfungshöhe ist nicht immer richtig. Die Anker stehen in der
+Unterlage unter „Anker der Spitze“ (Originale, schwerste Buchaufgaben); die Spitze liegt auf ihrer Höhe, nicht leichter und
+nicht darüber. Der Bericht nennt je Block den Anker oder „kein Anker“.
 
 **3.6 Voraussetzungen nur von davor.** Ein Block setzt nur voraus, was auf dem Blatt davor oder in „Das kennst du schon“
 steht, nie Stoff eines späteren Abschnitts.
@@ -158,8 +160,8 @@ In deinen Ordner schreibst du:
   `\rechnung{…}`), `merksatz` die Formelzeile; `zone` und `schluss` mit leerem `tex` (die Überschrift setzt der Satz).
 - **`titel.txt`** (Name des Blatts, kurz: die Lerneinheit oder der Abschnitt, z. B. „Gleichungssysteme lösen“) und
   **`klasse.txt`** (Klasse der Bestellung).
-- **`bericht.md`**, höchstens 12 Zeilen: je Block Beispiel, Stolperstellen in ihrer Folge und die Spitze mit dem Grund,
-  warum sie dem Maßstab entspricht; welche Abschnitte kein Block wurden; Prüfergebnis, Seiten je Block, Teilaufgaben,
+- **`bericht.md`**, höchstens 12 Zeilen: je Block Beispiel, Stolperstellen in ihrer Folge und die Spitze mit ihrem Anker
+  (oder „kein Anker“); welche Abschnitte kein Block wurden; Prüfergebnis, Seiten je Block, Teilaufgaben,
   Wanduhr, Unsicheres.
 
 Kopf, Fuß, Kennung, Nummern, Buchstaben, Rechenzeilen, Seitenumbruch (jeder Block auf neuer Seite), die Seitenangaben je
