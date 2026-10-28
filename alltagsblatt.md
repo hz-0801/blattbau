@@ -1,6 +1,6 @@
 # Alltagsblatt – Bauanweisung v2
 
-Stand 28.10.2026 (v2a: Musterweg als Daten, § 5 – Register 28.10.1; v2: Komplett- und Abschnittsblatt, Reihenfolge und Mengen, Rechenzeilen je Teilaufgabe, Schreibweise,
+Stand 28.10.2026 (v2a: Musterweg als Daten, § 5, Größe des Schritts 3.3a – Register 28.10.1–2; v2: Komplett- und Abschnittsblatt, Reihenfolge und Mengen, Rechenzeilen je Teilaufgabe, Schreibweise,
 „Stimmt das?“ nur wo es passt, Voraussetzungen nur von davor – Register 27.10.2–10; v1.2a 26.10.). Du baust ein
 Alltagsblatt für eine Lerneinheit (Komplettblatt) oder einen ihrer Abschnitte (Abschnittsblatt) – für den Vorrat oder live
 bei einer Bestellung. Das Warum steht in mathe-nachhilfe `allgemein.md` § 2; hier steht, was du tust. Du schreibst nur den
@@ -59,6 +59,11 @@ kurze Aufgaben mit 2–3 Teilen. Beim Abschnittsblatt gehört hierher auch, was 
 - **Spitze** (spitze): die schwerste Aufgabe des Blocks (Maßstab 3.5).
 - **„Stimmt das?“** (stimmt), nur wo der Block einen typischen Fehler hat: eine Behauptung oder eine kurze Rechnung mit
   diesem Fehler oder ohne ihn; der Schüler entscheidet und begründet.
+
+**3.3a Größe des Schritts** (Register 28.10.2, vorläufig): Gleiche Schritte mit nur einem kleinen Stolperstein sind eine
+Teilaufgabe derselben Nummer. Kommt ein Schritt davor und geht es danach weiter wie bekannt, bekommt er eine neue Nummer und
+einen Kasten nur mit dem neuen Schritt und „→ weiter wie …“ (Musterweg mit diesen Zeilen und `ergebnis` „\to\ \text{weiter wie …}“).
+Nur eine andere Schrittfolge ist ein neuer Block mit vollem Kasten. Ein Block im Teil darf auf den Kasten davor zeigen.
 
 **3.4 Mengen.**
 
