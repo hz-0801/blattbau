@@ -1,6 +1,6 @@
 # Alltagsblatt – Bauanweisung v2
 
-Stand 27.10.2026 (v2: Komplett- und Abschnittsblatt, Reihenfolge und Mengen, Rechenzeilen je Teilaufgabe, Schreibweise,
+Stand 28.10.2026 (v2a: Musterweg als Daten, § 5 – Register 28.10.1; v2: Komplett- und Abschnittsblatt, Reihenfolge und Mengen, Rechenzeilen je Teilaufgabe, Schreibweise,
 „Stimmt das?“ nur wo es passt, Voraussetzungen nur von davor – Register 27.10.2–10; v1.2a 26.10.). Du baust ein
 Alltagsblatt für eine Lerneinheit (Komplettblatt) oder einen ihrer Abschnitte (Abschnittsblatt) – für den Vorrat oder live
 bei einer Bestellung. Das Warum steht in mathe-nachhilfe `allgemein.md` § 2; hier steht, was du tust. Du schreibst nur den
@@ -158,6 +158,14 @@ In deinen Ordner schreibst du:
 - **`rahmen.jsonl`** – eine Zeile je Rahmenteil in Blattfolge: `pos`, `art` (zone, block, beispiel, merksatz, schluss),
   `vor_nr` (die Nummer, vor der er steht), `tex`. `block` ist der Blockkopf (3.3), `beispiel` das Tafelbild (mit
   `\rechnung{…}`), `merksatz` die Formelzeile; `zone` und `schluss` mit leerem `tex` (die Überschrift setzt der Satz).
+  Ein Beispiel, das ein Verfahren vorführt, gibst du als **Musterweg** (Register 28.10.1, allgemein.md 2.3a (11)): Feld
+  `musterweg` = `{"verfahren": "Gleichsetzen", "geg": [["I", "y", "3x - 1"], ["II", "y", "x + 5"]], "ges": "$x$ und $y$",
+  "zeilen": [{"s": "I = II:", "l": "3x - 1", "r": "x + 5", "v": "nach $x$ auflösen"}, {"l": "x", "r": "3"}, {"s": "in I:",
+  "l": "y", "r": "3 \\cdot 3 - 1 = 8", "neu": true}], "ergebnis": "L = \\{(3 \\mid 8)\\}", "loesung": {"x": "3", "y": "8"}}`.
+  `l`, `r`, `ergebnis` sind Mathe ohne `$`; `s` (Schritt), `v` (Vermerk) und `ges` Text, Mathe darin in `$…$`; `neu` = neue
+  Phase (Leerzeile davor); `geg` je Zeile [Name, links, rechts] (rechts leer = nur Text). `tex` bleibt leer oder trägt eine
+  Skizze, die rechts daneben steht. Gleiche Schritte heißen in jedem Musterweg gleich; Bekanntes steht als eine Zeile mit
+  Ergebnis. Ausrichtung, Kasten und Überschrift setzt der Satz; das Skript rechnet jede Zeile an `loesung` nach (H11).
 - **`titel.txt`** (Name des Blatts, kurz: die Lerneinheit oder der Abschnitt, z. B. „Gleichungssysteme lösen“) und
   **`klasse.txt`** (Klasse der Bestellung).
 - **`bericht.md`**, höchstens 12 Zeilen: je Block Beispiel, Stolperstellen in ihrer Folge und die Spitze mit ihrem Anker
