@@ -1,0 +1,6 @@
+# Stand der Repos nach der Nachbesserung n6, 28.10.2026 10:53 UTC (Kapitel LGS „Stand n6“, 31 S.).
+# Gebaut wurde Ballon 4 auf aufgabenbank c80e5d4 / blattbau ec48714 / mathe-nachhilfe 57fb14e (27.10. 22:53);
+# n6 brachte den Musterweg als Daten im Werkzeug. Für einen neuen Bau gilt der Stand n6.
+aufgabenbank 8bf954a
+blattbau d292c81
+mathe-nachhilfe d451a7d
