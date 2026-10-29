@@ -1,0 +1,46 @@
+Musterlösungen des Lehrers (27.10.2026) – Anschauung, nicht abschreiben
+
+Eine Musterlösung führt ein Verfahren vor, nicht irgendeine Aufgabe. Sie ist eine knappe Lösungsskizze
+ohne Prosa. Ein Schüler soll sich Zeile für Zeile daran entlanghangeln und das Verfahren auf eine neue
+Aufgabe übertragen können.
+
+```
+Verfahren: Additionsverfahren
+Geg.: I   2x + 3y = 13
+      II  4x −  y = 5
+Ges.: x und y
+
+I:              2x + 3y = 13
+II' = 3·II:    12x − 3y = 15
+
+I + II':       14x = 28              | :14
+                 x = 2
+in II:        8 − y = 5              | −8, ·(−1)
+                  y = 3
+L = {(2 | 3)}
+```
+
+```
+Verfahren: Logarithmieren
+Geg.: 5 · 1,2ˣ = 20
+Ges.: x
+
+5 · 1,2ˣ = 20                        | :5
+1,2ˣ = 4                             | ln
+x · ln 1,2 = ln 4                    | :ln 1,2
+x = ln 4 / ln 1,2
+x ≈ 7,60
+```
+
+```
+Verfahren: Substitution
+Geg.: x⁴ − 5x² − 36 = 0
+Ges.: alle x
+
+Subst.:      z = x²
+             z² − 5z − 36 = 0        | pq
+             z₁ = 9     z₂ = −4
+Resubst.:    x² = 9   ⇒ x = ±3
+             x² = −4  ⇒ keine Lösung
+L = {−3; 3}
+```

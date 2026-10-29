@@ -1,0 +1,5 @@
+# Stand der Repos beim Einzelbau 26.10.2026 abends (letzter Commit vor cdc99a9 „Versuch Einzelbau: Ordner …“).
+# holen.sh legt je Zeile einen Arbeitsbaum genau auf diesem Commit an.
+aufgabenbank afb1948
+blattbau ef96952
+mathe-nachhilfe 469c81c
