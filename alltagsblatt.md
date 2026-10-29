@@ -63,7 +63,9 @@ kurze Aufgaben mit 2–3 Teilen. Beim Abschnittsblatt gehört hierher auch, was 
 **3.3a Größe des Schritts** (Register 28.10.2, vorläufig): Gleiche Schritte mit nur einem kleinen Stolperstein sind eine
 Teilaufgabe derselben Nummer. Kommt ein Schritt davor und geht es danach weiter wie bekannt, bekommt er eine neue Nummer und
 einen Kasten nur mit dem neuen Schritt und „→ weiter wie …“ (Musterweg mit diesen Zeilen und `ergebnis` „\to\ \text{weiter wie …}“).
-Nur eine andere Schrittfolge ist ein neuer Block mit vollem Kasten. Ein Block im Teil darf auf den Kasten davor zeigen.
+Nur eine andere Schrittfolge ist ein neuer Block mit vollem Kasten. Ein Block im Teil darf auf den Kasten davor zeigen. Zur Erweiterung
+steht der Kern-Kasten unverändert daneben: Feld `kern` mit dem `verfahren` des Kerns auf demselben Blatt (oder der Kern als Daten);
+der Satz setzt ihn (Register 28.10.3).
 
 **3.4 Mengen.**
 
