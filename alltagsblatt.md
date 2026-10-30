@@ -112,8 +112,8 @@ erst als Stolperstelle. Denk vom Ende her: Welches Ergebnis soll herauskommen, w
 dann gerundet („√65 ≈ 8,1“).
 
 **4.2 Sprache.** Kurze ganze Sätze, erst die Lage, dann eine Aufforderung; Du-Form; Operatoren wie in der Prüfung
-(berechne, gib an, begründe, entscheide); ein Fachwort beim ersten Mal mit dem Alltagswort; Buchstaben und Schreibweise wie
-im Buch des Schülers, sonst wie im Tafelwerk; Division als Bruch.
+(berechne, gib an, begründe, entscheide); ein Fachwort beim ersten Mal mit dem Alltagswort; Buchstaben und Schreibweise nach
+4.3 und den Regeln des Projekts, was das Buch des Schülers anders nennt, einmal als Lesart (mathe-nachhilfe allgemein.md 2.7); Division als Bruch.
 
 **4.3 Schreibweise in Beispiel und Lösung.** Was im Kopf geht, steht in einer Zeile („|u⃗| = √(0,6² + 0,8²) = 1“);
 Umformungen stehen untereinander, am Gleichheitszeichen ausgerichtet, mit Auftragsstrich. ⇒ steht, wo ein Schritt Wissen
