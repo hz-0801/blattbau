@@ -155,7 +155,9 @@ In deinen Ordner schreibst du:
   Unterlage; leer beim Grundfall), `titel` (Überschrift der Nummer: die Aufforderung in Schülersprache), `aufgabe` (LaTeX
   mit den Bausteinen von mathblatt.sty; mehrere Teilaufgaben eines Platzes mit `\teil`; keine Schreibzeilen),
   `grafik` (TikZ oder Baustein, sonst „“), `antwort` (Antwortfeld bei kurzen Antworten, sonst „“), `platz` (Rechenzeilen
-  dieser Teilaufgabe: Schritte der Lösung + 1, höchstens 16; 0 ohne Rechnung), `loesung` („a) … \quad b) …“ – Ergebnis und
+  dieser Teilaufgabe: Schritte der Lösung + 1, höchstens 16; 0 ohne Rechnung – eine Nummer darf Plätze mit und ohne Rechenzeilen
+  mischen, z. B. a, b, c mit `platz` 5 und danach ein Platz `teil` „d-g“ mit `platz` 0 und eigenem `titel` „Löse im Heft.“; so
+  bleibt ein Päckchen eine Nummer, Probe 31.10.2026), `loesung` („a) … \quad b) …“ – Ergebnis und
   Ansatz, kein Satz), `ergebnis` (Liste je Teilaufgabe, kurz, mit Einheit), `pruef` (Liste je Teilaufgabe: ein
   Python-Ausdruck mit sympy, der wahr sein muss, z. B. `"Rational(4+7+9+12, 4) == 8"`; bei Begründungen `""`),
   `haengt_an` (id des Platzes, auf den sich die Aufgabe bezieht, sonst „“), `sache`, `kennzeichen` („“, „Gymnasium“ oder
