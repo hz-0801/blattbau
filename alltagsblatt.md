@@ -156,8 +156,8 @@ In deinen Ordner schreibst du:
   mit den Bausteinen von mathblatt.sty; mehrere Teilaufgaben eines Platzes mit `\teil`; keine Schreibzeilen),
   `grafik` (TikZ oder Baustein, sonst „“), `antwort` (Antwortfeld bei kurzen Antworten, sonst „“), `platz` (Rechenzeilen
   dieser Teilaufgabe: Schritte der Lösung + 1, höchstens 16; 0 ohne Rechnung – eine Nummer darf Plätze mit und ohne Rechenzeilen
-  mischen, z. B. a, b, c mit `platz` 5 und danach ein Platz `teil` „d-g“ mit `platz` 0 und eigenem `titel` „Löse im Heft.“; so
-  bleibt ein Päckchen eine Nummer, Probe 31.10.2026), `loesung` („a) … \quad b) …“ – Ergebnis und
+  mischen, z. B. a, b, c mit `platz` 5 und danach ein Platz `teil` „d-g“ mit `platz` 0 und demselben `titel`; so bleibt ein
+  Päckchen eine Nummer, Probe 31.10.2026; einen Ort wie „im Heft“ nennt kein Titel – H13), `loesung` („a) … \quad b) …“ – Ergebnis und
   Ansatz, kein Satz), `ergebnis` (Liste je Teilaufgabe, kurz, mit Einheit), `pruef` (Liste je Teilaufgabe: ein
   Python-Ausdruck mit sympy, der wahr sein muss, z. B. `"Rational(4+7+9+12, 4) == 8"`; bei Begründungen `""`),
   `haengt_an` (id des Platzes, auf den sich die Aufgabe bezieht, sonst „“), `sache`, `kennzeichen` („“, „Gymnasium“ oder
@@ -175,6 +175,13 @@ In deinen Ordner schreibst du:
   Phase (Leerzeile davor); `geg` je Zeile [Name, links, rechts] (rechts leer = nur Text). `tex` bleibt leer oder trägt eine
   Skizze, die rechts daneben steht. Gleiche Schritte heißen in jedem Musterweg gleich; Bekanntes steht als eine Zeile mit
   Ergebnis. Ausrichtung, Kasten und Überschrift setzt der Satz; das Skript rechnet jede Zeile an `loesung` nach (H11).
+  Im Teil (blattart `teil`, kurzer Auftrag) ist der Kasten **art `kasten`** (31.10.2026, Lehrer Runde 9; Register 30.10.5, 31.10.1):
+  `{"pos": 4, "art": "kasten", "vor_nr": 2, "tex": "", "name": "p-q-Formel", "formel": "x^2 + px + q = 0 \\quad\\Rightarrow\\quad
+  x_{1,2} = …", "zeilen": [["", "$x^2 - 2x - 15 = 0$"], ["ablesen", "$p = -2$ \\qquad $q = -15$"], ["einsetzen", "$x_{1,2} =
+  -\\dfrac{-2}{2} \\pm …$"], ["Lösungen", "$x_1 = 5$ \\qquad $x_2 = -3$"]]}`. Die Formel (Mathe ohne `$`, darf fehlen, z. B.
+  beim Schritt davor) setzt der Satz mit Namen über den Kasten; je Zeile das Schrittwort (ein, zwei Wörter; „“ = Zeile ohne
+  Wort) und Zellen mit Mathe in `$…$`; die Nummern setzt der Satz. Das Werkzeug hält an (H12), wenn „einsetzen“ ausrechnet,
+  ein Kasten vor einem Block nur aus Sache und „Stimmt das?“ steht oder ein Kasten freies TeX ist.
 - **`titel.txt`** (Name des Blatts, kurz: die Lerneinheit oder der Abschnitt, z. B. „Gleichungssysteme lösen“) und
   **`klasse.txt`** (Klasse der Bestellung).
 - **`bericht.md`**, höchstens 12 Zeilen: je Block Beispiel, Stolperstellen in ihrer Folge und die Spitze mit ihrem Anker
