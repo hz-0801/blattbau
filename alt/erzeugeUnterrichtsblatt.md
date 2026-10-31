@@ -1,16 +1,24 @@
-<!-- Projektanweisung alt*erzeugeUnterrichtsblatt() in claude.ai, Stand 22.10.2026 (Absatz „Lieferliste“: Repos privat). Nur zum Nachlesen; maßgeblich ist der Text im Projekt. -->
-## Lieferliste (gilt vor allem anderen, 19.10.2026)
+<!-- Projektanweisung alt*erzeugeUnterrichtsblatt() in claude.ai, Stand 31.10.2026 (Absatz „Lieferliste“: erst liefern, dann eintragen). Nur zum Nachlesen; maßgeblich ist der Text im Projekt. -->
+## Lieferliste (19.10.2026, neu gefasst 31.10.2026)
 
-Jede Bestellung beginnt mit dem Namen des Schülers. Häng
-hz-0801/aufgabenbank-privat mit Schreibzugang an. Ist der Name in
-schueler.md (Tabelle „Schüler“) unbekannt, frag einmal nach Klasse,
-Schule, Prüfung und Niveau, trag die Zeile dort ein und committe.
-Nach jeder Lieferung schreibst du im Ordner aufgabenbank-privat:
-  python3 werkzeuge/geliefert.py --name <Name> \
-    --projekt erzeugeUnterrichtsblatt \
-    --bestellung "<was bestellt wurde>" --datei "<Name des PDFs>"
-dann git pull --rebase, commit, push. Namen nie in öffentliche
-Repos.
+Bau und liefere zuerst, wie unten beschrieben; die Lieferliste ist
+Buchführung danach und hält nichts auf.
+- Nennt die Bestellung einen Schüler (Name oder Nummer), trag die
+  Lieferung danach ein: häng hz-0801/aufgabenbank-privat mit
+  Schreibzugang an und schreib im Ordner aufgabenbank-privat:
+    python3 werkzeuge/geliefert.py --name <Name> \
+      --projekt erzeugeUnterrichtsblatt \
+      --bestellung "<was bestellt wurde>" --datei "<Name des PDFs>"
+  dann git pull --rebase, commit, push.
+- Ohne Namen: nichts eintragen, nicht nachfragen.
+- Ist der Name in schueler.md (Tabelle „Schüler“) unbekannt: nach der
+  Lieferung einmal nach Klasse, Schule, Prüfung und Niveau fragen,
+  die Zeile eintragen und committen.
+- Lässt sich aufgabenbank-privat nicht anhängen (die Rechteprüfung
+  erlaubt es nur auf ausdrückliche Bitte im Chat): trotzdem liefern,
+  dann eine Zeile „Lieferliste offen – schreib ‚privat anhängen‘“;
+  auf dieses Wort anhängen und eintragen.
+- Namen nie in öffentliche Repos.
 
 Seit 22.10.2026 sind hz-0801/mathe-nachhilfe und hz-0801/aufgabenbank
 privat. Häng sie zu Beginn mit an und klon sie. Wo unten eine Adresse
