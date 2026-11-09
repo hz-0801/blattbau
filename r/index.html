@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Lösungen</title>
+<style>
+  :root { --fg:#111; --grau:#666; --linie:#ccc; --an:#111; --bg:#fff; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:16px; font:17px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; color:var(--fg); background:var(--bg); max-width:34rem; margin-inline:auto; }
+  h1 { font-size:1.25rem; margin:0 0 .2rem; }
+  .hin { color:var(--grau); font-size:.9rem; margin:0 0 1rem; }
+  .z { display:flex; align-items:center; gap:.6rem; padding:.7rem 0; border-top:1px solid var(--linie); }
+  .n { font-weight:700; width:1.6rem; flex:none; }
+  .l { flex:1; }
+  .l small { display:block; color:var(--grau); }
+  .k { display:flex; gap:.35rem; flex:none; }
+  .k button { width:2.75rem; height:2.75rem; font-size:1.2rem; border:1.5px solid var(--fg); background:#fff; color:var(--fg); border-radius:6px; }
+  .k button[aria-pressed="true"] { background:var(--an); color:#fff; }
+  #ab { width:100%; margin:1.2rem 0 .5rem; padding:.9rem; font-size:1.1rem; font-weight:700; border:0; border-radius:8px; background:var(--fg); color:#fff; }
+  #ab:disabled { background:#999; }
+  #m { min-height:1.5rem; color:var(--grau); }
+  iframe { display:none; }
+</style>
+</head>
+<body>
+<h1>Lösungen <span id="kopf"></span></h1>
+<p class="hin">Tippe je Frage an: ✓ richtig · × falsch · ? nicht verstanden</p>
+<div id="liste"></div>
+<button id="ab" disabled>Absenden</button>
+<p id="m"></p>
+<iframe name="ziel" title="senden"></iframe>
+<script>
+// Briefkasten: ein Google-Formular für alle Tests. Aufruf: …/r/#t=<Test>&s=<Schülernummer>
+// (hinter #, damit Test und Nummer nicht an den Seitenserver gehen).
+const FORM = { url: "FORM_URL", schueler: "ENTRY_S", test: "ENTRY_T", antwort: "ENTRY_A" };
+// Testdaten der Probe (Einheitskreis, Kl. 10); später je Test aus einer Datei neben der Seite.
+const TESTS = { "ek10": [
+  ["1", ""], ["gegen den Uhrzeigersinn", "Start an der positiven x-Achse"], ["(0 | 1)", ""], ["180°", ""],
+  ["x = cos α, y = sin α", ""], ["auf der x-Achse", ""], ["sin α = 0,8 und cos α = 0,6", "sin ist die y-, cos die x-Koordinate"],
+  ["(0 | −1)", ""], ["die senkrechte", "sie ist die y-Koordinate"],
+  ["Kein Punkt des Kreises liegt höher als 1.", "sin = Höhe des Punktes, Radius 1"] ] };
+const p = new URLSearchParams(location.hash.slice(1));
+const t = p.get("t") || "ek10", s = (p.get("s") || "").replace(/[^0-9]/g, "").slice(0, 4);
+const loes = TESTS[t], liste = document.getElementById("liste"), ab = document.getElementById("ab"), m = document.getElementById("m");
+const wahl = [];
+if (!loes) { m.textContent = "Diesen Test kenne ich nicht."; }
+else {
+  document.getElementById("kopf").textContent = s ? "· Nr. " + s : "";
+  loes.forEach(([l, an], i) => {
+    const z = document.createElement("div"); z.className = "z";
+    const n = document.createElement("div"); n.className = "n"; n.textContent = i + 1;
+    const d = document.createElement("div"); d.className = "l"; d.textContent = l;
+    if (an) { const k = document.createElement("small"); k.textContent = an; d.appendChild(k); }
+    const k = document.createElement("div"); k.className = "k";
+    [["r", "✓", "richtig"], ["f", "×", "falsch"], ["u", "?", "nicht verstanden"]].forEach(([w, zeichen, name]) => {
+      const b = document.createElement("button"); b.type = "button"; b.textContent = zeichen;
+      b.setAttribute("aria-label", "Frage " + (i + 1) + " " + name); b.setAttribute("aria-pressed", "false");
+      b.onclick = () => {
+        wahl[i] = w; k.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+        ab.disabled = loes.some((_, j) => !wahl[j]);
+      };
+      k.appendChild(b);
+    });
+    z.append(n, d, k); liste.appendChild(z);
+  });
+  ab.onclick = () => {
+    const f = document.createElement("form"); f.method = "POST"; f.action = FORM.url; f.target = "ziel";
+    [[FORM.schueler, s || "0"], [FORM.test, t], [FORM.antwort, wahl.join("")]].forEach(([name, wert]) => {
+      const e = document.createElement("input"); e.type = "hidden"; e.name = name; e.value = wert; f.appendChild(e);
+    });
+    // Die Antwort von Google lädt in den unsichtbaren Rahmen; erst dann gilt es als gesendet.
+    const rahmen = document.querySelector("iframe"); let fertig = false;
+    rahmen.addEventListener("load", () => { fertig = true; ab.textContent = "Gesendet"; m.textContent = "Danke – du kannst die Seite schließen."; }, { once: true });
+    setTimeout(() => { if (!fertig) { ab.disabled = false; ab.textContent = "Noch einmal senden"; m.textContent = "Das Senden hat nicht geklappt. Hast du Netz?"; } }, 10000);
+    document.body.appendChild(f); f.submit();
+    ab.disabled = true; ab.textContent = "Sende …";
+  };
+}
+</script>
+</body>
+</html>
