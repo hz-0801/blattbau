@@ -34,7 +34,8 @@
 <script>
 // Briefkasten: ein Google-Formular für alle Tests. Aufruf: …/r/#t=<Test>&s=<Schülernummer>
 // (hinter #, damit Test und Nummer nicht an den Seitenserver gehen).
-const FORM = { url: "FORM_URL", schueler: "ENTRY_S", test: "ENTRY_T", antwort: "ENTRY_A" };
+// Ein Feld „Meldung“: Test;Schülernummer;Antworten (r richtig, f falsch, u nicht verstanden), z. B. ek10;17;rrfurrrfru
+const FORM = { url: "https://docs.google.com/forms/d/e/1FAIpQLScVAIyR0-hKCMXzbtrj8F7LXRPKd6vxw_XSq0-i5HXuzHBYUQ/formResponse", meldung: "entry.312904931" };
 // Testdaten der Probe (Einheitskreis, Kl. 10); später je Test aus einer Datei neben der Seite.
 const TESTS = { "ek10": [
   ["1", ""], ["gegen den Uhrzeigersinn", "Start an der positiven x-Achse"], ["(0 | 1)", ""], ["180°", ""],
@@ -67,9 +68,7 @@ else {
   });
   ab.onclick = () => {
     const f = document.createElement("form"); f.method = "POST"; f.action = FORM.url; f.target = "ziel";
-    [[FORM.schueler, s || "0"], [FORM.test, t], [FORM.antwort, wahl.join("")]].forEach(([name, wert]) => {
-      const e = document.createElement("input"); e.type = "hidden"; e.name = name; e.value = wert; f.appendChild(e);
-    });
+    const e = document.createElement("input"); e.type = "hidden"; e.name = FORM.meldung; e.value = [t, s || "0", wahl.join("")].join(";"); f.appendChild(e);
     // Die Antwort von Google lädt in den unsichtbaren Rahmen; erst dann gilt es als gesendet.
     const rahmen = document.querySelector("iframe"); let fertig = false;
     rahmen.addEventListener("load", () => { fertig = true; ab.textContent = "Gesendet"; m.textContent = "Danke – du kannst die Seite schließen."; }, { once: true });
