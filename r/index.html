@@ -5,101 +5,128 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Lösungen</title>
+<!-- Rückmeldeseite (mathe-nachhilfe plan.md Register 09.11.14, 10.11.8, 10.11.11–13). Aufruf: …/r/#t=<Kennung>&s=<Schülernummer>.
+     Daten t/<Kennung>.json, zwei Formen:
+       {"titel", "l": [[Ergebnis, Ansatz, Bild?], …]}                      5-Minuten-Test, Basiszettel, Blätter bis 10.11.: Urteil je Zeile
+       {"titel", "p": [[nr, teil, Ergebnis, Weg, Urteil?], …], "b": {nr: Bild}, "pdf": Datei}
+                                                                             Übungsblatt: Ergebnis und Weg je Teilaufgabe, Urteil nur wo Urteil = 1
+     Beide dürfen "bis" tragen (Tag, an dem aufgabenbank werkzeuge/qr-aufraeumen.py die Datei löscht).
+     Meldung an das Formular: Kennung;Schülernummer;ein Zeichen je Urteil-Stelle (r richtig, f falsch, u nicht verstanden, - frei). -->
 <style>
-  :root { --fg:#111; --grau:#666; --linie:#ccc; --an:#111; --bg:#fff; }
+  :root { --fg:#111; --grau:#666; --linie:#ccc; --ja:#1a7f37; --nein:#c62828; }
   * { box-sizing:border-box; }
-  body { margin:0; padding:16px; font:17px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; color:var(--fg); background:var(--bg); max-width:34rem; margin-inline:auto; }
-  h1 { font-size:1.25rem; margin:0 0 .2rem; }
-  .hin { color:var(--grau); font-size:.9rem; margin:0 0 1rem; }
-  .z { display:flex; align-items:center; gap:.6rem; padding:.7rem 0; border-top:1px solid var(--linie); }
-  .n { font-weight:700; width:1.6rem; flex:none; }
-  .l { flex:1; }
-  .l small { display:block; color:var(--grau); }
-  .l img { display:block; max-width:100%; margin-top:.4rem; }
-  .k { display:flex; gap:.35rem; flex:none; }
-  .k button { width:2.75rem; height:2.75rem; font-size:1.2rem; border:1.5px solid var(--fg); background:#fff; color:var(--fg); border-radius:6px; }
-  .k button[aria-pressed="true"] { background:var(--an); color:#fff; }
-  #ab { width:100%; margin:1.2rem 0 .5rem; padding:.9rem; font-size:1.1rem; font-weight:700; border:0; border-radius:8px; background:var(--fg); color:#fff; }
+  body { margin:0; padding:14px; font:17px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; color:var(--fg); background:#fff; max-width:34rem; margin-inline:auto; }
+  h1 { font-size:1.2rem; margin:0 0 .6rem; }
+  .a { display:grid; grid-template-columns:1.9rem 1fr; padding:.45rem 0; border-top:1px solid var(--linie); }
+  .n { font-weight:700; padding-top:.5rem; }
+  .a > img { grid-column:2; display:block; max-width:min(100%,16rem); margin:.2rem 0; }
+  /* Ergebnis und Knöpfe nebeneinander; passt das Ergebnis nicht daneben, rutschen die Knöpfe darunter (nie in die Formel). */
+  .t { display:flex; flex-wrap:wrap; column-gap:.5rem; row-gap:.25rem; align-items:center; padding:.2rem 0; min-height:2.5rem; }
+  .e { flex:1 1 auto; max-width:100%; }
+  .e small { display:block; color:var(--grau); }
+  .katex { white-space:nowrap; }
+  .wk { display:inline-block; margin-left:.4rem; padding:.05rem .5rem; font-size:.85rem; color:var(--grau); background:#f2f2f2; border:1px solid var(--linie); border-radius:999px; white-space:nowrap; }
+  .w { display:none; flex:1 1 100%; font-size:.95rem; margin:.25rem 0 .2rem; padding:.3rem .6rem; background:#f6f6f6; border-radius:6px; overflow-x:auto; }
+  .w.auf { display:block; } .w .katex { white-space:normal; }
+  .k { display:flex; gap:.3rem; margin-left:auto; }
+  .k button { width:2.5rem; height:2.5rem; font-size:1.15rem; font-weight:700; background:#fff; border:1.5px solid; border-radius:6px; }
+  .k .r { color:var(--ja); } .k .f { color:var(--nein); } .k .u { color:var(--grau); }
+  .k .r[aria-pressed="true"] { background:var(--ja); border-color:var(--ja); color:#fff; }
+  .k .f[aria-pressed="true"] { background:var(--nein); border-color:var(--nein); color:#fff; }
+  .k .u[aria-pressed="true"] { background:var(--grau); border-color:var(--grau); color:#fff; }
+  #ab { display:none; width:100%; margin:1rem 0 .5rem; padding:.9rem; font-size:1.1rem; font-weight:700; border:0; border-radius:8px; background:var(--fg); color:#fff; }
   #ab:disabled { background:#999; }
   #m { min-height:1.5rem; color:var(--grau); }
+  #pdf { display:none; margin:.8rem 0 0; }
   iframe { display:none; }
-  #nr { display:none; margin:0 0 1rem; }
+  #nr { display:none; margin:0 0 .8rem; }
   #nr input { width:5rem; font-size:1.1rem; padding:.4rem; border:1.5px solid var(--fg); border-radius:6px; }
+  @media print {
+    body { max-width:none; padding:0; font-size:11pt; }
+    .k, .wk, #ab, #m, #nr, #pdf { display:none !important; }
+    .a { break-inside:avoid; } .w { display:block; background:none; padding:0; color:#333; }
+  }
 </style>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="katex/katex.min.css">
+<script defer src="katex/katex.min.js"></script>
+<script defer src="katex/auto-render.min.js"></script>
 </head>
 <body>
-<h1>Lösungen <span id="kopf"></span></h1>
-<p class="hin">Tippe je Frage an: ✓ richtig · × falsch · ? nicht verstanden. Was du nicht geschafft hast, lässt du frei.</p>
+<h1 id="kopf">Lösungen</h1>
 <p id="nr"><label>Deine Nummer: <input id="snr" inputmode="numeric" maxlength="4" autocomplete="off"></label></p>
 <div id="liste"></div>
 <button id="ab" disabled>Absenden</button>
 <p id="m"></p>
+<p id="pdf"><a id="pdfa" href="#">Blatt mit Lösungen speichern (PDF)</a></p>
 <iframe name="ziel" title="senden"></iframe>
 <script>
-// Briefkasten: ein Google-Formular für alle Tests. Aufruf: …/r/#t=<Test>&s=<Schülernummer>
-// (hinter #, damit Test und Nummer nicht an den Seitenserver gehen).
-// Ein Feld „Meldung“: Test;Schülernummer;Antworten (r richtig, f falsch, u nicht verstanden, - nicht bearbeitet), z. B. ek10;17;rrfurrr---
+// Briefkasten: ein Google-Formular für alle Blätter (Test und Nummer stehen hinter #, damit sie nicht an den Seitenserver gehen).
 const FORM = { url: "https://docs.google.com/forms/d/e/1FAIpQLScVAIyR0-hKCMXzbtrj8F7LXRPKd6vxw_XSq0-i5HXuzHBYUQ/formResponse", meldung: "entry.312904931" };
-// Testdaten der Probe (Einheitskreis, Kl. 10); später je Test aus einer Datei neben der Seite.
-const TESTS = { "ek10": [
+// Probe vom 09.11. (Einheitskreis, Kl. 10) – der erste ausgegebene QR-Code zeigt hierher.
+const PROBE = { "ek10": { titel: "", l: [
   ["1", ""], ["gegen den Uhrzeigersinn", "Start an der positiven x-Achse"], ["(0 | 1)", ""], ["180°", ""],
   ["x = cos α, y = sin α", ""], ["auf der x-Achse", ""], ["sin α = 0,8 und cos α = 0,6", "sin ist die y-, cos die x-Koordinate"],
   ["(0 | −1)", ""], ["die senkrechte", "sie ist die y-Koordinate"],
-  ["Kein Punkt des Kreises liegt höher als 1.", "sin = Höhe des Punktes, Radius 1"] ] };
-const p = new URLSearchParams(location.hash.slice(1));
-const t = (p.get("t") || "ek10").replace(/[^a-z0-9-]/g, "").slice(0, 24);
-let s = (p.get("s") || "").replace(/[^0-9]/g, "").slice(0, 4);
-// Lösungen je Test: t/<Test>.json neben der Seite (schreiben aufgabenbank kopftest.py --qr und qr-blatt.py), sonst die Probe oben.
-let loes = TESTS[t];
+  ["Kein Punkt des Kreises liegt höher als 1.", "sin = Höhe des Punktes, Radius 1"] ] } };
+const q = new URLSearchParams(location.hash.slice(1));
+const t = (q.get("t") || "ek10").replace(/[^a-z0-9-]/g, "").slice(0, 24);
+const s = (q.get("s") || "").replace(/[^0-9]/g, "").slice(0, 4);
 const liste = document.getElementById("liste"), ab = document.getElementById("ab"), m = document.getElementById("m");
-const wahl = []; let offenGefragt = false;
-const mathe = e => { if (window.renderMathInElement) renderMathInElement(e, { delimiters: [{ left: "$", right: "$", display: false }], throwOnError: false }); };
-const start = () => {
-if (!loes) { m.textContent = "Diesen Test kenne ich nicht."; }
-else {
-  if (!s) document.getElementById("nr").style.display = "block";
-  document.getElementById("kopf").textContent = s ? "· Nr. " + s : "";
-  loes.forEach(([l, an, bild], i) => {
-    const z = document.createElement("div"); z.className = "z";
-    const n = document.createElement("div"); n.className = "n"; n.textContent = i + 1;
-    const d = document.createElement("div"); d.className = "l"; d.textContent = l;
-    if (an) { const k = document.createElement("small"); k.textContent = an; d.appendChild(k); }
-    // Zeichenaufgabe: Bild der Lösung neben der JSON-Datei (qr-blatt.py --bild), nur Dateiname.
-    if (bild && /^[a-z0-9-]+\.(png|svg|jpg)$/.test(bild)) { const b = document.createElement("img"); b.src = "t/" + bild; b.alt = "Lösung zu Aufgabe " + (i + 1); d.appendChild(b); }
-    const k = document.createElement("div"); k.className = "k";
-    [["r", "✓", "richtig"], ["f", "×", "falsch"], ["u", "?", "nicht verstanden"]].forEach(([w, zeichen, name]) => {
-      const b = document.createElement("button"); b.type = "button"; b.textContent = zeichen;
-      b.setAttribute("aria-label", "Frage " + (i + 1) + " " + name); b.setAttribute("aria-pressed", "false");
-      b.onclick = () => {
+const el = (art, klasse, text) => { const e = document.createElement(art); if (klasse) e.className = klasse; if (text != null) e.textContent = text; return e; };
+const bildname = b => b && /^[a-z0-9-]+\.(png|svg|jpg)$/.test(b) ? b : "";
+const start = j => {
+  if (!j || !(j.l || j.p)) { m.textContent = "Die Lösungen zu diesem Blatt sind nicht mehr online."; return; }
+  // Beide Datenformen auf eine Zeilenform bringen: Nummer, Teil, Ergebnis, kleiner Zusatz, Weg zum Aufklappen, Bild, Urteil ja/nein.
+  const zeilen = j.l ? j.l.map(([erg, an, bild], i) => ({ nr: i + 1, teil: "", erg, klein: an, weg: "", bild: bildname(bild), urteil: true }))
+                     : j.p.map(([nr, teil, erg, weg, urteil]) => ({ nr, teil, erg, klein: "", weg, bild: bildname(j.b && j.b[nr]), urteil: !!urteil }));
+  const stellen = zeilen.filter(z => z.urteil);   // nur diese gehen in die Meldung
+  const wahl = stellen.map(() => ""); let offenGefragt = false;
+  if (j.titel) document.getElementById("kopf").textContent = "Lösungen · " + j.titel;
+  if (stellen.length) { ab.style.display = "block"; if (!s) document.getElementById("nr").style.display = "block"; }
+  let block = null, letzte = null;
+  zeilen.forEach(z => {
+    if (z.nr !== letzte) {
+      block = el("div", "a"); block.appendChild(el("div", "n", z.nr)); block.appendChild(el("div", "ts")); liste.appendChild(block); letzte = z.nr;
+      if (z.bild) { const b = el("img"); b.src = "t/" + z.bild; b.alt = "Lösung zu Aufgabe " + z.nr; block.appendChild(b); }
+    }
+    const zeile = el("div", "t"), e = el("div", "e", (z.teil ? z.teil + ") " : "") + z.erg);
+    if (z.klein) e.appendChild(el("small", "", z.klein));
+    let w = null;
+    if (z.weg) { const wk = el("button", "wk", "▸ Weg"); wk.type = "button"; w = el("div", "w", z.weg);
+      wk.onclick = () => { wk.textContent = w.classList.toggle("auf") ? "▾ Weg" : "▸ Weg"; }; e.appendChild(wk); }
+    zeile.appendChild(e);
+    if (z.urteil) {
+      const i = stellen.indexOf(z), k = el("div", "k");
+      [["r", "✓", "richtig"], ["f", "✗", "falsch"], ["u", "?", "nicht verstanden"]].forEach(([c, zeichen, name]) => {
+        const b = el("button", c, zeichen); b.type = "button"; b.setAttribute("aria-label", z.nr + (z.teil ? " " + z.teil : "") + " " + name); b.setAttribute("aria-pressed", "false");
         // Noch einmal antippen nimmt die Wahl zurück; gesendet werden darf ab einer gewählten Zeile (Lehrer 10.11.).
-        wahl[i] = wahl[i] === w ? "" : w; k.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b && wahl[i] ? "true" : "false"));
-        ab.disabled = !wahl.some(Boolean); offenGefragt = false; ab.textContent = "Absenden"; m.textContent = "";
-      };
-      k.appendChild(b);
-    });
-    z.append(n, d, k); liste.appendChild(z);
+        b.onclick = () => { wahl[i] = wahl[i] === c ? "" : c; k.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b && wahl[i] ? "true" : "false"));
+          ab.disabled = !wahl.some(Boolean); offenGefragt = false; ab.textContent = "Absenden"; m.textContent = ""; };
+        k.appendChild(b);
+      });
+      zeile.appendChild(k);
+    }
+    if (w) zeile.appendChild(w);
+    block.querySelector(".ts").appendChild(zeile);
   });
-  mathe(liste);
+  if (window.renderMathInElement) renderMathInElement(liste, { delimiters: [{ left: "$", right: "$", display: false }], throwOnError: false });
+  if (j.pdf && /^[a-z0-9-]+\.pdf$/.test(j.pdf)) { document.getElementById("pdfa").href = "t/" + j.pdf; document.getElementById("pdf").style.display = "block"; }
   ab.onclick = () => {
-    const offen = loes.filter((_, j) => !wahl[j]).length;
+    const offen = wahl.filter(x => !x).length;
     if (offen && !offenGefragt) { offenGefragt = true; ab.textContent = "Trotzdem senden"; m.textContent = offen + (offen === 1 ? " Zeile" : " Zeilen") + " ohne Angabe – sie zählen als nicht bearbeitet."; return; }
-    const f = document.createElement("form"); f.method = "POST"; f.action = FORM.url; f.target = "ziel";
-    const e = document.createElement("input"); e.type = "hidden"; e.name = FORM.meldung; e.value = [t, s || document.getElementById("snr").value.replace(/[^0-9]/g, "").slice(0, 4) || "0", loes.map((_, j) => wahl[j] || "-").join("")].join(";"); f.appendChild(e);
+    const f = el("form"); f.method = "POST"; f.action = FORM.url; f.target = "ziel";
+    const e = el("input"); e.type = "hidden"; e.name = FORM.meldung;
+    e.value = [t, s || document.getElementById("snr").value.replace(/[^0-9]/g, "").slice(0, 4) || "0", wahl.map(x => x || "-").join("")].join(";"); f.appendChild(e);
     // Die Antwort von Google lädt in den unsichtbaren Rahmen; erst dann gilt es als gesendet.
     const rahmen = document.querySelector("iframe"); let fertig = false;
     rahmen.addEventListener("load", () => { fertig = true; ab.textContent = "Gesendet"; m.textContent = "Danke – du kannst die Seite schließen."; }, { once: true });
     setTimeout(() => { if (!fertig) { ab.disabled = false; ab.textContent = "Noch einmal senden"; m.textContent = "Das Senden hat nicht geklappt. Hast du Netz?"; } }, 10000);
-    document.body.appendChild(f); f.submit();
-    ab.disabled = true; ab.textContent = "Sende …";
+    document.body.appendChild(f); f.submit(); ab.disabled = true; ab.textContent = "Sende …";
   };
-}
 };
 window.addEventListener("load", () => {
-  if (loes) return start();
-  fetch("t/" + t + ".json", { cache: "no-store" }).then(r => r.ok ? r.json() : null).then(j => { loes = j && j.l; start(); }).catch(start);
+  if (PROBE[t]) return start(PROBE[t]);
+  fetch("t/" + t + ".json", { cache: "no-store" }).then(r => r.ok ? r.json() : null).then(start).catch(() => start(null));
 });
 </script>
 </body>
