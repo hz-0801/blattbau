@@ -15,6 +15,7 @@
   .n { font-weight:700; width:1.6rem; flex:none; }
   .l { flex:1; }
   .l small { display:block; color:var(--grau); }
+  .l img { display:block; max-width:100%; margin-top:.4rem; }
   .k { display:flex; gap:.35rem; flex:none; }
   .k button { width:2.75rem; height:2.75rem; font-size:1.2rem; border:1.5px solid var(--fg); background:#fff; color:var(--fg); border-radius:6px; }
   .k button[aria-pressed="true"] { background:var(--an); color:#fff; }
@@ -51,7 +52,7 @@ const TESTS = { "ek10": [
 const p = new URLSearchParams(location.hash.slice(1));
 const t = (p.get("t") || "ek10").replace(/[^a-z0-9-]/g, "").slice(0, 24);
 let s = (p.get("s") || "").replace(/[^0-9]/g, "").slice(0, 4);
-// Lösungen je Test: t/<Test>.json neben der Seite (schreibt kopftest.py --qr), sonst die Probe oben.
+// Lösungen je Test: t/<Test>.json neben der Seite (schreiben aufgabenbank kopftest.py --qr und qr-blatt.py), sonst die Probe oben.
 let loes = TESTS[t];
 const liste = document.getElementById("liste"), ab = document.getElementById("ab"), m = document.getElementById("m");
 const wahl = []; let offenGefragt = false;
@@ -61,11 +62,13 @@ if (!loes) { m.textContent = "Diesen Test kenne ich nicht."; }
 else {
   if (!s) document.getElementById("nr").style.display = "block";
   document.getElementById("kopf").textContent = s ? "· Nr. " + s : "";
-  loes.forEach(([l, an], i) => {
+  loes.forEach(([l, an, bild], i) => {
     const z = document.createElement("div"); z.className = "z";
     const n = document.createElement("div"); n.className = "n"; n.textContent = i + 1;
     const d = document.createElement("div"); d.className = "l"; d.textContent = l;
     if (an) { const k = document.createElement("small"); k.textContent = an; d.appendChild(k); }
+    // Zeichenaufgabe: Bild der Lösung neben der JSON-Datei (qr-blatt.py --bild), nur Dateiname.
+    if (bild && /^[a-z0-9-]+\.(png|svg|jpg)$/.test(bild)) { const b = document.createElement("img"); b.src = "t/" + bild; b.alt = "Lösung zu Aufgabe " + (i + 1); d.appendChild(b); }
     const k = document.createElement("div"); k.className = "k";
     [["r", "✓", "richtig"], ["f", "×", "falsch"], ["u", "?", "nicht verstanden"]].forEach(([w, zeichen, name]) => {
       const b = document.createElement("button"); b.type = "button"; b.textContent = zeichen;
