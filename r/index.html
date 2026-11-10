@@ -31,7 +31,7 @@
 </head>
 <body>
 <h1>Lösungen <span id="kopf"></span></h1>
-<p class="hin">Tippe je Frage an: ✓ richtig · × falsch · ? nicht verstanden</p>
+<p class="hin">Tippe je Frage an: ✓ richtig · × falsch · ? nicht verstanden. Was du nicht geschafft hast, lässt du frei.</p>
 <p id="nr"><label>Deine Nummer: <input id="snr" inputmode="numeric" maxlength="4" autocomplete="off"></label></p>
 <div id="liste"></div>
 <button id="ab" disabled>Absenden</button>
@@ -40,7 +40,7 @@
 <script>
 // Briefkasten: ein Google-Formular für alle Tests. Aufruf: …/r/#t=<Test>&s=<Schülernummer>
 // (hinter #, damit Test und Nummer nicht an den Seitenserver gehen).
-// Ein Feld „Meldung“: Test;Schülernummer;Antworten (r richtig, f falsch, u nicht verstanden), z. B. ek10;17;rrfurrrfru
+// Ein Feld „Meldung“: Test;Schülernummer;Antworten (r richtig, f falsch, u nicht verstanden, - nicht bearbeitet), z. B. ek10;17;rrfurrr---
 const FORM = { url: "https://docs.google.com/forms/d/e/1FAIpQLScVAIyR0-hKCMXzbtrj8F7LXRPKd6vxw_XSq0-i5HXuzHBYUQ/formResponse", meldung: "entry.312904931" };
 // Testdaten der Probe (Einheitskreis, Kl. 10); später je Test aus einer Datei neben der Seite.
 const TESTS = { "ek10": [
@@ -54,7 +54,7 @@ let s = (p.get("s") || "").replace(/[^0-9]/g, "").slice(0, 4);
 // Lösungen je Test: t/<Test>.json neben der Seite (schreibt kopftest.py --qr), sonst die Probe oben.
 let loes = TESTS[t];
 const liste = document.getElementById("liste"), ab = document.getElementById("ab"), m = document.getElementById("m");
-const wahl = [];
+const wahl = []; let offenGefragt = false;
 const mathe = e => { if (window.renderMathInElement) renderMathInElement(e, { delimiters: [{ left: "$", right: "$", display: false }], throwOnError: false }); };
 const start = () => {
 if (!loes) { m.textContent = "Diesen Test kenne ich nicht."; }
@@ -71,8 +71,9 @@ else {
       const b = document.createElement("button"); b.type = "button"; b.textContent = zeichen;
       b.setAttribute("aria-label", "Frage " + (i + 1) + " " + name); b.setAttribute("aria-pressed", "false");
       b.onclick = () => {
-        wahl[i] = w; k.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
-        ab.disabled = loes.some((_, j) => !wahl[j]);
+        // Noch einmal antippen nimmt die Wahl zurück; gesendet werden darf ab einer gewählten Zeile (Lehrer 10.11.).
+        wahl[i] = wahl[i] === w ? "" : w; k.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b && wahl[i] ? "true" : "false"));
+        ab.disabled = !wahl.some(Boolean); offenGefragt = false; ab.textContent = "Absenden"; m.textContent = "";
       };
       k.appendChild(b);
     });
@@ -80,8 +81,10 @@ else {
   });
   mathe(liste);
   ab.onclick = () => {
+    const offen = loes.filter((_, j) => !wahl[j]).length;
+    if (offen && !offenGefragt) { offenGefragt = true; ab.textContent = "Trotzdem senden"; m.textContent = offen + (offen === 1 ? " Zeile" : " Zeilen") + " ohne Angabe – sie zählen als nicht bearbeitet."; return; }
     const f = document.createElement("form"); f.method = "POST"; f.action = FORM.url; f.target = "ziel";
-    const e = document.createElement("input"); e.type = "hidden"; e.name = FORM.meldung; e.value = [t, s || document.getElementById("snr").value.replace(/[^0-9]/g, "").slice(0, 4) || "0", wahl.join("")].join(";"); f.appendChild(e);
+    const e = document.createElement("input"); e.type = "hidden"; e.name = FORM.meldung; e.value = [t, s || document.getElementById("snr").value.replace(/[^0-9]/g, "").slice(0, 4) || "0", loes.map((_, j) => wahl[j] || "-").join("")].join(";"); f.appendChild(e);
     // Die Antwort von Google lädt in den unsichtbaren Rahmen; erst dann gilt es als gesendet.
     const rahmen = document.querySelector("iframe"); let fertig = false;
     rahmen.addEventListener("load", () => { fertig = true; ab.textContent = "Gesendet"; m.textContent = "Danke – du kannst die Seite schließen."; }, { once: true });
