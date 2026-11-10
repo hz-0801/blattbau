@@ -22,11 +22,17 @@
   #ab:disabled { background:#999; }
   #m { min-height:1.5rem; color:var(--grau); }
   iframe { display:none; }
+  #nr { display:none; margin:0 0 1rem; }
+  #nr input { width:5rem; font-size:1.1rem; padding:.4rem; border:1.5px solid var(--fg); border-radius:6px; }
 </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 </head>
 <body>
 <h1>Lösungen <span id="kopf"></span></h1>
 <p class="hin">Tippe je Frage an: ✓ richtig · × falsch · ? nicht verstanden</p>
+<p id="nr"><label>Deine Nummer: <input id="snr" inputmode="numeric" maxlength="4" autocomplete="off"></label></p>
 <div id="liste"></div>
 <button id="ab" disabled>Absenden</button>
 <p id="m"></p>
@@ -43,11 +49,17 @@ const TESTS = { "ek10": [
   ["(0 | −1)", ""], ["die senkrechte", "sie ist die y-Koordinate"],
   ["Kein Punkt des Kreises liegt höher als 1.", "sin = Höhe des Punktes, Radius 1"] ] };
 const p = new URLSearchParams(location.hash.slice(1));
-const t = p.get("t") || "ek10", s = (p.get("s") || "").replace(/[^0-9]/g, "").slice(0, 4);
-const loes = TESTS[t], liste = document.getElementById("liste"), ab = document.getElementById("ab"), m = document.getElementById("m");
+const t = (p.get("t") || "ek10").replace(/[^a-z0-9-]/g, "").slice(0, 24);
+let s = (p.get("s") || "").replace(/[^0-9]/g, "").slice(0, 4);
+// Lösungen je Test: t/<Test>.json neben der Seite (schreibt kopftest.py --qr), sonst die Probe oben.
+let loes = TESTS[t];
+const liste = document.getElementById("liste"), ab = document.getElementById("ab"), m = document.getElementById("m");
 const wahl = [];
+const mathe = e => { if (window.renderMathInElement) renderMathInElement(e, { delimiters: [{ left: "$", right: "$", display: false }], throwOnError: false }); };
+const start = () => {
 if (!loes) { m.textContent = "Diesen Test kenne ich nicht."; }
 else {
+  if (!s) document.getElementById("nr").style.display = "block";
   document.getElementById("kopf").textContent = s ? "· Nr. " + s : "";
   loes.forEach(([l, an], i) => {
     const z = document.createElement("div"); z.className = "z";
@@ -66,9 +78,10 @@ else {
     });
     z.append(n, d, k); liste.appendChild(z);
   });
+  mathe(liste);
   ab.onclick = () => {
     const f = document.createElement("form"); f.method = "POST"; f.action = FORM.url; f.target = "ziel";
-    const e = document.createElement("input"); e.type = "hidden"; e.name = FORM.meldung; e.value = [t, s || "0", wahl.join("")].join(";"); f.appendChild(e);
+    const e = document.createElement("input"); e.type = "hidden"; e.name = FORM.meldung; e.value = [t, s || document.getElementById("snr").value.replace(/[^0-9]/g, "").slice(0, 4) || "0", wahl.join("")].join(";"); f.appendChild(e);
     // Die Antwort von Google lädt in den unsichtbaren Rahmen; erst dann gilt es als gesendet.
     const rahmen = document.querySelector("iframe"); let fertig = false;
     rahmen.addEventListener("load", () => { fertig = true; ab.textContent = "Gesendet"; m.textContent = "Danke – du kannst die Seite schließen."; }, { once: true });
@@ -77,6 +90,11 @@ else {
     ab.disabled = true; ab.textContent = "Sende …";
   };
 }
+};
+window.addEventListener("load", () => {
+  if (loes) return start();
+  fetch("t/" + t + ".json", { cache: "no-store" }).then(r => r.ok ? r.json() : null).then(j => { loes = j && j.l; start(); }).catch(start);
+});
 </script>
 </body>
 </html>
