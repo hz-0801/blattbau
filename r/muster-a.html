@@ -16,12 +16,14 @@
   .a { display:grid; grid-template-columns:1.7rem 1fr; padding:.45rem 0; border-top:1px solid var(--linie); }
   .n { font-weight:700; padding-top:.5rem; }
   .a > img { grid-column:2; display:block; max-width:min(100%,16rem); margin:.2rem 0; }
-  .t { display:grid; grid-template-columns:1fr auto; column-gap:.5rem; align-items:center; padding:.2rem 0; }
-  .e { min-width:0; }
+  /* Ergebnis und Knöpfe nebeneinander; passt das Ergebnis nicht daneben, rutschen die Knöpfe darunter (nie in die Formel). */
+  .t { display:flex; flex-wrap:wrap; column-gap:.5rem; row-gap:.25rem; align-items:center; padding:.2rem 0; }
+  .e { flex:1 1 auto; max-width:100%; }
+  .k { margin-left:auto; }
   .katex { white-space:nowrap; }
   .wk { display:inline-block; margin-left:.4rem; padding:.05rem .5rem; font-size:.85rem; color:var(--grau); background:#f2f2f2; border:1px solid var(--linie); border-radius:999px; white-space:nowrap; }
-  .w { display:none; grid-column:1 / 3; font-size:.95rem; margin:.25rem 0 .2rem; padding:.3rem .6rem; background:#f6f6f6; border-radius:6px; overflow-x:auto; }
-  .w.auf { display:block; }
+  .w { display:none; flex:1 1 100%; font-size:.95rem; margin:.25rem 0 .2rem; padding:.3rem .6rem; background:#f6f6f6; border-radius:6px; overflow-x:auto; }
+  .w.auf { display:block; } .w .katex { white-space:normal; }
   .k { display:flex; gap:.3rem; }
   .k button { width:2.5rem; height:2.5rem; font-size:1.15rem; font-weight:700; background:#fff; border:1.5px solid; border-radius:6px; }
   .k .r { color:var(--ja); } .k .f { color:var(--nein); } .k .u { color:var(--grau); }
@@ -37,8 +39,8 @@
   @media print {
     body { max-width:none; padding:0; font-size:11pt; }
     .k, .wk, #ab, #m, #nr { display:none !important; }
-    .a { break-inside:avoid; } .t { grid-template-columns:1fr 1fr; align-items:start; }
-    .w { display:block; grid-column:2; grid-row:1; background:none; margin:0; padding:0; color:#333; }
+    .a { break-inside:avoid; } .t { flex-wrap:nowrap; align-items:flex-start; } .e { flex:0 0 48%; }
+    .w { display:block; flex:1 1 48%; background:none; margin:0; padding:0; color:#333; }
   }
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
