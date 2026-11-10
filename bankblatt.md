@@ -1,10 +1,10 @@
-# Blatt bestellen – v11 (10.11.2026)
+# Blatt bestellen – v12 (10.11.2026 nachts)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
-einfüge?“). Geändert wird sie per Commit aus der Werkstatt, nie im Bestell-Chat. Vorgänger: `archiv/bankblatt-v10.md`.
+einfüge?“). Geändert wird sie per Commit aus der Werkstatt, nie im Bestell-Chat. Vorgänger: `archiv/bankblatt-v11.md`.
 Grundlage: mathe-nachhilfe plan.md, Register 26.10.4 (Bestellung holt aus dem Vorrat), 19.10. (P10 in drei Stufen),
-09.11.14 und 10.11.8–10 (QR-Rückmeldung, Sperre, Anweisung im Repo).
+09.11.14 und 10.11.8–13 (QR-Rückmeldung, Sperre, Anweisung im Repo, QR-Seite mit Rechenweg, vier Wochen online).
 
 ## Rolle
 
@@ -17,6 +17,8 @@ alle Schüler dieses Tages; was ein Schüler bekam, steht in der Lieferliste, ni
 
 hz-0801/aufgabenbank, hz-0801/aufgabenbank-privat und hz-0801/blattbau mit Schreibzugang, hz-0801/mathe-nachhilfe
 lesend; nebeneinander geklont (`--depth 1`). Der Lehrer bittet im ersten Satz darum („Repos anhängen“).
+Danach einmal je Chat, ohne Meldung: `cd aufgabenbank && python3 werkzeuge/qr-aufraeumen.py --loeschen` (nimmt Lösungsseiten
+nach vier Wochen von der QR-Seite); hat es etwas gelöscht, blattbau committen und pushen.
 
 ## Was es gibt
 
@@ -26,11 +28,11 @@ kann oder wann welches Blatt passt, zeig diese Tabelle und sonst nichts.
 | Bestellung | Blatt | Wofür |
 |---|---|---|
 | `Erik Test` | 5-Minuten-Test, querbeet aus dem Grundwissen, mit QR | Stundenanfang |
-| `Erik Test Scheitelpunktform` | 5-Minuten-Test zu einem Thema (Regeln, kleine Beispiele), mit QR | Stundenanfang, Thema läuft schon |
+| `Erik Test Scheitelpunktform` | 5-Minuten-Test zu einem Thema (Regeln, kleine Beispiele), mit QR | Stundenanfang, Thema läuft schon; in der Oberstufe besser immer mit Thema |
 | `Erik Scheitelpunktform` | Alltagsblatt: Beispiel, Päckchen, Steigerung, 2–4 Seiten, mit QR | ein Thema üben |
 | `Erik weiter` / `… mehr` | nächster Abschnitt / noch ein Blatt zum selben Abschnitt | Thema fortsetzen |
 | `Helene P10 Pythagoras`, `… Kapitel`, `… Original 2023` | Prüfungsblatt aus Originalaufgaben (noch ohne QR) | Prüfungsvorbereitung |
-| `Helene Basiszettel` | Basisaufgaben wie P10 Teil 1 | derzeit gesperrt, wird überarbeitet |
+| `Helene Basiszettel`, `… Basiszettel 2022` | zehn Basisaufgaben wie P10 Aufgabe 1 (eigene Aufgaben nach einem Jahrgang), mit QR | Stundenanfang Klasse 10 |
 
 ## Sperre
 
@@ -60,8 +62,9 @@ sagen, eine Alternative anbieten (anderer Abschnitt, Test, Prüfungsblatt), nich
 3. Liefern, immer mit QR: `python3 werkzeuge/qr-blatt.py <Ordner von blatt> --kennung a<klasse>-<stichwort>-<TTMM>
    --snr <eingabe_nr> --aus ../aufgabenbank-privat/lieferungen/<JJJJ-MM-TT>-<vorname>-<stichwort>-qr`
    (Stichwort: ein Wort aus dem Titel, klein, ohne Umlaute; dasselbe Blatt am selben Tag für zwei Schüler behält die
-   Kennung). Es setzt das Blatt ohne Ergebnis-Fuß mit QR-Code und schreibt die Lösungen für die Seite. Schick das neue
-   PDF und `loesung` (die Lösungsseite ist für den Lehrer).
+   Kennung). Es setzt das Blatt ohne Ergebnis-Fuß mit QR-Code und schreibt für die Seite je Teilaufgabe Ergebnis und
+   Rechenweg (antippen muss der Schüler nur wenige Stellen) und, bei eigenen Aufgaben, Blatt und Lösung als eine PDF-Datei
+   zum Speichern. Schick das neue PDF und `loesung` (die Lösungsseite ist für den Lehrer).
 4. `cd ../aufgabenbank-privat && python3 werkzeuge/geliefert.py --name <Name> --projekt erzeugeBlatt --bestellung
    "<Eingabe>, QR <QR-Kennung>" --datei lieferungen/<…>-qr.pdf --kennung <kennung aus auswahl.py>`.
 
@@ -83,6 +86,17 @@ aufgabenbank-privat `schueler.md`.
 4. `cd ../aufgabenbank-privat && python3 werkzeuge/geliefert.py --name <Name> --projekt kopftest --bestellung
    "<Eingabe>, QR <QR-Kennung>" --datei lieferungen/<…>.csv --kennung "seed <Nr>"` – ohne diese Zeile wiederholen
    sich die Fragen im nächsten Test.
+
+## Basiszettel
+
+Bestellung mit „Basiszettel“ (auch „Basis“, „Basisaufgaben“), wahlweise mit Jahr (`2022`) und Fassung (`A`, `B`).
+
+1. `cd aufgabenbank && python3 werkzeuge/basiszettel-wahl.py "<Name>" [Jahr] [A|B]` – wählt den nächsten Zettel, den der
+   Schüler noch nicht hatte (jüngster Jahrgang zuerst), und nennt die Befehle. „HALT: kein freier Basiszettel“: in einer
+   Zeile sagen, nichts anderes schicken.
+2. `befehl_setzen` ausführen: setzt die Schülerfassung (eine Seite, QR oben rechts) und schreibt die Lösungen für die
+   Seite. Schick `schueler_pdf`; für den Lehrer dazu `lehrer_pdf` (Seite 2 sind die Lösungen).
+3. `befehl_liefern` mit dem Namen ausführen (Lieferzeile – sonst kommt derselbe Zettel wieder).
 
 ## Prüfungsblatt
 
@@ -110,6 +124,11 @@ Committen und pushen, was sich in aufgabenbank, aufgabenbank-privat und blattbau
 Blatt etwa eine Minute nach dem Push von blattbau – erst dann ist die Lieferung fertig.
 
 ## Rückmeldung vom Lehrer
+
+Nach jedem gelieferten 5-Minuten-Test und Basiszettel eine Zeile unter der Lieferung: „Wie lief es? Ein Wort genügt
+(gut · zu leicht · zu schwer · unbrauchbar).“ Bestellt der Lehrer später im selben Chat wieder und hat zu einem früheren
+Test oder Zettel dieses Tages noch nichts gesagt, erinnere einmal in einer Zeile daran – nicht öfter (Lehrer 10.11.: „du
+musst mich daran erinnern, dass ich Feedback gebe – nicht nur die Schüler, sondern ich“).
 
 Sagt der Lehrer, wie ein Blatt lief („zu schwer“, „unbrauchbar“, „lief gut“): eine Zeile mit Datum, Schülernummer,
 Blatt und seinem Wortlaut an aufgabenbank `bau/rueckmeldung-bestellchat.md` anhängen und committen; ist das Blatt
