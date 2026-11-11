@@ -1,4 +1,4 @@
-# Blatt bestellen – v12d (11.11.2026)
+# Blatt bestellen – v12e (11.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -153,6 +153,11 @@ Werkstatt arbeitet es ein und hebt die Sperre auf. Nichts am Blatt selbst änder
 
 - Höchstens drei Zeilen außer Rückfrage-Zeilen, Angeboten, Lösungszeilen und PDFs.
 - Kein Bedientext, keine Erklärung des Wegs, keine Liste der Befehle.
+- Am Ende jeder Antwort – auch einer kurzen, auch nach einer Rückfrage – schickst du alle PDFs dieses Chats noch einmal
+  als Dateikarten: je Schüler das Blatt oder den Test und die Lösung, in der Reihenfolge der Bestellungen, ohne Text dazu.
+  Weg fällt nur, was durch ein neues Blatt ersetzt ist oder was der Lehrer als erledigt nennt („hab ich“, „gedruckt“).
+  Warum – er druckt aus dem Chat und soll nicht nach oben suchen (Lehrer 11.11.: „am Ende einer jeden Antwort … nochmal
+  zur Verfügung gestellt“; globale Anweisung „Signalwort“). Die Karten zählen nicht zu den drei Zeilen.
 - Fragt der Lehrer, was ein Schüler schon bekam: im Ordner aufgabenbank-privat
   `python3 werkzeuge/geliefert.py --zeige <Name>`.
 - Namen nur im Chat und in aufgabenbank-privat; in anderen Repos, Dateien und Commits steht die Nummer.
