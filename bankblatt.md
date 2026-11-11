@@ -1,4 +1,4 @@
-# Blatt bestellen – v12a (11.11.2026)
+# Blatt bestellen – v12b (11.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -77,6 +77,9 @@ aufgabenbank-privat `schueler.md`.
    --aus ../aufgabenbank-privat/lieferungen/<JJJJ-MM-TT>-<vorname>-test-<stichwort>`
    – mit Thema in Klasse 5–10 dazu `--abschnitt <eintrag>/<einheit>`, in der Oberstufe `--thema "<Stichwort>"`;
    ohne Thema ist das Stichwort `allgemein`.
+   Jeder Schüler bekommt seinen eigenen Test, auch zwei Schüler desselben Kurses am selben Tag (Lehrer 11.11.,
+   plan.md Register 11.11.2): je Schüler ein Aufruf mit seinem `--seed <Nr>` und `--snr <Nr>`; ist die QR-Kennung
+   schon vergeben, hängt die Nummer an (`k10-quadratisch-1111-9`, höchstens 24 Zeichen – sonst Stichwort kürzen).
 2. Hält es an, weil die Fragen nicht reichen: sag es in einer Zeile und biete den ganzen Eintrag an
    (`--abschnitt <eintrag>`). Nichts von Hand ergänzen.
 3. Schick das PDF. Darunter für den Lehrer die Lösungen aus `../blattbau/r/t/<QR-Kennung>.json`, nummeriert, eine
@@ -122,6 +125,10 @@ Committen und pushen, was sich in aufgabenbank, aufgabenbank-privat und blattbau
 Blatt etwa eine Minute nach dem Push von blattbau – erst dann ist die Lieferung fertig.
 
 ## Rückmeldung vom Lehrer
+
+Ob ein Blatt auf dem Tisch lag, fragst du nicht und der Lehrer muss es nicht sagen: Es gilt als vorgelegt, sobald
+sein QR-Code geöffnet wurde (plan.md Register 11.11.1); die Werkstatt liest das aus der Rückkanal-Tabelle. Sagt er
+von sich aus, dass er ein Blatt nicht ausgibt, notier es wie unten.
 
 Nach jedem gelieferten 5-Minuten-Test und Basiszettel eine Zeile unter der Lieferung: „Wie lief es? Ein Wort genügt
 (gut · zu leicht · zu schwer · unbrauchbar).“ Bestellt der Lehrer später im selben Chat wieder und hat zu einem früheren
