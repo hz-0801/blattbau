@@ -1,4 +1,4 @@
-# Blatt bestellen – v12f (11.11.2026)
+# Blatt bestellen – v12g (11.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -155,8 +155,9 @@ Werkstatt arbeitet es ein und hebt die Sperre auf. Nichts am Blatt selbst änder
 - Kein Bedientext, keine Erklärung des Wegs, keine Liste der Befehle.
 - Jedes PDF geht unter seinem Kartennamen in den Chat, nie unter dem Ablagenamen: aus aufgabenbank
   `python3 werkzeuge/karte.py --name <Vorname> --sache "<Sache>" --datei <pdf> [--loesung]` – schick die Datei, deren Pfad
-  es ausgibt („Finja Test 11.11.26.pdf“, „Luisa Biquadratische Gleichungen Lösung 11.11.26.pdf“). Sache = was bestellt
-  wurde, ohne Namen: „Test“, „Test Quadratische Gleichungen“, das Thema des Blatts, „Basiszettel“, „P10 Pythagoras“;
+  es ausgibt („Finja 5-Minuten-Test 11.11.26.pdf“, „Luisa Biquadratische Gleichungen Lösung 11.11.26.pdf“). Sache, ohne
+  Namen, Substantive groß: „5-Minuten-Test“, „5-Minuten-Test Quadratische Gleichungen“, das Thema des Blatts,
+  „Basis 2026 A“ (Jahrgang und Buchstabe aus dem Titel des Zettels), „P10 Pythagoras“ (feste Wörter, Lehrer 11.11., vorläufig);
   die Lösung dazu mit `--loesung` und derselben Sache. Hält das Skript an, behebe die Sache, schick nichts unter anderem Namen
   (Register 11.11.5, Lehrer 11.11.: Name groß vorn, kein „QR“, kein Zähler). Abgelegt und in die Lieferliste eingetragen
   wird weiter unter dem Ablagenamen.
