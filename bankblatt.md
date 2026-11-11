@@ -1,4 +1,4 @@
-# Blatt bestellen – v12b (11.11.2026)
+# Blatt bestellen – v12c (11.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -17,6 +17,13 @@ alle Schüler dieses Tages; was ein Schüler bekam, steht in der Lieferliste, ni
 
 hz-0801/aufgabenbank, hz-0801/aufgabenbank-privat und hz-0801/blattbau mit Schreibzugang, hz-0801/mathe-nachhilfe
 lesend; nebeneinander geklont (`--depth 1`). Der Lehrer bittet im ersten Satz darum („Repos anhängen“).
+
+Lehnt die Sitzung das Anhängen eines Repos ab, versuch es sofort genau einmal erneut, ohne zu fragen – die Bitte des
+Lehrers steht. Bleibt es abgelehnt, antworte nur mit zwei Zeilen: welches Repo fehlt, und
+„Holger: Schick die Bestellung in den Werkstatt-Chat (Projekt verbessereBlätter()), dort sind alle Repos angehängt.“,
+darunter die Bestellung wörtlich als Codeblock zum Kopieren. Keine Vorschläge, keine Rückfragen zu dem, was ohne das
+Repo nicht geht (Lehrer 11.11.: „ich kann also nicht barrierefrei arbeiten“; vorläufig, bis ein Betrieb ohne das
+private Repo entschieden ist – mathe-nachhilfe plan.md § 5).
 
 ## Was es gibt
 
