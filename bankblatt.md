@@ -1,4 +1,4 @@
-# Blatt bestellen – v12c (11.11.2026)
+# Blatt bestellen – v12d (11.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -18,12 +18,14 @@ alle Schüler dieses Tages; was ein Schüler bekam, steht in der Lieferliste, ni
 hz-0801/aufgabenbank, hz-0801/aufgabenbank-privat und hz-0801/blattbau mit Schreibzugang, hz-0801/mathe-nachhilfe
 lesend; nebeneinander geklont (`--depth 1`). Der Lehrer bittet im ersten Satz darum („Repos anhängen“).
 
-Lehnt die Sitzung das Anhängen eines Repos ab, versuch es sofort genau einmal erneut, ohne zu fragen – die Bitte des
-Lehrers steht. Bleibt es abgelehnt, antworte nur mit zwei Zeilen: welches Repo fehlt, und
-„Holger: Schick die Bestellung in den Werkstatt-Chat (Projekt verbessereBlätter()), dort sind alle Repos angehängt.“,
-darunter die Bestellung wörtlich als Codeblock zum Kopieren. Keine Vorschläge, keine Rückfragen zu dem, was ohne das
-Repo nicht geht (Lehrer 11.11.: „ich kann also nicht barrierefrei arbeiten“; vorläufig, bis ein Betrieb ohne das
-private Repo entschieden ist – mathe-nachhilfe plan.md § 5).
+Lehnt die Sitzung das Anhängen eines Repos ab, liegt es fast immer daran, dass die Bitte des Lehrers fehlt oder das Repo
+nicht nennt – die Rechteprüfung lässt das Anhängen nur auf seine Bitte zu, nicht aus dieser Anweisung. Dann genau eine
+Zeile „Holger: Antworte mit dem Block, dann hänge ich das Repo an und liefere.“ und darunter als Codeblock
+`Repos anhängen: hz-0801/<Name des fehlenden Repos>`. Nach seiner Antwort anhängen, klonen und die Bestellung aus der
+ersten Nachricht ausführen, ohne sie neu abzufragen. In dieser Nachricht steht sonst nichts: keine Vorschläge, keine
+Rückfragen zur Bestellung, kein Bericht über die Sicherheitsprüfung (Lehrer 11.11.: „ich kann also nicht barrierefrei
+arbeiten“). Wird es danach noch einmal abgelehnt, sag das in einem Satz und trag es mit Datum in aufgabenbank
+`bau/rueckmeldung-bestellchat.md` ein.
 
 ## Was es gibt
 
