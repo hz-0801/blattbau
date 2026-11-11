@@ -1,4 +1,4 @@
-# Blatt bestellen – v12g (11.11.2026)
+# Blatt bestellen – v12h (11.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -136,8 +136,15 @@ Blatt etwa eine Minute nach dem Push von blattbau – erst dann ist die Lieferun
 ## Rückmeldung vom Lehrer
 
 Ob ein Blatt auf dem Tisch lag, fragst du nicht und der Lehrer muss es nicht sagen: Es gilt als vorgelegt, sobald
-sein QR-Code geöffnet wurde (plan.md Register 11.11.1); die Werkstatt liest das aus der Rückkanal-Tabelle. Sagt er
-von sich aus, dass er ein Blatt nicht ausgibt, notier es wie unten.
+sein QR-Code geöffnet wurde (plan.md Register 11.11.1); die Werkstatt liest das aus der Rückkanal-Tabelle und trägt es
+in die Lieferliste ein. Bis dahin steht ein Blatt mit QR-Code dort als „bestellt“ und zählt nicht als gehabt. Sagt er
+von sich aus, dass er ein Blatt nicht ausgibt, notier es wie unten. Sagt er, dass er eines vorgelegt hat („hab ich
+ausgegeben“), trag es ein: `cd ../aufgabenbank-privat && python3 werkzeuge/geliefert.py --vorgelegt <QR-Kennung> --nr <Nr>`.
+
+Ziehst du ein Blatt oder einen Test für denselben Schüler neu, weil der Lehrer das erste verwirft, tritt das neue an
+seine Stelle (Register 11.11.5): nach der Lieferzeile des neuen
+`python3 werkzeuge/geliefert.py --ersetzt <alte QR-Kennung> --nr <Nr>` – die alte Zeile zählt dann nicht mehr, ihre
+Lösungsseite wird gelöscht (blattbau mit committen und pushen). Sein Urteil zum alten Blatt notierst du trotzdem wie unten.
 
 Nach jedem gelieferten 5-Minuten-Test und Basiszettel eine Zeile unter der Lieferung: „Wie lief es? Ein Wort genügt
 (gut · zu leicht · zu schwer · unbrauchbar).“ Bestellt der Lehrer später im selben Chat wieder und hat zu einem früheren
