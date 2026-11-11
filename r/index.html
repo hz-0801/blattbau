@@ -59,6 +59,7 @@
 <p id="m"></p>
 <p id="pdf"><a id="pdfa" href="#">Blatt mit Lösungen speichern (PDF)</a></p>
 <iframe name="ziel" title="senden"></iframe>
+<iframe name="auf" title="geöffnet"></iframe>
 <script>
 // Briefkasten: ein Google-Formular für alle Blätter (Test und Nummer stehen hinter #, damit sie nicht an den Seitenserver gehen).
 const FORM = { url: "https://docs.google.com/forms/d/e/1FAIpQLScVAIyR0-hKCMXzbtrj8F7LXRPKd6vxw_XSq0-i5HXuzHBYUQ/formResponse", meldung: "entry.312904931" };
@@ -82,6 +83,11 @@ const start = j => {
   const stellen = zeilen.filter(z => z.urteil);   // nur diese gehen in die Meldung
   const wahl = stellen.map(() => ""); let offenGefragt = false;
   if (j.titel) document.getElementById("kopf").textContent = "Lösungen · " + j.titel;
+  // Geöffnet zählt als vorgelegt (Lehrer 11.11.): eine Meldung "Kennung;Nummer;auf" beim Laden, höchstens einmal je Gerät und Blatt.
+  try { const merk = "auf-" + t + "-" + s;
+    if (!PROBE[t] && !localStorage.getItem(merk)) { const f = el("form"); f.method = "POST"; f.action = FORM.url; f.target = "auf"; f.style.display = "none";
+      const e = el("input"); e.type = "hidden"; e.name = FORM.meldung; e.value = [t, s || "0", "auf"].join(";"); f.appendChild(e);
+      document.body.appendChild(f); f.submit(); localStorage.setItem(merk, "1"); } } catch (x) {}
   if (stellen.length) { ab.style.display = "block"; if (!s) document.getElementById("nr").style.display = "block"; }
   let block = null, letzte = null;
   zeilen.forEach(z => {
