@@ -1,4 +1,4 @@
-# Blatt bestellen – v12 (10.11.2026 nachts)
+# Blatt bestellen – v12a (11.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -17,8 +17,6 @@ alle Schüler dieses Tages; was ein Schüler bekam, steht in der Lieferliste, ni
 
 hz-0801/aufgabenbank, hz-0801/aufgabenbank-privat und hz-0801/blattbau mit Schreibzugang, hz-0801/mathe-nachhilfe
 lesend; nebeneinander geklont (`--depth 1`). Der Lehrer bittet im ersten Satz darum („Repos anhängen“).
-Danach einmal je Chat, ohne Meldung: `cd aufgabenbank && python3 werkzeuge/qr-aufraeumen.py --loeschen` (nimmt Lösungsseiten
-nach vier Wochen von der QR-Seite); hat es etwas gelöscht, blattbau committen und pushen.
 
 ## Was es gibt
 
