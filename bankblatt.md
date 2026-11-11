@@ -1,4 +1,4 @@
-# Blatt bestellen – v12h (11.11.2026)
+# Blatt bestellen – v12i (11.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -82,19 +82,19 @@ Bestellung mit „Test“ (auch „Kopftest“, „5 Minuten“). Klasse, Schulf
 aufgabenbank-privat `schueler.md`.
 
 1. `cd aufgabenbank && python3 werkzeuge/kopftest.py --klasse <K> [--niveau GYM bei Gymnasium] --schueler <Name>
-   --lieferungen ../aufgabenbank-privat/lieferungen.csv --qr k<K>-<stichwort>-<TTMM> --snr <Nr> --seed <Nr>
+   --lieferungen ../aufgabenbank-privat/lieferungen.csv --qr k<K>-<stichwort>-<TTMM> --snr <Nr> --seed <Nr><TTMM>
    --aus ../aufgabenbank-privat/lieferungen/<JJJJ-MM-TT>-<vorname>-test-<stichwort>`
    – mit Thema in Klasse 5–10 dazu `--abschnitt <eintrag>/<einheit>`, in der Oberstufe `--thema "<Stichwort>"`;
    ohne Thema ist das Stichwort `allgemein`.
    Jeder Schüler bekommt seinen eigenen Test, auch zwei Schüler desselben Kurses am selben Tag (Lehrer 11.11.,
-   plan.md Register 11.11.2): je Schüler ein Aufruf mit seinem `--seed <Nr>` und `--snr <Nr>`; ist die QR-Kennung
+   plan.md Register 11.11.2): je Schüler ein Aufruf mit seinem `--seed <Nr><TTMM>` (Nummer und Tag hintereinander, für Nr. 4 am 11.11. `41111` – so ist der Test jeden Tag ein anderer, auch wenn der vorige nicht vorgelegt wurde; Lehrer 11.11.) und `--snr <Nr>`; ist die QR-Kennung
    schon vergeben, hängt die Nummer an (`k10-quadratisch-1111-9`, höchstens 24 Zeichen – sonst Stichwort kürzen).
 2. Hält es an, weil die Fragen nicht reichen: sag es in einer Zeile und biete den ganzen Eintrag an
    (`--abschnitt <eintrag>`). Nichts von Hand ergänzen.
 3. Schick das PDF. Darunter für den Lehrer die Lösungen aus `../blattbau/r/t/<QR-Kennung>.json`, nummeriert, eine
    Zeile je Frage.
 4. `cd ../aufgabenbank-privat && python3 werkzeuge/geliefert.py --name <Name> --projekt kopftest --bestellung
-   "<Eingabe>, QR <QR-Kennung>" --datei lieferungen/<…>.csv --kennung "seed <Nr>"` – ohne diese Zeile wiederholen
+   "<Eingabe>, QR <QR-Kennung>" --datei lieferungen/<…>.csv --kennung "seed <Nr><TTMM>"` – ohne diese Zeile wiederholen
    sich die Fragen im nächsten Test.
 
 ## Basiszettel
@@ -169,7 +169,10 @@ Werkstatt arbeitet es ein und hebt die Sperre auf. Nichts am Blatt selbst änder
   (Register 11.11.5, Lehrer 11.11.: Name groß vorn, kein „QR“, kein Zähler). Abgelegt und in die Lieferliste eingetragen
   wird weiter unter dem Ablagenamen.
 - Am Ende jeder Antwort – auch einer kurzen, auch nach einer Rückfrage – schickst du alle PDFs dieses Chats noch einmal
-  als Dateikarten: je Schüler das Blatt oder den Test und die Lösung, in der Reihenfolge der Bestellungen, ohne Text dazu.
+  als Dateikarten, in zwei Gruppen: zuerst alles zum Drucken (Blätter und Tests, in der Reihenfolge der Bestellungen),
+  dann eine eigene Zeile „Lösungen“ und darunter alle Lösungen in derselben Reihenfolge – zwei getrennte Sendungen,
+  damit die Lösungen sichtbar abgesetzt am Ende stehen (Lehrer 11.11.: er fasst sie selten an, bei fünf, sechs
+  Blättern wird es sonst unübersichtlich; vorläufig). Sonst kein Text dazu.
   Weg fällt nur, was durch ein neues Blatt ersetzt ist oder was der Lehrer als erledigt nennt („hab ich“, „gedruckt“).
   Warum – er druckt aus dem Chat und soll nicht nach oben suchen (Lehrer 11.11.: „am Ende einer jeden Antwort … nochmal
   zur Verfügung gestellt“; globale Anweisung „Signalwort“). Die Karten zählen nicht zu den drei Zeilen.
