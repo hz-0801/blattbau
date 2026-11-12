@@ -1,4 +1,4 @@
-# Blatt bestellen – v12i (11.11.2026)
+# Blatt bestellen – v12j (12.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -36,7 +36,7 @@ kann oder wann welches Blatt passt, zeig diese Tabelle und sonst nichts.
 |---|---|---|
 | `Erik Test` | 5-Minuten-Test, querbeet aus dem Grundwissen, mit QR | Stundenanfang |
 | `Erik Test Scheitelpunktform` | 5-Minuten-Test zu einem Thema (Regeln, kleine Beispiele), mit QR | Stundenanfang, Thema läuft schon; in der Oberstufe besser immer mit Thema |
-| `Erik Scheitelpunktform` | Alltagsblatt: Beispiel, Päckchen, Steigerung, 2–4 Seiten, mit QR | ein Thema üben |
+| `Erik Scheitelpunktform` | Alltagsblatt: Päckchen, Steigerung, 2–4 Seiten, mit QR; ohne Beispiel und Kasten (nur mit dem Zusatz „mit Beispiel“) | ein Thema üben |
 | `Erik weiter` / `… mehr` | nächster Abschnitt / noch ein Blatt zum selben Abschnitt | Thema fortsetzen |
 | `Helene P10 Pythagoras`, `… Kapitel`, `… Original 2023` | Prüfungsblatt aus Originalaufgaben (noch ohne QR) | Prüfungsvorbereitung |
 | `Helene Basiszettel`, `… Basiszettel 2022` | zehn Basisaufgaben wie P10 Aufgabe 1 (eigene Aufgaben nach einem Jahrgang), mit QR | Stundenanfang Klasse 10 |
@@ -120,6 +120,9 @@ Bestellung mit „Basiszettel“ (auch „Basis“, „Basisaufgaben“), wahlwe
 
 ## Bauen (Alltagsblatt fehlt)
 
+Ohne Beispiel und ohne Kasten (Register 12.11.1, Lehrer 12.11.: das Beispiel rechnet er an der Tafel); eine Formel mit Namen
+steht als eigene abgesetzte Zeile vor der ersten Aufgabe. Ein Beispiel nur, wenn die Bestellung „mit Beispiel“ sagt. Das gilt
+auch, wenn du ein Vorratsblatt zuschneidest: Beispiel und Kasten weglassen, Formelzeile behalten.
 Bau genau ein Blatt nach blattbau `alltagsblatt.md` mit Eintrag, Einheit, Abschnitt (fehlt er: der erste nach der Zone),
 Klasse und Schulform aus `bauen`; Gruppenprofil aus aufgabenbank `bank/vorrat/profile/` nach Klasse und Schulform, wenn
 eins passt. Fehlt der Einheitsordner `bank/vorrat/<eintrag>-e<einheit>/`, leg ihn zuerst mit

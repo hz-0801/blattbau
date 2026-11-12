@@ -1,6 +1,6 @@
 # Alltagsblatt – Bauanweisung v2
 
-Stand 28.10.2026 (v2a: Musterweg als Daten, § 5, Größe des Schritts 3.3a – Register 28.10.1–2; v2: Komplett- und Abschnittsblatt, Reihenfolge und Mengen, Rechenzeilen je Teilaufgabe, Schreibweise,
+Stand 12.11.2026 (v2b: ohne Beispiel und Kasten, Formelzeile bleibt, „mit Beispiel“ nur auf Bestellung – Register 12.11.1; v2a 28.10.: Musterweg als Daten, § 5, Größe des Schritts 3.3a – Register 28.10.1–2; v2: Komplett- und Abschnittsblatt, Reihenfolge und Mengen, Rechenzeilen je Teilaufgabe, Schreibweise,
 „Stimmt das?“ nur wo es passt, Voraussetzungen nur von davor – Register 27.10.2–10; v1.2a 26.10.). Du baust ein
 Alltagsblatt für eine Lerneinheit (Komplettblatt) oder einen ihrer Abschnitte (Abschnittsblatt) – für den Vorrat oder live
 bei einer Bestellung. Das Warum steht in mathe-nachhilfe `allgemein.md` § 2; hier steht, was du tust. Du schreibst nur den
@@ -45,10 +45,11 @@ kurze Aufgaben mit 2–3 Teilen. Beim Abschnittsblatt gehört hierher auch, was 
 
 **3.3 Ein Block**, in dieser Folge (rolle in Klammern):
 - **Blockkopf:** das Verfahren in Schülersprache („Erst umstellen, dann einsetzen“).
-- **Beispiel:** der einfachste Fall, ganz vorgerechnet als Tafelbild (Schreibweise 4.3), mit Antwort; in Geometrie mit
-  Skizze. Das Abschnittsblatt nimmt dasselbe Beispiel wie das Komplettblatt.
-- **Formelzeile**, nur wo eine Formel den Block trägt: der Name, dann die Formel wie im Tafelwerk; keine umgestellte Form,
-  kein erklärender Text.
+- **Kein Beispiel, kein Kasten** (Register 12.11.1): Das Beispiel rechnet der Lehrer an der Tafel. Nur wenn die Bestellung
+  „mit Beispiel“ sagt: der einfachste Fall, ganz vorgerechnet als Tafelbild (Schreibweise 4.3), jeder Schritt in Worten
+  benannt, in Geometrie mit Skizze.
+- **Formelzeile**, nur wo eine Formel den Block trägt: der Name, dann die Formel wie im Tafelwerk, als eigene abgesetzte
+  Zeile vor der ersten Aufgabe (nicht im Aufgabenkopf); keine umgestellte Form, kein erklärender Text.
 - **Erkennen** (erkennen), nur wenn das Verfahren einen Erkennungsschritt hat: 3–4 Teilaufgaben ohne Rechnung an den
   Varianten, die danach kommen („Welche Gleichung stellst du um?“).
 - **Kette** – eine Nummer, eine Aufforderung: zuerst der **Grundfall** (grundfall, ohne Merkmal), dann die
@@ -77,7 +78,7 @@ der Satz setzt ihn (Register 28.10.3).
 | Sache, Spitze, „Stimmt das?“ | je höchstens 1 | je höchstens 1 |
 | Zum Schluss | 5–6 gemischte Teilaufgaben | – |
 
-Der erste Grundfall ist so leicht wie das Beispiel; danach ist keiner ganz gleich (Namen f, g, h oder r, s; Reihenfolge der
+Der erste Grundfall ist so leicht, dass er ohne Beispiel geht; danach ist keiner ganz gleich (Namen f, g, h oder r, s; Reihenfolge der
 Glieder; auch mal anders dargestellt). Stolperstellen im Rechenweg (Vorzeichen, Klammer, Umstellen) kommen vor
 Zahl-Stolperstellen (Komma, Bruch, Runden), seltene zuletzt; reine Zahlwechsel nur beim Grundfall. Der Schluss mischt die
 Blöcke, verrät das Verfahren nicht und bringt die wichtigsten Stolperstellen ein zweites Mal. Als Prüfwert, nicht als
@@ -167,7 +168,7 @@ In deinen Ordner schreibst du:
 - **`rahmen.jsonl`** – eine Zeile je Rahmenteil in Blattfolge: `pos`, `art` (zone, block, beispiel, merksatz, schluss),
   `vor_nr` (die Nummer, vor der er steht), `tex`. `block` ist der Blockkopf (3.3), `beispiel` das Tafelbild (mit
   `\rechnung{…}`), `merksatz` die Formelzeile; `zone` und `schluss` mit leerem `tex` (die Überschrift setzt der Satz).
-  Ein Beispiel, das ein Verfahren vorführt, gibst du als **Musterweg** (Register 28.10.1, allgemein.md 2.3a (11)): Feld
+  Die Arten `beispiel` und `kasten` schreibst du nur bei „mit Beispiel“. Ein Beispiel, das ein Verfahren vorführt, gibst du dann als **Musterweg** (Register 28.10.1, allgemein.md 2.3a (11)): Feld
   `musterweg` = `{"verfahren": "Gleichsetzen", "geg": [["I", "y", "3x - 1"], ["II", "y", "x + 5"]], "ges": "$x$ und $y$",
   "zeilen": [{"s": "I = II:", "l": "3x - 1", "r": "x + 5", "v": "nach $x$ auflösen"}, {"l": "x", "r": "3"}, {"s": "in I:",
   "l": "y", "r": "3 \\cdot 3 - 1 = 8", "neu": true}], "ergebnis": "L = \\{(3 \\mid 8)\\}", "loesung": {"x": "3", "y": "8"}}`.
@@ -184,7 +185,7 @@ In deinen Ordner schreibst du:
   ein Kasten vor einem Block nur aus Sache und „Stimmt das?“ steht oder ein Kasten freies TeX ist.
 - **`titel.txt`** (Name des Blatts, kurz: die Lerneinheit oder der Abschnitt, z. B. „Gleichungssysteme lösen“) und
   **`klasse.txt`** (Klasse der Bestellung).
-- **`bericht.md`**, höchstens 12 Zeilen: je Block Beispiel, Stolperstellen in ihrer Folge und die Spitze mit ihrem Anker
+- **`bericht.md`**, höchstens 12 Zeilen: je Block Formelzeile, Stolperstellen in ihrer Folge und die Spitze mit ihrem Anker
   (oder „kein Anker“); welche Abschnitte kein Block wurden; Prüfergebnis, Seiten je Block, Teilaufgaben,
   Wanduhr, Unsicheres.
 
@@ -194,13 +195,13 @@ Block (`seiten.txt`), das Lösungsblatt und die Ergebnisse im Fuß setzt das Skr
 ## 6 Ablauf – so wenige Schritte wie möglich
 
 1. `date -u` als erste Zeile in `zeiten.txt`; Unterlage erzeugen und ganz lesen.
-2. Plane im Kopf, bevor du schreibst: die Blöcke; je Block Beispiel, Grundfälle, die Stolperstellen in ihrer Folge, Probe,
+2. Plane im Kopf, bevor du schreibst: die Blöcke; je Block Formelzeile (wenn eine trägt), Grundfälle, die Stolperstellen in ihrer Folge, Probe,
    Sache, Spitze (3.5), ob „Stimmt das?“ passt; beim Komplettblatt den Schluss.
 3. Schreib die Daten in einem Zug.
 4. `python3 werkzeuge/alltagsblatt-pruef.py <ordner>`. Meldet es HALT, berichtigst du die Daten und rufst es erneut auf;
    Warnungen prüfst du und entscheidest. Das Skript setzt `blatt.pdf` und `loesung.pdf`, schreibt `seiten.txt` und nennt
    die Seiten mit Grafik.
 5. Sieh nur diese Seiten an; passt eine Figur nicht zu den Zahlen oder ist sie abgeschnitten, berichtigen.
-6. Anfänger-Test im Kopf: Schafft der Schüler den ersten Grundfall jedes Blocks allein mit dem Beispiel? Gibt es einen
+6. Anfänger-Test im Kopf: Schafft der Schüler den ersten Grundfall jedes Blocks, nachdem der Lehrer ein Beispiel an der Tafel gerechnet hat? Gibt es einen
    Sprung zwischen zwei Teilaufgaben? Setzt ein Block etwas voraus, das erst später kommt?
 7. `date -u` in `zeiten.txt`, Bericht, fertig. Live lieferst du `blatt.pdf`, `loesung.pdf` und die Zeile aus `seiten.txt`.
