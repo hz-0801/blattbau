@@ -1,4 +1,4 @@
-# Blatt bestellen – v12j (12.11.2026)
+# Blatt bestellen – v12k (12.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -168,7 +168,7 @@ Werkstatt arbeitet es ein und hebt die Sperre auf. Nichts am Blatt selbst änder
   es ausgibt („Finja 5-Minuten-Test 11.11.26.pdf“, „Luisa Biquadratische Gleichungen Lösung 11.11.26.pdf“). Sache, ohne
   Namen, Substantive groß: „5-Minuten-Test“, „5-Minuten-Test Quadratische Gleichungen“, das Thema des Blatts,
   „Basis 2026 A“ (Jahrgang und Buchstabe aus dem Titel des Zettels), „P10 Pythagoras“ (feste Wörter, Lehrer 11.11., vorläufig);
-  die Lösung dazu mit `--loesung` und derselben Sache. Hält das Skript an, behebe die Sache, schick nichts unter anderem Namen
+  die Lösung dazu mit `--loesung` und derselben Sache. Den Kartennamen schreibst du nie von Hand und änderst ihn nicht – auch nicht für eine zweite Sendung am Ende der Antwort; du schickst immer genau die Datei, deren Pfad karte.py ausgibt (Lehrer 12.11.: Karten kamen als „Finja basis 2026 a“, klein und ohne Skript; seitdem setzt karte.py die Großschreibung selbst). Hält das Skript an, behebe die Sache, schick nichts unter anderem Namen
   (Register 11.11.5, Lehrer 11.11.: Name groß vorn, kein „QR“, kein Zähler). Abgelegt und in die Lieferliste eingetragen
   wird weiter unter dem Ablagenamen.
 - Am Ende jeder Antwort – auch einer kurzen, auch nach einer Rückfrage – schickst du alle PDFs dieses Chats noch einmal
