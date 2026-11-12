@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="robots" content="noindex">
+<title>Kopfrechnen</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:#f3f7fb;color:#18324a}
+#app{max-width:460px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;padding:18px 16px 22px}
+h1{font-size:26px;margin:6px 0 2px}
+p{font-size:18px;line-height:1.4;margin:8px 0}
+.balken{display:flex;gap:5px;margin:4px 0 14px}
+.balken i{flex:1;height:9px;border-radius:5px;background:#d5e1ec}
+.balken i.r{background:#2e9e5b}.balken i.f{background:#e8a33d}.balken i.j{background:#1f5f8b}
+.frage{font-size:54px;font-weight:700;text-align:center;margin:18px 0 6px;letter-spacing:1px}
+.wort{font-size:26px;font-weight:600;text-align:center;margin:26px 0 0}
+.feld{height:74px;border-radius:14px;background:#fff;border:3px solid #1f5f8b;font-size:46px;font-weight:700;
+ display:flex;align-items:center;justify-content:center;margin:8px 40px 6px}
+.feld.r{border-color:#2e9e5b;background:#e6f6ec;color:#1d6f3e}.feld.f{border-color:#e8a33d;background:#fff4e0}
+.hin{min-height:62px;text-align:center;font-size:21px;font-weight:600;padding-top:6px}
+.hin.r{color:#1d6f3e}.hin.f{color:#8a5a0a}
+.tasten{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:auto}
+button{font:inherit;border:0;border-radius:14px;background:#fff;color:#18324a;font-size:30px;font-weight:600;
+ height:66px;box-shadow:0 2px 0 #c4d3e1;touch-action:manipulation}
+button:active{transform:translateY(2px);box-shadow:none}
+button.ok{background:#1f5f8b;color:#fff;box-shadow:0 2px 0 #143f5d}
+button.gross{width:100%;height:72px;font-size:26px;margin-top:18px}
+.mitte{margin:auto 0;text-align:center}
+.sterne{font-size:54px;letter-spacing:6px;margin:10px 0}
+.zahl{font-size:60px;font-weight:800;color:#1f5f8b}
+</style></head><body><div id="app"></div>
+<script>
+const N = 10;
+const FORM = { url: "https://docs.google.com/forms/d/e/1FAIpQLScVAIyR0-hKCMXzbtrj8F7LXRPKd6vxw_XSq0-i5HXuzHBYUQ/formResponse", meldung: "entry.312904931" };
+const q = new URLSearchParams(location.hash.slice(1));
+const app = document.getElementById("app");
+const z = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
+const aus = a => a[z(0, a.length - 1)];
+// Stufen: von ganz leicht nach oben; zwei richtige hintereinander -> eine Stufe hoch, ein Fehler -> eine runter
+const STUFEN = [
+  () => { const a = z(1, 8), b = z(1, 9 - a); return aus([[a + " + " + b, a + b], [(a + b) + " − " + b, a]]); },
+  () => { const a = z(4, 9), b = z(11 - a > 2 ? 11 - a : 2, 9); return aus([[a + " + " + b, a + b], [(a + b) + " − " + b, a]]); },
+  () => { const r = aus([2, 5, 10]), k = z(2, 10); return [k + " · " + r, k * r]; },
+  () => { const a = z(1, 5) * 10, b = z(1, 4) * 10; return aus([[a + " + " + b, a + b], [(a + b) + " − " + b, a]]); },
+  () => { const a = z(2, 9), b = z(2, 9); return [a + " · " + b, a * b]; },
+  () => { const a = z(21, 88), b = z(2, 9); return aus([[a + " + " + b, a + b], [(a + b) + " − " + b, a]]); },
+  () => { const a = z(2, 9), b = z(2, 9); return aus([[(a * b) + " : " + a, b], ["Das Doppelte von " + z(11, 45), null]]); }
+];
+let stufe, folge, i, urteile, aufgabe, eingabe, gesperrt, letzte;
+function neu() {
+  let t;
+  do { t = STUFEN[stufe](); if (t[1] === null) { const n = +t[0].split(" ").pop(); t[1] = 2 * n; } } while (t[0] === letzte);
+  letzte = t[0]; aufgabe = t; eingabe = ""; gesperrt = false; zeig();
+}
+function balken() { let h = '<div class="balken">'; for (let k = 0; k < N; k++) h += '<i class="' + (urteile[k] || (k === i ? "j" : "")) + '"></i>'; return h + "</div>"; }
+function zeig(klasse, hinweis) {
+  const wort = aufgabe[0].length > 9;
+  app.innerHTML = balken() + '<div class="' + (wort ? "wort" : "frage") + '">' + aufgabe[0] + (wort ? "" : " =") + "</div>" +
+    '<div class="feld ' + (klasse || "") + '">' + (eingabe || "&nbsp;") + "</div>" +
+    '<div class="hin ' + (klasse || "") + '">' + (hinweis || "") + "</div>" +
+    '<div class="tasten">' + [1, 2, 3, 4, 5, 6, 7, 8, 9].map(n => '<button data-t="' + n + '">' + n + "</button>").join("") +
+    '<button data-t="x">⌫</button><button data-t="0">0</button><button class="ok" data-t="ok">OK</button></div>';
+}
+app.addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  const t = b.dataset.t;
+  if (t === "los") return start();
+  if (t === "weiter") return weiter();
+  if (gesperrt || t === undefined) return;
+  if (t === "x") eingabe = eingabe.slice(0, -1);
+  else if (t === "ok") { if (eingabe !== "") pruef(); return; }
+  else if (eingabe.length < 3) eingabe += t;
+  zeig();
+});
+function pruef() {
+  gesperrt = true;
+  if (+eingabe === aufgabe[1]) {
+    urteile[i] = "r"; folge++; if (folge >= 2 && stufe < STUFEN.length - 1) { stufe++; folge = 0; }
+    zeig("r", aus(["Richtig!", "Genau!", "Super!", "Stimmt!"])); setTimeout(weiter, 800);
+  } else {
+    urteile[i] = "f"; folge = 0; if (stufe > 0) stufe--;
+    const wort = aufgabe[0].length > 9;
+    zeig("f", "Fast. " + aufgabe[0] + (wort ? ": " : " = ") + aufgabe[1]);
+    app.querySelector(".tasten").outerHTML = '<button class="ok gross" data-t="weiter">Weiter</button>';
+  }
+}
+function weiter() { i++; if (i >= N) return ende(); neu(); }
+function start() { stufe = 0; folge = 0; i = 0; urteile = []; letzte = ""; neu(); }
+function ende() {
+  const r = urteile.filter(u => u === "r").length;
+  const sterne = r >= 9 ? 3 : r >= 6 ? 2 : 1;
+  app.innerHTML = '<div class="mitte"><h1>Geschafft!</h1><div class="sterne">' + "★".repeat(sterne) + '<span style="color:#d5e1ec">' + "★".repeat(3 - sterne) +
+    '</span></div><div class="zahl">' + r + " von " + N + "</div><p>" + (r >= 9 ? "Stark gerechnet." : r >= 6 ? "Gut gemacht." : "Jede Runde wird es leichter.") +
+    '</p><button class="ok gross" data-t="los">Noch eine Runde</button></div>';
+  melde();
+}
+function melde() {  // eine Zeile an die Rückkanal-Tabelle, nur wenn der QR eine Kennung trägt
+  const t = q.get("t"); if (!t) return;
+  try {
+    let fr = document.getElementById("ziel");
+    if (!fr) { fr = document.createElement("iframe"); fr.name = "ziel"; fr.id = "ziel"; fr.style.display = "none"; document.body.appendChild(fr); }
+    const f = document.createElement("form"); f.method = "POST"; f.action = FORM.url; f.target = "ziel"; f.style.display = "none";
+    const e = document.createElement("input"); e.type = "hidden"; e.name = FORM.meldung; e.value = [t, q.get("s") || "0", urteile.join("")].join(";");
+    f.appendChild(e); document.body.appendChild(f); f.submit(); f.remove();
+  } catch (x) {}
+}
+app.innerHTML = '<div class="mitte"><h1>Kopfrechnen</h1><p>10 kurze Aufgaben.<br>Es fängt ganz leicht an.</p><button class="ok gross" data-t="los">Los geht’s</button></div>';
+</script></body></html>
