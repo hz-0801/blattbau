@@ -6,204 +6,138 @@
  "fragen": [
   {
    "nr": 1,
-   "id": "k-quelle-mathsmentales-bild-141",
-   "frage": "Welche Wahrscheinlichkeit gehört an den leeren Ast?",
-   "thema": "Äste summieren sich zu 1",
-   "einheit": "wahrscheinlichkeit/3",
+   "id": "k-quelle-mathalea-114",
+   "frage": "Runde $4{,}36$ auf Zehntel.",
+   "thema": "runden",
+   "einheit": "brueche-dezimalzahlen/5",
    "schwere": 1,
    "art": "zahl",
-   "wert": "0,7",
-   "loesung": "$1-0{,}3=0{,}7$",
+   "wert": "4,4",
+   "loesung": "$4{,}4$",
+   "fehler": {
+    "4,3": "abgeschnitten"
+   },
    "zw": {
-    "id": "k-stochastik-042",
-    "frage": "Welche Wahrscheinlichkeit gehört an den Ast „grün“?",
-    "thema": "Äste summieren sich zu 1",
-    "einheit": "wahrscheinlichkeit/3",
+    "id": "k-quelle-mathalea-030",
+    "frage": "Runde $12{,}7$ auf Einer.",
+    "thema": "runden",
+    "einheit": "brueche-dezimalzahlen/5",
     "schwere": 1,
     "art": "zahl",
-    "wert": "0,2",
-    "loesung": "$1-0{,}3-0{,}5=0{,}2$",
+    "wert": "13",
+    "loesung": "$13$",
     "fehler": {
-     "0,8": "nur einen Ast abgezogen",
-     "0,15": "multipliziert"
-    },
-    "bild": "r8-mix-1311-1z.svg"
-   },
-   "bild": "r8-mix-1311-1.svg"
+     "12": "abgeschnitten statt gerundet"
+    }
+   }
   },
   {
    "nr": 2,
-   "id": "k-quelle-mathalea-can-250",
-   "frage": "Wie viele Minuten sind $3$ h $45$ min?",
-   "thema": "Stunden in Minuten",
-   "einheit": "einheiten/2",
+   "id": "k-quelle-lisum-bild-044",
+   "frage": "Wie oft passt $\\frac14$ in $1$? Schreibe als Rechnung.",
+   "thema": "Teilen durch einen Bruch kleiner als 1",
+   "einheit": "bruchrechnung/3",
    "schwere": 1,
    "art": "zahl",
-   "wert": "225",
-   "loesung": "$225$ min",
-   "masse": "min",
+   "wert": "4",
+   "loesung": "$4$-mal: $1:\\frac14=4$",
+   "bruch": 1,
    "zw": {
-    "id": "k-quelle-mathalea-can-alt-205",
-    "frage": "Wie viele Minuten sind $2$ h $25$ min?",
-    "thema": "Stunden in Minuten",
-    "einheit": "einheiten/2",
+    "id": "k-quelle-lisum-rest-031",
+    "frage": "Wie viele $\\frac{1}{2}$-Liter-Becher füllst du mit $5$ Litern Saft?",
+    "thema": "Teilen durch einen Bruch kleiner als 1",
+    "einheit": "bruchrechnung/3",
     "schwere": 1,
     "art": "zahl",
-    "wert": "145",
-    "loesung": "$145$ min",
-    "masse": "min",
-    "fehler": {
-     "225": "Stunde als 100 min"
-    }
+    "wert": "10",
+    "loesung": "$10$"
    }
   },
   {
    "nr": 3,
-   "id": "k-eigen-t04-t06-155",
-   "frage": "Tom prüft $(2\\,|\\,3)$ nur in $x+y=5$: stimmt. Ist $(2\\,|\\,3)$ damit die Lösung von $x+y=5$ und $3x-y=4$?",
-   "thema": "Probe in beiden Gleichungen",
-   "einheit": "lineare-gleichungssysteme/2",
+   "id": "k-quelle-mathsmentales-195",
+   "frage": "Kann man $3x+2$ noch zusammenfassen?",
+   "thema": "nur gleichartige Glieder zusammenfassen",
+   "einheit": "terme/1",
    "schwere": 2,
    "art": "stimmt",
    "knoepfe": [
-    "stimmt",
-    "stimmt nicht"
+    "ja",
+    "nein"
    ],
-   "richtig": "stimmt nicht",
-   "loesung": "stimmt nicht – in der zweiten Gleichung: $6-3=3\\neq 4$. Die Probe gehört in beide Gleichungen.",
-   "fehler": "nur eine Gleichung geprüft",
+   "richtig": "nein",
+   "loesung": "Nein, $3x$ und $2$ sind nicht gleichartig.",
    "zw": {
-    "id": "k-eigen-t04-t06-156",
-    "frage": "Stimmt das? $(4\\,|\\,1)$ löst $x-y=3$ und $2x+3y=11$.",
-    "thema": "Probe in beiden Gleichungen",
-    "einheit": "lineare-gleichungssysteme/2",
+    "id": "k-quelle-lisum-rest-185",
+    "frage": "Darf man $16w+8b$ (Würste und Baguettes) zu $24wb$ zusammenfassen?",
+    "thema": "nur gleichartige Glieder zusammenfassen",
+    "einheit": "terme/1",
     "schwere": 2,
     "art": "stimmt",
     "knoepfe": [
-     "stimmt",
-     "stimmt nicht"
+     "ja",
+     "nein"
     ],
-    "richtig": "stimmt",
-    "loesung": "stimmt – $4-1=3$ und $8+3=11$.",
-    "fehler": "nur eine Gleichung geprüft oder 2·4 + 3 = 11 verrechnet"
+    "richtig": "nein",
+    "loesung": "nein – $w$ und $b$ sind verschiedene Variablen"
    }
   },
   {
    "nr": 4,
-   "id": "k-quelle-mathalea-can-456",
-   "frage": "Rechne $0{,}2\\cdot 0{,}3$.",
-   "thema": "Kommastellen beim Malnehmen",
-   "einheit": "bruchrechnung/4",
+   "id": "k-eigen-t04-t06-366",
+   "frage": "Aus einem Rechteck $8\\,\\text{cm}\\times 6\\,\\text{cm}$ wird an einer Ecke ein Quadrat mit $2\\,\\text{cm}$ Seite herausgeschnitten. Wie groß ist die Restfläche?",
+   "thema": "zusammengesetzte Figur zerlegen oder ergänzen",
+   "einheit": "flaechen/5",
    "schwere": 2,
-   "art": "auswahl",
-   "optionen": [
-    {
-     "t": "$0{,}06$",
-     "r": 1
-    },
-    {
-     "t": "$0{,}5$"
-    },
-    {
-     "t": "$0{,}6$",
-     "f": "Kommastellen nicht gezählt"
-    }
-   ],
-   "loesung": "$0{,}06$",
-   "aus_zahl": 1,
+   "art": "zahl",
+   "wert": "44",
+   "loesung": "$44\\,\\text{cm}^2$ ($48-4$)",
+   "masse": "cm²",
+   "fehler": {
+    "46": "2 statt 4 abgezogen"
+   },
    "zw": {
-    "id": "k-quelle-mathalea-136",
-    "frage": "Rechne $2{,}5\\cdot 0{,}4$.",
-    "thema": "Kommastellen beim Malnehmen",
-    "einheit": "bruchrechnung/4",
+    "id": "k-eigen-t04-t06-367",
+    "frage": "Eine L-Figur besteht aus einem Rechteck $5\\,\\text{cm}\\times 2\\,\\text{cm}$ und einem Rechteck $3\\,\\text{cm}\\times 4\\,\\text{cm}$, die sich nicht überlappen. Wie groß ist ihre Fläche?",
+    "thema": "zusammengesetzte Figur zerlegen oder ergänzen",
+    "einheit": "flaechen/5",
     "schwere": 2,
-    "art": "auswahl",
-    "optionen": [
-     {
-      "t": "$0{,}1$",
-      "f": "Komma falsch"
-     },
-     {
-      "t": "$1$",
-      "r": 1
-     },
-     {
-      "t": "$10$"
-     }
-    ],
-    "loesung": "$1$",
-    "aus_zahl": 1
+    "art": "zahl",
+    "wert": "22",
+    "loesung": "$22\\,\\text{cm}^2$ ($10+12$)",
+    "masse": "cm²",
+    "fehler": {
+     "14": "Seiten addiert",
+     "120": "Flächen multipliziert"
+    }
    }
   },
   {
    "nr": 5,
-   "id": "k-quelle-serlo-bild-001",
-   "frage": "Ein Parallelogramm hat die Grundseite $6$ cm und die Höhe $4$ cm. Wie groß ist sein Flächeninhalt?",
-   "thema": "Parallelogrammfläche g·h",
-   "einheit": "flaechen/2",
-   "schwere": 1,
-   "art": "zahl",
-   "wert": "24",
-   "loesung": "$24\\,\\text{cm}^2$",
-   "masse": "cm²",
-   "fehler": {
-    "12": "halbiert"
-   },
-   "zw": {
-    "id": "k-eigen-t04-t06-296",
-    "frage": "Ein Parallelogramm hat die Grundseite $9\\,\\text{cm}$ und die Höhe $5\\,\\text{cm}$. Wie groß ist sein Flächeninhalt?",
-    "thema": "Parallelogrammfläche g·h",
-    "einheit": "flaechen/2",
-    "schwere": 1,
-    "art": "zahl",
-    "wert": "45",
-    "loesung": "$45\\,\\text{cm}^2$",
-    "masse": "cm²",
-    "fehler": {
-     "22,5": "halbiert wie beim Dreieck"
-    }
-   }
-  },
-  {
-   "nr": 6,
-   "id": "k-quelle-mathalea-can-alt-067",
-   "frage": "Rechne geschickt: $372:3$.",
-   "thema": "durch 3 teilen mit Zerlegung",
-   "einheit": "",
-   "schwere": 2,
-   "art": "zahl",
-   "wert": "124",
-   "loesung": "$124$ ($300:3+72:3$)",
-   "fehler": {
-    "1024": "100 + 24 falsch zusammengesetzt"
-   }
-  },
-  {
-   "nr": 7,
-   "id": "k-bild-skizzen-024",
-   "frage": "Gib die Gleichung der Geraden $g$ im Bild an.",
+   "id": "k-bild-skizzen-026",
+   "frage": "Gib die Gleichung der Geraden $h$ im Bild an.",
    "thema": "Geradengleichung am Graphen ablesen",
    "einheit": "lineare-funktionen/4",
    "schwere": 2,
    "art": "auswahl",
    "optionen": [
     {
-     "t": "$y=2x+1$",
-     "r": 1
+     "t": "$y=2x-1$",
+     "f": "Kehrwert der Steigung"
     },
     {
-     "t": "$y=x+2$",
+     "t": "$y=-x+\\tfrac{1}{2}$",
      "f": "$m$ und $n$ vertauscht"
     },
     {
-     "t": "$y=\\tfrac{1}{2}x+1$",
-     "f": "Kehrwert der Steigung"
+     "t": "$y=\\tfrac{1}{2}x-1$",
+     "r": 1
     }
    ],
-   "loesung": "$y=2x+1$",
+   "loesung": "$y=\\tfrac{1}{2}x-1$",
    "aus_wert": 1,
    "zw": {
-    "id": "k-bild-skizzen-026",
+    "id": "k-bild-skizzen-022",
     "frage": "Gib die Gleichung der Geraden $h$ im Bild an.",
     "thema": "Geradengleichung am Graphen ablesen",
     "einheit": "lineare-funktionen/4",
@@ -211,135 +145,151 @@
     "art": "auswahl",
     "optionen": [
      {
-      "t": "$y=-x+\\tfrac{1}{2}$",
-      "f": "$m$ und $n$ vertauscht"
+      "t": "$y=x+2$",
+      "f": "Vorzeichen der Steigung"
+     },
+     {
+      "t": "$y=-x+2$",
+      "r": 1
      },
      {
       "t": "$y=2x-1$",
-      "f": "Kehrwert der Steigung"
-     },
-     {
-      "t": "$y=\\tfrac{1}{2}x-1$",
-      "r": 1
+      "f": "$m$ und $n$ vertauscht"
      }
     ],
-    "loesung": "$y=\\tfrac{1}{2}x-1$",
+    "loesung": "$y=-x+2$",
     "aus_wert": 1,
-    "bild": "r8-mix-1311-7z.svg"
+    "bild": "r8-mix-1311-5z.svg"
    },
-   "bild": "r8-mix-1311-7.svg"
+   "bild": "r8-mix-1311-5.svg"
+  },
+  {
+   "nr": 6,
+   "id": "k-quelle-mathsmentales-bild-047",
+   "frage": "Ist die abgebildete Figur ein Würfelnetz?",
+   "thema": "Würfelnetz",
+   "einheit": "koerper/1",
+   "schwere": 2,
+   "art": "stimmt",
+   "knoepfe": [
+    "ja",
+    "nein"
+   ],
+   "richtig": "nein",
+   "loesung": "Nein – die vier unteren Quadrate bilden den Mantel; die Quadrate über Spalte $1$ und Spalte $3$ klappen beide auf den Deckel, der Boden fehlt.",
+   "bild": "r8-mix-1311-6.svg"
+  },
+  {
+   "nr": 7,
+   "id": "k-quelle-oak-04206",
+   "frage": "Löse: $x - 8{,}6 = 10$",
+   "thema": "Gleichung x − a = b mit Dezimalzahl",
+   "einheit": "lineare-gleichungen/2",
+   "schwere": 2,
+   "art": "zahl",
+   "wert": "18,6",
+   "loesung": "$x = 18{,}6$"
   },
   {
    "nr": 8,
-   "id": "k-eigen-t01-t03-275",
-   "frage": "Welche Zahl steht ohne $x$ in $(x-6)(x+4)$ ausmultipliziert?",
-   "thema": "Klammer mal Klammer",
-   "einheit": "binomische-formeln/1",
-   "schwere": 2,
+   "id": "k-eigen-t10-t12-385",
+   "frage": "Figur $1$ hat $5$ Plättchen, Figur $2$ hat $9$, Figur $3$ hat $13$. Wie groß ist der Zuwachs?",
+   "thema": "Zuwachs von Figur zu Figur",
+   "einheit": "zahlenfolgen-und-muster/1",
+   "schwere": 1,
    "art": "zahl",
-   "wert": "−24",
-   "loesung": "$-24$",
+   "wert": "4",
+   "loesung": "$4$",
    "fehler": {
-    "24": "Vorzeichen übersehen",
-    "−2": "−6 + 4 addiert"
+    "5": "Figur 1 als Zuwachs",
+    "13": "letzte Figur"
    },
    "zw": {
-    "id": "k-quelle-openstax-b-395",
-    "frage": "Multipliziere aus: $(x+8)(x+9)$.",
-    "thema": "Klammer mal Klammer",
-    "einheit": "binomische-formeln/1",
+    "id": "k-eigen-t10-t12-386",
+    "frage": "Ein Hölzchenmuster: $7$, $12$, $17$ Hölzchen. Wie viele kommen von Figur zu Figur dazu?",
+    "thema": "Zuwachs von Figur zu Figur",
+    "einheit": "zahlenfolgen-und-muster/1",
     "schwere": 1,
-    "art": "auswahl",
-    "optionen": [
-     {
-      "t": "$x^2+17x+72$",
-      "r": 1
-     },
-     {
-      "t": "$x^2+17x+17$"
-     },
-     {
-      "t": "$x^2+72$"
-     }
-    ],
-    "loesung": "$x^2+17x+72$",
-    "aus_wert": 1
+    "art": "zahl",
+    "wert": "5",
+    "loesung": "$5$"
    }
   },
   {
    "nr": 9,
-   "id": "k-eigen-t01-t03-048",
-   "frage": "Berechne $\\left(1-\\frac{1}{3}\\right)\\cdot\\frac{3}{4}$.",
-   "thema": "Klammer zuerst, dann Bruch mal Bruch",
-   "einheit": "bruchrechnung/5",
+   "id": "k-quelle-mathalea-008",
+   "frage": "Lea sagt zu Ben: „Ich habe $23$ €, das sind $8$ € mehr als du.“ Wie viel Geld hat Ben?",
+   "thema": "jünger als: Signalwort führt in die Irre",
+   "einheit": "",
    "schwere": 2,
    "art": "zahl",
-   "wert": "1/2",
-   "loesung": "$\\frac{2}{3}\\cdot\\frac{3}{4}=\\frac{1}{2}$",
-   "bruch": 1,
+   "wert": "15",
+   "loesung": "$15$ €",
+   "masse": "€",
+   "fehler": {
+    "31": "wegen „mehr“ addiert"
+   },
    "zw": {
-    "id": "k-quelle-mathalea-eam-108",
-    "frage": "Berechne $\\left(1+\\frac{1}{4}\\right)\\cdot\\frac{8}{15}$.",
-    "thema": "Klammer zuerst, dann Bruch mal Bruch",
-    "einheit": "bruchrechnung/5",
+    "id": "k-quelle-mathalea-085",
+    "frage": "Lisa zahlt $7{,}50$ € für ihr Mittagessen, $1{,}20$ € weniger als Nina. Wie viel zahlt Nina?",
+    "thema": "jünger als: Signalwort führt in die Irre",
+    "einheit": "",
     "schwere": 2,
     "art": "zahl",
-    "wert": "2/3",
-    "loesung": "$\\frac{2}{3}$ ($\\frac{5}{4}\\cdot\\frac{8}{15}$)",
-    "bruch": 1,
+    "wert": "8,70",
+    "loesung": "$8{,}70$ €",
+    "masse": "€",
     "fehler": {
-     "17/15": "Klammer nicht beachtet: $1+\\frac{2}{15}$"
+     "6,30": "wegen „weniger“ abgezogen"
     }
    }
   },
   {
    "nr": 10,
-   "id": "k-quelle-mathalea-170",
-   "frage": "Schreibe $7\\,\\%$ als Dezimalzahl.",
-   "thema": "Prozent als Dezimalzahl",
-   "einheit": "prozentrechnung/1",
+   "id": "k-quelle-oak-04746",
+   "frage": "Welche Rechnung ist gleichwertig zu $8\\cdot(10+12)$?",
+   "thema": "Klammer mit Distributivgesetz auflösen",
+   "einheit": "bruchrechnung/5",
    "schwere": 1,
-   "art": "zahl",
-   "wert": "0,07",
-   "loesung": "$0{,}07$",
-   "streng": 1,
-   "zw": {
-    "id": "k-quelle-openstax-a-203",
-    "frage": "Schreibe $52\\,\\%$ als gekürzten Bruch.",
-    "thema": "Prozent als Dezimalzahl",
-    "einheit": "prozentrechnung/1",
-    "schwere": 1,
-    "art": "zahl",
-    "wert": "13/25",
-    "loesung": "$\\frac{13}{25}$",
-    "bruch": 1,
-    "streng": 1
-   }
+   "art": "auswahl",
+   "optionen": [
+    {
+     "t": "$8 \\cdot 2$"
+    },
+    {
+     "t": "$80 + 92$"
+    },
+    {
+     "t": "$8\\cdot 10 + 8\\cdot 12$",
+     "r": 1
+    }
+   ],
+   "loesung": "$8\\cdot 10 + 8\\cdot 12$"
   }
  ],
  "quellen": [
   {
    "quelle": "eigene Fragen",
    "nr": [
-    "1z",
-    "3",
-    "3z",
+    "4",
+    "4z",
+    "5",
     "5z",
-    "7",
-    "7z",
     "8",
-    "9"
+    "8z"
    ]
   },
   {
-   "quelle": "MathALÉA (Coopmaths), Automatismes EAM Première",
+   "quelle": "LISUM Materialien zur Diagnose und Förderung im Mathematikunterricht",
    "nr": [
-    "9z"
+    "2",
+    "2z",
+    "3z"
    ],
    "lizenz": "CC BY-SA 4.0",
    "bearbeitung": "übersetzt und bearbeitet",
    "url": [
-    "https://coopmaths.fr"
+    "https://bildungsserver.berlin-brandenburg.de"
    ],
    "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
    "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
@@ -347,36 +297,10 @@
   {
    "quelle": "MathALÉA (Coopmaths), Course aux nombres",
    "nr": [
-    "4z",
-    "10"
-   ],
-   "lizenz": "CC BY-SA 4.0",
-   "bearbeitung": "übersetzt und bearbeitet",
-   "url": [
-    "https://coopmaths.fr"
-   ],
-   "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
-   "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
-  },
-  {
-   "quelle": "MathALÉA (Coopmaths), Course aux nombres (Jahrgänge 2018–2023)",
-   "nr": [
-    "2z",
-    "6"
-   ],
-   "lizenz": "CC BY-SA 4.0",
-   "bearbeitung": "übersetzt und bearbeitet",
-   "url": [
-    "https://coopmaths.fr"
-   ],
-   "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
-   "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
-  },
-  {
-   "quelle": "MathALÉA (Coopmaths), Course aux nombres (Jahrgänge)",
-   "nr": [
-    "2",
-    "4"
+    "1",
+    "1z",
+    "9",
+    "9z"
    ],
    "lizenz": "CC BY-SA 4.0",
    "bearbeitung": "übersetzt und bearbeitet",
@@ -389,7 +313,8 @@
   {
    "quelle": "MathsMentales",
    "nr": [
-    "1"
+    "3",
+    "6"
    ],
    "lizenz": "Apache-2.0",
    "bearbeitung": "übersetzt und bearbeitet",
@@ -400,41 +325,18 @@
    "hinweis": "Lizenziert unter der Apache License 2.0; die Vorlagen wurden übersetzt und verändert."
   },
   {
-   "quelle": "OpenStax Intermediate Algebra (Erstauflage)",
+   "quelle": "Oak National Academy",
    "nr": [
-    "8z"
+    "7",
+    "10"
    ],
-   "lizenz": "CC BY 4.0",
+   "lizenz": "OGL v3.0",
    "bearbeitung": "übersetzt und bearbeitet",
    "url": [
-    "https://assets.openstax.org"
+    "https://www.thenational.academy"
    ],
-   "lizenz_url": "https://creativecommons.org/licenses/by/4.0/deed.de"
-  },
-  {
-   "quelle": "OpenStax Prealgebra (1. Auflage, Rice University)",
-   "nr": [
-    "10z"
-   ],
-   "lizenz": "CC BY 4.0",
-   "bearbeitung": "übersetzt und bearbeitet",
-   "url": [
-    "https://openstax.org"
-   ],
-   "lizenz_url": "https://creativecommons.org/licenses/by/4.0/deed.de"
-  },
-  {
-   "quelle": "Serlo",
-   "nr": [
-    "5"
-   ],
-   "lizenz": "CC BY-SA 4.0",
-   "bearbeitung": "übersetzt und bearbeitet",
-   "url": [
-    "https://de.serlo.org"
-   ],
-   "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
-   "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+   "lizenz_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+   "hinweis": "Contains public sector information licensed under the Open Government Licence v3.0."
   }
  ]
 }
