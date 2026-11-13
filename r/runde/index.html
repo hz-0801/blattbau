@@ -14,6 +14,8 @@
        Urteile  ein Zeichen je Frage der Liste nr;id (r richtig, f falsch) – so liest es aufgabenbank-privat werkzeuge/fehler.py
        a=       was getippt oder gewählt wurde, mit | getrennt (Auswahl: Platz der Option 1–4; stimmt: 1 = erster Knopf)
        z=       Zwillingsfragen als nr:r oder nr:f · t= Dauer der Runde in Sekunden (wird nicht gezeigt)
+       f=       nur bei mehreren Fassungen (runde.py --fassungen): welche Fassung lief; Urteile gelten deren Zeilen der Liste
+                fassung;nr;id. Je Gerät die nächste Fassung (localStorage), die erste zufällig.
      „Fehler noch einmal“ am Ende ist Üben für den Schüler und wird nicht gemeldet. -->
 <link rel="stylesheet" href="../katex/katex.min.css">
 <script defer src="../katex/katex.min.js"></script>
@@ -86,7 +88,7 @@ const el = (art, klasse, text) => { const e = document.createElement(art); if (k
 const formeln = wo => { if (window.renderMathInElement) renderMathInElement(wo, { delimiters: [{ left: "$", right: "$", display: false }], throwOnError: false,
   macros: { "\\sv": "\\begin{pmatrix}#1\\\\#2\\\\#3\\end{pmatrix}", "\\frac": "\\dfrac", "\\tfrac": "\\dfrac" } }); };   // Brüche groß, gut lesbar
 const bildname = b => b && /^[a-z0-9-]+\.(png|svg|jpg)$/.test(b) ? b : "";
-let runde, folge, i, urteile, antworten, zwillinge, zwAnzahl, beginn, nachrunde = false, gesendet = false, abgebrochen = false;
+let fassung = 0, runde, folge, i, urteile, antworten, zwillinge, zwAnzahl, beginn, nachrunde = false, gesendet = false, abgebrochen = false;
 let frage, eingabe, wahl, gesperrt;
 
 // ---- Zahlen: "−3/4", "2,5" → gekürzter Bruch [Zähler, Nenner]
@@ -109,13 +111,19 @@ function start(j) {
     m.appendChild(el("p", "", kennung ? "Diese Runde ist nicht mehr online." : "Hier fehlt die Kennung der Runde (…/r/runde/?r=…).")); app.appendChild(m); return;
   }
   runde = j; document.title = j.titel || "Runde";
+  if (Array.isArray(j.fassungen) && j.fassungen.length > 1) {   // drei Fassungen (runde.py --fassungen): je Gerät die nächste, die erste zufällig
+    let alt = 0; try { alt = parseInt(localStorage.getItem("runde-f-" + kennung) || "0", 10) || 0; } catch (x) {}
+    fassung = alt ? alt % j.fassungen.length + 1 : 1 + Math.floor(Math.random() * j.fassungen.length);
+    const fa = j.fassungen[fassung - 1]; if (fa && Array.isArray(fa.fragen) && fa.fragen.length) { runde.fragen = fa.fragen; runde.quellen = fa.quellen; } else fassung = 1;
+  }
   app.replaceChildren(); const m = el("div", "mitte");
   m.appendChild(el("h1", "", j.titel || "Runde"));
   m.appendChild(el("p", "", j.fragen.length + " kurze Fragen."));
   m.appendChild(el("p", "", "Ohne Uhr. Nach jeder Antwort siehst du die Lösung. Fehler kosten nichts."));
   const b = el("button", "ok gross", "Los geht’s"); b.onclick = los; m.appendChild(b); app.appendChild(m);
 }
-function los() { folge = runde.fragen.map(f => ({ f, nr: f.nr, zw: false })); i = 0; urteile = {}; antworten = {}; zwillinge = []; zwAnzahl = 0; beginn = Date.now(); zeig(); }
+function los() { if (fassung) try { localStorage.setItem("runde-f-" + kennung, String(fassung)); } catch (x) {}
+  folge = runde.fragen.map(f => ({ f, nr: f.nr, zw: false })); i = 0; urteile = {}; antworten = {}; zwillinge = []; zwAnzahl = 0; beginn = Date.now(); zeig(); }
 
 function zeig() {
   const e = folge[i]; frage = e.f; gesperrt = false; wahl = null; const vorgabe = frage.art === "zahl" && !!frage.bruch && String(frage.wert || "").includes("/");   // Antwort ist ein Bruch: Feld gleich als Bruch (Lehrer 13.11.)
@@ -274,7 +282,7 @@ function quellen() {
 function melde(status) {   // eine Zeile an die Rückkanal-Tabelle; die Antwort von Google lädt in den unsichtbaren Rahmen
   const sauber = t => String(t == null ? "-" : t).replace(/[;|=\s]/g, "");
   const fr = runde.fragen, wert = [kennung, snr, fr.map(f => urteile[f.nr] || "-").join(""), "a=" + fr.map(f => sauber(antworten[f.nr])).join("|"),
-    "z=" + zwillinge.join(","), "t=" + Math.round((Date.now() - beginn) / 1000)].join(";");
+    "z=" + zwillinge.join(","), "t=" + Math.round((Date.now() - beginn) / 1000)].concat(fassung ? ["f=" + fassung] : []).join(";");
   window.letzteMeldung = wert;
   try {
     const f = el("form"); f.method = "POST"; f.action = FORM.url; f.target = "ziel"; f.style.display = "none";
