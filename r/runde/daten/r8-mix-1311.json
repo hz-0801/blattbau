@@ -1,119 +1,190 @@
 {
  "kennung": "r8-mix-1311",
- "titel": "Mix Klasse 8",
+ "titel": "Warm-up Klasse 8",
  "erzeugt": "2026-11-13",
  "bis": "2027-01-22",
  "fragen": [
   {
    "nr": 1,
-   "id": "k-quelle-mathalea-114",
-   "frage": "Runde $4{,}36$ auf Zehntel.",
-   "thema": "runden",
-   "einheit": "brueche-dezimalzahlen/5",
+   "id": "k-quelle-mathalea-can-288",
+   "frage": "Wie viel sind $50\\,\\%$ von $40$?",
+   "thema": "Prozentwert mit einfachem Bruch",
+   "einheit": "prozentrechnung/3",
    "schwere": 1,
    "art": "zahl",
-   "wert": "4,4",
-   "loesung": "$4{,}4$",
-   "fehler": {
-    "4,3": "abgeschnitten"
-   },
+   "wert": "20",
+   "loesung": "$20$",
    "zw": {
-    "id": "k-quelle-mathalea-030",
-    "frage": "Runde $12{,}7$ auf Einer.",
-    "thema": "runden",
-    "einheit": "brueche-dezimalzahlen/5",
+    "id": "k-quelle-serlo-087",
+    "frage": "Wie viel sind $75\\,\\%$ von $20$?",
+    "thema": "Prozentwert mit einfachem Bruch",
+    "einheit": "prozentrechnung/3",
     "schwere": 1,
     "art": "zahl",
-    "wert": "13",
-    "loesung": "$13$",
+    "wert": "15",
+    "loesung": "$15$",
     "fehler": {
-     "12": "abgeschnitten statt gerundet"
+     "5": "25 % gerechnet"
     }
    }
   },
   {
    "nr": 2,
-   "id": "k-quelle-lisum-bild-044",
-   "frage": "Wie oft passt $\\frac14$ in $1$? Schreibe als Rechnung.",
-   "thema": "Teilen durch einen Bruch kleiner als 1",
-   "einheit": "bruchrechnung/3",
+   "id": "k-quelle-mathalea-can-alt-305",
+   "frage": "Rechne $0{,}5\\cdot 130$.",
+   "thema": "mal 0,5 heißt halbieren",
+   "einheit": "bruchrechnung/4",
    "schwere": 1,
    "art": "zahl",
-   "wert": "4",
-   "loesung": "$4$-mal: $1:\\frac14=4$",
-   "bruch": 1,
+   "wert": "65",
+   "loesung": "$65$",
    "zw": {
-    "id": "k-quelle-lisum-rest-031",
-    "frage": "Wie viele $\\frac{1}{2}$-Liter-Becher füllst du mit $5$ Litern Saft?",
-    "thema": "Teilen durch einen Bruch kleiner als 1",
-    "einheit": "bruchrechnung/3",
+    "id": "k-quelle-mathalea-can-alt-044",
+    "frage": "Rechne $46\\cdot 0{,}5$.",
+    "thema": "mal 0,5 heißt halbieren",
+    "einheit": "bruchrechnung/4",
     "schwere": 1,
     "art": "zahl",
-    "wert": "10",
-    "loesung": "$10$"
+    "wert": "23",
+    "loesung": "$23$",
+    "fehler": {
+     "92": "verdoppelt"
+    }
    }
   },
   {
    "nr": 3,
-   "id": "k-quelle-mathsmentales-195",
-   "frage": "Kann man $3x+2$ noch zusammenfassen?",
-   "thema": "nur gleichartige Glieder zusammenfassen",
-   "einheit": "terme/1",
+   "id": "k-stochastik-035",
+   "frage": "Eine Münze zeigte fünfmal hintereinander Wappen. Tom: „Jetzt kommt bestimmt Zahl, das muss sich ausgleichen.“ Stimmt das?",
+   "thema": "Zufall hat kein Gedächtnis",
+   "einheit": "wahrscheinlichkeit/2",
    "schwere": 2,
    "art": "stimmt",
    "knoepfe": [
-    "ja",
-    "nein"
+    "stimmt",
+    "stimmt nicht"
    ],
-   "richtig": "nein",
-   "loesung": "Nein, $3x$ und $2$ sind nicht gleichartig.",
+   "richtig": "stimmt nicht",
+   "loesung": "stimmt nicht: die Münze hat kein Gedächtnis; $P(\\text{Zahl})$ bleibt $\\frac12$.",
+   "fehler": "Ausgleich",
    "zw": {
-    "id": "k-quelle-lisum-rest-185",
-    "frage": "Darf man $16w+8b$ (Würste und Baguettes) zu $24wb$ zusammenfassen?",
-    "thema": "nur gleichartige Glieder zusammenfassen",
-    "einheit": "terme/1",
-    "schwere": 2,
+    "id": "k-stochastik-037",
+    "frage": "Die Wahrscheinlichkeit für eine $6$ ist $\\frac16$. Ben: „Also kommt bei sechs Würfen genau eine Sechs.“ Stimmt das?",
+    "thema": "Zufall hat kein Gedächtnis",
+    "einheit": "wahrscheinlichkeit/2",
+    "schwere": 1,
     "art": "stimmt",
     "knoepfe": [
-     "ja",
-     "nein"
+     "stimmt",
+     "stimmt nicht"
     ],
-    "richtig": "nein",
-    "loesung": "nein – $w$ und $b$ sind verschiedene Variablen"
+    "richtig": "stimmt nicht",
+    "loesung": "stimmt nicht: es können auch keine oder mehrere Sechsen sein; nur auf lange Sicht ist etwa jeder sechste Wurf eine $6$.",
+    "fehler": "„genau eine Sechs bei sechs Würfen“"
    }
   },
   {
    "nr": 4,
-   "id": "k-eigen-t04-t06-366",
-   "frage": "Aus einem Rechteck $8\\,\\text{cm}\\times 6\\,\\text{cm}$ wird an einer Ecke ein Quadrat mit $2\\,\\text{cm}$ Seite herausgeschnitten. Wie groß ist die Restfläche?",
-   "thema": "zusammengesetzte Figur zerlegen oder ergänzen",
-   "einheit": "flaechen/5",
+   "id": "k-quelle-ks-mental-117",
+   "frage": "Rechne im Kopf: $\\tfrac{3}{4}$ von $1000$.",
+   "thema": "Bruchteil einer Zahl",
+   "einheit": "bruchrechnung/3",
    "schwere": 2,
    "art": "zahl",
-   "wert": "44",
-   "loesung": "$44\\,\\text{cm}^2$ ($48-4$)",
-   "masse": "cm²",
-   "fehler": {
-    "46": "2 statt 4 abgezogen"
-   },
+   "wert": "750",
+   "loesung": "$750$",
    "zw": {
-    "id": "k-eigen-t04-t06-367",
-    "frage": "Eine L-Figur besteht aus einem Rechteck $5\\,\\text{cm}\\times 2\\,\\text{cm}$ und einem Rechteck $3\\,\\text{cm}\\times 4\\,\\text{cm}$, die sich nicht überlappen. Wie groß ist ihre Fläche?",
-    "thema": "zusammengesetzte Figur zerlegen oder ergänzen",
-    "einheit": "flaechen/5",
-    "schwere": 2,
+    "id": "k-quelle-mathalea-can-alt-042",
+    "frage": "Wie viel sind drei Viertel von $48$?",
+    "thema": "Bruchteil einer Zahl",
+    "einheit": "bruchrechnung/3",
+    "schwere": 1,
     "art": "zahl",
-    "wert": "22",
-    "loesung": "$22\\,\\text{cm}^2$ ($10+12$)",
-    "masse": "cm²",
+    "wert": "36",
+    "loesung": "$36$",
     "fehler": {
-     "14": "Seiten addiert",
-     "120": "Flächen multipliziert"
+     "12": "nur ein Viertel"
     }
    }
   },
   {
    "nr": 5,
+   "id": "k-eigen-t07-t09-273",
+   "frage": "Ein Prisma mit dem Volumen $90\\,\\mathrm{cm}^3$ ist $6$ cm hoch. Wie groß ist seine Grundfläche?",
+   "thema": "Höhe aus V und G",
+   "einheit": "koerper/3",
+   "schwere": 2,
+   "art": "zahl",
+   "wert": "15",
+   "loesung": "$15\\,\\mathrm{cm}^2$",
+   "masse": "cm²",
+   "fehler": {
+    "540": "multipliziert",
+    "7,5": "zusätzlich halbiert"
+   },
+   "zw": {
+    "id": "k-eigen-t07-t09-272",
+    "frage": "Ein Prisma hat das Volumen $72\\,\\mathrm{cm}^3$ und die Grundfläche $9\\,\\mathrm{cm}^2$. Wie hoch ist es?",
+    "thema": "Höhe aus V und G",
+    "einheit": "koerper/3",
+    "schwere": 2,
+    "art": "zahl",
+    "wert": "8",
+    "loesung": "$8$ cm",
+    "masse": "cm",
+    "fehler": {
+     "648": "multipliziert",
+     "63": "subtrahiert"
+    }
+   }
+  },
+  {
+   "nr": 6,
+   "id": "k-quelle-oak-01462",
+   "frage": "Ergänze: Wird eine Figur gespiegelt, bleiben ihre Winkel $\\square$.",
+   "thema": "Spiegeln erhält Winkel",
+   "einheit": "symmetrie-abbildungen/2",
+   "schwere": 1,
+   "art": "auswahl",
+   "optionen": [
+    {
+     "t": "spiegelverkehrt"
+    },
+    {
+     "t": "gleich groß",
+     "r": 1
+    },
+    {
+     "t": "kleiner"
+    }
+   ],
+   "loesung": "gleich groß",
+   "aus_wert": 1
+  },
+  {
+   "nr": 7,
+   "id": "k-quelle-oak-06576",
+   "frage": "Welchen Wert hat $\\frac{x}{x + 1}$ für $x = 4$? Gib ihn als Dezimalzahl an.",
+   "thema": "Termwert Bruchterm",
+   "einheit": "terme/5",
+   "schwere": 2,
+   "art": "zahl",
+   "wert": "0,8",
+   "loesung": "$0{,}8$",
+   "streng": 1,
+   "zw": {
+    "id": "k-quelle-oak-04355",
+    "frage": "Welchen Wert hat $\\frac{r + 1}{4}$ für $r = 7$?",
+    "thema": "Termwert Bruchterm",
+    "einheit": "terme/5",
+    "schwere": 2,
+    "art": "zahl",
+    "wert": "2",
+    "loesung": "$2$"
+   }
+  },
+  {
+   "nr": 8,
    "id": "k-bild-skizzen-026",
    "frage": "Gib die Gleichung der Geraden $h$ im Bild an.",
    "thema": "Geradengleichung am Graphen ablesen",
@@ -122,16 +193,16 @@
    "art": "auswahl",
    "optionen": [
     {
-     "t": "$y=2x-1$",
-     "f": "Kehrwert der Steigung"
-    },
-    {
      "t": "$y=-x+\\tfrac{1}{2}$",
      "f": "$m$ und $n$ vertauscht"
     },
     {
      "t": "$y=\\tfrac{1}{2}x-1$",
      "r": 1
+    },
+    {
+     "t": "$y=2x-1$",
+     "f": "Kehrwert der Steigung"
     }
    ],
    "loesung": "$y=\\tfrac{1}{2}x-1$",
@@ -145,12 +216,12 @@
     "art": "auswahl",
     "optionen": [
      {
-      "t": "$y=x+2$",
-      "f": "Vorzeichen der Steigung"
-     },
-     {
       "t": "$y=-x+2$",
       "r": 1
+     },
+     {
+      "t": "$y=x+2$",
+      "f": "Vorzeichen der Steigung"
      },
      {
       "t": "$y=2x-1$",
@@ -159,148 +230,105 @@
     ],
     "loesung": "$y=-x+2$",
     "aus_wert": 1,
-    "bild": "r8-mix-1311-5z.svg"
+    "bild": "r8-mix-1311-8z.svg"
    },
-   "bild": "r8-mix-1311-5.svg"
-  },
-  {
-   "nr": 6,
-   "id": "k-quelle-mathsmentales-bild-047",
-   "frage": "Ist die abgebildete Figur ein Würfelnetz?",
-   "thema": "Würfelnetz",
-   "einheit": "koerper/1",
-   "schwere": 2,
-   "art": "stimmt",
-   "knoepfe": [
-    "ja",
-    "nein"
-   ],
-   "richtig": "nein",
-   "loesung": "Nein – die vier unteren Quadrate bilden den Mantel; die Quadrate über Spalte $1$ und Spalte $3$ klappen beide auf den Deckel, der Boden fehlt.",
-   "bild": "r8-mix-1311-6.svg"
-  },
-  {
-   "nr": 7,
-   "id": "k-quelle-oak-04206",
-   "frage": "Löse: $x - 8{,}6 = 10$",
-   "thema": "Gleichung x − a = b mit Dezimalzahl",
-   "einheit": "lineare-gleichungen/2",
-   "schwere": 2,
-   "art": "zahl",
-   "wert": "18,6",
-   "loesung": "$x = 18{,}6$"
-  },
-  {
-   "nr": 8,
-   "id": "k-eigen-t10-t12-385",
-   "frage": "Figur $1$ hat $5$ Plättchen, Figur $2$ hat $9$, Figur $3$ hat $13$. Wie groß ist der Zuwachs?",
-   "thema": "Zuwachs von Figur zu Figur",
-   "einheit": "zahlenfolgen-und-muster/1",
-   "schwere": 1,
-   "art": "zahl",
-   "wert": "4",
-   "loesung": "$4$",
-   "fehler": {
-    "5": "Figur 1 als Zuwachs",
-    "13": "letzte Figur"
-   },
-   "zw": {
-    "id": "k-eigen-t10-t12-386",
-    "frage": "Ein Hölzchenmuster: $7$, $12$, $17$ Hölzchen. Wie viele kommen von Figur zu Figur dazu?",
-    "thema": "Zuwachs von Figur zu Figur",
-    "einheit": "zahlenfolgen-und-muster/1",
-    "schwere": 1,
-    "art": "zahl",
-    "wert": "5",
-    "loesung": "$5$"
-   }
+   "bild": "r8-mix-1311-8.svg"
   },
   {
    "nr": 9,
-   "id": "k-quelle-mathalea-008",
-   "frage": "Lea sagt zu Ben: „Ich habe $23$ €, das sind $8$ € mehr als du.“ Wie viel Geld hat Ben?",
-   "thema": "jünger als: Signalwort führt in die Irre",
-   "einheit": "",
+   "id": "k-quelle-oak-06852",
+   "frage": "Welche dieser Dezimalzahlen ist die kleinste?",
+   "thema": "Dezimalzahlen stellenweise vergleichen",
+   "einheit": "brueche-dezimalzahlen/5",
    "schwere": 2,
-   "art": "zahl",
-   "wert": "15",
-   "loesung": "$15$ €",
-   "masse": "€",
-   "fehler": {
-    "31": "wegen „mehr“ addiert"
-   },
-   "zw": {
-    "id": "k-quelle-mathalea-085",
-    "frage": "Lisa zahlt $7{,}50$ € für ihr Mittagessen, $1{,}20$ € weniger als Nina. Wie viel zahlt Nina?",
-    "thema": "jünger als: Signalwort führt in die Irre",
-    "einheit": "",
-    "schwere": 2,
-    "art": "zahl",
-    "wert": "8,70",
-    "loesung": "$8{,}70$ €",
-    "masse": "€",
-    "fehler": {
-     "6,30": "wegen „weniger“ abgezogen"
-    }
-   }
-  },
-  {
-   "nr": 10,
-   "id": "k-quelle-oak-04746",
-   "frage": "Welche Rechnung ist gleichwertig zu $8\\cdot(10+12)$?",
-   "thema": "Klammer mit Distributivgesetz auflösen",
-   "einheit": "bruchrechnung/5",
-   "schwere": 1,
    "art": "auswahl",
    "optionen": [
     {
-     "t": "$8 \\cdot 2$"
-    },
-    {
-     "t": "$80 + 92$"
-    },
-    {
-     "t": "$8\\cdot 10 + 8\\cdot 12$",
+     "t": "2,004",
      "r": 1
+    },
+    {
+     "t": "2,04",
+     "f": "Hundertstel 4 ist größer als Hundertstel 0"
+    },
+    {
+     "t": "2,041",
+     "f": "länger heißt nicht kleiner oder größer"
+    },
+    {
+     "t": "2,4",
+     "f": "kürzeste Zahl für die kleinste gehalten"
     }
    ],
-   "loesung": "$8\\cdot 10 + 8\\cdot 12$"
+   "loesung": "2,004"
+  },
+  {
+   "nr": 10,
+   "id": "k-bild-skizzen-007",
+   "frage": "Lies am Bild den $y$-Achsenabschnitt $n$ der Geraden ab.",
+   "thema": "y-Achsenabschnitt n am Graphen ablesen",
+   "einheit": "lineare-funktionen/2",
+   "schwere": 1,
+   "art": "zahl",
+   "wert": "−2",
+   "loesung": "$n=-2$ – dort schneidet die Gerade die $y$-Achse",
+   "fehler": {
+    "3": "Nullstelle statt Schnitt mit der $y$-Achse",
+    "2/3": "Steigung statt Achsenabschnitt"
+   },
+   "bruch": 1,
+   "zw": {
+    "id": "k-bild-skizzen-002",
+    "frage": "Lies am Bild den $y$-Achsenabschnitt $n$ der Geraden ab.",
+    "thema": "y-Achsenabschnitt n am Graphen ablesen",
+    "einheit": "lineare-funktionen/2",
+    "schwere": 1,
+    "art": "zahl",
+    "wert": "−1",
+    "loesung": "$n=-1$ – dort schneidet die Gerade die $y$-Achse",
+    "fehler": {
+     "1/2": "Nullstelle statt Schnitt mit der $y$-Achse",
+     "2": "Steigung statt Achsenabschnitt"
+    },
+    "bruch": 1,
+    "bild": "r8-mix-1311-10z.svg"
+   },
+   "bild": "r8-mix-1311-10.svg"
   }
  ],
  "quellen": [
   {
    "quelle": "eigene Fragen",
    "nr": [
-    "4",
-    "4z",
+    "3",
+    "3z",
     "5",
     "5z",
     "8",
-    "8z"
+    "8z",
+    "10",
+    "10z"
    ]
   },
   {
-   "quelle": "LISUM Materialien zur Diagnose und Förderung im Mathematikunterricht",
+   "quelle": "Key Stage 2 Mathematics, Paper 1: arithmetic (Standards and Testing Agency, England)",
+   "nr": [
+    "4"
+   ],
+   "lizenz": "OGL v3.0",
+   "bearbeitung": "übersetzt und bearbeitet",
+   "url": [
+    "https://dera.ioe.ac.uk"
+   ],
+   "lizenz_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+   "hinweis": "Contains public sector information licensed under the Open Government Licence v3.0."
+  },
+  {
+   "quelle": "MathALÉA (Coopmaths), Course aux nombres (Jahrgänge 2018–2023)",
    "nr": [
     "2",
     "2z",
-    "3z"
-   ],
-   "lizenz": "CC BY-SA 4.0",
-   "bearbeitung": "übersetzt und bearbeitet",
-   "url": [
-    "https://bildungsserver.berlin-brandenburg.de"
-   ],
-   "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
-   "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
-  },
-  {
-   "quelle": "MathALÉA (Coopmaths), Course aux nombres",
-   "nr": [
-    "1",
-    "1z",
-    "9",
-    "9z"
+    "4z"
    ],
    "lizenz": "CC BY-SA 4.0",
    "bearbeitung": "übersetzt und bearbeitet",
@@ -311,24 +339,25 @@
    "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
   },
   {
-   "quelle": "MathsMentales",
+   "quelle": "MathALÉA (Coopmaths), Course aux nombres (Jahrgänge)",
    "nr": [
-    "3",
-    "6"
+    "1"
    ],
-   "lizenz": "Apache-2.0",
+   "lizenz": "CC BY-SA 4.0",
    "bearbeitung": "übersetzt und bearbeitet",
    "url": [
-    "https://forge.apps.education.fr"
+    "https://coopmaths.fr"
    ],
-   "lizenz_url": "https://www.apache.org/licenses/LICENSE-2.0",
-   "hinweis": "Lizenziert unter der Apache License 2.0; die Vorlagen wurden übersetzt und verändert."
+   "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+   "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
   },
   {
    "quelle": "Oak National Academy",
    "nr": [
+    "6",
     "7",
-    "10"
+    "7z",
+    "9"
    ],
    "lizenz": "OGL v3.0",
    "bearbeitung": "übersetzt und bearbeitet",
@@ -337,6 +366,1024 @@
    ],
    "lizenz_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
    "hinweis": "Contains public sector information licensed under the Open Government Licence v3.0."
+  },
+  {
+   "quelle": "Serlo",
+   "nr": [
+    "1z"
+   ],
+   "lizenz": "CC BY-SA 4.0",
+   "bearbeitung": "übersetzt und bearbeitet",
+   "url": [
+    "https://de.serlo.org"
+   ],
+   "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+   "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+  }
+ ],
+ "fassungen": [
+  {
+   "fragen": [
+    {
+     "nr": 1,
+     "id": "k-quelle-mathalea-can-288",
+     "frage": "Wie viel sind $50\\,\\%$ von $40$?",
+     "thema": "Prozentwert mit einfachem Bruch",
+     "einheit": "prozentrechnung/3",
+     "schwere": 1,
+     "art": "zahl",
+     "wert": "20",
+     "loesung": "$20$",
+     "zw": {
+      "id": "k-quelle-serlo-087",
+      "frage": "Wie viel sind $75\\,\\%$ von $20$?",
+      "thema": "Prozentwert mit einfachem Bruch",
+      "einheit": "prozentrechnung/3",
+      "schwere": 1,
+      "art": "zahl",
+      "wert": "15",
+      "loesung": "$15$",
+      "fehler": {
+       "5": "25 % gerechnet"
+      }
+     }
+    },
+    {
+     "nr": 2,
+     "id": "k-quelle-mathalea-can-alt-305",
+     "frage": "Rechne $0{,}5\\cdot 130$.",
+     "thema": "mal 0,5 heißt halbieren",
+     "einheit": "bruchrechnung/4",
+     "schwere": 1,
+     "art": "zahl",
+     "wert": "65",
+     "loesung": "$65$",
+     "zw": {
+      "id": "k-quelle-mathalea-can-alt-044",
+      "frage": "Rechne $46\\cdot 0{,}5$.",
+      "thema": "mal 0,5 heißt halbieren",
+      "einheit": "bruchrechnung/4",
+      "schwere": 1,
+      "art": "zahl",
+      "wert": "23",
+      "loesung": "$23$",
+      "fehler": {
+       "92": "verdoppelt"
+      }
+     }
+    },
+    {
+     "nr": 3,
+     "id": "k-stochastik-035",
+     "frage": "Eine Münze zeigte fünfmal hintereinander Wappen. Tom: „Jetzt kommt bestimmt Zahl, das muss sich ausgleichen.“ Stimmt das?",
+     "thema": "Zufall hat kein Gedächtnis",
+     "einheit": "wahrscheinlichkeit/2",
+     "schwere": 2,
+     "art": "stimmt",
+     "knoepfe": [
+      "stimmt",
+      "stimmt nicht"
+     ],
+     "richtig": "stimmt nicht",
+     "loesung": "stimmt nicht: die Münze hat kein Gedächtnis; $P(\\text{Zahl})$ bleibt $\\frac12$.",
+     "fehler": "Ausgleich",
+     "zw": {
+      "id": "k-stochastik-037",
+      "frage": "Die Wahrscheinlichkeit für eine $6$ ist $\\frac16$. Ben: „Also kommt bei sechs Würfen genau eine Sechs.“ Stimmt das?",
+      "thema": "Zufall hat kein Gedächtnis",
+      "einheit": "wahrscheinlichkeit/2",
+      "schwere": 1,
+      "art": "stimmt",
+      "knoepfe": [
+       "stimmt",
+       "stimmt nicht"
+      ],
+      "richtig": "stimmt nicht",
+      "loesung": "stimmt nicht: es können auch keine oder mehrere Sechsen sein; nur auf lange Sicht ist etwa jeder sechste Wurf eine $6$.",
+      "fehler": "„genau eine Sechs bei sechs Würfen“"
+     }
+    },
+    {
+     "nr": 4,
+     "id": "k-quelle-ks-mental-117",
+     "frage": "Rechne im Kopf: $\\tfrac{3}{4}$ von $1000$.",
+     "thema": "Bruchteil einer Zahl",
+     "einheit": "bruchrechnung/3",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "750",
+     "loesung": "$750$",
+     "zw": {
+      "id": "k-quelle-mathalea-can-alt-042",
+      "frage": "Wie viel sind drei Viertel von $48$?",
+      "thema": "Bruchteil einer Zahl",
+      "einheit": "bruchrechnung/3",
+      "schwere": 1,
+      "art": "zahl",
+      "wert": "36",
+      "loesung": "$36$",
+      "fehler": {
+       "12": "nur ein Viertel"
+      }
+     }
+    },
+    {
+     "nr": 5,
+     "id": "k-eigen-t07-t09-273",
+     "frage": "Ein Prisma mit dem Volumen $90\\,\\mathrm{cm}^3$ ist $6$ cm hoch. Wie groß ist seine Grundfläche?",
+     "thema": "Höhe aus V und G",
+     "einheit": "koerper/3",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "15",
+     "loesung": "$15\\,\\mathrm{cm}^2$",
+     "masse": "cm²",
+     "fehler": {
+      "540": "multipliziert",
+      "7,5": "zusätzlich halbiert"
+     },
+     "zw": {
+      "id": "k-eigen-t07-t09-272",
+      "frage": "Ein Prisma hat das Volumen $72\\,\\mathrm{cm}^3$ und die Grundfläche $9\\,\\mathrm{cm}^2$. Wie hoch ist es?",
+      "thema": "Höhe aus V und G",
+      "einheit": "koerper/3",
+      "schwere": 2,
+      "art": "zahl",
+      "wert": "8",
+      "loesung": "$8$ cm",
+      "masse": "cm",
+      "fehler": {
+       "648": "multipliziert",
+       "63": "subtrahiert"
+      }
+     }
+    },
+    {
+     "nr": 6,
+     "id": "k-quelle-oak-01462",
+     "frage": "Ergänze: Wird eine Figur gespiegelt, bleiben ihre Winkel $\\square$.",
+     "thema": "Spiegeln erhält Winkel",
+     "einheit": "symmetrie-abbildungen/2",
+     "schwere": 1,
+     "art": "auswahl",
+     "optionen": [
+      {
+       "t": "spiegelverkehrt"
+      },
+      {
+       "t": "gleich groß",
+       "r": 1
+      },
+      {
+       "t": "kleiner"
+      }
+     ],
+     "loesung": "gleich groß",
+     "aus_wert": 1
+    },
+    {
+     "nr": 7,
+     "id": "k-quelle-oak-06576",
+     "frage": "Welchen Wert hat $\\frac{x}{x + 1}$ für $x = 4$? Gib ihn als Dezimalzahl an.",
+     "thema": "Termwert Bruchterm",
+     "einheit": "terme/5",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "0,8",
+     "loesung": "$0{,}8$",
+     "streng": 1,
+     "zw": {
+      "id": "k-quelle-oak-04355",
+      "frage": "Welchen Wert hat $\\frac{r + 1}{4}$ für $r = 7$?",
+      "thema": "Termwert Bruchterm",
+      "einheit": "terme/5",
+      "schwere": 2,
+      "art": "zahl",
+      "wert": "2",
+      "loesung": "$2$"
+     }
+    },
+    {
+     "nr": 8,
+     "id": "k-bild-skizzen-026",
+     "frage": "Gib die Gleichung der Geraden $h$ im Bild an.",
+     "thema": "Geradengleichung am Graphen ablesen",
+     "einheit": "lineare-funktionen/4",
+     "schwere": 2,
+     "art": "auswahl",
+     "optionen": [
+      {
+       "t": "$y=-x+\\tfrac{1}{2}$",
+       "f": "$m$ und $n$ vertauscht"
+      },
+      {
+       "t": "$y=\\tfrac{1}{2}x-1$",
+       "r": 1
+      },
+      {
+       "t": "$y=2x-1$",
+       "f": "Kehrwert der Steigung"
+      }
+     ],
+     "loesung": "$y=\\tfrac{1}{2}x-1$",
+     "aus_wert": 1,
+     "zw": {
+      "id": "k-bild-skizzen-022",
+      "frage": "Gib die Gleichung der Geraden $h$ im Bild an.",
+      "thema": "Geradengleichung am Graphen ablesen",
+      "einheit": "lineare-funktionen/4",
+      "schwere": 2,
+      "art": "auswahl",
+      "optionen": [
+       {
+        "t": "$y=-x+2$",
+        "r": 1
+       },
+       {
+        "t": "$y=x+2$",
+        "f": "Vorzeichen der Steigung"
+       },
+       {
+        "t": "$y=2x-1$",
+        "f": "$m$ und $n$ vertauscht"
+       }
+      ],
+      "loesung": "$y=-x+2$",
+      "aus_wert": 1,
+      "bild": "r8-mix-1311-8z.svg"
+     },
+     "bild": "r8-mix-1311-8.svg"
+    },
+    {
+     "nr": 9,
+     "id": "k-quelle-oak-06852",
+     "frage": "Welche dieser Dezimalzahlen ist die kleinste?",
+     "thema": "Dezimalzahlen stellenweise vergleichen",
+     "einheit": "brueche-dezimalzahlen/5",
+     "schwere": 2,
+     "art": "auswahl",
+     "optionen": [
+      {
+       "t": "2,004",
+       "r": 1
+      },
+      {
+       "t": "2,04",
+       "f": "Hundertstel 4 ist größer als Hundertstel 0"
+      },
+      {
+       "t": "2,041",
+       "f": "länger heißt nicht kleiner oder größer"
+      },
+      {
+       "t": "2,4",
+       "f": "kürzeste Zahl für die kleinste gehalten"
+      }
+     ],
+     "loesung": "2,004"
+    },
+    {
+     "nr": 10,
+     "id": "k-bild-skizzen-007",
+     "frage": "Lies am Bild den $y$-Achsenabschnitt $n$ der Geraden ab.",
+     "thema": "y-Achsenabschnitt n am Graphen ablesen",
+     "einheit": "lineare-funktionen/2",
+     "schwere": 1,
+     "art": "zahl",
+     "wert": "−2",
+     "loesung": "$n=-2$ – dort schneidet die Gerade die $y$-Achse",
+     "fehler": {
+      "3": "Nullstelle statt Schnitt mit der $y$-Achse",
+      "2/3": "Steigung statt Achsenabschnitt"
+     },
+     "bruch": 1,
+     "zw": {
+      "id": "k-bild-skizzen-002",
+      "frage": "Lies am Bild den $y$-Achsenabschnitt $n$ der Geraden ab.",
+      "thema": "y-Achsenabschnitt n am Graphen ablesen",
+      "einheit": "lineare-funktionen/2",
+      "schwere": 1,
+      "art": "zahl",
+      "wert": "−1",
+      "loesung": "$n=-1$ – dort schneidet die Gerade die $y$-Achse",
+      "fehler": {
+       "1/2": "Nullstelle statt Schnitt mit der $y$-Achse",
+       "2": "Steigung statt Achsenabschnitt"
+      },
+      "bruch": 1,
+      "bild": "r8-mix-1311-10z.svg"
+     },
+     "bild": "r8-mix-1311-10.svg"
+    }
+   ],
+   "quellen": [
+    {
+     "quelle": "eigene Fragen",
+     "nr": [
+      "3",
+      "3z",
+      "5",
+      "5z",
+      "8",
+      "8z",
+      "10",
+      "10z"
+     ]
+    },
+    {
+     "quelle": "Key Stage 2 Mathematics, Paper 1: arithmetic (Standards and Testing Agency, England)",
+     "nr": [
+      "4"
+     ],
+     "lizenz": "OGL v3.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://dera.ioe.ac.uk"
+     ],
+     "lizenz_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+     "hinweis": "Contains public sector information licensed under the Open Government Licence v3.0."
+    },
+    {
+     "quelle": "MathALÉA (Coopmaths), Course aux nombres (Jahrgänge 2018–2023)",
+     "nr": [
+      "2",
+      "2z",
+      "4z"
+     ],
+     "lizenz": "CC BY-SA 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://coopmaths.fr"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+     "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+    },
+    {
+     "quelle": "MathALÉA (Coopmaths), Course aux nombres (Jahrgänge)",
+     "nr": [
+      "1"
+     ],
+     "lizenz": "CC BY-SA 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://coopmaths.fr"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+     "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+    },
+    {
+     "quelle": "Oak National Academy",
+     "nr": [
+      "6",
+      "7",
+      "7z",
+      "9"
+     ],
+     "lizenz": "OGL v3.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://www.thenational.academy"
+     ],
+     "lizenz_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+     "hinweis": "Contains public sector information licensed under the Open Government Licence v3.0."
+    },
+    {
+     "quelle": "Serlo",
+     "nr": [
+      "1z"
+     ],
+     "lizenz": "CC BY-SA 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://de.serlo.org"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+     "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+    }
+   ]
+  },
+  {
+   "fragen": [
+    {
+     "nr": 1,
+     "id": "k-stochastik-068",
+     "frage": "$20\\,\\%$ von $40$ Befragten essen kein Fleisch. Wie viele sind das?",
+     "thema": "Anzahl aus Anteil und Gesamtzahl",
+     "einheit": "prozentrechnung/3",
+     "schwere": 1,
+     "art": "zahl",
+     "wert": "8",
+     "loesung": "$8$",
+     "fehler": {
+      "20": "Prozentzahl als Anzahl"
+     }
+    },
+    {
+     "nr": 2,
+     "id": "k-quelle-mathsmentales-bild-141",
+     "frage": "Welche Wahrscheinlichkeit gehört an den leeren Ast?",
+     "thema": "Äste summieren sich zu 1",
+     "einheit": "wahrscheinlichkeit/3",
+     "schwere": 1,
+     "art": "zahl",
+     "wert": "0,7",
+     "loesung": "$1-0{,}3=0{,}7$",
+     "zw": {
+      "id": "k-stochastik-042",
+      "frage": "Welche Wahrscheinlichkeit gehört an den Ast „grün“?",
+      "thema": "Äste summieren sich zu 1",
+      "einheit": "wahrscheinlichkeit/3",
+      "schwere": 1,
+      "art": "zahl",
+      "wert": "0,2",
+      "loesung": "$1-0{,}3-0{,}5=0{,}2$",
+      "fehler": {
+       "0,8": "nur einen Ast abgezogen",
+       "0,15": "multipliziert"
+      },
+      "bild": "r8-mix-1311-2x2z.svg"
+     },
+     "bild": "r8-mix-1311-2x2.svg"
+    },
+    {
+     "nr": 3,
+     "id": "k-quelle-oak-00971",
+     "frage": "Wie viel Liter sind 5 Zentiliter (5 cl)?",
+     "thema": "Zentiliter in Liter",
+     "einheit": "einheiten/3",
+     "schwere": 2,
+     "art": "auswahl",
+     "optionen": [
+      {
+       "t": "0,005 Liter"
+      },
+      {
+       "t": "0,05 Liter",
+       "r": 1
+      },
+      {
+       "t": "0,5 Liter"
+      }
+     ],
+     "loesung": "0,05 Liter"
+    },
+    {
+     "nr": 4,
+     "id": "k-quelle-lisum-rest-192",
+     "frage": "Ein Sack Kartoffeln wiegt $50\\,\\mathrm{kg}$. Wie viel wiegen $3$ Säcke?",
+     "thema": "Portion vervielfachen",
+     "einheit": "zuordnungen/2",
+     "schwere": 1,
+     "art": "zahl",
+     "wert": "150",
+     "loesung": "$150\\,\\mathrm{kg}$",
+     "masse": "kg"
+    },
+    {
+     "nr": 5,
+     "id": "k-bild-skizzen-004",
+     "frage": "Welche Gleichung gehört zur Geraden im Bild?",
+     "thema": "Geradengleichung zum Graphen zuordnen",
+     "einheit": "lineare-funktionen/4",
+     "schwere": 2,
+     "art": "auswahl",
+     "optionen": [
+      {
+       "t": "$y=-2x+3$",
+       "f": "Steigungsdreieck verkehrt: Kehrwert"
+      },
+      {
+       "t": "$y=\\tfrac{1}{2}x+3$",
+       "f": "Vorzeichen der Steigung (steigt/fällt)"
+      },
+      {
+       "t": "$y=3x-\\tfrac{1}{2}$",
+       "f": "$m$ und $n$ vertauscht"
+      },
+      {
+       "t": "$y=-\\tfrac{1}{2}x+3$",
+       "r": 1
+      }
+     ],
+     "loesung": "$y=-\\tfrac{1}{2}x+3$",
+     "zw": {
+      "id": "k-bild-skizzen-014",
+      "frage": "Welche Gleichung gehört zur Geraden im Bild?",
+      "thema": "Geradengleichung zum Graphen zuordnen",
+      "einheit": "lineare-funktionen/4",
+      "schwere": 2,
+      "art": "auswahl",
+      "optionen": [
+       {
+        "t": "$y=x+2$",
+        "f": "beide Vorzeichen verkehrt (Gerade an der $x$-Achse gespiegelt gelesen)"
+       },
+       {
+        "t": "$y=-x-2$",
+        "r": 1
+       },
+       {
+        "t": "$y=-x+2$",
+        "f": "Vorzeichen von $n$"
+       },
+       {
+        "t": "$y=x-2$",
+        "f": "Vorzeichen der Steigung (steigt/fällt)"
+       }
+      ],
+      "loesung": "$y=-x-2$",
+      "bild": "r8-mix-1311-2x5z.svg"
+     },
+     "bild": "r8-mix-1311-2x5.svg"
+    },
+    {
+     "nr": 6,
+     "id": "k-eigen-t10-t12-251",
+     "frage": "Es ist $f(x)=-1{,}5x$. Berechne $f(-4)$.",
+     "thema": "Funktionswert einer proportionalen Funktion",
+     "einheit": "lineare-funktionen/1",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "6",
+     "loesung": "$6$",
+     "fehler": {
+      "−6": "Minus mal Minus übersehen"
+     },
+     "zw": {
+      "id": "k-quelle-mathalea-229",
+      "frage": "Es ist $f(x)=-3x$. Berechne $f(4)$.",
+      "thema": "Funktionswert einer proportionalen Funktion",
+      "einheit": "lineare-funktionen/1",
+      "schwere": 1,
+      "art": "zahl",
+      "wert": "−12",
+      "loesung": "$-12$"
+     }
+    },
+    {
+     "nr": 7,
+     "id": "k-quelle-ks-mental-065",
+     "frage": "Rechne im Kopf: $72 : 3$.",
+     "thema": "Zweistellig durch einstellig im Kopf",
+     "einheit": "",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "24",
+     "loesung": "$24$",
+     "zw": {
+      "id": "k-quelle-ks-mental-072",
+      "frage": "Rechne im Kopf: $640 : 8$.",
+      "thema": "Zweistellig durch einstellig im Kopf",
+      "einheit": "",
+      "schwere": 1,
+      "art": "zahl",
+      "wert": "80",
+      "loesung": "$80$"
+     }
+    },
+    {
+     "nr": 8,
+     "id": "k-quelle-lisum-428",
+     "frage": "Herr Kaya gewinnt $2000$ €. Jedes seiner beiden Kinder bekommt $\\frac{1}{8}$ davon, die Hälfte gibt er für einen Urlaub aus. Welcher Anteil des Gewinns ist damit ausgegeben?",
+     "thema": "Anteile addieren",
+     "einheit": "bruchrechnung/1",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "3/4",
+     "loesung": "$\\frac18+\\frac18+\\frac12=\\frac34$ (das sind $1500$ €).",
+     "bruch": 1,
+     "zw": {
+      "id": "k-quelle-lisum-347",
+      "frage": "Von $2000$ € bekommt jedes von zwei Kindern $\\frac{1}{8}$, die Hälfte geht in den Urlaub. Welcher Anteil ist damit verbraucht?",
+      "thema": "Anteile addieren",
+      "einheit": "bruchrechnung/1",
+      "schwere": 2,
+      "art": "zahl",
+      "wert": "3/4",
+      "loesung": "$\\frac{1}{8} + \\frac{1}{8} + \\frac{1}{2} = \\frac{3}{4}$ (also $1500$ €).",
+      "bruch": 1
+     }
+    },
+    {
+     "nr": 9,
+     "id": "k-quelle-oak-08240",
+     "frage": "Welche Steigung hat die Gerade $2y = 6x + 5$?",
+     "thema": "Steigung nach Umstellen ablesen",
+     "einheit": "lineare-funktionen/2",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "3",
+     "loesung": "3"
+    },
+    {
+     "nr": 10,
+     "id": "k-quelle-mathsmentales-bild-096",
+     "frage": "Eine Linie hat einen Anfangspunkt, aber kein Ende. Wie heißt sie?",
+     "thema": "Gerade, Strecke, Strahl unterscheiden",
+     "einheit": "winkel-dreiecke/1",
+     "schwere": 1,
+     "art": "auswahl",
+     "optionen": [
+      {
+       "t": "Strecke"
+      },
+      {
+       "t": "Gerade"
+      },
+      {
+       "t": "Strahl",
+       "r": 1
+      }
+     ],
+     "loesung": "Strahl (Halbgerade)",
+     "aus_wert": 1
+    }
+   ],
+   "quellen": [
+    {
+     "quelle": "eigene Fragen",
+     "nr": [
+      "1",
+      "2z",
+      "5",
+      "5z",
+      "6"
+     ]
+    },
+    {
+     "quelle": "Key Stage 2 Mathematics, Paper 1: arithmetic (Standards and Testing Agency, England)",
+     "nr": [
+      "7",
+      "7z"
+     ],
+     "lizenz": "OGL v3.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://assets.publishing.service.gov.uk"
+     ],
+     "lizenz_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+     "hinweis": "Contains public sector information licensed under the Open Government Licence v3.0."
+    },
+    {
+     "quelle": "LISUM Materialien zur Diagnose und Förderung im Mathematikunterricht",
+     "nr": [
+      "4",
+      "8",
+      "8z"
+     ],
+     "lizenz": "CC BY-SA 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://bildungsserver.berlin-brandenburg.de"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+     "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+    },
+    {
+     "quelle": "MathALÉA (Coopmaths), Course aux nombres",
+     "nr": [
+      "6z"
+     ],
+     "lizenz": "CC BY-SA 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://coopmaths.fr"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+     "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+    },
+    {
+     "quelle": "MathsMentales",
+     "nr": [
+      "2",
+      "10"
+     ],
+     "lizenz": "Apache-2.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://forge.apps.education.fr"
+     ],
+     "lizenz_url": "https://www.apache.org/licenses/LICENSE-2.0",
+     "hinweis": "Lizenziert unter der Apache License 2.0; die Vorlagen wurden übersetzt und verändert."
+    },
+    {
+     "quelle": "Oak National Academy",
+     "nr": [
+      "3",
+      "9"
+     ],
+     "lizenz": "OGL v3.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://www.thenational.academy"
+     ],
+     "lizenz_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+     "hinweis": "Contains public sector information licensed under the Open Government Licence v3.0."
+    }
+   ]
+  },
+  {
+   "fragen": [
+    {
+     "nr": 1,
+     "id": "k-quelle-mathalea-can-302",
+     "frage": "Schreibe $\\frac{21}{4}$ als Dezimalzahl.",
+     "thema": "Bruchstrich ist kein Komma",
+     "einheit": "brueche-dezimalzahlen/4",
+     "schwere": 1,
+     "art": "zahl",
+     "wert": "5,25",
+     "loesung": "$5{,}25$",
+     "streng": 1,
+     "zw": {
+      "id": "k-quelle-openstax-a-178",
+      "frage": "Schreibe $\\frac{11}{4}$ als Dezimalzahl.",
+      "thema": "Bruchstrich ist kein Komma",
+      "einheit": "brueche-dezimalzahlen/4",
+      "schwere": 1,
+      "art": "zahl",
+      "wert": "2,75",
+      "loesung": "$2{,}75$",
+      "streng": 1
+     }
+    },
+    {
+     "nr": 2,
+     "id": "k-quelle-mathsmentales-bild-117",
+     "frage": "Ein rechter Winkel wird in $5$ gleich große Winkel geteilt. Wie groß ist jeder?",
+     "thema": "Winkel gleichmäßig teilen",
+     "einheit": "winkel-dreiecke/2",
+     "schwere": 1,
+     "art": "zahl",
+     "wert": "18",
+     "loesung": "$18^\\circ$",
+     "masse": "°"
+    },
+    {
+     "nr": 3,
+     "id": "k-stochastik-021",
+     "frage": "Bei welcher Frage spielt die Reihenfolge eine Rolle?",
+     "thema": "erkennen, ob die Reihenfolge zählt",
+     "einheit": "wahrscheinlichkeit/1",
+     "schwere": 2,
+     "art": "auswahl",
+     "optionen": [
+      {
+       "t": "$3$ von $10$ Mitspielern für ein Team",
+       "f": "Weil die Spieler nacheinander aufgerufen werden – im Team sind sie aber gleichberechtigt."
+      },
+      {
+       "t": "$2$ von $5$ Eissorten in einen Becher",
+       "f": "Weil die Kugeln nacheinander in den Becher kommen, scheint die Reihenfolge zu zählen – das Ergebnis ist aber derselbe Becher."
+      },
+      {
+       "t": "Sieger und Zweiter bei einem Rennen mit $5$ Läufern",
+       "r": 1
+      },
+      {
+       "t": "$2$ von $6$ Pizzabelägen",
+       "f": "Weil man die Beläge nacheinander nennt – die Pizza ist dieselbe."
+      }
+     ],
+     "loesung": "Sieger und Zweiter bei einem Rennen mit $5$ Läufern"
+    },
+    {
+     "nr": 4,
+     "id": "k-eigen-t01-t03-151",
+     "frage": "Rechne $0{,}2^3$.",
+     "thema": "Quadrat einer Dezimalzahl",
+     "einheit": "potenzen-wurzeln/1",
+     "schwere": 2,
+     "art": "auswahl",
+     "optionen": [
+      {
+       "t": "$0{,}008$",
+       "r": 1
+      },
+      {
+       "t": "$0{,}08$"
+      },
+      {
+       "t": "$0{,}6$"
+      }
+     ],
+     "loesung": "$0{,}008$",
+     "aus_zahl": 1,
+     "zw": {
+      "id": "k-quelle-mathsmentales-360",
+      "frage": "Rechne $0{,}3^2$.",
+      "thema": "Quadrat einer Dezimalzahl",
+      "einheit": "potenzen-wurzeln/1",
+      "schwere": 2,
+      "art": "auswahl",
+      "optionen": [
+       {
+        "t": "$0{,}09$",
+        "r": 1
+       },
+       {
+        "t": "$0{,}6$"
+       },
+       {
+        "t": "$0{,}9$"
+       }
+      ],
+      "loesung": "$0{,}09$",
+      "aus_zahl": 1
+     }
+    },
+    {
+     "nr": 5,
+     "id": "k-quelle-lisum-rest-137",
+     "frage": "Ein Zahlenstrahl geht von $0$ bis $1000$ mit langen Strichen bei den Hundertern. Wie viele lange Striche gibt es (mit $0$ und $1000$)?",
+     "thema": "Einteilung des Zahlenstrahls",
+     "einheit": "",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "11",
+     "loesung": "$11$"
+    },
+    {
+     "nr": 6,
+     "id": "k-bild-dreiecke-005",
+     "frage": "Stimmt das? Im Dreieck $ABC$ gilt $x=\\sqrt{15^2-8^2}$.",
+     "thema": "Fehler: subtrahiert, obwohl die Hypotenuse gesucht ist",
+     "einheit": "pythagoras/1",
+     "schwere": 2,
+     "art": "stimmt",
+     "knoepfe": [
+      "stimmt",
+      "stimmt nicht"
+     ],
+     "richtig": "stimmt nicht",
+     "loesung": "stimmt nicht: $x$ ist die Hypotenuse, also wird addiert: $x=\\sqrt{15^2+8^2}$",
+     "fehler": "Fehler nicht bemerkt: Hypotenuse mit Kathete verwechselt",
+     "bild": "r8-mix-1311-3x6.svg"
+    },
+    {
+     "nr": 7,
+     "id": "k-quelle-serlo-123",
+     "frage": "Welche Zahl gehört in das Kästchen? $\\square:6=7$",
+     "thema": "Platzhalter in Gleichung",
+     "einheit": "lineare-gleichungen/1",
+     "schwere": 1,
+     "art": "zahl",
+     "wert": "42",
+     "loesung": "$42$"
+    },
+    {
+     "nr": 8,
+     "id": "k-bild-skizzen-016",
+     "frage": "Lies am Bild die Steigung $m$ der Geraden ab.",
+     "thema": "Steigung m am Graphen ablesen",
+     "einheit": "lineare-funktionen/2",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "0",
+     "loesung": "$m=0$ – waagerecht, keine Änderung",
+     "fehler": {
+      "3": "y-Achsenabschnitt statt Steigung"
+     },
+     "bild": "r8-mix-1311-3x8.svg"
+    },
+    {
+     "nr": 9,
+     "id": "k-eigen-t13-t17-129",
+     "frage": "Berechne $(x+y):2$ für $x=-9$ und $y=3$.",
+     "thema": "Termwert: negative Zahl mit Klammer einsetzen",
+     "einheit": "rationale-zahlen/4",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "−3",
+     "loesung": "$-3$ ($-6:2$)",
+     "fehler": {
+      "6": "Beträge addiert: 12 : 2",
+      "3": "Vorzeichen verloren"
+     }
+    },
+    {
+     "nr": 10,
+     "id": "k-quelle-mathsmentales-bild-025",
+     "frage": "Im Dreieck $ABC$ ist $\\alpha=35^\\circ$ und $\\beta=55^\\circ$. Ist das Dreieck rechtwinklig?",
+     "thema": "Winkelsumme im Dreieck 180°",
+     "einheit": "winkel-dreiecke/3",
+     "schwere": 1,
+     "art": "stimmt",
+     "knoepfe": [
+      "ja",
+      "nein"
+     ],
+     "richtig": "ja",
+     "loesung": "Ja, $\\gamma=180^\\circ-90^\\circ=90^\\circ$.",
+     "fehler": "kein Winkel ist 90°",
+     "zw": {
+      "id": "k-quelle-brueckenkurs-161",
+      "frage": "Ein Dreieck hat die Winkel $36^\\circ$ und $54^\\circ$. Ist es rechtwinklig?",
+      "thema": "Winkelsumme im Dreieck 180°",
+      "einheit": "winkel-dreiecke/3",
+      "schwere": 1,
+      "art": "stimmt",
+      "knoepfe": [
+       "ja",
+       "nein"
+      ],
+      "richtig": "ja",
+      "loesung": "Ja: $180^\\circ-36^\\circ-54^\\circ=90^\\circ$.",
+      "fehler": "es ist kein $90^\\circ$-Winkel angegeben"
+     }
+    }
+   ],
+   "quellen": [
+    {
+     "quelle": "eigene Fragen",
+     "nr": [
+      "3",
+      "4",
+      "6",
+      "8",
+      "9"
+     ]
+    },
+    {
+     "quelle": "LISUM Materialien zur Diagnose und Förderung im Mathematikunterricht",
+     "nr": [
+      "5"
+     ],
+     "lizenz": "CC BY-SA 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://bildungsserver.berlin-brandenburg.de"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+     "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+    },
+    {
+     "quelle": "MathALÉA (Coopmaths), Course aux nombres (Jahrgänge)",
+     "nr": [
+      "1"
+     ],
+     "lizenz": "CC BY-SA 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://coopmaths.fr"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+     "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+    },
+    {
+     "quelle": "MathsMentales",
+     "nr": [
+      "2",
+      "4z",
+      "10"
+     ],
+     "lizenz": "Apache-2.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://forge.apps.education.fr"
+     ],
+     "lizenz_url": "https://www.apache.org/licenses/LICENSE-2.0",
+     "hinweis": "Lizenziert unter der Apache License 2.0; die Vorlagen wurden übersetzt und verändert."
+    },
+    {
+     "quelle": "OpenStax Prealgebra (1. Auflage, Rice University)",
+     "nr": [
+      "1z"
+     ],
+     "lizenz": "CC BY 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://openstax.org"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by/4.0/deed.de"
+    },
+    {
+     "quelle": "Serlo",
+     "nr": [
+      "7"
+     ],
+     "lizenz": "CC BY-SA 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://de.serlo.org"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+     "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+    },
+    {
+     "quelle": "VE&MINT",
+     "nr": [
+      "10z"
+     ],
+     "lizenz": "CC BY-SA 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://vorkurs-mathematik.innocampus.tu-berlin.de"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+     "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+    }
+   ]
   }
  ]
 }

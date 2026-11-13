@@ -1,0 +1,1333 @@
+{
+ "kennung": "r-pq-1311",
+ "titel": "p-q-Formel",
+ "erzeugt": "2026-11-13",
+ "bis": "2027-01-22",
+ "fragen": [
+  {
+   "nr": 1,
+   "id": "k-quelle-openstax-a-113",
+   "frage": "Löse: $-120=10q$.",
+   "thema": "ax = b",
+   "einheit": "lineare-gleichungen/2",
+   "schwere": 1,
+   "art": "zahl",
+   "wert": "−12",
+   "loesung": "$q = -12$",
+   "zw": {
+    "id": "k-eigen-t01-t03-071",
+    "frage": "Löse $-6x=42$.",
+    "thema": "ax = b",
+    "einheit": "lineare-gleichungen/2",
+    "schwere": 1,
+    "art": "zahl",
+    "wert": "−7",
+    "loesung": "$x=-7$"
+   }
+  },
+  {
+   "nr": 2,
+   "id": "k-eigen-pilot-071",
+   "frage": "Bei welcher Gleichung kannst du sofort $x$ ausklammern?",
+   "thema": "Lösungsweg wählen",
+   "einheit": "quadratische-gleichungen/3",
+   "schwere": 1,
+   "art": "auswahl",
+   "optionen": [
+    {
+     "t": "$x^2+5x=0$",
+     "r": 1
+    },
+    {
+     "t": "$x^2+5x-6=0$",
+     "f": "die −6 enthält kein x"
+    },
+    {
+     "t": "$x^2-25=0$",
+     "f": "die −25 enthält kein x"
+    }
+   ],
+   "loesung": "$x^2+5x=0$"
+  },
+  {
+   "nr": 3,
+   "id": "k-quelle-brueckenkurs-109",
+   "frage": "Löse $x^3=27$.",
+   "thema": "dritte Wurzel",
+   "einheit": "quadratische-gleichungen/1",
+   "schwere": 1,
+   "art": "zahl",
+   "wert": "3",
+   "loesung": "$x=3$ (nur eine Lösung)"
+  },
+  {
+   "nr": 4,
+   "id": "k-eigen-t01-t03-389",
+   "frage": "Für welches $x$ wird der Faktor $(5x+10)$ null?",
+   "thema": "Vorzahl in der Klammer: Lösung durch Teilen",
+   "einheit": "quadratische-gleichungen/3",
+   "schwere": 2,
+   "art": "zahl",
+   "wert": "−2",
+   "loesung": "$x=-2$",
+   "fehler": {
+    "−10": "nicht durch 5 geteilt",
+    "2": "Vorzeichen"
+   }
+  },
+  {
+   "nr": 5,
+   "id": "k-quelle-mathalea-can-alt-022",
+   "frage": "Löse $4x+12=0$.",
+   "thema": "zweischrittige Gleichung",
+   "einheit": "lineare-gleichungen/2",
+   "schwere": 1,
+   "art": "auswahl",
+   "optionen": [
+    {
+     "t": "$-8$"
+    },
+    {
+     "t": "$-3$",
+     "r": 1
+    },
+    {
+     "t": "$3$",
+     "f": "Vorzeichen"
+    }
+   ],
+   "loesung": "$x=-3$",
+   "aus_zahl": 1,
+   "zw": {
+    "id": "k-quelle-openstax-a-250",
+    "frage": "Löse: $-47=6b+1$.",
+    "thema": "Zweischrittige Gleichung",
+    "einheit": "lineare-gleichungen/2",
+    "schwere": 1,
+    "art": "zahl",
+    "wert": "−8",
+    "loesung": "$b = -8$"
+   }
+  },
+  {
+   "nr": 6,
+   "id": "k-eigen-t01-t03-403",
+   "frage": "Ist $x=-3$ eine Lösung von $x\\cdot(x+5)=-6$?",
+   "thema": "Lösung durch Einsetzen prüfen",
+   "einheit": "quadratische-gleichungen/3",
+   "schwere": 2,
+   "art": "stimmt",
+   "knoepfe": [
+    "ja",
+    "nein"
+   ],
+   "richtig": "ja",
+   "loesung": "ja: $(-3)\\cdot 2=-6$",
+   "fehler": "−3 + 5 als −8"
+  },
+  {
+   "nr": 7,
+   "id": "k-quelle-mathalea-can-270",
+   "frage": "Welche positive Lösung hat $(x+1)(x-4)=0$?",
+   "thema": "Satz vom Nullprodukt",
+   "einheit": "quadratische-gleichungen/3",
+   "schwere": 1,
+   "art": "zahl",
+   "wert": "4",
+   "loesung": "$x=4$",
+   "zw": {
+    "id": "k-quelle-openstax-c-160",
+    "frage": "Löse: $(2x-1)^2=0$.",
+    "thema": "Satz vom Nullprodukt",
+    "einheit": "quadratische-gleichungen/3",
+    "schwere": 1,
+    "art": "zahl",
+    "wert": "1/2",
+    "loesung": "$x = \\frac{1}{2}$",
+    "bruch": 1
+   }
+  },
+  {
+   "nr": 8,
+   "id": "k-quelle-mathsmentales-048",
+   "frage": "Wie viele Lösungen hat $x^2=0$?",
+   "thema": "x² = 0",
+   "einheit": "quadratische-gleichungen/1",
+   "schwere": 2,
+   "art": "zahl",
+   "wert": "0",
+   "loesung": "Genau eine: $x=0$."
+  },
+  {
+   "nr": 9,
+   "id": "k-eigen-t01-t03-405",
+   "frage": "Gib eine Gleichung in Produktform an, die genau die Lösungen $-2$ und $6$ hat.",
+   "thema": "Gleichung aus Lösungen",
+   "einheit": "quadratische-gleichungen/3",
+   "schwere": 2,
+   "art": "zahl",
+   "wert": "0",
+   "loesung": "$(x+2)(x-6)=0$",
+   "zw": {
+    "id": "k-eigen-pilot-072",
+    "frage": "Gib eine Gleichung in Produktform an, die genau die Lösungen $4$ und $-1$ hat.",
+    "thema": "Gleichung aus Lösungen",
+    "einheit": "quadratische-gleichungen/3",
+    "schwere": 2,
+    "art": "zahl",
+    "wert": "0",
+    "loesung": "$(x-4)(x+1)=0$"
+   }
+  },
+  {
+   "nr": 10,
+   "id": "k-quelle-openstax-a-041",
+   "frage": "Ist $x=8$ eine Lösung von $x+13=21$?",
+   "thema": "Probe",
+   "einheit": "lineare-gleichungen/1",
+   "schwere": 1,
+   "art": "stimmt",
+   "knoepfe": [
+    "ja",
+    "nein"
+   ],
+   "richtig": "ja",
+   "loesung": "ja",
+   "fehler": "nur eine Seite ausgerechnet",
+   "zw": {
+    "id": "k-quelle-openstax-a-042",
+    "frage": "Ist $m=9$ eine Lösung von $m-4=13$?",
+    "thema": "Probe",
+    "einheit": "lineare-gleichungen/1",
+    "schwere": 1,
+    "art": "stimmt",
+    "knoepfe": [
+     "ja",
+     "nein"
+    ],
+    "richtig": "nein",
+    "loesung": "nein",
+    "fehler": "nur eine Seite ausgerechnet"
+   }
+  }
+ ],
+ "quellen": [
+  {
+   "quelle": "eigene Fragen",
+   "nr": [
+    "1z",
+    "2",
+    "4",
+    "6",
+    "9",
+    "9z"
+   ]
+  },
+  {
+   "quelle": "MathALÉA (Coopmaths), Course aux nombres (Jahrgänge 2018–2023)",
+   "nr": [
+    "5"
+   ],
+   "lizenz": "CC BY-SA 4.0",
+   "bearbeitung": "übersetzt und bearbeitet",
+   "url": [
+    "https://coopmaths.fr"
+   ],
+   "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+   "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+  },
+  {
+   "quelle": "MathALÉA (Coopmaths), Course aux nombres (Jahrgänge)",
+   "nr": [
+    "7"
+   ],
+   "lizenz": "CC BY-SA 4.0",
+   "bearbeitung": "übersetzt und bearbeitet",
+   "url": [
+    "https://coopmaths.fr"
+   ],
+   "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+   "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+  },
+  {
+   "quelle": "MathsMentales",
+   "nr": [
+    "8"
+   ],
+   "lizenz": "Apache-2.0",
+   "bearbeitung": "übersetzt und bearbeitet",
+   "url": [
+    "https://forge.apps.education.fr"
+   ],
+   "lizenz_url": "https://www.apache.org/licenses/LICENSE-2.0",
+   "hinweis": "Lizenziert unter der Apache License 2.0; die Vorlagen wurden übersetzt und verändert."
+  },
+  {
+   "quelle": "OMB+",
+   "nr": [
+    "3"
+   ],
+   "lizenz": "CC BY-SA 4.0",
+   "bearbeitung": "übersetzt und bearbeitet",
+   "url": [
+    "https://www.ombplus.de"
+   ],
+   "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+   "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+  },
+  {
+   "quelle": "OpenStax Intermediate Algebra (1. Auflage, Rice University)",
+   "nr": [
+    "7z"
+   ],
+   "lizenz": "CC BY 4.0",
+   "bearbeitung": "übersetzt und bearbeitet",
+   "url": [
+    "https://openstax.org"
+   ],
+   "lizenz_url": "https://creativecommons.org/licenses/by/4.0/deed.de"
+  },
+  {
+   "quelle": "OpenStax Prealgebra (1. Auflage, Rice University)",
+   "nr": [
+    "1",
+    "5z",
+    "10",
+    "10z"
+   ],
+   "lizenz": "CC BY 4.0",
+   "bearbeitung": "übersetzt und bearbeitet",
+   "url": [
+    "https://openstax.org"
+   ],
+   "lizenz_url": "https://creativecommons.org/licenses/by/4.0/deed.de"
+  }
+ ],
+ "fassungen": [
+  {
+   "fragen": [
+    {
+     "nr": 1,
+     "id": "k-quelle-openstax-a-113",
+     "frage": "Löse: $-120=10q$.",
+     "thema": "ax = b",
+     "einheit": "lineare-gleichungen/2",
+     "schwere": 1,
+     "art": "zahl",
+     "wert": "−12",
+     "loesung": "$q = -12$",
+     "zw": {
+      "id": "k-eigen-t01-t03-071",
+      "frage": "Löse $-6x=42$.",
+      "thema": "ax = b",
+      "einheit": "lineare-gleichungen/2",
+      "schwere": 1,
+      "art": "zahl",
+      "wert": "−7",
+      "loesung": "$x=-7$"
+     }
+    },
+    {
+     "nr": 2,
+     "id": "k-eigen-pilot-071",
+     "frage": "Bei welcher Gleichung kannst du sofort $x$ ausklammern?",
+     "thema": "Lösungsweg wählen",
+     "einheit": "quadratische-gleichungen/3",
+     "schwere": 1,
+     "art": "auswahl",
+     "optionen": [
+      {
+       "t": "$x^2+5x=0$",
+       "r": 1
+      },
+      {
+       "t": "$x^2+5x-6=0$",
+       "f": "die −6 enthält kein x"
+      },
+      {
+       "t": "$x^2-25=0$",
+       "f": "die −25 enthält kein x"
+      }
+     ],
+     "loesung": "$x^2+5x=0$"
+    },
+    {
+     "nr": 3,
+     "id": "k-quelle-brueckenkurs-109",
+     "frage": "Löse $x^3=27$.",
+     "thema": "dritte Wurzel",
+     "einheit": "quadratische-gleichungen/1",
+     "schwere": 1,
+     "art": "zahl",
+     "wert": "3",
+     "loesung": "$x=3$ (nur eine Lösung)"
+    },
+    {
+     "nr": 4,
+     "id": "k-eigen-t01-t03-389",
+     "frage": "Für welches $x$ wird der Faktor $(5x+10)$ null?",
+     "thema": "Vorzahl in der Klammer: Lösung durch Teilen",
+     "einheit": "quadratische-gleichungen/3",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "−2",
+     "loesung": "$x=-2$",
+     "fehler": {
+      "−10": "nicht durch 5 geteilt",
+      "2": "Vorzeichen"
+     }
+    },
+    {
+     "nr": 5,
+     "id": "k-quelle-mathalea-can-alt-022",
+     "frage": "Löse $4x+12=0$.",
+     "thema": "zweischrittige Gleichung",
+     "einheit": "lineare-gleichungen/2",
+     "schwere": 1,
+     "art": "auswahl",
+     "optionen": [
+      {
+       "t": "$-8$"
+      },
+      {
+       "t": "$-3$",
+       "r": 1
+      },
+      {
+       "t": "$3$",
+       "f": "Vorzeichen"
+      }
+     ],
+     "loesung": "$x=-3$",
+     "aus_zahl": 1,
+     "zw": {
+      "id": "k-quelle-openstax-a-250",
+      "frage": "Löse: $-47=6b+1$.",
+      "thema": "Zweischrittige Gleichung",
+      "einheit": "lineare-gleichungen/2",
+      "schwere": 1,
+      "art": "zahl",
+      "wert": "−8",
+      "loesung": "$b = -8$"
+     }
+    },
+    {
+     "nr": 6,
+     "id": "k-eigen-t01-t03-403",
+     "frage": "Ist $x=-3$ eine Lösung von $x\\cdot(x+5)=-6$?",
+     "thema": "Lösung durch Einsetzen prüfen",
+     "einheit": "quadratische-gleichungen/3",
+     "schwere": 2,
+     "art": "stimmt",
+     "knoepfe": [
+      "ja",
+      "nein"
+     ],
+     "richtig": "ja",
+     "loesung": "ja: $(-3)\\cdot 2=-6$",
+     "fehler": "−3 + 5 als −8"
+    },
+    {
+     "nr": 7,
+     "id": "k-quelle-mathalea-can-270",
+     "frage": "Welche positive Lösung hat $(x+1)(x-4)=0$?",
+     "thema": "Satz vom Nullprodukt",
+     "einheit": "quadratische-gleichungen/3",
+     "schwere": 1,
+     "art": "zahl",
+     "wert": "4",
+     "loesung": "$x=4$",
+     "zw": {
+      "id": "k-quelle-openstax-c-160",
+      "frage": "Löse: $(2x-1)^2=0$.",
+      "thema": "Satz vom Nullprodukt",
+      "einheit": "quadratische-gleichungen/3",
+      "schwere": 1,
+      "art": "zahl",
+      "wert": "1/2",
+      "loesung": "$x = \\frac{1}{2}$",
+      "bruch": 1
+     }
+    },
+    {
+     "nr": 8,
+     "id": "k-quelle-mathsmentales-048",
+     "frage": "Wie viele Lösungen hat $x^2=0$?",
+     "thema": "x² = 0",
+     "einheit": "quadratische-gleichungen/1",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "0",
+     "loesung": "Genau eine: $x=0$."
+    },
+    {
+     "nr": 9,
+     "id": "k-eigen-t01-t03-405",
+     "frage": "Gib eine Gleichung in Produktform an, die genau die Lösungen $-2$ und $6$ hat.",
+     "thema": "Gleichung aus Lösungen",
+     "einheit": "quadratische-gleichungen/3",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "0",
+     "loesung": "$(x+2)(x-6)=0$",
+     "zw": {
+      "id": "k-eigen-pilot-072",
+      "frage": "Gib eine Gleichung in Produktform an, die genau die Lösungen $4$ und $-1$ hat.",
+      "thema": "Gleichung aus Lösungen",
+      "einheit": "quadratische-gleichungen/3",
+      "schwere": 2,
+      "art": "zahl",
+      "wert": "0",
+      "loesung": "$(x-4)(x+1)=0$"
+     }
+    },
+    {
+     "nr": 10,
+     "id": "k-quelle-openstax-a-041",
+     "frage": "Ist $x=8$ eine Lösung von $x+13=21$?",
+     "thema": "Probe",
+     "einheit": "lineare-gleichungen/1",
+     "schwere": 1,
+     "art": "stimmt",
+     "knoepfe": [
+      "ja",
+      "nein"
+     ],
+     "richtig": "ja",
+     "loesung": "ja",
+     "fehler": "nur eine Seite ausgerechnet",
+     "zw": {
+      "id": "k-quelle-openstax-a-042",
+      "frage": "Ist $m=9$ eine Lösung von $m-4=13$?",
+      "thema": "Probe",
+      "einheit": "lineare-gleichungen/1",
+      "schwere": 1,
+      "art": "stimmt",
+      "knoepfe": [
+       "ja",
+       "nein"
+      ],
+      "richtig": "nein",
+      "loesung": "nein",
+      "fehler": "nur eine Seite ausgerechnet"
+     }
+    }
+   ],
+   "quellen": [
+    {
+     "quelle": "eigene Fragen",
+     "nr": [
+      "1z",
+      "2",
+      "4",
+      "6",
+      "9",
+      "9z"
+     ]
+    },
+    {
+     "quelle": "MathALÉA (Coopmaths), Course aux nombres (Jahrgänge 2018–2023)",
+     "nr": [
+      "5"
+     ],
+     "lizenz": "CC BY-SA 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://coopmaths.fr"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+     "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+    },
+    {
+     "quelle": "MathALÉA (Coopmaths), Course aux nombres (Jahrgänge)",
+     "nr": [
+      "7"
+     ],
+     "lizenz": "CC BY-SA 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://coopmaths.fr"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+     "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+    },
+    {
+     "quelle": "MathsMentales",
+     "nr": [
+      "8"
+     ],
+     "lizenz": "Apache-2.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://forge.apps.education.fr"
+     ],
+     "lizenz_url": "https://www.apache.org/licenses/LICENSE-2.0",
+     "hinweis": "Lizenziert unter der Apache License 2.0; die Vorlagen wurden übersetzt und verändert."
+    },
+    {
+     "quelle": "OMB+",
+     "nr": [
+      "3"
+     ],
+     "lizenz": "CC BY-SA 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://www.ombplus.de"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+     "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+    },
+    {
+     "quelle": "OpenStax Intermediate Algebra (1. Auflage, Rice University)",
+     "nr": [
+      "7z"
+     ],
+     "lizenz": "CC BY 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://openstax.org"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by/4.0/deed.de"
+    },
+    {
+     "quelle": "OpenStax Prealgebra (1. Auflage, Rice University)",
+     "nr": [
+      "1",
+      "5z",
+      "10",
+      "10z"
+     ],
+     "lizenz": "CC BY 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://openstax.org"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by/4.0/deed.de"
+    }
+   ]
+  },
+  {
+   "fragen": [
+    {
+     "nr": 1,
+     "id": "k-quelle-oak-03126",
+     "frage": "Löse die Gleichung $x + 16 = 11$.",
+     "thema": "Gleichung x + a = b",
+     "einheit": "lineare-gleichungen/2",
+     "schwere": 1,
+     "art": "zahl",
+     "wert": "−5",
+     "loesung": "$x = -5$"
+    },
+    {
+     "nr": 2,
+     "id": "k-quelle-oak-01600",
+     "frage": "Welcher Term ist eine Differenz zweier Quadrate?",
+     "thema": "Differenz zweier Quadrate erkennen",
+     "einheit": "binomische-formeln/2",
+     "schwere": 1,
+     "art": "auswahl",
+     "optionen": [
+      {
+       "t": "$16+x^2$",
+       "f": "Summe statt Differenz"
+      },
+      {
+       "t": "$x^2-2x+1$",
+       "f": "drei Glieder: zweite binomische Formel"
+      },
+      {
+       "t": "$x^2-9$",
+       "r": 1
+      },
+      {
+       "t": "$x^2+4$",
+       "f": "Summe statt Differenz"
+      }
+     ],
+     "loesung": "$x^2-9$"
+    },
+    {
+     "nr": 3,
+     "id": "k-eigen-pilot-076",
+     "frage": "Ole schreibt $x^2-7x+10=(x-2)(x-5)$. Stimmt das?",
+     "thema": "Faktorisierung durch Ausmultiplizieren prüfen",
+     "einheit": "quadratische-gleichungen/3",
+     "schwere": 2,
+     "art": "stimmt",
+     "knoepfe": [
+      "stimmt",
+      "stimmt nicht"
+     ],
+     "richtig": "stimmt",
+     "loesung": "stimmt – ausmultipliziert $x^2-5x-2x+10$.",
+     "fehler": "Vorzeichen müssten + sein",
+     "zw": {
+      "id": "k-eigen-t01-t03-344",
+      "frage": "Ist $(x-4)^2$ die richtige Zerlegung von $x^2-16$? Prüfe durch Ausmultiplizieren.",
+      "thema": "Faktorisierung durch Ausmultiplizieren prüfen",
+      "einheit": "binomische-formeln/3",
+      "schwere": 2,
+      "art": "stimmt",
+      "knoepfe": [
+       "ja",
+       "nein"
+      ],
+      "richtig": "nein",
+      "loesung": "nein – $(x-4)^2=x^2-8x+16$; richtig ist $(x+4)(x-4)$.",
+      "fehler": "zweite und dritte Formel verwechselt"
+     }
+    },
+    {
+     "nr": 4,
+     "id": "k-quelle-oak-04170",
+     "frage": "Löse $\\frac{x}{3} = 15$.",
+     "thema": "Gleichung mit x durch Zahl",
+     "einheit": "lineare-gleichungen/2",
+     "schwere": 1,
+     "art": "auswahl",
+     "optionen": [
+      {
+       "t": "$x = \\frac{1}{5}$",
+       "f": "Kehrwert"
+      },
+      {
+       "t": "$x = 5$",
+       "f": "dividiert statt multipliziert"
+      },
+      {
+       "t": "$x = 18$",
+       "f": "3 addiert"
+      },
+      {
+       "t": "$x = 45$",
+       "r": 1
+      }
+     ],
+     "loesung": "$x = 45$"
+    },
+    {
+     "nr": 5,
+     "id": "k-eigen-pilot-048",
+     "frage": "Tim löst $(x+3)(x-9)=0$ und schreibt: $x=3$ oder $x=-9$. Stimmt das?",
+     "thema": "Vorzeichen beim Nullsetzen",
+     "einheit": "quadratische-gleichungen/3",
+     "schwere": 2,
+     "art": "stimmt",
+     "knoepfe": [
+      "stimmt",
+      "stimmt nicht"
+     ],
+     "richtig": "stimmt nicht",
+     "loesung": "stimmt nicht – $x+3=0$ gibt $x=-3$, $x-9=0$ gibt $x=9$.",
+     "fehler": "Zahl aus der Klammer mit ihrem Vorzeichen abgeschrieben",
+     "zw": {
+      "id": "k-eigen-pilot-049",
+      "frage": "Stimmt das? $(x-6)(x+1)=0$ hat die Lösungen $6$ und $-1$.",
+      "thema": "Vorzeichen beim Nullsetzen",
+      "einheit": "quadratische-gleichungen/3",
+      "schwere": 2,
+      "art": "stimmt",
+      "knoepfe": [
+       "stimmt",
+       "stimmt nicht"
+      ],
+      "richtig": "stimmt",
+      "loesung": "stimmt – $x-6=0$ gibt $6$, $x+1=0$ gibt $-1$.",
+      "fehler": "Vorzeichen aus der Klammer übernommen"
+     }
+    },
+    {
+     "nr": 6,
+     "id": "k-quelle-openstax-b-399",
+     "frage": "Rechne aus: $(6x+5)(6x-5)$.",
+     "thema": "3. binomische Formel",
+     "einheit": "binomische-formeln/2",
+     "schwere": 1,
+     "art": "auswahl",
+     "optionen": [
+      {
+       "t": "$36x^2-60x-25$"
+      },
+      {
+       "t": "$6x^2-25$"
+      },
+      {
+       "t": "$36x^2-25$",
+       "r": 1
+      }
+     ],
+     "loesung": "$36x^2-25$",
+     "aus_wert": 1,
+     "zw": {
+      "id": "k-quelle-mathalea-kurs-014",
+      "frage": "Multipliziere aus: $(a+b)(a-b)$.",
+      "thema": "3. binomische Formel",
+      "einheit": "binomische-formeln/2",
+      "schwere": 1,
+      "art": "auswahl",
+      "optionen": [
+       {
+        "t": "$a^2-2ab+b^2$"
+       },
+       {
+        "t": "$a^2-b^2$",
+        "r": 1
+       },
+       {
+        "t": "$a^2+b^2$"
+       }
+      ],
+      "loesung": "$a^2-b^2$",
+      "aus_wert": 1
+     }
+    },
+    {
+     "nr": 7,
+     "id": "k-eigen-pilot-060",
+     "frage": "Stimmt das? $-2(x-7)=0$ hat die Lösungen $-2$ und $7$.",
+     "thema": "Zahlfaktor liefert keine Lösung",
+     "einheit": "quadratische-gleichungen/3",
+     "schwere": 2,
+     "art": "stimmt",
+     "knoepfe": [
+      "stimmt",
+      "stimmt nicht"
+     ],
+     "richtig": "stimmt nicht",
+     "loesung": "stimmt nicht – nur $x=7$; $-2$ ist eine Zahl, kein Faktor mit $x$.",
+     "fehler": "Vorfaktor als Lösung gelesen"
+    },
+    {
+     "nr": 8,
+     "id": "k-eigen-pilot-052",
+     "frage": "Wie viele Lösungen hat $(x-4)(x-4)=0$?",
+     "thema": "Gleiche Faktoren: eine Lösung",
+     "einheit": "quadratische-gleichungen/3",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "4",
+     "loesung": "eine: $x=4$",
+     "zw": {
+      "id": "k-eigen-pilot-053",
+      "frage": "Wie viele Lösungen hat $(x+3)^2=0$?",
+      "thema": "Gleiche Faktoren: eine Lösung",
+      "einheit": "quadratische-gleichungen/3",
+      "schwere": 2,
+      "art": "zahl",
+      "wert": "−3",
+      "loesung": "eine: $x=-3$"
+     }
+    },
+    {
+     "nr": 9,
+     "id": "k-eigen-t01-t03-414",
+     "frage": "$x=5$ ist eine Lösung von $(x+2)(x-c)=0$. Welche Zahl ist $c$?",
+     "thema": "Parameter aus einer Lösung",
+     "einheit": "quadratische-gleichungen/3",
+     "schwere": 3,
+     "art": "zahl",
+     "wert": "5",
+     "loesung": "$c=5$",
+     "fehler": {
+      "−5": "Vorzeichen",
+      "−2": "den anderen Faktor genommen"
+     }
+    },
+    {
+     "nr": 10,
+     "id": "k-eigen-t01-t03-383",
+     "frage": "Stimmt das? $3x+2=x$ ist eine quadratische Gleichung.",
+     "thema": "quadratische Gleichung erkennen",
+     "einheit": "quadratische-gleichungen/2",
+     "schwere": 1,
+     "art": "stimmt",
+     "knoepfe": [
+      "stimmt",
+      "stimmt nicht"
+     ],
+     "richtig": "stimmt nicht",
+     "loesung": "stimmt nicht – kein $x^2$; sie ist linear.",
+     "fehler": "zwei x als „Quadrat“ gelesen",
+     "zw": {
+      "id": "k-quelle-serlo-178",
+      "frage": "$5x-1=2x^3$ ist eine quadratische Gleichung. Stimmt das?",
+      "thema": "quadratische Gleichung erkennen",
+      "einheit": "quadratische-gleichungen/2",
+      "schwere": 1,
+      "art": "stimmt",
+      "knoepfe": [
+       "stimmt",
+       "stimmt nicht"
+      ],
+      "richtig": "stimmt nicht",
+      "loesung": "stimmt nicht – die höchste Potenz ist $x^3$.",
+      "fehler": "Gleichung mit x hoch etwas"
+     }
+    }
+   ],
+   "quellen": [
+    {
+     "quelle": "eigene Fragen",
+     "nr": [
+      "3",
+      "3z",
+      "5",
+      "5z",
+      "7",
+      "8",
+      "8z",
+      "9",
+      "10"
+     ]
+    },
+    {
+     "quelle": "MathALÉA (Coopmaths), Questions de cours",
+     "nr": [
+      "6z"
+     ],
+     "lizenz": "CC BY-SA 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://forge.apps.education.fr"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+     "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+    },
+    {
+     "quelle": "Oak National Academy",
+     "nr": [
+      "1",
+      "2",
+      "4"
+     ],
+     "lizenz": "OGL v3.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://www.thenational.academy"
+     ],
+     "lizenz_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+     "hinweis": "Contains public sector information licensed under the Open Government Licence v3.0."
+    },
+    {
+     "quelle": "OpenStax Intermediate Algebra (Erstauflage)",
+     "nr": [
+      "6"
+     ],
+     "lizenz": "CC BY 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://assets.openstax.org"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by/4.0/deed.de"
+    },
+    {
+     "quelle": "Serlo",
+     "nr": [
+      "10z"
+     ],
+     "lizenz": "CC BY-SA 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://de.serlo.org"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+     "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+    }
+   ]
+  },
+  {
+   "fragen": [
+    {
+     "nr": 1,
+     "id": "k-quelle-openstax-b-397",
+     "frage": "Rechne aus: $(x+9)^2$.",
+     "thema": "Mittelglied der 1. binomischen Formel",
+     "einheit": "binomische-formeln/2",
+     "schwere": 1,
+     "art": "auswahl",
+     "optionen": [
+      {
+       "t": "$x^2+18x+81$",
+       "r": 1
+      },
+      {
+       "t": "$x^2+81$"
+      },
+      {
+       "t": "$x^2+9x+81$"
+      }
+     ],
+     "loesung": "$x^2+18x+81$",
+     "aus_wert": 1,
+     "zw": {
+      "id": "k-quelle-brueckenkurs-047",
+      "frage": "Multipliziere aus: $(x-1)^2$.",
+      "thema": "Mittelglied der 1. binomischen Formel",
+      "einheit": "binomische-formeln/2",
+      "schwere": 1,
+      "art": "auswahl",
+      "optionen": [
+       {
+        "t": "$x^2-2x+1$",
+        "r": 1
+       },
+       {
+        "t": "$x^2-1$"
+       },
+       {
+        "t": "$x^2+1$"
+       }
+      ],
+      "loesung": "$x^2-2x+1$",
+      "aus_wert": 1
+     }
+    },
+    {
+     "nr": 2,
+     "id": "k-quelle-oak-03571",
+     "frage": "Was musst du auf beiden Seiten addieren, damit aus $x = 7$ die Gleichung $x+3 = 10$ wird?",
+     "thema": "Umformung zwischen zwei Gleichungen erkennen",
+     "einheit": "lineare-gleichungen/2",
+     "schwere": 1,
+     "art": "auswahl",
+     "optionen": [
+      {
+       "t": "$10$",
+       "f": "rechte Seite der neuen Gleichung"
+      },
+      {
+       "t": "$7$",
+       "f": "rechte Seite abgelesen"
+      },
+      {
+       "t": "$3$",
+       "r": 1
+      },
+      {
+       "t": "$3x$",
+       "f": "ein $x$ zu viel"
+      }
+     ],
+     "loesung": "$3$"
+    },
+    {
+     "nr": 3,
+     "id": "k-eigen-pilot-057",
+     "frage": "Ist $x=-1$ eine Lösung von $x\\cdot(x+6)=-5$?",
+     "thema": "Lösung durch Einsetzen prüfen",
+     "einheit": "quadratische-gleichungen/3",
+     "schwere": 2,
+     "art": "stimmt",
+     "knoepfe": [
+      "ja",
+      "nein"
+     ],
+     "richtig": "ja",
+     "loesung": "ja: $(-1)\\cdot 5=-5$",
+     "fehler": "(−1) · (−7) gerechnet (Vorzeichen in der Klammer)"
+    },
+    {
+     "nr": 4,
+     "id": "k-eigen-t01-t03-073",
+     "frage": "Löse $3-x=8$.",
+     "thema": "Gleichung mit minus x",
+     "einheit": "lineare-gleichungen/2",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "−5",
+     "loesung": "$x=-5$",
+     "zw": {
+      "id": "k-quelle-mathalea-can-alt-064",
+      "frage": "Löse $7-x=10$.",
+      "thema": "Gleichung mit minus x",
+      "einheit": "lineare-gleichungen/2",
+      "schwere": 2,
+      "art": "zahl",
+      "wert": "−3",
+      "loesung": "$x=-3$",
+      "fehler": {
+       "3": "Vorzeichen von −x übersehen"
+      }
+     }
+    },
+    {
+     "nr": 5,
+     "id": "k-quelle-openstax-c-160",
+     "frage": "Löse: $(2x-1)^2=0$.",
+     "thema": "Satz vom Nullprodukt",
+     "einheit": "quadratische-gleichungen/3",
+     "schwere": 1,
+     "art": "zahl",
+     "wert": "1/2",
+     "loesung": "$x = \\frac{1}{2}$",
+     "bruch": 1,
+     "zw": {
+      "id": "k-quelle-mathalea-can-270",
+      "frage": "Welche positive Lösung hat $(x+1)(x-4)=0$?",
+      "thema": "Satz vom Nullprodukt",
+      "einheit": "quadratische-gleichungen/3",
+      "schwere": 1,
+      "art": "zahl",
+      "wert": "4",
+      "loesung": "$x=4$"
+     }
+    },
+    {
+     "nr": 6,
+     "id": "k-quelle-openstax-b-362",
+     "frage": "Ist $y=1$ eine Lösung von $9y+2=6y+3$?",
+     "thema": "Probe",
+     "einheit": "lineare-gleichungen/1",
+     "schwere": 1,
+     "art": "stimmt",
+     "knoepfe": [
+      "ja",
+      "nein"
+     ],
+     "richtig": "nein",
+     "loesung": "Nein: $11\\neq9$.",
+     "zw": {
+      "id": "k-quelle-openstax-a-041",
+      "frage": "Ist $x=8$ eine Lösung von $x+13=21$?",
+      "thema": "Probe",
+      "einheit": "lineare-gleichungen/1",
+      "schwere": 1,
+      "art": "stimmt",
+      "knoepfe": [
+       "ja",
+       "nein"
+      ],
+      "richtig": "ja",
+      "loesung": "ja",
+      "fehler": "nur eine Seite ausgerechnet"
+     }
+    },
+    {
+     "nr": 7,
+     "id": "k-eigen-pilot-068",
+     "frage": "Wie löst du $x^2-6x=0$ am schnellsten?",
+     "thema": "Lösungsweg wählen",
+     "einheit": "quadratische-gleichungen/3",
+     "schwere": 2,
+     "art": "auswahl",
+     "optionen": [
+      {
+       "t": "Wurzelziehen",
+       "f": "Wurzelziehen geht nur ohne x-Glied"
+      },
+      {
+       "t": "durch $x$ teilen",
+       "f": "durch x teilen verliert die Lösung 0"
+      },
+      {
+       "t": "$x$ ausklammern, dann Nullprodukt",
+       "r": 1
+      }
+     ],
+     "loesung": "$x$ ausklammern, dann Nullprodukt"
+    },
+    {
+     "nr": 8,
+     "id": "k-eigen-pilot-050",
+     "frage": "Lena liest bei $(x+5)(x+2)=0$ die Lösungen $5$ und $2$ ab. Stimmt das?",
+     "thema": "Vorzeichen beim Nullsetzen",
+     "einheit": "quadratische-gleichungen/3",
+     "schwere": 2,
+     "art": "stimmt",
+     "knoepfe": [
+      "stimmt",
+      "stimmt nicht"
+     ],
+     "richtig": "stimmt nicht",
+     "loesung": "stimmt nicht – richtig sind $-5$ und $-2$.",
+     "fehler": "Zahl aus der Klammer abgeschrieben",
+     "zw": {
+      "id": "k-eigen-pilot-048",
+      "frage": "Tim löst $(x+3)(x-9)=0$ und schreibt: $x=3$ oder $x=-9$. Stimmt das?",
+      "thema": "Vorzeichen beim Nullsetzen",
+      "einheit": "quadratische-gleichungen/3",
+      "schwere": 2,
+      "art": "stimmt",
+      "knoepfe": [
+       "stimmt",
+       "stimmt nicht"
+      ],
+      "richtig": "stimmt nicht",
+      "loesung": "stimmt nicht – $x+3=0$ gibt $x=-3$, $x-9=0$ gibt $x=9$.",
+      "fehler": "Zahl aus der Klammer mit ihrem Vorzeichen abgeschrieben"
+     }
+    },
+    {
+     "nr": 9,
+     "id": "k-eigen-pilot-073",
+     "frage": "Gib eine Gleichung in Produktform an, die genau die Lösungen $0$ und $5$ hat.",
+     "thema": "Gleichung aus Lösungen",
+     "einheit": "quadratische-gleichungen/3",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "0",
+     "loesung": "$x(x-5)=0$",
+     "zw": {
+      "id": "k-eigen-pilot-072",
+      "frage": "Gib eine Gleichung in Produktform an, die genau die Lösungen $4$ und $-1$ hat.",
+      "thema": "Gleichung aus Lösungen",
+      "einheit": "quadratische-gleichungen/3",
+      "schwere": 2,
+      "art": "zahl",
+      "wert": "0",
+      "loesung": "$(x-4)(x+1)=0$"
+     }
+    },
+    {
+     "nr": 10,
+     "id": "k-quelle-serlo-178",
+     "frage": "$5x-1=2x^3$ ist eine quadratische Gleichung. Stimmt das?",
+     "thema": "quadratische Gleichung erkennen",
+     "einheit": "quadratische-gleichungen/2",
+     "schwere": 1,
+     "art": "stimmt",
+     "knoepfe": [
+      "stimmt",
+      "stimmt nicht"
+     ],
+     "richtig": "stimmt nicht",
+     "loesung": "stimmt nicht – die höchste Potenz ist $x^3$.",
+     "fehler": "Gleichung mit x hoch etwas",
+     "zw": {
+      "id": "k-eigen-t01-t03-383",
+      "frage": "Stimmt das? $3x+2=x$ ist eine quadratische Gleichung.",
+      "thema": "quadratische Gleichung erkennen",
+      "einheit": "quadratische-gleichungen/2",
+      "schwere": 1,
+      "art": "stimmt",
+      "knoepfe": [
+       "stimmt",
+       "stimmt nicht"
+      ],
+      "richtig": "stimmt nicht",
+      "loesung": "stimmt nicht – kein $x^2$; sie ist linear.",
+      "fehler": "zwei x als „Quadrat“ gelesen"
+     }
+    }
+   ],
+   "quellen": [
+    {
+     "quelle": "eigene Fragen",
+     "nr": [
+      "3",
+      "4",
+      "7",
+      "8",
+      "8z",
+      "9",
+      "9z",
+      "10z"
+     ]
+    },
+    {
+     "quelle": "MathALÉA (Coopmaths), Course aux nombres (Jahrgänge 2018–2023)",
+     "nr": [
+      "4z"
+     ],
+     "lizenz": "CC BY-SA 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://coopmaths.fr"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+     "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+    },
+    {
+     "quelle": "MathALÉA (Coopmaths), Course aux nombres (Jahrgänge)",
+     "nr": [
+      "5z"
+     ],
+     "lizenz": "CC BY-SA 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://coopmaths.fr"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+     "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+    },
+    {
+     "quelle": "Oak National Academy",
+     "nr": [
+      "2"
+     ],
+     "lizenz": "OGL v3.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://www.thenational.academy"
+     ],
+     "lizenz_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+     "hinweis": "Contains public sector information licensed under the Open Government Licence v3.0."
+    },
+    {
+     "quelle": "OpenStax Intermediate Algebra (1. Auflage, Rice University)",
+     "nr": [
+      "5"
+     ],
+     "lizenz": "CC BY 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://openstax.org"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by/4.0/deed.de"
+    },
+    {
+     "quelle": "OpenStax Intermediate Algebra (Erstauflage)",
+     "nr": [
+      "1",
+      "6"
+     ],
+     "lizenz": "CC BY 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://assets.openstax.org"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by/4.0/deed.de"
+    },
+    {
+     "quelle": "OpenStax Prealgebra (1. Auflage, Rice University)",
+     "nr": [
+      "6z"
+     ],
+     "lizenz": "CC BY 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://openstax.org"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by/4.0/deed.de"
+    },
+    {
+     "quelle": "Serlo",
+     "nr": [
+      "10"
+     ],
+     "lizenz": "CC BY-SA 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://de.serlo.org"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+     "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+    },
+    {
+     "quelle": "VE&MINT",
+     "nr": [
+      "1z"
+     ],
+     "lizenz": "CC BY-SA 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://vorkurs-mathematik.innocampus.tu-berlin.de"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+     "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+    }
+   ]
+  }
+ ]
+}
