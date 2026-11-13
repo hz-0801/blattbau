@@ -162,7 +162,8 @@ bombardieren und ohne eigenes Blatt. Grenze – höchstens drei Aufgaben, nur ei
 2. Ist etwas fällig: setz vor die erste Aufgabe einen kurzen Teil „Kurz wiederholen“ mit einer Aufgabe je fälligem Fehler
    (höchstens drei; passt eines zum Thema des Blatts, das zuerst). Beim ersten Mal (Stufe 0) nicht dieselbe Frage, sondern
    eine verwandte, die dasselbe Wissen braucht, leichter und hinführend: erst der Teilschritt, dann die Aufgabe (Volumen: erst die
-   Fläche einer Würfelseite, dann das Volumen; Raute mit Nachbarwinkeln: Nebenwinkel an einer Geraden, dann Parallelogramm).
+   Fläche einer Würfelseite, dann das Volumen; Raute mit Nachbarwinkeln: Nebenwinkel an einer Geraden, dann Parallelogramm). Kein Hinweis im
+   Aufgabentext („Rechne zuerst die Klammer aus“ verrät, was geübt wird – Lehrer 13.11.); hinführen nur durch die Vorstufe als eigene Aufgabe, Tipps auf die QR-Seite.
    Beim zweiten Mal (Stufe 1, nach sieben Tagen) kommt die Originalfrage aus `text` wieder, wie er sie falsch hatte. Der Teil
    zählt zur einen Seite; das neue Thema bleibt die Hauptsache.
 3. Danach `python3 werkzeuge/fehler.py --gestellt <Name> <quelle> …` – nach dem ersten Mal wieder fällig in sieben Tagen,
