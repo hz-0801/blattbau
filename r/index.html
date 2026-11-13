@@ -43,7 +43,6 @@
   #pdf { display:none; margin:.8rem 0 0; }
   iframe { display:none; }
   #gef { display:none; margin:1.2rem 0 .4rem; padding-top:.8rem; border-top:1px solid var(--linie); }
-  #gef p { margin:0 0 .5rem; font-weight:600; }
   #gef div { display:flex; gap:.4rem; }
   #gef button { flex:1; padding:.85rem .2rem; font-size:1rem; background:#fff; color:var(--fg); border:1.5px solid var(--fg); border-radius:8px; }
   #gef button[aria-pressed="true"] { background:var(--fg); color:#fff; }
@@ -64,7 +63,7 @@
 <p id="nr"><label>Deine Nummer: <input id="snr" inputmode="numeric" maxlength="4" autocomplete="off"></label></p>
 <div id="liste"></div>
 <button id="ab" disabled>Absenden</button>
-<div id="gef"><p>Wie fandest du die Seite?</p><div><button type="button" data-g="l" aria-pressed="false">zu leicht</button><button type="button" data-g="p" aria-pressed="false">passt</button><button type="button" data-g="s" aria-pressed="false">zu schwer</button></div></div>
+<div id="gef"><div><button type="button" data-g="l" aria-pressed="false">zu leicht</button><button type="button" data-g="p" aria-pressed="false">passt</button><button type="button" data-g="s" aria-pressed="false">zu schwer</button></div></div>
 <p id="m"></p>
 <p id="pdf"><a id="pdfa" href="#">Blatt mit Lösungen speichern (PDF)</a></p>
 <iframe name="ziel" title="senden"></iframe>
