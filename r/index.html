@@ -11,7 +11,10 @@
        {"titel", "p": [[nr, teil, Ergebnis, Weg, Urteil?], …], "b": {nr: Bild}, "pdf": Datei}
                                                                              Übungsblatt: Ergebnis und Weg je Teilaufgabe, Urteil nur wo Urteil = 1
      Beide dürfen "bis" tragen (Tag, an dem aufgabenbank werkzeuge/qr-aufraeumen.py die Datei löscht).
-     Meldung an das Formular: Kennung;Schülernummer;ein Zeichen je Urteil-Stelle (r richtig, f falsch, u nicht verstanden, - frei). -->
+     Meldung an das Formular: Kennung;Schülernummer;ein Zeichen je Urteil-Stelle (r richtig, f falsch, u nicht verstanden, - frei).
+     Seit 13.11. (bankblatt.md v12l, Richtung Lehrer): Übungsblatt fragt am Ende „zu leicht · passt · zu schwer“ (ein Antippen sendet)
+     und zählt aufgeklappte Wege – Meldung Kennung;Nummer;gef;g=l|p|s;w=2a,3 bzw. beim Verlassen Kennung;Nummer;weg;-;w=…
+     (fünf Felder, damit ältere Leser – geliefert.py, schuelerseite.py – sie nicht als Urteile lesen). -->
 <style>
   :root { --fg:#111; --grau:#666; --linie:#ccc; --ja:#1a7f37; --nein:#c62828; }
   * { box-sizing:border-box; }
@@ -25,7 +28,7 @@
   .e { flex:1 1 auto; max-width:100%; }
   .e small { display:block; color:var(--grau); }
   .katex { white-space:nowrap; }
-  .wk { display:inline-block; margin-left:.4rem; padding:.05rem .5rem; font-size:.85rem; color:var(--grau); background:#f2f2f2; border:1px solid var(--linie); border-radius:999px; white-space:nowrap; }
+  .wk { display:inline-flex; align-items:center; min-height:2.5rem; margin-left:.5rem; padding:.2rem .85rem; font-size:.95rem; font-weight:600; color:#0b57d0; background:#e8f0fe; border:1.5px solid #0b57d0; border-radius:8px; white-space:nowrap; }
   .w { display:none; flex:1 1 100%; font-size:.95rem; margin:.25rem 0 .2rem; padding:.3rem .6rem; background:#f6f6f6; border-radius:6px; overflow-x:auto; }
   .w.auf { display:block; } .w .katex { white-space:normal; }
   .k { display:flex; gap:.3rem; margin-left:auto; }
@@ -39,11 +42,16 @@
   #m { min-height:1.5rem; color:var(--grau); }
   #pdf { display:none; margin:.8rem 0 0; }
   iframe { display:none; }
+  #gef { display:none; margin:1.2rem 0 .4rem; padding-top:.8rem; border-top:1px solid var(--linie); }
+  #gef p { margin:0 0 .5rem; font-weight:600; }
+  #gef div { display:flex; gap:.4rem; }
+  #gef button { flex:1; padding:.85rem .2rem; font-size:1rem; background:#fff; color:var(--fg); border:1.5px solid var(--fg); border-radius:8px; }
+  #gef button[aria-pressed="true"] { background:var(--fg); color:#fff; }
   #nr { display:none; margin:0 0 .8rem; }
   #nr input { width:5rem; font-size:1.1rem; padding:.4rem; border:1.5px solid var(--fg); border-radius:6px; }
   @media print {
     body { max-width:none; padding:0; font-size:11pt; }
-    .k, .wk, #ab, #m, #nr, #pdf { display:none !important; }
+    .k, .wk, #ab, #m, #nr, #pdf, #gef { display:none !important; }
     .a { break-inside:avoid; } .w { display:block; background:none; padding:0; color:#333; }
   }
 </style>
@@ -56,10 +64,12 @@
 <p id="nr"><label>Deine Nummer: <input id="snr" inputmode="numeric" maxlength="4" autocomplete="off"></label></p>
 <div id="liste"></div>
 <button id="ab" disabled>Absenden</button>
+<div id="gef"><p>Wie fandest du die Seite?</p><div><button type="button" data-g="l" aria-pressed="false">zu leicht</button><button type="button" data-g="p" aria-pressed="false">passt</button><button type="button" data-g="s" aria-pressed="false">zu schwer</button></div></div>
 <p id="m"></p>
 <p id="pdf"><a id="pdfa" href="#">Blatt mit Lösungen speichern (PDF)</a></p>
 <iframe name="ziel" title="senden"></iframe>
 <iframe name="auf" title="geöffnet"></iframe>
+<iframe name="gefr" title="Einschätzung"></iframe>
 <script>
 // Briefkasten: ein Google-Formular für alle Blätter (Test und Nummer stehen hinter #, damit sie nicht an den Seitenserver gehen).
 const FORM = { url: "https://docs.google.com/forms/d/e/1FAIpQLScVAIyR0-hKCMXzbtrj8F7LXRPKd6vxw_XSq0-i5HXuzHBYUQ/formResponse", meldung: "entry.312904931" };
@@ -74,6 +84,10 @@ const t = (q.get("t") || "ek10").replace(/[^a-z0-9-]/g, "").slice(0, 24);
 const s = (q.get("s") || "").replace(/[^0-9]/g, "").slice(0, 4);
 const liste = document.getElementById("liste"), ab = document.getElementById("ab"), m = document.getElementById("m");
 const el = (art, klasse, text) => { const e = document.createElement(art); if (klasse) e.className = klasse; if (text != null) e.textContent = text; return e; };
+const nummer = () => s || (document.getElementById("snr").value || "").replace(/[^0-9]/g, "").slice(0, 4) || "0";
+const geoeffnet = new Set(), gemeldet = new Set();   // aufgeklappte Wege ("2a"), schon gemeldete
+const melde = (wert, ziel) => { const f = el("form"); f.method = "POST"; f.action = FORM.url; f.target = ziel; f.style.display = "none";
+  const e = el("input"); e.type = "hidden"; e.name = FORM.meldung; e.value = wert; f.appendChild(e); document.body.appendChild(f); f.submit(); };
 const bildname = b => b && /^[a-z0-9-]+\.(png|svg|jpg)$/.test(b) ? b : "";
 const start = j => {
   if (!j || !(j.l || j.p)) { m.textContent = "Die Lösungen zu diesem Blatt sind nicht mehr online."; return; }
@@ -98,8 +112,9 @@ const start = j => {
     const zeile = el("div", "t"), e = el("div", "e", (z.teil ? z.teil + ") " : "") + z.erg);
     if (z.klein) e.appendChild(el("small", "", z.klein));
     let w = null;
-    if (z.weg) { const wk = el("button", "wk", "▸ Weg"); wk.type = "button"; w = el("div", "w", z.weg);
-      wk.onclick = () => { wk.textContent = w.classList.toggle("auf") ? "▾ Weg" : "▸ Weg"; }; e.appendChild(wk); }
+    if (z.weg) { const wk = el("button", "wk", "▸ Rechenweg"); wk.type = "button"; w = el("div", "w", z.weg);
+      wk.onclick = () => { const offen = w.classList.toggle("auf"); wk.textContent = offen ? "▾ Rechenweg" : "▸ Rechenweg";
+        if (offen) geoeffnet.add(String(z.nr) + (z.teil || "")); }; e.appendChild(wk); }
     zeile.appendChild(e);
     if (z.urteil) {
       const i = stellen.indexOf(z), k = el("div", "k");
@@ -118,6 +133,20 @@ const start = j => {
   if (window.renderMathInElement) renderMathInElement(liste, { delimiters: [{ left: "$", right: "$", display: false }], throwOnError: false,
     macros: { "\\sv": "\\begin{pmatrix}#1\\\\#2\\\\#3\\end{pmatrix}" } });
   if (j.pdf && /^[a-z0-9-]+\.pdf$/.test(j.pdf)) { document.getElementById("pdfa").href = "t/" + j.pdf; document.getElementById("pdf").style.display = "block"; }
+  // Übungsblatt (Form p): am Ende ein Antippen „zu leicht · passt · zu schwer“; es sendet sofort, mit den aufgeklappten Wegen.
+  if (j.p && !PROBE[t]) {
+    const g = document.getElementById("gef"); g.style.display = "block";
+    g.querySelectorAll("button").forEach(b => b.onclick = () => {
+      g.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+      melde([t, nummer(), "gef", "g=" + b.dataset.g, "w=" + [...geoeffnet].join(",")].join(";"), "gefr");
+      geoeffnet.forEach(x => gemeldet.add(x)); m.textContent = "Danke!"; });
+    // Wer nur Wege aufklappt und nichts antippt: beim Verlassen der Seite still melden, was neu aufgeklappt wurde.
+    const still = () => { const neu = [...geoeffnet].filter(x => !gemeldet.has(x)); if (!neu.length || !navigator.sendBeacon) return;
+      try { navigator.sendBeacon(FORM.url, new URLSearchParams({ [FORM.meldung]: [t, nummer(), "weg", "-", "w=" + neu.join(",")].join(";") }));
+        neu.forEach(x => gemeldet.add(x)); } catch (x) {} };
+    document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") still(); });
+    window.addEventListener("pagehide", still);
+  }
   ab.onclick = () => {
     const offen = wahl.filter(x => !x).length;
     if (offen && !offenGefragt) { offenGefragt = true; ab.textContent = "Trotzdem senden"; m.textContent = offen + (offen === 1 ? " Zeile" : " Zeilen") + " ohne Angabe – sie zählen als nicht bearbeitet."; return; }

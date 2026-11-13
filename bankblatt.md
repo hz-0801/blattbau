@@ -1,4 +1,4 @@
-# Blatt bestellen – v12k (12.11.2026)
+# Blatt bestellen – v12l (13.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -36,8 +36,8 @@ kann oder wann welches Blatt passt, zeig diese Tabelle und sonst nichts.
 |---|---|---|
 | `Erik Test` | 5-Minuten-Test, querbeet aus dem Grundwissen, mit QR | Stundenanfang |
 | `Erik Test Scheitelpunktform` | 5-Minuten-Test zu einem Thema (Regeln, kleine Beispiele), mit QR | Stundenanfang, Thema läuft schon; in der Oberstufe besser immer mit Thema |
-| `Erik Scheitelpunktform` | Alltagsblatt: Päckchen, Steigerung, 2–4 Seiten, mit QR; ohne Beispiel und Kasten (nur mit dem Zusatz „mit Beispiel“) | ein Thema üben |
-| `Erik weiter` / `… mehr` | nächster Abschnitt / noch ein Blatt zum selben Abschnitt | Thema fortsetzen |
+| `Erik Scheitelpunktform` | Alltagsblatt: erst eine, höchstens zwei Seiten, die der Schüler schafft; die nächste liegt auf „weiter“ bereit (s. „Weg planen, in Stücken liefern“); mit QR; ohne Beispiel und Kasten (nur mit dem Zusatz „mit Beispiel“) | ein Thema üben |
+| `Erik weiter` / `… mehr` / `… schwerer` | die bereitliegende nächste Seite / noch eine Seite auf derselben Stufe / Stufen überspringen | Thema fortsetzen |
 | `Helene P10 Pythagoras`, `… Kapitel`, `… Original 2023` | Prüfungsblatt aus Originalaufgaben (noch ohne QR) | Prüfungsvorbereitung |
 | `Helene Basiszettel`, `… Basiszettel 2022` | zehn Basisaufgaben wie P10 Aufgabe 1 (eigene Aufgaben nach einem Jahrgang), mit QR | Stundenanfang Klasse 10 |
 
@@ -61,8 +61,8 @@ sagen, eine Alternative anbieten (anderer Abschnitt, Test, Prüfungsblatt), nich
      „Prüfungsblatt“. `grund` „zuschnitt“ mit Aufgabe vom Schulblatt (Foto): bauen wie unten, Foto als Vorlage.
    - **Live bauen** (`grund` einheit_fehlt, abschnitt_fehlt, mehr_fehlt, stufe_fehlt): Hat der Schüler laut Schülerliste
      eine Prüfung (P10, Abitur) und kennt `werkzeuge/bestellen.py "<Name> <Thema>"` das Thema, biete zwei Zeilen an:
-     `1 Prüfungsblatt <Thema> – sofort` · `2 Alltagsblatt bauen – ≈ 30 min`. Sonst schreib „wird gebaut, ≈ 30 min“ und
-     bau nach „Bauen“.
+     `1 Prüfungsblatt <Thema> – sofort` · `2 Alltagsblatt – erste Seite gleich`. Sonst bau nach „Weg planen, in Stücken liefern“ –
+     ohne Ankündigung einer Wartezeit.
    - **thema_unbekannt:** Frag einmal in einer Zeile, welches Thema gemeint ist.
    - **person_unbekannt:** Frag einmal nach Klasse und Schule und trag die Antwort in aufgabenbank-privat `schueler.md`
      ein; dann Schritt 1.
@@ -117,6 +117,31 @@ Bestellung mit „Basiszettel“ (auch „Basis“, „Basisaufgaben“), wahlwe
    und nennt `pdf`. Schick jede Datei als Anhang. Steht `fehler` im JSON, sag es in einer Zeile. Steht `weiter` im JSON,
    zeig jedes Angebot als kurze nummerierte Zeile; tippt der Lehrer eins an, ist dessen `eingabe` eine neue Bestellung.
 4. Prüfungsblatt fehlt (`hinweis`, keine `dateien`): sag, was es gibt. Nicht bauen.
+
+## Weg planen, in Stücken liefern (Richtung Lehrer 13.11., wird an den Unterrichtstagen geprüft)
+
+Warum – am 12.11. („mit einer der produktivsten Unterrichtseinheiten“) waren die Blätter schnell da, kurz und erfüllbar, jeder
+Schüler hatte ein Erfolgserlebnis; gut werden Blätter aber nur mit dem ganzen Weg im Blick, nicht Seite für Seite isoliert.
+Grenze – keine feste Seitenzahl: eine Seite, wo sie reicht, zwei, wo das Thema es braucht, nie zehn; Prüfungsblätter,
+5-Minuten-Test und Basiszettel bleiben wie sie sind.
+
+1. **Erste Bestellung zu einem Thema:** Schreib zuerst das Gerüst – fünf bis acht Stationen, je eine Zeile: was neu dazukommt,
+   wie schwer, welche Form (rechnen, ablesen, zeichnen, „Stimmt das?“, Sache). Hat der Schüler ein Buch in aufgabenbank-privat
+   `buecher/` (Liste oben in `buecher/README.md`, Register unter seinem Vornamen, z. B. `buecher/jesse`), richte die
+   Stationen an dessen Folge aus (`werkzeuge/buchregister.py aufbau`) und nenne je Station die Buchseiten. Ablage: aufgabenbank-privat `lieferungen/wege/<JJJJ-MM-TT>-<vorname>-<stichwort>.md`. Höchstens eine
+   Minute; kein Layout, keine Zahlen.
+2. **Seite 1 sofort:** Station 1 (wenn sie sehr kurz ist, mit Station 2) als ein Blatt nach „Bauen“, zugeschnitten auf eine,
+   höchstens zwei Seiten; liefern wie „Alltagsblatt“ Schritt 3–4 und die Dateikarte schicken, bevor du weiterarbeitest.
+3. **Seite 2 im selben Zug:** Bau gleich danach die nächste Station, liefere sie mit `qr-blatt.py` (Kennung mit `-s2`, `-s3` …),
+   committe und pushe, aber schick sie nicht und trag sie nicht in die Lieferliste ein. Schreib nur „Seite 2 liegt bereit – ‚weiter‘“.
+4. **„weiter“:** Schick die bereitliegende Seite sofort, trag sie dann ein (`geliefert.py`) und bau die nächste Station im selben
+   Zug vor. Ein Wort des Lehrers verschiebt die Stelle im Gerüst: „schwerer“ oder „zu leicht“ – Stationen überspringen
+   (die bereitliegende Seite verwerfen, Stolperfälle und Sache statt weiterer Grundfälle); „mehr“ – gleiche Station, andere
+   Zahlen und Form; „zu schwer“ – eine Zwischenstufe einschieben. Ohne Wort gilt das Gerüst. Ändert sich der Weg, schreib
+   die Änderung in die Gerüst-Datei.
+5. **Lösungen:** Zu fast jeder Teilaufgabe ein Rechenweg auf der QR-Seite (Lehrer 13.11.), Sek I knapp nach mathe-nachhilfe
+   `allgemein.md` 2.3a (11), Sek II nach `fhr/loesung/auftrag-kurvendiskussion.md`; ohne Weg nur bloßes Ablesen.
+   Die QR-Seite zählt, welche Wege aufgeklappt werden, und fragt am Ende „zu leicht · passt · zu schwer“ (ein Antippen).
 
 ## Bauen (Alltagsblatt fehlt)
 
