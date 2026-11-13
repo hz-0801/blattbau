@@ -6,128 +6,14 @@
  "fragen": [
   {
    "nr": 1,
-   "id": "k-quelle-lisum-bild-017",
-   "frage": "Schreibe $20\\,\\%$ als Dezimalzahl.",
-   "thema": "Prozent als Dezimalzahl",
-   "einheit": "prozentrechnung/1",
-   "schwere": 1,
-   "art": "zahl",
-   "wert": "0,2",
-   "loesung": "$0{,}2$",
-   "streng": 1,
-   "zw": {
-    "id": "k-quelle-openstax-a-204",
-    "frage": "Schreibe $5\\,\\%$ als Dezimalzahl.",
-    "thema": "Prozent als Dezimalzahl",
-    "einheit": "prozentrechnung/1",
-    "schwere": 1,
-    "art": "zahl",
-    "wert": "0,05",
-    "loesung": "$0{,}05$",
-    "streng": 1
-   }
-  },
-  {
-   "nr": 2,
-   "id": "k-quelle-lisum-rest-059",
-   "frage": "Ein Preis sinkt um $30\\,\\%$. Mit welcher Zahl nimmst du den alten Preis mal?",
-   "thema": "Wachstumsfaktor",
-   "einheit": "prozentrechnung/5",
-   "schwere": 1,
-   "art": "zahl",
-   "wert": "0,7",
-   "loesung": "$0{,}7$",
-   "zw": {
-    "id": "k-quelle-mathalea-eam-280",
-    "frage": "Ein Preis steigt um $18\\,\\%$. Mit welcher Zahl multiplizierst du ihn?",
-    "thema": "Wachstumsfaktor",
-    "einheit": "prozentrechnung/5",
-    "schwere": 1,
-    "art": "auswahl",
-    "optionen": [
-     {
-      "t": "$0{,}18$",
-      "f": "das ist nur der Zuwachs"
-     },
-     {
-      "t": "$0{,}82$",
-      "f": "das wäre eine Senkung"
-     },
-     {
-      "t": "$1{,}18$",
-      "r": 1
-     },
-     {
-      "t": "$1{,}82$",
-      "f": "$100-18$ statt $100+18$"
-     }
-    ],
-    "loesung": "$1{,}18$"
-   }
-  },
-  {
-   "nr": 3,
-   "id": "k-quelle-mathalea-121",
-   "frage": "In einer Gruppe von $20$ Kindern sind $5$ Mädchen. Wie viel Prozent sind das?",
+   "id": "k-quelle-lisum-bild-039",
+   "frage": "Wie viel Prozent sind $30$ € von $150$ €?",
    "thema": "Prozentsatz aus Teil und Ganzem",
    "einheit": "prozentrechnung/2",
-   "schwere": 2,
+   "schwere": 1,
    "art": "zahl",
-   "wert": "25",
-   "loesung": "$25\\,\\%$",
-   "masse": "%",
-   "zw": {
-    "id": "k-quelle-mathalea-can-172",
-    "frage": "Von $25$ Blumen im Strauß sind $11$ Tulpen. Wie viel Prozent sind das?",
-    "thema": "Prozentsatz aus Teil und Ganzem",
-    "einheit": "prozentrechnung/2",
-    "schwere": 2,
-    "art": "zahl",
-    "wert": "44",
-    "loesung": "$44\\,\\%$",
-    "masse": "%"
-   }
-  },
-  {
-   "nr": 4,
-   "id": "k-algebra-7-9-037",
-   "frage": "Stimmt das? Ein Preis steigt um $10\\,\\%$ und sinkt dann um $10\\,\\%$ – danach ist er wieder wie am Anfang.",
-   "thema": "erst +10 %, dann −10 %",
-   "einheit": "prozentrechnung/5",
-   "schwere": 3,
-   "art": "stimmt",
-   "knoepfe": [
-    "stimmt",
-    "stimmt nicht"
-   ],
-   "richtig": "stimmt nicht",
-   "loesung": "stimmt nicht – die $10\\,\\%$ beziehen sich auf verschiedene Grundwerte: $100 \\to 110 \\to 99$.",
-   "fehler": "Prozente wie feste Beträge behandelt",
-   "zw": {
-    "id": "k-quelle-lisum-bild-033",
-    "frage": "Ein Rad kostet $2000$ €. Der Preis steigt um $5\\,\\%$ und sinkt dann um $5\\,\\%$. Was kostet es jetzt?",
-    "thema": "erst +10 %, dann −10 %",
-    "einheit": "prozentrechnung/5",
-    "schwere": 3,
-    "art": "zahl",
-    "wert": "1995",
-    "loesung": "$1995$ €",
-    "masse": "€",
-    "fehler": {
-     "2000": "gleicher Prozentsatz, gleicher Betrag gedacht"
-    }
-   }
-  },
-  {
-   "nr": 5,
-   "id": "k-quelle-lisum-192",
-   "frage": "Wie viel Prozent sind $120$ € von $300$ €?",
-   "thema": "Prozentsatz aus Teil und Ganzem",
-   "einheit": "prozentrechnung/2",
-   "schwere": 2,
-   "art": "zahl",
-   "wert": "40",
-   "loesung": "$40\\,\\%$",
+   "wert": "20",
+   "loesung": "$20\\,\\%$",
    "masse": "%",
    "zw": {
     "id": "k-quelle-mathalea-eam-073",
@@ -145,144 +31,70 @@
    }
   },
   {
-   "nr": 6,
-   "id": "k-quelle-mathalea-can-alt-013",
-   "frage": "$40\\,\\%$ der Schüler einer Schule fahren mit dem Bus, das sind $300$. Wie viele Schüler hat die Schule?",
-   "thema": "Grundwert über 10 %",
-   "einheit": "prozentrechnung/4",
-   "schwere": 2,
+   "nr": 2,
+   "id": "k-quelle-openstax-a-207",
+   "frage": "Schreibe $63\\,\\%$ als Dezimalzahl.",
+   "thema": "Prozent als Dezimalzahl",
+   "einheit": "prozentrechnung/1",
+   "schwere": 1,
    "art": "zahl",
-   "wert": "750",
-   "loesung": "$750$",
-   "fehler": {
-    "120": "40 % von 300"
-   },
+   "wert": "0,63",
+   "loesung": "$0{,}63$",
+   "streng": 1,
    "zw": {
-    "id": "k-quelle-serlo-rest-087",
-    "frage": "$120\\,\\mathrm{m}^3$ sind $30\\,\\%$ des Wassers in einem Becken. Wie viel Wasser ist insgesamt darin?",
-    "thema": "Grundwert über 10 %",
-    "einheit": "prozentrechnung/4",
+    "id": "k-quelle-lisum-130",
+    "frage": "Schreibe $44\\,\\%$ als Dezimalzahl.",
+    "thema": "Prozent als Dezimalzahl",
+    "einheit": "prozentrechnung/1",
     "schwere": 1,
     "art": "zahl",
-    "wert": "400",
-    "loesung": "$400\\,\\mathrm{m}^3$",
-    "masse": "m³"
+    "wert": "0,44",
+    "loesung": "$0{,}44$",
+    "streng": 1
    }
   },
   {
-   "nr": 7,
-   "id": "k-eigen-t04-t06-097",
-   "frage": "Nach $20\\,\\%$ Rabatt kostet eine Hose $32$ €. Wie teuer war sie vorher?",
-   "thema": "Preis vor dem Rabatt",
-   "einheit": "prozentrechnung/5",
-   "schwere": 2,
-   "art": "auswahl",
-   "optionen": [
-    {
-     "t": "$38{,}40$ €",
-     "f": "20 % auf 32 € aufgeschlagen"
-    },
-    {
-     "t": "$40$ €",
-     "r": 1
-    },
-    {
-     "t": "$160$ €",
-     "f": "32 als 20 %"
-    }
-   ],
-   "loesung": "$40$ € ($32$ € sind $80\\,\\%$)",
-   "aus_zahl": 1
-  },
-  {
-   "nr": 8,
-   "id": "k-quelle-mathsmentales-061",
-   "frage": "Wie viel sind $20\\,\\%$ von $80$?",
+   "nr": 3,
+   "id": "k-quelle-ks-mental-162",
+   "frage": "Rechne im Kopf: $20\\,\\%$ von $3000$.",
    "thema": "Prozentwert mit einfachem Bruch",
    "einheit": "prozentrechnung/3",
    "schwere": 1,
    "art": "zahl",
-   "wert": "16",
-   "loesung": "$0{,}2\\cdot 80=16$",
-   "fehler": {
-    "4": "durch 20 geteilt"
-   },
+   "wert": "600",
+   "loesung": "$600$",
    "zw": {
-    "id": "k-quelle-mathalea-227",
-    "frage": "Wie viel sind $50\\,\\%$ von $86$?",
+    "id": "k-quelle-serlo-435",
+    "frage": "Wie viel sind $20\\,\\%$ von $84$ €?",
     "thema": "Prozentwert mit einfachem Bruch",
     "einheit": "prozentrechnung/3",
     "schwere": 1,
     "art": "zahl",
-    "wert": "43",
-    "loesung": "$43$",
-    "fehler": {
-     "36": "50 abgezogen"
-    }
-   }
-  },
-  {
-   "nr": 9,
-   "id": "k-quelle-serlo-089",
-   "frage": "$50\\,\\%$ sind $100$ €. Wie groß ist der Grundwert?",
-   "thema": "Grundwert über 10 %",
-   "einheit": "prozentrechnung/4",
-   "schwere": 1,
-   "art": "zahl",
-   "wert": "200",
-   "loesung": "$200$ €",
-   "masse": "€",
-   "zw": {
-    "id": "k-quelle-serlo-rest-088",
-    "frage": "$20\\,\\%$ aller Figuren eines Spiels sind $30$ Stück. Wie viele gibt es insgesamt?",
-    "thema": "Grundwert über 10 %",
-    "einheit": "prozentrechnung/4",
-    "schwere": 1,
-    "art": "zahl",
-    "wert": "150",
-    "loesung": "$150$"
-   }
-  },
-  {
-   "nr": 10,
-   "id": "k-quelle-serlo-087",
-   "frage": "Wie viel sind $75\\,\\%$ von $20$?",
-   "thema": "Prozentwert mit einfachem Bruch",
-   "einheit": "prozentrechnung/3",
-   "schwere": 1,
-   "art": "zahl",
-   "wert": "15",
-   "loesung": "$15$",
-   "fehler": {
-    "5": "25 % gerechnet"
-   },
-   "zw": {
-    "id": "k-quelle-serlo-bild-113",
-    "frage": "$25$ Kinder stimmen ab, $40\\,\\%$ wählen denselben Film. Wie viele Kinder sind das?",
-    "thema": "Prozentwert mit einfachem Bruch",
-    "einheit": "prozentrechnung/3",
-    "schwere": 1,
-    "art": "zahl",
-    "wert": "10",
-    "loesung": "$10$"
+    "wert": "16,80",
+    "loesung": "$16{,}80$ €",
+    "masse": "€"
    }
   }
  ],
  "quellen": [
   {
-   "quelle": "eigene Fragen",
+   "quelle": "Key Stage 2 Mathematics, Paper 1: arithmetic (Standards and Testing Agency, England)",
    "nr": [
-    "4",
-    "7"
-   ]
+    "3"
+   ],
+   "lizenz": "OGL v3.0",
+   "bearbeitung": "übersetzt und bearbeitet",
+   "url": [
+    "https://dera.ioe.ac.uk"
+   ],
+   "lizenz_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+   "hinweis": "Contains public sector information licensed under the Open Government Licence v3.0."
   },
   {
    "quelle": "LISUM Materialien zur Diagnose und Förderung im Mathematikunterricht",
    "nr": [
     "1",
-    "2",
-    "4z",
-    "5"
+    "2z"
    ],
    "lizenz": "CC BY-SA 4.0",
    "bearbeitung": "übersetzt und bearbeitet",
@@ -295,8 +107,7 @@
   {
    "quelle": "MathALÉA (Coopmaths), Automatismes EAM Première",
    "nr": [
-    "2z",
-    "5z"
+    "1z"
    ],
    "lizenz": "CC BY-SA 4.0",
    "bearbeitung": "übersetzt und bearbeitet",
@@ -305,64 +116,11 @@
    ],
    "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
    "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
-  },
-  {
-   "quelle": "MathALÉA (Coopmaths), Course aux nombres",
-   "nr": [
-    "3",
-    "8z"
-   ],
-   "lizenz": "CC BY-SA 4.0",
-   "bearbeitung": "übersetzt und bearbeitet",
-   "url": [
-    "https://coopmaths.fr"
-   ],
-   "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
-   "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
-  },
-  {
-   "quelle": "MathALÉA (Coopmaths), Course aux nombres (Jahrgänge 2018–2023)",
-   "nr": [
-    "6"
-   ],
-   "lizenz": "CC BY-SA 4.0",
-   "bearbeitung": "übersetzt und bearbeitet",
-   "url": [
-    "https://coopmaths.fr"
-   ],
-   "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
-   "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
-  },
-  {
-   "quelle": "MathALÉA (Coopmaths), Course aux nombres (Jahrgänge)",
-   "nr": [
-    "3z"
-   ],
-   "lizenz": "CC BY-SA 4.0",
-   "bearbeitung": "übersetzt und bearbeitet",
-   "url": [
-    "https://coopmaths.fr"
-   ],
-   "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
-   "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
-  },
-  {
-   "quelle": "MathsMentales",
-   "nr": [
-    "8"
-   ],
-   "lizenz": "Apache-2.0",
-   "bearbeitung": "übersetzt und bearbeitet",
-   "url": [
-    "https://forge.apps.education.fr"
-   ],
-   "lizenz_url": "https://www.apache.org/licenses/LICENSE-2.0",
-   "hinweis": "Lizenziert unter der Apache License 2.0; die Vorlagen wurden übersetzt und verändert."
   },
   {
    "quelle": "OpenStax Prealgebra (1. Auflage, Rice University)",
    "nr": [
-    "1z"
+    "2"
    ],
    "lizenz": "CC BY 4.0",
    "bearbeitung": "übersetzt und bearbeitet",
@@ -374,11 +132,7 @@
   {
    "quelle": "Serlo",
    "nr": [
-    "6z",
-    "9",
-    "9z",
-    "10",
-    "10z"
+    "3z"
    ],
    "lizenz": "CC BY-SA 4.0",
    "bearbeitung": "übersetzt und bearbeitet",

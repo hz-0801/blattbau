@@ -6,235 +6,75 @@
  "fragen": [
   {
    "nr": 1,
-   "id": "k-quelle-mathalea-eam-259",
-   "frage": "Erweitere $\\frac{3}{7}$ mit $4$.",
-   "thema": "erweitern",
-   "einheit": "brueche-dezimalzahlen/2",
+   "id": "k-quelle-mathsmentales-bild-124",
+   "frage": "Von $20$ gleichen Kästchen sind $15$ gefärbt. Welcher Anteil ist nicht gefärbt (gekürzt)?",
+   "thema": "Anteil der ungefärbten Kästchen",
+   "einheit": "brueche-dezimalzahlen/1",
    "schwere": 1,
    "art": "zahl",
-   "wert": "12/28",
-   "loesung": "$\\frac{12}{28}$",
+   "wert": "1/4",
+   "loesung": "$\\frac14$",
    "bruch": 1,
    "streng": 1,
    "fehler": {
-    "12/7": "nur der Zähler"
-   },
-   "zw": {
-    "id": "k-quelle-mathalea-can-390",
-    "frage": "Ergänze: $\\frac{3}{4}=\\frac{15}{\\square}$.",
-    "thema": "erweitern",
-    "einheit": "brueche-dezimalzahlen/2",
-    "schwere": 1,
-    "art": "zahl",
-    "wert": "20",
-    "loesung": "$20$",
-    "fehler": {
-     "16": "12 zum Nenner addiert"
-    }
+    "3/4": "gefärbter Anteil"
    }
   },
   {
    "nr": 2,
-   "id": "k-quelle-lisum-384",
-   "frage": "Welcher Bruch ist am größten?",
-   "thema": "größerer Nenner, kleinerer Teil",
-   "einheit": "brueche-dezimalzahlen/3",
+   "id": "k-quelle-mathalea-054",
+   "frage": "Rechne $4{,}7+2{,}5$.",
+   "thema": "Dezimalzahlen über den Einer",
+   "einheit": "bruchrechnung/2",
    "schwere": 1,
-   "art": "auswahl",
-   "optionen": [
-    {
-     "t": "$\\frac{1}{8}$",
-     "f": "größerer Nenner für größeren Bruch gehalten"
-    },
-    {
-     "t": "$\\frac{1}{5}$",
-     "f": "größerer Nenner für größeren Bruch gehalten"
-    },
-    {
-     "t": "$\\frac{1}{3}$",
-     "r": 1
-    }
-   ],
-   "loesung": "$\\frac{1}{3}$",
+   "art": "zahl",
+   "wert": "7,2",
+   "loesung": "$7{,}2$",
+   "fehler": {
+    "6,12": "Zehntel ohne Übertrag"
+   },
    "zw": {
-    "id": "k-quelle-serlo-056",
-    "frage": "Welcher Bruch ist am größten?",
-    "thema": "größerer Nenner, kleinerer Teil",
-    "einheit": "brueche-dezimalzahlen/3",
+    "id": "k-quelle-mathalea-139",
+    "frage": "Rechne $8{,}3-2{,}6$.",
+    "thema": "Dezimalzahlen über den Einer",
+    "einheit": "bruchrechnung/2",
     "schwere": 1,
-    "art": "auswahl",
-    "optionen": [
-     {
-      "t": "$\\frac{6}{8}$",
-      "f": "größerer Nenner = größerer Bruch"
-     },
-     {
-      "t": "$\\frac{6}{4}$"
-     },
-     {
-      "t": "$\\frac{6}{2}$",
-      "r": 1
-     }
-    ],
-    "loesung": "$\\frac{6}{2}$"
+    "art": "zahl",
+    "wert": "5,7",
+    "loesung": "$5{,}7$",
+    "fehler": {
+     "6,3": "Zehntel vertauscht abgezogen"
+    }
    }
   },
   {
    "nr": 3,
-   "id": "k-quelle-lisum-rest-029",
-   "frage": "Runde $3{,}96$ auf Zehntel.",
-   "thema": "Runden mit Übertrag",
-   "einheit": "brueche-dezimalzahlen/5",
-   "schwere": 2,
+   "id": "k-quelle-mathsmentales-153",
+   "frage": "Rechne $\\frac34:3$.",
+   "thema": "Bruch durch natürliche Zahl",
+   "einheit": "bruchrechnung/3",
+   "schwere": 3,
    "art": "zahl",
-   "wert": "4,0",
-   "loesung": "$4{,}0$",
+   "wert": "1/4",
+   "loesung": "$\\frac14$",
+   "bruch": 1,
+   "fehler": {
+    "9/4": "malgenommen"
+   },
    "zw": {
-    "id": "k-quelle-mathsmentales-103",
-    "frage": "Runde $2{,}96$ auf Zehntel.",
-    "thema": "Runden mit Übertrag",
-    "einheit": "brueche-dezimalzahlen/5",
+    "id": "k-quelle-ks-mental-108",
+    "frage": "Rechne im Kopf: $\\tfrac{4}{5} : 4$.",
+    "thema": "Bruch durch natürliche Zahl",
+    "einheit": "bruchrechnung/3",
     "schwere": 2,
     "art": "zahl",
-    "wert": "3,0",
-    "loesung": "$3{,}0$"
+    "wert": "1/5",
+    "loesung": "$\\tfrac{1}{5}$",
+    "bruch": 1
    }
   },
   {
    "nr": 4,
-   "id": "k-quelle-mathalea-can-alt-004",
-   "frage": "Rechne und kürze: $\\frac{6}{35}\\cdot\\frac{14}{9}$.",
-   "thema": "Brüche malnehmen",
-   "einheit": "bruchrechnung/3",
-   "schwere": 3,
-   "art": "zahl",
-   "wert": "4/15",
-   "loesung": "$\\frac{4}{15}$",
-   "bruch": 1,
-   "streng": 1,
-   "fehler": {
-    "20/44": "Zähler und Nenner addiert"
-   },
-   "zw": {
-    "id": "k-quelle-mathsmentales-340",
-    "frage": "Rechne und kürze: $\\frac{4}{9}\\cdot\\frac{3}{8}$.",
-    "thema": "Brüche malnehmen",
-    "einheit": "bruchrechnung/3",
-    "schwere": 2,
-    "art": "zahl",
-    "wert": "1/6",
-    "loesung": "$\\frac16$",
-    "bruch": 1,
-    "streng": 1
-   }
-  },
-  {
-   "nr": 5,
-   "id": "k-quelle-serlo-006",
-   "frage": "Berechne geschickt: $326+52+74$.",
-   "thema": "Zehntel zu Ganzen ergänzen",
-   "einheit": "bruchrechnung/5",
-   "schwere": 1,
-   "art": "zahl",
-   "wert": "452",
-   "loesung": "$452$ ($326+74=400$, dann $+52$)",
-   "zw": {
-    "id": "k-quelle-lisum-322",
-    "frage": "Rechne geschickt: $342 - 129$",
-    "thema": "Zehntel zu Ganzen ergänzen",
-    "einheit": "bruchrechnung/5",
-    "schwere": 1,
-    "art": "zahl",
-    "wert": "213",
-    "loesung": "$342 - 130 + 1 = 213$"
-   }
-  },
-  {
-   "nr": 6,
-   "id": "k-eigen-t01-t03-563",
-   "frage": "Stimmt das? $\\frac{3}{100}=0{,}3$",
-   "thema": "Stellenwert Hundertstel",
-   "einheit": "brueche-dezimalzahlen/4",
-   "schwere": 2,
-   "art": "stimmt",
-   "knoepfe": [
-    "stimmt",
-    "stimmt nicht"
-   ],
-   "richtig": "stimmt nicht",
-   "loesung": "stimmt nicht – $0{,}3$ sind $3$ Zehntel; $3$ Hundertstel sind $0{,}03$.",
-   "fehler": "Null nach dem Komma vergessen",
-   "zw": {
-    "id": "k-algebra-7-9-025",
-    "frage": "Ergänze: $\\frac{7}{100} = \\square$ (als Dezimalzahl).",
-    "thema": "Stellenwert Hundertstel",
-    "einheit": "brueche-dezimalzahlen/4",
-    "schwere": 1,
-    "art": "zahl",
-    "wert": "0,07",
-    "loesung": "$0{,}07$.",
-    "streng": 1,
-    "fehler": {
-     "0,7": "Null bei den Zehnteln vergessen"
-    }
-   }
-  },
-  {
-   "nr": 7,
-   "id": "k-eigen-t04-t06-391",
-   "frage": "Welche Zahl liegt genau in der Mitte zwischen $-1$ und $0{,}4$?",
-   "thema": "Mitte zweier negativer Zahlen",
-   "einheit": "brueche-dezimalzahlen/5",
-   "schwere": 3,
-   "art": "auswahl",
-   "optionen": [
-    {
-     "t": "$-0{,}7$"
-    },
-    {
-     "t": "$-0{,}3$",
-     "r": 1
-    },
-    {
-     "t": "$0{,}3$"
-    },
-    {
-     "t": "$0{,}7$",
-     "f": "Abstand halbiert, nicht angesetzt"
-    }
-   ],
-   "loesung": "$-0{,}3$ (Abstand $1{,}4$, halb $0{,}7$; $-1+0{,}7$)",
-   "aus_zahl": 1,
-   "zw": {
-    "id": "k-eigen-t04-t06-390",
-    "frage": "Welche Zahl liegt genau in der Mitte zwischen $-0{,}8$ und $-0{,}7$?",
-    "thema": "Mitte zweier negativer Zahlen",
-    "einheit": "brueche-dezimalzahlen/5",
-    "schwere": 3,
-    "art": "auswahl",
-    "optionen": [
-     {
-      "t": "$-0{,}85$",
-      "f": "in die falsche Richtung"
-     },
-     {
-      "t": "$-0{,}75$",
-      "r": 1
-     },
-     {
-      "t": "$-0{,}65$"
-     },
-     {
-      "t": "$0{,}75$",
-      "f": "Minus vergessen"
-     }
-    ],
-    "loesung": "$-0{,}75$",
-    "aus_zahl": 1
-   }
-  },
-  {
-   "nr": 8,
    "id": "k-quelle-serlo-bild-006",
    "frage": "Welcher Anteil des Rechtecks ist gefärbt?",
    "thema": "Ungleiche Teile: Bruch mit Bedacht",
@@ -247,72 +87,188 @@
    "fehler": {
     "4/10": "Teile gezählt"
    },
-   "bild": "r-brueche-1311-8.svg"
+   "bild": "r-brueche-1311-4.svg"
   },
   {
-   "nr": 9,
-   "id": "k-quelle-mathsmentales-379",
-   "frage": "Schreibe $2+\\frac35$ als einen Bruch.",
-   "thema": "ganze Zahl plus Bruch",
-   "einheit": "bruchrechnung/1",
+   "nr": 5,
+   "id": "k-quelle-lisum-rest-029",
+   "frage": "Runde $3{,}96$ auf Zehntel.",
+   "thema": "Runden mit Übertrag",
+   "einheit": "brueche-dezimalzahlen/5",
    "schwere": 2,
-   "art": "zahl",
-   "wert": "13/5",
-   "loesung": "$\\frac{10}{5}+\\frac35=\\frac{13}{5}$",
-   "bruch": 1,
-   "streng": 1,
+   "art": "auswahl",
+   "optionen": [
+    {
+     "t": "$3{,}10$"
+    },
+    {
+     "t": "$3{,}9$"
+    },
+    {
+     "t": "$4{,}0$",
+     "r": 1
+    }
+   ],
+   "loesung": "$4{,}0$",
+   "aus_zahl": 1,
    "zw": {
-    "id": "k-quelle-openstax-a-151",
-    "frage": "Rechne: $1+\\frac{5}{6}$.",
-    "thema": "ganze Zahl plus Bruch",
-    "einheit": "bruchrechnung/1",
-    "schwere": 1,
-    "art": "zahl",
-    "wert": "11/6",
-    "loesung": "$\\frac{11}{6}$",
-    "bruch": 1
+    "id": "k-quelle-lisum-410",
+    "frage": "Runde $3{,}399$ auf Hundertstel.",
+    "thema": "Runden mit Übertrag",
+    "einheit": "brueche-dezimalzahlen/5",
+    "schwere": 2,
+    "art": "auswahl",
+    "optionen": [
+     {
+      "t": "$3{,}310$"
+     },
+     {
+      "t": "$3{,}39$"
+     },
+     {
+      "t": "$3{,}40$",
+      "r": 1
+     }
+    ],
+    "loesung": "$3{,}40$",
+    "aus_zahl": 1
    }
   },
   {
+   "nr": 6,
+   "id": "k-quelle-mathalea-eam-062",
+   "frage": "$72$ Schüler eines Jahrgangs haben Mathe als Leistungskurs, das sind $\\frac{3}{8}$ des Jahrgangs. Wie groß ist der Jahrgang?",
+   "thema": "vom Bruchteil zum Ganzen",
+   "einheit": "bruchrechnung/3",
+   "schwere": 2,
+   "art": "zahl",
+   "wert": "192",
+   "loesung": "$192$ ($72:3\\cdot 8$)",
+   "fehler": {
+    "27": "$\\frac{3}{8}$ von $72$"
+   },
+   "zw": {
+    "id": "k-quelle-mathalea-150",
+    "frage": "In einem Viertel Sandwich ist $1$ g Salz. Wie viel Salz ist im ganzen Sandwich?",
+    "thema": "vom Bruchteil zum Ganzen",
+    "einheit": "bruchrechnung/3",
+    "schwere": 2,
+    "art": "zahl",
+    "wert": "4",
+    "loesung": "$4$ g",
+    "masse": "g",
+    "fehler": {
+     "0,25": "geteilt statt multipliziert"
+    }
+   }
+  },
+  {
+   "nr": 7,
+   "id": "k-quelle-oak-03860",
+   "frage": "Wie viel ist $\\frac7{12} - \\frac13$?",
+   "thema": "ungleichnamige Brüche subtrahieren",
+   "einheit": "bruchrechnung/1",
+   "schwere": 2,
+   "art": "auswahl",
+   "optionen": [
+    {
+     "t": "$\\frac3{12}$",
+     "r": 1
+    },
+    {
+     "t": "$\\frac4{12}$"
+    },
+    {
+     "t": "$\\frac49$"
+    },
+    {
+     "t": "$\\frac8{15}$"
+    }
+   ],
+   "loesung": "$\\frac3{12}$"
+  },
+  {
+   "nr": 8,
+   "id": "k-quelle-mathsmentales-102",
+   "frage": "Runde $7{,}46$ auf Zehntel.",
+   "thema": "runden",
+   "einheit": "brueche-dezimalzahlen/5",
+   "schwere": 1,
+   "art": "zahl",
+   "wert": "7,5",
+   "loesung": "$7{,}5$",
+   "fehler": {
+    "7,4": "abgeschnitten"
+   },
+   "zw": {
+    "id": "k-quelle-mathalea-030",
+    "frage": "Runde $12{,}7$ auf Einer.",
+    "thema": "runden",
+    "einheit": "brueche-dezimalzahlen/5",
+    "schwere": 1,
+    "art": "zahl",
+    "wert": "13",
+    "loesung": "$13$",
+    "fehler": {
+     "12": "abgeschnitten statt gerundet"
+    }
+   }
+  },
+  {
+   "nr": 9,
+   "id": "k-quelle-mathalea-can-alt-077",
+   "frage": "Rechne geschickt: $2{,}7\\cdot 3+2{,}7\\cdot 7$.",
+   "thema": "gemeinsamen Faktor ausklammern, um 100 zu bilden",
+   "einheit": "bruchrechnung/5",
+   "schwere": 2,
+   "art": "zahl",
+   "wert": "27",
+   "loesung": "$27$"
+  },
+  {
    "nr": 10,
-   "id": "k-quelle-oak-01339",
-   "frage": "Wie nennt man eine Dezimalzahl, bei der sich eine Ziffernfolge endlos wiederholt?",
-   "thema": "periodische Dezimalzahl",
-   "einheit": "brueche-dezimalzahlen/4",
+   "id": "k-quelle-oak-05932",
+   "frage": "Wie viel ist $0{,}49 \\cdot 1000$?",
+   "thema": "Dezimalzahl mal Zehnerpotenz",
+   "einheit": "bruchrechnung/4",
    "schwere": 1,
    "art": "auswahl",
    "optionen": [
     {
-     "t": "echt",
-     "f": "„echt“ gehört zu Brüchen"
+     "t": "$0{,}49000$"
     },
     {
-     "t": "periodisch",
+     "t": "$49{,}000$"
+    },
+    {
+     "t": "490",
      "r": 1
     },
     {
-     "t": "abbrechend",
-     "f": "abbrechend ist das Gegenteil"
+     "t": "49 000"
     }
    ],
-   "loesung": "periodisch"
+   "loesung": "490"
   }
  ],
  "quellen": [
   {
-   "quelle": "eigene Fragen",
+   "quelle": "Key Stage 2 Mathematics, Paper 1: arithmetic (Standards and Testing Agency, England)",
    "nr": [
-    "6",
-    "6z",
-    "7",
-    "7z"
-   ]
+    "3z"
+   ],
+   "lizenz": "OGL v3.0",
+   "bearbeitung": "übersetzt und bearbeitet",
+   "url": [
+    "https://dera.ioe.ac.uk"
+   ],
+   "lizenz_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+   "hinweis": "Contains public sector information licensed under the Open Government Licence v3.0."
   },
   {
    "quelle": "LISUM Materialien zur Diagnose und Förderung im Mathematikunterricht",
    "nr": [
-    "2",
-    "3",
+    "5",
     "5z"
    ],
    "lizenz": "CC BY-SA 4.0",
@@ -324,35 +280,38 @@
    "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
   },
   {
+   "quelle": "MathALÉA (Coopmaths), Automatismes EAM Première",
+   "nr": [
+    "6"
+   ],
+   "lizenz": "CC BY-SA 4.0",
+   "bearbeitung": "übersetzt und bearbeitet",
+   "url": [
+    "https://coopmaths.fr"
+   ],
+   "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+   "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+  },
+  {
+   "quelle": "MathALÉA (Coopmaths), Course aux nombres",
+   "nr": [
+    "2",
+    "2z",
+    "6z",
+    "8z"
+   ],
+   "lizenz": "CC BY-SA 4.0",
+   "bearbeitung": "übersetzt und bearbeitet",
+   "url": [
+    "https://coopmaths.fr"
+   ],
+   "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+   "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+  },
+  {
    "quelle": "MathALÉA (Coopmaths), Course aux nombres (Jahrgänge 2018–2023)",
    "nr": [
-    "4"
-   ],
-   "lizenz": "CC BY-SA 4.0",
-   "bearbeitung": "übersetzt und bearbeitet",
-   "url": [
-    "https://coopmaths.fr"
-   ],
-   "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
-   "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
-  },
-  {
-   "quelle": "MathALÉA (Coopmaths), Course aux nombres (Jahrgänge)",
-   "nr": [
-    "1z"
-   ],
-   "lizenz": "CC BY-SA 4.0",
-   "bearbeitung": "übersetzt und bearbeitet",
-   "url": [
-    "https://coopmaths.fr"
-   ],
-   "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
-   "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
-  },
-  {
-   "quelle": "MathALÉA (Coopmaths), Exercices Suisse",
-   "nr": [
-    "1"
+    "9"
    ],
    "lizenz": "CC BY-SA 4.0",
    "bearbeitung": "übersetzt und bearbeitet",
@@ -365,9 +324,9 @@
   {
    "quelle": "MathsMentales",
    "nr": [
-    "3z",
-    "4z",
-    "9"
+    "1",
+    "3",
+    "8"
    ],
    "lizenz": "Apache-2.0",
    "bearbeitung": "übersetzt und bearbeitet",
@@ -380,6 +339,7 @@
   {
    "quelle": "Oak National Academy",
    "nr": [
+    "7",
     "10"
    ],
    "lizenz": "OGL v3.0",
@@ -391,23 +351,9 @@
    "hinweis": "Contains public sector information licensed under the Open Government Licence v3.0."
   },
   {
-   "quelle": "OpenStax Prealgebra (1. Auflage, Rice University)",
-   "nr": [
-    "9z"
-   ],
-   "lizenz": "CC BY 4.0",
-   "bearbeitung": "übersetzt und bearbeitet",
-   "url": [
-    "https://openstax.org"
-   ],
-   "lizenz_url": "https://creativecommons.org/licenses/by/4.0/deed.de"
-  },
-  {
    "quelle": "Serlo",
    "nr": [
-    "2z",
-    "5",
-    "8"
+    "4"
    ],
    "lizenz": "CC BY-SA 4.0",
    "bearbeitung": "übersetzt und bearbeitet",
