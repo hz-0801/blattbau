@@ -108,15 +108,9 @@ Bestellung mit „Basiszettel“ (auch „Basis“, „Basisaufgaben“), wahlwe
    Seite. Schick `schueler_pdf`; für den Lehrer dazu `lehrer_pdf` (Seite 2 sind die Lösungen).
 3. `befehl_liefern` mit dem Namen ausführen (Lieferzeile – sonst kommt derselbe Zettel wieder).
 
-**Nachblatt in derselben Stunde** (Lehrer 13.11., Richtung; Pilot NB-1-BAS-N01): Bei jeder Bestellung für einen Schüler, der
-heute einen Basiszettel bekam, lies zuerst die Rückkanal-Tabelle (wie „Weg planen“ Schritt 4). Steht dort zu seinem Zettel
-ein `f` oder `u`, bau sofort ein Nachblatt, ohne zu fragen: TOML nach dem Muster aufgabenbank
-`bau/zettel/nachblatt/nach-1-bas-n01.toml` (`art = "nachblatt"`, je falscher oder unsicherer Nummer eine Aufgabe mit
-`zu = "<Platz>"`, dieselbe Familie, andere Sache und Zahlen, höchstens so schwer – lieber leichter; bei Platz für zwei je
-Nummer erst die leichtere), Eingabe und Merkmale des Zettels daneben, dann
-`python3 werkzeuge/basiszettel-satz.py <toml> --qr nb<nr>-<zettel>-<TTMM> --snr <nr> --aus ../aufgabenbank-privat/lieferungen/<JJJJ-MM-TT>-<vorname>-nachblatt-qr`
-bis 0 Fehler, liefern wie ein Blatt (`geliefert.py`, Kartenname „Nachblatt“). Dazu eine Zeile: „Nachblatt zu Basis … (Nr. …)“.
-Selbstauskunft kann danebenliegen – ein Nachblatt zu viel schadet nicht. Beim 5-Minuten-Test gilt das noch nicht.
+**Nachblatt** nur auf Bestellung („Patrick Nachblatt“): TOML nach aufgabenbank `bau/zettel/nachblatt/nach-1-bas-n01.toml`
+(`art = "nachblatt"`, je Nummer `zu = "<Platz>"`, leichter), setzen mit `basiszettel-satz.py … --qr …`, liefern wie ein Blatt.
+Sonst kommen Fehler aus dem Zettel als Wiederholung vorne ans nächste Blatt (Abschnitt „Fehler wiederholen“).
 
 ## Prüfungsblatt
 
@@ -156,6 +150,22 @@ Grenze – keine feste Seitenzahl: eine Seite, wo sie reicht, zwei, wo das Thema
 5. **Lösungen:** Zu fast jeder Teilaufgabe ein Rechenweg auf der QR-Seite (Lehrer 13.11.), Sek I knapp nach mathe-nachhilfe
    `allgemein.md` 2.3a (11), Sek II nach `fhr/loesung/auftrag-kurvendiskussion.md`; ohne Weg nur bloßes Ablesen.
    Die QR-Seite zählt, welche Wege aufgeklappt werden, und hat am Ende drei Knöpfe „zu leicht · passt · zu schwer“ (ein Antippen sendet).
+
+## Fehler wiederholen (Lehrer 13.11., Richtung; Fehlerliste aufgabenbank-privat `fehler.csv`)
+
+Warum – was ein Schüler im Basiszettel oder 5-Minuten-Test falsch oder unsicher meldet, soll wiederkommen, ohne ihn zu
+bombardieren und ohne eigenes Blatt. Grenze – höchstens drei Aufgaben, nur einmal je Unterrichtstag und Schüler.
+
+1. Bei der ersten Alltagsblatt-Bestellung eines Schülers am Tag (nicht bei „weiter“, nicht beim Test oder Zettel): Rückkanal-Tabelle
+   lesen (ID wie in „Weg planen“ Schritt 4), als `zeit;Kennung;Nr;Urteile` in eine Datei schreiben, dann in aufgabenbank-privat
+   `python3 werkzeuge/fehler.py --einlesen <datei>` und `python3 werkzeuge/fehler.py --faellig <Name> --n 3`.
+2. Ist etwas fällig: setz vor die erste Aufgabe einen kurzen Teil „Kurz wiederholen“ mit einer Aufgabe je fälligem Fehler
+   (höchstens drei; passt eines zum Thema des Blatts, das zuerst) – leichter als das Original und hinführend: erst der Teilschritt,
+   dann die Aufgabe (Volumen: erst die Fläche einer Würfelseite, dann das Volumen); dieselbe Sache, andere Zahlen. Der Teil
+   zählt zur einen Seite; das neue Thema bleibt die Hauptsache.
+3. Danach `python3 werkzeuge/fehler.py --gestellt <Name> <quelle> …` – der Fehler kommt nach sieben Tagen noch einmal und ist
+   nach der zweiten Wiederholung erledigt; meldet der Schüler ihn erneut falsch, beginnt es von vorn. Kein Satz an den Lehrer
+   dazu; fragt er, `--zeige <Name>`.
 
 ## Bauen (Alltagsblatt fehlt)
 
