@@ -25,6 +25,8 @@ html,body{margin:0;height:100%;font-family:system-ui,-apple-system,"Segoe UI",Ro
 h1{font-size:28px;margin:6px 0 4px}
 p{font-size:18px;line-height:1.4;margin:8px 0}
 .kopf{display:flex;align-items:center;gap:10px;margin:2px 0 8px;font-size:15px;color:#4a6378}
+.kopf .stop{margin-left:auto;background:none;border:1px solid #b9c8d4;border-radius:8px;padding:4px 10px;font-size:14px;color:#4a6378;min-height:0}
+.rueck{display:flex;flex-direction:column;gap:10px}.rueck p{margin:0 0 4px}
 .balken{flex:1;display:flex;gap:4px}
 .balken i{flex:1;height:8px;border-radius:4px;background:#d5e1ec}
 .balken i.d{background:#1f5f8b}.balken i.j{background:#7fb0d3}
@@ -84,7 +86,7 @@ const el = (art, klasse, text) => { const e = document.createElement(art); if (k
 const formeln = wo => { if (window.renderMathInElement) renderMathInElement(wo, { delimiters: [{ left: "$", right: "$", display: false }], throwOnError: false,
   macros: { "\\sv": "\\begin{pmatrix}#1\\\\#2\\\\#3\\end{pmatrix}", "\\frac": "\\dfrac", "\\tfrac": "\\dfrac" } }); };   // Brüche groß, gut lesbar
 const bildname = b => b && /^[a-z0-9-]+\.(png|svg|jpg)$/.test(b) ? b : "";
-let runde, folge, i, urteile, antworten, zwillinge, zwAnzahl, beginn, nachrunde = false, gesendet = false;
+let runde, folge, i, urteile, antworten, zwillinge, zwAnzahl, beginn, nachrunde = false, gesendet = false, abgebrochen = false;
 let frage, eingabe, wahl, gesperrt;
 
 // ---- Zahlen: "−3/4", "2,5" → gekürzter Bruch [Zähler, Nenner]
@@ -116,11 +118,13 @@ function start(j) {
 function los() { folge = runde.fragen.map(f => ({ f, nr: f.nr, zw: false })); i = 0; urteile = {}; antworten = {}; zwillinge = []; zwAnzahl = 0; beginn = Date.now(); zeig(); }
 
 function zeig() {
-  const e = folge[i]; frage = e.f; gesperrt = false; wahl = null; eingabe = { minus: false, z: "", n: "", bruch: false };
+  const e = folge[i]; frage = e.f; gesperrt = false; wahl = null; const vorgabe = frage.art === "zahl" && !!frage.bruch && String(frage.wert || "").includes("/");   // Antwort ist ein Bruch: Feld gleich als Bruch (Lehrer 13.11.)
+  eingabe = { minus: false, z: "", n: "", bruch: vorgabe, vorgabe, teil: "z" };
   app.replaceChildren();
   const kopf = el("div", "kopf"), balken = el("div", "balken");
   folge.forEach((x, k) => balken.appendChild(el("i", k < i ? "d" : k === i ? "j" : "")));
-  kopf.appendChild(balken); kopf.appendChild(el("span", "", "Frage " + (i + 1) + " von " + folge.length)); app.appendChild(kopf);
+  kopf.appendChild(balken); kopf.appendChild(el("span", "", "Frage " + (i + 1) + " von " + folge.length));
+  const stop = el("button", "stop", "Aufhören"); stop.onclick = aufhoeren; kopf.appendChild(stop); app.appendChild(kopf);
   if (e.zw) app.appendChild(el("div", "", "")).appendChild(el("span", "marke", "Noch einmal so eine"));
   app.appendChild(el("div", "frage", frage.frage));
   const b = bildname(frage.bild);
@@ -141,19 +145,19 @@ function zifferfeld(unten) {
   ["1", "2", "3"].forEach(z => taste(z, z)); taste("⌫", "x", "", "löschen");
   ["4", "5", "6"].forEach(z => taste(z, z)); taste("−", "m", "", "Minus");
   ["7", "8", "9"].forEach(z => taste(z, z)); taste(",", "k", "", "Komma");
-  if (frage.bruch) taste("Bruch", "b", "klein", "Bruchstrich"); else t.appendChild(el("span"));
+  if (frage.bruch) taste(eingabe.vorgabe ? "Nenner ↓" : "Bruch", "b", "klein", eingabe.vorgabe ? "zum Nenner" : "Bruchstrich"); else t.appendChild(el("span"));
   taste("0", "0"); taste("Prüfen", "ok", "ok klein breit2").id = "pruefen";
   t.onclick = ev => { const b = ev.target.closest("button"); if (b) tipp(b.dataset.t); };
   unten.appendChild(t); mal();
 }
 function tipp(t) {
   if (gesperrt) return;
-  const e = eingabe, teil = e.bruch ? "n" : "z";
+  const e = eingabe, teil = e.bruch ? e.teil : "z";
   if (t === "ok") { if (bereit()) pruefZahl(); return; }
-  if (t === "x") { if (e.bruch && !e.n) e.bruch = false; else if (e[teil]) e[teil] = e[teil].slice(0, -1); else e.minus = false; }
+  if (t === "x") { if (e.bruch && e.teil === "n" && !e.n) { e.teil = "z"; if (!e.vorgabe) e.bruch = false; } else if (e[teil]) e[teil] = e[teil].slice(0, -1); else e.minus = false; }
   else if (t === "m") e.minus = !e.minus;
   else if (t === "k") { if (!e.bruch && !e.z.includes(",") && e.z.length < 7) e.z += e.z ? "," : "0,"; }
-  else if (t === "b") { if (frage.bruch && !e.bruch && e.z && !e.z.includes(",")) e.bruch = true; }
+  else if (t === "b") { if (frage.bruch && e.z && !e.z.includes(",") && (!e.bruch || e.teil === "z")) { e.bruch = true; e.teil = "n"; } }
   else if (/^\d$/.test(t) && e[teil].replace(",", "").length < (e.bruch ? 4 : 7)) e[teil] += t;
   mal();
 }
@@ -164,7 +168,9 @@ function mal(klasse) {
   const e = eingabe;
   if (e.bruch) {
     if (e.minus) feld.appendChild(el("span", "", "−"));
-    const br = el("span", "br"); br.appendChild(el("span", "", e.z)); br.appendChild(el("hr")); br.appendChild(el("span", gesperrt ? "" : "an", e.n || " ")); feld.appendChild(br);
+    const br = el("span", "br"); const zs = el("span", !gesperrt && e.teil === "z" ? "an" : "", e.z || " "), ns = el("span", !gesperrt && e.teil === "n" ? "an" : "", e.n || " ");
+    zs.onclick = () => { if (!gesperrt) { e.teil = "z"; mal(); } }; ns.onclick = () => { if (!gesperrt && e.z) { e.teil = "n"; mal(); } };
+    br.appendChild(zs); br.appendChild(el("hr")); br.appendChild(ns); feld.appendChild(br);
   } else feld.appendChild(el("span", "", (e.minus ? "−" : "") + e.z || " "));
   if (frage.masse) feld.appendChild(el("span", "mass", frage.masse));
   const p = document.getElementById("pruefen"); if (p) p.disabled = !bereit();
@@ -221,12 +227,21 @@ function fertig(ok, antwort, satz) {
   formeln(rm); w.scrollIntoView({ block: "nearest" });
 }
 
+function aufhoeren() {   // Lehrer 13.11. Weg A: aufhören dürfen; gemeldet wird, was beantwortet ist, der Rest als „-"
+  const unten = document.getElementById("unten"); if (!unten) return;
+  unten.replaceChildren(); const k = el("div", "rueck");
+  k.appendChild(el("p", "", "Wirklich aufhören? Was du schon beantwortet hast, geht an deinen Lehrer."));
+  const ja = el("button", "ok gross", "Ja, aufhören"); ja.onclick = () => { abgebrochen = true; ende(); };
+  const nein = el("button", "gross", "Weiter üben"); nein.onclick = () => zeig();
+  k.appendChild(ja); k.appendChild(nein); unten.appendChild(k);
+}
 function ende() {
   const fr = runde.fragen, n = fr.length, r = fr.filter(f => urteile[f.nr] === "r").length, falsch = fr.filter(f => urteile[f.nr] === "f");
   app.replaceChildren(); const m = el("div", "mitte");
-  m.appendChild(el("h1", "", nachrunde ? "Für heute geschafft!" : r === n ? "Alles richtig!" : "Geschafft!"));
+  m.appendChild(el("h1", "", abgebrochen ? "Für heute Schluss." : nachrunde ? "Für heute geschafft!" : r === n ? "Alles richtig!" : "Geschafft!"));
   m.appendChild(el("div", "zahl", r + " von " + n));
-  let alt = null; try { alt = localStorage.getItem("runde-" + kennung); if (!nachrunde) localStorage.setItem("runde-" + kennung, r + " von " + n); } catch (x) {}
+  if (abgebrochen) m.appendChild(el("p", "leise", fr.filter(f => urteile[f.nr]).length + " von " + n + " Fragen beantwortet"));
+  let alt = null; try { alt = localStorage.getItem("runde-" + kennung); if (!nachrunde && !abgebrochen) localStorage.setItem("runde-" + kennung, r + " von " + n); } catch (x) {}
   if (alt && !nachrunde) m.appendChild(el("p", "leise", "Letztes Mal: " + alt));
   if (zwillinge.length && !nachrunde) { const g = zwillinge.filter(z => z.endsWith("r")).length; m.appendChild(el("p", "", "Beim zweiten Anlauf: " + g + " von " + zwillinge.length + " geschafft.")); }
   const namen = l => [...new Set(l.map(f => f.thema))].slice(0, 5);
@@ -238,7 +253,7 @@ function ende() {
     if (falsch.length) { const b = el("b", "", "Das üben wir noch:"); if (r) b.style.marginTop = "8px"; liste.appendChild(b); namen(falsch).forEach(t => liste.appendChild(el("div", "", "· " + t))); etwas = true; }
   }
   if (etwas) m.appendChild(liste);
-  if (!nachrunde && falsch.length) {
+  if (!nachrunde && !abgebrochen && falsch.length) {
     const b = el("button", "ok gross", falsch.length === 1 ? "Den Fehler noch einmal" : "Die " + falsch.length + " Fehler noch einmal");
     b.onclick = () => { nachrunde = true; folge = falsch.map(f => ({ f, nr: f.nr, zw: false })); i = 0; zeig(); }; m.appendChild(b);
   }
