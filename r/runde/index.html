@@ -77,6 +77,8 @@ details a{color:inherit}
 iframe{display:none}
 </style></head><body><div id="app"></div><iframe name="ziel" title="senden"></iframe>
 <script>
+// \sv{a}{b} oder \sv{a}{b}{c}: Spaltenvektor mit zwei oder drei Komponenten (Werkstatt 29; vorher nur drei – zwei Komponenten erschienen falsch)
+const SV = ctx => { const t = a => a.slice().reverse().map(x => x.text).join(" "); const z = ctx.consumeArgs(2).map(t); if (ctx.future().text === "{") z.push(t(ctx.consumeArgs(1)[0])); return "\\begin{pmatrix}" + z.join("\\\\") + "\\end{pmatrix}"; };
 // Briefkasten: dasselbe Google-Formular wie r/ und r/kopf.
 const FORM = { url: "https://docs.google.com/forms/d/e/1FAIpQLScVAIyR0-hKCMXzbtrj8F7LXRPKd6vxw_XSq0-i5HXuzHBYUQ/formResponse", meldung: "entry.312904931" };
 const MAX_ZWILLINGE = 2, ABSTAND = 3;
@@ -86,7 +88,7 @@ const snr = (q.get("s") || "").replace(/[^0-9]/g, "").slice(0, 4) || "0";
 const app = document.getElementById("app");
 const el = (art, klasse, text) => { const e = document.createElement(art); if (klasse) e.className = klasse; if (text != null) e.textContent = text; return e; };
 const formeln = wo => { if (window.renderMathInElement) renderMathInElement(wo, { delimiters: [{ left: "$", right: "$", display: false }], throwOnError: false,
-  macros: { "\\sv": "\\begin{pmatrix}#1\\\\#2\\\\#3\\end{pmatrix}", "\\frac": "\\dfrac", "\\tfrac": "\\dfrac" } }); };   // Brüche groß, gut lesbar
+  macros: { "\\sv": SV, "\\frac": "\\dfrac", "\\tfrac": "\\dfrac" } }); };   // Brüche groß, gut lesbar
 const bildname = b => b && /^[a-z0-9-]+\.(png|svg|jpg)$/.test(b) ? b : "";
 let fassung = 0, runde, folge, i, urteile, antworten, zwillinge, zwAnzahl, beginn, nachrunde = false, gesendet = false, abgebrochen = false;
 let frage, eingabe, wahl, gesperrt;
