@@ -108,6 +108,16 @@ Bestellung mit „Basiszettel“ (auch „Basis“, „Basisaufgaben“), wahlwe
    Seite. Schick `schueler_pdf`; für den Lehrer dazu `lehrer_pdf` (Seite 2 sind die Lösungen).
 3. `befehl_liefern` mit dem Namen ausführen (Lieferzeile – sonst kommt derselbe Zettel wieder).
 
+**Nachblatt in derselben Stunde** (Lehrer 13.11., Richtung; Pilot NB-1-BAS-N01): Bei jeder Bestellung für einen Schüler, der
+heute einen Basiszettel bekam, lies zuerst die Rückkanal-Tabelle (wie „Weg planen“ Schritt 4). Steht dort zu seinem Zettel
+ein `f` oder `u`, bau sofort ein Nachblatt, ohne zu fragen: TOML nach dem Muster aufgabenbank
+`bau/zettel/nachblatt/nach-1-bas-n01.toml` (`art = "nachblatt"`, je falscher oder unsicherer Nummer eine Aufgabe mit
+`zu = "<Platz>"`, dieselbe Familie, andere Sache und Zahlen, höchstens so schwer – lieber leichter; bei Platz für zwei je
+Nummer erst die leichtere), Eingabe und Merkmale des Zettels daneben, dann
+`python3 werkzeuge/basiszettel-satz.py <toml> --qr nb<nr>-<zettel>-<TTMM> --snr <nr> --aus ../aufgabenbank-privat/lieferungen/<JJJJ-MM-TT>-<vorname>-nachblatt-qr`
+bis 0 Fehler, liefern wie ein Blatt (`geliefert.py`, Kartenname „Nachblatt“). Dazu eine Zeile: „Nachblatt zu Basis … (Nr. …)“.
+Selbstauskunft kann danebenliegen – ein Nachblatt zu viel schadet nicht. Beim 5-Minuten-Test gilt das noch nicht.
+
 ## Prüfungsblatt
 
 1. `python3 werkzeuge/bestellen.py "<Eingabe>"`. Steht im JSON `frage`: zeig sie als kurze nummerierte Zeilen zum
