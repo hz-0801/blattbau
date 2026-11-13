@@ -128,20 +128,24 @@ Grenze – keine feste Seitenzahl: eine Seite, wo sie reicht, zwei, wo das Thema
 1. **Erste Bestellung zu einem Thema:** Schreib zuerst das Gerüst – fünf bis acht Stationen, je eine Zeile: was neu dazukommt,
    wie schwer, welche Form (rechnen, ablesen, zeichnen, „Stimmt das?“, Sache). Hat der Schüler ein Buch in aufgabenbank-privat
    `buecher/` (Liste oben in `buecher/README.md`, Register unter seinem Vornamen, z. B. `buecher/jesse`), richte die
-   Stationen an dessen Folge aus (`werkzeuge/buchregister.py aufbau`) und nenne je Station die Buchseiten. Ablage: aufgabenbank-privat `lieferungen/wege/<JJJJ-MM-TT>-<vorname>-<stichwort>.md`. Höchstens eine
-   Minute; kein Layout, keine Zahlen.
+   Stationen an dessen Folge aus (`werkzeuge/buchregister.py aufbau`) und nenne je Station die Buchseiten. Ablage: aufgabenbank-privat `lieferungen/wege/<JJJJ-MM-TT>-<vorname>-<stichwort>.md`. Nimm dir dafür
+   die Zeit, die ein guter Weg braucht – das Gerüst entscheidet über alle Seiten; Layout und Zahlen gehören nicht hinein.
 2. **Seite 1 sofort:** Station 1 (wenn sie sehr kurz ist, mit Station 2) als ein Blatt nach „Bauen“, zugeschnitten auf eine,
    höchstens zwei Seiten; liefern wie „Alltagsblatt“ Schritt 3–4 und die Dateikarte schicken, bevor du weiterarbeitest.
 3. **Seite 2 im selben Zug:** Bau gleich danach die nächste Station, liefere sie mit `qr-blatt.py` (Kennung mit `-s2`, `-s3` …),
    committe und pushe, aber schick sie nicht und trag sie nicht in die Lieferliste ein. Schreib nur „Seite 2 liegt bereit – ‚weiter‘“.
 4. **„weiter“:** Schick die bereitliegende Seite sofort, trag sie dann ein (`geliefert.py`) und bau die nächste Station im selben
-   Zug vor. Ein Wort des Lehrers verschiebt die Stelle im Gerüst: „schwerer“ oder „zu leicht“ – Stationen überspringen
+   Zug vor. Vorher die Rückmeldungen zu den Seiten dieses Weges lesen: Google-Tabelle „Rückkanal Kopftest (Antworten)“
+   (ID `1nvI6HAPmDO1lUj-b9HyCFaYC4vIaBTlY7FmE0Jdc2RU`, Spalten Zeitstempel und Meldung `Kennung;Nr;…`) über die
+   Google-Tabellen-Verbindung; `g=l` heißt zu leicht, `g=p` passt, `g=s` zu schwer, `w=2a,3` die aufgeklappten Rechenwege,
+   `r`/`u`/`f` richtig/unsicher/falsch. Fehlt die Verbindung, sag es in einer Zeile und geh nach dem Gerüst. Ein Wort des
+   Lehrers geht der Tabelle vor; sie ist Selbstauskunft. Ein Wort des Lehrers – oder ohne Wort die Tabelle – verschiebt die Stelle im Gerüst: „schwerer“ oder „zu leicht“ – Stationen überspringen
    (die bereitliegende Seite verwerfen, Stolperfälle und Sache statt weiterer Grundfälle); „mehr“ – gleiche Station, andere
    Zahlen und Form; „zu schwer“ – eine Zwischenstufe einschieben. Ohne Wort gilt das Gerüst. Ändert sich der Weg, schreib
    die Änderung in die Gerüst-Datei.
 5. **Lösungen:** Zu fast jeder Teilaufgabe ein Rechenweg auf der QR-Seite (Lehrer 13.11.), Sek I knapp nach mathe-nachhilfe
    `allgemein.md` 2.3a (11), Sek II nach `fhr/loesung/auftrag-kurvendiskussion.md`; ohne Weg nur bloßes Ablesen.
-   Die QR-Seite zählt, welche Wege aufgeklappt werden, und fragt am Ende „zu leicht · passt · zu schwer“ (ein Antippen).
+   Die QR-Seite zählt, welche Wege aufgeklappt werden, und hat am Ende drei Knöpfe „zu leicht · passt · zu schwer“ (ein Antippen sendet).
 
 ## Bauen (Alltagsblatt fehlt)
 
