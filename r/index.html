@@ -115,7 +115,8 @@ const start = j => {
     if (w) zeile.appendChild(w);
     block.querySelector(".ts").appendChild(zeile);
   });
-  if (window.renderMathInElement) renderMathInElement(liste, { delimiters: [{ left: "$", right: "$", display: false }], throwOnError: false });
+  if (window.renderMathInElement) renderMathInElement(liste, { delimiters: [{ left: "$", right: "$", display: false }], throwOnError: false,
+    macros: { "\\sv": "\\begin{pmatrix}#1\\\\#2\\\\#3\\end{pmatrix}" } });
   if (j.pdf && /^[a-z0-9-]+\.pdf$/.test(j.pdf)) { document.getElementById("pdfa").href = "t/" + j.pdf; document.getElementById("pdf").style.display = "block"; }
   ab.onclick = () => {
     const offen = wahl.filter(x => !x).length;
