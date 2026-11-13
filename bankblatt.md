@@ -160,11 +160,13 @@ bombardieren und ohne eigenes Blatt. Grenze – höchstens drei Aufgaben, nur ei
    lesen (ID wie in „Weg planen“ Schritt 4), als `zeit;Kennung;Nr;Urteile` in eine Datei schreiben, dann in aufgabenbank-privat
    `python3 werkzeuge/fehler.py --einlesen <datei>` und `python3 werkzeuge/fehler.py --faellig <Name> --n 3`.
 2. Ist etwas fällig: setz vor die erste Aufgabe einen kurzen Teil „Kurz wiederholen“ mit einer Aufgabe je fälligem Fehler
-   (höchstens drei; passt eines zum Thema des Blatts, das zuerst) – leichter als das Original und hinführend: erst der Teilschritt,
-   dann die Aufgabe (Volumen: erst die Fläche einer Würfelseite, dann das Volumen); dieselbe Sache, andere Zahlen. Der Teil
+   (höchstens drei; passt eines zum Thema des Blatts, das zuerst). Beim ersten Mal (Stufe 0) nicht dieselbe Frage, sondern
+   eine verwandte, die dasselbe Wissen braucht, leichter und hinführend: erst der Teilschritt, dann die Aufgabe (Volumen: erst die
+   Fläche einer Würfelseite, dann das Volumen; Raute mit Nachbarwinkeln: Nebenwinkel an einer Geraden, dann Parallelogramm).
+   Beim zweiten Mal (Stufe 1, nach sieben Tagen) kommt die Originalfrage aus `text` wieder, wie er sie falsch hatte. Der Teil
    zählt zur einen Seite; das neue Thema bleibt die Hauptsache.
-3. Danach `python3 werkzeuge/fehler.py --gestellt <Name> <quelle> …` – der Fehler kommt nach sieben Tagen noch einmal und ist
-   nach der zweiten Wiederholung erledigt; meldet der Schüler ihn erneut falsch, beginnt es von vorn. Kein Satz an den Lehrer
+3. Danach `python3 werkzeuge/fehler.py --gestellt <Name> <quelle> …` – nach dem ersten Mal wieder fällig in sieben Tagen,
+   nach der Originalfrage erledigt; meldet der Schüler ihn erneut falsch, beginnt es von vorn. Kein Satz an den Lehrer
    dazu; fragt er, `--zeige <Name>`.
 
 ## Bauen (Alltagsblatt fehlt)
