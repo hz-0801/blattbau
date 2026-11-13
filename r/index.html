@@ -70,6 +70,8 @@
 <iframe name="auf" title="geöffnet"></iframe>
 <iframe name="gefr" title="Einschätzung"></iframe>
 <script>
+// \sv{a}{b} oder \sv{a}{b}{c}: Spaltenvektor mit zwei oder drei Komponenten (Werkstatt 29; vorher nur drei – zwei Komponenten erschienen falsch)
+const SV = ctx => { const t = a => a.slice().reverse().map(x => x.text).join(" "); const z = ctx.consumeArgs(2).map(t); if (ctx.future().text === "{") z.push(t(ctx.consumeArgs(1)[0])); return "\\begin{pmatrix}" + z.join("\\\\") + "\\end{pmatrix}"; };
 // Briefkasten: ein Google-Formular für alle Blätter (Test und Nummer stehen hinter #, damit sie nicht an den Seitenserver gehen).
 const FORM = { url: "https://docs.google.com/forms/d/e/1FAIpQLScVAIyR0-hKCMXzbtrj8F7LXRPKd6vxw_XSq0-i5HXuzHBYUQ/formResponse", meldung: "entry.312904931" };
 // Probe vom 09.11. (Einheitskreis, Kl. 10) – der erste ausgegebene QR-Code zeigt hierher.
@@ -130,7 +132,7 @@ const start = j => {
     block.querySelector(".ts").appendChild(zeile);
   });
   if (window.renderMathInElement) renderMathInElement(liste, { delimiters: [{ left: "$", right: "$", display: false }], throwOnError: false,
-    macros: { "\\sv": "\\begin{pmatrix}#1\\\\#2\\\\#3\\end{pmatrix}" } });
+    macros: { "\\sv": SV } });
   if (j.pdf && /^[a-z0-9-]+\.pdf$/.test(j.pdf)) { document.getElementById("pdfa").href = "t/" + j.pdf; document.getElementById("pdf").style.display = "block"; }
   // Übungsblatt (Form p): am Ende ein Antippen „zu leicht · passt · zu schwer“; es sendet sofort, mit den aufgeklappten Wegen.
   if (j.p && !PROBE[t]) {
