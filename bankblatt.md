@@ -1,4 +1,4 @@
-# Blatt bestellen – v12o (14.11.2026)
+# Blatt bestellen – v12p (14.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -175,8 +175,10 @@ bombardieren und ohne eigenes Blatt. Grenze – höchstens drei Aufgaben, nur ei
 
 ## Bauen (Alltagsblatt fehlt)
 
-Ohne Beispiel und ohne Kasten (Register 12.11.1, Lehrer 12.11.: das Beispiel rechnet er an der Tafel); eine Formel mit Namen
-steht als eigene abgesetzte Zeile vor der ersten Aufgabe. Ein Beispiel nur, wenn die Bestellung „mit Beispiel“ sagt. Das gilt
+Versuch seit 14.11. (Register 14.11.24): Der erste Block eines Weges beginnt mit einem Beispiel als Tafelbild (allgemein.md 2.3,
+Schreibweise 2.3a: Gleichheitszeichen untereinander, Schritt in Worten rechts), weitere Blöcke ohne; nie ein Merk- oder
+Formelkasten (Register 12.11.1 gilt dafür weiter). Eine Formel mit Namen steht als eigene abgesetzte Zeile vor der ersten Aufgabe.
+„ohne Beispiel“ in der Bestellung lässt es weg. Das gilt
 auch, wenn du ein Vorratsblatt zuschneidest: Beispiel und Kasten weglassen, Formelzeile behalten.
 Bau genau ein Blatt nach blattbau `alltagsblatt.md` mit Eintrag, Einheit, Abschnitt (fehlt er: der erste nach der Zone),
 Klasse und Schulform aus `bauen`; Gruppenprofil aus aufgabenbank `bank/vorrat/profile/` nach Klasse und Schulform, wenn
