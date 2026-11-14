@@ -1,4 +1,4 @@
-# Blatt bestellen – v12r (14.11.2026)
+# Blatt bestellen – v12s (14.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -71,7 +71,7 @@ sagen, eine Alternative anbieten (anderer Abschnitt, Test, Prüfungsblatt), nich
    (Stichwort: ein Wort aus dem Titel, klein, ohne Umlaute; dasselbe Blatt am selben Tag für zwei Schüler behält die
    Kennung). Es setzt das Blatt ohne Ergebnis-Fuß mit QR-Code und schreibt für die Seite je Teilaufgabe Ergebnis und
    Rechenweg (antippen muss der Schüler nur wenige Stellen) und, bei eigenen Aufgaben, Blatt und Lösung als eine PDF-Datei
-   zum Speichern. Schick das neue PDF und `loesung` (die Lösungsseite ist für den Lehrer).
+   zum Speichern. Schick das neue PDF; `loesung` nur, wenn der Lehrer nach der Lösung fragt (Register 14.11.29).
 4. `cd ../aufgabenbank-privat && python3 werkzeuge/geliefert.py --name <Name> --projekt erzeugeBlatt --bestellung
    "<Eingabe>, QR <QR-Kennung>" --datei lieferungen/<…>-qr.pdf --kennung <kennung aus auswahl.py>`.
 
@@ -91,8 +91,8 @@ aufgabenbank-privat `schueler.md`.
    schon vergeben, hängt die Nummer an (`k10-quadratisch-1111-9`, höchstens 24 Zeichen – sonst Stichwort kürzen).
 2. Hält es an, weil die Fragen nicht reichen: sag es in einer Zeile und biete den ganzen Eintrag an
    (`--abschnitt <eintrag>`). Nichts von Hand ergänzen.
-3. Schick das PDF. Darunter für den Lehrer die Lösungen aus `../blattbau/r/t/<QR-Kennung>.json`, nummeriert, eine
-   Zeile je Frage.
+3. Schick das PDF. Fragt der Lehrer nach den Lösungen: aus `../blattbau/r/t/<QR-Kennung>.json`, nummeriert, eine
+   Zeile je Frage (Register 14.11.29).
 4. `cd ../aufgabenbank-privat && python3 werkzeuge/geliefert.py --name <Name> --projekt kopftest --bestellung
    "<Eingabe>, QR <QR-Kennung>" --datei lieferungen/<…>.csv --kennung "seed <Nr><TTMM>"` – ohne diese Zeile wiederholen
    sich die Fragen im nächsten Test.
@@ -105,7 +105,7 @@ Bestellung mit „Basiszettel“ (auch „Basis“, „Basisaufgaben“), wahlwe
    Schüler noch nicht hatte (jüngster Jahrgang zuerst), und nennt die Befehle. „HALT: kein freier Basiszettel“: in einer
    Zeile sagen, nichts anderes schicken.
 2. `befehl_setzen` ausführen: setzt die Schülerfassung (eine Seite, QR oben rechts) und schreibt die Lösungen für die
-   Seite. Schick `schueler_pdf`; für den Lehrer dazu `lehrer_pdf` (Seite 2 sind die Lösungen).
+   Seite. Schick `schueler_pdf`; `lehrer_pdf` (Seite 2 sind die Lösungen) nur auf Nachfrage (Register 14.11.29).
 3. `befehl_liefern` mit dem Namen ausführen (Lieferzeile – sonst kommt derselbe Zettel wieder).
 
 **Nachblatt** nur auf Bestellung („Nr. 1 Nachblatt“): TOML nach aufgabenbank `bau/zettel/nachblatt/nach-1-bas-n01.toml`
@@ -238,16 +238,18 @@ Werkstatt arbeitet es ein und hebt die Sperre auf. Nichts am Blatt selbst änder
   (Register 11.11.5, Lehrer 11.11.: Name groß vorn, kein „QR“, kein Zähler). Abgelegt und in die Lieferliste eingetragen
   wird weiter unter dem Ablagenamen.
 - Am Ende jeder Antwort – auch einer kurzen, auch nach einer Rückfrage – schickst du alle PDFs dieses Chats noch einmal
-  als Dateikarten, in zwei Gruppen: zuerst alles zum Drucken (Blätter und Tests, in der Reihenfolge der Bestellungen),
-  dann eine eigene Zeile „Lösungen“ und darunter alle Lösungen in derselben Reihenfolge – zwei getrennte Sendungen,
-  damit die Lösungen sichtbar abgesetzt am Ende stehen (Lehrer 11.11.: er fasst sie selten an, bei fünf, sechs
-  Blättern wird es sonst unübersichtlich; vorläufig). Sonst kein Text dazu.
+  als Dateikarten, nach Namen geordnet (alphabetisch): je Schüler eine Zeile mit dem Namen in Fett, darunter seine
+  Blätter und Tests in der Reihenfolge, in der der Lehrer sie bestellt hat – je Name eine eigene Sendung. Lösungen
+  kommen nicht in diese Liste und gehen nur auf Nachfrage raus (Register 14.11.29, Lehrer 14.11. Werkstatt 42: „nach
+  Namen geordnet und in der Reihenfolge, wie ich sie bestellt habe … auf Lösungsblätter verzichten“; er springt am Tisch
+  zwischen Schülern und Blättern, die Zeitfolge über alle Schüler hat ihn am 12.11. durcheinandergebracht; löst die
+  zwei Gruppen vom 11.11. ab). Sonst kein Text dazu.
   Weg fällt nur, was durch ein neues Blatt ersetzt ist oder was der Lehrer als erledigt nennt („hab ich“, „gedruckt“).
   Warum – er druckt aus dem Chat und soll nicht nach oben suchen (Lehrer 11.11.: „am Ende einer jeden Antwort … nochmal
   zur Verfügung gestellt“; globale Anweisung „Signalwort“). Die Karten zählen nicht zu den drei Zeilen.
 - Nach jeder Antwort, in der etwas geliefert, verworfen oder als ausgegeben eingetragen wurde, erzeugst du die
   Unterrichtsseite neu: im Ordner aufgabenbank-privat `python3 werkzeuge/tagesseite.py /tmp/Unterricht.html` – und schickst
-  sie als letzte Dateikarte nach den Lösungen (Register 14.11.28, Lehrer 14.11.: „damit ich sehe, wer was wann wie bekommen
+  sie als letzte Dateikarte nach den Blättern (Register 14.11.28, Lehrer 14.11.: „damit ich sehe, wer was wann wie bekommen
   hat … oder was jetzt als nächstes ausgegeben werden soll“). Sie zeigt je Name den Tag in Bestellreihenfolge, Verworfenes
   durchgestrichen, „ausgegeben“ / „bestellt, nicht ausgegeben“, frühere Tage zum Aufklappen. Kein Text dazu.
 - Fragt der Lehrer, was ein Schüler schon bekam: im Ordner aufgabenbank-privat
