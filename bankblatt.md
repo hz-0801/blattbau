@@ -138,7 +138,7 @@ Grenze – keine feste Seitenzahl: eine Seite, wo sie reicht, zwei, wo das Thema
    höchstens zwei Seiten; liefern wie „Alltagsblatt“ Schritt 3–4 und die Dateikarte schicken, bevor du weiterarbeitest.
    Ein Vorratsblatt wird nur dann in Stücken geliefert (`qr-blatt.py --seiten`), wenn jedes Stück an einem Blockende endet
    (Block in plaetze.jsonl, Block beginnt auf neuer Seite); sonst ganz. Schnitt nach Seiten allein trennt Zusammengehöriges
-   (Lehrer 14.11. Werkstatt 41, im Gespräch, vorläufig).
+   (Lehrer 14.11. Werkstatt 41: „auf jeden Fall Schnitt am Blockende“; ältere Vorratsblätter setzt ein Skript mit Seitenwechsel je Block neu – offen).
 3. **Seite 2 im selben Zug:** Bau gleich danach die nächste Station, liefere sie mit `qr-blatt.py` (Kennung mit `-s2`, `-s3` …),
    committe und pushe, aber schick sie nicht und trag sie nicht in die Lieferliste ein. Schreib nur „Seite 2 liegt bereit – ‚weiter‘“.
 4. **„weiter“:** Schick die bereitliegende Seite sofort, trag sie dann ein (`geliefert.py`) und bau die nächste Station im selben
