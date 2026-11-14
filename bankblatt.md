@@ -1,4 +1,4 @@
-# Blatt bestellen – v12m (14.11.2026)
+# Blatt bestellen – v12n (14.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -136,6 +136,9 @@ Grenze – keine feste Seitenzahl: eine Seite, wo sie reicht, zwei, wo das Thema
    die Zeit, die ein guter Weg braucht – das Gerüst entscheidet über alle Seiten; Layout und Zahlen gehören nicht hinein.
 2. **Seite 1 sofort:** Station 1 (wenn sie sehr kurz ist, mit Station 2) als ein Blatt nach „Bauen“, zugeschnitten auf eine,
    höchstens zwei Seiten; liefern wie „Alltagsblatt“ Schritt 3–4 und die Dateikarte schicken, bevor du weiterarbeitest.
+   Liegt für die Stationen ein Vorratsblatt bereit (`auswahl.py`), ist es das Gerüst: liefere es in Stücken zu ein bis zwei Seiten
+   mit `qr-blatt.py <ordner> --seiten 1-2` (dann `--seiten 3-4` …, Kennung mit `-s1`, `-s2`); jedes Stück trägt oben seinen
+   QR-Code, die Rückmeldeseite nur seine Nummern (Lehrer 14.11. Werkstatt 41: „seitenweise … ihr passt diese Arbeitsblätter damit rein“).
 3. **Seite 2 im selben Zug:** Bau gleich danach die nächste Station, liefere sie mit `qr-blatt.py` (Kennung mit `-s2`, `-s3` …),
    committe und pushe, aber schick sie nicht und trag sie nicht in die Lieferliste ein. Schreib nur „Seite 2 liegt bereit – ‚weiter‘“.
 4. **„weiter“:** Schick die bereitliegende Seite sofort, trag sie dann ein (`geliefert.py`) und bau die nächste Station im selben
