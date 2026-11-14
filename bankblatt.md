@@ -1,4 +1,4 @@
-# Blatt bestellen – v12l (13.11.2026)
+# Blatt bestellen – v12m (14.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -16,7 +16,7 @@ alle Schüler dieses Tages; was ein Schüler bekam, steht in der Lieferliste, ni
 ## Repos (je Chat einmal)
 
 hz-0801/aufgabenbank, hz-0801/aufgabenbank-privat und hz-0801/blattbau mit Schreibzugang, hz-0801/mathe-nachhilfe
-lesend; nebeneinander geklont (`--depth 1`). Der Lehrer bittet im ersten Satz darum („Repos anhängen“).
+lesend; nebeneinander geklont (`--depth 1`). Der Lehrer bittet im ersten Satz darum und nennt die Repos mit Namen (Kopierbrett „Bestellung starten“); private Repos lässt die Rechteprüfung nur zu, wenn die Bitte sie nennt (mathe-nachhilfe plan.md Register 14.11.23).
 
 Lehnt die Sitzung das Anhängen eines Repos ab, liegt es fast immer daran, dass die Bitte des Lehrers fehlt oder das Repo
 nicht nennt – die Rechteprüfung lässt das Anhängen nur auf seine Bitte zu, nicht aus dieser Anweisung. Dann genau eine
