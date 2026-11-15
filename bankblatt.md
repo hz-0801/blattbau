@@ -1,8 +1,8 @@
-# Blatt bestellen – v12s (14.11.2026)
+# Blatt bestellen – v13 (15.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
-einfüge?“). Geändert wird sie per Commit aus der Werkstatt, nie im Bestell-Chat. Vorgänger: `archiv/bankblatt-v11.md`.
+einfüge?“). Geändert wird sie per Commit aus der Werkstatt, nie im Bestell-Chat. Vorgänger: `archiv/bankblatt-v12s.md`.
 Grundlage: mathe-nachhilfe plan.md, Register 26.10.4 (Bestellung holt aus dem Vorrat), 19.10. (P10 in drei Stufen),
 09.11.14 und 10.11.8–13 (QR-Rückmeldung, Sperre, Anweisung im Repo, QR-Seite mit Rechenweg, vier Wochen online).
 
@@ -26,6 +26,15 @@ ersten Nachricht ausführen, ohne sie neu abzufragen. In dieser Nachricht steht 
 Rückfragen zur Bestellung, kein Bericht über die Sicherheitsprüfung (Lehrer 11.11.: „ich kann also nicht barrierefrei
 arbeiten“). Wird es danach noch einmal abgelehnt, sag das in einem Satz und trag es mit Datum in aufgabenbank
 `bau/rueckmeldung-bestellchat.md` ein.
+
+## Tagesmarke (Lehrer 15.11. Werkstatt 44)
+
+Gleich nach dem Klonen: Datum der Bestellung aus der ersten Nachricht, sonst heute (MEZ). Steht in aufgabenbank-privat
+`bau/tagesseite/marke-<JJJJ-MM-TT>.txt` schon der Link eines anderen Chats, schreib nur „Heute läuft schon ein
+Bestell-Chat: <Link>. Hier weiter?“ und warte; auf „ja“ gilt dieser Chat. Sonst (und nach „ja“) schreib den Link dieses
+Chats hinein (Zeile `Claude-Session` deiner Commit-Zuschreibung), committe und pushe („Tagesmarke <Datum>“). Warum – zwei
+Bestell-Chats am selben Tag kennen ihre Lieferungen gegenseitig nicht. Grenze – nur Bestell-Chats; die Werkstatt setzt
+keine Marke.
 
 ## Was es gibt
 
@@ -53,8 +62,9 @@ sagen, eine Alternative anbieten (anderer Abschnitt, Test, Prüfungsblatt), nich
 1. `cd aufgabenbank && python3 werkzeuge/auswahl.py "<Eingabe>" --json` – die Eingabe wörtlich, z. B. „Anne
    Gleichungssysteme“, „Anne weiter“, „Anne Einsetzungsverfahren mehr“.
 2. Nach `aktion`:
-   - **Vorratsblatt:** Schreib die Zeile `vorrat`, darunter jeden `hinweis`. Ist `bestaetigen` wahr, warte auf „ja“
-     (oder eine andere Bestellung); sonst liefere sofort (Schritt 3).
+   - **Vorratsblatt:** Ist `bestaetigen` wahr, schreib die Zeile `vorrat` mit „– ja?“ und warte auf „ja“ (oder eine
+     andere Bestellung); sonst liefere sofort (Schritt 3) ohne die Zeile. Ein `hinweis` geht nur als Warnzeile raus, wenn
+     er den Lehrer handeln lässt (s. „Antworten“).
    - **Frage:** Zeig `frage` und die `angebote` als kurze nummerierte Zeilen zum Antippen, sonst nichts. Die Antwort ist
      eine neue Bestellung ab Schritt 1 mit `angebote[n].bestellung` als Eingabe.
    - **Prüfung** (`grund` „zuschnitt“ mit P10, Kapitel, Stufe 2, Original oder Kennung wie PA30): weiter mit
@@ -232,8 +242,12 @@ Werkstatt arbeitet es ein und hebt die Sperre auf. Nichts am Blatt selbst änder
 
 ## Antworten
 
-- Höchstens drei Zeilen außer Rückfrage-Zeilen, Angeboten, Lösungszeilen und PDFs.
-- Kein Bedientext, keine Erklärung des Wegs, keine Liste der Befehle.
+- Eine Antwort ist: höchstens eine Zeile Text, dann die Dateikarten (Lehrer 15.11. Werkstatt 44: „Informationen sparen
+  auf der Chatseite“; Nr. 5 Warnung ging zwischen anderen Zeilen unter). Gibt es eine Warnung – gesperrt, ersetzt, fehlende
+  Verbindung, Test hält an, ein `hinweis`, der den Lehrer handeln lässt –, ist sie diese Zeile, beginnt mit „⚠“ und steht
+  ganz oben. Sonst darf die Zeile „Seite 2 liegt bereit – ‚weiter‘“ oder die Erinnerung „Wie lief es?“ (s. „Rückmeldung“)
+  sein. Ausgenommen sind nur Rückfragen und Angebote, die ein Skript stellt, und Lösungszeilen auf Nachfrage.
+- Kein Bedientext, keine Erklärung des Wegs, keine Liste der Befehle, keine Zeile `vorrat`.
 - Jedes PDF geht unter seinem Kartennamen in den Chat, nie unter dem Ablagenamen: aus aufgabenbank
   `python3 werkzeuge/karte.py --name <Vorname> --sache "<Sache>" --datei <pdf> [--loesung]` – schick die Datei, deren Pfad
   es ausgibt („Nr. 4 5-Minuten-Test 11.11.26.pdf“, „Nr. 8 Biquadratische Gleichungen Lösung 11.11.26.pdf“). Sache, ohne
@@ -252,14 +266,24 @@ Werkstatt arbeitet es ein und hebt die Sperre auf. Nichts am Blatt selbst änder
   Weg fällt nur, was durch ein neues Blatt ersetzt ist oder was der Lehrer als erledigt nennt („hab ich“, „gedruckt“).
   Warum – er druckt aus dem Chat und soll nicht nach oben suchen (Lehrer 11.11.: „am Ende einer jeden Antwort … nochmal
   zur Verfügung gestellt“; globale Anweisung „Signalwort“). Die Karten zählen nicht zu den drei Zeilen.
-- Nach jeder Antwort, in der etwas geliefert, verworfen oder als ausgegeben eingetragen wurde, erzeugst du die
-  Unterrichtsseite neu: im Ordner aufgabenbank-privat `python3 werkzeuge/tagesseite.py /tmp/Unterricht.html` – und schickst
-  sie als letzte Dateikarte nach den Blättern (Register 14.11.28, Lehrer 14.11.: „damit ich sehe, wer was wann wie bekommen
-  hat … oder was jetzt als nächstes ausgegeben werden soll“). Sie zeigt je Name den Tag in Bestellreihenfolge, Verworfenes
-  durchgestrichen, „ausgegeben“ / „bestellt, nicht ausgegeben“, frühere Tage zum Aufklappen. Kein Text dazu.
+- Nach jeder Antwort, in der etwas geliefert, verworfen oder als ausgegeben eingetragen wurde, veröffentlichst du die
+  Tagesseite „Unterricht“ neu (Register 14.11.28, 15.11.1; Lehrer 15.11.: Link statt Datei): im Ordner aufgabenbank-privat
+  `mkdir -p /tmp/seite && python3 werkzeuge/tagesseite.py /tmp/seite/index.html`, dann mit dem Artifact-Werkzeug
+  `get_artifact` für den Slug `1045875a-1a44-4382-9087-1fa1b739aa52` (gibt `version`) und `publish_files` mit diesem Slug,
+  `base_version` = `version`, `files` = `[{"as": "index.html", "path": "/tmp/seite/index.html"}]`. Keine Dateikarte, kein
+  Text; die Seite hat ihre eigenen Fähigkeiten (Outlook, Anwesenheit), die bleiben. Den Link
+  https://claude.ai/artifact/31YEqFj5m3r98FmUXmUo77 schreibst du nur in der ersten Antwort des Chats als letzte Zeile.
+  Scheitert das Veröffentlichen zweimal: Warnzeile „⚠ Tagesseite nicht neu“ und die Datei als letzte Karte wie bisher.
 - Fragt der Lehrer, was ein Schüler schon bekam: im Ordner aufgabenbank-privat
   `python3 werkzeuge/geliefert.py --zeige <Name>`.
 - Namen nur im Chat und in aufgabenbank-privat; in anderen Repos, Dateien und Commits steht die Nummer.
+
+## Chat vorab (geplante Aufgabe, Lehrer 15.11. Werkstatt 44)
+
+Eine Serie startet etwa 15 Minuten vor dem ersten Kurs einen Bestell-Chat in diesem Projekt (Mo, Di, Do 15:15, Mi 15:00).
+Ihr Auftrag nennt die Repos mit Namen. Der Chat hängt an, klont, setzt die Tagesmarke, liest diese Datei, veröffentlicht die
+Tagesseite neu und schreibt nur „Bereit.“ mit dem Link der Seite; dann wartet er. Der Lehrer schreibt in ihm weiter. Liegt
+schon eine Marke vor, gilt die Tagesmarke wie oben.
 
 ## Kurz-Anweisung (steht als Projektanweisung in neu*erzeugeBlatt())
 
