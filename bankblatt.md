@@ -86,6 +86,8 @@ aufgabenbank-privat `schueler.md`.
    --aus ../aufgabenbank-privat/lieferungen/<JJJJ-MM-TT>-<vorname>-test-<stichwort>`
    – mit Thema in Klasse 5–10 dazu `--abschnitt <eintrag>/<einheit>`, in der Oberstufe `--thema "<Stichwort>"`;
    ohne Thema ist das Stichwort `allgemein`.
+   Der Laptop steht am Tisch der Schüler (Lehrer 15.11.): Stufe, Förderbedarf, „schwach“ nie in Chat-Antwort, Dateiname,
+   Kopf des Blatts oder Lieferliste – nur im Aufruf.
    Steht beim Schüler in `schueler.md` „Für Blätter wichtig“ „Förderbedarf Lernen“, dazu `--stufe foerder --ausklang` (nur leichte
    Kopfrechenfragen, Stoff Kl. 5–6; Lehrer 15.11.: Sachaufgaben Kl. 7 wie „30 % von 5 €“ sind für sie zu schwer); bei „tiefste Stufe“ oder „sehr schwach“ `--stufe tief` (ohne Schwere 3, Stoff bis Klasse − 1;
    Lehrer 15.11.: zu schwere Tests demotivieren).
