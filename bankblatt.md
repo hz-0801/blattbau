@@ -86,8 +86,8 @@ aufgabenbank-privat `schueler.md`.
    --aus ../aufgabenbank-privat/lieferungen/<JJJJ-MM-TT>-<vorname>-test-<stichwort>`
    – mit Thema in Klasse 5–10 dazu `--abschnitt <eintrag>/<einheit>`, in der Oberstufe `--thema "<Stichwort>"`;
    ohne Thema ist das Stichwort `allgemein`.
-   Steht beim Schüler in `schueler.md` „Für Blätter wichtig“ „Förderbedarf Lernen“, dazu `--stufe foerder` (nur leichte Fragen,
-   Stoff bis Kl. 7); bei „tiefste Stufe“ oder „sehr schwach“ `--stufe tief` (ohne Schwere 3, Stoff bis Klasse − 1;
+   Steht beim Schüler in `schueler.md` „Für Blätter wichtig“ „Förderbedarf Lernen“, dazu `--stufe foerder --ausklang` (nur leichte
+   Kopfrechenfragen, Stoff Kl. 5–6; Lehrer 15.11.: Sachaufgaben Kl. 7 wie „30 % von 5 €“ sind für sie zu schwer); bei „tiefste Stufe“ oder „sehr schwach“ `--stufe tief` (ohne Schwere 3, Stoff bis Klasse − 1;
    Lehrer 15.11.: zu schwere Tests demotivieren).
    Jeder Schüler bekommt seinen eigenen Test, auch zwei Schüler desselben Kurses am selben Tag (Lehrer 11.11.,
    plan.md Register 11.11.2): je Schüler ein Aufruf mit seinem `--seed <Nr><TTMM>` (Nummer und Tag hintereinander, für Nr. 4 am 11.11. `41111` – so ist der Test jeden Tag ein anderer, auch wenn der vorige nicht vorgelegt wurde; Lehrer 11.11.) und `--snr <Nr>`; ist die QR-Kennung
