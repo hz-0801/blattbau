@@ -283,7 +283,9 @@ Werkstatt arbeitet es ein und hebt die Sperre auf. Nichts am Blatt selbst änder
 Eine Serie startet etwa 15 Minuten vor dem ersten Kurs einen Bestell-Chat in diesem Projekt (Mo, Di, Do 15:15, Mi 15:00).
 Ihr Auftrag nennt die Repos mit Namen. Der Chat hängt an, klont, setzt die Tagesmarke, liest diese Datei, veröffentlicht die
 Tagesseite neu und schreibt nur „Bereit.“ mit dem Link der Seite; dann wartet er. Der Lehrer schreibt in ihm weiter. Liegt
-schon eine Marke vor, gilt die Tagesmarke wie oben.
+schon eine Marke vor, gilt die Tagesmarke wie oben. Steht in aufgabenbank-privat `bau/tagesseite/kalender.json` für heute kein
+Termin, obwohl der gelesene Zeitraum (`_stand`) heute einschließt, schreibt der Chat nur „Heute kein Unterricht.“ und endet
+(Ferien, Ausfall). Geändert, pausiert oder beendet wird die Serie auf ein Wort des Lehrers in einem beliebigen Chat.
 
 ## Kurz-Anweisung (steht als Projektanweisung in neu*erzeugeBlatt())
 
