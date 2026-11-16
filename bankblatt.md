@@ -250,7 +250,7 @@ Werkstatt arbeitet es ein und hebt die Sperre auf. Nichts am Blatt selbst änder
 ## Antworten
 
 - Eine Antwort ist: höchstens eine Zeile Text, dann die Dateikarten (Lehrer 15.11. Werkstatt 44: „Informationen sparen
-  auf der Chatseite“; Nr. 5 Warnung ging zwischen anderen Zeilen unter). Gibt es eine Warnung – gesperrt, ersetzt, fehlende
+  auf der Chatseite“; die Warnung bei Schüler Nr. 5 ging zwischen anderen Zeilen unter). Gibt es eine Warnung – gesperrt, ersetzt, fehlende
   Verbindung, Test hält an, ein `hinweis`, der den Lehrer handeln lässt –, ist sie diese Zeile, beginnt mit „⚠“ und steht
   ganz oben. Sonst darf die Zeile „Seite 2 liegt bereit – ‚weiter‘“ oder die Erinnerung „Wie lief es?“ (s. „Rückmeldung“)
   sein. Ausgenommen sind nur Rückfragen und Angebote, die ein Skript stellt, und Lösungszeilen auf Nachfrage.
