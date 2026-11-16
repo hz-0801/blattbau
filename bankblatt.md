@@ -1,4 +1,4 @@
-# Blatt bestellen – v13b (16.11.2026)
+# Blatt bestellen – v13c (16.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -45,7 +45,7 @@ kann oder wann welches Blatt passt, zeig diese Tabelle und sonst nichts.
 |---|---|---|
 | `<Name> Test` | 5-Minuten-Test, querbeet aus dem Grundwissen, mit QR | Stundenanfang |
 | `<Name> Test Scheitelpunktform` | 5-Minuten-Test zu einem Thema (Regeln, kleine Beispiele), mit QR | Stundenanfang, Thema läuft schon; in der Oberstufe besser immer mit Thema |
-| `<Name> Scheitelpunktform` | Alltagsblatt: erst eine, höchstens zwei Seiten, die der Schüler schafft; die nächste liegt auf „weiter“ bereit (s. „Weg planen, in Stücken liefern“); mit QR; ohne Beispiel und Kasten (nur mit dem Zusatz „mit Beispiel“) | ein Thema üben |
+| `<Name> Scheitelpunktform` | Alltagsblatt: erst Station 1 des geplanten Weges, ein abgeschlossener Schritt, den der Schüler schafft; die nächste liegt auf „weiter“ bereit (s. „Weg planen, in Stücken liefern“); mit QR; ohne Beispiel und Kasten (nur mit dem Zusatz „mit Beispiel“) | ein Thema üben |
 | `<Name> weiter` / `… mehr` / `… schwerer` | die bereitliegende nächste Seite / noch eine Seite auf derselben Stufe / Stufen überspringen | Thema fortsetzen |
 | `<Name> P10 Pythagoras`, `… Kapitel`, `… Original 2023` | Prüfungsblatt aus Originalaufgaben (noch ohne QR) | Prüfungsvorbereitung |
 | `<Name> Basiszettel`, `… Basiszettel 2022` | zehn Basisaufgaben wie P10 Aufgabe 1 (eigene Aufgaben nach einem Jahrgang), mit QR | Stundenanfang Klasse 10 |
@@ -150,7 +150,7 @@ Blätter besser werden. Ab Pro-Abo (05.12.) nur noch auf Lehrerwort.
 
 Warum – am 12.11. („mit einer der produktivsten Unterrichtseinheiten“) waren die Blätter schnell da, kurz und erfüllbar, jeder
 Schüler hatte ein Erfolgserlebnis; gut werden Blätter aber nur mit dem ganzen Weg im Blick, nicht Seite für Seite isoliert.
-Grenze – keine feste Seitenzahl: eine Seite, wo sie reicht, zwei, wo das Thema es braucht, nie zehn; Prüfungsblätter,
+Grenze – keine Seitenzahl (Lehrer 16.11. W53, plan.md Register 16.11.16): das erste Stück ist ein in sich abgeschlossener Schritt mit Anfang und Ende, nie zehn Seiten; Prüfungsblätter,
 5-Minuten-Test und Basiszettel bleiben wie sie sind.
 
 1. **Erste Bestellung zu einem Thema:** Schreib zuerst das Gerüst – fünf bis acht Stationen, je eine Zeile: was neu dazukommt,
@@ -158,8 +158,8 @@ Grenze – keine feste Seitenzahl: eine Seite, wo sie reicht, zwei, wo das Thema
    `buecher/` (Liste oben in `buecher/README.md`, Register unter seinem Vornamen, z. B. `buecher/<vorname>`), richte die
    Stationen an dessen Folge aus (`werkzeuge/buchregister.py aufbau`) und nenne je Station die Buchseiten. Ablage: aufgabenbank-privat `lieferungen/wege/<JJJJ-MM-TT>-<vorname>-<stichwort>.md`. Nimm dir dafür
    die Zeit, die ein guter Weg braucht – das Gerüst entscheidet über alle Seiten; Layout und Zahlen gehören nicht hinein.
-2. **Seite 1 sofort:** Station 1 (wenn sie sehr kurz ist, mit Station 2) als ein Blatt nach „Bauen“, zugeschnitten auf eine,
-   höchstens zwei Seiten; liefern wie „Alltagsblatt“ Schritt 3–4 und die Dateikarte schicken, bevor du weiterarbeitest.
+2. **Seite 1 sofort:** Station 1 (wenn sie sehr kurz ist, mit Station 2) als ein Blatt nach „Bauen“, ein in sich abgeschlossener
+   Schritt mit Anfang und Ende, ohne Seitenzahl; liefern wie „Alltagsblatt“ Schritt 3–4 und die Dateikarte schicken, bevor du weiterarbeitest.
    Ein Vorratsblatt wird nur dann in Stücken geliefert (`qr-blatt.py --seiten`), wenn jedes Stück an einem Blockende endet
    (Block in plaetze.jsonl, Block beginnt auf neuer Seite); sonst ganz. Schnitt nach Seiten allein trennt Zusammengehöriges
    (Lehrer 14.11. Werkstatt 41: „auf jeden Fall Schnitt am Blockende“; ältere Vorratsblätter am 15.11. neu gesetzt, jeder Block auf neuer Seite – aufgabenbank werkzeuge/vorrat-bloecke.py misst es).
@@ -172,7 +172,8 @@ Grenze – keine feste Seitenzahl: eine Seite, wo sie reicht, zwei, wo das Thema
    `r`/`u`/`f` richtig/unsicher/falsch. Fehlt die Verbindung, sag es in einer Zeile und geh nach dem Gerüst. Ein Wort des
    Lehrers geht der Tabelle vor; sie ist Selbstauskunft. Ein Wort des Lehrers – oder ohne Wort die Tabelle – verschiebt die Stelle im Gerüst: „schwerer“ oder „zu leicht“ – Stationen überspringen
    (die bereitliegende Seite verwerfen, Stolperfälle und Sache statt weiterer Grundfälle); „mehr“ – gleiche Station, andere
-   Zahlen und Form; „zu schwer“ – eine Zwischenstufe einschieben. Ohne Wort gilt das Gerüst. Ändert sich der Weg, schreib
+   Zahlen und Form; „zu schwer“ – eine Zwischenstufe einschieben. Ohne Wort gilt das Gerüst. Eine Rückmeldung ändert die nächste Station; liegen
+   mehrere Stationen daneben, plan das Gerüst als Ganzes neu, nie Block für Block. Ändert sich der Weg, schreib
    die Änderung in die Gerüst-Datei.
 5. **Lösungen:** Zu fast jeder Teilaufgabe ein Rechenweg auf der QR-Seite (Lehrer 13.11.), Sek I knapp nach mathe-nachhilfe
    `allgemein.md` 2.3a (11), Sek II nach `fhr/loesung/auftrag-kurvendiskussion.md`; ohne Weg nur bloßes Ablesen.
