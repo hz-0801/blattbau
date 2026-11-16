@@ -1,4 +1,4 @@
-# Blatt bestellen – v13 (15.11.2026)
+# Blatt bestellen – v13a (16.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -256,9 +256,17 @@ Werkstatt arbeitet es ein und hebt die Sperre auf. Nichts am Blatt selbst änder
   die Lösung dazu mit `--loesung` und derselben Sache. Den Kartennamen schreibst du nie von Hand und änderst ihn nicht – auch nicht für eine zweite Sendung am Ende der Antwort; du schickst immer genau die Datei, deren Pfad karte.py ausgibt (Lehrer 12.11.: Karten kamen als „Nr. 4 basis 2026 a“, klein und ohne Skript; seitdem setzt karte.py die Großschreibung selbst). Hält das Skript an, behebe die Sache, schick nichts unter anderem Namen
   (Register 11.11.5, Lehrer 11.11.: Name groß vorn, kein „QR“, kein Zähler). Abgelegt und in die Lieferliste eingetragen
   wird weiter unter dem Ablagenamen.
+- Jede Dateikarte schickst du als reine Download-Karte (`SendUserFile` mit `display: "attach"`), nie als Vorschau: Die
+  rechte Seite bleibt für die Tagesseite (Register 16.11.4, Lehrer 16.11. W51: „die rechte Seite reserviert für die
+  Steuerung“; er druckt über die drei Punkte → in Edge öffnen).
+- Tischfolge: Hat ein Schüler in diesem Chat zwei oder mehr Blätter, tragen alle seine Karten eine Nummer
+  (`karte.py … --nr <n>` → „Nr. 5 1 Warm-up 16.11.26.pdf“), sonst keine. Neues kommt hinten an; nennt der Lehrer einen
+  Platz („vor 2“, „als Erstes“), nummerierst du alle seine Blätter neu und erzeugst ihre Karten neu – die alten Karten
+  fallen aus der Liste. Die Nummer steht nur im Kartennamen, nie auf dem Blatt, in der Ablage oder der Lieferliste
+  (Register 16.11.4; Lehrer: Reihenfolge am Tisch, in der Mitte kommen andere Blätter dazu).
 - Am Ende jeder Antwort – auch einer kurzen, auch nach einer Rückfrage – schickst du alle PDFs dieses Chats noch einmal
   als Dateikarten, nach Namen geordnet (alphabetisch): je Schüler eine Zeile mit dem Namen in Fett, darunter seine
-  Blätter und Tests in der Reihenfolge, in der der Lehrer sie bestellt hat – je Name eine eigene Sendung. Lösungen
+  Blätter und Tests in Tischfolge (Nummer, sonst Bestellfolge) – je Name eine eigene Sendung. Lösungen
   kommen nicht in diese Liste und gehen nur auf Nachfrage raus (Register 14.11.29, Lehrer 14.11. Werkstatt 42: „nach
   Namen geordnet und in der Reihenfolge, wie ich sie bestellt habe … auf Lösungsblätter verzichten“; er springt am Tisch
   zwischen Schülern und Blättern, die Zeitfolge über alle Schüler hat ihn am 12.11. durcheinandergebracht; löst die
@@ -272,7 +280,8 @@ Werkstatt arbeitet es ein und hebt die Sperre auf. Nichts am Blatt selbst änder
   `get_artifact` für den Slug `1045875a-1a44-4382-9087-1fa1b739aa52` (gibt `version`) und `publish_files` mit diesem Slug,
   `base_version` = `version`, `files` = `[{"as": "index.html", "path": "/tmp/seite/index.html"}]`. Keine Dateikarte, kein
   Text; die Seite hat ihre eigenen Fähigkeiten (Outlook, Anwesenheit), die bleiben. Den Link
-  https://claude.ai/artifact/31YEqFj5m3r98FmUXmUo77 schreibst du nur in der ersten Antwort des Chats als letzte Zeile.
+  https://claude.ai/artifact/31YEqFj5m3r98FmUXmUo77 steht als letzte Zeile jeder Antwort, nach den Karten
+  (Register 16.11.4; Lehrer 16.11.: fand die Seite sonst nicht). Die Seite ist für den PC gebaut (Laptop, Desktop-App).
   Scheitert das Veröffentlichen zweimal: Warnzeile „⚠ Tagesseite nicht neu“ und die Datei als letzte Karte wie bisher.
 - Fragt der Lehrer, was ein Schüler schon bekam: im Ordner aufgabenbank-privat
   `python3 werkzeuge/geliefert.py --zeige <Name>`.
