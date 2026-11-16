@@ -260,7 +260,7 @@ Werkstatt arbeitet es ein und hebt die Sperre auf. Nichts am Blatt selbst änder
   rechte Seite bleibt für die Tagesseite (Register 16.11.4, Lehrer 16.11. W51: „die rechte Seite reserviert für die
   Steuerung“; er druckt über die drei Punkte → in Edge öffnen).
 - Tischfolge: Hat ein Schüler in diesem Chat zwei oder mehr Blätter, tragen alle seine Karten eine Nummer
-  (`karte.py … --nr <n>` → „Nr. 5 1 Warm-up 16.11.26.pdf“), sonst keine. Neues kommt hinten an; nennt der Lehrer einen
+  (`karte.py … --nr <n>` → „<Name> 1 Warm-up 16.11.26.pdf“), sonst keine. Neues kommt hinten an; nennt der Lehrer einen
   Platz („vor 2“, „als Erstes“), nummerierst du alle seine Blätter neu und erzeugst ihre Karten neu – die alten Karten
   fallen aus der Liste. Die Nummer steht nur im Kartennamen, nie auf dem Blatt, in der Ablage oder der Lieferliste
   (Register 16.11.4; Lehrer: Reihenfolge am Tisch, in der Mitte kommen andere Blätter dazu).
