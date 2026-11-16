@@ -1,0 +1,2019 @@
+{
+ "kennung": "ein-k9-1611",
+ "titel": "Einstieg Klasse 7–9: eine Frage je Thema",
+ "erzeugt": "2026-11-16",
+ "bis": "2027-01-25",
+ "fragen": [
+  {
+   "nr": 1,
+   "id": "k-bild-dreiecke-002",
+   "frage": "Dreieck $ABC$: Welche Seite ist die Ankathete von $\\beta$?",
+   "thema": "Ankathete vom Winkel aus (Ankathete)",
+   "einheit": "trigonometrie/1",
+   "schwere": 1,
+   "art": "auswahl",
+   "optionen": [
+    {
+     "t": "$a$",
+     "r": 1
+    },
+    {
+     "t": "$c$",
+     "f": "Hypotenuse, liegt auch am Winkel"
+    },
+    {
+     "t": "$b$",
+     "f": "Gegenkathete statt Ankathete"
+    }
+   ],
+   "loesung": "$a$ – sie liegt am Winkel und ist keine Hypotenuse",
+   "aus_wert": 1,
+   "bild": "ein-k9-1611-1.svg"
+  },
+  {
+   "nr": 2,
+   "id": "k-quelle-oak-04224",
+   "frage": "Für welches $x$ stimmt $x - 5 = 15$?",
+   "thema": "Gleichung x − a = b",
+   "einheit": "lineare-gleichungen/2",
+   "schwere": 1,
+   "art": "zahl",
+   "wert": "20",
+   "loesung": "$x = 20$"
+  },
+  {
+   "nr": 3,
+   "id": "k-quelle-openstax-d-002",
+   "frage": "Die Zuordnung $\\{(3|4),\\ (4|5),\\ (5|6)\\}$ ist eine Funktion. Stimmt das?",
+   "thema": "Funktion: zu jedem x genau ein y",
+   "einheit": "lineare-funktionen/1",
+   "schwere": 2,
+   "art": "stimmt",
+   "knoepfe": [
+    "stimmt",
+    "stimmt nicht"
+   ],
+   "richtig": "stimmt",
+   "loesung": "stimmt – jeder $x$-Wert kommt nur einmal vor.",
+   "fehler": "weil $4$ zweimal vorkommt"
+  },
+  {
+   "nr": 4,
+   "id": "k-quelle-openstax-b-040",
+   "frage": "Sonja ist $10$ km von zu Hause entfernt und entfernt sich mit $4$ km pro Stunde. Gib ihre Entfernung nach $t$ Stunden an.",
+   "thema": "Tarif als lineare Funktion",
+   "einheit": "lineare-funktionen/5",
+   "schwere": 2,
+   "art": "auswahl",
+   "optionen": [
+    {
+     "t": "$d=10-4t$"
+    },
+    {
+     "t": "$d=4+10t$"
+    },
+    {
+     "t": "$d=10+4t$",
+     "r": 1
+    }
+   ],
+   "loesung": "$d(t)=10+4t$ (in km)",
+   "aus_wert": 1
+  },
+  {
+   "nr": 5,
+   "id": "k-quelle-serlo-bild-025",
+   "frage": "Eine Gerade geht $7$ nach rechts und dabei $3$ nach unten. Welche Steigung hat sie?",
+   "thema": "Steigung aus Schritt nach rechts und oben",
+   "einheit": "lineare-funktionen/2",
+   "schwere": 2,
+   "art": "auswahl",
+   "optionen": [
+    {
+     "t": "$-\\frac{7}{3}$",
+     "f": "Kehrwert"
+    },
+    {
+     "t": "$-\\frac{3}{7}$",
+     "r": 1
+    },
+    {
+     "t": "$\\frac{3}{7}$"
+    }
+   ],
+   "loesung": "$-\\frac37$",
+   "aus_zahl": 1,
+   "zw": {
+    "id": "k-quelle-serlo-bild-023",
+    "frage": "Eine Gerade fällt: $1$ nach rechts, $1$ nach unten. Welche Steigung hat sie?",
+    "thema": "Steigung aus Schritt nach rechts und oben",
+    "einheit": "lineare-funktionen/2",
+    "schwere": 1,
+    "art": "zahl",
+    "wert": "−1",
+    "loesung": "$-1$"
+   }
+  },
+  {
+   "nr": 6,
+   "id": "k-eigen-t04-t06-201",
+   "frage": "$x$ ist die Anzahl der Fünf-Euro-Scheine, $y$ die der Zehn-Euro-Scheine. Die Lösung ist $(3\\,|\\,7)$. Jan sagt: „Es sind $85$ €.“ Stimmt das?",
+   "thema": "Lösung den Größen richtig zuordnen",
+   "einheit": "lineare-gleichungssysteme/4",
+   "schwere": 2,
+   "art": "stimmt",
+   "knoepfe": [
+    "stimmt",
+    "stimmt nicht"
+   ],
+   "richtig": "stimmt",
+   "loesung": "stimmt – $3\\cdot5+7\\cdot10=85$.",
+   "fehler": "Scheine vertauscht"
+  },
+  {
+   "nr": 7,
+   "id": "k-quelle-mathsmentales-bild-055",
+   "frage": "Ein Dreieck ist rechtwinklig, ein spitzer Winkel ist $35^\\circ$. Wie groß ist der andere spitze Winkel?",
+   "thema": "Winkel im rechtwinkligen Dreieck",
+   "einheit": "winkel-dreiecke/3",
+   "schwere": 1,
+   "art": "zahl",
+   "wert": "55",
+   "loesung": "$55^\\circ$",
+   "masse": "°",
+   "zw": {
+    "id": "k-quelle-mathalea-421",
+    "frage": "Ein rechtwinkliges Dreieck hat einen Winkel von $35^\\circ$. Wie groß ist der dritte Winkel?",
+    "thema": "Winkel im rechtwinkligen Dreieck",
+    "einheit": "winkel-dreiecke/3",
+    "schwere": 1,
+    "art": "zahl",
+    "wert": "55",
+    "loesung": "$55^\\circ$",
+    "masse": "°",
+    "fehler": {
+     "145": "90° vergessen"
+    }
+   }
+  },
+  {
+   "nr": 8,
+   "id": "k-quelle-oak-03310",
+   "frage": "Ergänze: $33\\cdot 0{,}6+33\\cdot\\square=33$",
+   "thema": "Ausklammern beim Rechnen",
+   "einheit": "bruchrechnung/5",
+   "schwere": 2,
+   "art": "zahl",
+   "wert": "0,4",
+   "loesung": "0,4"
+  },
+  {
+   "nr": 9,
+   "id": "k-quelle-brueckenkurs-022",
+   "frage": "Kürze: $\\frac{4x^4z^5}{-36x^4z^5}$.",
+   "thema": "gleiche Faktoren kürzen sich ganz",
+   "einheit": "terme/1",
+   "schwere": 2,
+   "art": "zahl",
+   "wert": "−1/9",
+   "loesung": "$-\\frac{1}{9}$",
+   "bruch": 1,
+   "streng": 1
+  },
+  {
+   "nr": 10,
+   "id": "k-quelle-lisum-400",
+   "frage": "Ergänze: $\\frac{1}{3} = \\frac{\\square}{9}$",
+   "thema": "erweitern",
+   "einheit": "brueche-dezimalzahlen/2",
+   "schwere": 1,
+   "art": "zahl",
+   "wert": "3",
+   "loesung": "$3$",
+   "zw": {
+    "id": "k-quelle-mathalea-can-114",
+    "frage": "Ergänze: $\\frac{3}{5}=\\frac{\\square}{20}$.",
+    "thema": "erweitern",
+    "einheit": "brueche-dezimalzahlen/2",
+    "schwere": 1,
+    "art": "zahl",
+    "wert": "12",
+    "loesung": "$12$",
+    "fehler": {
+     "18": "15 zum Zähler addiert"
+    }
+   }
+  },
+  {
+   "nr": 11,
+   "id": "k-stochastik-011",
+   "frage": "Ein Würfel wird dreimal hintereinander geworfen. Wie viele verschiedene Ergebnisfolgen (erster, zweiter, dritter Wurf) gibt es?",
+   "thema": "PIN-Anzahl",
+   "einheit": "wahrscheinlichkeit/1",
+   "schwere": 2,
+   "art": "zahl",
+   "wert": "216",
+   "loesung": "$6\\cdot6\\cdot6=216$",
+   "zw": {
+    "id": "k-stochastik-009",
+    "frage": "Wie viele Kombinationen hat ein dreistelliges Zahlenschloss, wenn jedes Rad die Ziffern $0$ bis $9$ zeigt?",
+    "thema": "PIN-Anzahl",
+    "einheit": "wahrscheinlichkeit/1",
+    "schwere": 2,
+    "art": "zahl",
+    "wert": "1000",
+    "loesung": "$10\\cdot10\\cdot10=1000$ (von $000$ bis $999$)",
+    "fehler": {
+     "30": "10+10+10",
+     "999": "000 vergessen"
+    }
+   }
+  },
+  {
+   "nr": 12,
+   "id": "k-quelle-serlo-rest-269",
+   "frage": "Ein Modell im Maßstab $1:50$ ist $5\\,\\mathrm{m}$ lang. Wie lang ist das Original?",
+   "thema": "Maßstab lesen",
+   "einheit": "strahlensaetze/1",
+   "schwere": 2,
+   "art": "zahl",
+   "wert": "250",
+   "loesung": "$250\\,\\mathrm{m}$",
+   "masse": "m",
+   "zw": {
+    "id": "k-eigen-t04-t06-112",
+    "frage": "Ein Zaun ist $6$ m lang. Wie lang ist er auf einem Plan im Maßstab $1:200$?",
+    "thema": "Maßstab lesen",
+    "einheit": "strahlensaetze/1",
+    "schwere": 2,
+    "art": "zahl",
+    "wert": "3",
+    "loesung": "$3$ cm ($600$ cm $:200$)",
+    "masse": "cm",
+    "fehler": {
+     "0,03": "6 : 200 ohne Umrechnung"
+    }
+   }
+  },
+  {
+   "nr": 13,
+   "id": "k-quelle-lisum-bild-022",
+   "frage": "Ein Konto steht bei $-210$ €, ein anderes bei $-13$ €. Welcher Kontostand ist höher?",
+   "thema": "negative Zahlen ordnen",
+   "einheit": "rationale-zahlen/1",
+   "schwere": 1,
+   "art": "zahl",
+   "wert": "−13",
+   "loesung": "$-13$ €",
+   "masse": "€",
+   "fehler": {
+    "−210": "größere Zahl gesehen"
+   }
+  },
+  {
+   "nr": 14,
+   "id": "k-eigen-t04-t06-248",
+   "frage": "$3$ kg kosten $4{,}80$ €. Was kosten $5$ kg?",
+   "thema": "Dreisatz über eine Einheit",
+   "einheit": "zuordnungen/2",
+   "schwere": 2,
+   "art": "auswahl",
+   "optionen": [
+    {
+     "t": "$6{,}80$ €",
+     "f": "4,80 + 2 gerechnet"
+    },
+    {
+     "t": "$8$ €",
+     "r": 1
+    },
+    {
+     "t": "$9{,}60$ €",
+     "f": "verdoppelt statt das 5/3-Fache"
+    }
+   ],
+   "loesung": "$8$ € ($1$ kg $1{,}60$ €).",
+   "aus_zahl": 1,
+   "zw": {
+    "id": "k-quelle-mathalea-201",
+    "frage": "Ein Wasserhahn liefert $12$ Liter pro Minute. Wie viele Sekunden dauert es, einen $6$-Liter-Eimer zu füllen?",
+    "thema": "Dreisatz über eine Einheit",
+    "einheit": "zuordnungen/2",
+    "schwere": 2,
+    "art": "auswahl",
+    "optionen": [
+     {
+      "t": "$0{,}5$ s",
+      "f": "Minuten als Sekunden"
+     },
+     {
+      "t": "$2$ s"
+     },
+     {
+      "t": "$30$ s",
+      "r": 1
+     }
+    ],
+    "loesung": "$30$ s",
+    "aus_zahl": 1
+   }
+  },
+  {
+   "nr": 15,
+   "id": "k-quelle-serlo-bild-124",
+   "frage": "$C$ liegt auf dem Halbkreis über $\\overline{AB}$, $\\beta=55^\\circ$. Wie groß ist $\\alpha$?",
+   "thema": "Satz des Thales",
+   "einheit": "winkel-dreiecke/5",
+   "schwere": 2,
+   "art": "zahl",
+   "wert": "35",
+   "loesung": "$35^\\circ$ ($\\gamma=90^\\circ$)",
+   "masse": "°",
+   "zw": {
+    "id": "k-eigen-t10-t12-120",
+    "frage": "Im Dreieck $ABC$ ist $\\gamma=90^\\circ$ und $\\overline{AB}=8$ cm. Wie weit ist $C$ von der Mitte von $\\overline{AB}$ entfernt?",
+    "thema": "Satz des Thales",
+    "einheit": "winkel-dreiecke/5",
+    "schwere": 2,
+    "art": "zahl",
+    "wert": "4",
+    "loesung": "$4$ cm ($C$ liegt auf dem Thaleskreis über $\\overline{AB}$)",
+    "masse": "cm",
+    "fehler": {
+     "8": "Hypotenuse als Radius"
+    }
+   }
+  },
+  {
+   "nr": 16,
+   "id": "k-quelle-oak-05827",
+   "frage": "$7\\cdot 7\\cdot 7\\cdot 7\\cdot 7$ lässt sich kürzer schreiben als …",
+   "thema": "Produkt gleicher Faktoren als Potenz",
+   "einheit": "potenzen-wurzeln/1",
+   "schwere": 1,
+   "art": "auswahl",
+   "optionen": [
+    {
+     "t": "$7^5$",
+     "r": 1
+    },
+    {
+     "t": "35"
+    },
+    {
+     "t": "$5^7$"
+    },
+    {
+     "t": "$7^7$"
+    }
+   ],
+   "loesung": "$7^5$",
+   "zw": {
+    "id": "k-quelle-oak-03920",
+    "frage": "Wie kann man $4 \\cdot 4 \\cdot 4$ auch schreiben?",
+    "thema": "Produkt gleicher Faktoren als Potenz",
+    "einheit": "potenzen-wurzeln/1",
+    "schwere": 1,
+    "art": "auswahl",
+    "optionen": [
+     {
+      "t": "$3 \\cdot 4$",
+      "f": "Potenz als Malaufgabe"
+     },
+     {
+      "t": "$4^2$",
+      "f": "nur zwei Faktoren"
+     },
+     {
+      "t": "$4^3$",
+      "r": 1
+     },
+     {
+      "t": "$3^4$",
+      "f": "Basis und Exponent vertauscht"
+     }
+    ],
+    "loesung": "$4^3$"
+   }
+  }
+ ],
+ "quellen": [
+  {
+   "quelle": "eigene Fragen",
+   "nr": [
+    "1",
+    "6",
+    "11",
+    "11z",
+    "12z",
+    "14",
+    "15z"
+   ]
+  },
+  {
+   "quelle": "LISUM Materialien zur Diagnose und Förderung im Mathematikunterricht",
+   "nr": [
+    "10",
+    "13"
+   ],
+   "lizenz": "CC BY-SA 4.0",
+   "bearbeitung": "übersetzt und bearbeitet",
+   "url": [
+    "https://bildungsserver.berlin-brandenburg.de"
+   ],
+   "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+   "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+  },
+  {
+   "quelle": "MathALÉA (Coopmaths), Course aux nombres",
+   "nr": [
+    "7z",
+    "14z"
+   ],
+   "lizenz": "CC BY-SA 4.0",
+   "bearbeitung": "übersetzt und bearbeitet",
+   "url": [
+    "https://coopmaths.fr"
+   ],
+   "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+   "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+  },
+  {
+   "quelle": "MathALÉA (Coopmaths), Course aux nombres (Jahrgänge)",
+   "nr": [
+    "10z"
+   ],
+   "lizenz": "CC BY-SA 4.0",
+   "bearbeitung": "übersetzt und bearbeitet",
+   "url": [
+    "https://coopmaths.fr"
+   ],
+   "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+   "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+  },
+  {
+   "quelle": "MathsMentales",
+   "nr": [
+    "7"
+   ],
+   "lizenz": "Apache-2.0",
+   "bearbeitung": "übersetzt und bearbeitet",
+   "url": [
+    "https://forge.apps.education.fr"
+   ],
+   "lizenz_url": "https://www.apache.org/licenses/LICENSE-2.0",
+   "hinweis": "Lizenziert unter der Apache License 2.0; die Vorlagen wurden übersetzt und verändert."
+  },
+  {
+   "quelle": "Oak National Academy",
+   "nr": [
+    "2",
+    "8",
+    "16",
+    "16z"
+   ],
+   "lizenz": "OGL v3.0",
+   "bearbeitung": "übersetzt und bearbeitet",
+   "url": [
+    "https://www.thenational.academy"
+   ],
+   "lizenz_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+   "hinweis": "Contains public sector information licensed under the Open Government Licence v3.0."
+  },
+  {
+   "quelle": "OpenStax Precalculus (Erstauflage)",
+   "nr": [
+    "3",
+    "4"
+   ],
+   "lizenz": "CC BY 4.0",
+   "bearbeitung": "übersetzt und bearbeitet",
+   "url": [
+    "https://assets.openstax.org"
+   ],
+   "lizenz_url": "https://creativecommons.org/licenses/by/4.0/deed.de"
+  },
+  {
+   "quelle": "Serlo",
+   "nr": [
+    "5",
+    "5z",
+    "12",
+    "15"
+   ],
+   "lizenz": "CC BY-SA 4.0",
+   "bearbeitung": "übersetzt und bearbeitet",
+   "url": [
+    "https://de.serlo.org"
+   ],
+   "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+   "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+  },
+  {
+   "quelle": "VE&MINT",
+   "nr": [
+    "9"
+   ],
+   "lizenz": "CC BY-SA 4.0",
+   "bearbeitung": "übersetzt und bearbeitet",
+   "url": [
+    "https://vorkurs-mathematik.innocampus.tu-berlin.de"
+   ],
+   "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+   "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+  }
+ ],
+ "fassungen": [
+  {
+   "fragen": [
+    {
+     "nr": 1,
+     "id": "k-bild-dreiecke-002",
+     "frage": "Dreieck $ABC$: Welche Seite ist die Ankathete von $\\beta$?",
+     "thema": "Ankathete vom Winkel aus (Ankathete)",
+     "einheit": "trigonometrie/1",
+     "schwere": 1,
+     "art": "auswahl",
+     "optionen": [
+      {
+       "t": "$a$",
+       "r": 1
+      },
+      {
+       "t": "$c$",
+       "f": "Hypotenuse, liegt auch am Winkel"
+      },
+      {
+       "t": "$b$",
+       "f": "Gegenkathete statt Ankathete"
+      }
+     ],
+     "loesung": "$a$ – sie liegt am Winkel und ist keine Hypotenuse",
+     "aus_wert": 1,
+     "bild": "ein-k9-1611-1.svg"
+    },
+    {
+     "nr": 2,
+     "id": "k-quelle-oak-04224",
+     "frage": "Für welches $x$ stimmt $x - 5 = 15$?",
+     "thema": "Gleichung x − a = b",
+     "einheit": "lineare-gleichungen/2",
+     "schwere": 1,
+     "art": "zahl",
+     "wert": "20",
+     "loesung": "$x = 20$"
+    },
+    {
+     "nr": 3,
+     "id": "k-quelle-openstax-d-002",
+     "frage": "Die Zuordnung $\\{(3|4),\\ (4|5),\\ (5|6)\\}$ ist eine Funktion. Stimmt das?",
+     "thema": "Funktion: zu jedem x genau ein y",
+     "einheit": "lineare-funktionen/1",
+     "schwere": 2,
+     "art": "stimmt",
+     "knoepfe": [
+      "stimmt",
+      "stimmt nicht"
+     ],
+     "richtig": "stimmt",
+     "loesung": "stimmt – jeder $x$-Wert kommt nur einmal vor.",
+     "fehler": "weil $4$ zweimal vorkommt"
+    },
+    {
+     "nr": 4,
+     "id": "k-quelle-openstax-b-040",
+     "frage": "Sonja ist $10$ km von zu Hause entfernt und entfernt sich mit $4$ km pro Stunde. Gib ihre Entfernung nach $t$ Stunden an.",
+     "thema": "Tarif als lineare Funktion",
+     "einheit": "lineare-funktionen/5",
+     "schwere": 2,
+     "art": "auswahl",
+     "optionen": [
+      {
+       "t": "$d=10-4t$"
+      },
+      {
+       "t": "$d=4+10t$"
+      },
+      {
+       "t": "$d=10+4t$",
+       "r": 1
+      }
+     ],
+     "loesung": "$d(t)=10+4t$ (in km)",
+     "aus_wert": 1
+    },
+    {
+     "nr": 5,
+     "id": "k-quelle-serlo-bild-025",
+     "frage": "Eine Gerade geht $7$ nach rechts und dabei $3$ nach unten. Welche Steigung hat sie?",
+     "thema": "Steigung aus Schritt nach rechts und oben",
+     "einheit": "lineare-funktionen/2",
+     "schwere": 2,
+     "art": "auswahl",
+     "optionen": [
+      {
+       "t": "$-\\frac{7}{3}$",
+       "f": "Kehrwert"
+      },
+      {
+       "t": "$-\\frac{3}{7}$",
+       "r": 1
+      },
+      {
+       "t": "$\\frac{3}{7}$"
+      }
+     ],
+     "loesung": "$-\\frac37$",
+     "aus_zahl": 1,
+     "zw": {
+      "id": "k-quelle-serlo-bild-023",
+      "frage": "Eine Gerade fällt: $1$ nach rechts, $1$ nach unten. Welche Steigung hat sie?",
+      "thema": "Steigung aus Schritt nach rechts und oben",
+      "einheit": "lineare-funktionen/2",
+      "schwere": 1,
+      "art": "zahl",
+      "wert": "−1",
+      "loesung": "$-1$"
+     }
+    },
+    {
+     "nr": 6,
+     "id": "k-eigen-t04-t06-201",
+     "frage": "$x$ ist die Anzahl der Fünf-Euro-Scheine, $y$ die der Zehn-Euro-Scheine. Die Lösung ist $(3\\,|\\,7)$. Jan sagt: „Es sind $85$ €.“ Stimmt das?",
+     "thema": "Lösung den Größen richtig zuordnen",
+     "einheit": "lineare-gleichungssysteme/4",
+     "schwere": 2,
+     "art": "stimmt",
+     "knoepfe": [
+      "stimmt",
+      "stimmt nicht"
+     ],
+     "richtig": "stimmt",
+     "loesung": "stimmt – $3\\cdot5+7\\cdot10=85$.",
+     "fehler": "Scheine vertauscht"
+    },
+    {
+     "nr": 7,
+     "id": "k-quelle-mathsmentales-bild-055",
+     "frage": "Ein Dreieck ist rechtwinklig, ein spitzer Winkel ist $35^\\circ$. Wie groß ist der andere spitze Winkel?",
+     "thema": "Winkel im rechtwinkligen Dreieck",
+     "einheit": "winkel-dreiecke/3",
+     "schwere": 1,
+     "art": "zahl",
+     "wert": "55",
+     "loesung": "$55^\\circ$",
+     "masse": "°",
+     "zw": {
+      "id": "k-quelle-mathalea-421",
+      "frage": "Ein rechtwinkliges Dreieck hat einen Winkel von $35^\\circ$. Wie groß ist der dritte Winkel?",
+      "thema": "Winkel im rechtwinkligen Dreieck",
+      "einheit": "winkel-dreiecke/3",
+      "schwere": 1,
+      "art": "zahl",
+      "wert": "55",
+      "loesung": "$55^\\circ$",
+      "masse": "°",
+      "fehler": {
+       "145": "90° vergessen"
+      }
+     }
+    },
+    {
+     "nr": 8,
+     "id": "k-quelle-oak-03310",
+     "frage": "Ergänze: $33\\cdot 0{,}6+33\\cdot\\square=33$",
+     "thema": "Ausklammern beim Rechnen",
+     "einheit": "bruchrechnung/5",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "0,4",
+     "loesung": "0,4"
+    },
+    {
+     "nr": 9,
+     "id": "k-quelle-brueckenkurs-022",
+     "frage": "Kürze: $\\frac{4x^4z^5}{-36x^4z^5}$.",
+     "thema": "gleiche Faktoren kürzen sich ganz",
+     "einheit": "terme/1",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "−1/9",
+     "loesung": "$-\\frac{1}{9}$",
+     "bruch": 1,
+     "streng": 1
+    },
+    {
+     "nr": 10,
+     "id": "k-quelle-lisum-400",
+     "frage": "Ergänze: $\\frac{1}{3} = \\frac{\\square}{9}$",
+     "thema": "erweitern",
+     "einheit": "brueche-dezimalzahlen/2",
+     "schwere": 1,
+     "art": "zahl",
+     "wert": "3",
+     "loesung": "$3$",
+     "zw": {
+      "id": "k-quelle-mathalea-can-114",
+      "frage": "Ergänze: $\\frac{3}{5}=\\frac{\\square}{20}$.",
+      "thema": "erweitern",
+      "einheit": "brueche-dezimalzahlen/2",
+      "schwere": 1,
+      "art": "zahl",
+      "wert": "12",
+      "loesung": "$12$",
+      "fehler": {
+       "18": "15 zum Zähler addiert"
+      }
+     }
+    },
+    {
+     "nr": 11,
+     "id": "k-stochastik-011",
+     "frage": "Ein Würfel wird dreimal hintereinander geworfen. Wie viele verschiedene Ergebnisfolgen (erster, zweiter, dritter Wurf) gibt es?",
+     "thema": "PIN-Anzahl",
+     "einheit": "wahrscheinlichkeit/1",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "216",
+     "loesung": "$6\\cdot6\\cdot6=216$",
+     "zw": {
+      "id": "k-stochastik-009",
+      "frage": "Wie viele Kombinationen hat ein dreistelliges Zahlenschloss, wenn jedes Rad die Ziffern $0$ bis $9$ zeigt?",
+      "thema": "PIN-Anzahl",
+      "einheit": "wahrscheinlichkeit/1",
+      "schwere": 2,
+      "art": "zahl",
+      "wert": "1000",
+      "loesung": "$10\\cdot10\\cdot10=1000$ (von $000$ bis $999$)",
+      "fehler": {
+       "30": "10+10+10",
+       "999": "000 vergessen"
+      }
+     }
+    },
+    {
+     "nr": 12,
+     "id": "k-quelle-serlo-rest-269",
+     "frage": "Ein Modell im Maßstab $1:50$ ist $5\\,\\mathrm{m}$ lang. Wie lang ist das Original?",
+     "thema": "Maßstab lesen",
+     "einheit": "strahlensaetze/1",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "250",
+     "loesung": "$250\\,\\mathrm{m}$",
+     "masse": "m",
+     "zw": {
+      "id": "k-eigen-t04-t06-112",
+      "frage": "Ein Zaun ist $6$ m lang. Wie lang ist er auf einem Plan im Maßstab $1:200$?",
+      "thema": "Maßstab lesen",
+      "einheit": "strahlensaetze/1",
+      "schwere": 2,
+      "art": "zahl",
+      "wert": "3",
+      "loesung": "$3$ cm ($600$ cm $:200$)",
+      "masse": "cm",
+      "fehler": {
+       "0,03": "6 : 200 ohne Umrechnung"
+      }
+     }
+    },
+    {
+     "nr": 13,
+     "id": "k-quelle-lisum-bild-022",
+     "frage": "Ein Konto steht bei $-210$ €, ein anderes bei $-13$ €. Welcher Kontostand ist höher?",
+     "thema": "negative Zahlen ordnen",
+     "einheit": "rationale-zahlen/1",
+     "schwere": 1,
+     "art": "zahl",
+     "wert": "−13",
+     "loesung": "$-13$ €",
+     "masse": "€",
+     "fehler": {
+      "−210": "größere Zahl gesehen"
+     }
+    },
+    {
+     "nr": 14,
+     "id": "k-eigen-t04-t06-248",
+     "frage": "$3$ kg kosten $4{,}80$ €. Was kosten $5$ kg?",
+     "thema": "Dreisatz über eine Einheit",
+     "einheit": "zuordnungen/2",
+     "schwere": 2,
+     "art": "auswahl",
+     "optionen": [
+      {
+       "t": "$6{,}80$ €",
+       "f": "4,80 + 2 gerechnet"
+      },
+      {
+       "t": "$8$ €",
+       "r": 1
+      },
+      {
+       "t": "$9{,}60$ €",
+       "f": "verdoppelt statt das 5/3-Fache"
+      }
+     ],
+     "loesung": "$8$ € ($1$ kg $1{,}60$ €).",
+     "aus_zahl": 1,
+     "zw": {
+      "id": "k-quelle-mathalea-201",
+      "frage": "Ein Wasserhahn liefert $12$ Liter pro Minute. Wie viele Sekunden dauert es, einen $6$-Liter-Eimer zu füllen?",
+      "thema": "Dreisatz über eine Einheit",
+      "einheit": "zuordnungen/2",
+      "schwere": 2,
+      "art": "auswahl",
+      "optionen": [
+       {
+        "t": "$0{,}5$ s",
+        "f": "Minuten als Sekunden"
+       },
+       {
+        "t": "$2$ s"
+       },
+       {
+        "t": "$30$ s",
+        "r": 1
+       }
+      ],
+      "loesung": "$30$ s",
+      "aus_zahl": 1
+     }
+    },
+    {
+     "nr": 15,
+     "id": "k-quelle-serlo-bild-124",
+     "frage": "$C$ liegt auf dem Halbkreis über $\\overline{AB}$, $\\beta=55^\\circ$. Wie groß ist $\\alpha$?",
+     "thema": "Satz des Thales",
+     "einheit": "winkel-dreiecke/5",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "35",
+     "loesung": "$35^\\circ$ ($\\gamma=90^\\circ$)",
+     "masse": "°",
+     "zw": {
+      "id": "k-eigen-t10-t12-120",
+      "frage": "Im Dreieck $ABC$ ist $\\gamma=90^\\circ$ und $\\overline{AB}=8$ cm. Wie weit ist $C$ von der Mitte von $\\overline{AB}$ entfernt?",
+      "thema": "Satz des Thales",
+      "einheit": "winkel-dreiecke/5",
+      "schwere": 2,
+      "art": "zahl",
+      "wert": "4",
+      "loesung": "$4$ cm ($C$ liegt auf dem Thaleskreis über $\\overline{AB}$)",
+      "masse": "cm",
+      "fehler": {
+       "8": "Hypotenuse als Radius"
+      }
+     }
+    },
+    {
+     "nr": 16,
+     "id": "k-quelle-oak-05827",
+     "frage": "$7\\cdot 7\\cdot 7\\cdot 7\\cdot 7$ lässt sich kürzer schreiben als …",
+     "thema": "Produkt gleicher Faktoren als Potenz",
+     "einheit": "potenzen-wurzeln/1",
+     "schwere": 1,
+     "art": "auswahl",
+     "optionen": [
+      {
+       "t": "$7^5$",
+       "r": 1
+      },
+      {
+       "t": "35"
+      },
+      {
+       "t": "$5^7$"
+      },
+      {
+       "t": "$7^7$"
+      }
+     ],
+     "loesung": "$7^5$",
+     "zw": {
+      "id": "k-quelle-oak-03920",
+      "frage": "Wie kann man $4 \\cdot 4 \\cdot 4$ auch schreiben?",
+      "thema": "Produkt gleicher Faktoren als Potenz",
+      "einheit": "potenzen-wurzeln/1",
+      "schwere": 1,
+      "art": "auswahl",
+      "optionen": [
+       {
+        "t": "$3 \\cdot 4$",
+        "f": "Potenz als Malaufgabe"
+       },
+       {
+        "t": "$4^2$",
+        "f": "nur zwei Faktoren"
+       },
+       {
+        "t": "$4^3$",
+        "r": 1
+       },
+       {
+        "t": "$3^4$",
+        "f": "Basis und Exponent vertauscht"
+       }
+      ],
+      "loesung": "$4^3$"
+     }
+    }
+   ],
+   "quellen": [
+    {
+     "quelle": "eigene Fragen",
+     "nr": [
+      "1",
+      "6",
+      "11",
+      "11z",
+      "12z",
+      "14",
+      "15z"
+     ]
+    },
+    {
+     "quelle": "LISUM Materialien zur Diagnose und Förderung im Mathematikunterricht",
+     "nr": [
+      "10",
+      "13"
+     ],
+     "lizenz": "CC BY-SA 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://bildungsserver.berlin-brandenburg.de"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+     "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+    },
+    {
+     "quelle": "MathALÉA (Coopmaths), Course aux nombres",
+     "nr": [
+      "7z",
+      "14z"
+     ],
+     "lizenz": "CC BY-SA 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://coopmaths.fr"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+     "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+    },
+    {
+     "quelle": "MathALÉA (Coopmaths), Course aux nombres (Jahrgänge)",
+     "nr": [
+      "10z"
+     ],
+     "lizenz": "CC BY-SA 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://coopmaths.fr"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+     "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+    },
+    {
+     "quelle": "MathsMentales",
+     "nr": [
+      "7"
+     ],
+     "lizenz": "Apache-2.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://forge.apps.education.fr"
+     ],
+     "lizenz_url": "https://www.apache.org/licenses/LICENSE-2.0",
+     "hinweis": "Lizenziert unter der Apache License 2.0; die Vorlagen wurden übersetzt und verändert."
+    },
+    {
+     "quelle": "Oak National Academy",
+     "nr": [
+      "2",
+      "8",
+      "16",
+      "16z"
+     ],
+     "lizenz": "OGL v3.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://www.thenational.academy"
+     ],
+     "lizenz_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+     "hinweis": "Contains public sector information licensed under the Open Government Licence v3.0."
+    },
+    {
+     "quelle": "OpenStax Precalculus (Erstauflage)",
+     "nr": [
+      "3",
+      "4"
+     ],
+     "lizenz": "CC BY 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://assets.openstax.org"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by/4.0/deed.de"
+    },
+    {
+     "quelle": "Serlo",
+     "nr": [
+      "5",
+      "5z",
+      "12",
+      "15"
+     ],
+     "lizenz": "CC BY-SA 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://de.serlo.org"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+     "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+    },
+    {
+     "quelle": "VE&MINT",
+     "nr": [
+      "9"
+     ],
+     "lizenz": "CC BY-SA 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://vorkurs-mathematik.innocampus.tu-berlin.de"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+     "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+    }
+   ]
+  },
+  {
+   "fragen": [
+    {
+     "nr": 1,
+     "id": "k-quelle-mathalea-can-269",
+     "frage": "Ergänze: $\\frac{5^3}{5^6}=5^{\\square}$.",
+     "thema": "gleiche Basis teilen: Exponenten abziehen",
+     "einheit": "reelle-zahlen/2",
+     "schwere": 1,
+     "art": "zahl",
+     "wert": "−3",
+     "loesung": "$-3$",
+     "fehler": {
+      "1/2": "Exponenten dividiert"
+     },
+     "bruch": 1
+    },
+    {
+     "nr": 2,
+     "id": "k-quelle-openstax-d-083",
+     "frage": "$y$ ist antiproportional zu $x$. Für $x=3$ ist $y=2$. Wie groß ist $y$ für $x=1$?",
+     "thema": "antiproportional rechnen",
+     "einheit": "zuordnungen/3",
+     "schwere": 1,
+     "art": "zahl",
+     "wert": "6",
+     "loesung": "$y=6$",
+     "bruch": 1,
+     "zw": {
+      "id": "k-quelle-lisum-291",
+      "frage": "$5000$ g Nüsse werden in Tüten verpackt. Mit $250$ g pro Tüte sind es $20$ Tüten. Wie viele Tüten mit $500$ g?",
+      "thema": "antiproportional rechnen",
+      "einheit": "zuordnungen/3",
+      "schwere": 1,
+      "art": "zahl",
+      "wert": "10",
+      "loesung": "$10$ Tüten.",
+      "masse": "Tüten"
+     }
+    },
+    {
+     "nr": 3,
+     "id": "k-eigen-t01-t03-199",
+     "frage": "Stimmt das? $6x+9=3\\cdot(2x+9)$.",
+     "thema": "Faktor aus jedem Glied herausziehen",
+     "einheit": "terme/4",
+     "schwere": 2,
+     "art": "stimmt",
+     "knoepfe": [
+      "stimmt",
+      "stimmt nicht"
+     ],
+     "richtig": "stimmt nicht",
+     "loesung": "stimmt nicht – auch die $9$ muss durch $3$ geteilt werden: $3\\cdot(2x+3)$.",
+     "fehler": "Faktor nur aus dem ersten Glied gezogen",
+     "zw": {
+      "id": "k-eigen-t01-t03-200",
+      "frage": "Lisa schreibt $10a-15=5\\cdot(2a-15)$. Stimmt das?",
+      "thema": "Faktor aus jedem Glied herausziehen",
+      "einheit": "terme/4",
+      "schwere": 2,
+      "art": "stimmt",
+      "knoepfe": [
+       "stimmt",
+       "stimmt nicht"
+      ],
+      "richtig": "stimmt nicht",
+      "loesung": "stimmt nicht – richtig ist $5\\cdot(2a-3)$; ausmultipliziert gäbe ihr Term $10a-75$.",
+      "fehler": "die 15 nicht geteilt"
+     }
+    },
+    {
+     "nr": 4,
+     "id": "k-quelle-lisum-428",
+     "frage": "Herr Kaya gewinnt $2000$ €. Jedes seiner beiden Kinder bekommt $\\frac{1}{8}$ davon, die Hälfte gibt er für einen Urlaub aus. Welcher Anteil des Gewinns ist damit ausgegeben?",
+     "thema": "Anteile addieren",
+     "einheit": "bruchrechnung/1",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "3/4",
+     "loesung": "$\\frac18+\\frac18+\\frac12=\\frac34$ (das sind $1500$ €).",
+     "bruch": 1,
+     "zw": {
+      "id": "k-quelle-lisum-347",
+      "frage": "Von $2000$ € bekommt jedes von zwei Kindern $\\frac{1}{8}$, die Hälfte geht in den Urlaub. Welcher Anteil ist damit verbraucht?",
+      "thema": "Anteile addieren",
+      "einheit": "bruchrechnung/1",
+      "schwere": 2,
+      "art": "zahl",
+      "wert": "3/4",
+      "loesung": "$\\frac{1}{8} + \\frac{1}{8} + \\frac{1}{2} = \\frac{3}{4}$ (also $1500$ €).",
+      "bruch": 1
+     }
+    },
+    {
+     "nr": 5,
+     "id": "k-quelle-openstax-a-454",
+     "frage": "Welcher Winkel ergänzt $27{,}5^\\circ$ zu $90^\\circ$?",
+     "thema": "Winkel ergänzen zu 90°",
+     "einheit": "winkel-dreiecke/2",
+     "schwere": 1,
+     "art": "zahl",
+     "wert": "62,5",
+     "loesung": "$62{,}5^\\circ$",
+     "masse": "°",
+     "zw": {
+      "id": "k-quelle-mathalea-can-425",
+      "frage": "Zwei Winkel ergeben zusammen einen rechten Winkel. Einer ist $28^\\circ$ groß. Wie groß ist der andere?",
+      "thema": "Winkel ergänzen zu 90°",
+      "einheit": "winkel-dreiecke/2",
+      "schwere": 1,
+      "art": "zahl",
+      "wert": "62",
+      "loesung": "$62^\\circ$",
+      "masse": "°",
+      "fehler": {
+       "152": "zu 180 ergänzt"
+      }
+     }
+    },
+    {
+     "nr": 6,
+     "id": "k-quelle-oak-02187",
+     "frage": "In einem rechtwinkligen Dreieck ist die Hypotenuse 13 cm lang, die kürzere Kathete 5 cm. Wie lang ist die andere Kathete?",
+     "thema": "Kathete aus Hypotenuse und Kathete",
+     "einheit": "pythagoras/2",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "12",
+     "loesung": "12 cm",
+     "masse": "cm"
+    },
+    {
+     "nr": 7,
+     "id": "k-quelle-lisum-055",
+     "frage": "Talia rechnet $5x^2 + 6x^2 = 11x^4$. Stimmt das?",
+     "thema": "beim Addieren bleibt der Exponent",
+     "einheit": "terme/1",
+     "schwere": 2,
+     "art": "stimmt",
+     "knoepfe": [
+      "stimmt",
+      "stimmt nicht"
+     ],
+     "richtig": "stimmt nicht",
+     "loesung": "stimmt nicht – $5x^2 + 6x^2 = 11x^2$; beim Addieren bleibt die Potenz gleich."
+    },
+    {
+     "nr": 8,
+     "id": "k-quelle-mathalea-429",
+     "frage": "Ergänze: $\\frac{4}{7}\\cdot\\square=1$.",
+     "thema": "Kehrwert",
+     "einheit": "bruchrechnung/3",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "7/4",
+     "loesung": "$\\frac{7}{4}$",
+     "bruch": 1,
+     "fehler": {
+      "3/7": "ergänzt wie bei Addition"
+     },
+     "zw": {
+      "id": "k-quelle-mathsmentales-154",
+      "frage": "Was ist der Kehrwert von $\\frac25$?",
+      "thema": "Kehrwert",
+      "einheit": "bruchrechnung/3",
+      "schwere": 1,
+      "art": "zahl",
+      "wert": "5/2",
+      "loesung": "$\\frac52$",
+      "bruch": 1,
+      "fehler": {
+       "−2/5": "Gegenzahl"
+      }
+     }
+    },
+    {
+     "nr": 9,
+     "id": "k-quelle-mathalea-eam-068",
+     "frage": "Schreibe als eine Potenz: $(2^3)^4$.",
+     "thema": "Potenz einer Potenz",
+     "einheit": "reelle-zahlen/2",
+     "schwere": 1,
+     "art": "auswahl",
+     "optionen": [
+      {
+       "t": "$2^7$",
+       "f": "Exponenten addiert"
+      },
+      {
+       "t": "$2^{12}$",
+       "r": 1
+      },
+      {
+       "t": "$2^{81}$"
+      }
+     ],
+     "loesung": "$2^{12}$",
+     "aus_wert": 1,
+     "zw": {
+      "id": "k-quelle-mathalea-eam-069",
+      "frage": "Schreibe als eine Potenz: $(5^2)^3$.",
+      "thema": "Potenz einer Potenz",
+      "einheit": "reelle-zahlen/2",
+      "schwere": 1,
+      "art": "auswahl",
+      "optionen": [
+       {
+        "t": "$5^5$",
+        "f": "Exponenten addiert"
+       },
+       {
+        "t": "$5^6$",
+        "r": 1
+       },
+       {
+        "t": "$5^8$"
+       }
+      ],
+      "loesung": "$5^6$",
+      "aus_wert": 1
+     }
+    },
+    {
+     "nr": 10,
+     "id": "k-eigen-t01-t03-586",
+     "frage": "Welcher Bruch ist $0{,}2$?",
+     "thema": "Merkzahlen Bruch – Dezimalzahl",
+     "einheit": "brueche-dezimalzahlen/4",
+     "schwere": 1,
+     "art": "zahl",
+     "wert": "1/5",
+     "loesung": "$\\frac{1}{5}$ (oder $\\frac{2}{10}$)",
+     "bruch": 1,
+     "fehler": {
+      "1/2": "die 2 als Nenner gelesen"
+     },
+     "zw": {
+      "id": "k-eigen-t01-t03-587",
+      "frage": "Welcher Bruch ist $0{,}4$?",
+      "thema": "Merkzahlen Bruch – Dezimalzahl",
+      "einheit": "brueche-dezimalzahlen/4",
+      "schwere": 1,
+      "art": "zahl",
+      "wert": "2/5",
+      "loesung": "$\\frac{2}{5}$ (oder $\\frac{4}{10}$)",
+      "bruch": 1,
+      "fehler": {
+       "1/4": "die 4 als Nenner gelesen",
+       "4/100": "Zehntel als Hundertstel"
+      }
+     }
+    },
+    {
+     "nr": 11,
+     "id": "k-eigen-t01-t03-123",
+     "frage": "Wie viele Schnittpunkte haben $y=3x+2$ und $y=3x-5$?",
+     "thema": "Lage zweier Geraden über die Steigung",
+     "einheit": "lineare-funktionen/4",
+     "schwere": 2,
+     "art": "auswahl",
+     "optionen": [
+      {
+       "t": "keinen",
+       "r": 1
+      },
+      {
+       "t": "einen"
+      },
+      {
+       "t": "unendlich viele"
+      }
+     ],
+     "loesung": "keinen – gleiche Steigung, verschiedenes $n$: parallel.",
+     "aus_wert": 1
+    },
+    {
+     "nr": 12,
+     "id": "k-quelle-mathalea-can-371",
+     "frage": "Eine Python-Funktion gibt a**2 - 2*a zurück. Was liefert sie für a = 5?",
+     "thema": "negative Zahl einsetzen",
+     "einheit": "terme/5",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "15",
+     "loesung": "$15$",
+     "fehler": {
+      "0": "a**2 als 2a"
+     },
+     "zw": {
+      "id": "k-quelle-mathsmentales-372",
+      "frage": "Berechne $2x+x^2$ für $x=-3$.",
+      "thema": "negative Zahl einsetzen",
+      "einheit": "terme/5",
+      "schwere": 2,
+      "art": "zahl",
+      "wert": "3",
+      "loesung": "$3$",
+      "fehler": {
+       "−15": "x² als -9"
+      }
+     }
+    },
+    {
+     "nr": 13,
+     "id": "k-quelle-oak-04207",
+     "frage": "Was kommt heraus, wenn du eine Zahl (nicht null) mit ihrem Kehrwert malnimmst?",
+     "thema": "Zahl mal Kehrwert",
+     "einheit": "bruchrechnung/3",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "1",
+     "loesung": "$1$"
+    },
+    {
+     "nr": 14,
+     "id": "k-quelle-mathalea-eam-276",
+     "frage": "Schreibe $0{,}\\overline{6}$ als Bruch.",
+     "thema": "Periodische Dezimalzahl als Bruch",
+     "einheit": "brueche-dezimalzahlen/4",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "2/3",
+     "loesung": "$\\frac{2}{3}$",
+     "bruch": 1,
+     "streng": 1,
+     "fehler": {
+      "6/10": "Periode übersehen"
+     }
+    },
+    {
+     "nr": 15,
+     "id": "k-eigen-t07-t09-036",
+     "frage": "Ein Anteil von $15\\,\\%$ soll ins Kreisdiagramm. Wie groß wird der Mittelpunktswinkel?",
+     "thema": "Winkel im Kreisdiagramm aus Prozent",
+     "einheit": "daten/3",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "54",
+     "loesung": "$0{,}15\\cdot 360^\\circ=54^\\circ$",
+     "masse": "°",
+     "fehler": {
+      "15": "Prozent als Grad eingetragen"
+     },
+     "zw": {
+      "id": "k-eigen-t07-t09-039",
+      "frage": "Wie viel Grad entsprechen im Kreisdiagramm $1\\,\\%$?",
+      "thema": "Winkel im Kreisdiagramm aus Prozent",
+      "einheit": "daten/3",
+      "schwere": 2,
+      "art": "zahl",
+      "wert": "3,6",
+      "loesung": "$3{,}6^\\circ$",
+      "masse": "°",
+      "fehler": {
+       "1": "Prozent als Grad",
+       "36": "Komma verschoben"
+      }
+     }
+    },
+    {
+     "nr": 16,
+     "id": "k-quelle-openstax-a-312",
+     "frage": "Wie heißt der Koeffizient (die Vorzahl) in $y^3$?",
+     "thema": "Koeffizient eines Produktterms",
+     "einheit": "terme/1",
+     "schwere": 1,
+     "art": "zahl",
+     "wert": "1",
+     "loesung": "$1$",
+     "zw": {
+      "id": "k-quelle-openstax-a-310",
+      "frage": "Wie heißt der Koeffizient (die Vorzahl) in $z$?",
+      "thema": "Koeffizient eines Produktterms",
+      "einheit": "terme/1",
+      "schwere": 1,
+      "art": "zahl",
+      "wert": "1",
+      "loesung": "$1$"
+     }
+    }
+   ],
+   "quellen": [
+    {
+     "quelle": "eigene Fragen",
+     "nr": [
+      "3",
+      "3z",
+      "10",
+      "10z",
+      "11",
+      "15",
+      "15z"
+     ]
+    },
+    {
+     "quelle": "LISUM Materialien zur Diagnose und Förderung im Mathematikunterricht",
+     "nr": [
+      "2z",
+      "4",
+      "4z",
+      "7"
+     ],
+     "lizenz": "CC BY-SA 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://bildungsserver.berlin-brandenburg.de"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+     "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+    },
+    {
+     "quelle": "MathALÉA (Coopmaths), Automatismes EAM Première",
+     "nr": [
+      "9",
+      "9z"
+     ],
+     "lizenz": "CC BY-SA 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://coopmaths.fr"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+     "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+    },
+    {
+     "quelle": "MathALÉA (Coopmaths), Course aux nombres",
+     "nr": [
+      "8"
+     ],
+     "lizenz": "CC BY-SA 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://coopmaths.fr"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+     "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+    },
+    {
+     "quelle": "MathALÉA (Coopmaths), Course aux nombres (Jahrgänge)",
+     "nr": [
+      "1",
+      "5z",
+      "12"
+     ],
+     "lizenz": "CC BY-SA 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://coopmaths.fr"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+     "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+    },
+    {
+     "quelle": "MathALÉA (Coopmaths), Exercices Suisse",
+     "nr": [
+      "14"
+     ],
+     "lizenz": "CC BY-SA 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://coopmaths.fr"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+     "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+    },
+    {
+     "quelle": "MathsMentales",
+     "nr": [
+      "8z",
+      "12z"
+     ],
+     "lizenz": "Apache-2.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://forge.apps.education.fr"
+     ],
+     "lizenz_url": "https://www.apache.org/licenses/LICENSE-2.0",
+     "hinweis": "Lizenziert unter der Apache License 2.0; die Vorlagen wurden übersetzt und verändert."
+    },
+    {
+     "quelle": "Oak National Academy",
+     "nr": [
+      "6",
+      "13"
+     ],
+     "lizenz": "OGL v3.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://www.thenational.academy"
+     ],
+     "lizenz_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+     "hinweis": "Contains public sector information licensed under the Open Government Licence v3.0."
+    },
+    {
+     "quelle": "OpenStax Elementary Algebra (1. Auflage, Rice University)",
+     "nr": [
+      "16",
+      "16z"
+     ],
+     "lizenz": "CC BY 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://openstax.org"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by/4.0/deed.de"
+    },
+    {
+     "quelle": "OpenStax Prealgebra (1. Auflage, Rice University)",
+     "nr": [
+      "5"
+     ],
+     "lizenz": "CC BY 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://openstax.org"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by/4.0/deed.de"
+    },
+    {
+     "quelle": "OpenStax Precalculus (Erstauflage)",
+     "nr": [
+      "2"
+     ],
+     "lizenz": "CC BY 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://assets.openstax.org"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by/4.0/deed.de"
+    }
+   ]
+  },
+  {
+   "fragen": [
+    {
+     "nr": 1,
+     "id": "k-quelle-oak-06129",
+     "frage": "Klammere aus: $5x + 20$",
+     "thema": "Zahl ausklammern",
+     "einheit": "terme/4",
+     "schwere": 1,
+     "art": "auswahl",
+     "optionen": [
+      {
+       "t": "$x(5 + 20)$",
+       "f": "x aus der 20 geklammert"
+      },
+      {
+       "t": "$5(x - 4)$",
+       "f": "Vorzeichen"
+      },
+      {
+       "t": "$25(x + 4)$",
+       "f": "Zahlen addiert"
+      },
+      {
+       "t": "$5(x + 4)$",
+       "r": 1
+      }
+     ],
+     "loesung": "$5(x + 4)$"
+    },
+    {
+     "nr": 2,
+     "id": "k-quelle-openstax-c-152",
+     "frage": "Klammere aus: $3x^2+6x-9$.",
+     "thema": "Ausklammern als Umkehrung",
+     "einheit": "terme/4",
+     "schwere": 1,
+     "art": "zahl",
+     "wert": "3",
+     "loesung": "$3(x^2+2x-3)$",
+     "zw": {
+      "id": "k-quelle-openstax-c-149",
+      "frage": "Klammere aus: $-2x-4$.",
+      "thema": "Ausklammern als Umkehrung",
+      "einheit": "terme/4",
+      "schwere": 1,
+      "art": "zahl",
+      "wert": "−2",
+      "loesung": "$-2(x+2)$"
+     }
+    },
+    {
+     "nr": 3,
+     "id": "k-quelle-openstax-a-069",
+     "frage": "Nenne die Gegenzahl von $2$.",
+     "thema": "Gegenzahl",
+     "einheit": "rationale-zahlen/1",
+     "schwere": 1,
+     "art": "zahl",
+     "wert": "−2",
+     "loesung": "$-2$"
+    },
+    {
+     "nr": 4,
+     "id": "k-eigen-t01-t03-159",
+     "frage": "Für welches $x$ ist $x^3=-8$?",
+     "thema": "Kubikwurzel: nur eine Lösung",
+     "einheit": "potenzen-wurzeln/1",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "−2",
+     "loesung": "$x=-2$ (nur diese eine)",
+     "zw": {
+      "id": "k-quelle-mathalea-436",
+      "frage": "Für welches $x$ ist $x^3=-27$?",
+      "thema": "Kubikwurzel: nur eine Lösung",
+      "einheit": "potenzen-wurzeln/1",
+      "schwere": 2,
+      "art": "zahl",
+      "wert": "−3",
+      "loesung": "$x=-3$ (nur diese eine Lösung)"
+     }
+    },
+    {
+     "nr": 5,
+     "id": "k-eigen-t10-t12-084",
+     "frage": "Drei Winkel liegen um einen Punkt und füllen ihn ganz aus. Zwei messen $150^\\circ$ und $85^\\circ$. Wie groß ist der dritte?",
+     "thema": "Winkel um einen Punkt ergeben zusammen 360°",
+     "einheit": "winkel-dreiecke/1",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "125",
+     "loesung": "$125^\\circ$ ($360^\\circ-235^\\circ$)",
+     "masse": "°",
+     "fehler": {
+      "235": "nur addiert"
+     }
+    },
+    {
+     "nr": 6,
+     "id": "k-eigen-t10-t12-303",
+     "frage": "Es ist $f(x)=x^3$. Berechne $f(-3)$.",
+     "thema": "Kubikfunktion mit negativer Zahl",
+     "einheit": "potenz-exponentialfunktionen/5",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "−27",
+     "loesung": "$-27$",
+     "fehler": {
+      "27": "Vorzeichen verloren",
+      "−9": "x³ als 3 · x"
+     },
+     "zw": {
+      "id": "k-quelle-mathalea-433",
+      "frage": "Es ist $f(x)=x^3$. Berechne $f(-2)$.",
+      "thema": "Kubikfunktion mit negativer Zahl",
+      "einheit": "potenz-exponentialfunktionen/5",
+      "schwere": 2,
+      "art": "zahl",
+      "wert": "−8",
+      "loesung": "$-8$"
+     }
+    },
+    {
+     "nr": 7,
+     "id": "k-quelle-openstax-a-249",
+     "frage": "Löse: $4m+9=-23$.",
+     "thema": "Zweischrittige Gleichung",
+     "einheit": "lineare-gleichungen/2",
+     "schwere": 1,
+     "art": "zahl",
+     "wert": "−8",
+     "loesung": "$m = -8$",
+     "zw": {
+      "id": "k-quelle-openstax-a-248",
+      "frage": "Löse: $7x-8=34$.",
+      "thema": "Zweischrittige Gleichung",
+      "einheit": "lineare-gleichungen/2",
+      "schwere": 1,
+      "art": "zahl",
+      "wert": "6",
+      "loesung": "$x = 6$"
+     }
+    },
+    {
+     "nr": 8,
+     "id": "k-eigen-t01-t03-138",
+     "frage": "Welche Gleichung hat die Gerade durch $(-2\\mid 1)$ und $(-2\\mid 6)$?",
+     "thema": "senkrechte Gerade",
+     "einheit": "lineare-funktionen/4",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "−2",
+     "loesung": "$x=-2$ (senkrecht, keine Funktion)",
+     "zw": {
+      "id": "k-quelle-serlo-344",
+      "frage": "Wie heißt die Gleichung der Parallelen zur $y$-Achse durch $A(-7\\,|\\,9)$?",
+      "thema": "Senkrechte Gerade",
+      "einheit": "lineare-funktionen/4",
+      "schwere": 2,
+      "art": "zahl",
+      "wert": "−7",
+      "loesung": "$x=-7$"
+     }
+    },
+    {
+     "nr": 9,
+     "id": "k-quelle-oak-01411",
+     "frage": "Ergänze: Wächst $y$ immer um denselben Betrag, wenn $x$ um 1 wächst, dann liegen die Punkte im Koordinatensystem auf einer $\\square$.",
+     "thema": "gleichmäßige Änderung ergibt eine Gerade",
+     "einheit": "lineare-funktionen/2",
+     "schwere": 1,
+     "art": "auswahl",
+     "optionen": [
+      {
+       "t": "Geraden",
+       "r": 1
+      },
+      {
+       "t": "Parabel"
+      },
+      {
+       "t": "Kurve"
+      }
+     ],
+     "loesung": "Geraden",
+     "aus_wert": 1
+    },
+    {
+     "nr": 10,
+     "id": "k-quelle-openstax-b-052",
+     "frage": "Welche Aussage stimmt?",
+     "thema": "Zahlbereiche ineinander",
+     "einheit": "reelle-zahlen/1",
+     "schwere": 2,
+     "art": "auswahl",
+     "optionen": [
+      {
+       "t": "Jede ganze Zahl ist eine natürliche Zahl.",
+       "f": "jede ganze Zahl sei natürlich"
+      },
+      {
+       "t": "$\\sqrt2$ ist rational und irrational.",
+       "f": "rational und irrational überschnitten sich"
+      },
+      {
+       "t": "Jede natürliche Zahl ist eine rationale Zahl.",
+       "r": 1
+      },
+      {
+       "t": "$\\frac34$ ist keine reelle Zahl.",
+       "f": "Bruchzahlen gehörten nicht zu den reellen Zahlen"
+      }
+     ],
+     "loesung": "Jede natürliche Zahl ist eine rationale Zahl."
+    },
+    {
+     "nr": 11,
+     "id": "k-quelle-serlo-376",
+     "frage": "Eine Münze wird dreimal geworfen. Wie wahrscheinlich ist genau zweimal Zahl?",
+     "thema": "genau k-mal Kopf bei n Münzen",
+     "einheit": "wahrscheinlichkeit/3",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "3/8",
+     "loesung": "$\\frac{3}{8}$",
+     "bruch": 1
+    },
+    {
+     "nr": 12,
+     "id": "k-stochastik-007",
+     "frage": "$5$ verschiedene Bücher sollen nebeneinander ins Regal. Wie viele Reihenfolgen gibt es?",
+     "thema": "Anordnungen: Fakultät",
+     "einheit": "wahrscheinlichkeit/1",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "120",
+     "loesung": "$5\\cdot4\\cdot3\\cdot2\\cdot1=120$",
+     "fehler": {
+      "15": "5+4+3+2+1"
+     },
+     "zw": {
+      "id": "k-stochastik-006",
+      "frage": "Auf wie viele Arten können sich $4$ Freunde für ein Foto nebeneinander aufstellen?",
+      "thema": "Anordnungen: Fakultät",
+      "einheit": "wahrscheinlichkeit/1",
+      "schwere": 1,
+      "art": "zahl",
+      "wert": "24",
+      "loesung": "$4\\cdot3\\cdot2\\cdot1=24$"
+     }
+    },
+    {
+     "nr": 13,
+     "id": "k-quelle-openstax-b-375",
+     "frage": "Ein Dreieck hat $90$ m² Fläche und die Grundseite $15$ m. Wie hoch ist es?",
+     "thema": "Höhe aus der Dreiecksfläche",
+     "einheit": "flaechen/3",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "12",
+     "loesung": "$h=\\frac{2\\cdot90}{15}=12$ m.",
+     "masse": "m",
+     "zw": {
+      "id": "k-geometrie-funktionen-8-10-037",
+      "frage": "Ein Dreieck hat den Flächeninhalt $12\\,\\text{cm}^2$ und die Grundseite $6\\,\\text{cm}$. Wie lang ist die Höhe zu dieser Seite?",
+      "thema": "Höhe aus der Dreiecksfläche",
+      "einheit": "flaechen/3",
+      "schwere": 2,
+      "art": "zahl",
+      "wert": "4",
+      "loesung": "$4\\,\\text{cm}$ ($2\\cdot12:6$)",
+      "masse": "cm",
+      "fehler": {
+       "2": "Faktor $2$ vergessen"
+      }
+     }
+    },
+    {
+     "nr": 14,
+     "id": "k-quelle-serlo-rest-196",
+     "frage": "Ein Wasserball hat $50\\,\\mathrm{cm}$ Durchmesser. Welchen Radius setzt du in $V=\\frac43\\pi r^3$ ein?",
+     "thema": "Kugelvolumen",
+     "einheit": "pyramide-kegel-kugel/3",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "25",
+     "loesung": "$r=25\\,\\mathrm{cm}$",
+     "masse": "cm"
+    },
+    {
+     "nr": 15,
+     "id": "k-quelle-openstax-a-304",
+     "frage": "Welche Steigung hat die Gerade $y=3$?",
+     "thema": "Steigung waagerechter/senkrechter Geraden",
+     "einheit": "lineare-funktionen/2",
+     "schwere": 2,
+     "art": "zahl",
+     "wert": "0",
+     "loesung": "$0$ – die Gerade ist waagerecht",
+     "zw": {
+      "id": "k-quelle-openstax-a-305",
+      "frage": "Welche Steigung hat die Gerade $y=-2$?",
+      "thema": "Steigung waagerechter/senkrechter Geraden",
+      "einheit": "lineare-funktionen/2",
+      "schwere": 2,
+      "art": "zahl",
+      "wert": "0",
+      "loesung": "$0$ – die Gerade ist waagerecht"
+     }
+    },
+    {
+     "nr": 16,
+     "id": "k-quelle-openstax-a-306",
+     "frage": "Welche Steigung hat die Gerade durch $P(4\\mid -5)$ und $Q(1\\mid -2)$?",
+     "thema": "Steigung aus zwei Punkten",
+     "einheit": "lineare-funktionen/4",
+     "schwere": 1,
+     "art": "zahl",
+     "wert": "−1",
+     "loesung": "$-1$",
+     "zw": {
+      "id": "k-quelle-openstax-a-309",
+      "frage": "Welche Steigung hat die Gerade durch $P(2\\mid 5)$ und $Q(4\\mid 0)$?",
+      "thema": "Steigung aus zwei Punkten",
+      "einheit": "lineare-funktionen/4",
+      "schwere": 1,
+      "art": "zahl",
+      "wert": "−5/2",
+      "loesung": "$-\\frac{5}{2}$",
+      "bruch": 1
+     }
+    }
+   ],
+   "quellen": [
+    {
+     "quelle": "eigene Fragen",
+     "nr": [
+      "4",
+      "5",
+      "6",
+      "8",
+      "12",
+      "12z",
+      "13z"
+     ]
+    },
+    {
+     "quelle": "MathALÉA (Coopmaths), Course aux nombres",
+     "nr": [
+      "4z",
+      "6z"
+     ],
+     "lizenz": "CC BY-SA 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://coopmaths.fr"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+     "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+    },
+    {
+     "quelle": "Oak National Academy",
+     "nr": [
+      "1",
+      "9"
+     ],
+     "lizenz": "OGL v3.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://www.thenational.academy"
+     ],
+     "lizenz_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+     "hinweis": "Contains public sector information licensed under the Open Government Licence v3.0."
+    },
+    {
+     "quelle": "OpenStax Intermediate Algebra (1. Auflage, Rice University)",
+     "nr": [
+      "2",
+      "2z"
+     ],
+     "lizenz": "CC BY 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://openstax.org"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by/4.0/deed.de"
+    },
+    {
+     "quelle": "OpenStax Intermediate Algebra (Erstauflage)",
+     "nr": [
+      "10",
+      "13"
+     ],
+     "lizenz": "CC BY 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://assets.openstax.org"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by/4.0/deed.de"
+    },
+    {
+     "quelle": "OpenStax Prealgebra (1. Auflage, Rice University)",
+     "nr": [
+      "3",
+      "7",
+      "7z",
+      "15",
+      "15z",
+      "16",
+      "16z"
+     ],
+     "lizenz": "CC BY 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://openstax.org"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by/4.0/deed.de"
+    },
+    {
+     "quelle": "Serlo",
+     "nr": [
+      "8z",
+      "11",
+      "14"
+     ],
+     "lizenz": "CC BY-SA 4.0",
+     "bearbeitung": "übersetzt und bearbeitet",
+     "url": [
+      "https://de.serlo.org"
+     ],
+     "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+     "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+    }
+   ]
+  }
+ ]
+}
