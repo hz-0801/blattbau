@@ -217,6 +217,13 @@ Committen und pushen, was sich in aufgabenbank, aufgabenbank-privat und blattbau
 `git pull --rebase`; die Nachricht nennt die Bestellung mit der Nummer, nie mit dem Namen). Die QR-Seite kennt das
 Blatt etwa eine Minute nach dem Push von blattbau – erst dann ist die Lieferung fertig.
 
+## Messung (5 Bestelltage, Lehrer 16.11. W52, Register 16.11.8)
+
+Sagt der Lehrer „Schluss“ (oder „Feierabend“), ruft der Chat einmal den Skill `explain-usage` auf und schreibt eine Zeile
+nach aufgabenbank-privat `bau/messung/bestellchat.csv` (`datum;lieferungen;anfragen;cache_lesen;cache_schreiben;ausgabe;
+gewichtet` – Mio Token, gewichtet wie der Skill); Antwort an den Lehrer: eine Zeile mit „gewichtet“ und Lieferungen.
+Nach fünf Zeilen fällt dieser Abschnitt weg (die Werkstatt wertet aus). Keine Namen in der Datei.
+
 ## Rückmeldung vom Lehrer
 
 Ob ein Blatt auf dem Tisch lag, fragst du nicht und der Lehrer muss es nicht sagen: Es gilt als vorgelegt, sobald
