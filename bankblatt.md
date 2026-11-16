@@ -276,7 +276,7 @@ Werkstatt arbeitet es ein und hebt die Sperre auf. Nichts am Blatt selbst änder
   zur Verfügung gestellt“; globale Anweisung „Signalwort“). Die Karten zählen nicht zu den drei Zeilen.
 - Nach jeder Antwort, in der etwas geliefert, verworfen oder als ausgegeben eingetragen wurde, veröffentlichst du die
   Tagesseite „Unterricht“ neu (Register 14.11.28, 15.11.1; Lehrer 15.11.: Link statt Datei): im Ordner aufgabenbank-privat
-  `mkdir -p /tmp/seite && python3 werkzeuge/tagesseite.py /tmp/seite/index.html`, dann mit dem Artifact-Werkzeug
+  `mkdir -p $HOME/seite && python3 werkzeuge/tagesseite.py $HOME/seite/index.html`, dann mit dem Artifact-Werkzeug
   `get_artifact` für den Slug `1045875a-1a44-4382-9087-1fa1b739aa52` (gibt `version`) und `publish_files` mit diesem Slug,
   `base_version` = `version`, `files` = die JSON-Liste aus der ersten Ausgabezeile des Skripts (index.html und die PDFs
   des Tages als `pdf/<kurz>.pdf`; „Heute erstellt“ verlinkt sie). Die Karten im Chat bleiben (Lehrer 16.11.). Keine Dateikarte, kein
