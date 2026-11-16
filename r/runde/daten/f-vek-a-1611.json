@@ -1,0 +1,4043 @@
+{
+"kennung": "f-vek-a-1611",
+"titel": "Blitzrunde Vektoren",
+"erzeugt": "2026-11-16",
+"bis": "2027-01-25",
+"fragen": [
+{
+"frage": "$A(1\\,|\\,3\\,|\\,5)$, $B(5\\,|\\,6\\,|\\,9)$. Welcher Vektor ist $\\overrightarrow{AB}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{6}{9}{14}$",
+"f": "addiert statt subtrahiert"
+},
+{
+"t": "$\\sv{-4}{-3}{-4}$",
+"f": "falsch herum: Spitze minus Fuß, also B − A"
+},
+{
+"t": "$\\sv{4}{3}{4}$",
+"r": 1
+}
+],
+"loesung": "$\\overrightarrow{AB}=\\sv{4}{3}{4}$ – Spitze minus Fuß: B − A",
+"id": "fam-vektor-1",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 1,
+"familie": "vektor",
+"sprosse": 1,
+"ab_klasse": 11,
+"nr": 1,
+"zw": {
+"frage": "$A(4\\,|\\,1\\,|\\,4)$, $B(9\\,|\\,3\\,|\\,5)$. Welcher Vektor ist $\\overrightarrow{AB}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{13}{4}{9}$",
+"f": "addiert statt subtrahiert"
+},
+{
+"t": "$\\sv{-5}{-2}{-1}$",
+"f": "falsch herum: Spitze minus Fuß, also B − A"
+},
+{
+"t": "$\\sv{5}{2}{1}$",
+"r": 1
+}
+],
+"loesung": "$\\overrightarrow{AB}=\\sv{5}{2}{1}$ – Spitze minus Fuß: B − A",
+"id": "fam-vektor-1",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 1,
+"familie": "vektor",
+"sprosse": 1,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Wie lang ist der Vektor $\\begin{pmatrix}8\\\\6\\end{pmatrix}$?",
+"art": "zahl",
+"wert": "10",
+"loesung": "$\\sqrt{8^2+6^2}=\\sqrt{100}=10$",
+"fehler": {
+"14": "Komponenten addiert statt Pythagoras"
+},
+"id": "fam-betrag-1",
+"thema": "Länge eines Vektors",
+"einheit": "",
+"schwere": 1,
+"familie": "betrag",
+"sprosse": 1,
+"ab_klasse": 11,
+"nr": 2,
+"zw": {
+"frage": "Wie lang ist der Vektor $\\begin{pmatrix}3\\\\4\\end{pmatrix}$?",
+"art": "zahl",
+"wert": "5",
+"loesung": "$\\sqrt{3^2+4^2}=\\sqrt{25}=5$",
+"fehler": {
+"7": "Komponenten addiert statt Pythagoras"
+},
+"id": "fam-betrag-1",
+"thema": "Länge eines Vektors",
+"einheit": "",
+"schwere": 1,
+"familie": "betrag",
+"sprosse": 1,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Berechne $\\sv{1}{0}{0}\\cdot\\sv{3}{3}{3}$.",
+"art": "zahl",
+"wert": "3",
+"loesung": "$1\\cdot3+0\\cdot3+0\\cdot3=3$ – Komponenten mal Komponenten, dann addieren",
+"id": "fam-skalar-1",
+"thema": "Skalarprodukt und senkrecht",
+"einheit": "",
+"schwere": 1,
+"familie": "skalar",
+"sprosse": 1,
+"ab_klasse": 12,
+"nr": 3,
+"zw": {
+"frage": "Berechne $\\sv{4}{3}{2}\\cdot\\sv{4}{2}{2}$.",
+"art": "zahl",
+"wert": "26",
+"loesung": "$4\\cdot4+3\\cdot2+2\\cdot2=26$ – Komponenten mal Komponenten, dann addieren",
+"id": "fam-skalar-1",
+"thema": "Skalarprodukt und senkrecht",
+"einheit": "",
+"schwere": 1,
+"familie": "skalar",
+"sprosse": 1,
+"ab_klasse": 12
+}
+},
+{
+"frage": "$g:\\ \\vec x=\\sv{-4}{-2}{-3}+t\\cdot\\sv{-3}{3}{-3}$. Welcher Vektor ist der Stützvektor?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{-7}{1}{-6}$",
+"f": "das ist der Punkt für $t=1$"
+},
+{
+"t": "$\\sv{-4}{-2}{-3}$",
+"r": 1
+},
+{
+"t": "$\\sv{-3}{3}{-3}$",
+"f": "das ist der Richtungsvektor"
+}
+],
+"loesung": "$\\sv{-4}{-2}{-3}$ – der Vektor ohne Parameter",
+"id": "fam-gerade-1",
+"thema": "Gerade in Parameterform",
+"einheit": "",
+"schwere": 1,
+"familie": "gerade",
+"sprosse": 1,
+"ab_klasse": 12,
+"nr": 4,
+"zw": {
+"frage": "$g:\\ \\vec x=\\sv{4}{1}{2}+t\\cdot\\sv{0}{-2}{-2}$. Welcher Vektor ist der Stützvektor?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{0}{-2}{-2}$",
+"f": "das ist der Richtungsvektor"
+},
+{
+"t": "$\\sv{4}{1}{2}$",
+"r": 1
+},
+{
+"t": "$\\sv{4}{-1}{0}$",
+"f": "das ist der Punkt für $t=1$"
+}
+],
+"loesung": "$\\sv{4}{1}{2}$ – der Vektor ohne Parameter",
+"id": "fam-gerade-1",
+"thema": "Gerade in Parameterform",
+"einheit": "",
+"schwere": 1,
+"familie": "gerade",
+"sprosse": 1,
+"ab_klasse": 12
+}
+},
+{
+"frage": "$E:\\ 4x+7y+7z=2$. Welcher Vektor ist ein Normalenvektor von $E$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{4}{7}{2}$",
+"f": "die Zahl rechts gehört nicht zum Normalenvektor"
+},
+{
+"t": "$\\sv{4}{7}{7}$",
+"r": 1
+}
+],
+"loesung": "$\\vec n=\\sv{4}{7}{7}$ – die Zahlen vor $x$, $y$, $z$",
+"id": "fam-normalenvektor-1",
+"thema": "Normalenvektor aus der Koordinatenform",
+"einheit": "",
+"schwere": 1,
+"familie": "normalenvektor",
+"sprosse": 1,
+"ab_klasse": 12,
+"nr": 5,
+"zw": {
+"frage": "$E:\\ 7x+2y+2z=6$. Welcher Vektor ist ein Normalenvektor von $E$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{7}{2}{6}$",
+"f": "die Zahl rechts gehört nicht zum Normalenvektor"
+},
+{
+"t": "$\\sv{7}{2}{2}$",
+"r": 1
+}
+],
+"loesung": "$\\vec n=\\sv{7}{2}{2}$ – die Zahlen vor $x$, $y$, $z$",
+"id": "fam-normalenvektor-1",
+"thema": "Normalenvektor aus der Koordinatenform",
+"einheit": "",
+"schwere": 1,
+"familie": "normalenvektor",
+"sprosse": 1,
+"ab_klasse": 12
+}
+},
+{
+"frage": "Leite ab: $f(x)=x^{2}$. Was ist $f'(x)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$2x^{2}$",
+"f": "Exponent nicht um 1 verkleinert"
+},
+{
+"t": "$x$",
+"f": "Exponent gesenkt, aber nicht als Faktor davorgeschrieben"
+},
+{
+"t": "$2x$",
+"r": 1
+}
+],
+"loesung": "$f'(x)=2x$ – Exponent als Faktor davor, dann um 1 kleiner; Zahl ohne $x$ fällt weg",
+"id": "fam-ableiten-1",
+"thema": "Ableiten mit der Potenzregel",
+"einheit": "",
+"schwere": 1,
+"familie": "ableiten",
+"sprosse": 1,
+"ab_klasse": 11,
+"nr": 6,
+"zw": {
+"frage": "Leite ab: $f(x)=x^{3}$. Was ist $f'(x)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$3x^{2}$",
+"r": 1
+},
+{
+"t": "$3x^{3}$",
+"f": "Exponent nicht um 1 verkleinert"
+},
+{
+"t": "$x^{2}$",
+"f": "Exponent gesenkt, aber nicht als Faktor davorgeschrieben"
+}
+],
+"loesung": "$f'(x)=3x^{2}$ – Exponent als Faktor davor, dann um 1 kleiner; Zahl ohne $x$ fällt weg",
+"id": "fam-ableiten-1",
+"thema": "Ableiten mit der Potenzregel",
+"einheit": "",
+"schwere": 1,
+"familie": "ableiten",
+"sprosse": 1,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Rechne $8-(-7)$.",
+"art": "zahl",
+"wert": "15",
+"loesung": "$8-(-7)=8+7=15$",
+"fehler": {
+"1": "Minus vor der Klammer nicht beachtet: $-(-7)=+7$"
+},
+"id": "fam-vorzeichen-3",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 3,
+"ab_klasse": 7,
+"nr": 7,
+"zw": {
+"frage": "Rechne $9-(-8)$.",
+"art": "zahl",
+"wert": "17",
+"loesung": "$9-(-8)=9+8=17$",
+"fehler": {
+"1": "Minus vor der Klammer nicht beachtet: $-(-8)=+8$"
+},
+"id": "fam-vorzeichen-3",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 3,
+"ab_klasse": 7
+}
+},
+{
+"frage": "$A(-1\\,|\\,-5\\,|\\,-4)$, $B(-3\\,|\\,2\\,|\\,-5)$. Welcher Vektor ist $\\overrightarrow{BA}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{-4}{-3}{-9}$",
+"f": "addiert statt subtrahiert"
+},
+{
+"t": "$\\sv{2}{-7}{1}$",
+"r": 1
+},
+{
+"t": "$\\sv{-2}{7}{-1}$",
+"f": "falsch herum: Spitze minus Fuß, also A − B"
+}
+],
+"loesung": "$\\overrightarrow{BA}=\\sv{2}{-7}{1}$ – Spitze minus Fuß: A − B",
+"id": "fam-vektor-3",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 2,
+"familie": "vektor",
+"sprosse": 3,
+"ab_klasse": 11,
+"nr": 8,
+"zw": {
+"frage": "$A(3\\,|\\,4\\,|\\,3)$, $B(-2\\,|\\,4\\,|\\,4)$. Welcher Vektor ist $\\overrightarrow{BA}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{1}{8}{7}$",
+"f": "addiert statt subtrahiert"
+},
+{
+"t": "$\\sv{5}{0}{-1}$",
+"r": 1
+},
+{
+"t": "$\\sv{-5}{0}{1}$",
+"f": "falsch herum: Spitze minus Fuß, also A − B"
+}
+],
+"loesung": "$\\overrightarrow{BA}=\\sv{5}{0}{-1}$ – Spitze minus Fuß: A − B",
+"id": "fam-vektor-3",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 2,
+"familie": "vektor",
+"sprosse": 3,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Wie lang ist der Vektor $\\sv{-3}{-2}{-6}$?",
+"art": "zahl",
+"wert": "7",
+"loesung": "$\\sqrt{(-3)^2+(-2)^2+(-6)^2}=\\sqrt{49}=7$",
+"fehler": {
+"−11": "Komponenten addiert statt Pythagoras"
+},
+"id": "fam-betrag-3",
+"thema": "Länge eines Vektors",
+"einheit": "",
+"schwere": 2,
+"familie": "betrag",
+"sprosse": 3,
+"ab_klasse": 11,
+"nr": 9,
+"zw": {
+"frage": "Wie lang ist der Vektor $\\sv{2}{2}{1}$?",
+"art": "zahl",
+"wert": "3",
+"loesung": "$\\sqrt{2^2+2^2+1^2}=\\sqrt{9}=3$",
+"fehler": {
+"5": "Komponenten addiert statt Pythagoras"
+},
+"id": "fam-betrag-3",
+"thema": "Länge eines Vektors",
+"einheit": "",
+"schwere": 2,
+"familie": "betrag",
+"sprosse": 3,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Stehen $\\sv{-2}{-1}{3}$ und $\\sv{2}{-1}{-3}$ senkrecht aufeinander?",
+"art": "stimmt",
+"knoepfe": [
+"ja",
+"nein"
+],
+"richtig": "nein",
+"loesung": "nein: Skalarprodukt $=-12$ – senkrecht heißt Skalarprodukt 0",
+"fehler": "senkrecht heißt: Skalarprodukt ist 0",
+"id": "fam-skalar-3",
+"thema": "Skalarprodukt und senkrecht",
+"einheit": "",
+"schwere": 2,
+"familie": "skalar",
+"sprosse": 3,
+"ab_klasse": 12,
+"nr": 10,
+"zw": {
+"frage": "Stehen $\\sv{0}{3}{-1}$ und $\\sv{-3}{2}{4}$ senkrecht aufeinander?",
+"art": "stimmt",
+"knoepfe": [
+"ja",
+"nein"
+],
+"richtig": "nein",
+"loesung": "nein: Skalarprodukt $=2$ – senkrecht heißt Skalarprodukt 0",
+"fehler": "senkrecht heißt: Skalarprodukt ist 0",
+"id": "fam-skalar-3",
+"thema": "Skalarprodukt und senkrecht",
+"einheit": "",
+"schwere": 2,
+"familie": "skalar",
+"sprosse": 3,
+"ab_klasse": 12
+}
+},
+{
+"frage": "$g:\\ \\vec x=\\sv{-1}{-1}{-2}+t\\cdot\\sv{1}{-3}{0}$. Welcher Punkt gehört zu $t=-1$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{-2}{2}{-2}$",
+"r": 1
+},
+{
+"t": "$\\sv{0}{-4}{-2}$",
+"f": "mit $t=1$ statt $t=-1$ gerechnet"
+},
+{
+"t": "$\\sv{2}{-2}{2}$",
+"f": "den Stützvektor mal $t$ genommen"
+}
+],
+"loesung": "$\\sv{-1}{-1}{-2}+-1\\cdot\\sv{1}{-3}{0}=\\sv{-2}{2}{-2}$",
+"id": "fam-gerade-3",
+"thema": "Gerade in Parameterform",
+"einheit": "",
+"schwere": 2,
+"familie": "gerade",
+"sprosse": 3,
+"ab_klasse": 12,
+"nr": 11,
+"zw": {
+"frage": "$g:\\ \\vec x=\\sv{-4}{0}{-4}+t\\cdot\\sv{3}{-1}{2}$. Welcher Punkt gehört zu $t=-1$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{7}{-1}{6}$",
+"f": "den Stützvektor mal $t$ genommen"
+},
+{
+"t": "$\\sv{-1}{-1}{-2}$",
+"f": "mit $t=1$ statt $t=-1$ gerechnet"
+},
+{
+"t": "$\\sv{-7}{1}{-6}$",
+"r": 1
+}
+],
+"loesung": "$\\sv{-4}{0}{-4}+-1\\cdot\\sv{3}{-1}{2}=\\sv{-7}{1}{-6}$",
+"id": "fam-gerade-3",
+"thema": "Gerade in Parameterform",
+"einheit": "",
+"schwere": 2,
+"familie": "gerade",
+"sprosse": 3,
+"ab_klasse": 12
+}
+},
+{
+"frage": "$E:\\ 2x+4z=1$. Welcher Vektor ist ein Normalenvektor von $E$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{2}{4}{0}$",
+"f": "die Null steht an der Stelle der fehlenden Variable"
+},
+{
+"t": "$\\sv{2}{0}{4}$",
+"r": 1
+},
+{
+"t": "$\\sv{2}{0}{1}$",
+"f": "die Zahl rechts gehört nicht zum Normalenvektor"
+}
+],
+"loesung": "$\\vec n=\\sv{2}{0}{4}$ – die Zahlen vor $x$, $y$, $z$",
+"id": "fam-normalenvektor-3",
+"thema": "Normalenvektor aus der Koordinatenform",
+"einheit": "",
+"schwere": 2,
+"familie": "normalenvektor",
+"sprosse": 3,
+"ab_klasse": 12,
+"nr": 12,
+"zw": {
+"frage": "$E:\\ 6y+6z=4$. Welcher Vektor ist ein Normalenvektor von $E$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{0}{6}{4}$",
+"f": "die Zahl rechts gehört nicht zum Normalenvektor"
+},
+{
+"t": "$\\sv{0}{6}{6}$",
+"r": 1
+},
+{
+"t": "$\\sv{6}{6}{0}$",
+"f": "die Null steht an der Stelle der fehlenden Variable"
+}
+],
+"loesung": "$\\vec n=\\sv{0}{6}{6}$ – die Zahlen vor $x$, $y$, $z$",
+"id": "fam-normalenvektor-3",
+"thema": "Normalenvektor aus der Koordinatenform",
+"einheit": "",
+"schwere": 2,
+"familie": "normalenvektor",
+"sprosse": 3,
+"ab_klasse": 12
+}
+},
+{
+"frage": "Leite ab: $f(x)=9x^{6}+2x$. Was ist $f'(x)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$54x^{6}+2x$",
+"f": "Exponent nicht um 1 verkleinert"
+},
+{
+"t": "$9x^{5}+2$",
+"f": "Exponent gesenkt, aber nicht als Faktor davorgeschrieben"
+},
+{
+"t": "$54x^{5}+2$",
+"r": 1
+}
+],
+"loesung": "$f'(x)=54x^{5}+2$ – Exponent als Faktor davor, dann um 1 kleiner; Zahl ohne $x$ fällt weg",
+"id": "fam-ableiten-3",
+"thema": "Ableiten mit der Potenzregel",
+"einheit": "",
+"schwere": 2,
+"familie": "ableiten",
+"sprosse": 3,
+"ab_klasse": 11,
+"nr": 13,
+"zw": {
+"frage": "Leite ab: $f(x)=7x^{3}+8x$. Was ist $f'(x)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$21x^{2}+8$",
+"r": 1
+},
+{
+"t": "$21x^{3}+8x$",
+"f": "Exponent nicht um 1 verkleinert"
+},
+{
+"t": "$7x^{2}+8$",
+"f": "Exponent gesenkt, aber nicht als Faktor davorgeschrieben"
+}
+],
+"loesung": "$f'(x)=21x^{2}+8$ – Exponent als Faktor davor, dann um 1 kleiner; Zahl ohne $x$ fällt weg",
+"id": "fam-ableiten-3",
+"thema": "Ableiten mit der Potenzregel",
+"einheit": "",
+"schwere": 2,
+"familie": "ableiten",
+"sprosse": 3,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Rechne $6-(-4)$.",
+"art": "zahl",
+"wert": "10",
+"loesung": "$6-(-4)=6+4=10$",
+"fehler": {
+"2": "Minus vor der Klammer nicht beachtet: $-(-4)=+4$"
+},
+"id": "fam-vorzeichen-3",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 3,
+"ab_klasse": 7,
+"nr": 14,
+"zw": {
+"frage": "Rechne $2-(-8)$.",
+"art": "zahl",
+"wert": "10",
+"loesung": "$2-(-8)=2+8=10$",
+"fehler": {
+"−6": "Minus vor der Klammer nicht beachtet: $-(-8)=+8$"
+},
+"id": "fam-vorzeichen-3",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 3,
+"ab_klasse": 7
+}
+},
+{
+"frage": "$A(4\\,|\\,-4\\,|\\,5)$, $B(-6\\,|\\,-2\\,|\\,3)$. Welcher Vektor ist $\\overrightarrow{AB}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{-2}{-6}{8}$",
+"f": "addiert statt subtrahiert"
+},
+{
+"t": "$\\sv{-10}{2}{-2}$",
+"r": 1
+},
+{
+"t": "$\\sv{10}{-2}{2}$",
+"f": "falsch herum: Spitze minus Fuß, also B − A"
+}
+],
+"loesung": "$\\overrightarrow{AB}=\\sv{-10}{2}{-2}$ – Spitze minus Fuß: B − A",
+"id": "fam-vektor-4",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 2,
+"familie": "vektor",
+"sprosse": 4,
+"ab_klasse": 11,
+"nr": 15,
+"zw": {
+"frage": "$A(3\\,|\\,0\\,|\\,-2)$, $B(4\\,|\\,0\\,|\\,6)$. Welcher Vektor ist $\\overrightarrow{AB}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{-1}{0}{-8}$",
+"f": "falsch herum: Spitze minus Fuß, also B − A"
+},
+{
+"t": "$\\sv{7}{0}{4}$",
+"f": "addiert statt subtrahiert"
+},
+{
+"t": "$\\sv{1}{0}{8}$",
+"r": 1
+}
+],
+"loesung": "$\\overrightarrow{AB}=\\sv{1}{0}{8}$ – Spitze minus Fuß: B − A",
+"id": "fam-vektor-4",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 2,
+"familie": "vektor",
+"sprosse": 4,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Wie lang ist die Strecke von $A(3\\,|\\,-2\\,|\\,-3)$ nach $B(9\\,|\\,1\\,|\\,-1)$?",
+"art": "zahl",
+"wert": "7",
+"loesung": "$\\overrightarrow{AB}=\\sv{6}{3}{2}$, Länge $\\sqrt{36+9+4}=7$",
+"fehler": {
+"11": "Komponenten addiert statt Pythagoras"
+},
+"id": "fam-betrag-4",
+"thema": "Länge eines Vektors",
+"einheit": "",
+"schwere": 2,
+"familie": "betrag",
+"sprosse": 4,
+"ab_klasse": 11,
+"nr": 16,
+"zw": {
+"frage": "Wie lang ist die Strecke von $A(2\\,|\\,3\\,|\\,-1)$ nach $B(3\\,|\\,1\\,|\\,-3)$?",
+"art": "zahl",
+"wert": "3",
+"loesung": "$\\overrightarrow{AB}=\\sv{1}{-2}{-2}$, Länge $\\sqrt{1+4+4}=3$",
+"fehler": {
+"-3": "Komponenten addiert statt Pythagoras"
+},
+"id": "fam-betrag-4",
+"thema": "Länge eines Vektors",
+"einheit": "",
+"schwere": 2,
+"familie": "betrag",
+"sprosse": 4,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Für welches $t$ steht $\\sv{0}{0}{t}$ senkrecht auf $\\sv{1}{3}{1}$?",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0\\cdot1+0\\cdot3+1\\cdot t=0$, also $t=0$",
+"id": "fam-skalar-4",
+"thema": "Skalarprodukt und senkrecht",
+"einheit": "",
+"schwere": 2,
+"familie": "skalar",
+"sprosse": 4,
+"ab_klasse": 12,
+"nr": 17,
+"zw": {
+"frage": "Für welches $t$ steht $\\sv{-2}{-1}{t}$ senkrecht auf $\\sv{1}{-2}{2}$?",
+"art": "zahl",
+"wert": "0",
+"loesung": "$-2\\cdot1+(-1)\\cdot(-2)+2\\cdot t=0$, also $t=0$",
+"id": "fam-skalar-4",
+"thema": "Skalarprodukt und senkrecht",
+"einheit": "",
+"schwere": 2,
+"familie": "skalar",
+"sprosse": 4,
+"ab_klasse": 12
+}
+},
+{
+"frage": "$g:\\ \\vec x=\\sv{0}{4}{4}+t\\cdot\\sv{0}{1}{-3}$. Liegt $P(0\\,|\\,6\\,|\\,-2)$ auf $g$?",
+"art": "stimmt",
+"knoepfe": [
+"ja",
+"nein"
+],
+"richtig": "ja",
+"loesung": "ja: mit $t=2$ stimmen alle drei Zeilen",
+"fehler": "Punktprobe: dasselbe $t$ muss in allen drei Zeilen passen",
+"id": "fam-gerade-4",
+"thema": "Gerade in Parameterform",
+"einheit": "",
+"schwere": 2,
+"familie": "gerade",
+"sprosse": 4,
+"ab_klasse": 12,
+"nr": 18,
+"zw": {
+"frage": "$g:\\ \\vec x=\\sv{4}{5}{1}+t\\cdot\\sv{1}{-1}{-1}$. Liegt $P(3\\,|\\,6\\,|\\,2)$ auf $g$?",
+"art": "stimmt",
+"knoepfe": [
+"ja",
+"nein"
+],
+"richtig": "ja",
+"loesung": "ja: mit $t=-1$ stimmen alle drei Zeilen",
+"fehler": "Punktprobe: dasselbe $t$ muss in allen drei Zeilen passen",
+"id": "fam-gerade-4",
+"thema": "Gerade in Parameterform",
+"einheit": "",
+"schwere": 2,
+"familie": "gerade",
+"sprosse": 4,
+"ab_klasse": 12
+}
+},
+{
+"frage": "$E:\\ -5y+7z=3$. Welcher Vektor ist ein Normalenvektor von $E$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{-5}{7}{0}$",
+"f": "die Null steht an der Stelle der fehlenden Variable"
+},
+{
+"t": "$\\sv{0}{-5}{7}$",
+"r": 1
+},
+{
+"t": "$\\sv{0}{5}{7}$",
+"f": "Vorzeichen übersehen"
+}
+],
+"loesung": "$\\vec n=\\sv{0}{-5}{7}$ – die Zahlen vor $x$, $y$, $z$",
+"id": "fam-normalenvektor-4",
+"thema": "Normalenvektor aus der Koordinatenform",
+"einheit": "",
+"schwere": 2,
+"familie": "normalenvektor",
+"sprosse": 4,
+"ab_klasse": 12,
+"nr": 19,
+"zw": {
+"frage": "$E:\\ -6y+4z=1$. Welcher Vektor ist ein Normalenvektor von $E$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{0}{6}{4}$",
+"f": "Vorzeichen übersehen"
+},
+{
+"t": "$\\sv{0}{-6}{4}$",
+"r": 1
+},
+{
+"t": "$\\sv{-6}{4}{0}$",
+"f": "die Null steht an der Stelle der fehlenden Variable"
+}
+],
+"loesung": "$\\vec n=\\sv{0}{-6}{4}$ – die Zahlen vor $x$, $y$, $z$",
+"id": "fam-normalenvektor-4",
+"thema": "Normalenvektor aus der Koordinatenform",
+"einheit": "",
+"schwere": 2,
+"familie": "normalenvektor",
+"sprosse": 4,
+"ab_klasse": 12
+}
+},
+{
+"frage": "Leite ab: $f(x)=-2x^{5}+9x+9$. Was ist $f'(x)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$-10x^{4}+9$",
+"r": 1
+},
+{
+"t": "$-2x^{4}+9$",
+"f": "Exponent gesenkt, aber nicht als Faktor davorgeschrieben"
+},
+{
+"t": "$-10x^{5}+9x$",
+"f": "Exponent nicht um 1 verkleinert"
+}
+],
+"loesung": "$f'(x)=-10x^{4}+9$ – Exponent als Faktor davor, dann um 1 kleiner; Zahl ohne $x$ fällt weg",
+"id": "fam-ableiten-4",
+"thema": "Ableiten mit der Potenzregel",
+"einheit": "",
+"schwere": 2,
+"familie": "ableiten",
+"sprosse": 4,
+"ab_klasse": 11,
+"nr": 20,
+"zw": {
+"frage": "Leite ab: $f(x)=-3x^{5}+5x+2$. Was ist $f'(x)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$-15x^{5}+5x$",
+"f": "Exponent nicht um 1 verkleinert"
+},
+{
+"t": "$-3x^{4}+5$",
+"f": "Exponent gesenkt, aber nicht als Faktor davorgeschrieben"
+},
+{
+"t": "$-15x^{4}+5$",
+"r": 1
+}
+],
+"loesung": "$f'(x)=-15x^{4}+5$ – Exponent als Faktor davor, dann um 1 kleiner; Zahl ohne $x$ fällt weg",
+"id": "fam-ableiten-4",
+"thema": "Ableiten mit der Potenzregel",
+"einheit": "",
+"schwere": 2,
+"familie": "ableiten",
+"sprosse": 4,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Rechne $-2-(-5)$.",
+"art": "zahl",
+"wert": "3",
+"loesung": "$-2-(-5)=-2+5=3$",
+"fehler": {
+"−7": "Minus vor der Klammer nicht beachtet: $-(-5)=+5$",
+"7": "beide Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-4",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 4,
+"ab_klasse": 7,
+"nr": 21,
+"zw": {
+"frage": "Rechne $-6-(-8)$.",
+"art": "zahl",
+"wert": "2",
+"loesung": "$-6-(-8)=-6+8=2$",
+"fehler": {
+"−14": "Minus vor der Klammer nicht beachtet: $-(-8)=+8$",
+"14": "beide Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-4",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 4,
+"ab_klasse": 7
+}
+},
+{
+"frage": "$A(1\\,|\\,2\\,|\\,-2)$, $B(1\\,|\\,1\\,|\\,0)$. Welcher Vektor ist $\\overrightarrow{AB}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{2}{3}{-2}$",
+"f": "addiert statt subtrahiert"
+},
+{
+"t": "$\\sv{0}{-1}{2}$",
+"r": 1
+},
+{
+"t": "$\\sv{0}{1}{-2}$",
+"f": "falsch herum: Spitze minus Fuß, also B − A"
+}
+],
+"loesung": "$\\overrightarrow{AB}=\\sv{0}{-1}{2}$ – Spitze minus Fuß: B − A",
+"id": "fam-vektor-2",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 1,
+"familie": "vektor",
+"sprosse": 2,
+"ab_klasse": 11,
+"nr": 22,
+"zw": {
+"frage": "$A(5\\,|\\,5\\,|\\,-4)$, $B(-5\\,|\\,2\\,|\\,-3)$. Welcher Vektor ist $\\overrightarrow{AB}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{-10}{-3}{1}$",
+"r": 1
+},
+{
+"t": "$\\sv{0}{7}{-7}$",
+"f": "addiert statt subtrahiert"
+},
+{
+"t": "$\\sv{10}{3}{-1}$",
+"f": "falsch herum: Spitze minus Fuß, also B − A"
+}
+],
+"loesung": "$\\overrightarrow{AB}=\\sv{-10}{-3}{1}$ – Spitze minus Fuß: B − A",
+"id": "fam-vektor-2",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 1,
+"familie": "vektor",
+"sprosse": 2,
+"ab_klasse": 11
+}
+}
+],
+"quellen": [
+{
+"quelle": "eigene Fragen (Skript familien.py)",
+"nr": [
+"1",
+"2",
+"3",
+"4",
+"5",
+"6",
+"7",
+"8",
+"9",
+"10",
+"11",
+"12",
+"13",
+"14",
+"15",
+"16",
+"17",
+"18",
+"19",
+"20",
+"21",
+"22",
+"1z",
+"2z",
+"3z",
+"4z",
+"5z",
+"6z",
+"7z",
+"8z",
+"9z",
+"10z",
+"11z",
+"12z",
+"13z",
+"14z",
+"15z",
+"16z",
+"17z",
+"18z",
+"19z",
+"20z",
+"21z",
+"22z"
+]
+}
+],
+"fassungen": [
+{
+"fragen": [
+{
+"frage": "$A(1\\,|\\,3\\,|\\,5)$, $B(5\\,|\\,6\\,|\\,9)$. Welcher Vektor ist $\\overrightarrow{AB}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{6}{9}{14}$",
+"f": "addiert statt subtrahiert"
+},
+{
+"t": "$\\sv{-4}{-3}{-4}$",
+"f": "falsch herum: Spitze minus Fuß, also B − A"
+},
+{
+"t": "$\\sv{4}{3}{4}$",
+"r": 1
+}
+],
+"loesung": "$\\overrightarrow{AB}=\\sv{4}{3}{4}$ – Spitze minus Fuß: B − A",
+"id": "fam-vektor-1",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 1,
+"familie": "vektor",
+"sprosse": 1,
+"ab_klasse": 11,
+"nr": 1,
+"zw": {
+"frage": "$A(4\\,|\\,1\\,|\\,4)$, $B(9\\,|\\,3\\,|\\,5)$. Welcher Vektor ist $\\overrightarrow{AB}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{13}{4}{9}$",
+"f": "addiert statt subtrahiert"
+},
+{
+"t": "$\\sv{-5}{-2}{-1}$",
+"f": "falsch herum: Spitze minus Fuß, also B − A"
+},
+{
+"t": "$\\sv{5}{2}{1}$",
+"r": 1
+}
+],
+"loesung": "$\\overrightarrow{AB}=\\sv{5}{2}{1}$ – Spitze minus Fuß: B − A",
+"id": "fam-vektor-1",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 1,
+"familie": "vektor",
+"sprosse": 1,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Wie lang ist der Vektor $\\begin{pmatrix}8\\\\6\\end{pmatrix}$?",
+"art": "zahl",
+"wert": "10",
+"loesung": "$\\sqrt{8^2+6^2}=\\sqrt{100}=10$",
+"fehler": {
+"14": "Komponenten addiert statt Pythagoras"
+},
+"id": "fam-betrag-1",
+"thema": "Länge eines Vektors",
+"einheit": "",
+"schwere": 1,
+"familie": "betrag",
+"sprosse": 1,
+"ab_klasse": 11,
+"nr": 2,
+"zw": {
+"frage": "Wie lang ist der Vektor $\\begin{pmatrix}3\\\\4\\end{pmatrix}$?",
+"art": "zahl",
+"wert": "5",
+"loesung": "$\\sqrt{3^2+4^2}=\\sqrt{25}=5$",
+"fehler": {
+"7": "Komponenten addiert statt Pythagoras"
+},
+"id": "fam-betrag-1",
+"thema": "Länge eines Vektors",
+"einheit": "",
+"schwere": 1,
+"familie": "betrag",
+"sprosse": 1,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Berechne $\\sv{1}{0}{0}\\cdot\\sv{3}{3}{3}$.",
+"art": "zahl",
+"wert": "3",
+"loesung": "$1\\cdot3+0\\cdot3+0\\cdot3=3$ – Komponenten mal Komponenten, dann addieren",
+"id": "fam-skalar-1",
+"thema": "Skalarprodukt und senkrecht",
+"einheit": "",
+"schwere": 1,
+"familie": "skalar",
+"sprosse": 1,
+"ab_klasse": 12,
+"nr": 3,
+"zw": {
+"frage": "Berechne $\\sv{4}{3}{2}\\cdot\\sv{4}{2}{2}$.",
+"art": "zahl",
+"wert": "26",
+"loesung": "$4\\cdot4+3\\cdot2+2\\cdot2=26$ – Komponenten mal Komponenten, dann addieren",
+"id": "fam-skalar-1",
+"thema": "Skalarprodukt und senkrecht",
+"einheit": "",
+"schwere": 1,
+"familie": "skalar",
+"sprosse": 1,
+"ab_klasse": 12
+}
+},
+{
+"frage": "$g:\\ \\vec x=\\sv{-4}{-2}{-3}+t\\cdot\\sv{-3}{3}{-3}$. Welcher Vektor ist der Stützvektor?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{-7}{1}{-6}$",
+"f": "das ist der Punkt für $t=1$"
+},
+{
+"t": "$\\sv{-4}{-2}{-3}$",
+"r": 1
+},
+{
+"t": "$\\sv{-3}{3}{-3}$",
+"f": "das ist der Richtungsvektor"
+}
+],
+"loesung": "$\\sv{-4}{-2}{-3}$ – der Vektor ohne Parameter",
+"id": "fam-gerade-1",
+"thema": "Gerade in Parameterform",
+"einheit": "",
+"schwere": 1,
+"familie": "gerade",
+"sprosse": 1,
+"ab_klasse": 12,
+"nr": 4,
+"zw": {
+"frage": "$g:\\ \\vec x=\\sv{4}{1}{2}+t\\cdot\\sv{0}{-2}{-2}$. Welcher Vektor ist der Stützvektor?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{0}{-2}{-2}$",
+"f": "das ist der Richtungsvektor"
+},
+{
+"t": "$\\sv{4}{1}{2}$",
+"r": 1
+},
+{
+"t": "$\\sv{4}{-1}{0}$",
+"f": "das ist der Punkt für $t=1$"
+}
+],
+"loesung": "$\\sv{4}{1}{2}$ – der Vektor ohne Parameter",
+"id": "fam-gerade-1",
+"thema": "Gerade in Parameterform",
+"einheit": "",
+"schwere": 1,
+"familie": "gerade",
+"sprosse": 1,
+"ab_klasse": 12
+}
+},
+{
+"frage": "$E:\\ 4x+7y+7z=2$. Welcher Vektor ist ein Normalenvektor von $E$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{4}{7}{2}$",
+"f": "die Zahl rechts gehört nicht zum Normalenvektor"
+},
+{
+"t": "$\\sv{4}{7}{7}$",
+"r": 1
+}
+],
+"loesung": "$\\vec n=\\sv{4}{7}{7}$ – die Zahlen vor $x$, $y$, $z$",
+"id": "fam-normalenvektor-1",
+"thema": "Normalenvektor aus der Koordinatenform",
+"einheit": "",
+"schwere": 1,
+"familie": "normalenvektor",
+"sprosse": 1,
+"ab_klasse": 12,
+"nr": 5,
+"zw": {
+"frage": "$E:\\ 7x+2y+2z=6$. Welcher Vektor ist ein Normalenvektor von $E$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{7}{2}{6}$",
+"f": "die Zahl rechts gehört nicht zum Normalenvektor"
+},
+{
+"t": "$\\sv{7}{2}{2}$",
+"r": 1
+}
+],
+"loesung": "$\\vec n=\\sv{7}{2}{2}$ – die Zahlen vor $x$, $y$, $z$",
+"id": "fam-normalenvektor-1",
+"thema": "Normalenvektor aus der Koordinatenform",
+"einheit": "",
+"schwere": 1,
+"familie": "normalenvektor",
+"sprosse": 1,
+"ab_klasse": 12
+}
+},
+{
+"frage": "Leite ab: $f(x)=x^{2}$. Was ist $f'(x)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$2x^{2}$",
+"f": "Exponent nicht um 1 verkleinert"
+},
+{
+"t": "$x$",
+"f": "Exponent gesenkt, aber nicht als Faktor davorgeschrieben"
+},
+{
+"t": "$2x$",
+"r": 1
+}
+],
+"loesung": "$f'(x)=2x$ – Exponent als Faktor davor, dann um 1 kleiner; Zahl ohne $x$ fällt weg",
+"id": "fam-ableiten-1",
+"thema": "Ableiten mit der Potenzregel",
+"einheit": "",
+"schwere": 1,
+"familie": "ableiten",
+"sprosse": 1,
+"ab_klasse": 11,
+"nr": 6,
+"zw": {
+"frage": "Leite ab: $f(x)=x^{3}$. Was ist $f'(x)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$3x^{2}$",
+"r": 1
+},
+{
+"t": "$3x^{3}$",
+"f": "Exponent nicht um 1 verkleinert"
+},
+{
+"t": "$x^{2}$",
+"f": "Exponent gesenkt, aber nicht als Faktor davorgeschrieben"
+}
+],
+"loesung": "$f'(x)=3x^{2}$ – Exponent als Faktor davor, dann um 1 kleiner; Zahl ohne $x$ fällt weg",
+"id": "fam-ableiten-1",
+"thema": "Ableiten mit der Potenzregel",
+"einheit": "",
+"schwere": 1,
+"familie": "ableiten",
+"sprosse": 1,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Rechne $8-(-7)$.",
+"art": "zahl",
+"wert": "15",
+"loesung": "$8-(-7)=8+7=15$",
+"fehler": {
+"1": "Minus vor der Klammer nicht beachtet: $-(-7)=+7$"
+},
+"id": "fam-vorzeichen-3",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 3,
+"ab_klasse": 7,
+"nr": 7,
+"zw": {
+"frage": "Rechne $9-(-8)$.",
+"art": "zahl",
+"wert": "17",
+"loesung": "$9-(-8)=9+8=17$",
+"fehler": {
+"1": "Minus vor der Klammer nicht beachtet: $-(-8)=+8$"
+},
+"id": "fam-vorzeichen-3",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 3,
+"ab_klasse": 7
+}
+},
+{
+"frage": "$A(-1\\,|\\,-5\\,|\\,-4)$, $B(-3\\,|\\,2\\,|\\,-5)$. Welcher Vektor ist $\\overrightarrow{BA}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{-4}{-3}{-9}$",
+"f": "addiert statt subtrahiert"
+},
+{
+"t": "$\\sv{2}{-7}{1}$",
+"r": 1
+},
+{
+"t": "$\\sv{-2}{7}{-1}$",
+"f": "falsch herum: Spitze minus Fuß, also A − B"
+}
+],
+"loesung": "$\\overrightarrow{BA}=\\sv{2}{-7}{1}$ – Spitze minus Fuß: A − B",
+"id": "fam-vektor-3",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 2,
+"familie": "vektor",
+"sprosse": 3,
+"ab_klasse": 11,
+"nr": 8,
+"zw": {
+"frage": "$A(3\\,|\\,4\\,|\\,3)$, $B(-2\\,|\\,4\\,|\\,4)$. Welcher Vektor ist $\\overrightarrow{BA}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{1}{8}{7}$",
+"f": "addiert statt subtrahiert"
+},
+{
+"t": "$\\sv{5}{0}{-1}$",
+"r": 1
+},
+{
+"t": "$\\sv{-5}{0}{1}$",
+"f": "falsch herum: Spitze minus Fuß, also A − B"
+}
+],
+"loesung": "$\\overrightarrow{BA}=\\sv{5}{0}{-1}$ – Spitze minus Fuß: A − B",
+"id": "fam-vektor-3",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 2,
+"familie": "vektor",
+"sprosse": 3,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Wie lang ist der Vektor $\\sv{-3}{-2}{-6}$?",
+"art": "zahl",
+"wert": "7",
+"loesung": "$\\sqrt{(-3)^2+(-2)^2+(-6)^2}=\\sqrt{49}=7$",
+"fehler": {
+"−11": "Komponenten addiert statt Pythagoras"
+},
+"id": "fam-betrag-3",
+"thema": "Länge eines Vektors",
+"einheit": "",
+"schwere": 2,
+"familie": "betrag",
+"sprosse": 3,
+"ab_klasse": 11,
+"nr": 9,
+"zw": {
+"frage": "Wie lang ist der Vektor $\\sv{2}{2}{1}$?",
+"art": "zahl",
+"wert": "3",
+"loesung": "$\\sqrt{2^2+2^2+1^2}=\\sqrt{9}=3$",
+"fehler": {
+"5": "Komponenten addiert statt Pythagoras"
+},
+"id": "fam-betrag-3",
+"thema": "Länge eines Vektors",
+"einheit": "",
+"schwere": 2,
+"familie": "betrag",
+"sprosse": 3,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Stehen $\\sv{-2}{-1}{3}$ und $\\sv{2}{-1}{-3}$ senkrecht aufeinander?",
+"art": "stimmt",
+"knoepfe": [
+"ja",
+"nein"
+],
+"richtig": "nein",
+"loesung": "nein: Skalarprodukt $=-12$ – senkrecht heißt Skalarprodukt 0",
+"fehler": "senkrecht heißt: Skalarprodukt ist 0",
+"id": "fam-skalar-3",
+"thema": "Skalarprodukt und senkrecht",
+"einheit": "",
+"schwere": 2,
+"familie": "skalar",
+"sprosse": 3,
+"ab_klasse": 12,
+"nr": 10,
+"zw": {
+"frage": "Stehen $\\sv{0}{3}{-1}$ und $\\sv{-3}{2}{4}$ senkrecht aufeinander?",
+"art": "stimmt",
+"knoepfe": [
+"ja",
+"nein"
+],
+"richtig": "nein",
+"loesung": "nein: Skalarprodukt $=2$ – senkrecht heißt Skalarprodukt 0",
+"fehler": "senkrecht heißt: Skalarprodukt ist 0",
+"id": "fam-skalar-3",
+"thema": "Skalarprodukt und senkrecht",
+"einheit": "",
+"schwere": 2,
+"familie": "skalar",
+"sprosse": 3,
+"ab_klasse": 12
+}
+},
+{
+"frage": "$g:\\ \\vec x=\\sv{-1}{-1}{-2}+t\\cdot\\sv{1}{-3}{0}$. Welcher Punkt gehört zu $t=-1$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{-2}{2}{-2}$",
+"r": 1
+},
+{
+"t": "$\\sv{0}{-4}{-2}$",
+"f": "mit $t=1$ statt $t=-1$ gerechnet"
+},
+{
+"t": "$\\sv{2}{-2}{2}$",
+"f": "den Stützvektor mal $t$ genommen"
+}
+],
+"loesung": "$\\sv{-1}{-1}{-2}+-1\\cdot\\sv{1}{-3}{0}=\\sv{-2}{2}{-2}$",
+"id": "fam-gerade-3",
+"thema": "Gerade in Parameterform",
+"einheit": "",
+"schwere": 2,
+"familie": "gerade",
+"sprosse": 3,
+"ab_klasse": 12,
+"nr": 11,
+"zw": {
+"frage": "$g:\\ \\vec x=\\sv{-4}{0}{-4}+t\\cdot\\sv{3}{-1}{2}$. Welcher Punkt gehört zu $t=-1$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{7}{-1}{6}$",
+"f": "den Stützvektor mal $t$ genommen"
+},
+{
+"t": "$\\sv{-1}{-1}{-2}$",
+"f": "mit $t=1$ statt $t=-1$ gerechnet"
+},
+{
+"t": "$\\sv{-7}{1}{-6}$",
+"r": 1
+}
+],
+"loesung": "$\\sv{-4}{0}{-4}+-1\\cdot\\sv{3}{-1}{2}=\\sv{-7}{1}{-6}$",
+"id": "fam-gerade-3",
+"thema": "Gerade in Parameterform",
+"einheit": "",
+"schwere": 2,
+"familie": "gerade",
+"sprosse": 3,
+"ab_klasse": 12
+}
+},
+{
+"frage": "$E:\\ 2x+4z=1$. Welcher Vektor ist ein Normalenvektor von $E$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{2}{4}{0}$",
+"f": "die Null steht an der Stelle der fehlenden Variable"
+},
+{
+"t": "$\\sv{2}{0}{4}$",
+"r": 1
+},
+{
+"t": "$\\sv{2}{0}{1}$",
+"f": "die Zahl rechts gehört nicht zum Normalenvektor"
+}
+],
+"loesung": "$\\vec n=\\sv{2}{0}{4}$ – die Zahlen vor $x$, $y$, $z$",
+"id": "fam-normalenvektor-3",
+"thema": "Normalenvektor aus der Koordinatenform",
+"einheit": "",
+"schwere": 2,
+"familie": "normalenvektor",
+"sprosse": 3,
+"ab_klasse": 12,
+"nr": 12,
+"zw": {
+"frage": "$E:\\ 6y+6z=4$. Welcher Vektor ist ein Normalenvektor von $E$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{0}{6}{4}$",
+"f": "die Zahl rechts gehört nicht zum Normalenvektor"
+},
+{
+"t": "$\\sv{0}{6}{6}$",
+"r": 1
+},
+{
+"t": "$\\sv{6}{6}{0}$",
+"f": "die Null steht an der Stelle der fehlenden Variable"
+}
+],
+"loesung": "$\\vec n=\\sv{0}{6}{6}$ – die Zahlen vor $x$, $y$, $z$",
+"id": "fam-normalenvektor-3",
+"thema": "Normalenvektor aus der Koordinatenform",
+"einheit": "",
+"schwere": 2,
+"familie": "normalenvektor",
+"sprosse": 3,
+"ab_klasse": 12
+}
+},
+{
+"frage": "Leite ab: $f(x)=9x^{6}+2x$. Was ist $f'(x)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$54x^{6}+2x$",
+"f": "Exponent nicht um 1 verkleinert"
+},
+{
+"t": "$9x^{5}+2$",
+"f": "Exponent gesenkt, aber nicht als Faktor davorgeschrieben"
+},
+{
+"t": "$54x^{5}+2$",
+"r": 1
+}
+],
+"loesung": "$f'(x)=54x^{5}+2$ – Exponent als Faktor davor, dann um 1 kleiner; Zahl ohne $x$ fällt weg",
+"id": "fam-ableiten-3",
+"thema": "Ableiten mit der Potenzregel",
+"einheit": "",
+"schwere": 2,
+"familie": "ableiten",
+"sprosse": 3,
+"ab_klasse": 11,
+"nr": 13,
+"zw": {
+"frage": "Leite ab: $f(x)=7x^{3}+8x$. Was ist $f'(x)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$21x^{2}+8$",
+"r": 1
+},
+{
+"t": "$21x^{3}+8x$",
+"f": "Exponent nicht um 1 verkleinert"
+},
+{
+"t": "$7x^{2}+8$",
+"f": "Exponent gesenkt, aber nicht als Faktor davorgeschrieben"
+}
+],
+"loesung": "$f'(x)=21x^{2}+8$ – Exponent als Faktor davor, dann um 1 kleiner; Zahl ohne $x$ fällt weg",
+"id": "fam-ableiten-3",
+"thema": "Ableiten mit der Potenzregel",
+"einheit": "",
+"schwere": 2,
+"familie": "ableiten",
+"sprosse": 3,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Rechne $6-(-4)$.",
+"art": "zahl",
+"wert": "10",
+"loesung": "$6-(-4)=6+4=10$",
+"fehler": {
+"2": "Minus vor der Klammer nicht beachtet: $-(-4)=+4$"
+},
+"id": "fam-vorzeichen-3",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 3,
+"ab_klasse": 7,
+"nr": 14,
+"zw": {
+"frage": "Rechne $2-(-8)$.",
+"art": "zahl",
+"wert": "10",
+"loesung": "$2-(-8)=2+8=10$",
+"fehler": {
+"−6": "Minus vor der Klammer nicht beachtet: $-(-8)=+8$"
+},
+"id": "fam-vorzeichen-3",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 3,
+"ab_klasse": 7
+}
+},
+{
+"frage": "$A(4\\,|\\,-4\\,|\\,5)$, $B(-6\\,|\\,-2\\,|\\,3)$. Welcher Vektor ist $\\overrightarrow{AB}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{-2}{-6}{8}$",
+"f": "addiert statt subtrahiert"
+},
+{
+"t": "$\\sv{-10}{2}{-2}$",
+"r": 1
+},
+{
+"t": "$\\sv{10}{-2}{2}$",
+"f": "falsch herum: Spitze minus Fuß, also B − A"
+}
+],
+"loesung": "$\\overrightarrow{AB}=\\sv{-10}{2}{-2}$ – Spitze minus Fuß: B − A",
+"id": "fam-vektor-4",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 2,
+"familie": "vektor",
+"sprosse": 4,
+"ab_klasse": 11,
+"nr": 15,
+"zw": {
+"frage": "$A(3\\,|\\,0\\,|\\,-2)$, $B(4\\,|\\,0\\,|\\,6)$. Welcher Vektor ist $\\overrightarrow{AB}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{-1}{0}{-8}$",
+"f": "falsch herum: Spitze minus Fuß, also B − A"
+},
+{
+"t": "$\\sv{7}{0}{4}$",
+"f": "addiert statt subtrahiert"
+},
+{
+"t": "$\\sv{1}{0}{8}$",
+"r": 1
+}
+],
+"loesung": "$\\overrightarrow{AB}=\\sv{1}{0}{8}$ – Spitze minus Fuß: B − A",
+"id": "fam-vektor-4",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 2,
+"familie": "vektor",
+"sprosse": 4,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Wie lang ist die Strecke von $A(3\\,|\\,-2\\,|\\,-3)$ nach $B(9\\,|\\,1\\,|\\,-1)$?",
+"art": "zahl",
+"wert": "7",
+"loesung": "$\\overrightarrow{AB}=\\sv{6}{3}{2}$, Länge $\\sqrt{36+9+4}=7$",
+"fehler": {
+"11": "Komponenten addiert statt Pythagoras"
+},
+"id": "fam-betrag-4",
+"thema": "Länge eines Vektors",
+"einheit": "",
+"schwere": 2,
+"familie": "betrag",
+"sprosse": 4,
+"ab_klasse": 11,
+"nr": 16,
+"zw": {
+"frage": "Wie lang ist die Strecke von $A(2\\,|\\,3\\,|\\,-1)$ nach $B(3\\,|\\,1\\,|\\,-3)$?",
+"art": "zahl",
+"wert": "3",
+"loesung": "$\\overrightarrow{AB}=\\sv{1}{-2}{-2}$, Länge $\\sqrt{1+4+4}=3$",
+"fehler": {
+"-3": "Komponenten addiert statt Pythagoras"
+},
+"id": "fam-betrag-4",
+"thema": "Länge eines Vektors",
+"einheit": "",
+"schwere": 2,
+"familie": "betrag",
+"sprosse": 4,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Für welches $t$ steht $\\sv{0}{0}{t}$ senkrecht auf $\\sv{1}{3}{1}$?",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0\\cdot1+0\\cdot3+1\\cdot t=0$, also $t=0$",
+"id": "fam-skalar-4",
+"thema": "Skalarprodukt und senkrecht",
+"einheit": "",
+"schwere": 2,
+"familie": "skalar",
+"sprosse": 4,
+"ab_klasse": 12,
+"nr": 17,
+"zw": {
+"frage": "Für welches $t$ steht $\\sv{-2}{-1}{t}$ senkrecht auf $\\sv{1}{-2}{2}$?",
+"art": "zahl",
+"wert": "0",
+"loesung": "$-2\\cdot1+(-1)\\cdot(-2)+2\\cdot t=0$, also $t=0$",
+"id": "fam-skalar-4",
+"thema": "Skalarprodukt und senkrecht",
+"einheit": "",
+"schwere": 2,
+"familie": "skalar",
+"sprosse": 4,
+"ab_klasse": 12
+}
+},
+{
+"frage": "$g:\\ \\vec x=\\sv{0}{4}{4}+t\\cdot\\sv{0}{1}{-3}$. Liegt $P(0\\,|\\,6\\,|\\,-2)$ auf $g$?",
+"art": "stimmt",
+"knoepfe": [
+"ja",
+"nein"
+],
+"richtig": "ja",
+"loesung": "ja: mit $t=2$ stimmen alle drei Zeilen",
+"fehler": "Punktprobe: dasselbe $t$ muss in allen drei Zeilen passen",
+"id": "fam-gerade-4",
+"thema": "Gerade in Parameterform",
+"einheit": "",
+"schwere": 2,
+"familie": "gerade",
+"sprosse": 4,
+"ab_klasse": 12,
+"nr": 18,
+"zw": {
+"frage": "$g:\\ \\vec x=\\sv{4}{5}{1}+t\\cdot\\sv{1}{-1}{-1}$. Liegt $P(3\\,|\\,6\\,|\\,2)$ auf $g$?",
+"art": "stimmt",
+"knoepfe": [
+"ja",
+"nein"
+],
+"richtig": "ja",
+"loesung": "ja: mit $t=-1$ stimmen alle drei Zeilen",
+"fehler": "Punktprobe: dasselbe $t$ muss in allen drei Zeilen passen",
+"id": "fam-gerade-4",
+"thema": "Gerade in Parameterform",
+"einheit": "",
+"schwere": 2,
+"familie": "gerade",
+"sprosse": 4,
+"ab_klasse": 12
+}
+},
+{
+"frage": "$E:\\ -5y+7z=3$. Welcher Vektor ist ein Normalenvektor von $E$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{-5}{7}{0}$",
+"f": "die Null steht an der Stelle der fehlenden Variable"
+},
+{
+"t": "$\\sv{0}{-5}{7}$",
+"r": 1
+},
+{
+"t": "$\\sv{0}{5}{7}$",
+"f": "Vorzeichen übersehen"
+}
+],
+"loesung": "$\\vec n=\\sv{0}{-5}{7}$ – die Zahlen vor $x$, $y$, $z$",
+"id": "fam-normalenvektor-4",
+"thema": "Normalenvektor aus der Koordinatenform",
+"einheit": "",
+"schwere": 2,
+"familie": "normalenvektor",
+"sprosse": 4,
+"ab_klasse": 12,
+"nr": 19,
+"zw": {
+"frage": "$E:\\ -6y+4z=1$. Welcher Vektor ist ein Normalenvektor von $E$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{0}{6}{4}$",
+"f": "Vorzeichen übersehen"
+},
+{
+"t": "$\\sv{0}{-6}{4}$",
+"r": 1
+},
+{
+"t": "$\\sv{-6}{4}{0}$",
+"f": "die Null steht an der Stelle der fehlenden Variable"
+}
+],
+"loesung": "$\\vec n=\\sv{0}{-6}{4}$ – die Zahlen vor $x$, $y$, $z$",
+"id": "fam-normalenvektor-4",
+"thema": "Normalenvektor aus der Koordinatenform",
+"einheit": "",
+"schwere": 2,
+"familie": "normalenvektor",
+"sprosse": 4,
+"ab_klasse": 12
+}
+},
+{
+"frage": "Leite ab: $f(x)=-2x^{5}+9x+9$. Was ist $f'(x)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$-10x^{4}+9$",
+"r": 1
+},
+{
+"t": "$-2x^{4}+9$",
+"f": "Exponent gesenkt, aber nicht als Faktor davorgeschrieben"
+},
+{
+"t": "$-10x^{5}+9x$",
+"f": "Exponent nicht um 1 verkleinert"
+}
+],
+"loesung": "$f'(x)=-10x^{4}+9$ – Exponent als Faktor davor, dann um 1 kleiner; Zahl ohne $x$ fällt weg",
+"id": "fam-ableiten-4",
+"thema": "Ableiten mit der Potenzregel",
+"einheit": "",
+"schwere": 2,
+"familie": "ableiten",
+"sprosse": 4,
+"ab_klasse": 11,
+"nr": 20,
+"zw": {
+"frage": "Leite ab: $f(x)=-3x^{5}+5x+2$. Was ist $f'(x)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$-15x^{5}+5x$",
+"f": "Exponent nicht um 1 verkleinert"
+},
+{
+"t": "$-3x^{4}+5$",
+"f": "Exponent gesenkt, aber nicht als Faktor davorgeschrieben"
+},
+{
+"t": "$-15x^{4}+5$",
+"r": 1
+}
+],
+"loesung": "$f'(x)=-15x^{4}+5$ – Exponent als Faktor davor, dann um 1 kleiner; Zahl ohne $x$ fällt weg",
+"id": "fam-ableiten-4",
+"thema": "Ableiten mit der Potenzregel",
+"einheit": "",
+"schwere": 2,
+"familie": "ableiten",
+"sprosse": 4,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Rechne $-2-(-5)$.",
+"art": "zahl",
+"wert": "3",
+"loesung": "$-2-(-5)=-2+5=3$",
+"fehler": {
+"−7": "Minus vor der Klammer nicht beachtet: $-(-5)=+5$",
+"7": "beide Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-4",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 4,
+"ab_klasse": 7,
+"nr": 21,
+"zw": {
+"frage": "Rechne $-6-(-8)$.",
+"art": "zahl",
+"wert": "2",
+"loesung": "$-6-(-8)=-6+8=2$",
+"fehler": {
+"−14": "Minus vor der Klammer nicht beachtet: $-(-8)=+8$",
+"14": "beide Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-4",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 4,
+"ab_klasse": 7
+}
+},
+{
+"frage": "$A(1\\,|\\,2\\,|\\,-2)$, $B(1\\,|\\,1\\,|\\,0)$. Welcher Vektor ist $\\overrightarrow{AB}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{2}{3}{-2}$",
+"f": "addiert statt subtrahiert"
+},
+{
+"t": "$\\sv{0}{-1}{2}$",
+"r": 1
+},
+{
+"t": "$\\sv{0}{1}{-2}$",
+"f": "falsch herum: Spitze minus Fuß, also B − A"
+}
+],
+"loesung": "$\\overrightarrow{AB}=\\sv{0}{-1}{2}$ – Spitze minus Fuß: B − A",
+"id": "fam-vektor-2",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 1,
+"familie": "vektor",
+"sprosse": 2,
+"ab_klasse": 11,
+"nr": 22,
+"zw": {
+"frage": "$A(5\\,|\\,5\\,|\\,-4)$, $B(-5\\,|\\,2\\,|\\,-3)$. Welcher Vektor ist $\\overrightarrow{AB}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{-10}{-3}{1}$",
+"r": 1
+},
+{
+"t": "$\\sv{0}{7}{-7}$",
+"f": "addiert statt subtrahiert"
+},
+{
+"t": "$\\sv{10}{3}{-1}$",
+"f": "falsch herum: Spitze minus Fuß, also B − A"
+}
+],
+"loesung": "$\\overrightarrow{AB}=\\sv{-10}{-3}{1}$ – Spitze minus Fuß: B − A",
+"id": "fam-vektor-2",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 1,
+"familie": "vektor",
+"sprosse": 2,
+"ab_klasse": 11
+}
+}
+],
+"quellen": [
+{
+"quelle": "eigene Fragen (Skript familien.py)",
+"nr": [
+"1",
+"2",
+"3",
+"4",
+"5",
+"6",
+"7",
+"8",
+"9",
+"10",
+"11",
+"12",
+"13",
+"14",
+"15",
+"16",
+"17",
+"18",
+"19",
+"20",
+"21",
+"22",
+"1z",
+"2z",
+"3z",
+"4z",
+"5z",
+"6z",
+"7z",
+"8z",
+"9z",
+"10z",
+"11z",
+"12z",
+"13z",
+"14z",
+"15z",
+"16z",
+"17z",
+"18z",
+"19z",
+"20z",
+"21z",
+"22z"
+]
+}
+]
+},
+{
+"fragen": [
+{
+"frage": "$A(5\\,|\\,4\\,|\\,1)$, $B(9\\,|\\,9\\,|\\,6)$. Welcher Vektor ist $\\overrightarrow{AB}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{4}{5}{5}$",
+"r": 1
+},
+{
+"t": "$\\sv{-4}{-5}{-5}$",
+"f": "falsch herum: Spitze minus Fuß, also B − A"
+},
+{
+"t": "$\\sv{14}{13}{7}$",
+"f": "addiert statt subtrahiert"
+}
+],
+"loesung": "$\\overrightarrow{AB}=\\sv{4}{5}{5}$ – Spitze minus Fuß: B − A",
+"id": "fam-vektor-1",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 1,
+"familie": "vektor",
+"sprosse": 1,
+"ab_klasse": 11,
+"nr": 1,
+"zw": {
+"frage": "$A(1\\,|\\,3\\,|\\,3)$, $B(5\\,|\\,6\\,|\\,8)$. Welcher Vektor ist $\\overrightarrow{AB}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{6}{9}{11}$",
+"f": "addiert statt subtrahiert"
+},
+{
+"t": "$\\sv{4}{3}{5}$",
+"r": 1
+},
+{
+"t": "$\\sv{-4}{-3}{-5}$",
+"f": "falsch herum: Spitze minus Fuß, also B − A"
+}
+],
+"loesung": "$\\overrightarrow{AB}=\\sv{4}{3}{5}$ – Spitze minus Fuß: B − A",
+"id": "fam-vektor-1",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 1,
+"familie": "vektor",
+"sprosse": 1,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Wie lang ist der Vektor $\\begin{pmatrix}6\\\\8\\end{pmatrix}$?",
+"art": "zahl",
+"wert": "10",
+"loesung": "$\\sqrt{6^2+8^2}=\\sqrt{100}=10$",
+"fehler": {
+"14": "Komponenten addiert statt Pythagoras"
+},
+"id": "fam-betrag-1",
+"thema": "Länge eines Vektors",
+"einheit": "",
+"schwere": 1,
+"familie": "betrag",
+"sprosse": 1,
+"ab_klasse": 11,
+"nr": 2,
+"zw": {
+"frage": "Wie lang ist der Vektor $\\begin{pmatrix}5\\\\12\\end{pmatrix}$?",
+"art": "zahl",
+"wert": "13",
+"loesung": "$\\sqrt{5^2+12^2}=\\sqrt{169}=13$",
+"fehler": {
+"17": "Komponenten addiert statt Pythagoras"
+},
+"id": "fam-betrag-1",
+"thema": "Länge eines Vektors",
+"einheit": "",
+"schwere": 1,
+"familie": "betrag",
+"sprosse": 1,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Berechne $\\sv{0}{1}{3}\\cdot\\sv{1}{2}{1}$.",
+"art": "zahl",
+"wert": "5",
+"loesung": "$0\\cdot1+1\\cdot2+3\\cdot1=5$ – Komponenten mal Komponenten, dann addieren",
+"id": "fam-skalar-1",
+"thema": "Skalarprodukt und senkrecht",
+"einheit": "",
+"schwere": 1,
+"familie": "skalar",
+"sprosse": 1,
+"ab_klasse": 12,
+"nr": 3,
+"zw": {
+"frage": "Berechne $\\sv{2}{1}{3}\\cdot\\sv{4}{2}{1}$.",
+"art": "zahl",
+"wert": "13",
+"loesung": "$2\\cdot4+1\\cdot2+3\\cdot1=13$ – Komponenten mal Komponenten, dann addieren",
+"id": "fam-skalar-1",
+"thema": "Skalarprodukt und senkrecht",
+"einheit": "",
+"schwere": 1,
+"familie": "skalar",
+"sprosse": 1,
+"ab_klasse": 12
+}
+},
+{
+"frage": "$g:\\ \\vec x=\\sv{2}{-1}{1}+t\\cdot\\sv{-1}{2}{1}$. Welcher Vektor ist der Stützvektor?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{-1}{2}{1}$",
+"f": "das ist der Richtungsvektor"
+},
+{
+"t": "$\\sv{2}{-1}{1}$",
+"r": 1
+},
+{
+"t": "$\\sv{1}{1}{2}$",
+"f": "das ist der Punkt für $t=1$"
+}
+],
+"loesung": "$\\sv{2}{-1}{1}$ – der Vektor ohne Parameter",
+"id": "fam-gerade-1",
+"thema": "Gerade in Parameterform",
+"einheit": "",
+"schwere": 1,
+"familie": "gerade",
+"sprosse": 1,
+"ab_klasse": 12,
+"nr": 4,
+"zw": {
+"frage": "$g:\\ \\vec x=\\sv{0}{-3}{-4}+t\\cdot\\sv{-1}{1}{-1}$. Welcher Vektor ist der Stützvektor?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{-1}{1}{-1}$",
+"f": "das ist der Richtungsvektor"
+},
+{
+"t": "$\\sv{-1}{-2}{-5}$",
+"f": "das ist der Punkt für $t=1$"
+},
+{
+"t": "$\\sv{0}{-3}{-4}$",
+"r": 1
+}
+],
+"loesung": "$\\sv{0}{-3}{-4}$ – der Vektor ohne Parameter",
+"id": "fam-gerade-1",
+"thema": "Gerade in Parameterform",
+"einheit": "",
+"schwere": 1,
+"familie": "gerade",
+"sprosse": 1,
+"ab_klasse": 12
+}
+},
+{
+"frage": "$E:\\ 2x+5y+6z=3$. Welcher Vektor ist ein Normalenvektor von $E$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{2}{5}{6}$",
+"r": 1
+},
+{
+"t": "$\\sv{2}{5}{3}$",
+"f": "die Zahl rechts gehört nicht zum Normalenvektor"
+}
+],
+"loesung": "$\\vec n=\\sv{2}{5}{6}$ – die Zahlen vor $x$, $y$, $z$",
+"id": "fam-normalenvektor-1",
+"thema": "Normalenvektor aus der Koordinatenform",
+"einheit": "",
+"schwere": 1,
+"familie": "normalenvektor",
+"sprosse": 1,
+"ab_klasse": 12,
+"nr": 5,
+"zw": {
+"frage": "$E:\\ 2x+4y+4z=4$. Welcher Vektor ist ein Normalenvektor von $E$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{2}{4}{4}$",
+"r": 1
+}
+],
+"loesung": "$\\vec n=\\sv{2}{4}{4}$ – die Zahlen vor $x$, $y$, $z$",
+"id": "fam-normalenvektor-1",
+"thema": "Normalenvektor aus der Koordinatenform",
+"einheit": "",
+"schwere": 1,
+"familie": "normalenvektor",
+"sprosse": 1,
+"ab_klasse": 12
+}
+},
+{
+"frage": "Leite ab: $f(x)=x^{5}$. Was ist $f'(x)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$x^{4}$",
+"f": "Exponent gesenkt, aber nicht als Faktor davorgeschrieben"
+},
+{
+"t": "$5x^{4}$",
+"r": 1
+},
+{
+"t": "$5x^{5}$",
+"f": "Exponent nicht um 1 verkleinert"
+}
+],
+"loesung": "$f'(x)=5x^{4}$ – Exponent als Faktor davor, dann um 1 kleiner; Zahl ohne $x$ fällt weg",
+"id": "fam-ableiten-1",
+"thema": "Ableiten mit der Potenzregel",
+"einheit": "",
+"schwere": 1,
+"familie": "ableiten",
+"sprosse": 1,
+"ab_klasse": 11,
+"nr": 6,
+"zw": {
+"frage": "Leite ab: $f(x)=x^{2}$. Was ist $f'(x)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$x$",
+"f": "Exponent gesenkt, aber nicht als Faktor davorgeschrieben"
+},
+{
+"t": "$2x^{2}$",
+"f": "Exponent nicht um 1 verkleinert"
+},
+{
+"t": "$2x$",
+"r": 1
+}
+],
+"loesung": "$f'(x)=2x$ – Exponent als Faktor davor, dann um 1 kleiner; Zahl ohne $x$ fällt weg",
+"id": "fam-ableiten-1",
+"thema": "Ableiten mit der Potenzregel",
+"einheit": "",
+"schwere": 1,
+"familie": "ableiten",
+"sprosse": 1,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Rechne $2-(-8)$.",
+"art": "zahl",
+"wert": "10",
+"loesung": "$2-(-8)=2+8=10$",
+"fehler": {
+"−6": "Minus vor der Klammer nicht beachtet: $-(-8)=+8$"
+},
+"id": "fam-vorzeichen-3",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 3,
+"ab_klasse": 7,
+"nr": 7,
+"zw": {
+"frage": "Rechne $9-(-9)$.",
+"art": "zahl",
+"wert": "18",
+"loesung": "$9-(-9)=9+9=18$",
+"fehler": {
+"0": "Minus vor der Klammer nicht beachtet: $-(-9)=+9$"
+},
+"id": "fam-vorzeichen-3",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 3,
+"ab_klasse": 7
+}
+},
+{
+"frage": "$A(-2\\,|\\,-5\\,|\\,3)$, $B(-3\\,|\\,-4\\,|\\,-1)$. Welcher Vektor ist $\\overrightarrow{BA}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{-5}{-9}{2}$",
+"f": "addiert statt subtrahiert"
+},
+{
+"t": "$\\sv{-1}{1}{-4}$",
+"f": "falsch herum: Spitze minus Fuß, also A − B"
+},
+{
+"t": "$\\sv{1}{-1}{4}$",
+"r": 1
+}
+],
+"loesung": "$\\overrightarrow{BA}=\\sv{1}{-1}{4}$ – Spitze minus Fuß: A − B",
+"id": "fam-vektor-3",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 2,
+"familie": "vektor",
+"sprosse": 3,
+"ab_klasse": 11,
+"nr": 8,
+"zw": {
+"frage": "$A(0\\,|\\,-5\\,|\\,0)$, $B(-3\\,|\\,-3\\,|\\,4)$. Welcher Vektor ist $\\overrightarrow{BA}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{-3}{-8}{4}$",
+"f": "addiert statt subtrahiert"
+},
+{
+"t": "$\\sv{3}{-2}{-4}$",
+"r": 1
+},
+{
+"t": "$\\sv{-3}{2}{4}$",
+"f": "falsch herum: Spitze minus Fuß, also A − B"
+}
+],
+"loesung": "$\\overrightarrow{BA}=\\sv{3}{-2}{-4}$ – Spitze minus Fuß: A − B",
+"id": "fam-vektor-3",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 2,
+"familie": "vektor",
+"sprosse": 3,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Wie lang ist der Vektor $\\sv{-9}{6}{2}$?",
+"art": "zahl",
+"wert": "11",
+"loesung": "$\\sqrt{(-9)^2+6^2+2^2}=\\sqrt{121}=11$",
+"fehler": {
+"−1": "Komponenten addiert statt Pythagoras"
+},
+"id": "fam-betrag-3",
+"thema": "Länge eines Vektors",
+"einheit": "",
+"schwere": 2,
+"familie": "betrag",
+"sprosse": 3,
+"ab_klasse": 11,
+"nr": 9,
+"zw": {
+"frage": "Wie lang ist der Vektor $\\sv{3}{4}{12}$?",
+"art": "zahl",
+"wert": "13",
+"loesung": "$\\sqrt{3^2+4^2+12^2}=\\sqrt{169}=13$",
+"fehler": {
+"19": "Komponenten addiert statt Pythagoras"
+},
+"id": "fam-betrag-3",
+"thema": "Länge eines Vektors",
+"einheit": "",
+"schwere": 2,
+"familie": "betrag",
+"sprosse": 3,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Stehen $\\sv{3}{0}{-1}$ und $\\sv{0}{-3}{0}$ senkrecht aufeinander?",
+"art": "stimmt",
+"knoepfe": [
+"ja",
+"nein"
+],
+"richtig": "ja",
+"loesung": "ja: Skalarprodukt $=0$ – senkrecht heißt Skalarprodukt 0",
+"fehler": "senkrecht heißt: Skalarprodukt ist 0",
+"id": "fam-skalar-3",
+"thema": "Skalarprodukt und senkrecht",
+"einheit": "",
+"schwere": 2,
+"familie": "skalar",
+"sprosse": 3,
+"ab_klasse": 12,
+"nr": 10,
+"zw": {
+"frage": "Stehen $\\sv{2}{-1}{1}$ und $\\sv{-1}{-2}{0}$ senkrecht aufeinander?",
+"art": "stimmt",
+"knoepfe": [
+"ja",
+"nein"
+],
+"richtig": "ja",
+"loesung": "ja: Skalarprodukt $=0$ – senkrecht heißt Skalarprodukt 0",
+"fehler": "senkrecht heißt: Skalarprodukt ist 0",
+"id": "fam-skalar-3",
+"thema": "Skalarprodukt und senkrecht",
+"einheit": "",
+"schwere": 2,
+"familie": "skalar",
+"sprosse": 3,
+"ab_klasse": 12
+}
+},
+{
+"frage": "$g:\\ \\vec x=\\sv{-4}{-3}{-3}+t\\cdot\\sv{-2}{1}{-3}$. Welcher Punkt gehört zu $t=3$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{-14}{-8}{-12}$",
+"f": "den Stützvektor mal $t$ genommen"
+},
+{
+"t": "$\\sv{-6}{-2}{-6}$",
+"f": "mit $t=1$ statt $t=3$ gerechnet"
+},
+{
+"t": "$\\sv{-10}{0}{-12}$",
+"r": 1
+}
+],
+"loesung": "$\\sv{-4}{-3}{-3}+3\\cdot\\sv{-2}{1}{-3}=\\sv{-10}{0}{-12}$",
+"id": "fam-gerade-3",
+"thema": "Gerade in Parameterform",
+"einheit": "",
+"schwere": 2,
+"familie": "gerade",
+"sprosse": 3,
+"ab_klasse": 12,
+"nr": 11,
+"zw": {
+"frage": "$g:\\ \\vec x=\\sv{0}{1}{-4}+t\\cdot\\sv{-2}{-3}{1}$. Welcher Punkt gehört zu $t=-1$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{2}{4}{-5}$",
+"r": 1
+},
+{
+"t": "$\\sv{-2}{-4}{5}$",
+"f": "den Stützvektor mal $t$ genommen"
+},
+{
+"t": "$\\sv{-2}{-2}{-3}$",
+"f": "mit $t=1$ statt $t=-1$ gerechnet"
+}
+],
+"loesung": "$\\sv{0}{1}{-4}+-1\\cdot\\sv{-2}{-3}{1}=\\sv{2}{4}{-5}$",
+"id": "fam-gerade-3",
+"thema": "Gerade in Parameterform",
+"einheit": "",
+"schwere": 2,
+"familie": "gerade",
+"sprosse": 3,
+"ab_klasse": 12
+}
+},
+{
+"frage": "$E:\\ 2x+z=2$. Welcher Vektor ist ein Normalenvektor von $E$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{2}{0}{1}$",
+"r": 1
+},
+{
+"t": "$\\sv{2}{1}{0}$",
+"f": "die Null steht an der Stelle der fehlenden Variable"
+},
+{
+"t": "$\\sv{2}{0}{2}$",
+"f": "die Zahl rechts gehört nicht zum Normalenvektor"
+}
+],
+"loesung": "$\\vec n=\\sv{2}{0}{1}$ – die Zahlen vor $x$, $y$, $z$",
+"id": "fam-normalenvektor-3",
+"thema": "Normalenvektor aus der Koordinatenform",
+"einheit": "",
+"schwere": 2,
+"familie": "normalenvektor",
+"sprosse": 3,
+"ab_klasse": 12,
+"nr": 12,
+"zw": {
+"frage": "$E:\\ 4x+2y=2$. Welcher Vektor ist ein Normalenvektor von $E$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{4}{2}{0}$",
+"r": 1
+},
+{
+"t": "$\\sv{4}{2}{2}$",
+"f": "die Zahl rechts gehört nicht zum Normalenvektor"
+}
+],
+"loesung": "$\\vec n=\\sv{4}{2}{0}$ – die Zahlen vor $x$, $y$, $z$",
+"id": "fam-normalenvektor-3",
+"thema": "Normalenvektor aus der Koordinatenform",
+"einheit": "",
+"schwere": 2,
+"familie": "normalenvektor",
+"sprosse": 3,
+"ab_klasse": 12
+}
+},
+{
+"frage": "Leite ab: $f(x)=7x^{2}+5x$. Was ist $f'(x)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$7x+5$",
+"f": "Exponent gesenkt, aber nicht als Faktor davorgeschrieben"
+},
+{
+"t": "$14x^{2}+5x$",
+"f": "Exponent nicht um 1 verkleinert"
+},
+{
+"t": "$14x+5$",
+"r": 1
+}
+],
+"loesung": "$f'(x)=14x+5$ – Exponent als Faktor davor, dann um 1 kleiner; Zahl ohne $x$ fällt weg",
+"id": "fam-ableiten-3",
+"thema": "Ableiten mit der Potenzregel",
+"einheit": "",
+"schwere": 2,
+"familie": "ableiten",
+"sprosse": 3,
+"ab_klasse": 11,
+"nr": 13,
+"zw": {
+"frage": "Leite ab: $f(x)=4x^{4}+2x$. Was ist $f'(x)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$16x^{3}+2$",
+"r": 1
+},
+{
+"t": "$4x^{3}+2$",
+"f": "Exponent gesenkt, aber nicht als Faktor davorgeschrieben"
+},
+{
+"t": "$16x^{4}+2x$",
+"f": "Exponent nicht um 1 verkleinert"
+}
+],
+"loesung": "$f'(x)=16x^{3}+2$ – Exponent als Faktor davor, dann um 1 kleiner; Zahl ohne $x$ fällt weg",
+"id": "fam-ableiten-3",
+"thema": "Ableiten mit der Potenzregel",
+"einheit": "",
+"schwere": 2,
+"familie": "ableiten",
+"sprosse": 3,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Rechne $9-(-9)$.",
+"art": "zahl",
+"wert": "18",
+"loesung": "$9-(-9)=9+9=18$",
+"fehler": {
+"0": "Minus vor der Klammer nicht beachtet: $-(-9)=+9$"
+},
+"id": "fam-vorzeichen-3",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 3,
+"ab_klasse": 7,
+"nr": 14,
+"zw": {
+"frage": "Rechne $4-(-9)$.",
+"art": "zahl",
+"wert": "13",
+"loesung": "$4-(-9)=4+9=13$",
+"fehler": {
+"−5": "Minus vor der Klammer nicht beachtet: $-(-9)=+9$"
+},
+"id": "fam-vorzeichen-3",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 3,
+"ab_klasse": 7
+}
+},
+{
+"frage": "$A(6\\,|\\,-6\\,|\\,-2)$, $B(4\\,|\\,-6\\,|\\,-3)$. Welcher Vektor ist $\\overrightarrow{AB}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{2}{0}{1}$",
+"f": "falsch herum: Spitze minus Fuß, also B − A"
+},
+{
+"t": "$\\sv{-2}{0}{-1}$",
+"r": 1
+},
+{
+"t": "$\\sv{10}{-12}{-5}$",
+"f": "addiert statt subtrahiert"
+}
+],
+"loesung": "$\\overrightarrow{AB}=\\sv{-2}{0}{-1}$ – Spitze minus Fuß: B − A",
+"id": "fam-vektor-4",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 2,
+"familie": "vektor",
+"sprosse": 4,
+"ab_klasse": 11,
+"nr": 15,
+"zw": {
+"frage": "$A(-2\\,|\\,0\\,|\\,-3)$, $B(1\\,|\\,5\\,|\\,6)$. Welcher Vektor ist $\\overrightarrow{AB}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{-1}{5}{3}$",
+"f": "addiert statt subtrahiert"
+},
+{
+"t": "$\\sv{3}{5}{9}$",
+"r": 1
+},
+{
+"t": "$\\sv{-3}{-5}{-9}$",
+"f": "falsch herum: Spitze minus Fuß, also B − A"
+}
+],
+"loesung": "$\\overrightarrow{AB}=\\sv{3}{5}{9}$ – Spitze minus Fuß: B − A",
+"id": "fam-vektor-4",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 2,
+"familie": "vektor",
+"sprosse": 4,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Wie lang ist die Strecke von $A(-2\\,|\\,4\\,|\\,4)$ nach $B(7\\,|\\,-2\\,|\\,6)$?",
+"art": "zahl",
+"wert": "11",
+"loesung": "$\\overrightarrow{AB}=\\sv{9}{-6}{2}$, Länge $\\sqrt{81+36+4}=11$",
+"fehler": {
+"5": "Komponenten addiert statt Pythagoras"
+},
+"id": "fam-betrag-4",
+"thema": "Länge eines Vektors",
+"einheit": "",
+"schwere": 2,
+"familie": "betrag",
+"sprosse": 4,
+"ab_klasse": 11,
+"nr": 16,
+"zw": {
+"frage": "Wie lang ist die Strecke von $A(-3\\,|\\,-1\\,|\\,2)$ nach $B(-7\\,|\\,-8\\,|\\,-2)$?",
+"art": "zahl",
+"wert": "9",
+"loesung": "$\\overrightarrow{AB}=\\sv{-4}{-7}{-4}$, Länge $\\sqrt{16+49+16}=9$",
+"fehler": {
+"-15": "Komponenten addiert statt Pythagoras"
+},
+"id": "fam-betrag-4",
+"thema": "Länge eines Vektors",
+"einheit": "",
+"schwere": 2,
+"familie": "betrag",
+"sprosse": 4,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Für welches $t$ steht $\\sv{2}{-3}{t}$ senkrecht auf $\\sv{1}{2}{1}$?",
+"art": "zahl",
+"wert": "4",
+"loesung": "$2\\cdot1+(-3)\\cdot2+1\\cdot t=0$, also $t=4$",
+"fehler": {
+"−4": "Vorzeichen beim Umstellen"
+},
+"id": "fam-skalar-4",
+"thema": "Skalarprodukt und senkrecht",
+"einheit": "",
+"schwere": 2,
+"familie": "skalar",
+"sprosse": 4,
+"ab_klasse": 12,
+"nr": 17,
+"zw": {
+"frage": "Für welches $t$ steht $\\sv{3}{0}{t}$ senkrecht auf $\\sv{4}{1}{2}$?",
+"art": "zahl",
+"wert": "−6",
+"loesung": "$3\\cdot4+0\\cdot1+2\\cdot t=0$, also $t=-6$",
+"fehler": {
+"6": "Vorzeichen beim Umstellen"
+},
+"id": "fam-skalar-4",
+"thema": "Skalarprodukt und senkrecht",
+"einheit": "",
+"schwere": 2,
+"familie": "skalar",
+"sprosse": 4,
+"ab_klasse": 12
+}
+},
+{
+"frage": "$g:\\ \\vec x=\\sv{-1}{-1}{0}+t\\cdot\\sv{-2}{0}{3}$. Liegt $P(3\\,|\\,-1\\,|\\,-6)$ auf $g$?",
+"art": "stimmt",
+"knoepfe": [
+"ja",
+"nein"
+],
+"richtig": "ja",
+"loesung": "ja: mit $t=-2$ stimmen alle drei Zeilen",
+"fehler": "Punktprobe: dasselbe $t$ muss in allen drei Zeilen passen",
+"id": "fam-gerade-4",
+"thema": "Gerade in Parameterform",
+"einheit": "",
+"schwere": 2,
+"familie": "gerade",
+"sprosse": 4,
+"ab_klasse": 12,
+"nr": 18,
+"zw": {
+"frage": "$g:\\ \\vec x=\\sv{-1}{3}{3}+t\\cdot\\sv{-1}{-3}{1}$. Liegt $P(1\\,|\\,9\\,|\\,1)$ auf $g$?",
+"art": "stimmt",
+"knoepfe": [
+"ja",
+"nein"
+],
+"richtig": "ja",
+"loesung": "ja: mit $t=-2$ stimmen alle drei Zeilen",
+"fehler": "Punktprobe: dasselbe $t$ muss in allen drei Zeilen passen",
+"id": "fam-gerade-4",
+"thema": "Gerade in Parameterform",
+"einheit": "",
+"schwere": 2,
+"familie": "gerade",
+"sprosse": 4,
+"ab_klasse": 12
+}
+},
+{
+"frage": "$E:\\ 2x+7z=7$. Welcher Vektor ist ein Normalenvektor von $E$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{2}{0}{7}$",
+"r": 1
+},
+{
+"t": "$\\sv{2}{7}{0}$",
+"f": "die Null steht an der Stelle der fehlenden Variable"
+}
+],
+"loesung": "$\\vec n=\\sv{2}{0}{7}$ – die Zahlen vor $x$, $y$, $z$",
+"id": "fam-normalenvektor-4",
+"thema": "Normalenvektor aus der Koordinatenform",
+"einheit": "",
+"schwere": 2,
+"familie": "normalenvektor",
+"sprosse": 4,
+"ab_klasse": 12,
+"nr": 19,
+"zw": {
+"frage": "$E:\\ 7x-3y=2$. Welcher Vektor ist ein Normalenvektor von $E$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{7}{3}{0}$",
+"f": "Vorzeichen übersehen"
+},
+{
+"t": "$\\sv{7}{-3}{2}$",
+"f": "die Zahl rechts gehört nicht zum Normalenvektor"
+},
+{
+"t": "$\\sv{7}{-3}{0}$",
+"r": 1
+}
+],
+"loesung": "$\\vec n=\\sv{7}{-3}{0}$ – die Zahlen vor $x$, $y$, $z$",
+"id": "fam-normalenvektor-4",
+"thema": "Normalenvektor aus der Koordinatenform",
+"einheit": "",
+"schwere": 2,
+"familie": "normalenvektor",
+"sprosse": 4,
+"ab_klasse": 12
+}
+},
+{
+"frage": "Leite ab: $f(x)=-4x^{5}+8x+2$. Was ist $f'(x)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$-20x^{5}+8x$",
+"f": "Exponent nicht um 1 verkleinert"
+},
+{
+"t": "$-4x^{4}+8$",
+"f": "Exponent gesenkt, aber nicht als Faktor davorgeschrieben"
+},
+{
+"t": "$-20x^{4}+8$",
+"r": 1
+}
+],
+"loesung": "$f'(x)=-20x^{4}+8$ – Exponent als Faktor davor, dann um 1 kleiner; Zahl ohne $x$ fällt weg",
+"id": "fam-ableiten-4",
+"thema": "Ableiten mit der Potenzregel",
+"einheit": "",
+"schwere": 2,
+"familie": "ableiten",
+"sprosse": 4,
+"ab_klasse": 11,
+"nr": 20,
+"zw": {
+"frage": "Leite ab: $f(x)=-9x^{6}+5x+9$. Was ist $f'(x)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$-54x^{6}+5x$",
+"f": "Exponent nicht um 1 verkleinert"
+},
+{
+"t": "$-9x^{5}+5$",
+"f": "Exponent gesenkt, aber nicht als Faktor davorgeschrieben"
+},
+{
+"t": "$-54x^{5}+5$",
+"r": 1
+}
+],
+"loesung": "$f'(x)=-54x^{5}+5$ – Exponent als Faktor davor, dann um 1 kleiner; Zahl ohne $x$ fällt weg",
+"id": "fam-ableiten-4",
+"thema": "Ableiten mit der Potenzregel",
+"einheit": "",
+"schwere": 2,
+"familie": "ableiten",
+"sprosse": 4,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Rechne $-2-(-2)$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$-2-(-2)=-2+2=0$",
+"fehler": {
+"−4": "Minus vor der Klammer nicht beachtet: $-(-2)=+2$",
+"4": "beide Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-4",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 4,
+"ab_klasse": 7,
+"nr": 21,
+"zw": {
+"frage": "Rechne $-7-(-4)$.",
+"art": "zahl",
+"wert": "−3",
+"loesung": "$-7-(-4)=-7+4=-3$",
+"fehler": {
+"−11": "Minus vor der Klammer nicht beachtet: $-(-4)=+4$",
+"11": "beide Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-4",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 4,
+"ab_klasse": 7
+}
+},
+{
+"frage": "$A(2\\,|\\,0\\,|\\,2)$, $B(0\\,|\\,1\\,|\\,4)$. Welcher Vektor ist $\\overrightarrow{AB}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{-2}{1}{2}$",
+"r": 1
+},
+{
+"t": "$\\sv{2}{-1}{-2}$",
+"f": "falsch herum: Spitze minus Fuß, also B − A"
+},
+{
+"t": "$\\sv{2}{1}{6}$",
+"f": "addiert statt subtrahiert"
+}
+],
+"loesung": "$\\overrightarrow{AB}=\\sv{-2}{1}{2}$ – Spitze minus Fuß: B − A",
+"id": "fam-vektor-2",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 1,
+"familie": "vektor",
+"sprosse": 2,
+"ab_klasse": 11,
+"nr": 22,
+"zw": {
+"frage": "$A(4\\,|\\,-4\\,|\\,-1)$, $B(-4\\,|\\,0\\,|\\,5)$. Welcher Vektor ist $\\overrightarrow{AB}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{-8}{4}{6}$",
+"r": 1
+},
+{
+"t": "$\\sv{0}{-4}{4}$",
+"f": "addiert statt subtrahiert"
+},
+{
+"t": "$\\sv{8}{-4}{-6}$",
+"f": "falsch herum: Spitze minus Fuß, also B − A"
+}
+],
+"loesung": "$\\overrightarrow{AB}=\\sv{-8}{4}{6}$ – Spitze minus Fuß: B − A",
+"id": "fam-vektor-2",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 1,
+"familie": "vektor",
+"sprosse": 2,
+"ab_klasse": 11
+}
+}
+],
+"quellen": [
+{
+"quelle": "eigene Fragen (Skript familien.py)",
+"nr": [
+"1",
+"2",
+"3",
+"4",
+"5",
+"6",
+"7",
+"8",
+"9",
+"10",
+"11",
+"12",
+"13",
+"14",
+"15",
+"16",
+"17",
+"18",
+"19",
+"20",
+"21",
+"22",
+"1z",
+"2z",
+"3z",
+"4z",
+"5z",
+"6z",
+"7z",
+"8z",
+"9z",
+"10z",
+"11z",
+"12z",
+"13z",
+"14z",
+"15z",
+"16z",
+"17z",
+"18z",
+"19z",
+"20z",
+"21z",
+"22z"
+]
+}
+]
+},
+{
+"fragen": [
+{
+"frage": "$A(0\\,|\\,1\\,|\\,4)$, $B(3\\,|\\,2\\,|\\,7)$. Welcher Vektor ist $\\overrightarrow{AB}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{-3}{-1}{-3}$",
+"f": "falsch herum: Spitze minus Fuß, also B − A"
+},
+{
+"t": "$\\sv{3}{3}{11}$",
+"f": "addiert statt subtrahiert"
+},
+{
+"t": "$\\sv{3}{1}{3}$",
+"r": 1
+}
+],
+"loesung": "$\\overrightarrow{AB}=\\sv{3}{1}{3}$ – Spitze minus Fuß: B − A",
+"id": "fam-vektor-1",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 1,
+"familie": "vektor",
+"sprosse": 1,
+"ab_klasse": 11,
+"nr": 1,
+"zw": {
+"frage": "$A(1\\,|\\,2\\,|\\,0)$, $B(6\\,|\\,5\\,|\\,2)$. Welcher Vektor ist $\\overrightarrow{AB}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{-5}{-3}{-2}$",
+"f": "falsch herum: Spitze minus Fuß, also B − A"
+},
+{
+"t": "$\\sv{5}{3}{2}$",
+"r": 1
+},
+{
+"t": "$\\sv{7}{7}{2}$",
+"f": "addiert statt subtrahiert"
+}
+],
+"loesung": "$\\overrightarrow{AB}=\\sv{5}{3}{2}$ – Spitze minus Fuß: B − A",
+"id": "fam-vektor-1",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 1,
+"familie": "vektor",
+"sprosse": 1,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Wie lang ist der Vektor $\\begin{pmatrix}6\\\\8\\end{pmatrix}$?",
+"art": "zahl",
+"wert": "10",
+"loesung": "$\\sqrt{6^2+8^2}=\\sqrt{100}=10$",
+"fehler": {
+"14": "Komponenten addiert statt Pythagoras"
+},
+"id": "fam-betrag-1",
+"thema": "Länge eines Vektors",
+"einheit": "",
+"schwere": 1,
+"familie": "betrag",
+"sprosse": 1,
+"ab_klasse": 11,
+"nr": 2,
+"zw": {
+"frage": "Wie lang ist der Vektor $\\begin{pmatrix}8\\\\6\\end{pmatrix}$?",
+"art": "zahl",
+"wert": "10",
+"loesung": "$\\sqrt{8^2+6^2}=\\sqrt{100}=10$",
+"fehler": {
+"14": "Komponenten addiert statt Pythagoras"
+},
+"id": "fam-betrag-1",
+"thema": "Länge eines Vektors",
+"einheit": "",
+"schwere": 1,
+"familie": "betrag",
+"sprosse": 1,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Berechne $\\sv{4}{0}{3}\\cdot\\sv{2}{2}{3}$.",
+"art": "zahl",
+"wert": "17",
+"loesung": "$4\\cdot2+0\\cdot2+3\\cdot3=17$ – Komponenten mal Komponenten, dann addieren",
+"id": "fam-skalar-1",
+"thema": "Skalarprodukt und senkrecht",
+"einheit": "",
+"schwere": 1,
+"familie": "skalar",
+"sprosse": 1,
+"ab_klasse": 12,
+"nr": 3,
+"zw": {
+"frage": "Berechne $\\sv{0}{1}{1}\\cdot\\sv{3}{1}{3}$.",
+"art": "zahl",
+"wert": "4",
+"loesung": "$0\\cdot3+1\\cdot1+1\\cdot3=4$ – Komponenten mal Komponenten, dann addieren",
+"id": "fam-skalar-1",
+"thema": "Skalarprodukt und senkrecht",
+"einheit": "",
+"schwere": 1,
+"familie": "skalar",
+"sprosse": 1,
+"ab_klasse": 12
+}
+},
+{
+"frage": "$g:\\ \\vec x=\\sv{-4}{-3}{5}+t\\cdot\\sv{2}{1}{-3}$. Welcher Vektor ist der Stützvektor?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{2}{1}{-3}$",
+"f": "das ist der Richtungsvektor"
+},
+{
+"t": "$\\sv{-4}{-3}{5}$",
+"r": 1
+},
+{
+"t": "$\\sv{-2}{-2}{2}$",
+"f": "das ist der Punkt für $t=1$"
+}
+],
+"loesung": "$\\sv{-4}{-3}{5}$ – der Vektor ohne Parameter",
+"id": "fam-gerade-1",
+"thema": "Gerade in Parameterform",
+"einheit": "",
+"schwere": 1,
+"familie": "gerade",
+"sprosse": 1,
+"ab_klasse": 12,
+"nr": 4,
+"zw": {
+"frage": "$g:\\ \\vec x=\\sv{5}{3}{3}+t\\cdot\\sv{1}{1}{1}$. Welcher Vektor ist der Stützvektor?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{5}{3}{3}$",
+"r": 1
+},
+{
+"t": "$\\sv{6}{4}{4}$",
+"f": "das ist der Punkt für $t=1$"
+},
+{
+"t": "$\\sv{1}{1}{1}$",
+"f": "das ist der Richtungsvektor"
+}
+],
+"loesung": "$\\sv{5}{3}{3}$ – der Vektor ohne Parameter",
+"id": "fam-gerade-1",
+"thema": "Gerade in Parameterform",
+"einheit": "",
+"schwere": 1,
+"familie": "gerade",
+"sprosse": 1,
+"ab_klasse": 12
+}
+},
+{
+"frage": "$E:\\ 6x+y+6z=3$. Welcher Vektor ist ein Normalenvektor von $E$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{6}{1}{3}$",
+"f": "die Zahl rechts gehört nicht zum Normalenvektor"
+},
+{
+"t": "$\\sv{6}{1}{6}$",
+"r": 1
+}
+],
+"loesung": "$\\vec n=\\sv{6}{1}{6}$ – die Zahlen vor $x$, $y$, $z$",
+"id": "fam-normalenvektor-1",
+"thema": "Normalenvektor aus der Koordinatenform",
+"einheit": "",
+"schwere": 1,
+"familie": "normalenvektor",
+"sprosse": 1,
+"ab_klasse": 12,
+"nr": 5,
+"zw": {
+"frage": "$E:\\ 3x+4y+7z=4$. Welcher Vektor ist ein Normalenvektor von $E$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{3}{4}{7}$",
+"r": 1
+},
+{
+"t": "$\\sv{3}{4}{4}$",
+"f": "die Zahl rechts gehört nicht zum Normalenvektor"
+}
+],
+"loesung": "$\\vec n=\\sv{3}{4}{7}$ – die Zahlen vor $x$, $y$, $z$",
+"id": "fam-normalenvektor-1",
+"thema": "Normalenvektor aus der Koordinatenform",
+"einheit": "",
+"schwere": 1,
+"familie": "normalenvektor",
+"sprosse": 1,
+"ab_klasse": 12
+}
+},
+{
+"frage": "Leite ab: $f(x)=x^{6}$. Was ist $f'(x)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$x^{5}$",
+"f": "Exponent gesenkt, aber nicht als Faktor davorgeschrieben"
+},
+{
+"t": "$6x^{6}$",
+"f": "Exponent nicht um 1 verkleinert"
+},
+{
+"t": "$6x^{5}$",
+"r": 1
+}
+],
+"loesung": "$f'(x)=6x^{5}$ – Exponent als Faktor davor, dann um 1 kleiner; Zahl ohne $x$ fällt weg",
+"id": "fam-ableiten-1",
+"thema": "Ableiten mit der Potenzregel",
+"einheit": "",
+"schwere": 1,
+"familie": "ableiten",
+"sprosse": 1,
+"ab_klasse": 11,
+"nr": 6,
+"zw": {
+"frage": "Leite ab: $f(x)=x^{5}$. Was ist $f'(x)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$5x^{4}$",
+"r": 1
+},
+{
+"t": "$5x^{5}$",
+"f": "Exponent nicht um 1 verkleinert"
+},
+{
+"t": "$x^{4}$",
+"f": "Exponent gesenkt, aber nicht als Faktor davorgeschrieben"
+}
+],
+"loesung": "$f'(x)=5x^{4}$ – Exponent als Faktor davor, dann um 1 kleiner; Zahl ohne $x$ fällt weg",
+"id": "fam-ableiten-1",
+"thema": "Ableiten mit der Potenzregel",
+"einheit": "",
+"schwere": 1,
+"familie": "ableiten",
+"sprosse": 1,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Rechne $4-(-4)$.",
+"art": "zahl",
+"wert": "8",
+"loesung": "$4-(-4)=4+4=8$",
+"fehler": {
+"0": "Minus vor der Klammer nicht beachtet: $-(-4)=+4$"
+},
+"id": "fam-vorzeichen-3",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 3,
+"ab_klasse": 7,
+"nr": 7,
+"zw": {
+"frage": "Rechne $2-(-6)$.",
+"art": "zahl",
+"wert": "8",
+"loesung": "$2-(-6)=2+6=8$",
+"fehler": {
+"−4": "Minus vor der Klammer nicht beachtet: $-(-6)=+6$"
+},
+"id": "fam-vorzeichen-3",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 3,
+"ab_klasse": 7
+}
+},
+{
+"frage": "$A(0\\,|\\,0\\,|\\,-1)$, $B(-2\\,|\\,-5\\,|\\,2)$. Welcher Vektor ist $\\overrightarrow{BA}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{-2}{-5}{3}$",
+"f": "falsch herum: Spitze minus Fuß, also A − B"
+},
+{
+"t": "$\\sv{-2}{-5}{1}$",
+"f": "addiert statt subtrahiert"
+},
+{
+"t": "$\\sv{2}{5}{-3}$",
+"r": 1
+}
+],
+"loesung": "$\\overrightarrow{BA}=\\sv{2}{5}{-3}$ – Spitze minus Fuß: A − B",
+"id": "fam-vektor-3",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 2,
+"familie": "vektor",
+"sprosse": 3,
+"ab_klasse": 11,
+"nr": 8,
+"zw": {
+"frage": "$A(-3\\,|\\,-5\\,|\\,4)$, $B(-3\\,|\\,-3\\,|\\,-2)$. Welcher Vektor ist $\\overrightarrow{BA}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{0}{2}{-6}$",
+"f": "falsch herum: Spitze minus Fuß, also A − B"
+},
+{
+"t": "$\\sv{0}{-2}{6}$",
+"r": 1
+},
+{
+"t": "$\\sv{-6}{-8}{2}$",
+"f": "addiert statt subtrahiert"
+}
+],
+"loesung": "$\\overrightarrow{BA}=\\sv{0}{-2}{6}$ – Spitze minus Fuß: A − B",
+"id": "fam-vektor-3",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 2,
+"familie": "vektor",
+"sprosse": 3,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Wie lang ist der Vektor $\\sv{-3}{2}{6}$?",
+"art": "zahl",
+"wert": "7",
+"loesung": "$\\sqrt{(-3)^2+2^2+6^2}=\\sqrt{49}=7$",
+"fehler": {
+"5": "Komponenten addiert statt Pythagoras"
+},
+"id": "fam-betrag-3",
+"thema": "Länge eines Vektors",
+"einheit": "",
+"schwere": 2,
+"familie": "betrag",
+"sprosse": 3,
+"ab_klasse": 11,
+"nr": 9,
+"zw": {
+"frage": "Wie lang ist der Vektor $\\sv{3}{2}{6}$?",
+"art": "zahl",
+"wert": "7",
+"loesung": "$\\sqrt{3^2+2^2+6^2}=\\sqrt{49}=7$",
+"fehler": {
+"11": "Komponenten addiert statt Pythagoras"
+},
+"id": "fam-betrag-3",
+"thema": "Länge eines Vektors",
+"einheit": "",
+"schwere": 2,
+"familie": "betrag",
+"sprosse": 3,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Stehen $\\sv{0}{-2}{0}$ und $\\sv{-2}{0}{0}$ senkrecht aufeinander?",
+"art": "stimmt",
+"knoepfe": [
+"ja",
+"nein"
+],
+"richtig": "ja",
+"loesung": "ja: Skalarprodukt $=0$ – senkrecht heißt Skalarprodukt 0",
+"fehler": "senkrecht heißt: Skalarprodukt ist 0",
+"id": "fam-skalar-3",
+"thema": "Skalarprodukt und senkrecht",
+"einheit": "",
+"schwere": 2,
+"familie": "skalar",
+"sprosse": 3,
+"ab_klasse": 12,
+"nr": 10,
+"zw": {
+"frage": "Stehen $\\sv{2}{2}{3}$ und $\\sv{-3}{4}{-3}$ senkrecht aufeinander?",
+"art": "stimmt",
+"knoepfe": [
+"ja",
+"nein"
+],
+"richtig": "nein",
+"loesung": "nein: Skalarprodukt $=-7$ – senkrecht heißt Skalarprodukt 0",
+"fehler": "senkrecht heißt: Skalarprodukt ist 0",
+"id": "fam-skalar-3",
+"thema": "Skalarprodukt und senkrecht",
+"einheit": "",
+"schwere": 2,
+"familie": "skalar",
+"sprosse": 3,
+"ab_klasse": 12
+}
+},
+{
+"frage": "$g:\\ \\vec x=\\sv{5}{3}{-2}+t\\cdot\\sv{-3}{2}{-3}$. Welcher Punkt gehört zu $t=-1$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{8}{1}{1}$",
+"r": 1
+},
+{
+"t": "$\\sv{-8}{-1}{-1}$",
+"f": "den Stützvektor mal $t$ genommen"
+},
+{
+"t": "$\\sv{2}{5}{-5}$",
+"f": "mit $t=1$ statt $t=-1$ gerechnet"
+}
+],
+"loesung": "$\\sv{5}{3}{-2}+-1\\cdot\\sv{-3}{2}{-3}=\\sv{8}{1}{1}$",
+"id": "fam-gerade-3",
+"thema": "Gerade in Parameterform",
+"einheit": "",
+"schwere": 2,
+"familie": "gerade",
+"sprosse": 3,
+"ab_klasse": 12,
+"nr": 11,
+"zw": {
+"frage": "$g:\\ \\vec x=\\sv{4}{-2}{0}+t\\cdot\\sv{-1}{-1}{2}$. Welcher Punkt gehört zu $t=-1$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{5}{-1}{-2}$",
+"r": 1
+},
+{
+"t": "$\\sv{3}{-3}{2}$",
+"f": "mit $t=1$ statt $t=-1$ gerechnet"
+},
+{
+"t": "$\\sv{-5}{1}{2}$",
+"f": "den Stützvektor mal $t$ genommen"
+}
+],
+"loesung": "$\\sv{4}{-2}{0}+-1\\cdot\\sv{-1}{-1}{2}=\\sv{5}{-1}{-2}$",
+"id": "fam-gerade-3",
+"thema": "Gerade in Parameterform",
+"einheit": "",
+"schwere": 2,
+"familie": "gerade",
+"sprosse": 3,
+"ab_klasse": 12
+}
+},
+{
+"frage": "$E:\\ 7y+3z=1$. Welcher Vektor ist ein Normalenvektor von $E$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{0}{7}{1}$",
+"f": "die Zahl rechts gehört nicht zum Normalenvektor"
+},
+{
+"t": "$\\sv{0}{7}{3}$",
+"r": 1
+},
+{
+"t": "$\\sv{7}{3}{0}$",
+"f": "die Null steht an der Stelle der fehlenden Variable"
+}
+],
+"loesung": "$\\vec n=\\sv{0}{7}{3}$ – die Zahlen vor $x$, $y$, $z$",
+"id": "fam-normalenvektor-3",
+"thema": "Normalenvektor aus der Koordinatenform",
+"einheit": "",
+"schwere": 2,
+"familie": "normalenvektor",
+"sprosse": 3,
+"ab_klasse": 12,
+"nr": 12,
+"zw": {
+"frage": "$E:\\ 3y+7z=7$. Welcher Vektor ist ein Normalenvektor von $E$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{3}{7}{0}$",
+"f": "die Null steht an der Stelle der fehlenden Variable"
+},
+{
+"t": "$\\sv{0}{3}{7}$",
+"r": 1
+}
+],
+"loesung": "$\\vec n=\\sv{0}{3}{7}$ – die Zahlen vor $x$, $y$, $z$",
+"id": "fam-normalenvektor-3",
+"thema": "Normalenvektor aus der Koordinatenform",
+"einheit": "",
+"schwere": 2,
+"familie": "normalenvektor",
+"sprosse": 3,
+"ab_klasse": 12
+}
+},
+{
+"frage": "Leite ab: $f(x)=6x^{4}+8x$. Was ist $f'(x)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$24x^{4}+8x$",
+"f": "Exponent nicht um 1 verkleinert"
+},
+{
+"t": "$6x^{3}+8$",
+"f": "Exponent gesenkt, aber nicht als Faktor davorgeschrieben"
+},
+{
+"t": "$24x^{3}+8$",
+"r": 1
+}
+],
+"loesung": "$f'(x)=24x^{3}+8$ – Exponent als Faktor davor, dann um 1 kleiner; Zahl ohne $x$ fällt weg",
+"id": "fam-ableiten-3",
+"thema": "Ableiten mit der Potenzregel",
+"einheit": "",
+"schwere": 2,
+"familie": "ableiten",
+"sprosse": 3,
+"ab_klasse": 11,
+"nr": 13,
+"zw": {
+"frage": "Leite ab: $f(x)=5x^{5}+2x$. Was ist $f'(x)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$25x^{4}+2$",
+"r": 1
+},
+{
+"t": "$25x^{5}+2x$",
+"f": "Exponent nicht um 1 verkleinert"
+},
+{
+"t": "$5x^{4}+2$",
+"f": "Exponent gesenkt, aber nicht als Faktor davorgeschrieben"
+}
+],
+"loesung": "$f'(x)=25x^{4}+2$ – Exponent als Faktor davor, dann um 1 kleiner; Zahl ohne $x$ fällt weg",
+"id": "fam-ableiten-3",
+"thema": "Ableiten mit der Potenzregel",
+"einheit": "",
+"schwere": 2,
+"familie": "ableiten",
+"sprosse": 3,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Rechne $3-(-9)$.",
+"art": "zahl",
+"wert": "12",
+"loesung": "$3-(-9)=3+9=12$",
+"fehler": {
+"−6": "Minus vor der Klammer nicht beachtet: $-(-9)=+9$"
+},
+"id": "fam-vorzeichen-3",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 3,
+"ab_klasse": 7,
+"nr": 14,
+"zw": {
+"frage": "Rechne $5-(-7)$.",
+"art": "zahl",
+"wert": "12",
+"loesung": "$5-(-7)=5+7=12$",
+"fehler": {
+"−2": "Minus vor der Klammer nicht beachtet: $-(-7)=+7$"
+},
+"id": "fam-vorzeichen-3",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 3,
+"ab_klasse": 7
+}
+},
+{
+"frage": "$A(5\\,|\\,-3\\,|\\,-6)$, $B(1\\,|\\,4\\,|\\,-2)$. Welcher Vektor ist $\\overrightarrow{AB}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{-4}{7}{4}$",
+"r": 1
+},
+{
+"t": "$\\sv{4}{-7}{-4}$",
+"f": "falsch herum: Spitze minus Fuß, also B − A"
+},
+{
+"t": "$\\sv{6}{1}{-8}$",
+"f": "addiert statt subtrahiert"
+}
+],
+"loesung": "$\\overrightarrow{AB}=\\sv{-4}{7}{4}$ – Spitze minus Fuß: B − A",
+"id": "fam-vektor-4",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 2,
+"familie": "vektor",
+"sprosse": 4,
+"ab_klasse": 11,
+"nr": 15,
+"zw": {
+"frage": "$A(0\\,|\\,-4\\,|\\,6)$, $B(-6\\,|\\,0\\,|\\,2)$. Welcher Vektor ist $\\overrightarrow{AB}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{6}{-4}{4}$",
+"f": "falsch herum: Spitze minus Fuß, also B − A"
+},
+{
+"t": "$\\sv{-6}{-4}{8}$",
+"f": "addiert statt subtrahiert"
+},
+{
+"t": "$\\sv{-6}{4}{-4}$",
+"r": 1
+}
+],
+"loesung": "$\\overrightarrow{AB}=\\sv{-6}{4}{-4}$ – Spitze minus Fuß: B − A",
+"id": "fam-vektor-4",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 2,
+"familie": "vektor",
+"sprosse": 4,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Wie lang ist die Strecke von $A(-1\\,|\\,3\\,|\\,-1)$ nach $B(1\\,|\\,1\\,|\\,0)$?",
+"art": "zahl",
+"wert": "3",
+"loesung": "$\\overrightarrow{AB}=\\sv{2}{-2}{1}$, Länge $\\sqrt{4+4+1}=3$",
+"fehler": {
+"1": "Komponenten addiert statt Pythagoras"
+},
+"id": "fam-betrag-4",
+"thema": "Länge eines Vektors",
+"einheit": "",
+"schwere": 2,
+"familie": "betrag",
+"sprosse": 4,
+"ab_klasse": 11,
+"nr": 16,
+"zw": {
+"frage": "Wie lang ist die Strecke von $A(1\\,|\\,3\\,|\\,-2)$ nach $B(2\\,|\\,-5\\,|\\,2)$?",
+"art": "zahl",
+"wert": "9",
+"loesung": "$\\overrightarrow{AB}=\\sv{1}{-8}{4}$, Länge $\\sqrt{1+64+16}=9$",
+"fehler": {
+"-3": "Komponenten addiert statt Pythagoras"
+},
+"id": "fam-betrag-4",
+"thema": "Länge eines Vektors",
+"einheit": "",
+"schwere": 2,
+"familie": "betrag",
+"sprosse": 4,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Für welches $t$ steht $\\sv{-1}{1}{t}$ senkrecht auf $\\sv{2}{2}{2}$?",
+"art": "zahl",
+"wert": "0",
+"loesung": "$-1\\cdot2+1\\cdot2+2\\cdot t=0$, also $t=0$",
+"id": "fam-skalar-4",
+"thema": "Skalarprodukt und senkrecht",
+"einheit": "",
+"schwere": 2,
+"familie": "skalar",
+"sprosse": 4,
+"ab_klasse": 12,
+"nr": 17,
+"zw": {
+"frage": "Für welches $t$ steht $\\sv{3}{-3}{t}$ senkrecht auf $\\sv{2}{3}{1}$?",
+"art": "zahl",
+"wert": "3",
+"loesung": "$3\\cdot2+(-3)\\cdot3+1\\cdot t=0$, also $t=3$",
+"fehler": {
+"−3": "Vorzeichen beim Umstellen"
+},
+"id": "fam-skalar-4",
+"thema": "Skalarprodukt und senkrecht",
+"einheit": "",
+"schwere": 2,
+"familie": "skalar",
+"sprosse": 4,
+"ab_klasse": 12
+}
+},
+{
+"frage": "$g:\\ \\vec x=\\sv{-4}{-1}{2}+t\\cdot\\sv{-2}{0}{2}$. Liegt $P(-2\\,|\\,-1\\,|\\,0)$ auf $g$?",
+"art": "stimmt",
+"knoepfe": [
+"ja",
+"nein"
+],
+"richtig": "ja",
+"loesung": "ja: mit $t=-1$ stimmen alle drei Zeilen",
+"fehler": "Punktprobe: dasselbe $t$ muss in allen drei Zeilen passen",
+"id": "fam-gerade-4",
+"thema": "Gerade in Parameterform",
+"einheit": "",
+"schwere": 2,
+"familie": "gerade",
+"sprosse": 4,
+"ab_klasse": 12,
+"nr": 18,
+"zw": {
+"frage": "$g:\\ \\vec x=\\sv{-2}{2}{2}+t\\cdot\\sv{2}{-1}{3}$. Liegt $P(-4\\,|\\,3\\,|\\,-1)$ auf $g$?",
+"art": "stimmt",
+"knoepfe": [
+"ja",
+"nein"
+],
+"richtig": "ja",
+"loesung": "ja: mit $t=-1$ stimmen alle drei Zeilen",
+"fehler": "Punktprobe: dasselbe $t$ muss in allen drei Zeilen passen",
+"id": "fam-gerade-4",
+"thema": "Gerade in Parameterform",
+"einheit": "",
+"schwere": 2,
+"familie": "gerade",
+"sprosse": 4,
+"ab_klasse": 12
+}
+},
+{
+"frage": "$E:\\ 5x-4y=2$. Welcher Vektor ist ein Normalenvektor von $E$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{5}{4}{0}$",
+"f": "Vorzeichen übersehen"
+},
+{
+"t": "$\\sv{5}{-4}{2}$",
+"f": "die Zahl rechts gehört nicht zum Normalenvektor"
+},
+{
+"t": "$\\sv{5}{-4}{0}$",
+"r": 1
+}
+],
+"loesung": "$\\vec n=\\sv{5}{-4}{0}$ – die Zahlen vor $x$, $y$, $z$",
+"id": "fam-normalenvektor-4",
+"thema": "Normalenvektor aus der Koordinatenform",
+"einheit": "",
+"schwere": 2,
+"familie": "normalenvektor",
+"sprosse": 4,
+"ab_klasse": 12,
+"nr": 19,
+"zw": {
+"frage": "$E:\\ 2x+z=7$. Welcher Vektor ist ein Normalenvektor von $E$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{2}{1}{0}$",
+"f": "die Null steht an der Stelle der fehlenden Variable"
+},
+{
+"t": "$\\sv{2}{0}{7}$",
+"f": "die Zahl rechts gehört nicht zum Normalenvektor"
+},
+{
+"t": "$\\sv{2}{0}{1}$",
+"r": 1
+}
+],
+"loesung": "$\\vec n=\\sv{2}{0}{1}$ – die Zahlen vor $x$, $y$, $z$",
+"id": "fam-normalenvektor-4",
+"thema": "Normalenvektor aus der Koordinatenform",
+"einheit": "",
+"schwere": 2,
+"familie": "normalenvektor",
+"sprosse": 4,
+"ab_klasse": 12
+}
+},
+{
+"frage": "Leite ab: $f(x)=-3x^{4}+4x+6$. Was ist $f'(x)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$-12x^{3}+4$",
+"r": 1
+},
+{
+"t": "$-3x^{3}+4$",
+"f": "Exponent gesenkt, aber nicht als Faktor davorgeschrieben"
+},
+{
+"t": "$-12x^{4}+4x$",
+"f": "Exponent nicht um 1 verkleinert"
+}
+],
+"loesung": "$f'(x)=-12x^{3}+4$ – Exponent als Faktor davor, dann um 1 kleiner; Zahl ohne $x$ fällt weg",
+"id": "fam-ableiten-4",
+"thema": "Ableiten mit der Potenzregel",
+"einheit": "",
+"schwere": 2,
+"familie": "ableiten",
+"sprosse": 4,
+"ab_klasse": 11,
+"nr": 20,
+"zw": {
+"frage": "Leite ab: $f(x)=-8x^{4}+8x+3$. Was ist $f'(x)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$-32x^{3}+8$",
+"r": 1
+},
+{
+"t": "$-32x^{4}+8x$",
+"f": "Exponent nicht um 1 verkleinert"
+},
+{
+"t": "$-8x^{3}+8$",
+"f": "Exponent gesenkt, aber nicht als Faktor davorgeschrieben"
+}
+],
+"loesung": "$f'(x)=-32x^{3}+8$ – Exponent als Faktor davor, dann um 1 kleiner; Zahl ohne $x$ fällt weg",
+"id": "fam-ableiten-4",
+"thema": "Ableiten mit der Potenzregel",
+"einheit": "",
+"schwere": 2,
+"familie": "ableiten",
+"sprosse": 4,
+"ab_klasse": 11
+}
+},
+{
+"frage": "Rechne $-2-(-8)$.",
+"art": "zahl",
+"wert": "6",
+"loesung": "$-2-(-8)=-2+8=6$",
+"fehler": {
+"−10": "Minus vor der Klammer nicht beachtet: $-(-8)=+8$",
+"10": "beide Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-4",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 4,
+"ab_klasse": 7,
+"nr": 21,
+"zw": {
+"frage": "Rechne $-6-(-9)$.",
+"art": "zahl",
+"wert": "3",
+"loesung": "$-6-(-9)=-6+9=3$",
+"fehler": {
+"−15": "Minus vor der Klammer nicht beachtet: $-(-9)=+9$",
+"15": "beide Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-4",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 4,
+"ab_klasse": 7
+}
+},
+{
+"frage": "$A(5\\,|\\,0\\,|\\,-1)$, $B(0\\,|\\,-3\\,|\\,3)$. Welcher Vektor ist $\\overrightarrow{AB}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{-5}{-3}{4}$",
+"r": 1
+},
+{
+"t": "$\\sv{5}{-3}{2}$",
+"f": "addiert statt subtrahiert"
+},
+{
+"t": "$\\sv{5}{3}{-4}$",
+"f": "falsch herum: Spitze minus Fuß, also B − A"
+}
+],
+"loesung": "$\\overrightarrow{AB}=\\sv{-5}{-3}{4}$ – Spitze minus Fuß: B − A",
+"id": "fam-vektor-2",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 1,
+"familie": "vektor",
+"sprosse": 2,
+"ab_klasse": 11,
+"nr": 22,
+"zw": {
+"frage": "$A(-2\\,|\\,5\\,|\\,-3)$, $B(-4\\,|\\,-1\\,|\\,-3)$. Welcher Vektor ist $\\overrightarrow{AB}$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$\\sv{-6}{4}{-6}$",
+"f": "addiert statt subtrahiert"
+},
+{
+"t": "$\\sv{2}{6}{0}$",
+"f": "falsch herum: Spitze minus Fuß, also B − A"
+},
+{
+"t": "$\\sv{-2}{-6}{0}$",
+"r": 1
+}
+],
+"loesung": "$\\overrightarrow{AB}=\\sv{-2}{-6}{0}$ – Spitze minus Fuß: B − A",
+"id": "fam-vektor-2",
+"thema": "Vektor zwischen zwei Punkten",
+"einheit": "",
+"schwere": 1,
+"familie": "vektor",
+"sprosse": 2,
+"ab_klasse": 11
+}
+}
+],
+"quellen": [
+{
+"quelle": "eigene Fragen (Skript familien.py)",
+"nr": [
+"1",
+"2",
+"3",
+"4",
+"5",
+"6",
+"7",
+"8",
+"9",
+"10",
+"11",
+"12",
+"13",
+"14",
+"15",
+"16",
+"17",
+"18",
+"19",
+"20",
+"21",
+"22",
+"1z",
+"2z",
+"3z",
+"4z",
+"5z",
+"6z",
+"7z",
+"8z",
+"9z",
+"10z",
+"11z",
+"12z",
+"13z",
+"14z",
+"15z",
+"16z",
+"17z",
+"18z",
+"19z",
+"20z",
+"21z",
+"22z"
+]
+}
+]
+}
+]
+}
