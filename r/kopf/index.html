@@ -37,7 +37,19 @@ const app = document.getElementById("app");
 const z = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
 const aus = a => a[z(0, a.length - 1)];
 // Stufen: von ganz leicht nach oben; zwei richtige hintereinander -> eine Stufe hoch, ein Fehler -> eine runter
-const STUFEN = [
+// Alltag (#m=alltag, Lehrer 16.11.: abwechslungsreicher für Nr. 5): Ergänzen, Geld, Halbieren, Uhr, Einheiten, Sachen
+const ALLTAG = [
+  () => { const a = z(2, 8); return aus([[a + " + ? = 10", 10 - a], [(a * 10) + " + ? = 100", 100 - a * 10]]); },
+  () => { const a = z(1, 8) * 10, b = z(1, 9 - a / 10) * 10; return aus([[a + " ct + " + b + " ct = ? ct", a + b], ["Bis 1 € fehlen bei " + a + " ct noch ? ct", 100 - a]]); },
+  () => { const n = z(6, 25); return aus([["Die Hälfte von " + 2 * n, n], ["Das Doppelte von " + n, 2 * n]]); },
+  () => { const h = z(8, 17), m = aus([0, 10, 15, 20, 30]), d = aus([15, 20, 30, 40]); return aus([
+    ["Von " + h + ":" + String(m).padStart(2, "0") + " bis " + (h + Math.floor((m + d) / 60)) + ":" + String((m + d) % 60).padStart(2, "0") + " Uhr sind ? Minuten", d],
+    ["Eine Viertelstunde hat ? Minuten", 15], ["Eine halbe Stunde hat ? Minuten", 30]]); },
+  () => { const k = z(2, 9); return aus([[k + " m = ? cm", k * 100], [k + " cm = ? mm", k * 10], [(k * 100) + " cm = ? m", k]]); },
+  () => { const a = z(3, 8), b = aus([4, 6, 10]); return aus([[a + " Packungen mit je " + b + " Eiern: ? Eier", a * b], [a + " Hefte zu je " + b + " €: ? €", a * b]]); },
+  () => { const p = z(11, 19); return aus([["Du zahlst 20 €, es kostet " + p + " €. Zurück: ? €", 20 - p], ["Du zahlst 50 €, es kostet " + (p + 20) + " €. Zurück: ? €", 30 - p]]); }
+];
+const BASIS = [
   () => { const a = z(1, 8), b = z(1, 9 - a); return aus([[a + " + " + b, a + b], [(a + b) + " − " + b, a]]); },
   () => { const a = z(4, 9), b = z(11 - a > 2 ? 11 - a : 2, 9); return aus([[a + " + " + b, a + b], [(a + b) + " − " + b, a]]); },
   () => { const r = aus([2, 5, 10]), k = z(2, 10); return [k + " · " + r, k * r]; },
@@ -46,6 +58,7 @@ const STUFEN = [
   () => { const a = z(21, 88), b = z(2, 9); return aus([[a + " + " + b, a + b], [(a + b) + " − " + b, a]]); },
   () => { const a = z(2, 9), b = z(2, 9); return aus([[(a * b) + " : " + a, b], ["Das Doppelte von " + z(11, 45), null]]); }
 ];
+const STUFEN = q.get("m") === "alltag" ? ALLTAG : BASIS;
 let stufe, folge, i, urteile, aufgabe, eingabe, gesperrt, letzte;
 function neu() {
   let t;
@@ -54,7 +67,7 @@ function neu() {
 }
 function balken() { let h = '<div class="balken">'; for (let k = 0; k < N; k++) h += '<i class="' + (urteile[k] || (k === i ? "j" : "")) + '"></i>'; return h + "</div>"; }
 function zeig(klasse, hinweis) {
-  const wort = aufgabe[0].length > 9;
+  const wort = aufgabe[0].length > 9 || aufgabe[0].includes("?");
   app.innerHTML = balken() + '<div class="' + (wort ? "wort" : "frage") + '">' + aufgabe[0] + (wort ? "" : " =") + "</div>" +
     '<div class="feld ' + (klasse || "") + '">' + (eingabe || "&nbsp;") + "</div>" +
     '<div class="hin ' + (klasse || "") + '">' + (hinweis || "") + "</div>" +
