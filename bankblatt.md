@@ -1,4 +1,4 @@
-# Blatt bestellen – v13a (16.11.2026)
+# Blatt bestellen – v13b (16.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -278,7 +278,8 @@ Werkstatt arbeitet es ein und hebt die Sperre auf. Nichts am Blatt selbst änder
   Tagesseite „Unterricht“ neu (Register 14.11.28, 15.11.1; Lehrer 15.11.: Link statt Datei): im Ordner aufgabenbank-privat
   `mkdir -p /tmp/seite && python3 werkzeuge/tagesseite.py /tmp/seite/index.html`, dann mit dem Artifact-Werkzeug
   `get_artifact` für den Slug `1045875a-1a44-4382-9087-1fa1b739aa52` (gibt `version`) und `publish_files` mit diesem Slug,
-  `base_version` = `version`, `files` = `[{"as": "index.html", "path": "/tmp/seite/index.html"}]`. Keine Dateikarte, kein
+  `base_version` = `version`, `files` = die JSON-Liste aus der ersten Ausgabezeile des Skripts (index.html und die PDFs
+  des Tages als `pdf/<kurz>.pdf`; „Heute erstellt“ verlinkt sie). Die Karten im Chat bleiben (Lehrer 16.11.). Keine Dateikarte, kein
   Text; die Seite hat ihre eigenen Fähigkeiten (Outlook, Anwesenheit), die bleiben. Den Link
   https://claude.ai/artifact/31YEqFj5m3r98FmUXmUo77 steht als letzte Zeile jeder Antwort, nach den Karten
   (Register 16.11.4; Lehrer 16.11.: fand die Seite sonst nicht). Die Seite ist für den PC gebaut (Laptop, Desktop-App).
