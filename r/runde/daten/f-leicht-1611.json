@@ -1,0 +1,2630 @@
+{
+"kennung": "f-leicht-1611",
+"titel": "Blitzrunde leicht: Vorzeichen, Null, Quadranten",
+"erzeugt": "2026-11-16",
+"bis": "2027-01-25",
+"fragen": [
+{
+"frage": "Rechne $6-8$.",
+"art": "zahl",
+"wert": "−2",
+"loesung": "$6-8=-2$ – von 6 aus 8 nach links",
+"fehler": {
+"2": "Vorzeichen vergessen: kleiner minus größer ist negativ",
+"14": "addiert statt subtrahiert"
+},
+"id": "fam-vorzeichen-1",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 1,
+"ab_klasse": 6,
+"nr": 1,
+"zw": {
+"frage": "Rechne $2-3$.",
+"art": "zahl",
+"wert": "−1",
+"loesung": "$2-3=-1$ – von 2 aus 3 nach links",
+"fehler": {
+"1": "Vorzeichen vergessen: kleiner minus größer ist negativ",
+"5": "addiert statt subtrahiert"
+},
+"id": "fam-vorzeichen-1",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 1,
+"ab_klasse": 6
+}
+},
+{
+"frage": "Rechne $3\\cdot 0$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null mal etwas ist null",
+"fehler": {
+"3": "mal 0 ist nicht „bleibt gleich“ – das ist mal 1"
+},
+"id": "fam-null-1",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 1,
+"ab_klasse": 5,
+"nr": 2,
+"zw": {
+"frage": "Rechne $0\\cdot 6$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null mal etwas ist null",
+"fehler": {
+"6": "mal 0 ist nicht „bleibt gleich“ – das ist mal 1"
+},
+"id": "fam-null-1",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 1,
+"ab_klasse": 5
+}
+},
+{
+"frage": "In welchem Quadranten liegt $P(2\\,|\\,8)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "I. Quadrant",
+"r": 1
+},
+{
+"t": "II. Quadrant"
+},
+{
+"t": "III. Quadrant"
+},
+{
+"t": "IV. Quadrant"
+}
+],
+"loesung": "I. Quadrant – x positiv, y positiv",
+"id": "fam-quadranten-1",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 1,
+"familie": "quadranten",
+"sprosse": 1,
+"ab_klasse": 7,
+"nr": 3,
+"zw": {
+"frage": "In welchem Quadranten liegt $P(-7\\,|\\,-5)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "I. Quadrant"
+},
+{
+"t": "II. Quadrant"
+},
+{
+"t": "III. Quadrant",
+"r": 1
+},
+{
+"t": "IV. Quadrant"
+}
+],
+"loesung": "III. Quadrant – x negativ, y negativ",
+"id": "fam-quadranten-1",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 1,
+"familie": "quadranten",
+"sprosse": 1,
+"ab_klasse": 7
+}
+},
+{
+"frage": "Rechne $-3-3$.",
+"art": "zahl",
+"wert": "−6",
+"loesung": "$-3-3=-6$ – noch weiter nach links",
+"fehler": {
+"0": "die Minus heben sich nicht auf – beide gehen nach links",
+"6": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6,
+"nr": 4,
+"zw": {
+"frage": "Rechne $-2-9$.",
+"art": "zahl",
+"wert": "−11",
+"loesung": "$-2-9=-11$ – noch weiter nach links",
+"fehler": {
+"7": "die Minus heben sich nicht auf – beide gehen nach links",
+"11": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6
+}
+},
+{
+"frage": "Rechne $0:25$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null verteilt auf 25 ist null, denn $0\\cdot 25=0$",
+"fehler": {
+"25": "Teiler und Ergebnis vertauscht"
+},
+"id": "fam-null-2",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 2,
+"ab_klasse": 5,
+"nr": 5,
+"zw": {
+"frage": "Rechne $0:15$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null verteilt auf 15 ist null, denn $0\\cdot 15=0$",
+"fehler": {
+"15": "Teiler und Ergebnis vertauscht"
+},
+"id": "fam-null-2",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 2,
+"ab_klasse": 5
+}
+},
+{
+"frage": "In welchem Quadranten liegt $P(-1\\,|\\,3)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "I. Quadrant"
+},
+{
+"t": "II. Quadrant",
+"r": 1
+},
+{
+"t": "III. Quadrant"
+},
+{
+"t": "IV. Quadrant",
+"f": "x und y vertauscht gelesen"
+}
+],
+"loesung": "II. Quadrant – x negativ, y positiv",
+"id": "fam-quadranten-2",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 1,
+"familie": "quadranten",
+"sprosse": 2,
+"ab_klasse": 7,
+"nr": 6,
+"zw": {
+"frage": "In welchem Quadranten liegt $P(-3\\,|\\,8)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "I. Quadrant"
+},
+{
+"t": "II. Quadrant",
+"r": 1
+},
+{
+"t": "III. Quadrant"
+},
+{
+"t": "IV. Quadrant",
+"f": "x und y vertauscht gelesen"
+}
+],
+"loesung": "II. Quadrant – x negativ, y positiv",
+"id": "fam-quadranten-2",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 1,
+"familie": "quadranten",
+"sprosse": 2,
+"ab_klasse": 7
+}
+},
+{
+"frage": "Rechne $-6-4$.",
+"art": "zahl",
+"wert": "−10",
+"loesung": "$-6-4=-10$ – noch weiter nach links",
+"fehler": {
+"−2": "die Minus heben sich nicht auf – beide gehen nach links",
+"10": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6,
+"nr": 7,
+"zw": {
+"frage": "Rechne $-7-3$.",
+"art": "zahl",
+"wert": "−10",
+"loesung": "$-7-3=-10$ – noch weiter nach links",
+"fehler": {
+"−4": "die Minus heben sich nicht auf – beide gehen nach links",
+"10": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6
+}
+},
+{
+"frage": "Rechne $0:3$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null verteilt auf 3 ist null, denn $0\\cdot 3=0$",
+"fehler": {
+"3": "Teiler und Ergebnis vertauscht"
+},
+"id": "fam-null-2",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 2,
+"ab_klasse": 5,
+"nr": 8,
+"zw": {
+"frage": "Rechne $0:7$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null verteilt auf 7 ist null, denn $0\\cdot 7=0$",
+"fehler": {
+"7": "Teiler und Ergebnis vertauscht"
+},
+"id": "fam-null-2",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 2,
+"ab_klasse": 5
+}
+},
+{
+"frage": "In welchem Quadranten liegt $P(7\\,|\\,-7)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "I. Quadrant"
+},
+{
+"t": "II. Quadrant",
+"f": "x und y vertauscht gelesen"
+},
+{
+"t": "III. Quadrant"
+},
+{
+"t": "IV. Quadrant",
+"r": 1
+}
+],
+"loesung": "IV. Quadrant – x positiv, y negativ",
+"id": "fam-quadranten-2",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 1,
+"familie": "quadranten",
+"sprosse": 2,
+"ab_klasse": 7,
+"nr": 9,
+"zw": {
+"frage": "In welchem Quadranten liegt $P(-4\\,|\\,6)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "I. Quadrant"
+},
+{
+"t": "II. Quadrant",
+"r": 1
+},
+{
+"t": "III. Quadrant"
+},
+{
+"t": "IV. Quadrant",
+"f": "x und y vertauscht gelesen"
+}
+],
+"loesung": "II. Quadrant – x negativ, y positiv",
+"id": "fam-quadranten-2",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 1,
+"familie": "quadranten",
+"sprosse": 2,
+"ab_klasse": 7
+}
+},
+{
+"frage": "Rechne $7-(-4)$.",
+"art": "zahl",
+"wert": "11",
+"loesung": "$7-(-4)=7+4=11$",
+"fehler": {
+"3": "Minus vor der Klammer nicht beachtet: $-(-4)=+4$"
+},
+"id": "fam-vorzeichen-3",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 3,
+"ab_klasse": 7,
+"nr": 10,
+"zw": {
+"frage": "Rechne $7-(-6)$.",
+"art": "zahl",
+"wert": "13",
+"loesung": "$7-(-6)=7+6=13$",
+"fehler": {
+"1": "Minus vor der Klammer nicht beachtet: $-(-6)=+6$"
+},
+"id": "fam-vorzeichen-3",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 3,
+"ab_klasse": 7
+}
+},
+{
+"frage": "Was ist $3:0$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$0$",
+"f": "Verwechslung mit $0:3=0$"
+},
+{
+"t": "$3$",
+"f": "durch 0 ist nicht „bleibt gleich“"
+},
+{
+"t": "nicht definiert",
+"r": 1
+}
+],
+"loesung": "nicht definiert – keine Zahl mal $0$ ergibt $3$",
+"id": "fam-null-3",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 2,
+"familie": "null",
+"sprosse": 3,
+"ab_klasse": 6,
+"nr": 11,
+"zw": {
+"frage": "Was ist $5:0$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$0$",
+"f": "Verwechslung mit $0:5=0$"
+},
+{
+"t": "$5$",
+"f": "durch 0 ist nicht „bleibt gleich“"
+},
+{
+"t": "nicht definiert",
+"r": 1
+}
+],
+"loesung": "nicht definiert – keine Zahl mal $0$ ergibt $5$",
+"id": "fam-null-3",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 2,
+"familie": "null",
+"sprosse": 3,
+"ab_klasse": 6
+}
+},
+{
+"frage": "Wo liegt $P(6\\,|\\,0)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "auf der $x$-Achse",
+"r": 1
+},
+{
+"t": "auf der $y$-Achse",
+"f": "Achsen vertauscht: y = 0 heißt „auf der x-Achse“"
+},
+{
+"t": "im I. Quadranten",
+"f": "auf einer Achse liegt ein Punkt in keinem Quadranten"
+}
+],
+"loesung": "auf der x-Achse – y ist 0",
+"id": "fam-quadranten-3",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 2,
+"familie": "quadranten",
+"sprosse": 3,
+"ab_klasse": 7,
+"nr": 12,
+"zw": {
+"frage": "Wo liegt $P(2\\,|\\,0)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "auf der $x$-Achse",
+"r": 1
+},
+{
+"t": "auf der $y$-Achse",
+"f": "Achsen vertauscht: y = 0 heißt „auf der x-Achse“"
+},
+{
+"t": "im I. Quadranten",
+"f": "auf einer Achse liegt ein Punkt in keinem Quadranten"
+}
+],
+"loesung": "auf der x-Achse – y ist 0",
+"id": "fam-quadranten-3",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 2,
+"familie": "quadranten",
+"sprosse": 3,
+"ab_klasse": 7
+}
+},
+{
+"frage": "Rechne $-6-4$.",
+"art": "zahl",
+"wert": "−10",
+"loesung": "$-6-4=-10$ – noch weiter nach links",
+"fehler": {
+"−2": "die Minus heben sich nicht auf – beide gehen nach links",
+"10": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6,
+"nr": 13,
+"zw": {
+"frage": "Rechne $-4-7$.",
+"art": "zahl",
+"wert": "−11",
+"loesung": "$-4-7=-11$ – noch weiter nach links",
+"fehler": {
+"3": "die Minus heben sich nicht auf – beide gehen nach links",
+"11": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6
+}
+},
+{
+"frage": "Rechne $0:8$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null verteilt auf 8 ist null, denn $0\\cdot 8=0$",
+"fehler": {
+"8": "Teiler und Ergebnis vertauscht"
+},
+"id": "fam-null-2",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 2,
+"ab_klasse": 5,
+"nr": 14,
+"zw": {
+"frage": "Rechne $0:3$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null verteilt auf 3 ist null, denn $0\\cdot 3=0$",
+"fehler": {
+"3": "Teiler und Ergebnis vertauscht"
+},
+"id": "fam-null-2",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 2,
+"ab_klasse": 5
+}
+},
+{
+"frage": "Rechne $-3-4$.",
+"art": "zahl",
+"wert": "−7",
+"loesung": "$-3-4=-7$ – noch weiter nach links",
+"fehler": {
+"1": "die Minus heben sich nicht auf – beide gehen nach links",
+"7": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6,
+"nr": 15,
+"zw": {
+"frage": "Rechne $-9-6$.",
+"art": "zahl",
+"wert": "−15",
+"loesung": "$-9-6=-15$ – noch weiter nach links",
+"fehler": {
+"−3": "die Minus heben sich nicht auf – beide gehen nach links",
+"15": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6
+}
+}
+],
+"quellen": [
+{
+"quelle": "eigene Fragen (Skript familien.py)",
+"nr": [
+"1",
+"2",
+"3",
+"4",
+"5",
+"6",
+"7",
+"8",
+"9",
+"10",
+"11",
+"12",
+"13",
+"14",
+"15",
+"1z",
+"2z",
+"3z",
+"4z",
+"5z",
+"6z",
+"7z",
+"8z",
+"9z",
+"10z",
+"11z",
+"12z",
+"13z",
+"14z",
+"15z"
+]
+}
+],
+"fassungen": [
+{
+"fragen": [
+{
+"frage": "Rechne $6-8$.",
+"art": "zahl",
+"wert": "−2",
+"loesung": "$6-8=-2$ – von 6 aus 8 nach links",
+"fehler": {
+"2": "Vorzeichen vergessen: kleiner minus größer ist negativ",
+"14": "addiert statt subtrahiert"
+},
+"id": "fam-vorzeichen-1",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 1,
+"ab_klasse": 6,
+"nr": 1,
+"zw": {
+"frage": "Rechne $2-3$.",
+"art": "zahl",
+"wert": "−1",
+"loesung": "$2-3=-1$ – von 2 aus 3 nach links",
+"fehler": {
+"1": "Vorzeichen vergessen: kleiner minus größer ist negativ",
+"5": "addiert statt subtrahiert"
+},
+"id": "fam-vorzeichen-1",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 1,
+"ab_klasse": 6
+}
+},
+{
+"frage": "Rechne $3\\cdot 0$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null mal etwas ist null",
+"fehler": {
+"3": "mal 0 ist nicht „bleibt gleich“ – das ist mal 1"
+},
+"id": "fam-null-1",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 1,
+"ab_klasse": 5,
+"nr": 2,
+"zw": {
+"frage": "Rechne $0\\cdot 6$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null mal etwas ist null",
+"fehler": {
+"6": "mal 0 ist nicht „bleibt gleich“ – das ist mal 1"
+},
+"id": "fam-null-1",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 1,
+"ab_klasse": 5
+}
+},
+{
+"frage": "In welchem Quadranten liegt $P(2\\,|\\,8)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "I. Quadrant",
+"r": 1
+},
+{
+"t": "II. Quadrant"
+},
+{
+"t": "III. Quadrant"
+},
+{
+"t": "IV. Quadrant"
+}
+],
+"loesung": "I. Quadrant – x positiv, y positiv",
+"id": "fam-quadranten-1",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 1,
+"familie": "quadranten",
+"sprosse": 1,
+"ab_klasse": 7,
+"nr": 3,
+"zw": {
+"frage": "In welchem Quadranten liegt $P(-7\\,|\\,-5)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "I. Quadrant"
+},
+{
+"t": "II. Quadrant"
+},
+{
+"t": "III. Quadrant",
+"r": 1
+},
+{
+"t": "IV. Quadrant"
+}
+],
+"loesung": "III. Quadrant – x negativ, y negativ",
+"id": "fam-quadranten-1",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 1,
+"familie": "quadranten",
+"sprosse": 1,
+"ab_klasse": 7
+}
+},
+{
+"frage": "Rechne $-3-3$.",
+"art": "zahl",
+"wert": "−6",
+"loesung": "$-3-3=-6$ – noch weiter nach links",
+"fehler": {
+"0": "die Minus heben sich nicht auf – beide gehen nach links",
+"6": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6,
+"nr": 4,
+"zw": {
+"frage": "Rechne $-2-9$.",
+"art": "zahl",
+"wert": "−11",
+"loesung": "$-2-9=-11$ – noch weiter nach links",
+"fehler": {
+"7": "die Minus heben sich nicht auf – beide gehen nach links",
+"11": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6
+}
+},
+{
+"frage": "Rechne $0:25$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null verteilt auf 25 ist null, denn $0\\cdot 25=0$",
+"fehler": {
+"25": "Teiler und Ergebnis vertauscht"
+},
+"id": "fam-null-2",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 2,
+"ab_klasse": 5,
+"nr": 5,
+"zw": {
+"frage": "Rechne $0:15$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null verteilt auf 15 ist null, denn $0\\cdot 15=0$",
+"fehler": {
+"15": "Teiler und Ergebnis vertauscht"
+},
+"id": "fam-null-2",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 2,
+"ab_klasse": 5
+}
+},
+{
+"frage": "In welchem Quadranten liegt $P(-1\\,|\\,3)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "I. Quadrant"
+},
+{
+"t": "II. Quadrant",
+"r": 1
+},
+{
+"t": "III. Quadrant"
+},
+{
+"t": "IV. Quadrant",
+"f": "x und y vertauscht gelesen"
+}
+],
+"loesung": "II. Quadrant – x negativ, y positiv",
+"id": "fam-quadranten-2",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 1,
+"familie": "quadranten",
+"sprosse": 2,
+"ab_klasse": 7,
+"nr": 6,
+"zw": {
+"frage": "In welchem Quadranten liegt $P(-3\\,|\\,8)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "I. Quadrant"
+},
+{
+"t": "II. Quadrant",
+"r": 1
+},
+{
+"t": "III. Quadrant"
+},
+{
+"t": "IV. Quadrant",
+"f": "x und y vertauscht gelesen"
+}
+],
+"loesung": "II. Quadrant – x negativ, y positiv",
+"id": "fam-quadranten-2",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 1,
+"familie": "quadranten",
+"sprosse": 2,
+"ab_klasse": 7
+}
+},
+{
+"frage": "Rechne $-6-4$.",
+"art": "zahl",
+"wert": "−10",
+"loesung": "$-6-4=-10$ – noch weiter nach links",
+"fehler": {
+"−2": "die Minus heben sich nicht auf – beide gehen nach links",
+"10": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6,
+"nr": 7,
+"zw": {
+"frage": "Rechne $-7-3$.",
+"art": "zahl",
+"wert": "−10",
+"loesung": "$-7-3=-10$ – noch weiter nach links",
+"fehler": {
+"−4": "die Minus heben sich nicht auf – beide gehen nach links",
+"10": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6
+}
+},
+{
+"frage": "Rechne $0:3$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null verteilt auf 3 ist null, denn $0\\cdot 3=0$",
+"fehler": {
+"3": "Teiler und Ergebnis vertauscht"
+},
+"id": "fam-null-2",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 2,
+"ab_klasse": 5,
+"nr": 8,
+"zw": {
+"frage": "Rechne $0:7$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null verteilt auf 7 ist null, denn $0\\cdot 7=0$",
+"fehler": {
+"7": "Teiler und Ergebnis vertauscht"
+},
+"id": "fam-null-2",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 2,
+"ab_klasse": 5
+}
+},
+{
+"frage": "In welchem Quadranten liegt $P(7\\,|\\,-7)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "I. Quadrant"
+},
+{
+"t": "II. Quadrant",
+"f": "x und y vertauscht gelesen"
+},
+{
+"t": "III. Quadrant"
+},
+{
+"t": "IV. Quadrant",
+"r": 1
+}
+],
+"loesung": "IV. Quadrant – x positiv, y negativ",
+"id": "fam-quadranten-2",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 1,
+"familie": "quadranten",
+"sprosse": 2,
+"ab_klasse": 7,
+"nr": 9,
+"zw": {
+"frage": "In welchem Quadranten liegt $P(-4\\,|\\,6)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "I. Quadrant"
+},
+{
+"t": "II. Quadrant",
+"r": 1
+},
+{
+"t": "III. Quadrant"
+},
+{
+"t": "IV. Quadrant",
+"f": "x und y vertauscht gelesen"
+}
+],
+"loesung": "II. Quadrant – x negativ, y positiv",
+"id": "fam-quadranten-2",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 1,
+"familie": "quadranten",
+"sprosse": 2,
+"ab_klasse": 7
+}
+},
+{
+"frage": "Rechne $7-(-4)$.",
+"art": "zahl",
+"wert": "11",
+"loesung": "$7-(-4)=7+4=11$",
+"fehler": {
+"3": "Minus vor der Klammer nicht beachtet: $-(-4)=+4$"
+},
+"id": "fam-vorzeichen-3",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 3,
+"ab_klasse": 7,
+"nr": 10,
+"zw": {
+"frage": "Rechne $7-(-6)$.",
+"art": "zahl",
+"wert": "13",
+"loesung": "$7-(-6)=7+6=13$",
+"fehler": {
+"1": "Minus vor der Klammer nicht beachtet: $-(-6)=+6$"
+},
+"id": "fam-vorzeichen-3",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 3,
+"ab_klasse": 7
+}
+},
+{
+"frage": "Was ist $3:0$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$0$",
+"f": "Verwechslung mit $0:3=0$"
+},
+{
+"t": "$3$",
+"f": "durch 0 ist nicht „bleibt gleich“"
+},
+{
+"t": "nicht definiert",
+"r": 1
+}
+],
+"loesung": "nicht definiert – keine Zahl mal $0$ ergibt $3$",
+"id": "fam-null-3",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 2,
+"familie": "null",
+"sprosse": 3,
+"ab_klasse": 6,
+"nr": 11,
+"zw": {
+"frage": "Was ist $5:0$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$0$",
+"f": "Verwechslung mit $0:5=0$"
+},
+{
+"t": "$5$",
+"f": "durch 0 ist nicht „bleibt gleich“"
+},
+{
+"t": "nicht definiert",
+"r": 1
+}
+],
+"loesung": "nicht definiert – keine Zahl mal $0$ ergibt $5$",
+"id": "fam-null-3",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 2,
+"familie": "null",
+"sprosse": 3,
+"ab_klasse": 6
+}
+},
+{
+"frage": "Wo liegt $P(6\\,|\\,0)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "auf der $x$-Achse",
+"r": 1
+},
+{
+"t": "auf der $y$-Achse",
+"f": "Achsen vertauscht: y = 0 heißt „auf der x-Achse“"
+},
+{
+"t": "im I. Quadranten",
+"f": "auf einer Achse liegt ein Punkt in keinem Quadranten"
+}
+],
+"loesung": "auf der x-Achse – y ist 0",
+"id": "fam-quadranten-3",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 2,
+"familie": "quadranten",
+"sprosse": 3,
+"ab_klasse": 7,
+"nr": 12,
+"zw": {
+"frage": "Wo liegt $P(2\\,|\\,0)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "auf der $x$-Achse",
+"r": 1
+},
+{
+"t": "auf der $y$-Achse",
+"f": "Achsen vertauscht: y = 0 heißt „auf der x-Achse“"
+},
+{
+"t": "im I. Quadranten",
+"f": "auf einer Achse liegt ein Punkt in keinem Quadranten"
+}
+],
+"loesung": "auf der x-Achse – y ist 0",
+"id": "fam-quadranten-3",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 2,
+"familie": "quadranten",
+"sprosse": 3,
+"ab_klasse": 7
+}
+},
+{
+"frage": "Rechne $-6-4$.",
+"art": "zahl",
+"wert": "−10",
+"loesung": "$-6-4=-10$ – noch weiter nach links",
+"fehler": {
+"−2": "die Minus heben sich nicht auf – beide gehen nach links",
+"10": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6,
+"nr": 13,
+"zw": {
+"frage": "Rechne $-4-7$.",
+"art": "zahl",
+"wert": "−11",
+"loesung": "$-4-7=-11$ – noch weiter nach links",
+"fehler": {
+"3": "die Minus heben sich nicht auf – beide gehen nach links",
+"11": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6
+}
+},
+{
+"frage": "Rechne $0:8$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null verteilt auf 8 ist null, denn $0\\cdot 8=0$",
+"fehler": {
+"8": "Teiler und Ergebnis vertauscht"
+},
+"id": "fam-null-2",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 2,
+"ab_klasse": 5,
+"nr": 14,
+"zw": {
+"frage": "Rechne $0:3$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null verteilt auf 3 ist null, denn $0\\cdot 3=0$",
+"fehler": {
+"3": "Teiler und Ergebnis vertauscht"
+},
+"id": "fam-null-2",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 2,
+"ab_klasse": 5
+}
+},
+{
+"frage": "Rechne $-3-4$.",
+"art": "zahl",
+"wert": "−7",
+"loesung": "$-3-4=-7$ – noch weiter nach links",
+"fehler": {
+"1": "die Minus heben sich nicht auf – beide gehen nach links",
+"7": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6,
+"nr": 15,
+"zw": {
+"frage": "Rechne $-9-6$.",
+"art": "zahl",
+"wert": "−15",
+"loesung": "$-9-6=-15$ – noch weiter nach links",
+"fehler": {
+"−3": "die Minus heben sich nicht auf – beide gehen nach links",
+"15": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6
+}
+}
+],
+"quellen": [
+{
+"quelle": "eigene Fragen (Skript familien.py)",
+"nr": [
+"1",
+"2",
+"3",
+"4",
+"5",
+"6",
+"7",
+"8",
+"9",
+"10",
+"11",
+"12",
+"13",
+"14",
+"15",
+"1z",
+"2z",
+"3z",
+"4z",
+"5z",
+"6z",
+"7z",
+"8z",
+"9z",
+"10z",
+"11z",
+"12z",
+"13z",
+"14z",
+"15z"
+]
+}
+]
+},
+{
+"fragen": [
+{
+"frage": "Rechne $3-4$.",
+"art": "zahl",
+"wert": "−1",
+"loesung": "$3-4=-1$ – von 3 aus 4 nach links",
+"fehler": {
+"1": "Vorzeichen vergessen: kleiner minus größer ist negativ",
+"7": "addiert statt subtrahiert"
+},
+"id": "fam-vorzeichen-1",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 1,
+"ab_klasse": 6,
+"nr": 1,
+"zw": {
+"frage": "Rechne $3-7$.",
+"art": "zahl",
+"wert": "−4",
+"loesung": "$3-7=-4$ – von 3 aus 7 nach links",
+"fehler": {
+"4": "Vorzeichen vergessen: kleiner minus größer ist negativ",
+"10": "addiert statt subtrahiert"
+},
+"id": "fam-vorzeichen-1",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 1,
+"ab_klasse": 6
+}
+},
+{
+"frage": "Rechne $5\\cdot 0$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null mal etwas ist null",
+"fehler": {
+"5": "mal 0 ist nicht „bleibt gleich“ – das ist mal 1"
+},
+"id": "fam-null-1",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 1,
+"ab_klasse": 5,
+"nr": 2,
+"zw": {
+"frage": "Rechne $0\\cdot 25$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null mal etwas ist null",
+"fehler": {
+"25": "mal 0 ist nicht „bleibt gleich“ – das ist mal 1"
+},
+"id": "fam-null-1",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 1,
+"ab_klasse": 5
+}
+},
+{
+"frage": "In welchem Quadranten liegt $P(-1\\,|\\,-2)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "I. Quadrant"
+},
+{
+"t": "II. Quadrant"
+},
+{
+"t": "III. Quadrant",
+"r": 1
+},
+{
+"t": "IV. Quadrant"
+}
+],
+"loesung": "III. Quadrant – x negativ, y negativ",
+"id": "fam-quadranten-1",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 1,
+"familie": "quadranten",
+"sprosse": 1,
+"ab_klasse": 7,
+"nr": 3,
+"zw": {
+"frage": "In welchem Quadranten liegt $P(6\\,|\\,5)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "I. Quadrant",
+"r": 1
+},
+{
+"t": "II. Quadrant"
+},
+{
+"t": "III. Quadrant"
+},
+{
+"t": "IV. Quadrant"
+}
+],
+"loesung": "I. Quadrant – x positiv, y positiv",
+"id": "fam-quadranten-1",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 1,
+"familie": "quadranten",
+"sprosse": 1,
+"ab_klasse": 7
+}
+},
+{
+"frage": "Rechne $-7-6$.",
+"art": "zahl",
+"wert": "−13",
+"loesung": "$-7-6=-13$ – noch weiter nach links",
+"fehler": {
+"−1": "die Minus heben sich nicht auf – beide gehen nach links",
+"13": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6,
+"nr": 4,
+"zw": {
+"frage": "Rechne $-6-9$.",
+"art": "zahl",
+"wert": "−15",
+"loesung": "$-6-9=-15$ – noch weiter nach links",
+"fehler": {
+"3": "die Minus heben sich nicht auf – beide gehen nach links",
+"15": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6
+}
+},
+{
+"frage": "Rechne $0:5$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null verteilt auf 5 ist null, denn $0\\cdot 5=0$",
+"fehler": {
+"5": "Teiler und Ergebnis vertauscht"
+},
+"id": "fam-null-2",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 2,
+"ab_klasse": 5,
+"nr": 5,
+"zw": {
+"frage": "Rechne $0:7$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null verteilt auf 7 ist null, denn $0\\cdot 7=0$",
+"fehler": {
+"7": "Teiler und Ergebnis vertauscht"
+},
+"id": "fam-null-2",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 2,
+"ab_klasse": 5
+}
+},
+{
+"frage": "In welchem Quadranten liegt $P(-4\\,|\\,5)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "I. Quadrant"
+},
+{
+"t": "II. Quadrant",
+"r": 1
+},
+{
+"t": "III. Quadrant"
+},
+{
+"t": "IV. Quadrant",
+"f": "x und y vertauscht gelesen"
+}
+],
+"loesung": "II. Quadrant – x negativ, y positiv",
+"id": "fam-quadranten-2",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 1,
+"familie": "quadranten",
+"sprosse": 2,
+"ab_klasse": 7,
+"nr": 6,
+"zw": {
+"frage": "In welchem Quadranten liegt $P(-4\\,|\\,8)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "I. Quadrant"
+},
+{
+"t": "II. Quadrant",
+"r": 1
+},
+{
+"t": "III. Quadrant"
+},
+{
+"t": "IV. Quadrant",
+"f": "x und y vertauscht gelesen"
+}
+],
+"loesung": "II. Quadrant – x negativ, y positiv",
+"id": "fam-quadranten-2",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 1,
+"familie": "quadranten",
+"sprosse": 2,
+"ab_klasse": 7
+}
+},
+{
+"frage": "Rechne $-9-2$.",
+"art": "zahl",
+"wert": "−11",
+"loesung": "$-9-2=-11$ – noch weiter nach links",
+"fehler": {
+"−7": "die Minus heben sich nicht auf – beide gehen nach links",
+"11": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6,
+"nr": 7,
+"zw": {
+"frage": "Rechne $-2-4$.",
+"art": "zahl",
+"wert": "−6",
+"loesung": "$-2-4=-6$ – noch weiter nach links",
+"fehler": {
+"2": "die Minus heben sich nicht auf – beide gehen nach links",
+"6": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6
+}
+},
+{
+"frage": "Rechne $0:9$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null verteilt auf 9 ist null, denn $0\\cdot 9=0$",
+"fehler": {
+"9": "Teiler und Ergebnis vertauscht"
+},
+"id": "fam-null-2",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 2,
+"ab_klasse": 5,
+"nr": 8,
+"zw": {
+"frage": "Rechne $0:7$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null verteilt auf 7 ist null, denn $0\\cdot 7=0$",
+"fehler": {
+"7": "Teiler und Ergebnis vertauscht"
+},
+"id": "fam-null-2",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 2,
+"ab_klasse": 5
+}
+},
+{
+"frage": "In welchem Quadranten liegt $P(8\\,|\\,-6)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "I. Quadrant"
+},
+{
+"t": "II. Quadrant",
+"f": "x und y vertauscht gelesen"
+},
+{
+"t": "III. Quadrant"
+},
+{
+"t": "IV. Quadrant",
+"r": 1
+}
+],
+"loesung": "IV. Quadrant – x positiv, y negativ",
+"id": "fam-quadranten-2",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 1,
+"familie": "quadranten",
+"sprosse": 2,
+"ab_klasse": 7,
+"nr": 9,
+"zw": {
+"frage": "In welchem Quadranten liegt $P(4\\,|\\,-2)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "I. Quadrant"
+},
+{
+"t": "II. Quadrant",
+"f": "x und y vertauscht gelesen"
+},
+{
+"t": "III. Quadrant"
+},
+{
+"t": "IV. Quadrant",
+"r": 1
+}
+],
+"loesung": "IV. Quadrant – x positiv, y negativ",
+"id": "fam-quadranten-2",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 1,
+"familie": "quadranten",
+"sprosse": 2,
+"ab_klasse": 7
+}
+},
+{
+"frage": "Rechne $7-(-4)$.",
+"art": "zahl",
+"wert": "11",
+"loesung": "$7-(-4)=7+4=11$",
+"fehler": {
+"3": "Minus vor der Klammer nicht beachtet: $-(-4)=+4$"
+},
+"id": "fam-vorzeichen-3",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 3,
+"ab_klasse": 7,
+"nr": 10,
+"zw": {
+"frage": "Rechne $2-(-5)$.",
+"art": "zahl",
+"wert": "7",
+"loesung": "$2-(-5)=2+5=7$",
+"fehler": {
+"−3": "Minus vor der Klammer nicht beachtet: $-(-5)=+5$"
+},
+"id": "fam-vorzeichen-3",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 3,
+"ab_klasse": 7
+}
+},
+{
+"frage": "Was ist $25:0$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$0$",
+"f": "Verwechslung mit $0:25=0$"
+},
+{
+"t": "$25$",
+"f": "durch 0 ist nicht „bleibt gleich“"
+},
+{
+"t": "nicht definiert",
+"r": 1
+}
+],
+"loesung": "nicht definiert – keine Zahl mal $0$ ergibt $25$",
+"id": "fam-null-3",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 2,
+"familie": "null",
+"sprosse": 3,
+"ab_klasse": 6,
+"nr": 11,
+"zw": {
+"frage": "Was ist $5:0$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$0$",
+"f": "Verwechslung mit $0:5=0$"
+},
+{
+"t": "$5$",
+"f": "durch 0 ist nicht „bleibt gleich“"
+},
+{
+"t": "nicht definiert",
+"r": 1
+}
+],
+"loesung": "nicht definiert – keine Zahl mal $0$ ergibt $5$",
+"id": "fam-null-3",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 2,
+"familie": "null",
+"sprosse": 3,
+"ab_klasse": 6
+}
+},
+{
+"frage": "Wo liegt $P(-1\\,|\\,0)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "auf der $x$-Achse",
+"r": 1
+},
+{
+"t": "auf der $y$-Achse",
+"f": "Achsen vertauscht: y = 0 heißt „auf der x-Achse“"
+},
+{
+"t": "im II. Quadranten",
+"f": "auf einer Achse liegt ein Punkt in keinem Quadranten"
+}
+],
+"loesung": "auf der x-Achse – y ist 0",
+"id": "fam-quadranten-3",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 2,
+"familie": "quadranten",
+"sprosse": 3,
+"ab_klasse": 7,
+"nr": 12,
+"zw": {
+"frage": "Wo liegt $P(0\\,|\\,-3)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "auf der $x$-Achse",
+"f": "Achsen vertauscht: x = 0 heißt „auf der y-Achse“"
+},
+{
+"t": "auf der $y$-Achse",
+"r": 1
+},
+{
+"t": "im III. Quadranten",
+"f": "auf einer Achse liegt ein Punkt in keinem Quadranten"
+}
+],
+"loesung": "auf der y-Achse – x ist 0",
+"id": "fam-quadranten-3",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 2,
+"familie": "quadranten",
+"sprosse": 3,
+"ab_klasse": 7
+}
+},
+{
+"frage": "Rechne $-4-5$.",
+"art": "zahl",
+"wert": "−9",
+"loesung": "$-4-5=-9$ – noch weiter nach links",
+"fehler": {
+"1": "die Minus heben sich nicht auf – beide gehen nach links",
+"9": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6,
+"nr": 13,
+"zw": {
+"frage": "Rechne $-3-2$.",
+"art": "zahl",
+"wert": "−5",
+"loesung": "$-3-2=-5$ – noch weiter nach links",
+"fehler": {
+"−1": "die Minus heben sich nicht auf – beide gehen nach links",
+"5": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6
+}
+},
+{
+"frage": "Rechne $0:7$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null verteilt auf 7 ist null, denn $0\\cdot 7=0$",
+"fehler": {
+"7": "Teiler und Ergebnis vertauscht"
+},
+"id": "fam-null-2",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 2,
+"ab_klasse": 5,
+"nr": 14,
+"zw": {
+"frage": "Rechne $0:12$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null verteilt auf 12 ist null, denn $0\\cdot 12=0$",
+"fehler": {
+"12": "Teiler und Ergebnis vertauscht"
+},
+"id": "fam-null-2",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 2,
+"ab_klasse": 5
+}
+},
+{
+"frage": "Rechne $-7-3$.",
+"art": "zahl",
+"wert": "−10",
+"loesung": "$-7-3=-10$ – noch weiter nach links",
+"fehler": {
+"−4": "die Minus heben sich nicht auf – beide gehen nach links",
+"10": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6,
+"nr": 15,
+"zw": {
+"frage": "Rechne $-5-2$.",
+"art": "zahl",
+"wert": "−7",
+"loesung": "$-5-2=-7$ – noch weiter nach links",
+"fehler": {
+"−3": "die Minus heben sich nicht auf – beide gehen nach links",
+"7": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6
+}
+}
+],
+"quellen": [
+{
+"quelle": "eigene Fragen (Skript familien.py)",
+"nr": [
+"1",
+"2",
+"3",
+"4",
+"5",
+"6",
+"7",
+"8",
+"9",
+"10",
+"11",
+"12",
+"13",
+"14",
+"15",
+"1z",
+"2z",
+"3z",
+"4z",
+"5z",
+"6z",
+"7z",
+"8z",
+"9z",
+"10z",
+"11z",
+"12z",
+"13z",
+"14z",
+"15z"
+]
+}
+]
+},
+{
+"fragen": [
+{
+"frage": "Rechne $2-7$.",
+"art": "zahl",
+"wert": "−5",
+"loesung": "$2-7=-5$ – von 2 aus 7 nach links",
+"fehler": {
+"5": "Vorzeichen vergessen: kleiner minus größer ist negativ",
+"9": "addiert statt subtrahiert"
+},
+"id": "fam-vorzeichen-1",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 1,
+"ab_klasse": 6,
+"nr": 1,
+"zw": {
+"frage": "Rechne $4-9$.",
+"art": "zahl",
+"wert": "−5",
+"loesung": "$4-9=-5$ – von 4 aus 9 nach links",
+"fehler": {
+"5": "Vorzeichen vergessen: kleiner minus größer ist negativ",
+"13": "addiert statt subtrahiert"
+},
+"id": "fam-vorzeichen-1",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 1,
+"ab_klasse": 6
+}
+},
+{
+"frage": "Rechne $0\\cdot 12$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null mal etwas ist null",
+"fehler": {
+"12": "mal 0 ist nicht „bleibt gleich“ – das ist mal 1"
+},
+"id": "fam-null-1",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 1,
+"ab_klasse": 5,
+"nr": 2,
+"zw": {
+"frage": "Rechne $0\\cdot 25$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null mal etwas ist null",
+"fehler": {
+"25": "mal 0 ist nicht „bleibt gleich“ – das ist mal 1"
+},
+"id": "fam-null-1",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 1,
+"ab_klasse": 5
+}
+},
+{
+"frage": "In welchem Quadranten liegt $P(3\\,|\\,8)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "I. Quadrant",
+"r": 1
+},
+{
+"t": "II. Quadrant"
+},
+{
+"t": "III. Quadrant"
+},
+{
+"t": "IV. Quadrant"
+}
+],
+"loesung": "I. Quadrant – x positiv, y positiv",
+"id": "fam-quadranten-1",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 1,
+"familie": "quadranten",
+"sprosse": 1,
+"ab_klasse": 7,
+"nr": 3,
+"zw": {
+"frage": "In welchem Quadranten liegt $P(-5\\,|\\,-5)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "I. Quadrant"
+},
+{
+"t": "II. Quadrant"
+},
+{
+"t": "III. Quadrant",
+"r": 1
+},
+{
+"t": "IV. Quadrant"
+}
+],
+"loesung": "III. Quadrant – x negativ, y negativ",
+"id": "fam-quadranten-1",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 1,
+"familie": "quadranten",
+"sprosse": 1,
+"ab_klasse": 7
+}
+},
+{
+"frage": "Rechne $-2-4$.",
+"art": "zahl",
+"wert": "−6",
+"loesung": "$-2-4=-6$ – noch weiter nach links",
+"fehler": {
+"2": "die Minus heben sich nicht auf – beide gehen nach links",
+"6": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6,
+"nr": 4,
+"zw": {
+"frage": "Rechne $-6-7$.",
+"art": "zahl",
+"wert": "−13",
+"loesung": "$-6-7=-13$ – noch weiter nach links",
+"fehler": {
+"1": "die Minus heben sich nicht auf – beide gehen nach links",
+"13": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6
+}
+},
+{
+"frage": "Rechne $0:25$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null verteilt auf 25 ist null, denn $0\\cdot 25=0$",
+"fehler": {
+"25": "Teiler und Ergebnis vertauscht"
+},
+"id": "fam-null-2",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 2,
+"ab_klasse": 5,
+"nr": 5,
+"zw": {
+"frage": "Rechne $0:5$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null verteilt auf 5 ist null, denn $0\\cdot 5=0$",
+"fehler": {
+"5": "Teiler und Ergebnis vertauscht"
+},
+"id": "fam-null-2",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 2,
+"ab_klasse": 5
+}
+},
+{
+"frage": "In welchem Quadranten liegt $P(6\\,|\\,-2)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "I. Quadrant"
+},
+{
+"t": "II. Quadrant",
+"f": "x und y vertauscht gelesen"
+},
+{
+"t": "III. Quadrant"
+},
+{
+"t": "IV. Quadrant",
+"r": 1
+}
+],
+"loesung": "IV. Quadrant – x positiv, y negativ",
+"id": "fam-quadranten-2",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 1,
+"familie": "quadranten",
+"sprosse": 2,
+"ab_klasse": 7,
+"nr": 6,
+"zw": {
+"frage": "In welchem Quadranten liegt $P(-8\\,|\\,4)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "I. Quadrant"
+},
+{
+"t": "II. Quadrant",
+"r": 1
+},
+{
+"t": "III. Quadrant"
+},
+{
+"t": "IV. Quadrant",
+"f": "x und y vertauscht gelesen"
+}
+],
+"loesung": "II. Quadrant – x negativ, y positiv",
+"id": "fam-quadranten-2",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 1,
+"familie": "quadranten",
+"sprosse": 2,
+"ab_klasse": 7
+}
+},
+{
+"frage": "Rechne $-9-5$.",
+"art": "zahl",
+"wert": "−14",
+"loesung": "$-9-5=-14$ – noch weiter nach links",
+"fehler": {
+"−4": "die Minus heben sich nicht auf – beide gehen nach links",
+"14": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6,
+"nr": 7,
+"zw": {
+"frage": "Rechne $-8-3$.",
+"art": "zahl",
+"wert": "−11",
+"loesung": "$-8-3=-11$ – noch weiter nach links",
+"fehler": {
+"−5": "die Minus heben sich nicht auf – beide gehen nach links",
+"11": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6
+}
+},
+{
+"frage": "Rechne $0:15$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null verteilt auf 15 ist null, denn $0\\cdot 15=0$",
+"fehler": {
+"15": "Teiler und Ergebnis vertauscht"
+},
+"id": "fam-null-2",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 2,
+"ab_klasse": 5,
+"nr": 8,
+"zw": {
+"frage": "Rechne $0:12$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null verteilt auf 12 ist null, denn $0\\cdot 12=0$",
+"fehler": {
+"12": "Teiler und Ergebnis vertauscht"
+},
+"id": "fam-null-2",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 2,
+"ab_klasse": 5
+}
+},
+{
+"frage": "In welchem Quadranten liegt $P(7\\,|\\,-2)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "I. Quadrant"
+},
+{
+"t": "II. Quadrant",
+"f": "x und y vertauscht gelesen"
+},
+{
+"t": "III. Quadrant"
+},
+{
+"t": "IV. Quadrant",
+"r": 1
+}
+],
+"loesung": "IV. Quadrant – x positiv, y negativ",
+"id": "fam-quadranten-2",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 1,
+"familie": "quadranten",
+"sprosse": 2,
+"ab_klasse": 7,
+"nr": 9,
+"zw": {
+"frage": "In welchem Quadranten liegt $P(-4\\,|\\,8)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "I. Quadrant"
+},
+{
+"t": "II. Quadrant",
+"r": 1
+},
+{
+"t": "III. Quadrant"
+},
+{
+"t": "IV. Quadrant",
+"f": "x und y vertauscht gelesen"
+}
+],
+"loesung": "II. Quadrant – x negativ, y positiv",
+"id": "fam-quadranten-2",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 1,
+"familie": "quadranten",
+"sprosse": 2,
+"ab_klasse": 7
+}
+},
+{
+"frage": "Rechne $7-(-2)$.",
+"art": "zahl",
+"wert": "9",
+"loesung": "$7-(-2)=7+2=9$",
+"fehler": {
+"5": "Minus vor der Klammer nicht beachtet: $-(-2)=+2$"
+},
+"id": "fam-vorzeichen-3",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 3,
+"ab_klasse": 7,
+"nr": 10,
+"zw": {
+"frage": "Rechne $5-(-6)$.",
+"art": "zahl",
+"wert": "11",
+"loesung": "$5-(-6)=5+6=11$",
+"fehler": {
+"−1": "Minus vor der Klammer nicht beachtet: $-(-6)=+6$"
+},
+"id": "fam-vorzeichen-3",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 2,
+"familie": "vorzeichen",
+"sprosse": 3,
+"ab_klasse": 7
+}
+},
+{
+"frage": "Was ist $6:0$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$0$",
+"f": "Verwechslung mit $0:6=0$"
+},
+{
+"t": "$6$",
+"f": "durch 0 ist nicht „bleibt gleich“"
+},
+{
+"t": "nicht definiert",
+"r": 1
+}
+],
+"loesung": "nicht definiert – keine Zahl mal $0$ ergibt $6$",
+"id": "fam-null-3",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 2,
+"familie": "null",
+"sprosse": 3,
+"ab_klasse": 6,
+"nr": 11,
+"zw": {
+"frage": "Was ist $12:0$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "$0$",
+"f": "Verwechslung mit $0:12=0$"
+},
+{
+"t": "$12$",
+"f": "durch 0 ist nicht „bleibt gleich“"
+},
+{
+"t": "nicht definiert",
+"r": 1
+}
+],
+"loesung": "nicht definiert – keine Zahl mal $0$ ergibt $12$",
+"id": "fam-null-3",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 2,
+"familie": "null",
+"sprosse": 3,
+"ab_klasse": 6
+}
+},
+{
+"frage": "Wo liegt $P(4\\,|\\,0)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "auf der $x$-Achse",
+"r": 1
+},
+{
+"t": "auf der $y$-Achse",
+"f": "Achsen vertauscht: y = 0 heißt „auf der x-Achse“"
+},
+{
+"t": "im I. Quadranten",
+"f": "auf einer Achse liegt ein Punkt in keinem Quadranten"
+}
+],
+"loesung": "auf der x-Achse – y ist 0",
+"id": "fam-quadranten-3",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 2,
+"familie": "quadranten",
+"sprosse": 3,
+"ab_klasse": 7,
+"nr": 12,
+"zw": {
+"frage": "Wo liegt $P(0\\,|\\,4)$?",
+"art": "auswahl",
+"optionen": [
+{
+"t": "auf der $x$-Achse",
+"f": "Achsen vertauscht: x = 0 heißt „auf der y-Achse“"
+},
+{
+"t": "auf der $y$-Achse",
+"r": 1
+},
+{
+"t": "im I. Quadranten",
+"f": "auf einer Achse liegt ein Punkt in keinem Quadranten"
+}
+],
+"loesung": "auf der y-Achse – x ist 0",
+"id": "fam-quadranten-3",
+"thema": "Quadranten im Koordinatensystem",
+"einheit": "",
+"schwere": 2,
+"familie": "quadranten",
+"sprosse": 3,
+"ab_klasse": 7
+}
+},
+{
+"frage": "Rechne $-8-5$.",
+"art": "zahl",
+"wert": "−13",
+"loesung": "$-8-5=-13$ – noch weiter nach links",
+"fehler": {
+"−3": "die Minus heben sich nicht auf – beide gehen nach links",
+"13": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6,
+"nr": 13,
+"zw": {
+"frage": "Rechne $-5-6$.",
+"art": "zahl",
+"wert": "−11",
+"loesung": "$-5-6=-11$ – noch weiter nach links",
+"fehler": {
+"1": "die Minus heben sich nicht auf – beide gehen nach links",
+"11": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6
+}
+},
+{
+"frage": "Rechne $0:8$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null verteilt auf 8 ist null, denn $0\\cdot 8=0$",
+"fehler": {
+"8": "Teiler und Ergebnis vertauscht"
+},
+"id": "fam-null-2",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 2,
+"ab_klasse": 5,
+"nr": 14,
+"zw": {
+"frage": "Rechne $0:9$.",
+"art": "zahl",
+"wert": "0",
+"loesung": "$0$ – null verteilt auf 9 ist null, denn $0\\cdot 9=0$",
+"fehler": {
+"9": "Teiler und Ergebnis vertauscht"
+},
+"id": "fam-null-2",
+"thema": "Rechnen mit Null",
+"einheit": "",
+"schwere": 1,
+"familie": "null",
+"sprosse": 2,
+"ab_klasse": 5
+}
+},
+{
+"frage": "Rechne $-6-7$.",
+"art": "zahl",
+"wert": "−13",
+"loesung": "$-6-7=-13$ – noch weiter nach links",
+"fehler": {
+"1": "die Minus heben sich nicht auf – beide gehen nach links",
+"13": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6,
+"nr": 15,
+"zw": {
+"frage": "Rechne $-6-3$.",
+"art": "zahl",
+"wert": "−9",
+"loesung": "$-6-3=-9$ – noch weiter nach links",
+"fehler": {
+"−3": "die Minus heben sich nicht auf – beide gehen nach links",
+"9": "Vorzeichen verloren"
+},
+"id": "fam-vorzeichen-2",
+"thema": "Vorzeichen und Minus vor der Klammer",
+"einheit": "",
+"schwere": 1,
+"familie": "vorzeichen",
+"sprosse": 2,
+"ab_klasse": 6
+}
+}
+],
+"quellen": [
+{
+"quelle": "eigene Fragen (Skript familien.py)",
+"nr": [
+"1",
+"2",
+"3",
+"4",
+"5",
+"6",
+"7",
+"8",
+"9",
+"10",
+"11",
+"12",
+"13",
+"14",
+"15",
+"1z",
+"2z",
+"3z",
+"4z",
+"5z",
+"6z",
+"7z",
+"8z",
+"9z",
+"10z",
+"11z",
+"12z",
+"13z",
+"14z",
+"15z"
+]
+}
+]
+}
+]
+}
