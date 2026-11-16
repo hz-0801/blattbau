@@ -29,7 +29,7 @@ Schluss") – ohne
 Zusatz baust du den Regelfall. Eine Zeile vor
 dem Bau: Eintrag, Einheiten, was du ergänzt hast.
 
-Name: Der Lehrer nennt am Anfang des Chats einen Schüler („Nr. 5“);
+Name: Der Lehrer nennt am Anfang des Chats einen Schüler („<Name>“);
 er gilt für jedes Blatt dieses Chats, bis ein anderer Name fällt.
 Lies seine Zeile in schueler.md (Repo aufgabenbank-privat): Nummer
 (Nr. 5 → S05), Klasse, Schulform, Kurs, Prüfung. Schulform

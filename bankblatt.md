@@ -43,12 +43,12 @@ kann oder wann welches Blatt passt, zeig diese Tabelle und sonst nichts.
 
 | Bestellung | Blatt | Wofür |
 |---|---|---|
-| `Nr. 12 Test` | 5-Minuten-Test, querbeet aus dem Grundwissen, mit QR | Stundenanfang |
-| `Nr. 12 Test Scheitelpunktform` | 5-Minuten-Test zu einem Thema (Regeln, kleine Beispiele), mit QR | Stundenanfang, Thema läuft schon; in der Oberstufe besser immer mit Thema |
-| `Nr. 12 Scheitelpunktform` | Alltagsblatt: erst eine, höchstens zwei Seiten, die der Schüler schafft; die nächste liegt auf „weiter“ bereit (s. „Weg planen, in Stücken liefern“); mit QR; ohne Beispiel und Kasten (nur mit dem Zusatz „mit Beispiel“) | ein Thema üben |
-| `Nr. 12 weiter` / `… mehr` / `… schwerer` | die bereitliegende nächste Seite / noch eine Seite auf derselben Stufe / Stufen überspringen | Thema fortsetzen |
-| `Nr. 2 P10 Pythagoras`, `… Kapitel`, `… Original 2023` | Prüfungsblatt aus Originalaufgaben (noch ohne QR) | Prüfungsvorbereitung |
-| `Nr. 2 Basiszettel`, `… Basiszettel 2022` | zehn Basisaufgaben wie P10 Aufgabe 1 (eigene Aufgaben nach einem Jahrgang), mit QR | Stundenanfang Klasse 10 |
+| `<Name> Test` | 5-Minuten-Test, querbeet aus dem Grundwissen, mit QR | Stundenanfang |
+| `<Name> Test Scheitelpunktform` | 5-Minuten-Test zu einem Thema (Regeln, kleine Beispiele), mit QR | Stundenanfang, Thema läuft schon; in der Oberstufe besser immer mit Thema |
+| `<Name> Scheitelpunktform` | Alltagsblatt: erst eine, höchstens zwei Seiten, die der Schüler schafft; die nächste liegt auf „weiter“ bereit (s. „Weg planen, in Stücken liefern“); mit QR; ohne Beispiel und Kasten (nur mit dem Zusatz „mit Beispiel“) | ein Thema üben |
+| `<Name> weiter` / `… mehr` / `… schwerer` | die bereitliegende nächste Seite / noch eine Seite auf derselben Stufe / Stufen überspringen | Thema fortsetzen |
+| `<Name> P10 Pythagoras`, `… Kapitel`, `… Original 2023` | Prüfungsblatt aus Originalaufgaben (noch ohne QR) | Prüfungsvorbereitung |
+| `<Name> Basiszettel`, `… Basiszettel 2022` | zehn Basisaufgaben wie P10 Aufgabe 1 (eigene Aufgaben nach einem Jahrgang), mit QR | Stundenanfang Klasse 10 |
 
 ## Sperre
 
@@ -123,7 +123,7 @@ Bestellung mit „Basiszettel“ (auch „Basis“, „Basisaufgaben“), wahlwe
    Seite. Schick `schueler_pdf`; `lehrer_pdf` (Seite 2 sind die Lösungen) nur auf Nachfrage (Register 14.11.29).
 3. `befehl_liefern` mit dem Namen ausführen (Lieferzeile – sonst kommt derselbe Zettel wieder).
 
-**Nachblatt** nur auf Bestellung („Nr. 1 Nachblatt“): TOML nach aufgabenbank `bau/zettel/nachblatt/nach-1-bas-n01.toml`
+**Nachblatt** nur auf Bestellung („<Name> Nachblatt“): TOML nach aufgabenbank `bau/zettel/nachblatt/nach-1-bas-n01.toml`
 (`art = "nachblatt"`, je Nummer `zu = "<Platz>"`, leichter), setzen mit `basiszettel-satz.py … --qr …`, liefern wie ein Blatt.
 Sonst kommen Fehler aus dem Zettel als Wiederholung vorne ans nächste Blatt (Abschnitt „Fehler wiederholen“).
 
@@ -155,7 +155,7 @@ Grenze – keine feste Seitenzahl: eine Seite, wo sie reicht, zwei, wo das Thema
 
 1. **Erste Bestellung zu einem Thema:** Schreib zuerst das Gerüst – fünf bis acht Stationen, je eine Zeile: was neu dazukommt,
    wie schwer, welche Form (rechnen, ablesen, zeichnen, „Stimmt das?“, Sache). Hat der Schüler ein Buch in aufgabenbank-privat
-   `buecher/` (Liste oben in `buecher/README.md`, Register unter seinem Vornamen, z. B. `buecher/fundamente10`), richte die
+   `buecher/` (Liste oben in `buecher/README.md`, Register unter seinem Vornamen, z. B. `buecher/<vorname>`), richte die
    Stationen an dessen Folge aus (`werkzeuge/buchregister.py aufbau`) und nenne je Station die Buchseiten. Ablage: aufgabenbank-privat `lieferungen/wege/<JJJJ-MM-TT>-<vorname>-<stichwort>.md`. Nimm dir dafür
    die Zeit, die ein guter Weg braucht – das Gerüst entscheidet über alle Seiten; Layout und Zahlen gehören nicht hinein.
 2. **Seite 1 sofort:** Station 1 (wenn sie sehr kurz ist, mit Station 2) als ein Blatt nach „Bauen“, zugeschnitten auf eine,
@@ -250,10 +250,10 @@ Werkstatt arbeitet es ein und hebt die Sperre auf. Nichts am Blatt selbst änder
 - Kein Bedientext, keine Erklärung des Wegs, keine Liste der Befehle, keine Zeile `vorrat`.
 - Jedes PDF geht unter seinem Kartennamen in den Chat, nie unter dem Ablagenamen: aus aufgabenbank
   `python3 werkzeuge/karte.py --name <Vorname> --sache "<Sache>" --datei <pdf> [--loesung]` – schick die Datei, deren Pfad
-  es ausgibt („Nr. 4 5-Minuten-Test 11.11.26.pdf“, „Nr. 8 Biquadratische Gleichungen Lösung 11.11.26.pdf“). Sache, ohne
+  es ausgibt („<Name> 5-Minuten-Test 11.11.26.pdf“, „<Name> Biquadratische Gleichungen Lösung 11.11.26.pdf“). Sache, ohne
   Namen, Substantive groß: „5-Minuten-Test“, „5-Minuten-Test Quadratische Gleichungen“, das Thema des Blatts,
   „Basis 2026 A“ (Jahrgang und Buchstabe aus dem Titel des Zettels), „P10 Pythagoras“ (feste Wörter, Lehrer 11.11., vorläufig);
-  die Lösung dazu mit `--loesung` und derselben Sache. Den Kartennamen schreibst du nie von Hand und änderst ihn nicht – auch nicht für eine zweite Sendung am Ende der Antwort; du schickst immer genau die Datei, deren Pfad karte.py ausgibt (Lehrer 12.11.: Karten kamen als „Nr. 4 basis 2026 a“, klein und ohne Skript; seitdem setzt karte.py die Großschreibung selbst). Hält das Skript an, behebe die Sache, schick nichts unter anderem Namen
+  die Lösung dazu mit `--loesung` und derselben Sache. Den Kartennamen schreibst du nie von Hand und änderst ihn nicht – auch nicht für eine zweite Sendung am Ende der Antwort; du schickst immer genau die Datei, deren Pfad karte.py ausgibt (Lehrer 12.11.: Karten kamen als „<Name> basis 2026 a“, klein und ohne Skript; seitdem setzt karte.py die Großschreibung selbst). Hält das Skript an, behebe die Sache, schick nichts unter anderem Namen
   (Register 11.11.5, Lehrer 11.11.: Name groß vorn, kein „QR“, kein Zähler). Abgelegt und in die Lieferliste eingetragen
   wird weiter unter dem Ablagenamen.
 - Jede Dateikarte schickst du als reine Download-Karte (`SendUserFile` mit `display: "attach"`), nie als Vorschau: Die

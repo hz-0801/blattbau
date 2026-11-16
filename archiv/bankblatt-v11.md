@@ -25,12 +25,12 @@ kann oder wann welches Blatt passt, zeig diese Tabelle und sonst nichts.
 
 | Bestellung | Blatt | Wofür |
 |---|---|---|
-| `Nr. 12 Test` | 5-Minuten-Test, querbeet aus dem Grundwissen, mit QR | Stundenanfang |
-| `Nr. 12 Test Scheitelpunktform` | 5-Minuten-Test zu einem Thema (Regeln, kleine Beispiele), mit QR | Stundenanfang, Thema läuft schon |
-| `Nr. 12 Scheitelpunktform` | Alltagsblatt: Beispiel, Päckchen, Steigerung, 2–4 Seiten, mit QR | ein Thema üben |
-| `Nr. 12 weiter` / `… mehr` | nächster Abschnitt / noch ein Blatt zum selben Abschnitt | Thema fortsetzen |
-| `Nr. 2 P10 Pythagoras`, `… Kapitel`, `… Original 2023` | Prüfungsblatt aus Originalaufgaben (noch ohne QR) | Prüfungsvorbereitung |
-| `Nr. 2 Basiszettel` | Basisaufgaben wie P10 Teil 1 | derzeit gesperrt, wird überarbeitet |
+| `<Name> Test` | 5-Minuten-Test, querbeet aus dem Grundwissen, mit QR | Stundenanfang |
+| `<Name> Test Scheitelpunktform` | 5-Minuten-Test zu einem Thema (Regeln, kleine Beispiele), mit QR | Stundenanfang, Thema läuft schon |
+| `<Name> Scheitelpunktform` | Alltagsblatt: Beispiel, Päckchen, Steigerung, 2–4 Seiten, mit QR | ein Thema üben |
+| `<Name> weiter` / `… mehr` | nächster Abschnitt / noch ein Blatt zum selben Abschnitt | Thema fortsetzen |
+| `<Name> P10 Pythagoras`, `… Kapitel`, `… Original 2023` | Prüfungsblatt aus Originalaufgaben (noch ohne QR) | Prüfungsvorbereitung |
+| `<Name> Basiszettel` | Basisaufgaben wie P10 Teil 1 | derzeit gesperrt, wird überarbeitet |
 
 ## Sperre
 
