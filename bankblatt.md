@@ -1,4 +1,4 @@
-# Blatt bestellen – v13f (17.11.2026)
+# Blatt bestellen – v13g (17.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -323,7 +323,7 @@ Werkstatt arbeitet es ein und hebt die Sperre auf. Nichts am Blatt selbst änder
   zur Verfügung gestellt“; globale Anweisung „Signalwort“). Die Karten zählen nicht zu den drei Zeilen.
 - Nach jeder Antwort, in der etwas geliefert, verworfen oder als ausgegeben eingetragen wurde, veröffentlichst du die
   Tagesseite „Unterricht“ neu (Register 14.11.28, 15.11.1; Lehrer 15.11.: Link statt Datei): im Ordner aufgabenbank-privat
-  `git pull -q --rebase && mkdir -p $HOME/seite && python3 werkzeuge/tagesseite.py $HOME/seite/index.html` (der Pull holt Änderungen der Werkstatt an der Seite), dann mit dem Artifact-Werkzeug
+  `git pull -q --rebase && mkdir -p /home/claude/seite && python3 werkzeuge/tagesseite.py /home/claude/seite/index.html` (nicht `$HOME`: `publish_files` nimmt nur Dateien unter dem Arbeitsordner, Mitschrift 17.11.) (der Pull holt Änderungen der Werkstatt an der Seite), dann mit dem Artifact-Werkzeug
   `get_artifact` für den Slug `1045875a-1a44-4382-9087-1fa1b739aa52` (gibt `version`) und `publish_files` mit diesem Slug,
   `base_version` = `version`, `files` = die JSON-Liste aus der ersten Ausgabezeile des Skripts (index.html und die PDFs
   des Tages als `pdf/<kurz>.pdf`; „Heute erstellt“ verlinkt sie). Die Karten im Chat bleiben (Lehrer 16.11.). Keine Dateikarte, kein
