@@ -1,4 +1,4 @@
-# Blatt bestellen – v13k (17.11.2026)
+# Blatt bestellen – v13l (17.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -115,9 +115,6 @@ Am 17.11. hat der Lehrer vorsorglich bestellt und dann umbestellt, weil den Sch�
   Bau daraus ein kurzes Stück – höchstens eine halbe Seite, einfachste Zahlen, je genannter Punkt eine Aufgabe, mit QR – und nenn
   in der Lieferzeile „Einstieg“. Nennt `detail` eine Web-App, geht nur ihr QR-Zettel raus. Fehlt der Eintrag, sag es in einer Zeile.
   Warum – was am Tisch dran war, „muss aufgegriffen werden und am Anfang auf jeden Fall auch wiederholt“ (Lehrer 17.11. W58).
-- **Erst sicher, dann tiefer (Richtung, Sek I).** Auch bei Wiederholtem zuerst einfachste Aufgaben, die nur die zwei, drei nötigen
-  Handgriffe zeigen (Hypotenuse erkennen, Pythagoras aufstellen, umstellen oder nur die Wurzel ziehen), danach wenige Sachaufgaben;
-  nicht in die Tiefe, bevor das sitzt (Lehrer 17.11. W58 am Beispiel Nr. 2).
 - **Warm-up nur auf Bestellung.** Du bietest keines an und legst keines dazu. Bestellt der Lehrer eines, gilt „5-Minuten-Test“.
   Warum – der Vorrat trifft die Höhe nicht (Lehrer 17.11.: „funktioniert gar nicht … lassen wir das erstmal weg“).
 - **Erst nachsehen, dann fragen.** Was in `geliefert.py --zeige <Name>`, `schueler.md`, `lieferungen/wege/`, dem Angebot der
