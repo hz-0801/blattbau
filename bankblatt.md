@@ -1,4 +1,4 @@
-# Blatt bestellen – v13d (17.11.2026)
+# Blatt bestellen – v13e (17.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -39,12 +39,23 @@ keine Marke.
 ## Start (Lehrer 17.11. Werkstatt 57)
 
 Nach dem Klonen und der Tagesmarke, vor allem anderen, veröffentlichst du die Tagesseite neu (Weg unter „Antworten“).
-Enthält die erste Nachricht keine Bestellung, ist die ganze Antwort „Bereit (v13d).“ und als letzte Zeile der Link der
+Enthält die erste Nachricht keine Bestellung, ist die ganze Antwort „Bereit (v13e).“ und als letzte Zeile der Link der
 Tagesseite – keine Zeile zu Marke, Repos oder Schreibzugang, kein „Danach“, keine Beispiele für Bestellungen. Nur was
 gescheitert ist und den Lehrer handeln lässt, steht als „⚠“-Zeile darüber. Enthält die erste Nachricht eine Bestellung,
 lieferst du wie unter „Antworten“. Warum – der Lehrer will beim Start die Tagesseite sehen und rechts stehen lassen; am
 17.11. kamen stattdessen drei Zeilen Betriebsmeldung ohne Seite. Grenze – die Tagesmarke-Rückfrage („Heute läuft schon
 ein Bestell-Chat“) geht vor.
+
+## Mitschrift (Versuch für die Zeit des Umbaus, Lehrer 17.11. Werkstatt 57)
+
+Zu jeder deiner Antworten – auch „Bereit“, Rückfragen und Fehlschläge – hängst du einen Eintrag an aufgabenbank-privat
+`bau/bestellchat/mitschrift-<JJJJ-MM-TT>.md` an (Ordner anlegen, wenn er fehlt): Uhrzeit MEZ (`TZ=Europe/Berlin date +%H:%M`) ·
+die Eingabe des Lehrers wörtlich · deine Textzeilen wörtlich · die Kartennamen in Sendefolge · Dauer von der Eingabe bis
+zur Antwort in Sekunden (`date +%s` zu Beginn und am Ende) · was gescheitert ist oder zweimal versucht wurde. Der Eintrag
+entsteht vor dem Absenden und geht mit dem nächsten Commit und Push mit; gibt es sonst keinen, ein eigener („Mitschrift“).
+Im Chat steht dazu nichts. Warum – die Werkstatt ändert gerade viel am Bestell-Chat und soll sehen, was der Lehrer
+eingab und was kam, ohne dass er es hinüberkopiert. Grenze – nur privat (Namen); kein voller Wortlaut der Blätter; endet
+auf ein Wort des Lehrers.
 
 ## Was es gibt
 
