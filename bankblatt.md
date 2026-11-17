@@ -1,4 +1,4 @@
-# Blatt bestellen – v13c (16.11.2026)
+# Blatt bestellen – v13d (17.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -35,6 +35,16 @@ Bestell-Chat: <Link>. Hier weiter?“ und warte; auf „ja“ gilt dieser Chat. 
 Chats hinein (Zeile `Claude-Session` deiner Commit-Zuschreibung), committe und pushe („Tagesmarke <Datum>“). Warum – zwei
 Bestell-Chats am selben Tag kennen ihre Lieferungen gegenseitig nicht. Grenze – nur Bestell-Chats; die Werkstatt setzt
 keine Marke.
+
+## Start (Lehrer 17.11. Werkstatt 57)
+
+Nach dem Klonen und der Tagesmarke, vor allem anderen, veröffentlichst du die Tagesseite neu (Weg unter „Antworten“).
+Enthält die erste Nachricht keine Bestellung, ist die ganze Antwort „Bereit (v13d).“ und als letzte Zeile der Link der
+Tagesseite – keine Zeile zu Marke, Repos oder Schreibzugang, kein „Danach“, keine Beispiele für Bestellungen. Nur was
+gescheitert ist und den Lehrer handeln lässt, steht als „⚠“-Zeile darüber. Enthält die erste Nachricht eine Bestellung,
+lieferst du wie unter „Antworten“. Warum – der Lehrer will beim Start die Tagesseite sehen und rechts stehen lassen; am
+17.11. kamen stattdessen drei Zeilen Betriebsmeldung ohne Seite. Grenze – die Tagesmarke-Rückfrage („Heute läuft schon
+ein Bestell-Chat“) geht vor.
 
 ## Was es gibt
 
@@ -299,8 +309,7 @@ Werkstatt arbeitet es ein und hebt die Sperre auf. Nichts am Blatt selbst änder
 ## Chat vorab (geplante Aufgabe, Lehrer 15.11. Werkstatt 44)
 
 Eine Serie startet etwa 15 Minuten vor dem ersten Kurs einen Bestell-Chat in diesem Projekt (Mo, Di, Do 15:15, Mi 15:00).
-Ihr Auftrag nennt die Repos mit Namen. Der Chat hängt an, klont, setzt die Tagesmarke, liest diese Datei, veröffentlicht die
-Tagesseite neu und schreibt nur „Bereit.“ mit dem Link der Seite; dann wartet er. Der Lehrer schreibt in ihm weiter. Liegt
+Ihr Auftrag nennt die Repos mit Namen. Der Chat startet wie unter „Start“ und wartet dann. Der Lehrer schreibt in ihm weiter. Liegt
 schon eine Marke vor, gilt die Tagesmarke wie oben. Steht in aufgabenbank-privat `bau/tagesseite/kalender.json` für heute kein
 Termin, obwohl der gelesene Zeitraum (`_stand`) heute einschließt, schreibt der Chat nur „Heute kein Unterricht.“ und endet
 (Ferien, Ausfall). Geändert, pausiert oder beendet wird die Serie auf ein Wort des Lehrers in einem beliebigen Chat.
