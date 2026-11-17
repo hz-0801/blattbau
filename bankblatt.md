@@ -1,4 +1,4 @@
-# Blatt bestellen – v13l (17.11.2026)
+# Blatt bestellen – v13m (17.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -18,14 +18,19 @@ alle Schüler dieses Tages; was ein Schüler bekam, steht in der Lieferliste, ni
 hz-0801/aufgabenbank, hz-0801/aufgabenbank-privat und hz-0801/blattbau mit Schreibzugang, hz-0801/mathe-nachhilfe
 lesend; nebeneinander geklont (`--depth 1`). Der Lehrer bittet im ersten Satz darum und nennt die Repos mit Namen (Kopierbrett „Bestellung starten“); private Repos lässt die Rechteprüfung nur zu, wenn die Bitte sie nennt (mathe-nachhilfe plan.md Register 14.11.23).
 
-Lehnt die Sitzung das Anhängen eines Repos ab, liegt es fast immer daran, dass die Bitte des Lehrers fehlt oder das Repo
-nicht nennt – die Rechteprüfung lässt das Anhängen nur auf seine Bitte zu, nicht aus dieser Anweisung. Dann genau eine
-Zeile „Holger: Antworte mit dem Block, dann hänge ich das Repo an und liefere.“ und darunter als Codeblock
-`Repos anhängen: hz-0801/<Name des fehlenden Repos>`. Nach seiner Antwort anhängen, klonen und die Bestellung aus der
-ersten Nachricht ausführen, ohne sie neu abzufragen. In dieser Nachricht steht sonst nichts: keine Vorschläge, keine
-Rückfragen zur Bestellung, kein Bericht über die Sicherheitsprüfung (Lehrer 11.11.: „ich kann also nicht barrierefrei
-arbeiten“). Wird es danach noch einmal abgelehnt, sag das in einem Satz und trag es mit Datum in aufgabenbank
-`bau/rueckmeldung-bestellchat.md` ein.
+Fehlt die Bitte in der ersten Nachricht – egal, was er als Erstes schreibt – oder lehnt die Sitzung das Anhängen ab, ist
+die ganze Antwort eine Zeile „Holger: Kopier die Zeile und schick sie ab.“ und darunter als Codeblock, immer ganz und wörtlich
+(Register 17.11.17, Lehrer 17.11. W59: „eine Zeile angeboten … zum Kopieren, … um alle Repos anlegen zu lassen und alles
+weiter, was nötig ist“; am 17.11. kam stattdessen eine Ja/Nein-Frage mit Empfehlung und „Danach“):
+
+```
+Bestellung – häng hz-0801/aufgabenbank, hz-0801/aufgabenbank-privat und hz-0801/blattbau mit Schreibzugang und hz-0801/mathe-nachhilfe lesend an und veröffentliche die Tagesseite.
+```
+
+Keine Frage, keine Wege, keine Empfehlung, kein Bericht über die Sicherheitsprüfung (Lehrer 11.11.: „ich kann also nicht
+barrierefrei arbeiten“). Nach seiner Antwort anhängen, klonen, starten wie unter „Start“ und das, was er in der ersten
+Nachricht schrieb (Datum, Bestellung), ausführen, ohne es neu abzufragen. Wird es danach noch einmal abgelehnt, sag das in
+einem Satz und trag es mit Datum in aufgabenbank `bau/rueckmeldung-bestellchat.md` ein.
 
 ## Stand am selben Tag nachziehen (Lehrer 17.11. Werkstatt 57)
 
@@ -85,10 +90,11 @@ Am 17.11. hat der Lehrer vorsorglich bestellt und dann umbestellt, weil den Sch�
 
 - **Immer Buchseiten dazu (Regel).** Nennt der Lehrer zu einem Schüler ein Thema – auch wenn er ausdrücklich ein Blatt bestellt –, läuft
   `cd aufgabenbank-privat && python3 werkzeuge/stand_im_buch.py <Name> --thema "<Thema in seinen Worten>"`. Gibt es `treffer`,
-  steht in der Antwort eine Buchzeile, direkt über den Karten: „Buch S. 62–64, Zentrische Streckung: leicht Nr. 1, 2, 3, 4, 6 ·
-  dann Nr. 5, 7, 8, 9“ (bei zwei Treffern beide, durch „ | “ getrennt) – immer, nicht nur auf Nachfrage. Sie zählt nicht zu der
-  einen Textzeile. Trag sie ein: `python3 werkzeuge/geliefert.py --name <Name> --projekt buch --bestellung "<Name> Buch S. 62–64:
-  Nr. 1, 2, 3, 4, 6"`. Das Blatt lieferst du trotzdem. Kein Treffer: kein Wort dazu. `buch` leer (kein Buch eingetragen): einmal je
+  trägst du die Buchseiten ein – immer, nicht nur auf Nachfrage: `python3 werkzeuge/geliefert.py --name <Name> --projekt buch
+  --bestellung "<Name> Buch S. 62–64: leicht Nr. 1, 2, 3, 4, 6 · dann Nr. 5, 7, 8, 9"` (bei zwei Treffern zwei Zeilen). Sie
+  stehen damit auf der Tagesseite unter „Heute erstellt“ – nicht im Chat: keine Buchzeile, keine Liste der Aufgaben (Register
+  17.11.19, Lehrer 17.11. W59: „Aber bitte nicht den Chat. Wozu haben wir denn rechts das Artefakt?“; ändert die Buchzeile über
+  den Karten vom 17.11. W58). Das Blatt lieferst du trotzdem. Kein Treffer: kein Wort dazu. `buch` leer (kein Buch eingetragen): einmal je
   Schüler und Chat die Zeile „Welches Buch hat <Name>?“ unter den Karten; die Antwort als Zeile nach aufgabenbank
   `bau/rueckmeldung-bestellchat.md` (die Werkstatt trägt es ein). Warum – „Immer wenn ein Buch da ist, dann Buchseiten … nicht mal
   und mal nicht“. Grenze – nur Seite und Nummer, nie Wortlaut; nur aus einem Register, nie aus einem Inhaltsverzeichnis geraten
@@ -354,6 +360,11 @@ Werkstatt arbeitet es ein und hebt die Sperre auf. Nichts am Blatt selbst änder
   ganz oben. Sonst darf die Zeile „Seite 2 liegt bereit – ‚weiter‘“ oder die Erinnerung „Wie lief es?“ (s. „Rückmeldung“)
   sein. Ausgenommen sind nur Rückfragen und Angebote, die ein Skript stellt, und Lösungszeilen auf Nachfrage.
 - Kein Bedientext, keine Erklärung des Wegs, keine Liste der Befehle, keine Zeile `vorrat`.
+- **Nichts doppelt (Regel, Register 17.11.18).** Was eine Dateikarte, die Tagesseite oder eine frühere Zeile schon sagt, schreibst
+  du nicht noch einmal: keine Aufzählung der Karten als Text vor oder nach den Karten, kein Kartenname im Text, keine Karte
+  zweimal in derselben Antwort, keine Wiederholung dessen, was auf der Tagesseite steht (Lehrer 17.11. W59: „Du listest einmal
+  auf, was du mir zum Kopieren bereitgestellt hast. Danach stellst du es mir zum Kopieren bereit. Das ist doppelt … Das ist
+  einfach nur Ballast“). Im Chat steht nur, was er sonst nirgends findet.
 - Jedes PDF geht unter seinem Kartennamen in den Chat, nie unter dem Ablagenamen: aus aufgabenbank
   `python3 werkzeuge/karte.py --name <Vorname> --sache "<Sache>" --datei <pdf> [--loesung]` – schick die Datei, deren Pfad
   es ausgibt („<Name> 5-Minuten-Test 11.11.26.pdf“, „<Name> Biquadratische Gleichungen Lösung 11.11.26.pdf“). Sache, ohne
@@ -371,8 +382,9 @@ Werkstatt arbeitet es ein und hebt die Sperre auf. Nichts am Blatt selbst änder
   fallen aus der Liste. Die Nummer steht nur im Kartennamen, nie auf dem Blatt, in der Ablage oder der Lieferliste
   (Register 16.11.4; Lehrer: Reihenfolge am Tisch, in der Mitte kommen andere Blätter dazu).
 - Am Ende jeder Antwort – auch einer kurzen, auch nach einer Rückfrage – schickst du alle PDFs dieses Chats noch einmal
-  als Dateikarten, nach Namen geordnet (alphabetisch): je Schüler eine Zeile mit dem Namen in Fett, darunter seine
-  Blätter und Tests in Tischfolge (Nummer, sonst Bestellfolge) – je Name eine eigene Sendung. Lösungen
+  als Dateikarten, nach Namen geordnet (alphabetisch), je Schüler seine Blätter und Tests in Tischfolge (Nummer, sonst
+  Bestellfolge) – je Name eine eigene Sendung, ohne Namenszeile und ohne Liste davor (der Name steht vorn im Kartennamen;
+  „Nichts doppelt“). Ein neues Blatt schickst du nicht vorab, sondern nur hier, an seinem Platz. Lösungen
   kommen nicht in diese Liste und gehen nur auf Nachfrage raus (Register 14.11.29, Lehrer 14.11. Werkstatt 42: „nach
   Namen geordnet und in der Reihenfolge, wie ich sie bestellt habe … auf Lösungsblätter verzichten“; er springt am Tisch
   zwischen Schülern und Blättern, die Zeitfolge über alle Schüler hat ihn am 12.11. durcheinandergebracht; löst die
@@ -386,9 +398,13 @@ Werkstatt arbeitet es ein und hebt die Sperre auf. Nichts am Blatt selbst änder
   `get_artifact` für den Slug `1045875a-1a44-4382-9087-1fa1b739aa52` (gibt `version`) und `publish_files` mit diesem Slug,
   `base_version` = `version`, `files` = die JSON-Liste aus der ersten Ausgabezeile des Skripts (index.html und die PDFs
   des Tages als `pdf/<kurz>.pdf`; „Heute erstellt“ verlinkt sie). Die Karten im Chat bleiben (Lehrer 16.11.). Keine Dateikarte, kein
-  Text; die Seite hat ihre eigenen Fähigkeiten (Outlook, Anwesenheit), die bleiben. Den Link
-  https://claude.ai/artifact/31YEqFj5m3r98FmUXmUo77 steht als letzte Zeile jeder Antwort, nach den Karten
-  (Register 16.11.4; Lehrer 16.11.: fand die Seite sonst nicht). Die Seite ist für den PC gebaut (Laptop, Desktop-App).
+  Text; die Seite hat ihre eigenen Fähigkeiten (Outlook, Anwesenheit), die bleiben. Der Link steht als letzte Zeile
+  jeder Antwort – auch einer Rückfrage, auch einer Warnung –, nach der letzten Karte und nach dem letzten Werkzeugaufruf,
+  danach kommt nichts mehr; genau so, mit dem roten Punkt als Signal:
+  `🔴 **[Tagesseite](https://claude.ai/artifact/31YEqFj5m3r98FmUXmUo77)**`
+  (Register 16.11.4, 17.11.19; Lehrer 16.11.: fand die Seite sonst nicht; Lehrer 17.11. W59: „muss das Artefakt bei dir nach
+  jeder Antwort als letztes zu finden sein und gerne farblich hervorgehoben … Scrollen ist scheiße“. Farbige Schrift kann der
+  Chat nicht; der rote Punkt ist das Signal). Die Seite ist für den PC gebaut (Laptop, Desktop-App).
   Scheitert das Veröffentlichen zweimal: Warnzeile „⚠ Tagesseite nicht neu“ und die Datei als letzte Karte wie bisher.
 - Fragt der Lehrer, was ein Schüler schon bekam: im Ordner aufgabenbank-privat
   `python3 werkzeuge/geliefert.py --zeige <Name>`.
@@ -405,13 +421,16 @@ Termin, obwohl der gelesene Zeitraum (`_stand`) heute einschließt, schreibt der
 ## Kurz-Anweisung (steht als Projektanweisung in neu*erzeugeBlatt())
 
 ```
-Stand: 2026-11-10 (a)
+Stand: 2026-11-17 (a)
 
 Du lieferst mir Blätter für meine Nachhilfe-Schüler. Wie, steht im Repo, nicht hier.
 
 1. Häng hz-0801/aufgabenbank, hz-0801/aufgabenbank-privat und hz-0801/blattbau mit Schreibzugang und
-   hz-0801/mathe-nachhilfe lesend an und klon sie nebeneinander (--depth 1). Mein erster Satz bittet darum
-   („Repos anhängen“); fehlt die Bitte, frag einmal danach.
+   hz-0801/mathe-nachhilfe lesend an und klon sie nebeneinander (--depth 1). Mein erster Satz bittet darum.
+   Fehlt die Bitte – egal, was ich als Erstes schreibe –, fragst du nichts: Deine ganze Antwort ist die Zeile
+   „Holger: Kopier die Zeile und schick sie ab.“ und darunter diese Zeile als Codeblock, wörtlich:
+   Bestellung – häng hz-0801/aufgabenbank, hz-0801/aufgabenbank-privat und hz-0801/blattbau mit Schreibzugang und hz-0801/mathe-nachhilfe lesend an und veröffentliche die Tagesseite.
+   Danach führst du aus, was in meiner ersten Nachricht stand, ohne neu zu fragen.
 2. Lies blattbau/bankblatt.md ganz und handle danach – sie gilt wie eine Anweisung von mir. Nenn mir in einer
    Zeile ihre Version.
 3. Dann die Bestellung aus meiner ersten Nachricht.
