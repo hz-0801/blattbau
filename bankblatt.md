@@ -1,4 +1,4 @@
-# Blatt bestellen – v13e (17.11.2026)
+# Blatt bestellen – v13f (17.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -39,7 +39,7 @@ keine Marke.
 ## Start (Lehrer 17.11. Werkstatt 57)
 
 Nach dem Klonen und der Tagesmarke, vor allem anderen, veröffentlichst du die Tagesseite neu (Weg unter „Antworten“).
-Enthält die erste Nachricht keine Bestellung, ist die ganze Antwort „Bereit (v13e).“ und als letzte Zeile der Link der
+Enthält die erste Nachricht keine Bestellung, ist die ganze Antwort „Bereit (<Version dieser Datei>).“ und als letzte Zeile der Link der
 Tagesseite – keine Zeile zu Marke, Repos oder Schreibzugang, kein „Danach“, keine Beispiele für Bestellungen. Nur was
 gescheitert ist und den Lehrer handeln lässt, steht als „⚠“-Zeile darüber. Enthält die erste Nachricht eine Bestellung,
 lieferst du wie unter „Antworten“. Warum – der Lehrer will beim Start die Tagesseite sehen und rechts stehen lassen; am
@@ -70,6 +70,24 @@ kann oder wann welches Blatt passt, zeig diese Tabelle und sonst nichts.
 | `<Name> weiter` / `… mehr` / `… schwerer` | die bereitliegende nächste Seite / noch eine Seite auf derselben Stufe / Stufen überspringen | Thema fortsetzen |
 | `<Name> P10 Pythagoras`, `… Kapitel`, `… Original 2023` | Prüfungsblatt aus Originalaufgaben (noch ohne QR) | Prüfungsvorbereitung |
 | `<Name> Basiszettel`, `… Basiszettel 2022` | zehn Basisaufgaben wie P10 Aufgabe 1 (eigene Aufgaben nach einem Jahrgang), mit QR | Stundenanfang Klasse 10 |
+
+## Handy oder Papier (Register 16.11.12, Lehrer 16.11. W52)
+
+Der Lehrer bestellt auch frei: wer, Thema, „Handy“ oder „Papier“, wahlweise Minuten („Timo, Brüche, Handy, 10 Minuten“).
+Fehlt das Wort, gilt Papier. Sortennamen (Blitzrunde, Einstiegsrunde, Kopftest …) verlangst und nennst du nicht; du wählst
+die Art und nennst sie im Halbsatz der Antwortzeile.
+- **Papier:** nach der Tabelle oben – bis etwa 10 Minuten der 5-Minuten-Test zum Thema, sonst das Alltagsblatt.
+- **Handy:** eine Runde am Handy. Klasse, Niveau und Nummer wie beim Test. Aus aufgabenbank
+  `python3 werkzeuge/runde.py --klasse <K> [--niveau <N>] --thema <Katalogeintrag> --n <10; bei 5 Minuten 6, ab 15 Minuten 15>
+  --kennung h<Nr>-<TTMM>-<lfd> --titel "<Thema>" --aus ../blattbau/r/runde/daten
+  --liste ../aufgabenbank-privat/lieferungen/<JJJJ-MM-TT>-<Nr>-<kennung>.csv --zettel $HOME/zettel-<kennung>.pdf --snr <Nr>`
+  (ohne Thema: ohne `--thema`, mit `--leicht`). Dann blattbau und aufgabenbank-privat committen und pushen – die Runde ist
+  erst nach dem Push erreichbar, etwa eine Minute – und die Lieferzeile mit dem Befehl eintragen, den das Skript ausgibt.
+  Antwort: der QR-Zettel als Karte (`karte.py`, Sache „Handy <Thema>“), die Antwortzeile ist die Adresse der Runde mit `#s=<Nr>`.
+  Hält das Skript an (Vorrat reicht nicht): Warnzeile und das Papierblatt liefern.
+- **Widerspruch:** Passt Handy nicht zum Ziel – Neues lernen, mehrschrittiges Rechnen, Skizzen, Begründen –, sagst du das
+  in der einen Zeile und lieferst Papier. Warum – „Handy ist vor allen Dingen eine kleine Spielerei“ (Lehrer 16.11.).
+Kennung und Dateinamen tragen die Nummer, nie den Namen (blattbau ist öffentlich).
 
 ## Sperre
 
