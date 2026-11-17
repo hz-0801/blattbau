@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Sinus, Kosinus, Tangens: Seiten</title>
+<!-- Trigonometrie-Wiedereinstieg am Handy (Bestell-Chat 17.11.2026, Lehrerwort: „Machst du das mal … mit der Trigonometrie
+     als Web-App?“ – dasselbe wie das Blatt a10-trigo-1711): ein rechtwinkliges Dreieck in wechselnder Lage, ein Winkel markiert.
+     Erst antippen, welche Seite Hypotenuse, Gegenkathete oder Ankathete ist; dann den Bruch zu sin, cos oder tan wählen.
+     Nichts wird gerechnet. 12 je Runde: 6 Seiten, 6 Brüche; ab der Mitte liegt das Dreieck gedreht und auch β ist markiert.
+     Keine Uhr, keine Meldung, keine Namen. -->
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:#f3f7fb;color:#18324a}
+body{display:flex;justify-content:center}
+main{width:100%;max-width:440px;padding:14px 14px calc(16px + env(safe-area-inset-bottom))}
+h1{font-size:1.05rem;margin:2px 2px 10px;font-weight:650}
+.karte{background:#fff;border-radius:14px;box-shadow:0 1px 3px rgba(24,50,74,.12);padding:12px 14px 14px}
+svg{display:block;width:100%;height:auto}
+svg text{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-style:italic;font-size:26px;fill:#18324a;text-anchor:middle;dominant-baseline:central}
+.frage{font-size:1.12rem;text-align:center;margin:6px 0 12px;min-height:1.6em}
+.frage b{font-weight:650}
+.wahl{display:grid;gap:10px}
+.wahl.drei{grid-template-columns:repeat(3,1fr)}.wahl.vier{grid-template-columns:repeat(4,1fr)}
+.wahl button{min-height:64px;border:2px solid #c5d5e4;background:#fff;border-radius:12px;font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-style:italic;font-size:1.7rem;color:#18324a;padding:6px 0}
+.wahl button:active{background:#e6eef6}
+.wahl button.r{border-color:#2a9d6a;background:#e3f5ec}.wahl button.f{border-color:#e0a23a;background:#fff6e6}
+.wahl button:disabled{opacity:1}
+.br{display:inline-flex;flex-direction:column;text-align:center;line-height:1.05;font-size:1.35rem}
+.br span:first-child{border-bottom:2px solid currentColor;padding:0 8px 2px}.br span:last-child{padding:2px 8px 0}
+.haupt{width:100%;margin-top:12px;height:52px;border:0;border-radius:12px;background:#1f6fb2;color:#fff;font:inherit;font-size:1.08rem;font-weight:600;visibility:hidden}
+.haupt.da{visibility:visible}.haupt:active{background:#195c94}
+.meld{margin-top:10px;border-radius:10px;padding:10px 12px;font-size:.98rem;line-height:1.45;min-height:46px;text-align:center}
+.meld.r{background:#e3f5ec;color:#14533a}.meld.f{background:#fff6e6;color:#6b4a0e}
+.fuss{display:flex;justify-content:space-between;font-size:.82rem;color:#5b7389;margin:12px 2px 0}
+.punkte{display:flex;gap:4px;align-items:center}
+.punkte span{width:10px;height:10px;border-radius:50%;background:#d5e0ea}
+.punkte span.r{background:#2a9d6a}.punkte span.f{background:#e0a23a}
+:focus-visible{outline:3px solid #f0a202;outline-offset:2px}
+</style></head>
+<body><main>
+<h1>Vom Winkel aus schauen</h1>
+<div class="karte">
+  <svg id="bild" viewBox="0 0 400 290" role="img" aria-label="rechtwinkliges Dreieck"></svg>
+  <p class="frage" id="frage" aria-live="polite"></p>
+  <div class="wahl" id="wahl"></div>
+  <div class="meld" id="meld" role="status"></div>
+  <button class="haupt" id="haupt">Weiter</button>
+  <div class="fuss"><div class="punkte" id="punkte" aria-hidden="true"></div><div id="stand"></div></div>
+</div>
+</main>
+<script>
+(function(){
+"use strict";
+var N=12, nr=0, verlauf=[], q=null, fertig=false;
+var NAMEN=[["a","b","c"],["r","s","t"],["u","v","w"],["x","y","z"],["e","f","g"],["k","m","n"],["p","q","r"]];
+var WORT={H:"Hypotenuse",G:"Gegenkathete",A:"Ankathete"}, WO={H:"liegt dem rechten Winkel gegenüber",G:"liegt dem markierten Winkel gegenüber",A:"liegt am markierten Winkel an"};
+var FKT={sin:["G","H"],cos:["A","H"],tan:["G","A"]}, LANG={sin:"Gegenkathete durch Hypotenuse",cos:"Ankathete durch Hypotenuse",tan:"Gegenkathete durch Ankathete"};
+function zuf(a,b){return a+Math.floor(Math.random()*(b-a+1))}
+function wahl(l){return l[zuf(0,l.length-1)]}
+function misch(l){l=l.slice();for(var i=l.length-1;i>0;i--){var j=zuf(0,i),t=l[i];l[i]=l[j];l[j]=t}return l}
+
+// Runde: 1–3 Seiten in Grundlage (α), 4–6 Seiten gedreht (α oder β), 7–9 Brüche (α), 10–12 Brüche gedreht (α oder β)
+function neu(){
+  var schwer=(nr%6)>=3, bruch=nr>=6, art;
+  if(!bruch) art=["H","G","A"][nr%3]; else art=["sin","cos","tan"][nr%3];
+  if(schwer && Math.random()<.5 && !bruch) art=wahl(["G","A"]);
+  var n=misch(wahl(NAMEN)), leg1=zuf(30,44)/10, leg2=zuf(20,30)/10;
+  if(Math.random()<.5){var t=leg1;leg1=leg2;leg2=t}
+  var dreh=schwer?wahl([35,70,110,145,180,215,250,290,325]):0, spiegel=schwer?Math.random()<.5:false;
+  var bei=schwer&&Math.random()<.5?"Y":"X";
+  // X=(0,0), Z=(leg1,0) rechter Winkel, Y=(leg1,leg2); Seiten: gegenüber X = YZ, gegenüber Y = XZ, Hypotenuse XY
+  var P={X:[0,0],Z:[leg1,0],Y:[leg1,leg2]}, w=dreh*Math.PI/180;
+  ["X","Y","Z"].forEach(function(k){var x=P[k][0]*(spiegel?-1:1),y=P[k][1];P[k]=[x*Math.cos(w)-y*Math.sin(w),x*Math.sin(w)+y*Math.cos(w)]});
+  var seiten={gx:{von:"Y",bis:"Z",n:n[0]},gy:{von:"X",bis:"Z",n:n[1]},h:{von:"X",bis:"Y",n:n[2]}};
+  var rolle=bei==="X"?{H:"h",G:"gx",A:"gy"}:{H:"h",G:"gy",A:"gx"};
+  q={P:P,seiten:seiten,rolle:rolle,bei:bei,wn:bei==="X"?"α":"β",art:art,bruch:bruch,gewaehlt:null};
+  if(bruch){
+    var z=seiten[rolle[FKT[art][0]]].n, ne=seiten[rolle[FKT[art][1]]].n, alle=[];
+    n.forEach(function(a){n.forEach(function(b){if(a!==b)alle.push([a,b])})});
+    var falsch=misch(alle.filter(function(p){return !(p[0]===z&&p[1]===ne)}));
+    var kehr=falsch.filter(function(p){return p[0]===ne&&p[1]===z})[0];
+    var rest=falsch.filter(function(p){return p!==kehr}).slice(0,2);
+    q.opt=misch([[z,ne],kehr].concat(rest)); q.richtig=z+"/"+ne;
+  } else { q.opt=n.slice().sort(); q.richtig=seiten[rolle[art]].n; }
+  fertig=false; zeichne(); frage(); knoepfe();
+  var m=document.getElementById("meld"); m.className="meld"; m.textContent="";
+  document.getElementById("haupt").className="haupt"; stand();
+}
+function frage(){
+  var f=document.getElementById("frage");
+  if(q.bruch) f.innerHTML="Welcher Bruch ist <b>"+q.art+" "+q.wn+"</b>?";
+  else f.innerHTML="Welche Seite ist die <b>"+WORT[q.art]+"</b>"+(q.art==="H"?"":" von "+q.wn)+"?";
+}
+// ---------- Zeichnen (SVG, Dreieck eingepasst) ----------
+function zeichne(){
+  var P=q.P, ks=["X","Y","Z"], xs=ks.map(function(k){return P[k][0]}), ys=ks.map(function(k){return P[k][1]});
+  var minx=Math.min.apply(0,xs),maxx=Math.max.apply(0,xs),miny=Math.min.apply(0,ys),maxy=Math.max.apply(0,ys);
+  var s=Math.min(280/(maxx-minx),180/(maxy-miny)), ox=200-s*(minx+maxx)/2, oy=145+s*(miny+maxy)/2;
+  function pt(k){return [ox+s*P[k][0],oy-s*P[k][1]]}
+  var X=pt("X"),Y=pt("Y"),Z=pt("Z"), G=[(X[0]+Y[0]+Z[0])/3,(X[1]+Y[1]+Z[1])/3], Q={X:X,Y:Y,Z:Z};
+  function ein(a,b){var d=Math.hypot(b[0]-a[0],b[1]-a[1]);return [(b[0]-a[0])/d,(b[1]-a[1])/d]}
+  var h="";
+  // Seiten (einzeln, damit die gesuchte Seite gefärbt werden kann)
+  Object.keys(q.seiten).forEach(function(k){
+    var S=q.seiten[k], a=Q[S.von], b=Q[S.bis], farbe="#18324a", breite=3.5;
+    if(fertig){ var gesucht=q.bruch?[q.rolle[FKT[q.art][0]],q.rolle[FKT[q.art][1]]]:[q.rolle[q.art]];
+      if(gesucht.indexOf(k)>=0){farbe="#2a9d6a";breite=6} }
+    h+='<line x1="'+a[0]+'" y1="'+a[1]+'" x2="'+b[0]+'" y2="'+b[1]+'" stroke="'+farbe+'" stroke-width="'+breite+'" stroke-linecap="round"/>';
+    var m=[(a[0]+b[0])/2,(a[1]+b[1])/2], v=ein(G,m);
+    h+='<text x="'+(m[0]+v[0]*24)+'" y="'+(m[1]+v[1]*24)+'"'+(farbe!=="#18324a"?' style="fill:#1c7a50;font-weight:bold"':'')+'>'+S.n+'</text>';
+  });
+  // rechter Winkel bei Z: Bogen mit Punkt
+  var u=ein(Z,X), v2=ein(Z,Y), r=30;
+  h+='<path d="M'+(Z[0]+u[0]*r)+' '+(Z[1]+u[1]*r)+' A'+r+' '+r+' 0 0 '+((u[0]*v2[1]-u[1]*v2[0])>0?1:0)+' '+(Z[0]+v2[0]*r)+' '+(Z[1]+v2[1]*r)+'" fill="none" stroke="#18324a" stroke-width="2"/>';
+  h+='<circle cx="'+(Z[0]+(u[0]+v2[0])*r*0.36)+'" cy="'+(Z[1]+(u[1]+v2[1])*r*0.36)+'" r="3" fill="#18324a"/>';
+  // markierter Winkel
+  var V=Q[q.bei], O=Q[q.bei==="X"?"Y":"X"], a1=ein(V,O), a2=ein(V,Z), rb=44;
+  var sw=((a1[0]*a2[1]-a1[1]*a2[0])>0?1:0), bogen='A'+rb+' '+rb+' 0 0 '+sw+' '+(V[0]+a2[0]*rb)+' '+(V[1]+a2[1]*rb);
+  var wk='<path d="M'+V[0]+' '+V[1]+' L'+(V[0]+a1[0]*rb)+' '+(V[1]+a1[1]*rb)+' '+bogen+' Z" fill="#dceaf7" stroke="none"/>';
+  wk+='<path d="M'+(V[0]+a1[0]*rb)+' '+(V[1]+a1[1]*rb)+' '+bogen+'" fill="none" stroke="#1f6fb2" stroke-width="2.5"/>';
+  var mb=ein([0,0],[a1[0]+a2[0],a1[1]+a2[1]]);
+  var wt='<text x="'+(V[0]+mb[0]*27)+'" y="'+(V[1]+mb[1]*27)+'" style="font-size:20px;fill:#1f6fb2">'+q.wn+'</text>';
+  var svg=document.getElementById("bild");
+  svg.innerHTML=wk+h+wt;
+  svg.setAttribute("aria-label","rechtwinkliges Dreieck, Winkel "+q.wn+" markiert");
+}
+function knoepfe(){
+  var w=document.getElementById("wahl"); w.innerHTML=""; w.className="wahl "+(q.bruch?"vier":"drei");
+  q.opt.forEach(function(o){
+    var b=document.createElement("button"); b.type="button";
+    var wert=q.bruch?o[0]+"/"+o[1]:o; b.dataset.w=wert;
+    b.innerHTML=q.bruch?'<span class="br"><span>'+o[0]+'</span><span>'+o[1]+'</span></span>':o;
+    if(q.bruch)b.setAttribute("aria-label",o[0]+" durch "+o[1]);
+    b.addEventListener("click",function(){antwort(wert)});
+    w.appendChild(b);
+  });
+}
+function antwort(w){
+  if(fertig)return; fertig=true; var ok=w===q.richtig; verlauf.push(ok); nr++;
+  Array.prototype.forEach.call(document.getElementById("wahl").children,function(b){
+    b.disabled=true; if(b.dataset.w===q.richtig)b.classList.add("r"); else if(b.dataset.w===w)b.classList.add("f");});
+  zeichne();
+  var m=document.getElementById("meld"); m.className="meld "+(ok?"r":"f");
+  if(q.bruch){ var t=q.richtig.split("/");
+    m.innerHTML=(ok?"Richtig. ":"")+q.art+" "+q.wn+" = "+LANG[q.art]+" = "+t[0]+" durch "+t[1]+"."; }
+  else m.innerHTML=(ok?"Richtig. ":"")+"Die "+WORT[q.art]+" "+WO[q.art].replace("dem markierten Winkel","dem Winkel "+q.wn).replace("am markierten Winkel","am Winkel "+q.wn)+": <b>"+q.richtig+"</b>.";
+  var h=document.getElementById("haupt"); h.className="haupt da"; h.textContent=verlauf.length>=N?"Auswerten":"Weiter"; stand();
+}
+document.getElementById("haupt").addEventListener("click",function(){
+  if(verlauf.length>=N && this.textContent==="Auswerten"){
+    var r=verlauf.filter(Boolean).length, m=document.getElementById("meld");
+    m.className="meld r"; m.textContent=r+" von "+N+" richtig."+(r>=N-1?" Das sitzt.":" Noch eine Runde macht es sicher.");
+    this.textContent="Neue Runde"; return;
+  }
+  if(this.textContent==="Neue Runde"){verlauf=[];nr=0}
+  neu();
+});
+function stand(){
+  var p=document.getElementById("punkte"); p.innerHTML="";
+  for(var i=0;i<N;i++){var s=document.createElement("span"); if(i<verlauf.length)s.className=verlauf[i]?"r":"f"; p.appendChild(s);}
+  document.getElementById("stand").textContent=verlauf.length+" von "+N;
+}
+neu();
+})();
+</script>
+</body></html>
