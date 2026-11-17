@@ -1,4 +1,4 @@
-# Blatt bestellen – v13j (17.11.2026)
+# Blatt bestellen – v13k (17.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -78,14 +78,14 @@ kann oder wann welches Blatt passt, zeig diese Tabelle und sonst nichts.
 | `<Name> P10 Pythagoras`, `… Kapitel`, `… Original 2023` | Prüfungsblatt aus Originalaufgaben, mit QR (s. „Am Tisch“) | Prüfungsvorbereitung |
 | `<Name> Basiszettel`, `… Basiszettel 2022` | zehn Basisaufgaben wie P10 Aufgabe 1 (eigene Aufgaben nach einem Jahrgang), mit QR | Stundenanfang Klasse 10 |
 
-## Am Tisch (Lehrer 17.11. Werkstatt 58 nach dem Unterricht vom 17.11.; plan.md Register 17.11.10–13)
+## Am Tisch (Lehrer 17.11. Werkstatt 58 nach dem Unterricht vom 17.11.; plan.md Register 17.11.10–16)
 
 Am 17.11. hat der Lehrer vorsorglich bestellt und dann umbestellt, weil den Schülern erst am Tisch einfiel, was ansteht
 (Test, Schulblatt). Was hier steht, geht den Abschnitten weiter unten vor.
 
-- **Buch zuerst (Regel).** Nennt der Lehrer zu einem Schüler ein Thema, läuft vor allem anderen
+- **Immer Buchseiten dazu (Regel).** Nennt der Lehrer zu einem Schüler ein Thema – auch wenn er ausdrücklich ein Blatt bestellt –, läuft
   `cd aufgabenbank-privat && python3 werkzeuge/stand_im_buch.py <Name> --thema "<Thema in seinen Worten>"`. Gibt es `treffer`,
-  beginnt die Antwort mit der Buchzeile, vor Warnung und Karten: „Buch S. 62–64, Zentrische Streckung: leicht Nr. 1, 2, 3, 4, 6 ·
+  steht in der Antwort eine Buchzeile, direkt über den Karten: „Buch S. 62–64, Zentrische Streckung: leicht Nr. 1, 2, 3, 4, 6 ·
   dann Nr. 5, 7, 8, 9“ (bei zwei Treffern beide, durch „ | “ getrennt) – immer, nicht nur auf Nachfrage. Sie zählt nicht zu der
   einen Textzeile. Trag sie ein: `python3 werkzeuge/geliefert.py --name <Name> --projekt buch --bestellung "<Name> Buch S. 62–64:
   Nr. 1, 2, 3, 4, 6"`. Das Blatt lieferst du trotzdem. Kein Treffer: kein Wort dazu. `buch` leer (kein Buch eingetragen): einmal je
@@ -105,6 +105,19 @@ Am 17.11. hat der Lehrer vorsorglich bestellt und dann umbestellt, weil den Sch�
   `bestellen.py` es selbst kann: QR oben rechts auf Seite 1, Kennung `p10-<stichwort>-<TTMM>`, Daten `blattbau/r/t/<Kennung>.json`
   in der Form von `r/t/p10-pythagoras-1711.json` (je Aufgabe Ergebnis und Ansatz aus der Lösung des Kapitelblatts); Lieferzeile mit
   „QR <Kennung>“. Scheitert das, geht das Blatt trotzdem raus, mit der Warnzeile „⚠ ohne QR“.
+- **Web-App anbieten.** Passt zu dem Stück, das du lieferst, ohne Umbau eine Handy-Übung – eine vorhandene Seite unter blattbau
+  `r/` (trigo, nebenwinkel, parabel, parabel-graph, rechnen) oder eine Runde aus `runde.py` zum selben Thema –, steht unter den
+  Karten die Zeile „Handy dazu: ‚<Name> <Thema> Handy‘“. Gebaut wird sie erst auf dieses Wort. Warum – ein paar Minuten Ruhe am
+  Tisch und eine Rückmeldung, wie es sitzt (Lehrer 17.11. W58). Grenze – nur wenn es „problemlos passt“; Neues lernen, Skizzen und
+  Begründen bleiben Papier. Neue Seiten unter `r/` melden noch nichts zurück (offen/betrieb.md [206]); Runden aus `runde.py` schon.
+- **Einstieg (Bestellung „<Name> Einstieg“).** Die Werkstatt trägt nach jedem Unterrichtstag in aufgabenbank-privat
+  `bau/tagesseite/empfehlung.json` unter dem Namen `einstieg.detail` ein, was aus der letzten Stunde zu Beginn wiederholt wird.
+  Bau daraus ein kurzes Stück – höchstens eine halbe Seite, einfachste Zahlen, je genannter Punkt eine Aufgabe, mit QR – und nenn
+  in der Lieferzeile „Einstieg“. Nennt `detail` eine Web-App, geht nur ihr QR-Zettel raus. Fehlt der Eintrag, sag es in einer Zeile.
+  Warum – was am Tisch dran war, „muss aufgegriffen werden und am Anfang auf jeden Fall auch wiederholt“ (Lehrer 17.11. W58).
+- **Erst sicher, dann tiefer (Richtung, Sek I).** Auch bei Wiederholtem zuerst einfachste Aufgaben, die nur die zwei, drei nötigen
+  Handgriffe zeigen (Hypotenuse erkennen, Pythagoras aufstellen, umstellen oder nur die Wurzel ziehen), danach wenige Sachaufgaben;
+  nicht in die Tiefe, bevor das sitzt (Lehrer 17.11. W58 am Beispiel Nr. 2).
 - **Warm-up nur auf Bestellung.** Du bietest keines an und legst keines dazu. Bestellt der Lehrer eines, gilt „5-Minuten-Test“.
   Warum – der Vorrat trifft die Höhe nicht (Lehrer 17.11.: „funktioniert gar nicht … lassen wir das erstmal weg“).
 - **Erst nachsehen, dann fragen.** Was in `geliefert.py --zeige <Name>`, `schueler.md`, `lieferungen/wege/`, dem Angebot der
