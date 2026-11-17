@@ -1,4 +1,4 @@
-# Blatt bestellen – v13g (17.11.2026)
+# Blatt bestellen – v13h (17.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -140,6 +140,11 @@ aufgabenbank-privat `schueler.md`.
    Steht beim Schüler in `schueler.md` „Für Blätter wichtig“ „Förderbedarf Lernen“, dazu `--stufe foerder --ausklang` (nur leichte
    Kopfrechenfragen, Stoff Kl. 5–6; Lehrer 15.11.: Sachaufgaben Kl. 7 wie „30 % von 5 €“ sind für sie zu schwer); bei „tiefste Stufe“ oder „sehr schwach“ `--stufe tief` (ohne Schwere 3, Stoff bis Klasse − 1;
    Lehrer 15.11.: zu schwere Tests demotivieren).
+   **Warm-up** (Bestellung „<Name> Warm-up“, also ohne Thema; Lehrer 17.11. W57, plan.md Register 17.11.9): immer die leichte
+   Fassung – `--ausklang` (Kopfrechnen aus dem Alltag, ohne Kernstoff der Klasse), dazu `--stufe tief`; bei „sehr schwach“,
+   „tiefste Stufe“ oder „Förderbedarf Lernen“ `--stufe foerder --ausklang`. Warum – am 17.11. standen im Warm-up für Nr. 6
+   Polynome subtrahieren und Achsenschnittpunkte: „unfassbar, so etwas abzugeben“; ein Warm-up soll gelingen und Lust machen,
+   bei stärkeren Schülern darf es „ein bisschen schwerer“ sein, nie Klassenstoff auf Prüfhöhe. Der Test mit Thema bleibt, wie er ist.
    Jeder Schüler bekommt seinen eigenen Test, auch zwei Schüler desselben Kurses am selben Tag (Lehrer 11.11.,
    plan.md Register 11.11.2): je Schüler ein Aufruf mit seinem `--seed <Nr><TTMM>` (Nummer und Tag hintereinander, für Nr. 4 am 11.11. `41111` – so ist der Test jeden Tag ein anderer, auch wenn der vorige nicht vorgelegt wurde; Lehrer 11.11.) und `--snr <Nr>`; ist die QR-Kennung
    schon vergeben, hängt die Nummer an (`k10-quadratisch-1111-9`, höchstens 24 Zeichen – sonst Stichwort kürzen).
