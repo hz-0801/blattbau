@@ -1,4 +1,4 @@
-# Blatt bestellen – v13o (17.11.2026)
+# Blatt bestellen – v13p (17.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -51,6 +51,14 @@ Bestell-Chat: <Link>. Hier weiter?“ und warte; auf „ja“ gilt dieser Chat. 
 Chats hinein (Zeile `Claude-Session` deiner Commit-Zuschreibung), committe und pushe („Tagesmarke <Datum>“). Warum – zwei
 Bestell-Chats am selben Tag kennen ihre Lieferungen gegenseitig nicht. Grenze – nur Bestell-Chats; die Werkstatt setzt
 keine Marke.
+
+## Tests (Lehrer 17.11. W61)
+
+Nennt der Lehrer einen Test oder eine Klassenarbeit eines Schülers („Anthony schreibt Donnerstag Test“), trägst du ihn still
+in aufgabenbank-privat `bau/tagesseite/tests.csv` ein (name;datum JJJJ-MM-TT;thema;quelle = „Bestellung <Datum>“), committest
+und veröffentlichst die Tagesseite neu; im Chat eine Zeile „Test eingetragen: <Name> <Tag>“. Warum – die Tagesseite zeigt den
+Test unter dem Namen und danach sieben Tage „wie war's?“; am 17.11. ging „schreibt Test am Donnerstag“ in einer Bestellung
+verloren. Grenze – Tag unklar (welcher Donnerstag?) → einmal fragen; nichts in Outlook.
 
 ## Start (Lehrer 17.11. Werkstatt 57)
 
