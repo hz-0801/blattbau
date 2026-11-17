@@ -2,10 +2,12 @@
 <html lang="de"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
-<title>a, d und e ablesen</title>
+<title>Scheitelpunktform: a, d und e ablesen</title>
 <!-- a, d und e aus der Scheitelpunktform ablesen – Übung am Handy (Bestell-Chat 17.11.2026, Lehrerwort: „3 mal Klammer auf
      x minus 4 Klammer zu zum Quadrat plus 5. Ich möchte, dass Erik abliest, was a, d und e ist“). Kein Graph – die Fassung mit
      Graph liegt unter ../parabel-graph/. Schreibweise der Schule: f(x) = a(x + d)² + e, also d = −4 bei (x − 4)².
+     Fassung 2 (Lehrer 17.11.: „nicht gut dargestellt … f(x) = x² ohne zu wissen, um was es geht“): Scheitelpunktform steht groß und
+     farbig über der Funktion, die Felder tragen dieselben Farben, nach dem Prüfen steht die Funktion ausgeschrieben da.
      Eine Gleichung je Bildschirm, drei Felder, eigenes Zifferfeld. Erst der volle Fall, dann die Sonderfälle: kein a (a = 1),
      nur Minus (a = −1), keine Klammer (d = 0), kein e (e = 0), Kommazahl, e vorn. Keine Uhr, keine Meldung, keine Namen. -->
 <style>
@@ -14,13 +16,21 @@ html,body{margin:0;min-height:100%;font-family:system-ui,-apple-system,"Segoe UI
 body{display:flex;justify-content:center}
 main{width:100%;max-width:440px;padding:14px 14px calc(16px + env(safe-area-inset-bottom))}
 h1{font-size:1.05rem;margin:2px 2px 4px;font-weight:650}
-.form{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;color:#5b7389;font-size:1.05rem;margin:0 2px 10px}
+.intro{font-size:.95rem;margin:0 2px 10px;color:#3d566c}
+.zeile{display:grid;grid-template-columns:1fr;gap:2px;text-align:center;padding:8px 0 4px}
+.zeile small{font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:#5b7389}
+.form{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-size:1.55rem;white-space:nowrap}
+.trenn{border:0;border-top:1px dashed #c5d5e4;margin:6px 0 2px}
+.ca{color:#b5471f}.cd{color:#1f6fb2}.ce{color:#2a7d4f}
+.voll{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-size:1.25rem;text-align:center;white-space:nowrap;margin:8px 0 0;display:none}
+.voll.da{display:block}
+.voll small{display:block;font-family:system-ui,sans-serif;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:#5b7389}
 .karte{background:#fff;border-radius:14px;box-shadow:0 1px 3px rgba(24,50,74,.12);padding:14px}
-.gl{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-size:1.85rem;text-align:center;padding:16px 0 18px;white-space:nowrap}
-.gl i,.form i{font-style:italic}.gl sup,.form sup{font-size:.62em}
+.gl{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-size:1.85rem;white-space:nowrap}
+.gl i,.form i,.voll i{font-style:italic}.gl sup,.form sup,.voll sup{font-size:.62em}
 .felder{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .feld{border:2px solid #c5d5e4;border-radius:12px;background:#fff;padding:8px 6px 10px;text-align:center;font:inherit;color:inherit}
-.feld .n{display:block;font-family:"Cambria Math","Times New Roman",serif;font-style:italic;font-size:1.05rem;color:#5b7389}
+.feld .n{display:block;font-family:"Cambria Math","Times New Roman",serif;font-style:italic;font-size:1.2rem;font-weight:bold}
 .feld .w{display:block;font-size:1.5rem;min-height:2rem;font-variant-numeric:tabular-nums}
 .feld[aria-pressed=true]{border-color:#1f6fb2;box-shadow:0 0 0 3px rgba(31,111,178,.18)}
 .feld.r{border-color:#2a9d6a;background:#e3f5ec}.feld.f{border-color:#d9695d;background:#fdecea}
@@ -38,10 +48,14 @@ h1{font-size:1.05rem;margin:2px 2px 4px;font-weight:650}
 :focus-visible{outline:3px solid #f0a202;outline-offset:2px}
 </style></head>
 <body><main>
-<h1>Lies a, d und e ab</h1>
-<p class="form"><i>f</i>(<i>x</i>) = <i>a</i>(<i>x</i> + <i>d</i>)<sup>2</sup> + <i>e</i></p>
+<h1>Scheitelpunktform: a, d und e ablesen</h1>
+<p class="intro">Vergleiche deine Funktion mit der Scheitelpunktform. Welche Zahlen stehen für <i>a</i>, <i>d</i> und <i>e</i>?</p>
 <div class="karte">
-  <div class="gl" id="gl" aria-live="polite"></div>
+  <div class="zeile"><small>Scheitelpunktform</small><div class="form"><i>f</i>(<i>x</i>) = <b class="ca"><i>a</i></b>(<i>x</i> + <b class="cd"><i>d</i></b>)<sup>2</sup> + <b class="ce"><i>e</i></b></div></div>
+  <hr class="trenn">
+  <div class="zeile"><small>Deine Funktion</small><div class="gl" id="gl" aria-live="polite"></div></div>
+  <div class="voll" id="voll"></div>
+  <div style="height:10px"></div>
   <div class="felder" id="felder"></div>
   <div class="tasten" id="tasten"></div>
   <button class="haupt" id="haupt">Prüfen</button>
@@ -77,6 +91,7 @@ function neu(){
   vorher=JSON.stringify(p); soll=p; ein={a:"",d:"",e:""}; aktiv="a"; geprueft=false;
   document.getElementById("gl").innerHTML=gl(p);
   var m=document.getElementById("meld"); m.className="meld"; m.innerHTML="";
+  document.getElementById("voll").className="voll";
   document.getElementById("haupt").textContent="Prüfen";
   felder(); stand();
 }
@@ -90,13 +105,17 @@ function gl(p){
   else { s+=vor+kern; if(p.e!==0) s+=' '+(p.e>0?"+":"−")+' '+de(p.e); }
   return s;
 }
+function voll(){
+  function w(v){return v<0?"(−"+de(v)+")":de(v)}
+  return '<i>f</i>(<i>x</i>) = <b class="ca">'+w(soll.a)+'</b> · (<i>x</i> + <b class="cd">'+w(soll.d)+'</b>)<sup>2</sup> + <b class="ce">'+w(soll.e)+'</b>';
+}
 function felder(){
   var f=document.getElementById("felder"); f.innerHTML="";
   ["a","d","e"].forEach(function(k){
     var b=document.createElement("button"); b.type="button"; b.className="feld"; b.dataset.k=k;
     b.setAttribute("aria-pressed",(!geprueft&&k===aktiv)?"true":"false");
     if(geprueft) b.classList.add(richtig(k)?"r":"f");
-    b.innerHTML='<span class="n">'+k+' =</span><span class="w">'+(ein[k]===""?"&nbsp;":ein[k].replace("-","−"))+'</span>';
+    b.innerHTML='<span class="n c'+k+'">'+k+' =</span><span class="w">'+(ein[k]===""?"&nbsp;":ein[k].replace("-","−"))+'</span>';
     b.addEventListener("click",function(){if(geprueft)return;aktiv=k;felder();});
     f.appendChild(b);
   });
@@ -149,6 +168,7 @@ document.getElementById("haupt").addEventListener("click",function(){
     geprueft=true; var ok=richtig("a")&&richtig("d")&&richtig("e"); verlauf.push(ok); nr++;
     m.className="meld "+(ok?"r":"f");
     m.innerHTML=ok?"<b>Richtig.</b> Scheitel S("+mz(-soll.d)+" | "+mz(soll.e)+")":hinweis();
+    var v=document.getElementById("voll"); v.innerHTML='<small>ausgeschrieben</small>'+voll(); v.className="voll da";
     felder(); stand();
     this.textContent=verlauf.length>=N?"Auswerten":"Weiter"; return;
   }
