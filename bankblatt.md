@@ -1,4 +1,4 @@
-# Blatt bestellen – v13i (17.11.2026)
+# Blatt bestellen – v13j (17.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -49,7 +49,7 @@ Nach dem Klonen und der Tagesmarke, vor allem anderen, veröffentlichst du die T
 Enthält die erste Nachricht keine Bestellung, ist die ganze Antwort „Bereit (<Version dieser Datei>).“ und als letzte Zeile der Link der
 Tagesseite – keine Zeile zu Marke, Repos oder Schreibzugang, kein „Danach“, keine Beispiele für Bestellungen. Nur was
 gescheitert ist und den Lehrer handeln lässt, steht als „⚠“-Zeile darüber. Enthält die erste Nachricht eine Bestellung,
-lieferst du wie unter „Antworten“. Warum – der Lehrer will beim Start die Tagesseite sehen und rechts stehen lassen; am
+lieferst du wie unter „Antworten“. Gleich nach dem Klonen, still: `pip install -q --break-system-packages sympy pymupdf` (fehlten am 17.11. im frischen Chat, zwei Abbrüche). Warum – der Lehrer will beim Start die Tagesseite sehen und rechts stehen lassen; am
 17.11. kamen stattdessen drei Zeilen Betriebsmeldung ohne Seite. Grenze – die Tagesmarke-Rückfrage („Heute läuft schon
 ein Bestell-Chat“) geht vor.
 
@@ -75,8 +75,45 @@ kann oder wann welches Blatt passt, zeig diese Tabelle und sonst nichts.
 | `<Name> Test Scheitelpunktform` | 5-Minuten-Test zu einem Thema (Regeln, kleine Beispiele), mit QR | Stundenanfang, Thema läuft schon; in der Oberstufe besser immer mit Thema |
 | `<Name> Scheitelpunktform` | Alltagsblatt: erst Station 1 des geplanten Weges, ein abgeschlossener Schritt, den der Schüler schafft; die nächste liegt auf „weiter“ bereit (s. „Weg planen, in Stücken liefern“); mit QR; ohne Beispiel und Kasten (nur mit dem Zusatz „mit Beispiel“) | ein Thema üben |
 | `<Name> weiter` / `… mehr` / `… schwerer` | die bereitliegende nächste Seite / noch eine Seite auf derselben Stufe / Stufen überspringen | Thema fortsetzen |
-| `<Name> P10 Pythagoras`, `… Kapitel`, `… Original 2023` | Prüfungsblatt aus Originalaufgaben (noch ohne QR) | Prüfungsvorbereitung |
+| `<Name> P10 Pythagoras`, `… Kapitel`, `… Original 2023` | Prüfungsblatt aus Originalaufgaben, mit QR (s. „Am Tisch“) | Prüfungsvorbereitung |
 | `<Name> Basiszettel`, `… Basiszettel 2022` | zehn Basisaufgaben wie P10 Aufgabe 1 (eigene Aufgaben nach einem Jahrgang), mit QR | Stundenanfang Klasse 10 |
+
+## Am Tisch (Lehrer 17.11. Werkstatt 58 nach dem Unterricht vom 17.11.; plan.md Register 17.11.10–13)
+
+Am 17.11. hat der Lehrer vorsorglich bestellt und dann umbestellt, weil den Schülern erst am Tisch einfiel, was ansteht
+(Test, Schulblatt). Was hier steht, geht den Abschnitten weiter unten vor.
+
+- **Buch zuerst (Regel).** Nennt der Lehrer zu einem Schüler ein Thema, läuft vor allem anderen
+  `cd aufgabenbank-privat && python3 werkzeuge/stand_im_buch.py <Name> --thema "<Thema in seinen Worten>"`. Gibt es `treffer`,
+  beginnt die Antwort mit der Buchzeile, vor Warnung und Karten: „Buch S. 62–64, Zentrische Streckung: leicht Nr. 1, 2, 3, 4, 6 ·
+  dann Nr. 5, 7, 8, 9“ (bei zwei Treffern beide, durch „ | “ getrennt) – immer, nicht nur auf Nachfrage. Sie zählt nicht zu der
+  einen Textzeile. Trag sie ein: `python3 werkzeuge/geliefert.py --name <Name> --projekt buch --bestellung "<Name> Buch S. 62–64:
+  Nr. 1, 2, 3, 4, 6"`. Das Blatt lieferst du trotzdem. Kein Treffer: kein Wort dazu. `buch` leer (kein Buch eingetragen): einmal je
+  Schüler und Chat die Zeile „Welches Buch hat <Name>?“ unter den Karten; die Antwort als Zeile nach aufgabenbank
+  `bau/rueckmeldung-bestellchat.md` (die Werkstatt trägt es ein). Warum – „Immer wenn ein Buch da ist, dann Buchseiten … nicht mal
+  und mal nicht“. Grenze – nur Seite und Nummer, nie Wortlaut; nur aus einem Register, nie aus einem Inhaltsverzeichnis geraten
+  (Mitschrift 17.11. 18:09).
+- **Ein Stück je Bestellung.** Jede Bestellung liefert ein Stück: einen abgeschlossenen Schritt, den der Schüler in einem Zug
+  schafft. Das gilt auch beim Bauen und auch, wenn die Bestellung mehrere Teile nennt („erst Hypotenuse, dann Kathete gegenüber,
+  dann Sachaufgaben“): Die Teile sind die Stationen des Gerüsts, geliefert wird die erste, die nächste liegt auf „weiter“ bereit.
+  Prüfwert für dich, keine Vorgabe: Wird ein Stück länger als zwei Seiten, sind es fast immer zwei Stationen – teile es. Ein
+  Vorratsblatt mit mehreren Blöcken geht blockweise raus (`qr-blatt.py --seiten`, Schnitt am Blockende), nie ganz. Warum – am 17.11.
+  gingen Blätter mit 5 und 8 Seiten raus und wurden Minuten später ersetzt („schmaler“); ganze Blätter „gehen an der Realität
+  vorbei“. Grenze – Prüfungsblatt und Basiszettel bleiben, wie sie sind; verlangt der Lehrer ausdrücklich das ganze Blatt, bekommt er es.
+- **Kein Blatt ohne QR-Code.** Jedes Blatt, das rausgeht, trägt einen QR-Code, auch Prüfungsblatt, Auswahl daraus und alles
+  von Hand Gesetzte – ohne ihn erfährt niemand, ob es am Tisch lag. Alltagsblatt und Test: wie bisher. Prüfungsblatt, bis
+  `bestellen.py` es selbst kann: QR oben rechts auf Seite 1, Kennung `p10-<stichwort>-<TTMM>`, Daten `blattbau/r/t/<Kennung>.json`
+  in der Form von `r/t/p10-pythagoras-1711.json` (je Aufgabe Ergebnis und Ansatz aus der Lösung des Kapitelblatts); Lieferzeile mit
+  „QR <Kennung>“. Scheitert das, geht das Blatt trotzdem raus, mit der Warnzeile „⚠ ohne QR“.
+- **Warm-up nur auf Bestellung.** Du bietest keines an und legst keines dazu. Bestellt der Lehrer eines, gilt „5-Minuten-Test“.
+  Warum – der Vorrat trifft die Höhe nicht (Lehrer 17.11.: „funktioniert gar nicht … lassen wir das erstmal weg“).
+- **Erst nachsehen, dann fragen.** Was in `geliefert.py --zeige <Name>`, `schueler.md`, `lieferungen/wege/`, dem Angebot der
+  Tagesseite (`bau/tagesseite/empfehlung.json`) oder einem Buchregister steht, fragst du den Lehrer nicht („warum fragst du mich
+  das. sieh selbst nach“, 17.11.). Lässt ein Wort zwei Lesarten zu, die verschiedene Blätter ergeben („Parameter ablesen“ – am
+  Graphen oder an der Gleichung), nimm die einfachere und nenn sie in der Textzeile.
+- **Umbestellt heißt ersetzt.** Gibt eine neue Bestellung einem Blatt desselben Schülers vom selben Tag eine andere Richtung
+  („schmaler“, „anders“, „das nicht, sondern …“), trägst du das alte ohne Nachfrage als ersetzt ein (`geliefert.py --ersetzt`,
+  s. „Rückmeldung vom Lehrer“); es fällt aus Karten, Tagesseite und Angebot.
 
 ## Handy oder Papier (Register 16.11.12, Lehrer 16.11. W52)
 
@@ -147,7 +184,7 @@ aufgabenbank-privat `schueler.md`.
    Steht beim Schüler in `schueler.md` „Für Blätter wichtig“ „Förderbedarf Lernen“, dazu `--stufe foerder --ausklang` (nur leichte
    Kopfrechenfragen, Stoff Kl. 5–6; Lehrer 15.11.: Sachaufgaben Kl. 7 wie „30 % von 5 €“ sind für sie zu schwer); bei „tiefste Stufe“ oder „sehr schwach“ `--stufe tief` (ohne Schwere 3, Stoff bis Klasse − 1;
    Lehrer 15.11.: zu schwere Tests demotivieren).
-   **Warm-up** (Bestellung „<Name> Warm-up“, also ohne Thema; Lehrer 17.11. W57, plan.md Register 17.11.9): immer die leichte
+   **Warm-up** (nur auf ausdrückliche Bestellung „<Name> Warm-up“, nie als Angebot oder Beigabe – s. „Am Tisch“; ohne Thema; Lehrer 17.11. W57, plan.md Register 17.11.9): immer die leichte
    Fassung – `--ausklang` (Kopfrechnen aus dem Alltag, ohne Kernstoff der Klasse), dazu `--stufe tief`; bei „sehr schwach“,
    „tiefste Stufe“ oder „Förderbedarf Lernen“ `--stufe foerder --ausklang`. Warum – am 17.11. standen im Warm-up für Nr. 6
    Polynome subtrahieren und Achsenschnittpunkte: „unfassbar, so etwas abzugeben“; ein Warm-up soll gelingen und Lust machen,
