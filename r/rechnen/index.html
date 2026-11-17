@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Kopfrechnen</title>
+<!-- Kopfrechnen zum Ausklang – mal und plus (Bestell-Chat 17.11.2026, Lehrerwort: „Web App. Ein bisschen Multiplikation,
+     ein bisschen Addition zum Abklingen.“). Eine Aufgabe je Bildschirm, eigenes Zifferfeld, 12 je Runde: abwechselnd
+     Einmaleins (erst Reihen 2, 5, 10, dann alle bis 10) und Plus (erst ohne, dann mit Übergang). Eine falsch gerechnete
+     Aufgabe kommt zwei Aufgaben später noch einmal (zählt nicht doppelt). Keine Uhr, keine Meldung, keine Namen. -->
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:#f3f7fb;color:#18324a}
+body{display:flex;justify-content:center}
+main{width:100%;max-width:440px;padding:14px 14px calc(16px + env(safe-area-inset-bottom))}
+h1{font-size:1.05rem;margin:2px 2px 10px;font-weight:650}
+.karte{background:#fff;border-radius:14px;box-shadow:0 1px 3px rgba(24,50,74,.12);padding:14px}
+.auf{font-size:2.6rem;text-align:center;padding:18px 0 6px;font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.ant{height:64px;border:2px solid #1f6fb2;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:2rem;font-variant-numeric:tabular-nums;box-shadow:0 0 0 3px rgba(31,111,178,.15);margin:8px 40px 0}
+.ant.r{border-color:#2a9d6a;background:#e3f5ec;box-shadow:none}.ant.f{border-color:#e0a23a;background:#fff6e6;box-shadow:none}
+.tasten{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.tasten button{height:56px;border:1.5px solid #c5d5e4;background:#fff;border-radius:10px;font:inherit;font-size:1.45rem;color:#18324a}
+.tasten button:active{background:#e6eef6}
+.haupt{width:100%;margin-top:12px;height:54px;border:0;border-radius:12px;background:#1f6fb2;color:#fff;font:inherit;font-size:1.1rem;font-weight:600}
+.haupt:active{background:#195c94}
+.meld{margin-top:10px;border-radius:10px;padding:10px 12px;font-size:1.02rem;line-height:1.45;min-height:46px;text-align:center}
+.meld.r{background:#e3f5ec;color:#14533a}.meld.f{background:#fff6e6;color:#6b4a0e}
+.fuss{display:flex;justify-content:space-between;font-size:.82rem;color:#5b7389;margin:12px 2px 0}
+.punkte{display:flex;gap:4px;align-items:center}
+.punkte span{width:10px;height:10px;border-radius:50%;background:#d5e0ea}
+.punkte span.r{background:#2a9d6a}.punkte span.f{background:#e0a23a}
+:focus-visible{outline:3px solid #f0a202;outline-offset:2px}
+</style></head>
+<body><main>
+<h1>Kopfrechnen: mal und plus</h1>
+<div class="karte">
+  <div class="auf" id="auf" aria-live="polite"></div>
+  <div class="ant" id="ant" aria-label="deine Antwort"></div>
+  <div class="tasten" id="tasten"></div>
+  <button class="haupt" id="haupt">Prüfen</button>
+  <div class="meld" id="meld" role="status"></div>
+  <div class="fuss"><div class="punkte" id="punkte" aria-hidden="true"></div><div id="stand"></div></div>
+</div>
+</main>
+<script>
+(function(){
+"use strict";
+var N=12, liste=[], pos=0, ein="", geprueft=false, verlauf=[], lob=["Richtig.","Stimmt.","Genau.","Passt.","Ja."];
+function zuf(a,b){return a+Math.floor(Math.random()*(b-a+1))}
+function wahl(l){return l[zuf(0,l.length-1)]}
+function mal(leicht){
+  var a=leicht?wahl([2,5,10]):zuf(3,9), b=zuf(2,leicht?10:9);
+  if(Math.random()<.5){var t=a;a=b;b=t}
+  return {t:a+" · "+b, w:a*b, weg:a+" · "+b+" = "+a*b};
+}
+function plus(stufe){
+  var a,b;
+  if(stufe===0){a=zuf(11,40);b=zuf(2,9); if(a%10+b>9)b=9-a%10||1;}          // ohne Übergang
+  else if(stufe===1){a=zuf(15,68);b=zuf(3,9); if(a%10+b<10)b=10-a%10+zuf(0,2);} // mit Übergang
+  else {a=zuf(12,45);b=zuf(11,39);}
+  return {t:a+" + "+b, w:a+b, weg:a+" + "+b+" = "+(a+b)};
+}
+function runde(){
+  liste=[]; var schl={};
+  for(var i=0;i<N;i++){
+    var q,k=0;
+    do{ q=(i%2===0)?mal(i<6):plus(i<4?0:i<8?1:2); k++; }while(schl[q.t]&&k<20);
+    schl[q.t]=1; liste.push(q);
+  }
+  var l=mal(true); liste[N-1]=l;                      // die letzte gelingt
+  pos=0; verlauf=[]; zeige();
+}
+function zeige(){
+  var q=liste[pos]; ein=""; geprueft=false;
+  document.getElementById("auf").textContent=q.t+" =";
+  var a=document.getElementById("ant"); a.className="ant"; a.textContent="";
+  var m=document.getElementById("meld"); m.className="meld"; m.textContent="";
+  document.getElementById("haupt").textContent="Prüfen"; stand();
+}
+var T=document.getElementById("tasten");
+["7","8","9","4","5","6","1","2","3","⌫","0"].forEach(function(t){
+  var b=document.createElement("button"); b.type="button"; b.textContent=t; b.dataset.t=t;
+  if(t==="⌫")b.setAttribute("aria-label","löschen"); if(t==="0")b.style.gridColumn="2 / span 2";
+  T.appendChild(b);
+});
+T.addEventListener("click",function(ev){
+  var b=ev.target.closest("button"); if(!b||geprueft)return; var t=b.dataset.t;
+  if(t==="⌫") ein=ein.slice(0,-1); else if(ein.length<3) ein+=t;
+  document.getElementById("ant").textContent=ein;
+});
+document.getElementById("haupt").addEventListener("click",function(){
+  var m=document.getElementById("meld"), a=document.getElementById("ant");
+  if(geprueft==="ende"){runde();return}
+  if(!geprueft){
+    if(ein===""){m.className="meld f";m.textContent="Tipp dein Ergebnis ein.";return}
+    var q=liste[pos], ok=parseInt(ein,10)===q.w; geprueft=true;
+    if(!q.nochmal) verlauf.push(ok);
+    a.className="ant "+(ok?"r":"f"); m.className="meld "+(ok?"r":"f");
+    m.textContent=ok?wahl(lob):q.weg+" – die kommt gleich noch einmal.";
+    if(!ok && !q.nochmal) liste.splice(Math.min(pos+3,liste.length),0,{t:q.t,w:q.w,weg:q.weg,nochmal:true});
+    if(!ok && q.nochmal) m.textContent=q.weg;
+    this.textContent=pos>=liste.length-1?"Fertig":"Weiter"; stand(); return;
+  }
+  if(pos>=liste.length-1){
+    var r=verlauf.filter(Boolean).length;
+    m.className="meld r"; m.textContent=r+" von "+N+" beim ersten Mal richtig."+(r===N?" Alles richtig!":"");
+    document.getElementById("auf").textContent="Geschafft"; a.className="ant"; a.textContent="";
+    geprueft="ende"; this.textContent="Noch eine Runde"; return;
+  }
+  pos++; zeige();
+});
+function stand(){
+  var p=document.getElementById("punkte"); p.innerHTML="";
+  for(var i=0;i<N;i++){var s=document.createElement("span"); if(i<verlauf.length)s.className=verlauf[i]?"r":"f"; p.appendChild(s);}
+  document.getElementById("stand").textContent=verlauf.length+" von "+N;
+}
+runde();
+})();
+</script>
+</body></html>
