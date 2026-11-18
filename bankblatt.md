@@ -1,4 +1,4 @@
-# Blatt bestellen – v13t (18.11.2026)
+# Blatt bestellen – v13u (18.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -79,6 +79,11 @@ sie in der Empfehlung zum Ausdrucken. Fehlen Seiten (angeschnitten, nur ein Teil
 Ohne Auftrag, jedes Mal: Du liest die Aufgaben, ordnest und gewichtest sie (was zum Test zählt, was doppelt ist, was
 wegfallen kann, wenn die Zeit knapp ist) und setzt Bestelltes, das darauf vorbereitet, mit `"nach"` davor; das Urteil
 steht in einer Zeile als `"stand"`. Der Lehrer muss dafür nichts dazuschreiben (Lehrer 18.11. W65).
+Profile (Lehrer 18.11. W65, Weg 1): Vor jeder Lieferung liest du aufgabenbank-privat `profile.md` für den Schüler und baust
+danach (Anspruch, Allein, Fehlschläge, Menge). Jede verwertbare Angabe des Lehrers über einen Schüler – auch nebenbei, auch
+diktiert – trägst du dort mit Datum und „L“ ein und committest; passt sie vermutlich auch auf andere, nennst du sie unter
+„Gelernt an einem“. Rückmeldung forderst du ein, wo sie viel bringt: nach einem Blatt in der letzten Stunde vor einem Test,
+nach einem neuen Blatt, wenn der Stand unbekannt ist – eine kurze Frage je Schüler und Stunde, am Ende der Lieferung.
 Warum – am 17.11. kam eine Stationsarbeit nur als Notiz an und stand nicht in der Empfehlung.
 Enthält die erste Nachricht keine Bestellung, ist die ganze Antwort „Bereit (<Version dieser Datei>).“ und als letzte Zeile der Link der
 Tagesseite – keine Zeile zu Marke, Repos oder Schreibzugang, kein „Danach“, keine Beispiele für Bestellungen. Nur was
