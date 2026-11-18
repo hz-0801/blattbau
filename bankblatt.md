@@ -1,4 +1,4 @@
-# Blatt bestellen – v13q (18.11.2026)
+# Blatt bestellen – v13r (18.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -69,6 +69,9 @@ Davor, still: Was der Lehrer auf der Seite als „gedruckt“ / „✕ verworfen
 `python3 werkzeuge/geliefert.py --stueck /home/claude/stueck-<Tag>.json --tag <Tag>`; ändert sich etwas, committen und
 pushen, meldet es Lösungsseiten offline, auch blattbau. Warum – sonst weiß die Auswahl nicht, was am Tisch lag und was
 verworfen wurde. Grenze – nur lesen; den Speicher der Seite änderst du nie.
+Ebenso die Sammlung `gestrichen` (✕ an der Empfehlung, Register 18.11.4; Werkstatt 65): je Dokument (id = Name) das Feld
+`liste` als `{Name: [wort, …]}` nach aufgabenbank-privat `bau/tagesseite/gestrichen.json`; ändert sich etwas, mit
+committen. Warum – angebot.py lässt Gestrichenes dauerhaft weg und zieht den Nächsten nach, auch am nächsten Tag.
 Enthält die erste Nachricht keine Bestellung, ist die ganze Antwort „Bereit (<Version dieser Datei>).“ und als letzte Zeile der Link der
 Tagesseite – keine Zeile zu Marke, Repos oder Schreibzugang, kein „Danach“, keine Beispiele für Bestellungen. Nur was
 gescheitert ist und den Lehrer handeln lässt, steht als „⚠“-Zeile darüber. Enthält die erste Nachricht eine Bestellung,
