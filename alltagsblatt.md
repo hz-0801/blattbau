@@ -120,7 +120,7 @@ dann gerundet („√65 ≈ 8,1“).
 Umformungen stehen untereinander, am Gleichheitszeichen ausgerichtet, mit Auftragsstrich. ⇒ steht, wo ein Schritt Wissen
 anwendet statt zu rechnen (Nullprodukt, Wurzel ziehen, Ablesen), nicht zwischen Umformungen; nie ⇔. Gleichungssysteme und
 Proben untereinander, zwei Ergebnisse untereinander. Formelzeile: erst der Name, auch der im Unterricht übliche, dann die
-Formel; eine gängige Eselsbrücke dahinter, sparsam („Spitze minus Fuß“). p-q-Formel: zuerst die Normalform
+Formel; eine gängige Eselsbrücke dahinter, sparsam („Spitze minus Fuß“). Scheitelpunktform: y = a(x − d)² + e mit S(d | e), a immer aufgeführt, auch wo das Buch des Schülers anders schreibt (dann einmal als Lesart; Register 18.11.9, mathe-nachhilfe begriffe.md). p-q-Formel: zuerst die Normalform
 x² + px + q = 0 (wenn nötig erst durch a geteilt), dann p und q ausdrücklich, dann einsetzen; übt ein Block einen kürzeren
 Weg, steht unter dem Beispiel nur „Geht auch: ausmultiplizieren und p-q-Formel.“ Vektorgleichungen: Spaltenvektoren
 nebeneinander, Komponenten zeilenweise ausgerichtet.
