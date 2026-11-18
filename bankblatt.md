@@ -1,4 +1,4 @@
-# Blatt bestellen – v13s (18.11.2026)
+# Blatt bestellen – v13t (18.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -75,7 +75,10 @@ committen. Warum – angebot.py lässt Gestrichenes dauerhaft weg und zieht den 
 Material der Schule (Register 18.11.5 (2); Werkstatt 65): Schickt der Lehrer Seiten, die der Schüler von der Schule
 bekam (Foto, PDF), legst du jede Seite als druckbares A4-PDF unter aufgabenbank-privat `bau/bestellchat/bilder/` ab und
 trägst sie in `bau/tagesseite/empfehlung.json` unter `<Name>.schule` ein (`[{"titel", "pdf"}]`); die Tagesseite zeigt
-sie oben in der Empfehlung zum Ausdrucken. Fehlen Seiten (angeschnitten, nur ein Teil), sagst du es in einer Zeile.
+sie in der Empfehlung zum Ausdrucken. Fehlen Seiten (angeschnitten, nur ein Teil), fragst du sofort danach.
+Ohne Auftrag, jedes Mal: Du liest die Aufgaben, ordnest und gewichtest sie (was zum Test zählt, was doppelt ist, was
+wegfallen kann, wenn die Zeit knapp ist) und setzt Bestelltes, das darauf vorbereitet, mit `"nach"` davor; das Urteil
+steht in einer Zeile als `"stand"`. Der Lehrer muss dafür nichts dazuschreiben (Lehrer 18.11. W65).
 Warum – am 17.11. kam eine Stationsarbeit nur als Notiz an und stand nicht in der Empfehlung.
 Enthält die erste Nachricht keine Bestellung, ist die ganze Antwort „Bereit (<Version dieser Datei>).“ und als letzte Zeile der Link der
 Tagesseite – keine Zeile zu Marke, Repos oder Schreibzugang, kein „Danach“, keine Beispiele für Bestellungen. Nur was
