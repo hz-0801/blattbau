@@ -115,6 +115,7 @@ dann gerundet („√65 ≈ 8,1“).
 **4.2 Sprache.** Kurze ganze Sätze, erst die Lage, dann eine Aufforderung; Du-Form; Operatoren wie in der Prüfung
 (berechne, gib an, begründe, entscheide); ein Fachwort beim ersten Mal mit dem Alltagswort; Buchstaben und Schreibweise nach
 4.3 und den Regeln des Projekts, was das Buch des Schülers anders nennt, einmal als Lesart (mathe-nachhilfe allgemein.md 2.7); Division als Bruch.
+**4.2a Gegeben/Gesucht (Register 18.11.13).** Sek I, Sachaufgaben und Geometrie – überall, wo der Schüler erst verstehen muss, was gegeben und was gesucht ist: unter dem Aufgabentext je eine Zeile „Gegeben:“ und „Gesucht:“, im Muster ausgefüllt, sonst zum Ausfüllen; für alle Schüler, nicht nur schwache. Nicht bei reinen Rechenpäckchen. Kostet Platz – der wird dafür eingeplant, nicht anderswo gekürzt.
 
 **4.3 Schreibweise in Beispiel und Lösung.** Was im Kopf geht, steht in einer Zeile („|u⃗| = √(0,6² + 0,8²) = 1“);
 Umformungen stehen untereinander, am Gleichheitszeichen ausgerichtet, mit Auftragsstrich. ⇒ steht, wo ein Schritt Wissen
