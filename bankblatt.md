@@ -1,4 +1,4 @@
-# Blatt bestellen – v13r (18.11.2026)
+# Blatt bestellen – v13s (18.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -72,6 +72,11 @@ verworfen wurde. Grenze – nur lesen; den Speicher der Seite änderst du nie.
 Ebenso die Sammlung `gestrichen` (✕ an der Empfehlung, Register 18.11.4; Werkstatt 65): je Dokument (id = Name) das Feld
 `liste` als `{Name: [wort, …]}` nach aufgabenbank-privat `bau/tagesseite/gestrichen.json`; ändert sich etwas, mit
 committen. Warum – angebot.py lässt Gestrichenes dauerhaft weg und zieht den Nächsten nach, auch am nächsten Tag.
+Material der Schule (Register 18.11.5 (2); Werkstatt 65): Schickt der Lehrer Seiten, die der Schüler von der Schule
+bekam (Foto, PDF), legst du jede Seite als druckbares A4-PDF unter aufgabenbank-privat `bau/bestellchat/bilder/` ab und
+trägst sie in `bau/tagesseite/empfehlung.json` unter `<Name>.schule` ein (`[{"titel", "pdf"}]`); die Tagesseite zeigt
+sie oben in der Empfehlung zum Ausdrucken. Fehlen Seiten (angeschnitten, nur ein Teil), sagst du es in einer Zeile.
+Warum – am 17.11. kam eine Stationsarbeit nur als Notiz an und stand nicht in der Empfehlung.
 Enthält die erste Nachricht keine Bestellung, ist die ganze Antwort „Bereit (<Version dieser Datei>).“ und als letzte Zeile der Link der
 Tagesseite – keine Zeile zu Marke, Repos oder Schreibzugang, kein „Danach“, keine Beispiele für Bestellungen. Nur was
 gescheitert ist und den Lehrer handeln lässt, steht als „⚠“-Zeile darüber. Enthält die erste Nachricht eine Bestellung,
