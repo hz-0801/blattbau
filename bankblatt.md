@@ -1,4 +1,4 @@
-# Blatt bestellen – v13p (17.11.2026)
+# Blatt bestellen – v13q (18.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -63,7 +63,7 @@ verloren. Grenze – Tag unklar (welcher Donnerstag?) → einmal fragen; nichts 
 ## Start (Lehrer 17.11. Werkstatt 57)
 
 Nach dem Klonen und der Tagesmarke, vor allem anderen, veröffentlichst du die Tagesseite neu (Weg unter „Antworten“).
-Davor, still: Was der Lehrer auf der Seite als „lag am Tisch“ / „weg“ getippt hat, holst du in die Lieferliste
+Davor, still: Was der Lehrer auf der Seite als „gedruckt“ / „✕ verworfen“ getippt hat (Speicher `tisch` / `weg`), holst du in die Lieferliste
 (Werkstatt 61, offen/betrieb.md [209]): `db_list` mit dem Slug der Tagesseite und der Sammlung `stueck`, je Dokument
 (id = Tag) die Daten als JSON nach `/home/claude/stueck-<Tag>.json`, dann im Ordner aufgabenbank-privat
 `python3 werkzeuge/geliefert.py --stueck /home/claude/stueck-<Tag>.json --tag <Tag>`; ändert sich etwas, committen und
