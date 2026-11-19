@@ -1,4 +1,4 @@
-# Blatt bestellen – v13u (18.11.2026)
+# Blatt bestellen – v13v (19.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -59,6 +59,14 @@ in aufgabenbank-privat `bau/tagesseite/tests.csv` ein (name;datum JJJJ-MM-TT;the
 und veröffentlichst die Tagesseite neu; im Chat eine Zeile „Test eingetragen: <Name> <Tag>“. Warum – die Tagesseite zeigt den
 Test unter dem Namen und danach sieben Tage „wie war's?“; am 17.11. ging „schreibt Test am Donnerstag“ in einer Bestellung
 verloren. Grenze – Tag unklar (welcher Donnerstag?) → einmal fragen; nichts in Outlook.
+
+## Termine (Lehrer 19.11. W69; Register 19.11.1)
+
+Nennt der Lehrer Person und Tag („morgen kommt Anthony nochmal“, „Pariya fällt Donnerstag aus“), trägst du den Termin sofort
+in Outlook ein – neu, verschoben oder abgesagt nach anweisungen global.md „Termine“ – und meldest es in einer Zeile
+(„Eingetragen: Anthony, Do 19.11.“). Warum – am 17.11. ging „morgen kommt Anthony nochmal“ verloren; die globale Regel griff
+hier nicht. Beispiel – Absage: Name im Betreff hinter „ – abgesagt: “, aktive Namen vorn, nichts löschen. Grenze – fragen nur,
+wenn Tag oder Person unklar sind; Tests eines Schülers sind keine Termine (Abschnitt „Tests“); Outlook nicht verbunden → ein Satz.
 
 ## Start (Lehrer 17.11. Werkstatt 57)
 
