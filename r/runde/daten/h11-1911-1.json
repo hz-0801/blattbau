@@ -1,0 +1,234 @@
+{
+ "kennung": "h11-1911-1",
+ "titel": "Bogenmaß",
+ "erzeugt": "2026-11-19",
+ "bis": "2027-01-28",
+ "fragen": [
+  {
+   "nr": 1,
+   "id": "k-quelle-mathalea-kurs-145",
+   "frage": "Wie viel Grad sind $2\\pi$ im Bogenmaß?",
+   "thema": "Grad in Bogenmaß",
+   "einheit": "trigonometrische-funktionen/1",
+   "schwere": 1,
+   "art": "zahl",
+   "wert": "360",
+   "loesung": "$360^\\circ$",
+   "masse": "°",
+   "fehler": {
+    "180": "das ist $\\pi$"
+   }
+  },
+  {
+   "nr": 2,
+   "id": "k-quelle-openstax-b-154",
+   "frage": "Wie viel Grad sind $\\frac{\\pi}{6}$?",
+   "thema": "Grad in Bogenmaß",
+   "einheit": "trigonometrische-funktionen/1",
+   "schwere": 1,
+   "art": "zahl",
+   "wert": "30",
+   "loesung": "$30^\\circ$",
+   "masse": "°"
+  },
+  {
+   "nr": 3,
+   "id": "k-eigen-t10-t12-161",
+   "frage": "Wie viel Grad sind $\\frac{\\pi}{12}$?",
+   "thema": "Grad in Bogenmaß",
+   "einheit": "trigonometrische-funktionen/1",
+   "schwere": 2,
+   "art": "zahl",
+   "wert": "15",
+   "loesung": "$15^\\circ$",
+   "masse": "°"
+  },
+  {
+   "nr": 4,
+   "id": "k-quelle-mathalea-kurs-146",
+   "frage": "Wie schreibst du $90^\\circ$ im Bogenmaß?",
+   "thema": "Grad in Bogenmaß",
+   "einheit": "trigonometrische-funktionen/1",
+   "schwere": 2,
+   "art": "auswahl",
+   "optionen": [
+    {
+     "t": "$\\frac{\\pi}{2}$",
+     "r": 1
+    },
+    {
+     "t": "$\\frac{\\pi}{4}$"
+    },
+    {
+     "t": "$\\pi$"
+    }
+   ],
+   "loesung": "$\\frac{\\pi}{2}$",
+   "aus_wert": 1
+  },
+  {
+   "nr": 5,
+   "id": "k-quelle-brueckenkurs-179",
+   "frage": "Wie viel Grad sind $\\frac{2\\pi}{3}$?",
+   "thema": "Grad in Bogenmaß",
+   "einheit": "trigonometrische-funktionen/1",
+   "schwere": 2,
+   "art": "zahl",
+   "wert": "120",
+   "loesung": "$120^\\circ$",
+   "masse": "°"
+  },
+  {
+   "nr": 6,
+   "id": "k-quelle-openstax-b-156",
+   "frage": "Welcher Winkel zwischen $0^\\circ$ und $360^\\circ$ hat dieselbe Lage am Einheitskreis wie $870^\\circ$?",
+   "thema": "Bogenmaß zerlegen",
+   "einheit": "trigonometrische-funktionen/1",
+   "schwere": 2,
+   "art": "zahl",
+   "wert": "150",
+   "loesung": "$150^\\circ$ ($870^\\circ-2\\cdot360^\\circ$).",
+   "masse": "°",
+   "zw": {
+    "id": "k-eigen-t10-t12-170",
+    "frage": "Welcher Winkel zwischen $0^\\circ$ und $360^\\circ$ gehört zum selben Punkt am Einheitskreis wie $400^\\circ$?",
+    "thema": "Bogenmaß zerlegen",
+    "einheit": "trigonometrische-funktionen/1",
+    "schwere": 2,
+    "art": "zahl",
+    "wert": "40",
+    "loesung": "$40^\\circ$",
+    "masse": "°"
+   }
+  },
+  {
+   "nr": 7,
+   "id": "k-eigen-t10-t12-159",
+   "frage": "Wie viel Grad sind $\\frac{5\\pi}{4}$?",
+   "thema": "Grad in Bogenmaß",
+   "einheit": "trigonometrische-funktionen/1",
+   "schwere": 2,
+   "art": "zahl",
+   "wert": "225",
+   "loesung": "$225^\\circ$",
+   "masse": "°"
+  },
+  {
+   "nr": 8,
+   "id": "k-quelle-openstax-b-153",
+   "frage": "Rechne $-\\frac{3\\pi}{4}$ in Grad um.",
+   "thema": "Grad in Bogenmaß",
+   "einheit": "trigonometrische-funktionen/1",
+   "schwere": 2,
+   "art": "zahl",
+   "wert": "−135",
+   "loesung": "$-135^\\circ$",
+   "masse": "°"
+  },
+  {
+   "nr": 9,
+   "id": "k-eigen-t10-t12-162",
+   "frage": "Ben rechnet $60^\\circ$ ins Bogenmaß um: $60\\cdot\\frac{180}{\\pi}$. Stimmt das?",
+   "thema": "Umrechnung Grad → Bogenmaß nicht falsch herum",
+   "einheit": "trigonometrische-funktionen/1",
+   "schwere": 3,
+   "art": "stimmt",
+   "knoepfe": [
+    "stimmt",
+    "stimmt nicht"
+   ],
+   "richtig": "stimmt nicht",
+   "loesung": "stimmt nicht – mal $\\frac{\\pi}{180}$: $60\\cdot\\frac{\\pi}{180}=\\frac{\\pi}{3}$.",
+   "fehler": "Bruch umgedreht"
+  },
+  {
+   "nr": 10,
+   "id": "k-quelle-brueckenkurs-178",
+   "frage": "Wie viel Grad sind $\\frac{\\pi}{4}$?",
+   "thema": "Grad in Bogenmaß",
+   "einheit": "trigonometrische-funktionen/1",
+   "schwere": 1,
+   "art": "zahl",
+   "wert": "45",
+   "loesung": "$45^\\circ$",
+   "masse": "°"
+  },
+  {
+   "nr": 11,
+   "id": "k-quelle-brueckenkurs-177",
+   "frage": "Wie viel sind $60^\\circ$ im Bogenmaß?",
+   "thema": "Grad in Bogenmaß",
+   "einheit": "trigonometrische-funktionen/1",
+   "schwere": 1,
+   "art": "auswahl",
+   "optionen": [
+    {
+     "t": "$60\\pi$"
+    },
+    {
+     "t": "$\\frac{\\pi}{6}$"
+    },
+    {
+     "t": "$\\frac{\\pi}{3}$",
+     "r": 1
+    }
+   ],
+   "loesung": "$\\frac{\\pi}{3}$",
+   "aus_wert": 1
+  }
+ ],
+ "quellen": [
+  {
+   "quelle": "eigene Fragen",
+   "nr": [
+    "3",
+    "6z",
+    "7",
+    "9"
+   ]
+  },
+  {
+   "quelle": "MathALÉA (Coopmaths), Questions de cours",
+   "nr": [
+    "1",
+    "4"
+   ],
+   "lizenz": "CC BY-SA 4.0",
+   "bearbeitung": "übersetzt und bearbeitet",
+   "url": [
+    "https://forge.apps.education.fr"
+   ],
+   "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+   "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+  },
+  {
+   "quelle": "OpenStax Precalculus (Erstauflage)",
+   "nr": [
+    "2",
+    "6",
+    "8"
+   ],
+   "lizenz": "CC BY 4.0",
+   "bearbeitung": "übersetzt und bearbeitet",
+   "url": [
+    "https://assets.openstax.org"
+   ],
+   "lizenz_url": "https://creativecommons.org/licenses/by/4.0/deed.de"
+  },
+  {
+   "quelle": "VE&MINT",
+   "nr": [
+    "5",
+    "10",
+    "11"
+   ],
+   "lizenz": "CC BY-SA 4.0",
+   "bearbeitung": "übersetzt und bearbeitet",
+   "url": [
+    "https://vorkurs-mathematik.innocampus.tu-berlin.de"
+   ],
+   "lizenz_url": "https://creativecommons.org/licenses/by-sa/4.0/deed.de",
+   "hinweis": "Die bearbeiteten Fassungen dieser Fragen stehen unter derselben Lizenz (CC BY-SA 4.0, Weitergabe unter gleichen Bedingungen)."
+  }
+ ]
+}
