@@ -22,10 +22,12 @@
      nicht nur an der Farbe hängt; am Handy kurz Vibration bei falsch); bei falsch zeigt erst „Lösung zeigen“ die richtige Lösung.
      W84 (L 22.11., Paket A; Befunde 25–28): kein „Prüfen“ bei Zahlen – hat die Eingabe die Länge der richtigen Antwort oder ruht sie
      3 s, füllt sich ein Ring 1,5 s, dann wird gewertet; jeder Tastendruck setzt ihn zurück; Enter wertet sofort. Der Ring läuft auch
-     bei richtig, damit „springt sofort“ nichts verrät. „Bist du sicher?“ nur bei Beinahe-Fehlern (Vorzeichen, um 1 daneben, Ziffern
-     vertauscht), höchstens einmal je Frage und höchstens jede dritte Frage; gemeldet als h=<nr,…> (Urteil r/f bleibt). Leiste grün/rot
-     je Frage; „Rechne $…$.“ → Aufforderung oben, Ausdruck groß in der Mitte; nach falsch nur Frage – deine Antwort – richtig
-     („5 · 0 = 0“), Rechenweg nur auf Knopf, der Satz zum typischen Fehler nicht für den Schüler (bleibt in den Daten). -->
+     bei richtig, damit „springt sofort“ nichts verrät. Leiste grün/rot je Frage; „Rechne $…$.“ → Aufforderung oben, Ausdruck groß
+     in der Mitte. W84 Paket A (L 22.11., Register 22.11.2, ersetzt „Bist du sicher?“): nach falsch roter Blitz, dann dieselbe Frage
+     leer als zweiter Versuch mit „Lösung zeigen“; richtig → grün, weiter (Urteil bleibt f, Meldung w=nr:r); wieder falsch oder
+     „Lösung zeigen“ (w=nr:f bzw. nr:l) → Gegenüberstellung „6 − 8 = 2“ rot über „6 − 8 = −2“ grün, „=“ untereinander, nach 3 s
+     weiter. Auswahl: falsche Wahl ausgegraut, noch einmal wählen; bei zwei Möglichkeiten gleich die Gegenüberstellung (deine rot,
+     richtige grün). Kein „Noch nicht“, kein Erklärtext; der Satz zum typischen Fehler bleibt in den Daten (Befund 28). -->
 <link rel="stylesheet" href="../katex/katex.min.css">
 <script defer src="../katex/katex.min.js"></script>
 <script defer src="../katex/auto-render.min.js"></script>
@@ -50,6 +52,12 @@ p{font-size:18px;line-height:1.4;margin:8px 0}
 @keyframes ringlauf{to{stroke-dashoffset:0}}
 .sicher{display:flex;align-items:center;gap:10px;background:#fff4e0;border-radius:14px;padding:8px 12px;margin:0 0 10px;font-size:21px;font-weight:700;color:#7a4f06}
 .sicher button{margin-left:auto;min-height:48px;padding:0 22px;font-size:20px}
+.geg{display:grid;grid-template-columns:auto auto auto;justify-content:center;align-items:center;column-gap:12px;row-gap:10px;margin:18px 0 6px;font-size:34px;font-weight:700}
+.geg .c1{justify-self:end}.geg .c3{justify-self:start}.geg .lab{font-size:16px;font-weight:600;color:#4a6378}
+.geg .f{color:#a11d1d}.geg .r{color:#14533a}.geg .katex{font-size:1em}
+.geg hr{grid-column:1 / 4;width:100%;border:0;border-top:2px solid #c9d6e2;margin:0}
+.loesk{display:block;margin:10px auto 0;min-height:44px;padding:0 18px;font-size:18px;font-weight:600;background:none;border:1.5px solid #b9c8d4;box-shadow:none;color:#4a6378}
+.wahl button.aus{opacity:.35;text-decoration:line-through}
 .richtig{margin:10px 0 0;border-radius:14px;background:#e6f6ec;border:3px solid #2e9e5b;padding:10px 14px;font-size:30px;font-weight:700;text-align:center;color:#14533a}
 .richtig small{display:block;font-size:14px;font-weight:600;color:#2e7a4f}
 .marke{display:inline-block;font-size:14px;font-weight:600;color:#1f5f8b;background:#dfeaf4;border-radius:6px;padding:2px 8px;margin-bottom:4px}
@@ -116,7 +124,7 @@ const formeln = wo => { if (window.renderMathInElement) renderMathInElement(wo, 
   macros: { "\\sv": SV, "\\frac": "\\dfrac", "\\tfrac": "\\dfrac" } }); };   // Brüche groß, gut lesbar
 const bildname = b => b && /^[a-z0-9-]+\.(png|svg|jpg)$/.test(b) ? b : "";
 let fassung = 0, runde, folge, i, urteile, antworten, zwillinge, zwAnzahl, beginn, nachrunde = false, gesendet = false, abgebrochen = false;
-let frage, eingabe, wahl, gesperrt, teile, uhr = null, ruhe = null, hinweisHier = false, letzterHinweis = -99, hinweise = [];
+let frage, eingabe, wahl, gesperrt, teile, uhr = null, ruhe = null, versuch = 1, erste = "", zweite = [];
 
 // ---- Zahlen: "−3/4", "2,5" → gekürzter Bruch [Zähler, Nenner]
 const ggt = (a, b) => { a = Math.abs(a); b = Math.abs(b); while (b) [a, b] = [b, a % b]; return a || 1; };
@@ -165,10 +173,10 @@ function thema(t) {
   return s || roh || "Runde";
 }
 function los() { if (fassung) try { localStorage.setItem("runde-f-" + kennung, String(fassung)); } catch (x) {}
-  folge = runde.fragen.map(f => ({ f, nr: f.nr, zw: false })); i = 0; letzterHinweis = -99; hinweise = []; urteile = {}; antworten = {}; zwillinge = []; zwAnzahl = 0; beginn = Date.now(); zeig(); }
+  folge = runde.fragen.map(f => ({ f, nr: f.nr, zw: false })); i = 0; zweite = []; urteile = {}; antworten = {}; zwillinge = []; zwAnzahl = 0; beginn = Date.now(); zeig(); }
 
 function zeig() {
-  const e = folge[i]; frage = e.f; gesperrt = false; wahl = null; hinweisHier = false; stoppe(); const vorgabe = frage.art === "zahl" && !!frage.bruch && String(frage.wert || "").includes("/");   // Antwort ist ein Bruch: Feld gleich als Bruch (Lehrer 13.11.)
+  const e = folge[i]; frage = e.f; gesperrt = false; wahl = null; versuch = 1; erste = ""; stoppe(); const vorgabe = frage.art === "zahl" && !!frage.bruch && String(frage.wert || "").includes("/");   // Antwort ist ein Bruch: Feld gleich als Bruch (Lehrer 13.11.)
   eingabe = { minus: false, z: "", n: "", bruch: vorgabe, vorgabe, teil: "z" };
   app.replaceChildren();
   const kopf = el("div", "kopf"), balken = el("div", "balken");
@@ -220,26 +228,8 @@ function plane() {
   if (norm(text()).length === norm(frage.wert).length) ring(); else ruhe = setTimeout(ring, 3000);
 }
 function ring() { clearTimeout(uhr); const r = document.getElementById("ring"); if (!r) return; r.classList.remove("an"); void r.getBoundingClientRect(); r.classList.add("an"); uhr = setTimeout(() => { stoppe(); abschluss(); }, 1500); }
-function weg() { const s = document.getElementById("sicher"); if (s) s.remove(); }
-// Beinahe-Fehler: Vorzeichen, um 1 daneben (ganze Zahlen ab 3), Ziffern vertauscht
-function nahe(t, w) {
-  const x = bruch(t), y = bruch(w); if (!x || !y || x[1] !== y[1] || x[0] === y[0]) return false;
-  if (y[0] !== 0 && x[0] === -y[0]) return true;
-  if (y[1] === 1 && Math.abs(y[0]) >= 3 && Math.abs(x[0] - y[0]) === 1) return true;
-  const a = String(Math.abs(x[0])), b = String(Math.abs(y[0]));
-  return a.length >= 2 && a.length === b.length && a !== b && a.split("").sort().join("") === b.split("").sort().join("") && Math.sign(x[0]) === Math.sign(y[0]);
-}
-function abschluss() {
-  if (gesperrt || !bereit()) return; stoppe();
-  const t = text();
-  if (!hinweisHier && i - letzterHinweis >= 3 && !gleich(t, frage.wert) && nahe(t, frage.wert)) {
-    hinweisHier = true; letzterHinweis = i; const e = folge[i]; if (!nachrunde && !e.zw && !hinweise.includes(e.nr)) hinweise.push(e.nr);
-    const s = el("div", "sicher"); s.id = "sicher"; s.setAttribute("role", "status"); s.appendChild(el("span", "", "Bist du sicher?"));
-    const ja = el("button", "ok", "Ja"); ja.onclick = () => { weg(); pruefZahl(); }; s.appendChild(ja);
-    const tasten = document.getElementById("tasten"); tasten.parentNode.insertBefore(s, tasten); mal("s"); return;
-  }
-  pruefZahl();
-}
+function weg(id) { const s = document.getElementById(id || "sicher"); if (s) s.remove(); }
+function abschluss() { if (gesperrt || !bereit()) return; stoppe(); pruefZahl(); }
 const bereit = () => /\d$/.test(eingabe.z) && (!eingabe.bruch || (/^\d+$/.test(eingabe.n) && +eingabe.n > 0));
 function mal(klasse) {
   const feld = document.getElementById("feld"); if (!feld) return;
@@ -258,15 +248,49 @@ function mal(klasse) {
   if (!gesperrt && uhr) ring();   // Neuzeichnen während des Rings: Ring läuft neu an
 }
 function pruefZahl() {
-  const t = text(); let ok = gleich(t, frage.wert), satz = "";
-  if (ok && frage.streng) {
-    const soll = frage.wert.replace("−", "-"), ist = t.replace("−", "-");
-    if (soll.includes("/") && !ist.includes("/")) { ok = false; satz = "Der Wert stimmt – gefragt ist aber ein Bruch."; }
-    else if (soll.includes("/") && soll !== ist) { ok = false; satz = "Der Wert stimmt – der Bruch ist aber noch nicht vollständig gekürzt."; }
+  const t = text(); let ok = gleich(t, frage.wert);
+  if (ok && frage.streng) { const soll = norm(frage.wert), ist = norm(t); if (soll.includes("/") && soll !== ist) ok = false; }   // Bruch gefragt bzw. ungekürzt
+  stoppe();
+  if (ok) { if (versuch === 1) buche(true, t); else zweitBuche("r");
+    gesperrt = true; mal("r"); weg("tasten"); weg("loesk"); Signal.blitz(true); weiterKnopf(1000); return; }
+  Signal.blitz(false);
+  if (versuch === 1) {   // zweiter Versuch: dieselbe Frage, Feld leer
+    buche(false, t); versuch = 2; erste = t;
+    eingabe = { minus: false, z: "", n: "", bruch: eingabe.vorgabe, vorgabe: eingabe.vorgabe, teil: "z" }; mal();
+    loesKnopf(() => { zweitBuche("l"); gegenueber(erste); }); return;
   }
-  if (!ok && !satz && frage.fehler) for (const k in frage.fehler) if (gleich(t, k)) satz = "Typischer Fehler: " + frage.fehler[k];
-  stoppe(); weg(); gesperrt = true; mal(ok ? "r" : "f"); document.getElementById("tasten").remove();
-  fertig(ok, t, satz);
+  zweitBuche("f"); gegenueber(t);
+}
+// Gegenüberstellung: deine Rechnung rot über der richtigen grün, „=“ untereinander; ohne Ausdruck „deine Antwort“ / „richtig“
+function gegenueber(t) {
+  gesperrt = true; stoppe(); weg("tasten"); weg("loesk"); weg("feld");
+  const g = el("div", "geg"); g.setAttribute("role", "status"); const m = frage.masse ? "\\,\\text{" + frage.masse + "}" : "";
+  const zeile = (klasse, wert, lab) => {
+    if (teile) { g.appendChild(el("span", "c1 " + klasse, "$" + teile.aus + "$")); g.appendChild(el("span", "c2 " + klasse, "$=$")); }
+    else { g.appendChild(el("span", "c1 lab", lab)); g.appendChild(el("span", "c2", "")); }
+    g.appendChild(el("span", "c3 " + klasse, "$" + tex(wert) + m + "$"));
+  };
+  zeile("f", t, "deine Antwort"); zeile("r", frage.wert, "richtig");
+  document.getElementById("unten").prepend(g); formeln(g); weiterKnopf(3000);
+}
+function buche(ok, antwort) {   // nur der erste Versuch zählt fürs Urteil
+  const e = folge[i];
+  if (!nachrunde) {
+    if (e.zw) zwillinge.push(e.nr + ":" + (ok ? "r" : "f")); else { urteile[e.nr] = ok ? "r" : "f"; antworten[e.nr] = antwort; }
+    // Zwilling: ähnliche Frage drei Plätze später, aber vor der letzten (die bleibt sicher lösbar)
+    if (!ok && !e.zw && frage.zw && zwAnzahl < MAX_ZWILLINGE && i < folge.length - 1) {
+      folge.splice(Math.min(i + ABSTAND, folge.length - 1), 0, { f: frage.zw, nr: e.nr, zw: true }); zwAnzahl++;
+    }
+  }
+  e.ok = ok;   // Leiste grün/rot (Befund 25): grün nur beim ersten Versuch
+}
+function zweitBuche(z) { const e = folge[i]; if (!nachrunde && !e.zw) zweite.push(e.nr + ":" + z); }
+function loesKnopf(fn) { const k = el("button", "loesk", "Lösung zeigen"); k.id = "loesk"; k.onclick = fn; const p = document.getElementById("pruefen"); if (p) p.before(k); else document.getElementById("unten").appendChild(k); }
+function weiterKnopf(ms) {   // nach richtig 1 s, nach der Gegenüberstellung 3 s, dann von selbst; Tippen geht schneller
+  const unten = document.getElementById("unten");
+  const w = el("button", "ok gross", i + 1 < folge.length ? "Weiter" : "Fertig"); w.id = "weiter";
+  const hier = i; w.onclick = () => { if (i !== hier) return; i++; if (i < folge.length) zeig(); else ende(); };
+  unten.appendChild(w); w.scrollIntoView({ block: "nearest" }); setTimeout(() => w.onclick(), ms);
 }
 
 function auswahl(unten) {
@@ -280,48 +304,32 @@ function auswahl(unten) {
   const p = el("button", "ok gross", "Prüfen"); p.id = "pruefen"; p.disabled = true; p.onclick = pruefWahl; unten.appendChild(p);
 }
 function pruefWahl() {
-  if (wahl === null || gesperrt) return; gesperrt = true;
-  const zwei = frage.art === "stimmt", knoepfe = document.querySelectorAll("#wahl button");
-  const richtig = zwei ? frage.knoepfe.indexOf(frage.richtig) : frage.optionen.findIndex(o => o.r), ok = wahl === richtig;
-  knoepfe.forEach((b, k) => { b.disabled = true; if (k === wahl) { b.classList.add(ok ? "r" : "f"); b.firstChild.textContent = ok ? "✓" : "✗"; }
-    else if (!ok && k === richtig) { b.classList.add("r"); b.firstChild.textContent = "✓"; } });   // Befund 28: deine Wahl rot, die richtige grün
-  let satz = "";
-  if (!ok) { const f = zwei ? frage.fehler : frage.optionen[wahl].f; if (f) satz = "Typischer Fehler: " + f; }
-  document.getElementById("pruefen").remove();
-  fertig(ok, String(wahl + 1), satz);
+  if (wahl === null || gesperrt) return;
+  const zwei = frage.art === "stimmt", knoepfe = [...document.querySelectorAll("#wahl button")];
+  const richtig = zwei ? frage.knoepfe.indexOf(frage.richtig) : frage.optionen.findIndex(o => o.r), ok = wahl === richtig, antw = String(wahl + 1);
+  if (ok) { if (versuch === 1) buche(true, antw); else zweitBuche("r");
+    gesperrt = true; knoepfe.forEach((b, k) => { b.disabled = true; if (k === wahl) { b.classList.add("r"); b.firstChild.textContent = "✓"; } });
+    weg("pruefen"); weg("loesk"); Signal.blitz(true); weiterKnopf(1000); return; }
+  Signal.blitz(false);
+  if (versuch === 1) {
+    buche(false, antw);
+    if (!zwei && knoepfe.filter(b => !b.disabled).length > 2) {   // zweiter Versuch: falsche Wahl ausgegraut
+      versuch = 2; const b = knoepfe[wahl]; b.disabled = true; b.classList.add("aus"); b.setAttribute("aria-pressed", "false"); wahl = null;
+      document.getElementById("pruefen").disabled = true; loesKnopf(() => { zweitBuche("l"); aufloesen(null); });
+      const im = app.querySelector(".bild"), zuviel = document.documentElement.scrollHeight - window.innerHeight;   // „Prüfen“ bleibt sichtbar
+      if (im && zuviel > 0) im.style.maxHeight = Math.max(110, im.getBoundingClientRect().height - zuviel) + "px"; return;
+    }
+  } else zweitBuche("f");
+  aufloesen(wahl);
 }
-
-function fertig(ok, antwort, satz) {
-  const e = folge[i];
-  if (!nachrunde) {
-    if (e.zw) zwillinge.push(e.nr + ":" + (ok ? "r" : "f")); else { urteile[e.nr] = ok ? "r" : "f"; antworten[e.nr] = antwort; }
-    // Zwilling: ähnliche Frage drei Plätze später, aber vor der letzten (die bleibt sicher lösbar)
-    if (!ok && !e.zw && frage.zw && zwAnzahl < MAX_ZWILLINGE && i < folge.length - 1) {
-      folge.splice(Math.min(i + ABSTAND, folge.length - 1), 0, { f: frage.zw, nr: e.nr, zw: true }); zwAnzahl++;
-    }
-  } else e.ok = ok;
-  e.ok = ok;   // Leiste grün/rot (Befund 25)
-  Signal.blitz(ok);   // gemeinsamer Baustein ../signal.js (Register 21.11.11)
-  const unten = document.getElementById("unten");
-  if (!ok) {   // W83 (L 21.11.: „Fokus auf das, was falsch gemacht wurde“): Bild und übrige Auswahl weg, die eigene Antwort bleibt
-    const bild = app.querySelector(".bild"); if (bild) bild.style.maxHeight = "140px";   // das Bild bleibt klein: ohne Koordinatensystem sagt „III. Quadrant“ nichts
-    document.querySelectorAll("#wahl button").forEach(b => { if (!b.classList.contains("f") && !b.classList.contains("r")) b.remove(); });
-    if (frage.art === "zahl") {   // W84 (Befund 27): Frage – deine Antwort – richtig, ohne Erklärtext
-      unten.insertBefore(el("div", "deine", "deine Antwort"), unten.firstChild);
-      const r = el("div", "richtig"); r.setAttribute("role", "status"); r.appendChild(el("small", "", "richtig"));
-      r.appendChild(el("span", "", "$" + (teile ? teile.aus + " = " : "") + tex(frage.wert) + "$" + (frage.masse ? " " + frage.masse : "")));
-      unten.appendChild(r);
-    }
-    // Rechenweg nur auf Wunsch; der Satz zum typischen Fehler bleibt in den Daten (Befund 28)
-    if (frage.loesung && norm(frage.loesung.replace(/\$/g, "")) !== norm(frage.wert || "")) {
-      const k = el("div", ""); k.style.textAlign = "center"; unten.appendChild(k);
-      Signal.knopf(k, sp => { sp.textContent = frage.loesung; }, () => formeln(k), frage.art === "zahl" ? "Rechenweg" : "Warum?");
-    }
-  }
-  const w = el("button", "ok gross", i + 1 < folge.length ? "Weiter" : "Fertig"); w.id = "weiter";
-  const hier = i; w.onclick = () => { if (i !== hier) return; i++; if (i < folge.length) zeig(); else ende(); }; unten.appendChild(w);
-  formeln(unten); w.scrollIntoView({ block: "nearest" });
-  if (ok) setTimeout(() => w.onclick(), 1000);   // W83 (L 21.11.: „Warum muss man denn eigentlich weiter drücken?“): nach dem Blitz von selbst
+function aufloesen(w) {   // deine Wahl rot, die richtige grün, die übrigen weg (Befund 28; das Bild bleibt)
+  gesperrt = true; const zwei = frage.art === "stimmt";
+  const richtig = zwei ? frage.knoepfe.indexOf(frage.richtig) : frage.optionen.findIndex(o => o.r);
+  document.querySelectorAll("#wahl button").forEach((b, k) => { b.disabled = true;
+    if (k === richtig) { b.classList.add("r"); b.firstChild.textContent = "✓"; }
+    else if (k === w || b.classList.contains("aus")) { b.classList.remove("aus"); b.classList.add("f"); b.firstChild.textContent = "✗"; }
+    else b.remove(); });
+  weg("pruefen"); weg("loesk"); weiterKnopf(3000);
 }
 
 function aufhoeren() {   // Lehrer 13.11. Weg A: aufhören dürfen; gemeldet wird, was beantwortet ist, der Rest als „-“.
@@ -337,7 +345,7 @@ function ende() {   // W83 (L 21.11.: „die letzte Seite schmaler … Groß 6 v
   try { if (!nachrunde && !abgebrochen) localStorage.setItem("runde-" + kennung, r + " von " + n); } catch (x) {}
   if (!nachrunde && !abgebrochen && falsch.length) {   // dasselbe noch einmal: die Fehler dieser Runde
     const b = el("button", "ok gross", falsch.length === 1 ? "Den Fehler noch einmal" : "Die " + falsch.length + " Fehler noch einmal");
-    b.onclick = () => { nachrunde = true; letzterHinweis = -99; folge = falsch.map(f => ({ f, nr: f.nr, zw: false })); i = 0; zeig(); }; m.appendChild(b);
+    b.onclick = () => { nachrunde = true; folge = falsch.map(f => ({ f, nr: f.nr, zw: false })); i = 0; zeig(); }; m.appendChild(b);
   }
   const status = el("p", "leise", ""); status.id = "status"; m.appendChild(status);
   if ((runde.quellen || []).some(q => q.lizenz)) m.appendChild(quellen());   // Namensnennung nur, wo die Lizenz sie verlangt
@@ -357,7 +365,7 @@ function quellen() {
 function melde(status) {   // eine Zeile an die Rückkanal-Tabelle; die Antwort von Google lädt in den unsichtbaren Rahmen
   const sauber = t => String(t == null ? "-" : t).replace(/[;|=\s]/g, "");
   const fr = runde.fragen, wert = [kennung, snr, fr.map(f => urteile[f.nr] || "-").join(""), "a=" + fr.map(f => sauber(antworten[f.nr])).join("|"),
-    "z=" + zwillinge.join(","), "t=" + Math.round((Date.now() - beginn) / 1000)].concat(fassung ? ["f=" + fassung] : []).concat(hinweise.length ? ["h=" + hinweise.join(",")] : []).join(";");
+    "z=" + zwillinge.join(","), "t=" + Math.round((Date.now() - beginn) / 1000)].concat(fassung ? ["f=" + fassung] : []).concat(zweite.length ? ["w=" + zweite.join(",")] : []).join(";");
   window.letzteMeldung = wert;
   try {
     const f = el("form"); f.method = "POST"; f.action = FORM.url; f.target = "ziel"; f.style.display = "none";
