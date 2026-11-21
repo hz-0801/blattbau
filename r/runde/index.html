@@ -71,6 +71,7 @@ button.gross{width:100%;min-height:64px;font-size:23px;margin-top:10px}
 .rm.r b{color:#1d6f3e}.rm.f b{color:#7a4f06}
 .rm .tf{display:block;margin-top:6px;color:#4a3a14}
 .rm.f{border-left-color:#d23b3b}.rm.f b{color:#a11d1d}
+.deine{font-size:14px;color:#5b7389;margin:4px 0 2px}
 .rm .loes{margin-top:8px;background:#fff;border:1px solid #c9d6e2;border-radius:10px;padding:6px 12px;font-size:16px;color:#18324a;min-height:0}
 .mitte{margin:auto 0;text-align:center}
 .zahl{font-size:60px;font-weight:800;color:#1f5f8b;line-height:1.1}
@@ -217,7 +218,7 @@ function pruefWahl() {
   if (wahl === null || gesperrt) return; gesperrt = true;
   const zwei = frage.art === "stimmt", knoepfe = document.querySelectorAll("#wahl button");
   const richtig = zwei ? frage.knoepfe.indexOf(frage.richtig) : frage.optionen.findIndex(o => o.r), ok = wahl === richtig;
-  knoepfe.forEach((b, k) => { b.disabled = true; if (k === richtig) { b.classList.add("r"); b.firstChild.textContent = "✓"; } else if (k === wahl) { b.classList.add("f"); b.firstChild.textContent = "✗"; } });
+  knoepfe.forEach((b, k) => { b.disabled = true; if (k === wahl) { b.classList.add(ok ? "r" : "f"); b.firstChild.textContent = ok ? "✓" : "✗"; } });
   let satz = "";
   if (!ok) { const f = zwei ? frage.fehler : frage.optionen[wahl].f; if (f) satz = "Typischer Fehler: " + f; }
   document.getElementById("pruefen").remove();
@@ -234,30 +235,33 @@ function fertig(ok, antwort, satz) {
     }
   } else e.ok = ok;
   Signal.blitz(ok);   // gemeinsamer Baustein ../signal.js (Register 21.11.11)
+  const unten = document.getElementById("unten");
+  if (!ok) {   // W83 (L 21.11.: „Fokus auf das, was falsch gemacht wurde“): Bild und übrige Auswahl weg, die eigene Antwort bleibt
+    const bild = app.querySelector(".bild"); if (bild) bild.remove();
+    document.querySelectorAll("#wahl button").forEach(b => { if (!b.classList.contains("f")) b.remove(); });
+    unten.insertBefore(el("div", "deine", "Deine Antwort"), unten.firstChild);
+  }
   const rm = el("div", "rm " + (ok ? "r" : "f")); rm.setAttribute("role", "status");
   rm.appendChild(el("b", "", ok ? "✓ Richtig" : "✗ Noch nicht"));
   if (!ok)   // W82: Lösung nur auf Wunsch
     Signal.knopf(rm, sp => { sp.textContent = "Richtig ist: " + frage.loesung; }, () => { if (satz) rm.appendChild(el("span", "tf", satz)); formeln(rm); });
-  const unten = document.getElementById("unten"); unten.appendChild(rm);
+  unten.appendChild(rm);
   const w = el("button", "ok gross", i + 1 < folge.length ? "Weiter" : "Fertig"); w.id = "weiter";
-  w.onclick = () => { i++; if (i < folge.length) zeig(); else ende(); }; unten.appendChild(w);
+  const hier = i; w.onclick = () => { if (i !== hier) return; i++; if (i < folge.length) zeig(); else ende(); }; unten.appendChild(w);
   formeln(rm); w.scrollIntoView({ block: "nearest" });
+  if (ok) setTimeout(() => w.onclick(), 1000);   // W83 (L 21.11.: „Warum muss man denn eigentlich weiter drücken?“): nach dem Blitz von selbst
 }
 
-function aufhoeren() {   // Lehrer 13.11. Weg A: aufhören dürfen; gemeldet wird, was beantwortet ist, der Rest als „-"
-  const unten = document.getElementById("unten"); if (!unten) return;
-  unten.replaceChildren(); const k = el("div", "rueck");
-  k.appendChild(el("p", "", "Wirklich aufhören? Was du schon beantwortet hast, geht an deinen Lehrer."));
-  const ja = el("button", "ok gross", "Ja, aufhören"); ja.onclick = () => { abgebrochen = true; ende(); };
-  const nein = el("button", "gross", "Weiter üben"); nein.onclick = () => zeig();
-  k.appendChild(ja); k.appendChild(nein); unten.appendChild(k);
+function aufhoeren() {   // Lehrer 13.11. Weg A: aufhören dürfen; gemeldet wird, was beantwortet ist, der Rest als „-“.
+  abgebrochen = true; ende();   // W83 (L 21.11.: „kein Verbrechen, wenn man die App abbrechen will“): ohne Gegenfrage
 }
 function ende() {
   const fr = runde.fragen, n = fr.length, r = fr.filter(f => urteile[f.nr] === "r").length, falsch = fr.filter(f => urteile[f.nr] === "f");
   app.replaceChildren(); const m = el("div", "mitte");
   m.appendChild(el("h1", "", abgebrochen ? "Für heute Schluss." : nachrunde ? "Für heute geschafft!" : r === n ? "Alles richtig!" : "Geschafft!"));
-  m.appendChild(el("div", "zahl", r + " von " + n));
-  if (abgebrochen) m.appendChild(el("p", "leise", fr.filter(f => urteile[f.nr]).length + " von " + n + " Fragen beantwortet"));
+  const beantw = fr.filter(f => urteile[f.nr]).length;   // W83: „6 von 15“ bei 7 beantworteten sah schlechter aus, als es war
+  m.appendChild(el("div", "zahl", r + " von " + (abgebrochen ? beantw : n)));
+  if (abgebrochen) m.appendChild(el("p", "leise", beantw + " von " + n + " Fragen beantwortet"));
   let alt = null; try { alt = localStorage.getItem("runde-" + kennung); if (!nachrunde && !abgebrochen) localStorage.setItem("runde-" + kennung, r + " von " + n); } catch (x) {}
   if (alt && !nachrunde) m.appendChild(el("p", "leise", "Letztes Mal: " + alt));
   if (zwillinge.length && !nachrunde) { const g = zwillinge.filter(z => z.endsWith("r")).length; m.appendChild(el("p", "", "Beim zweiten Anlauf: " + g + " von " + zwillinge.length + " geschafft.")); }
@@ -266,8 +270,9 @@ function ende() {
   if (nachrunde) { const nochmal = folge.filter(e => !e.ok).map(e => e.f); if (nochmal.length) { liste.appendChild(el("b", "", "Das üben wir nächstes Mal:")); namen(nochmal).forEach(t => liste.appendChild(el("div", "", "· " + t))); etwas = true; }
     else { liste.appendChild(el("b", "", "Jetzt saß jede Frage einmal.")); etwas = true; } }
   else {
-    if (r) { liste.appendChild(el("b", "", "Das saß:")); namen(fr.filter(f => urteile[f.nr] === "r")).forEach(t => liste.appendChild(el("div", "", "· " + t))); etwas = true; }
-    if (falsch.length) { const b = el("b", "", "Das üben wir noch:"); if (r) b.style.marginTop = "8px"; liste.appendChild(b); namen(falsch).forEach(t => liste.appendChild(el("div", "", "· " + t))); etwas = true; }
+    const offen = new Set(falsch.map(f => f.thema)), sass = namen(fr.filter(f => urteile[f.nr] === "r")).filter(t => !offen.has(t));   // W83: ein Thema nur in einer Liste
+    if (sass.length) { liste.appendChild(el("b", "", "Das saß:")); sass.forEach(t => liste.appendChild(el("div", "", "· " + t))); etwas = true; }
+    if (falsch.length) { const b = el("b", "", "Das üben wir noch:"); if (sass.length) b.style.marginTop = "8px"; liste.appendChild(b); namen(falsch).forEach(t => liste.appendChild(el("div", "", "· " + t))); etwas = true; }
   }
   if (etwas) m.appendChild(liste);
   if (!nachrunde && !abgebrochen && falsch.length) {

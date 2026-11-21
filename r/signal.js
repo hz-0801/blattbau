@@ -5,6 +5,9 @@
    Signal nach „Prüfen“: eine Sekunde der ganze Bildschirm grün mit weißem ✓ oder rot mit weißem ✗ – das ✗ wackelt, damit es
    nicht nur an der Farbe hängt. Vibration nur bei falsch (Android; das iPhone kann es nicht). Lösung: bei falsch erst auf
    „Lösung zeigen“, bei richtig keine.
+   Für jede App gilt dazu (W83, Lehrer 21.11.): nach richtig geht es nach dem Blitz von selbst zur nächsten Aufgabe („Warum muss
+   man denn eigentlich weiter drücken?“); nach falsch verschwindet die Eingabe (Tastatur, Regler, übrige Auswahl), es bleiben
+   Frage, eigene Antwort und Rückmeldung („Fokus auf das, was falsch gemacht wurde“); „Aufhören“ beendet ohne Gegenfrage.
 
    Einbinden: <script src="../signal.js"></script> vor dem eigenen Skript der App, dann
      Signal.blitz(ok)                  Blitz und (bei falsch) Vibration

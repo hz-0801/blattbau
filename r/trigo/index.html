@@ -141,9 +141,10 @@ function antwort(w){
   // Lösung nur auf Wunsch, bei richtig keine (Register 21.11.11): bei falsch zeigt erst „Lösung zeigen“ die richtige Wahl,
   // die gesuchte Seite in der Figur und die Regel
   function markiere(){ Array.prototype.forEach.call(document.getElementById("wahl").children,function(b){
-    if(b.dataset.w===q.richtig)b.classList.add("r");});}
+    if(b.dataset.w===q.richtig){b.classList.add("r");b.style.display="";}});}
+  // W83 (L 21.11.): nach richtig von selbst weiter, nach falsch nur noch, was falsch war (Eingabe weg)
   Array.prototype.forEach.call(document.getElementById("wahl").children,function(b){
-    b.disabled=true; if(b.dataset.w===w)b.classList.add(ok?"r":"f");});
+    b.disabled=true; if(b.dataset.w===w)b.classList.add(ok?"r":"f"); else if(!ok)b.style.display="none";});
   zeichne(); Signal.blitz(ok);
   var m=document.getElementById("meld"); m.className="meld "+(ok?"r":"f");
   var regel;
@@ -152,6 +153,7 @@ function antwort(w){
   m.innerHTML=ok?"Richtig.":"Noch nicht.";
   if(!ok) Signal.knopf(m,regel,function(){gezeigt=true; markiere(); zeichne();});
   var h=document.getElementById("haupt"); h.className="haupt da"; h.textContent=verlauf.length>=N?"Auswerten":"Weiter"; stand();
+  if(ok){var n0=nr;setTimeout(function(){if(nr===n0&&fertig)h.click();},1000);}
 }
 document.getElementById("haupt").addEventListener("click",function(){
   if(verlauf.length>=N && this.textContent==="Auswerten"){

@@ -75,7 +75,7 @@ function zeige(){
   document.getElementById("auf").textContent=q.t+" =";
   var a=document.getElementById("ant"); a.className="ant"; a.textContent="";
   var m=document.getElementById("meld"); m.className="meld"; m.textContent="";
-  document.getElementById("haupt").textContent="Prüfen"; stand();
+  document.getElementById("haupt").textContent="Prüfen"; stand(); T.style.display="";
 }
 var T=document.getElementById("tasten");
 ["7","8","9","4","5","6","1","2","3","⌫","0"].forEach(function(t){
@@ -99,7 +99,10 @@ document.getElementById("haupt").addEventListener("click",function(){
     m.textContent=ok?wahl(lob):"Noch nicht"+(q.nochmal?".":" – die kommt gleich noch einmal.");
     if(!ok && !q.nochmal) liste.splice(Math.min(pos+3,liste.length),0,{t:q.t,w:q.w,weg:q.weg,nochmal:true});
     if(!ok) Signal.knopf(m,function(sp){sp.textContent=q.weg;});   // Lösung nur auf Wunsch (Register 21.11.11)
-    this.textContent=pos>=liste.length-1?"Fertig":"Weiter"; stand(); return;
+    this.textContent=pos>=liste.length-1?"Fertig":"Weiter"; stand();
+    // W83 (L 21.11.): nach richtig von selbst weiter, nach falsch nur noch, was falsch war (Eingabe weg)
+    if(ok){var h=this,p0=pos;setTimeout(function(){if(pos===p0&&geprueft===true)h.click();},1000);} else T.style.display="none";
+    return;
   }
   if(pos>=liste.length-1){
     var r=verlauf.filter(Boolean).length;

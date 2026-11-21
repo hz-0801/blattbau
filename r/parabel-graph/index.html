@@ -105,7 +105,7 @@ function neu(){
   zeichne(); regler(); gleichung();
   document.getElementById("frage").textContent=S.text;
   var m=document.getElementById("meld"); m.className="meld"; m.innerHTML="";
-  document.getElementById("haupt").textContent="Prüfen";
+  document.getElementById("haupt").textContent="Prüfen"; document.getElementById("regler").style.display="";
 }
 
 // ---------- Zeichnen ----------
@@ -201,6 +201,9 @@ function pruefen(){
   var ende=verlauf.length>=N;
   document.getElementById("haupt").textContent=ende?"Runde auswerten":"Weiter";
   stand();
+  // W83 (L 21.11.): nach richtig von selbst weiter, nach falsch nur noch, was falsch war (Eingabe weg)
+  if(ok){var n0=verlauf.length;setTimeout(function(){if(verlauf.length===n0&&geprueft===true)document.getElementById("haupt").click();},1000);}
+  else document.getElementById("regler").style.display="none";
 }
 function auswerten(){
   var r=verlauf.filter(Boolean).length, m=document.getElementById("meld"), S=STUFEN[st];
