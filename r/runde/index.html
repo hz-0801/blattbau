@@ -56,6 +56,7 @@ button:disabled{opacity:.45}
 button.ok{background:#1f5f8b;color:#fff;box-shadow:0 2px 0 #143f5d}
 button.klein{font-size:19px}
 button.gross{width:100%;min-height:64px;font-size:23px;margin-top:10px}
+button.ok.zweit{background:#fff;color:#1f5f8b;box-shadow:inset 0 0 0 2px #1f5f8b}
 .breit2{grid-column:span 2}
 .wahl{display:flex;flex-direction:column;gap:9px;margin:4px 0 2px}
 .wahl.zwei{flex-direction:row}.wahl.zwei button{flex:1;min-height:76px}
@@ -120,19 +121,36 @@ function start(j) {
     app.replaceChildren(); const m = el("div", "mitte"); m.appendChild(el("h1", "", "Runde"));
     m.appendChild(el("p", "", kennung ? "Diese Runde ist nicht mehr online." : "Hier fehlt die Kennung der Runde (…/r/runde/?r=…).")); app.appendChild(m); return;
   }
-  runde = j; document.title = j.titel || "Runde";
+  runde = j; document.title = thema(j.titel);
   if (Array.isArray(j.fassungen) && j.fassungen.length > 1) {   // drei Fassungen (runde.py --fassungen): je Gerät die nächste, die erste zufällig
     let alt = 0; try { alt = parseInt(localStorage.getItem("runde-f-" + kennung) || "0", 10) || 0; } catch (x) {}
     fassung = alt ? alt % j.fassungen.length + 1 : 1 + Math.floor(Math.random() * j.fassungen.length);
     const fa = j.fassungen[fassung - 1]; if (fa && Array.isArray(fa.fragen) && fa.fragen.length) { runde.fragen = fa.fragen; runde.quellen = fa.quellen; } else fassung = 1;
   }
   app.replaceChildren(); const m = el("div", "mitte");
-  m.appendChild(el("h1", "", j.titel || "Runde"));
-  m.appendChild(el("p", "", j.fragen.length + " kurze Fragen."));
-  m.appendChild(el("p", "", "Ohne Uhr. Liegst du daneben, kannst du dir die Lösung zeigen lassen. Fehler kosten nichts."));
-  const b = el("button", "ok gross", "Los geht’s"); b.onclick = los; m.appendChild(b); app.appendChild(m);
+  // Register 21.11.14 (Lehrer 21.11. W83 „was ist für den Schüler wichtig?“): am Start nur, was ihn etwas tun lässt – Thema ohne
+  // Niveauwort, Umfang, ein Satz, der Raten erlaubt, Start. Lösung zeigen, Uhr, Aufhören erfährt er, wenn es soweit ist.
+  // Wahl der Länge (j.wahl === "laenge", Muster W83): zwei Knöpfe, der Knopf startet; kurz = jede zweite Frage, erste und letzte bleiben.
+  m.appendChild(el("h1", "", thema(j.titel)));
+  const n = j.fragen.length, k = j.wahl === "laenge" && n >= 10 ? Math.round(n / 2) : 0;
+  m.appendChild(el("p", "", (k ? "" : n + " Fragen. ") + "Fehler kosten nichts."));
+  if (k) {
+    const b = el("button", "ok gross", "Alle " + n + " Fragen"); b.onclick = () => los(0); m.appendChild(b);
+    const a = el("button", "ok gross zweit", "Kurz · " + k + " Fragen"); a.onclick = () => los(k); m.appendChild(a);
+  } else { const b = el("button", "ok gross", "Los geht’s"); b.onclick = () => los(0); m.appendChild(b); }
+  app.appendChild(m);
 }
-function los() { if (fassung) try { localStorage.setItem("runde-f-" + kennung, String(fassung)); } catch (x) {}
+// Thema ohne Niveauwort (wie der Blattkopf, Paket Montag 21.11.): „Blitzrunde leicht: Vorzeichen, Null“ → „Vorzeichen, Null“
+function thema(t) {
+  const roh = String(t || "").trim();
+  const s = roh.replace(/^(Blitzrunde|Runde)\s*(ganz\s+)?(leicht|mittel|schwer)?\s*:\s*/i, "")
+               .replace(/\s*[–-]\s*(ganz leicht|leicht|nur der Kern|das Wesentliche)\s*$/i, "")
+               .replace(/\s*\((ganz\s+)?leicht\)\s*$/i, "").trim();
+  return s || roh || "Runde";
+}
+function los(k) { if (fassung) try { localStorage.setItem("runde-f-" + kennung, String(fassung)); } catch (x) {}
+  const n = runde.fragen.length;
+  if (k && k < n) runde.fragen = Array.from({ length: k }, (_, j) => runde.fragen[Math.round(j * (n - 1) / (k - 1))]);
   folge = runde.fragen.map(f => ({ f, nr: f.nr, zw: false })); i = 0; urteile = {}; antworten = {}; zwillinge = []; zwAnzahl = 0; beginn = Date.now(); zeig(); }
 
 function zeig() {
@@ -238,7 +256,7 @@ function fertig(ok, antwort, satz) {
   Signal.blitz(ok);   // gemeinsamer Baustein ../signal.js (Register 21.11.11)
   const unten = document.getElementById("unten");
   if (!ok) {   // W83 (L 21.11.: „Fokus auf das, was falsch gemacht wurde“): Bild und übrige Auswahl weg, die eigene Antwort bleibt
-    const bild = app.querySelector(".bild"); if (bild) bild.remove();
+    const bild = app.querySelector(".bild"); if (bild) bild.style.maxHeight = "140px";   // das Bild bleibt klein: ohne Koordinatensystem sagt „III. Quadrant“ nichts
     document.querySelectorAll("#wahl button").forEach(b => { if (!b.classList.contains("f")) b.remove(); });
     unten.insertBefore(el("div", "deine", "Deine Antwort"), unten.firstChild);
   }
