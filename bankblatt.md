@@ -1,4 +1,4 @@
-# Blatt bestellen – v13v (19.11.2026)
+# Blatt bestellen – v13w (21.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -80,6 +80,13 @@ verworfen wurde. Grenze – nur lesen; den Speicher der Seite änderst du nie.
 Ebenso die Sammlung `gestrichen` (✕ an der Empfehlung, Register 18.11.4; Werkstatt 65): je Dokument (id = Name) das Feld
 `liste` als `{Name: [wort, …]}` nach aufgabenbank-privat `bau/tagesseite/gestrichen.json`; ändert sich etwas, mit
 committen. Warum – angebot.py lässt Gestrichenes dauerhaft weg und zieht den Nächsten nach, auch am nächsten Tag.
+Ebenso die Anwesenheit (Lehrer 21.11. W81, Paket A: „Das Überschreiben darf nie wieder passieren“): `db_list` mit dem Slug
+der Tagesseite für die Sammlungen `anw` und `anwesenheit` (alle Seiten über `nextCursor`), die Dokumente je Sammlung als Liste
+(id, data, updatedAt) in `{"anw": […], "anwesenheit": […]}` nach `/home/claude/anw.json`, dann im Ordner aufgabenbank-privat
+`python3 werkzeuge/anwesenheit-holen.py /home/claude/anw.json`; ändert sich etwas, mit committen. Warum – die Anwesenheit lag nur
+im Speicher der Seite: 18./19.11. gingen ganze Tageslisten verloren, und Lieferliste, Profile und Auswertung sahen keinen
+Eintrag. Beispiel – „2026-11-19;Jesse;da;;…;seite“ in `bau/tagesseite/anwesenheit.csv`. Grenze – nur lesen; die Abschrift wächst nur
+(das Skript löscht nie eine Zeile und hält an, wenn es weniger würden).
 Material der Schule (Register 18.11.5 (2); Werkstatt 65): Schickt der Lehrer Seiten, die der Schüler von der Schule
 bekam (Foto, PDF), legst du jede Seite als druckbares A4-PDF unter aufgabenbank-privat `bau/bestellchat/bilder/` ab und
 trägst sie in `bau/tagesseite/empfehlung.json` unter `<Name>.schule` ein (`[{"titel", "pdf"}]`); die Tagesseite zeigt
