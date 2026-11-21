@@ -16,7 +16,10 @@
        z=       Zwillingsfragen als nr:r oder nr:f · t= Dauer der Runde in Sekunden (wird nicht gezeigt)
        f=       nur bei mehreren Fassungen (runde.py --fassungen): welche Fassung lief; Urteile gelten deren Zeilen der Liste
                 fassung;nr;id. Je Gerät die nächste Fassung (localStorage), die erste zufällig.
-     „Fehler noch einmal“ am Ende ist Üben für den Schüler und wird nicht gemeldet. -->
+     „Fehler noch einmal“ am Ende ist Üben für den Schüler und wird nicht gemeldet.
+     W82 (Lehrer 21.11.: „ganz deutlich … richtig oder falsch. Also vielleicht den Bildschirm für eine Sekunde grün oder für eine Sekunde rot“;
+     Lösungen „nur, wenn man möchte“): nach „Prüfen“ blitzt der ganze Bildschirm eine Sekunde grün mit ✓ oder rot mit ✗ (✗ wackelt, damit es
+     nicht nur an der Farbe hängt; am Handy kurz Vibration bei falsch); bei falsch zeigt erst „Lösung zeigen“ die richtige Lösung. -->
 <link rel="stylesheet" href="../katex/katex.min.css">
 <script defer src="../katex/katex.min.js"></script>
 <script defer src="../katex/auto-render.min.js"></script>
@@ -67,6 +70,12 @@ button.gross{width:100%;min-height:64px;font-size:23px;margin-top:10px}
 .rm b{display:block;font-size:22px;margin-bottom:2px}
 .rm.r b{color:#1d6f3e}.rm.f b{color:#7a4f06}
 .rm .tf{display:block;margin-top:6px;color:#4a3a14}
+.rm.f{border-left-color:#d23b3b}.rm.f b{color:#a11d1d}
+.blitz{position:fixed;inset:0;z-index:99;display:flex;align-items:center;justify-content:center;pointer-events:none;color:#fff;font-weight:800;font-size:42vmin;line-height:1;animation:blitz 1s ease-out forwards}
+.blitz.r{background:rgba(22,163,74,.93)}.blitz.f{background:rgba(214,40,40,.93)}.blitz.f span{display:inline-block;animation:wackel .45s ease-in-out}
+@keyframes blitz{0%{opacity:0}8%{opacity:1}75%{opacity:1}100%{opacity:0}}
+@keyframes wackel{0%,100%{transform:translateX(0)}20%{transform:translateX(-9%)}40%{transform:translateX(8%)}60%{transform:translateX(-6%)}80%{transform:translateX(4%)}}
+.rm .loes{margin-top:8px;background:#fff;border:1px solid #c9d6e2;border-radius:10px;padding:6px 12px;font-size:16px;color:#18324a;min-height:0}
 .mitte{margin:auto 0;text-align:center}
 .zahl{font-size:60px;font-weight:800;color:#1f5f8b;line-height:1.1}
 .liste{text-align:left;background:#fff;border-radius:14px;padding:10px 14px;margin:12px 0 0;font-size:17px;line-height:1.4}
@@ -227,10 +236,15 @@ function fertig(ok, antwort, satz) {
       folge.splice(Math.min(i + ABSTAND, folge.length - 1), 0, { f: frage.zw, nr: e.nr, zw: true }); zwAnzahl++;
     }
   } else e.ok = ok;
+  const bz = el("div", "blitz " + (ok ? "r" : "f")); bz.appendChild(el("span", "", ok ? "✓" : "✗")); document.body.appendChild(bz);
+  setTimeout(() => bz.remove(), 1000); if (!ok && navigator.vibrate) try { navigator.vibrate(180); } catch (x) {}
   const rm = el("div", "rm " + (ok ? "r" : "f")); rm.setAttribute("role", "status");
   rm.appendChild(el("b", "", ok ? "✓ Richtig" : "✗ Noch nicht"));
-  rm.appendChild(el("span", "", (ok ? "" : "Richtig ist: ") + frage.loesung));
-  if (satz) rm.appendChild(el("span", "tf", satz));
+  if (!ok) {   // W82: Lösung nur auf Wunsch
+    const lz = el("button", "loes", "Lösung zeigen");
+    lz.onclick = () => { const s = el("span", "", "Richtig ist: " + frage.loesung); lz.replaceWith(s); if (satz) rm.appendChild(el("span", "tf", satz)); formeln(rm); };
+    rm.appendChild(lz);
+  }
   const unten = document.getElementById("unten"); unten.appendChild(rm);
   const w = el("button", "ok gross", i + 1 < folge.length ? "Weiter" : "Fertig"); w.id = "weiter";
   w.onclick = () => { i++; if (i < folge.length) zeig(); else ende(); }; unten.appendChild(w);
