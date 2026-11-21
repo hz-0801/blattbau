@@ -54,7 +54,7 @@ keine Marke.
 
 ## Tests (Lehrer 17.11. W61)
 
-Nennt der Lehrer einen Test oder eine Klassenarbeit eines Schülers („Anthony schreibt Donnerstag Test“), trägst du ihn still
+Nennt der Lehrer einen Test oder eine Klassenarbeit eines Schülers („Max schreibt Donnerstag Test“), trägst du ihn still
 in aufgabenbank-privat `bau/tagesseite/tests.csv` ein (name;datum JJJJ-MM-TT;thema;quelle = „Bestellung <Datum>“), committest
 und veröffentlichst die Tagesseite neu; im Chat eine Zeile „Test eingetragen: <Name> <Tag>“. Warum – die Tagesseite zeigt den
 Test unter dem Namen und danach sieben Tage „wie war's?“; am 17.11. ging „schreibt Test am Donnerstag“ in einer Bestellung
@@ -62,9 +62,9 @@ verloren. Grenze – Tag unklar (welcher Donnerstag?) → einmal fragen; nichts 
 
 ## Termine (Lehrer 19.11. W69; Register 19.11.1)
 
-Nennt der Lehrer Person und Tag („morgen kommt Anthony nochmal“, „Pariya fällt Donnerstag aus“), trägst du den Termin sofort
+Nennt der Lehrer Person und Tag („morgen kommt Max nochmal“, „Lena fällt Donnerstag aus“), trägst du den Termin sofort
 in Outlook ein – neu, verschoben oder abgesagt nach anweisungen global.md „Termine“ – und meldest es in einer Zeile
-(„Eingetragen: Anthony, Do 19.11.“). Warum – am 17.11. ging „morgen kommt Anthony nochmal“ verloren; die globale Regel griff
+(„Eingetragen: Max, Do 19.11.“). Warum – am 17.11. ging „morgen kommt [Nr. 6] nochmal“ verloren; die globale Regel griff
 hier nicht. Beispiel – Absage: Name im Betreff hinter „ – abgesagt: “, aktive Namen vorn, nichts löschen. Grenze – fragen nur,
 wenn Tag oder Person unklar sind; Tests eines Schülers sind keine Termine (Abschnitt „Tests“); Outlook nicht verbunden → ein Satz.
 
@@ -85,7 +85,7 @@ der Tagesseite für die Sammlungen `anw` und `anwesenheit` (alle Seiten über `n
 (id, data, updatedAt) in `{"anw": […], "anwesenheit": […]}` nach `/home/claude/anw.json`, dann im Ordner aufgabenbank-privat
 `python3 werkzeuge/anwesenheit-holen.py /home/claude/anw.json`; ändert sich etwas, mit committen. Warum – die Anwesenheit lag nur
 im Speicher der Seite: 18./19.11. gingen ganze Tageslisten verloren, und Lieferliste, Profile und Auswertung sahen keinen
-Eintrag. Beispiel – „2026-11-19;Jesse;da;;…;seite“ in `bau/tagesseite/anwesenheit.csv`. Grenze – nur lesen; die Abschrift wächst nur
+Eintrag. Beispiel – „2026-11-19;Ben;da;;…;seite“ in `bau/tagesseite/anwesenheit.csv`. Grenze – nur lesen; die Abschrift wächst nur
 (das Skript löscht nie eine Zeile und hält an, wenn es weniger würden).
 Ebenso das Diktat der Seite (Lehrer 21.11. W81: 🎤 an „Frag heute“, statt Eintippen; [216]): `db_list` mit dem Slug der
 Tagesseite und der Sammlung `diktat` (je Dokument text, schueler, tag, zeit). Jedes Diktat, dessen `zeit` noch nicht in
@@ -188,7 +188,7 @@ Am 17.11. hat der Lehrer vorsorglich bestellt und dann umbestellt, weil den Sch�
 
 ## Handy oder Papier (Register 16.11.12, Lehrer 16.11. W52)
 
-Der Lehrer bestellt auch frei: wer, Thema, „Handy“ oder „Papier“, wahlweise Minuten („Timo, Brüche, Handy, 10 Minuten“).
+Der Lehrer bestellt auch frei: wer, Thema, „Handy“ oder „Papier“, wahlweise Minuten („Max, Brüche, Handy, 10 Minuten“).
 Fehlt das Wort, gilt Papier. Sortennamen (Blitzrunde, Einstiegsrunde, Kopftest …) verlangst und nennst du nicht; du wählst
 die Art und nennst sie im Halbsatz der Antwortzeile.
 - **Papier:** nach der Tabelle oben – bis etwa 10 Minuten der 5-Minuten-Test zum Thema, sonst das Alltagsblatt.
