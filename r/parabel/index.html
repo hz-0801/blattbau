@@ -63,6 +63,7 @@ h1{font-size:1.05rem;margin:2px 2px 4px;font-weight:650}
   <div class="fuss"><div class="punkte" id="punkte" aria-hidden="true"></div><div id="stand"></div></div>
 </div>
 </main>
+<script src="../signal.js"></script>
 <script>
 (function(){
 "use strict";
@@ -166,9 +167,12 @@ document.getElementById("haupt").addEventListener("click",function(){
   if(!geprueft){
     if(ein.a===""&&ein.d===""&&ein.e===""){m.className="meld f";m.textContent="Tipp auf ein Feld und gib die Zahl ein.";return}
     geprueft=true; var ok=richtig("a")&&richtig("d")&&richtig("e"); verlauf.push(ok); nr++;
-    m.className="meld "+(ok?"r":"f");
-    m.innerHTML=ok?"<b>Richtig.</b> Scheitel S("+mz(-soll.d)+" | "+mz(soll.e)+")":hinweis();
-    var v=document.getElementById("voll"); v.innerHTML='<small>ausgeschrieben</small>'+voll(); v.className="voll da";
+    m.className="meld "+(ok?"r":"f"); Signal.blitz(ok);
+    var v=document.getElementById("voll");
+    function zeigVoll(){ v.innerHTML='<small>ausgeschrieben</small>'+voll(); v.className="voll da"; }
+    // Lösung nur auf Wunsch, bei richtig keine (Register 21.11.11); die Felder zeigen weiter, welcher Wert falsch ist
+    if(ok) m.innerHTML="<b>Richtig.</b> Scheitel S("+mz(-soll.d)+" | "+mz(soll.e)+")";
+    else { m.innerHTML="<b>Noch nicht.</b> Rot ist, was nicht stimmt."; Signal.knopf(m,hinweis(),zeigVoll); }
     felder(); stand();
     this.textContent=verlauf.length>=N?"Auswerten":"Weiter"; return;
   }

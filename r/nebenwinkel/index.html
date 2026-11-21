@@ -45,6 +45,7 @@ svg text{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font
   <div class="fuss"><div class="punkte" id="punkte" aria-hidden="true"></div><div id="stand"></div></div>
 </div>
 </main>
+<script src="../signal.js"></script>
 <script>
 (function(){
 "use strict";
@@ -115,8 +116,9 @@ document.getElementById("haupt").addEventListener("click",function(){
   if(!geprueft){
     if(ein===""){m.className="meld f";m.textContent="Tipp die Gradzahl ein.";return}
     var ok=parseInt(ein,10)===q.such; geprueft=true; verlauf.push(ok); nr++;
-    a.className="ant "+(ok?"r":"f"); m.className="meld "+(ok?"r":"f");
-    m.textContent=(ok?"Richtig. ":"")+q.weg+(q.weg.slice(-1)==="."?"":".");
+    a.className="ant "+(ok?"r":"f"); m.className="meld "+(ok?"r":"f"); Signal.blitz(ok);
+    m.textContent=ok?"Richtig.":"Noch nicht.";   // Lösung nur auf Wunsch, bei richtig keine (Register 21.11.11)
+    if(!ok) Signal.knopf(m,function(sp){sp.textContent=q.weg+(q.weg.slice(-1)==="."?"":".");});
     this.textContent=verlauf.length>=N?"Auswerten":"Weiter"; stand(); return;
   }
   if(verlauf.length>=N){

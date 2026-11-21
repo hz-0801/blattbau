@@ -59,6 +59,7 @@ canvas{display:block;width:100%;height:auto;border-radius:8px;touch-action:manip
   <div class="fuss"><div class="punkte" id="punkte" aria-hidden="true"></div><div id="stand"></div></div>
 </div>
 </main>
+<script src="../signal.js"></script>
 <script>
 (function(){
 "use strict";
@@ -193,8 +194,10 @@ function hinweis(){
 function pruefen(){
   geprueft=true; var ok=gleich(), m=document.getElementById("meld");
   verlauf.push(ok); zeichne();
-  if(ok){m.className="meld r"; m.innerHTML="<b>Richtig.</b> "+gl(soll);}
-  else{m.className="meld f"; m.innerHTML="<b>Noch nicht.</b> "+hinweis()+"<br>Gesucht: "+gl(soll)+"<br>Deine Parabel ist rot gestrichelt.";}
+  Signal.blitz(ok);   // Lösung nur auf Wunsch, bei richtig keine (Register 21.11.11)
+  if(ok){m.className="meld r"; m.innerHTML="<b>Richtig.</b>";}
+  else{m.className="meld f"; m.innerHTML="<b>Noch nicht.</b> Deine Parabel ist rot gestrichelt.";
+    Signal.knopf(m,hinweis()+"<br>Gesucht: "+gl(soll));}
   var ende=verlauf.length>=N;
   document.getElementById("haupt").textContent=ende?"Runde auswerten":"Weiter";
   stand();

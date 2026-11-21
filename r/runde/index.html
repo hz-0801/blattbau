@@ -71,10 +71,6 @@ button.gross{width:100%;min-height:64px;font-size:23px;margin-top:10px}
 .rm.r b{color:#1d6f3e}.rm.f b{color:#7a4f06}
 .rm .tf{display:block;margin-top:6px;color:#4a3a14}
 .rm.f{border-left-color:#d23b3b}.rm.f b{color:#a11d1d}
-.blitz{position:fixed;inset:0;z-index:99;display:flex;align-items:center;justify-content:center;pointer-events:none;color:#fff;font-weight:800;font-size:42vmin;line-height:1;animation:blitz 1s ease-out forwards}
-.blitz.r{background:rgba(22,163,74,.93)}.blitz.f{background:rgba(214,40,40,.93)}.blitz.f span{display:inline-block;animation:wackel .45s ease-in-out}
-@keyframes blitz{0%{opacity:0}8%{opacity:1}75%{opacity:1}100%{opacity:0}}
-@keyframes wackel{0%,100%{transform:translateX(0)}20%{transform:translateX(-9%)}40%{transform:translateX(8%)}60%{transform:translateX(-6%)}80%{transform:translateX(4%)}}
 .rm .loes{margin-top:8px;background:#fff;border:1px solid #c9d6e2;border-radius:10px;padding:6px 12px;font-size:16px;color:#18324a;min-height:0}
 .mitte{margin:auto 0;text-align:center}
 .zahl{font-size:60px;font-weight:800;color:#1f5f8b;line-height:1.1}
@@ -85,6 +81,7 @@ details{text-align:left;font-size:13px;color:#4a6378;margin-top:14px;line-height
 details a{color:inherit}
 iframe{display:none}
 </style></head><body><div id="app"></div><iframe name="ziel" title="senden"></iframe>
+<script src="../signal.js"></script>
 <script>
 // \sv{a}{b} oder \sv{a}{b}{c}: Spaltenvektor mit zwei oder drei Komponenten (Werkstatt 29; vorher nur drei – zwei Komponenten erschienen falsch)
 const SV = ctx => { const t = a => a.slice().reverse().map(x => x.text).join(" "); const z = ctx.consumeArgs(2).map(t); if (ctx.future().text === "{") z.push(t(ctx.consumeArgs(1)[0])); return "\\begin{pmatrix}" + z.join("\\\\") + "\\end{pmatrix}"; };
@@ -130,7 +127,7 @@ function start(j) {
   app.replaceChildren(); const m = el("div", "mitte");
   m.appendChild(el("h1", "", j.titel || "Runde"));
   m.appendChild(el("p", "", j.fragen.length + " kurze Fragen."));
-  m.appendChild(el("p", "", "Ohne Uhr. Nach jeder Antwort siehst du die Lösung. Fehler kosten nichts."));
+  m.appendChild(el("p", "", "Ohne Uhr. Liegst du daneben, kannst du dir die Lösung zeigen lassen. Fehler kosten nichts."));
   const b = el("button", "ok gross", "Los geht’s"); b.onclick = los; m.appendChild(b); app.appendChild(m);
 }
 function los() { if (fassung) try { localStorage.setItem("runde-f-" + kennung, String(fassung)); } catch (x) {}
@@ -236,15 +233,11 @@ function fertig(ok, antwort, satz) {
       folge.splice(Math.min(i + ABSTAND, folge.length - 1), 0, { f: frage.zw, nr: e.nr, zw: true }); zwAnzahl++;
     }
   } else e.ok = ok;
-  const bz = el("div", "blitz " + (ok ? "r" : "f")); bz.appendChild(el("span", "", ok ? "✓" : "✗")); document.body.appendChild(bz);
-  setTimeout(() => bz.remove(), 1000); if (!ok && navigator.vibrate) try { navigator.vibrate(180); } catch (x) {}
+  Signal.blitz(ok);   // gemeinsamer Baustein ../signal.js (Register 21.11.11)
   const rm = el("div", "rm " + (ok ? "r" : "f")); rm.setAttribute("role", "status");
   rm.appendChild(el("b", "", ok ? "✓ Richtig" : "✗ Noch nicht"));
-  if (!ok) {   // W82: Lösung nur auf Wunsch
-    const lz = el("button", "loes", "Lösung zeigen");
-    lz.onclick = () => { const s = el("span", "", "Richtig ist: " + frage.loesung); lz.replaceWith(s); if (satz) rm.appendChild(el("span", "tf", satz)); formeln(rm); };
-    rm.appendChild(lz);
-  }
+  if (!ok)   // W82: Lösung nur auf Wunsch
+    Signal.knopf(rm, sp => { sp.textContent = "Richtig ist: " + frage.loesung; }, () => { if (satz) rm.appendChild(el("span", "tf", satz)); formeln(rm); });
   const unten = document.getElementById("unten"); unten.appendChild(rm);
   const w = el("button", "ok gross", i + 1 < folge.length ? "Weiter" : "Fertig"); w.id = "weiter";
   w.onclick = () => { i++; if (i < folge.length) zeig(); else ende(); }; unten.appendChild(w);

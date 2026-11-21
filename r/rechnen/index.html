@@ -41,6 +41,7 @@ h1{font-size:1.05rem;margin:2px 2px 10px;font-weight:650}
   <div class="fuss"><div class="punkte" id="punkte" aria-hidden="true"></div><div id="stand"></div></div>
 </div>
 </main>
+<script src="../signal.js"></script>
 <script>
 (function(){
 "use strict";
@@ -94,10 +95,10 @@ document.getElementById("haupt").addEventListener("click",function(){
     if(ein===""){m.className="meld f";m.textContent="Tipp dein Ergebnis ein.";return}
     var q=liste[pos], ok=parseInt(ein,10)===q.w; geprueft=true;
     if(!q.nochmal) verlauf.push(ok);
-    a.className="ant "+(ok?"r":"f"); m.className="meld "+(ok?"r":"f");
-    m.textContent=ok?wahl(lob):q.weg+" – die kommt gleich noch einmal.";
+    a.className="ant "+(ok?"r":"f"); m.className="meld "+(ok?"r":"f"); Signal.blitz(ok);
+    m.textContent=ok?wahl(lob):"Noch nicht"+(q.nochmal?".":" – die kommt gleich noch einmal.");
     if(!ok && !q.nochmal) liste.splice(Math.min(pos+3,liste.length),0,{t:q.t,w:q.w,weg:q.weg,nochmal:true});
-    if(!ok && q.nochmal) m.textContent=q.weg;
+    if(!ok) Signal.knopf(m,function(sp){sp.textContent=q.weg;});   // Lösung nur auf Wunsch (Register 21.11.11)
     this.textContent=pos>=liste.length-1?"Fertig":"Weiter"; stand(); return;
   }
   if(pos>=liste.length-1){

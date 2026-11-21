@@ -48,10 +48,11 @@ svg text{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font
   <div class="fuss"><div class="punkte" id="punkte" aria-hidden="true"></div><div id="stand"></div></div>
 </div>
 </main>
+<script src="../signal.js"></script>
 <script>
 (function(){
 "use strict";
-var N=12, nr=0, verlauf=[], q=null, fertig=false;
+var N=12, nr=0, verlauf=[], q=null, fertig=false, gezeigt=false;
 var NAMEN=[["a","b","c"],["r","s","t"],["u","v","w"],["x","y","z"],["e","f","g"],["k","m","n"],["p","q","r"]];
 var WORT={H:"Hypotenuse",G:"Gegenkathete",A:"Ankathete"}, WO={H:"liegt dem rechten Winkel gegenüber",G:"liegt dem markierten Winkel gegenüber",A:"liegt am markierten Winkel an"};
 var FKT={sin:["G","H"],cos:["A","H"],tan:["G","A"]}, LANG={sin:"Gegenkathete durch Hypotenuse",cos:"Ankathete durch Hypotenuse",tan:"Gegenkathete durch Ankathete"};
@@ -82,7 +83,7 @@ function neu(){
     var rest=falsch.filter(function(p){return p!==kehr}).slice(0,2);
     q.opt=misch([[z,ne],kehr].concat(rest)); q.richtig=z+"/"+ne;
   } else { q.opt=n.slice().sort(); q.richtig=seiten[rolle[art]].n; }
-  fertig=false; zeichne(); frage(); knoepfe();
+  fertig=false; gezeigt=false; zeichne(); frage(); knoepfe();
   var m=document.getElementById("meld"); m.className="meld"; m.textContent="";
   document.getElementById("haupt").className="haupt"; stand();
 }
@@ -103,7 +104,7 @@ function zeichne(){
   // Seiten (einzeln, damit die gesuchte Seite gefärbt werden kann)
   Object.keys(q.seiten).forEach(function(k){
     var S=q.seiten[k], a=Q[S.von], b=Q[S.bis], farbe="#18324a", breite=3.5;
-    if(fertig){ var gesucht=q.bruch?[q.rolle[FKT[q.art][0]],q.rolle[FKT[q.art][1]]]:[q.rolle[q.art]];
+    if(fertig&&gezeigt){ var gesucht=q.bruch?[q.rolle[FKT[q.art][0]],q.rolle[FKT[q.art][1]]]:[q.rolle[q.art]];
       if(gesucht.indexOf(k)>=0){farbe="#2a9d6a";breite=6} }
     h+='<line x1="'+a[0]+'" y1="'+a[1]+'" x2="'+b[0]+'" y2="'+b[1]+'" stroke="'+farbe+'" stroke-width="'+breite+'" stroke-linecap="round"/>';
     var m=[(a[0]+b[0])/2,(a[1]+b[1])/2], v=ein(G,m);
@@ -136,14 +137,20 @@ function knoepfe(){
   });
 }
 function antwort(w){
-  if(fertig)return; fertig=true; var ok=w===q.richtig; verlauf.push(ok); nr++;
+  if(fertig)return; fertig=true; var ok=w===q.richtig; verlauf.push(ok); nr++; gezeigt=ok;
+  // Lösung nur auf Wunsch, bei richtig keine (Register 21.11.11): bei falsch zeigt erst „Lösung zeigen“ die richtige Wahl,
+  // die gesuchte Seite in der Figur und die Regel
+  function markiere(){ Array.prototype.forEach.call(document.getElementById("wahl").children,function(b){
+    if(b.dataset.w===q.richtig)b.classList.add("r");});}
   Array.prototype.forEach.call(document.getElementById("wahl").children,function(b){
-    b.disabled=true; if(b.dataset.w===q.richtig)b.classList.add("r"); else if(b.dataset.w===w)b.classList.add("f");});
-  zeichne();
+    b.disabled=true; if(b.dataset.w===w)b.classList.add(ok?"r":"f");});
+  zeichne(); Signal.blitz(ok);
   var m=document.getElementById("meld"); m.className="meld "+(ok?"r":"f");
-  if(q.bruch){ var t=q.richtig.split("/");
-    m.innerHTML=(ok?"Richtig. ":"")+q.art+" "+q.wn+" = "+LANG[q.art]+" = "+t[0]+" durch "+t[1]+"."; }
-  else m.innerHTML=(ok?"Richtig. ":"")+"Die "+WORT[q.art]+" "+WO[q.art].replace("dem markierten Winkel","dem Winkel "+q.wn).replace("am markierten Winkel","am Winkel "+q.wn)+": <b>"+q.richtig+"</b>.";
+  var regel;
+  if(q.bruch){ var t=q.richtig.split("/"); regel=q.art+" "+q.wn+" = "+LANG[q.art]+" = "+t[0]+" durch "+t[1]+"."; }
+  else regel="Die "+WORT[q.art]+" "+WO[q.art].replace("dem markierten Winkel","dem Winkel "+q.wn).replace("am markierten Winkel","am Winkel "+q.wn)+": <b>"+q.richtig+"</b>.";
+  m.innerHTML=ok?"Richtig.":"Noch nicht.";
+  if(!ok) Signal.knopf(m,regel,function(){gezeigt=true; markiere(); zeichne();});
   var h=document.getElementById("haupt"); h.className="haupt da"; h.textContent=verlauf.length>=N?"Auswerten":"Weiter"; stand();
 }
 document.getElementById("haupt").addEventListener("click",function(){
