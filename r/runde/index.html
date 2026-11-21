@@ -19,7 +19,13 @@
      „Fehler noch einmal“ am Ende ist Üben für den Schüler und wird nicht gemeldet.
      W82 (Lehrer 21.11.: „ganz deutlich … richtig oder falsch. Also vielleicht den Bildschirm für eine Sekunde grün oder für eine Sekunde rot“;
      Lösungen „nur, wenn man möchte“): nach „Prüfen“ blitzt der ganze Bildschirm eine Sekunde grün mit ✓ oder rot mit ✗ (✗ wackelt, damit es
-     nicht nur an der Farbe hängt; am Handy kurz Vibration bei falsch); bei falsch zeigt erst „Lösung zeigen“ die richtige Lösung. -->
+     nicht nur an der Farbe hängt; am Handy kurz Vibration bei falsch); bei falsch zeigt erst „Lösung zeigen“ die richtige Lösung.
+     W84 (L 22.11., Paket A; Befunde 25–28): kein „Prüfen“ bei Zahlen – hat die Eingabe die Länge der richtigen Antwort oder ruht sie
+     3 s, füllt sich ein Ring 1,5 s, dann wird gewertet; jeder Tastendruck setzt ihn zurück; Enter wertet sofort. Der Ring läuft auch
+     bei richtig, damit „springt sofort“ nichts verrät. „Bist du sicher?“ nur bei Beinahe-Fehlern (Vorzeichen, um 1 daneben, Ziffern
+     vertauscht), höchstens einmal je Frage und höchstens jede dritte Frage; gemeldet als h=<nr,…> (Urteil r/f bleibt). Leiste grün/rot
+     je Frage; „Rechne $…$.“ → Aufforderung oben, Ausdruck groß in der Mitte; nach falsch nur Frage – deine Antwort – richtig
+     („5 · 0 = 0“), Rechenweg nur auf Knopf, der Satz zum typischen Fehler nicht für den Schüler (bleibt in den Daten). -->
 <link rel="stylesheet" href="../katex/katex.min.css">
 <script defer src="../katex/katex.min.js"></script>
 <script defer src="../katex/auto-render.min.js"></script>
@@ -34,16 +40,27 @@ p{font-size:18px;line-height:1.4;margin:8px 0}
 .rueck{display:flex;flex-direction:column;gap:10px}.rueck p{margin:0 0 4px}
 .balken{flex:1;display:flex;gap:4px}
 .balken i{flex:1;height:8px;border-radius:4px;background:#d5e1ec}
-.balken i.d{background:#1f5f8b}.balken i.j{background:#7fb0d3}
+.balken i.d{background:#1f5f8b}.balken i.j{background:#7fb0d3}.balken i.r{background:#2e9e5b}.balken i.f{background:#d23b3b}
+.auff{font-size:20px;font-weight:600;margin:4px 0 0;color:#2c4a63}
+.ausdr{flex:1;display:flex;align-items:center;justify-content:center;font-size:44px;font-weight:600;padding:10px 0;min-height:110px}
+.ausdr .katex{font-size:1em}
+.ring{position:absolute;right:12px;top:50%;margin-top:-15px;width:30px;height:30px;visibility:hidden}.ring.an{visibility:visible}
+.ring circle{fill:none;stroke-width:5}.ring .bg{stroke:#d5e1ec}.ring .vg{stroke:#1f5f8b;stroke-dasharray:100;stroke-dashoffset:100;transform:rotate(-90deg);transform-origin:center}
+.ring.an .vg{animation:ringlauf 1.5s linear forwards}
+@keyframes ringlauf{to{stroke-dashoffset:0}}
+.sicher{display:flex;align-items:center;gap:10px;background:#fff4e0;border-radius:14px;padding:8px 12px;margin:0 0 10px;font-size:21px;font-weight:700;color:#7a4f06}
+.sicher button{margin-left:auto;min-height:48px;padding:0 22px;font-size:20px}
+.richtig{margin:10px 0 0;border-radius:14px;background:#e6f6ec;border:3px solid #2e9e5b;padding:10px 14px;font-size:30px;font-weight:700;text-align:center;color:#14533a}
+.richtig small{display:block;font-size:14px;font-weight:600;color:#2e7a4f}
 .marke{display:inline-block;font-size:14px;font-weight:600;color:#1f5f8b;background:#dfeaf4;border-radius:6px;padding:2px 8px;margin-bottom:4px}
 .frage{font-size:22px;line-height:1.35;font-weight:600;margin:4px 0 8px}
 .frage .katex{font-size:1.12em}
 .bild{display:block;width:100%;height:auto;max-height:300px;object-fit:contain;margin:2px auto 8px;padding:6px;background:#fff;border-radius:10px}
 .unten{margin-top:auto}
-.feld{min-height:70px;border-radius:14px;background:#fff;border:3px solid #1f5f8b;font-size:36px;font-weight:700;
+.feld{position:relative;min-height:70px;border-radius:14px;background:#fff;border:3px solid #1f5f8b;font-size:36px;font-weight:700;
  display:flex;align-items:center;justify-content:center;gap:10px;margin:6px 24px 10px;padding:4px 10px}
 .feld .mass{font-size:24px;font-weight:600;color:#4a6378}
-.feld.r{border-color:#2e9e5b;background:#e6f6ec}.feld.f{border-color:#c98511;background:#fff4e0}
+.feld.r{border-color:#2e9e5b;background:#e6f6ec}.feld.f{border-color:#d23b3b;background:#fdecec;color:#a11d1d}.feld.s{border-color:#c98511;background:#fff4e0}
 .br{display:inline-flex;flex-direction:column;align-items:stretch;min-width:54px;font-size:28px;line-height:1.1}
 .br span{min-height:32px;padding:0 8px;text-align:center;border-radius:6px}
 .br span.an{background:#dfeaf4}
@@ -63,7 +80,7 @@ button.gross{width:100%;min-height:64px;font-size:23px;margin-top:10px}
 .wahl.zwei button{justify-content:center;text-align:center;font-size:20px;padding:8px 6px;gap:6px;white-space:nowrap}
 .wahl button[aria-pressed="true"]{border-color:#1f5f8b;background:#eaf2f9}
 .wahl button.r{border-color:#2e9e5b;background:#e6f6ec;opacity:1}
-.wahl button.f{border-color:#c98511;background:#fff4e0;opacity:1}
+.wahl button.f{border-color:#d23b3b;background:#fdecec;opacity:1}
 .wahl button .z{font-weight:800;min-width:1em}
 .rm{border-radius:14px;padding:10px 14px;margin:10px 0 0;font-size:18px;line-height:1.4;background:#fff;border-left:8px solid #c98511}
 .rm.r{border-left-color:#2e9e5b}
@@ -71,7 +88,7 @@ button.gross{width:100%;min-height:64px;font-size:23px;margin-top:10px}
 .rm.r b{color:#1d6f3e}.rm.f b{color:#7a4f06}
 .rm .tf{display:block;margin-top:6px;color:#4a3a14}
 .rm.f{border-left-color:#d23b3b}.rm.f b{color:#a11d1d}
-.deine{font-size:14px;color:#5b7389;margin:4px 0 2px}
+.deine{font-size:14px;color:#5b7389;margin:4px 0 2px;text-align:center}
 .rm .loes{margin-top:8px;background:#fff;border:1px solid #c9d6e2;border-radius:10px;padding:6px 12px;font-size:16px;color:#18324a;min-height:0}
 .mitte{margin:auto 0;text-align:center}
 .zahl{font-size:60px;font-weight:800;color:#1f5f8b;line-height:1.1}.zahlw{font-size:26px;font-weight:700;color:#1f5f8b;margin-bottom:14px}
@@ -99,7 +116,7 @@ const formeln = wo => { if (window.renderMathInElement) renderMathInElement(wo, 
   macros: { "\\sv": SV, "\\frac": "\\dfrac", "\\tfrac": "\\dfrac" } }); };   // Brüche groß, gut lesbar
 const bildname = b => b && /^[a-z0-9-]+\.(png|svg|jpg)$/.test(b) ? b : "";
 let fassung = 0, runde, folge, i, urteile, antworten, zwillinge, zwAnzahl, beginn, nachrunde = false, gesendet = false, abgebrochen = false;
-let frage, eingabe, wahl, gesperrt;
+let frage, eingabe, wahl, gesperrt, teile, uhr = null, ruhe = null, hinweisHier = false, letzterHinweis = -99, hinweise = [];
 
 // ---- Zahlen: "−3/4", "2,5" → gekürzter Bruch [Zähler, Nenner]
 const ggt = (a, b) => { a = Math.abs(a); b = Math.abs(b); while (b) [a, b] = [b, a % b]; return a || 1; };
@@ -112,6 +129,10 @@ function bruch(t) {
   const g = ggt(n, d); return [n / g, d / g];
 }
 const gleich = (a, b) => { const x = bruch(a), y = bruch(b); return !!x && !!y && x[0] === y[0] && x[1] === y[1]; };
+// „Rechne $-7-6$.“ → Aufforderung „Rechne“, Ausdruck groß (Befund 26); nur bei genau einer Formel am Ende
+function trenne(t) { const m = /^([A-ZÄÖÜ][^$:]{0,40}?)\s*:?\s*\$([^$]+)\$\s*\.?$/.exec(String(t || "")); return m ? { auf: m[1], aus: m[2] } : null; }
+const tex = w => { w = String(w).replace("−", "-"); if (w.includes("/")) { const [a, b] = w.split("/"); const neg = a.startsWith("-"); return (neg ? "-" : "") + "\\frac{" + a.replace("-", "") + "}{" + b + "}"; } return w.replace(",", "{,}"); };
+const norm = w => String(w).replace(/−/g, "-").replace(/\s/g, "");
 const text = () => (eingabe.minus ? "−" : "") + eingabe.z + (eingabe.bruch ? "/" + eingabe.n : "");
 
 // ---- Bildschirme
@@ -144,19 +165,21 @@ function thema(t) {
   return s || roh || "Runde";
 }
 function los() { if (fassung) try { localStorage.setItem("runde-f-" + kennung, String(fassung)); } catch (x) {}
-  folge = runde.fragen.map(f => ({ f, nr: f.nr, zw: false })); i = 0; urteile = {}; antworten = {}; zwillinge = []; zwAnzahl = 0; beginn = Date.now(); zeig(); }
+  folge = runde.fragen.map(f => ({ f, nr: f.nr, zw: false })); i = 0; letzterHinweis = -99; hinweise = []; urteile = {}; antworten = {}; zwillinge = []; zwAnzahl = 0; beginn = Date.now(); zeig(); }
 
 function zeig() {
-  const e = folge[i]; frage = e.f; gesperrt = false; wahl = null; const vorgabe = frage.art === "zahl" && !!frage.bruch && String(frage.wert || "").includes("/");   // Antwort ist ein Bruch: Feld gleich als Bruch (Lehrer 13.11.)
+  const e = folge[i]; frage = e.f; gesperrt = false; wahl = null; hinweisHier = false; stoppe(); const vorgabe = frage.art === "zahl" && !!frage.bruch && String(frage.wert || "").includes("/");   // Antwort ist ein Bruch: Feld gleich als Bruch (Lehrer 13.11.)
   eingabe = { minus: false, z: "", n: "", bruch: vorgabe, vorgabe, teil: "z" };
   app.replaceChildren();
   const kopf = el("div", "kopf"), balken = el("div", "balken");
-  folge.forEach((x, k) => balken.appendChild(el("i", k < i ? "d" : k === i ? "j" : "")));
+  folge.forEach((x, k) => balken.appendChild(el("i", k < i ? (x.ok === undefined ? "d" : x.ok ? "r" : "f") : k === i ? "j" : "")));   // Befund 25
   kopf.appendChild(balken); kopf.appendChild(el("span", "", "Frage " + (i + 1) + " von " + folge.length));
   const stop = el("button", "stop", "Aufhören"); stop.onclick = aufhoeren; kopf.appendChild(stop); app.appendChild(kopf);
   if (e.zw) app.appendChild(el("div", "", "")).appendChild(el("span", "marke", "Noch einmal so eine"));
-  app.appendChild(el("div", "frage", frage.frage));
   const b = bildname(frage.bild);
+  teile = b ? null : trenne(frage.frage);
+  if (teile) { app.appendChild(el("div", "auff", teile.auf)); app.appendChild(el("div", "ausdr", "$" + teile.aus + "$")); }
+  else app.appendChild(el("div", "frage", frage.frage));
   if (b) { const im = el("img", "bild"); im.src = "daten/" + b; im.alt = "Bild zur Frage"; app.appendChild(im); }
   const unten = el("div", "unten"); unten.id = "unten"; app.appendChild(unten);
   if (frage.art === "zahl") zifferfeld(unten); else auswahl(unten);
@@ -175,20 +198,47 @@ function zifferfeld(unten) {
   ["4", "5", "6"].forEach(z => taste(z, z)); taste("−", "m", "", "Minus");
   ["7", "8", "9"].forEach(z => taste(z, z)); taste(",", "k", "", "Komma");
   if (frage.bruch) taste(eingabe.vorgabe ? "Nenner ↓" : "Bruch", "b", "klein", eingabe.vorgabe ? "zum Nenner" : "Bruchstrich"); else t.appendChild(el("span"));
-  taste("0", "0"); taste("Prüfen", "ok", "ok klein breit2").id = "pruefen";
+  taste("0", "0", "breit2"); t.appendChild(el("span"));
   t.onclick = ev => { const b = ev.target.closest("button"); if (b) tipp(b.dataset.t); };
   unten.appendChild(t); mal();
 }
 function tipp(t) {
   if (gesperrt) return;
   const e = eingabe, teil = e.bruch ? e.teil : "z";
-  if (t === "ok") { if (bereit()) pruefZahl(); return; }
+  if (t === "ok") { weg(); abschluss(); return; }
   if (t === "x") { if (e.bruch && e.teil === "n" && !e.n) { e.teil = "z"; if (!e.vorgabe) e.bruch = false; } else if (e[teil]) e[teil] = e[teil].slice(0, -1); else e.minus = false; }
   else if (t === "m") e.minus = !e.minus;
   else if (t === "k") { if (!e.bruch && !e.z.includes(",") && e.z.length < 7) e.z += e.z ? "," : "0,"; }
   else if (t === "b") { if (frage.bruch && e.z && !e.z.includes(",") && (!e.bruch || e.teil === "z")) { e.bruch = true; e.teil = "n"; } }
   else if (/^\d$/.test(t) && e[teil].replace(",", "").length < (e.bruch ? 4 : 7)) e[teil] += t;
-  mal();
+  weg(); mal(); plane();
+}
+// Ring (Paket A, L 22.11.): Länge der richtigen Antwort erreicht → sofort; sonst nach 3 s Ruhe. 1,5 s Ring, dann gewertet.
+function stoppe() { clearTimeout(uhr); clearTimeout(ruhe); uhr = ruhe = null; const r = document.getElementById("ring"); if (r) r.classList.remove("an"); }
+function plane() {
+  stoppe(); if (gesperrt || !bereit() || document.getElementById("sicher")) return;
+  if (norm(text()).length === norm(frage.wert).length) ring(); else ruhe = setTimeout(ring, 3000);
+}
+function ring() { clearTimeout(uhr); const r = document.getElementById("ring"); if (!r) return; r.classList.remove("an"); void r.getBoundingClientRect(); r.classList.add("an"); uhr = setTimeout(() => { stoppe(); abschluss(); }, 1500); }
+function weg() { const s = document.getElementById("sicher"); if (s) s.remove(); }
+// Beinahe-Fehler: Vorzeichen, um 1 daneben (ganze Zahlen ab 3), Ziffern vertauscht
+function nahe(t, w) {
+  const x = bruch(t), y = bruch(w); if (!x || !y || x[1] !== y[1] || x[0] === y[0]) return false;
+  if (y[0] !== 0 && x[0] === -y[0]) return true;
+  if (y[1] === 1 && Math.abs(y[0]) >= 3 && Math.abs(x[0] - y[0]) === 1) return true;
+  const a = String(Math.abs(x[0])), b = String(Math.abs(y[0]));
+  return a.length >= 2 && a.length === b.length && a !== b && a.split("").sort().join("") === b.split("").sort().join("") && Math.sign(x[0]) === Math.sign(y[0]);
+}
+function abschluss() {
+  if (gesperrt || !bereit()) return; stoppe();
+  const t = text();
+  if (!hinweisHier && i - letzterHinweis >= 3 && !gleich(t, frage.wert) && nahe(t, frage.wert)) {
+    hinweisHier = true; letzterHinweis = i; const e = folge[i]; if (!nachrunde && !e.zw && !hinweise.includes(e.nr)) hinweise.push(e.nr);
+    const s = el("div", "sicher"); s.id = "sicher"; s.setAttribute("role", "status"); s.appendChild(el("span", "", "Bist du sicher?"));
+    const ja = el("button", "ok", "Ja"); ja.onclick = () => { weg(); pruefZahl(); }; s.appendChild(ja);
+    const tasten = document.getElementById("tasten"); tasten.parentNode.insertBefore(s, tasten); mal("s"); return;
+  }
+  pruefZahl();
 }
 const bereit = () => /\d$/.test(eingabe.z) && (!eingabe.bruch || (/^\d+$/.test(eingabe.n) && +eingabe.n > 0));
 function mal(klasse) {
@@ -202,7 +252,10 @@ function mal(klasse) {
     br.appendChild(zs); br.appendChild(el("hr")); br.appendChild(ns); feld.appendChild(br);
   } else feld.appendChild(el("span", "", (e.minus ? "−" : "") + e.z || " "));
   if (frage.masse) feld.appendChild(el("span", "mass", frage.masse));
-  const p = document.getElementById("pruefen"); if (p) p.disabled = !bereit();
+  const ri = document.createElementNS("http://www.w3.org/2000/svg", "svg"); ri.id = "ring"; ri.setAttribute("class", "ring"); ri.setAttribute("viewBox", "0 0 36 36"); ri.setAttribute("aria-hidden", "true");
+  ri.innerHTML = '<circle class="bg" cx="18" cy="18" r="14"/><circle class="vg" cx="18" cy="18" r="14" pathLength="100"/>';
+  if (!gesperrt) feld.appendChild(ri);
+  if (!gesperrt && uhr) ring();   // Neuzeichnen während des Rings: Ring läuft neu an
 }
 function pruefZahl() {
   const t = text(); let ok = gleich(t, frage.wert), satz = "";
@@ -212,7 +265,7 @@ function pruefZahl() {
     else if (soll.includes("/") && soll !== ist) { ok = false; satz = "Der Wert stimmt – der Bruch ist aber noch nicht vollständig gekürzt."; }
   }
   if (!ok && !satz && frage.fehler) for (const k in frage.fehler) if (gleich(t, k)) satz = "Typischer Fehler: " + frage.fehler[k];
-  gesperrt = true; mal(ok ? "r" : "f"); document.getElementById("tasten").remove();
+  stoppe(); weg(); gesperrt = true; mal(ok ? "r" : "f"); document.getElementById("tasten").remove();
   fertig(ok, t, satz);
 }
 
@@ -230,7 +283,8 @@ function pruefWahl() {
   if (wahl === null || gesperrt) return; gesperrt = true;
   const zwei = frage.art === "stimmt", knoepfe = document.querySelectorAll("#wahl button");
   const richtig = zwei ? frage.knoepfe.indexOf(frage.richtig) : frage.optionen.findIndex(o => o.r), ok = wahl === richtig;
-  knoepfe.forEach((b, k) => { b.disabled = true; if (k === wahl) { b.classList.add(ok ? "r" : "f"); b.firstChild.textContent = ok ? "✓" : "✗"; } });
+  knoepfe.forEach((b, k) => { b.disabled = true; if (k === wahl) { b.classList.add(ok ? "r" : "f"); b.firstChild.textContent = ok ? "✓" : "✗"; }
+    else if (!ok && k === richtig) { b.classList.add("r"); b.firstChild.textContent = "✓"; } });   // Befund 28: deine Wahl rot, die richtige grün
   let satz = "";
   if (!ok) { const f = zwei ? frage.fehler : frage.optionen[wahl].f; if (f) satz = "Typischer Fehler: " + f; }
   document.getElementById("pruefen").remove();
@@ -246,21 +300,27 @@ function fertig(ok, antwort, satz) {
       folge.splice(Math.min(i + ABSTAND, folge.length - 1), 0, { f: frage.zw, nr: e.nr, zw: true }); zwAnzahl++;
     }
   } else e.ok = ok;
+  e.ok = ok;   // Leiste grün/rot (Befund 25)
   Signal.blitz(ok);   // gemeinsamer Baustein ../signal.js (Register 21.11.11)
   const unten = document.getElementById("unten");
   if (!ok) {   // W83 (L 21.11.: „Fokus auf das, was falsch gemacht wurde“): Bild und übrige Auswahl weg, die eigene Antwort bleibt
     const bild = app.querySelector(".bild"); if (bild) bild.style.maxHeight = "140px";   // das Bild bleibt klein: ohne Koordinatensystem sagt „III. Quadrant“ nichts
-    document.querySelectorAll("#wahl button").forEach(b => { if (!b.classList.contains("f")) b.remove(); });
-    unten.insertBefore(el("div", "deine", "Deine Antwort"), unten.firstChild);
+    document.querySelectorAll("#wahl button").forEach(b => { if (!b.classList.contains("f") && !b.classList.contains("r")) b.remove(); });
+    if (frage.art === "zahl") {   // W84 (Befund 27): Frage – deine Antwort – richtig, ohne Erklärtext
+      unten.insertBefore(el("div", "deine", "deine Antwort"), unten.firstChild);
+      const r = el("div", "richtig"); r.setAttribute("role", "status"); r.appendChild(el("small", "", "richtig"));
+      r.appendChild(el("span", "", "$" + (teile ? teile.aus + " = " : "") + tex(frage.wert) + "$" + (frage.masse ? " " + frage.masse : "")));
+      unten.appendChild(r);
+    }
+    // Rechenweg nur auf Wunsch; der Satz zum typischen Fehler bleibt in den Daten (Befund 28)
+    if (frage.loesung && norm(frage.loesung.replace(/\$/g, "")) !== norm(frage.wert || "")) {
+      const k = el("div", ""); k.style.textAlign = "center"; unten.appendChild(k);
+      Signal.knopf(k, sp => { sp.textContent = frage.loesung; }, () => formeln(k), frage.art === "zahl" ? "Rechenweg" : "Warum?");
+    }
   }
-  const rm = el("div", "rm " + (ok ? "r" : "f")); rm.setAttribute("role", "status");
-  rm.appendChild(el("b", "", ok ? "✓ Richtig" : "✗ Noch nicht"));
-  if (!ok)   // W82: Lösung nur auf Wunsch
-    Signal.knopf(rm, sp => { sp.textContent = "Richtig ist: " + frage.loesung; }, () => { if (satz) rm.appendChild(el("span", "tf", satz)); formeln(rm); });
-  unten.appendChild(rm);
   const w = el("button", "ok gross", i + 1 < folge.length ? "Weiter" : "Fertig"); w.id = "weiter";
   const hier = i; w.onclick = () => { if (i !== hier) return; i++; if (i < folge.length) zeig(); else ende(); }; unten.appendChild(w);
-  formeln(rm); w.scrollIntoView({ block: "nearest" });
+  formeln(unten); w.scrollIntoView({ block: "nearest" });
   if (ok) setTimeout(() => w.onclick(), 1000);   // W83 (L 21.11.: „Warum muss man denn eigentlich weiter drücken?“): nach dem Blitz von selbst
 }
 
@@ -277,7 +337,7 @@ function ende() {   // W83 (L 21.11.: „die letzte Seite schmaler … Groß 6 v
   try { if (!nachrunde && !abgebrochen) localStorage.setItem("runde-" + kennung, r + " von " + n); } catch (x) {}
   if (!nachrunde && !abgebrochen && falsch.length) {   // dasselbe noch einmal: die Fehler dieser Runde
     const b = el("button", "ok gross", falsch.length === 1 ? "Den Fehler noch einmal" : "Die " + falsch.length + " Fehler noch einmal");
-    b.onclick = () => { nachrunde = true; folge = falsch.map(f => ({ f, nr: f.nr, zw: false })); i = 0; zeig(); }; m.appendChild(b);
+    b.onclick = () => { nachrunde = true; letzterHinweis = -99; folge = falsch.map(f => ({ f, nr: f.nr, zw: false })); i = 0; zeig(); }; m.appendChild(b);
   }
   const status = el("p", "leise", ""); status.id = "status"; m.appendChild(status);
   if ((runde.quellen || []).some(q => q.lizenz)) m.appendChild(quellen());   // Namensnennung nur, wo die Lizenz sie verlangt
@@ -297,7 +357,7 @@ function quellen() {
 function melde(status) {   // eine Zeile an die Rückkanal-Tabelle; die Antwort von Google lädt in den unsichtbaren Rahmen
   const sauber = t => String(t == null ? "-" : t).replace(/[;|=\s]/g, "");
   const fr = runde.fragen, wert = [kennung, snr, fr.map(f => urteile[f.nr] || "-").join(""), "a=" + fr.map(f => sauber(antworten[f.nr])).join("|"),
-    "z=" + zwillinge.join(","), "t=" + Math.round((Date.now() - beginn) / 1000)].concat(fassung ? ["f=" + fassung] : []).join(";");
+    "z=" + zwillinge.join(","), "t=" + Math.round((Date.now() - beginn) / 1000)].concat(fassung ? ["f=" + fassung] : []).concat(hinweise.length ? ["h=" + hinweise.join(",")] : []).join(";");
   window.letzteMeldung = wert;
   try {
     const f = el("form"); f.method = "POST"; f.action = FORM.url; f.target = "ziel"; f.style.display = "none";

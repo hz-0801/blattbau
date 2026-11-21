@@ -14,6 +14,7 @@
      Signal.knopf(ziel, inhalt, nachher) Knopf „Lösung zeigen“ ans Ende von ziel; ein Tipp ersetzt ihn durch inhalt (HTML
                                        oder eine Funktion, die den neuen span füllt) und ruft nachher(span) – z. B. Formeln
                                        setzen, die richtige Wahl markieren, die Figur färben
+                                       Optional als 4. Argument die Aufschrift (Vorgabe „Lösung zeigen“; W84 runde: „Rechenweg“).
    Grenze: Inhalt und Aufgabenart bleiben je App eigen. Eine Änderung hier trifft alle Apps zugleich: danach jede App einmal
    prüfen (aufgabenbank werkzeuge/signal-probe.py). */
 (function () {
@@ -47,11 +48,11 @@
     if (!ok && navigator.vibrate) { try { navigator.vibrate(180); } catch (x) { /* kein Gerät */ } }
   }
 
-  function knopf(ziel, inhalt, nachher) {
+  function knopf(ziel, inhalt, nachher, aufschrift) {
     var k = document.createElement("button");
     k.type = "button";
     k.className = "sig-loes";
-    k.textContent = "Lösung zeigen";
+    k.textContent = aufschrift || "Lösung zeigen";
     k.addEventListener("click", function (ev) {
       ev.stopPropagation();
       var s = document.createElement("span");
