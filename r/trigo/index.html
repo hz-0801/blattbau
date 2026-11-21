@@ -153,7 +153,7 @@ function antwort(w){
   m.innerHTML=ok?"Richtig.":"Noch nicht.";
   if(!ok) Signal.knopf(m,regel,function(){gezeigt=true; markiere(); zeichne();});
   var h=document.getElementById("haupt"); h.className="haupt da"; h.textContent=verlauf.length>=N?"Auswerten":"Weiter"; stand();
-  if(ok){var n0=nr;setTimeout(function(){if(nr===n0&&fertig)h.click();},1000);}
+  if(ok){var n0=nr,t0=h.textContent;setTimeout(function(){if(nr===n0&&fertig&&h.textContent===t0)h.click();},1000);}   // W84: nicht doppelt klicken (Ende sprang auf „Neue Runde“)
 }
 document.getElementById("haupt").addEventListener("click",function(){
   if(verlauf.length>=N && this.textContent==="Auswerten"){
