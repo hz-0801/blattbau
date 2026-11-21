@@ -74,7 +74,8 @@ button.gross{width:100%;min-height:64px;font-size:23px;margin-top:10px}
 .deine{font-size:14px;color:#5b7389;margin:4px 0 2px}
 .rm .loes{margin-top:8px;background:#fff;border:1px solid #c9d6e2;border-radius:10px;padding:6px 12px;font-size:16px;color:#18324a;min-height:0}
 .mitte{margin:auto 0;text-align:center}
-.zahl{font-size:60px;font-weight:800;color:#1f5f8b;line-height:1.1}
+.zahl{font-size:60px;font-weight:800;color:#1f5f8b;line-height:1.1}.zahlw{font-size:26px;font-weight:700;color:#1f5f8b;margin-bottom:14px}
+.quellen{font-size:12px;color:#5b7389;margin-top:18px}
 .liste{text-align:left;background:#fff;border-radius:14px;padding:10px 14px;margin:12px 0 0;font-size:17px;line-height:1.4}
 .liste b{display:block}
 .leise{font-size:15px;color:#4a6378;min-height:1.4em}
@@ -255,37 +256,26 @@ function fertig(ok, antwort, satz) {
 function aufhoeren() {   // Lehrer 13.11. Weg A: aufhören dürfen; gemeldet wird, was beantwortet ist, der Rest als „-“.
   abgebrochen = true; ende();   // W83 (L 21.11.: „kein Verbrechen, wenn man die App abbrechen will“): ohne Gegenfrage
 }
-function ende() {
+function ende() {   // W83 (L 21.11.: „die letzte Seite schmaler … Groß 6 von 7 richtig. Quellen, wenn es gefordert ist“)
   const fr = runde.fragen, n = fr.length, r = fr.filter(f => urteile[f.nr] === "r").length, falsch = fr.filter(f => urteile[f.nr] === "f");
+  const beantw = fr.filter(f => urteile[f.nr]).length;   // nach „Aufhören“ zählt die Zahl auf die beantworteten Fragen
   app.replaceChildren(); const m = el("div", "mitte");
   m.appendChild(el("h1", "", abgebrochen ? "Für heute Schluss." : nachrunde ? "Für heute geschafft!" : r === n ? "Alles richtig!" : "Geschafft!"));
-  const beantw = fr.filter(f => urteile[f.nr]).length;   // W83: „6 von 15“ bei 7 beantworteten sah schlechter aus, als es war
-  m.appendChild(el("div", "zahl", r + " von " + (abgebrochen ? beantw : n)));
-  if (abgebrochen) m.appendChild(el("p", "leise", beantw + " von " + n + " Fragen beantwortet"));
-  let alt = null; try { alt = localStorage.getItem("runde-" + kennung); if (!nachrunde && !abgebrochen) localStorage.setItem("runde-" + kennung, r + " von " + n); } catch (x) {}
-  if (alt && !nachrunde) m.appendChild(el("p", "leise", "Letztes Mal: " + alt));
-  if (zwillinge.length && !nachrunde) { const g = zwillinge.filter(z => z.endsWith("r")).length; m.appendChild(el("p", "", "Beim zweiten Anlauf: " + g + " von " + zwillinge.length + " geschafft.")); }
-  const namen = l => [...new Set(l.map(f => f.thema))].slice(0, 5);
-  const liste = el("div", "liste"); let etwas = false;
-  if (nachrunde) { const nochmal = folge.filter(e => !e.ok).map(e => e.f); if (nochmal.length) { liste.appendChild(el("b", "", "Das üben wir nächstes Mal:")); namen(nochmal).forEach(t => liste.appendChild(el("div", "", "· " + t))); etwas = true; }
-    else { liste.appendChild(el("b", "", "Jetzt saß jede Frage einmal.")); etwas = true; } }
-  else {
-    const offen = new Set(falsch.map(f => f.thema)), sass = namen(fr.filter(f => urteile[f.nr] === "r")).filter(t => !offen.has(t));   // W83: ein Thema nur in einer Liste
-    if (sass.length) { liste.appendChild(el("b", "", "Das saß:")); sass.forEach(t => liste.appendChild(el("div", "", "· " + t))); etwas = true; }
-    if (falsch.length) { const b = el("b", "", "Das üben wir noch:"); if (sass.length) b.style.marginTop = "8px"; liste.appendChild(b); namen(falsch).forEach(t => liste.appendChild(el("div", "", "· " + t))); etwas = true; }
-  }
-  if (etwas) m.appendChild(liste);
-  if (!nachrunde && !abgebrochen && falsch.length) {
+  const [ja, von] = nachrunde ? [folge.filter(e => e.ok).length, folge.length] : [r, abgebrochen ? beantw : n];
+  m.appendChild(el("div", "zahl", ja + " von " + von)); m.appendChild(el("div", "zahlw", "richtig"));
+  try { if (!nachrunde && !abgebrochen) localStorage.setItem("runde-" + kennung, r + " von " + n); } catch (x) {}
+  if (!nachrunde && !abgebrochen && falsch.length) {   // dasselbe noch einmal: die Fehler dieser Runde
     const b = el("button", "ok gross", falsch.length === 1 ? "Den Fehler noch einmal" : "Die " + falsch.length + " Fehler noch einmal");
     b.onclick = () => { nachrunde = true; folge = falsch.map(f => ({ f, nr: f.nr, zw: false })); i = 0; zeig(); }; m.appendChild(b);
   }
   const status = el("p", "leise", ""); status.id = "status"; m.appendChild(status);
-  m.appendChild(quellen()); app.appendChild(m); formeln(m);
+  if ((runde.quellen || []).some(q => q.lizenz)) m.appendChild(quellen());   // Namensnennung nur, wo die Lizenz sie verlangt
+  app.appendChild(m); formeln(m);
   if (!gesendet) melde(status); else status.textContent = "Dein Ergebnis ist beim Lehrer.";
 }
 function quellen() {
-  const d = el("details"); d.appendChild(el("summary", "", "Quellen der Fragen"));
-  (runde.quellen || []).forEach(s => {
+  const d = el("details", "quellen"); d.appendChild(el("summary", "", "Quellen"));
+  (runde.quellen || []).filter(s => s.lizenz).forEach(s => {
     const p = el("p", "", "Nr. " + s.nr.join(", ") + ": " + s.quelle + (s.namensnennung ? " (" + s.namensnennung + ")" : "") + (s.lizenz ? ", " + s.bearbeitung + ", Lizenz " : ""));
     if (s.lizenz) { if (s.lizenz_url) { const a = el("a", "", s.lizenz); a.href = s.lizenz_url; a.rel = "noopener"; p.appendChild(a); } else p.appendChild(document.createTextNode(s.lizenz));
       p.appendChild(document.createTextNode(". " + (s.hinweis || "") + (s.url && s.url.length ? " Fundstelle: " + s.url.join(", ") : ""))); }
