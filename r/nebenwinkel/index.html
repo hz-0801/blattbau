@@ -117,7 +117,7 @@ document.getElementById("haupt").addEventListener("click",function(){
     if(ein===""){m.className="meld f";m.textContent="Tipp die Gradzahl ein.";return}
     var ok=parseInt(ein,10)===q.such; geprueft=true; verlauf.push(ok); nr++;
     a.className="ant "+(ok?"r":"f"); m.className="meld "+(ok?"r":"f"); Signal.blitz(ok);
-    m.textContent=ok?"Richtig.":"Noch nicht.";   // Lösung nur auf Wunsch, bei richtig keine (Register 21.11.11)
+    m.textContent=ok?"Richtig.":"";   // W84: kein „Noch nicht“ (L 22.11.)   // Lösung nur auf Wunsch, bei richtig keine (Register 21.11.11)
     if(!ok) Signal.knopf(m,function(sp){sp.textContent=q.weg+(q.weg.slice(-1)==="."?"":".");});
     this.textContent=verlauf.length>=N?"Auswerten":"Weiter"; stand();
     // W83 (L 21.11.): nach richtig von selbst weiter, nach falsch nur noch, was falsch war (Eingabe weg)

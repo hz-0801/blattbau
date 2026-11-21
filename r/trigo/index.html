@@ -150,7 +150,7 @@ function antwort(w){
   var regel;
   if(q.bruch){ var t=q.richtig.split("/"); regel=q.art+" "+q.wn+" = "+LANG[q.art]+" = "+t[0]+" durch "+t[1]+"."; }
   else regel="Die "+WORT[q.art]+" "+WO[q.art].replace("dem markierten Winkel","dem Winkel "+q.wn).replace("am markierten Winkel","am Winkel "+q.wn)+": <b>"+q.richtig+"</b>.";
-  m.innerHTML=ok?"Richtig.":"Noch nicht.";
+  m.innerHTML=ok?"Richtig.":"";   // W84: kein „Noch nicht“ (L 22.11.)
   if(!ok) Signal.knopf(m,regel,function(){gezeigt=true; markiere(); zeichne();});
   var h=document.getElementById("haupt"); h.className="haupt da"; h.textContent=verlauf.length>=N?"Auswerten":"Weiter"; stand();
   if(ok){var n0=nr,t0=h.textContent;setTimeout(function(){if(nr===n0&&fertig&&h.textContent===t0)h.click();},1000);}   // W84: nicht doppelt klicken (Ende sprang auf „Neue Runde“)

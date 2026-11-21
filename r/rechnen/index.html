@@ -96,7 +96,7 @@ document.getElementById("haupt").addEventListener("click",function(){
     var q=liste[pos], ok=parseInt(ein,10)===q.w; geprueft=true;
     if(!q.nochmal) verlauf.push(ok);
     a.className="ant "+(ok?"r":"f"); m.className="meld "+(ok?"r":"f"); Signal.blitz(ok);
-    m.textContent=ok?wahl(lob):"Noch nicht"+(q.nochmal?".":" – die kommt gleich noch einmal.");
+    m.textContent=ok?wahl(lob):(q.nochmal?"":"Die kommt gleich noch einmal.");   // W84: kein „Noch nicht“
     if(!ok && !q.nochmal) liste.splice(Math.min(pos+3,liste.length),0,{t:q.t,w:q.w,weg:q.weg,nochmal:true});
     if(!ok) Signal.knopf(m,function(sp){sp.textContent=q.weg;});   // Lösung nur auf Wunsch (Register 21.11.11)
     this.textContent=pos>=liste.length-1?"Fertig":"Weiter"; stand();

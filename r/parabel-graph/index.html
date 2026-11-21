@@ -196,7 +196,7 @@ function pruefen(){
   verlauf.push(ok); zeichne();
   Signal.blitz(ok);   // Lösung nur auf Wunsch, bei richtig keine (Register 21.11.11)
   if(ok){m.className="meld r"; m.innerHTML="<b>Richtig.</b>";}
-  else{m.className="meld f"; m.innerHTML="<b>Noch nicht.</b> Deine Parabel ist rot gestrichelt.";
+  else{m.className="meld f"; m.innerHTML="Deine Parabel ist rot gestrichelt.";
     Signal.knopf(m,hinweis()+"<br>Gesucht: "+gl(soll));}
   var ende=verlauf.length>=N;
   document.getElementById("haupt").textContent=ende?"Runde auswerten":"Weiter";

@@ -172,7 +172,7 @@ document.getElementById("haupt").addEventListener("click",function(){
     function zeigVoll(){ v.innerHTML='<small>ausgeschrieben</small>'+voll(); v.className="voll da"; }
     // Lösung nur auf Wunsch, bei richtig keine (Register 21.11.11); die Felder zeigen weiter, welcher Wert falsch ist
     if(ok) m.innerHTML="<b>Richtig.</b> Scheitel S("+mz(-soll.d)+" | "+mz(soll.e)+")";
-    else { m.innerHTML="<b>Noch nicht.</b> Rot ist, was nicht stimmt."; Signal.knopf(m,hinweis(),zeigVoll); T.style.display="none"; }
+    else { m.innerHTML="Rot ist, was nicht stimmt."; Signal.knopf(m,hinweis(),zeigVoll); T.style.display="none"; }
     felder(); stand();
     this.textContent=verlauf.length>=N?"Auswerten":"Weiter";
     // W83 (L 21.11.): nach richtig von selbst weiter, nach falsch nur noch, was falsch war (Eingabe weg)

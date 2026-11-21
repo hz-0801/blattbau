@@ -94,7 +94,7 @@ function pruef() {
   } else {
     urteile[i] = "f"; folge = 0; if (stufe > 0) stufe--;
     const wort = aufgabe[0].length > 9;
-    Signal.blitz(false); zeig("f", "Noch nicht.");   // Lösung nur auf Wunsch (Register 21.11.11)
+    Signal.blitz(false); zeig("f", "");   // W84: kein „Noch nicht“ (L 22.11.)   // Lösung nur auf Wunsch (Register 21.11.11)
     Signal.knopf(app.querySelector(".hin"), sp => { sp.textContent = aufgabe[0] + (wort ? ": " : " = ") + aufgabe[1]; });
     app.querySelector(".tasten").outerHTML = '<button class="ok gross" data-t="weiter">Weiter</button>';
   }
