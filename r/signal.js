@@ -31,7 +31,15 @@
     "@media (prefers-reduced-motion:reduce){.sig-blitz.f span{animation:none}}" +
     ".sig-loes{display:inline-block;margin-top:8px;background:#fff;border:1px solid #c9d6e2;border-radius:10px;" +
     "padding:6px 12px;font:inherit;font-size:1rem;color:#18324a;cursor:pointer;min-height:0;width:auto;height:auto}" +
-    ".sig-loes:active{background:#e6eef6}.sig-loes-text{display:block;margin-top:6px}";
+    ".sig-loes:active{background:#e6eef6}.sig-loes-text{display:block;margin-top:6px}" +
+    ".sig-geg{display:grid;grid-template-columns:auto auto auto;justify-content:center;align-items:center;column-gap:12px;" +
+    "row-gap:8px;margin:10px 0 4px;font-size:30px;font-weight:700;font-variant-numeric:tabular-nums}" +
+    ".sig-geg .c1{justify-self:end}.sig-geg .c3{justify-self:start}.sig-geg .lab{font-size:15px;font-weight:600;color:#4a6378}" +
+    ".sig-geg .f{color:#b42318}.sig-geg .r{color:#14633a}" +
+    ".sig-ring{position:absolute;right:10px;top:50%;margin-top:-14px;width:28px;height:28px;pointer-events:none}" +
+    ".sig-ring circle{fill:none;stroke-width:5}.sig-ring .bg{stroke:#d5e1ec}" +
+    ".sig-ring .vg{stroke:#1f5f8b;stroke-dasharray:100;stroke-dashoffset:100;transform:rotate(-90deg);transform-origin:center;" +
+    "animation:sigring 1.5s linear forwards}@keyframes sigring{to{stroke-dashoffset:0}}";
   var st = document.createElement("style");
   st.textContent = css;
   (document.head || document.documentElement).appendChild(st);
@@ -65,5 +73,41 @@
     return k;
   }
 
-  window.Signal = { blitz: blitz, knopf: knopf };
+  // W84 (Register 22.11.1, 22.11.2; L 22.11. „in allen Web-Apps“): Ring statt „Prüfen“ und Gegenüberstellung nach falsch.
+  // ringer({feld, bereit, voll, dann}): plane() nach jedem Tastendruck – ist die Eingabe so lang wie die richtige Antwort
+  // (voll()), füllt sich im Feld sofort ein Ring 1,5 s, sonst nach 3 s Ruhe; dann ruft er dann(). stoppe() bricht ab.
+  function ringer(o) {
+    var uhr = null, ruhe = null, el = null;
+    function stoppe() { clearTimeout(uhr); clearTimeout(ruhe); uhr = ruhe = null; if (el && el.parentNode) el.parentNode.removeChild(el); el = null; }
+    function los() {
+      stoppe(); var f = o.feld(); if (!f) return;
+      if (getComputedStyle(f).position === "static") f.style.position = "relative";
+      el = document.createElementNS("http://www.w3.org/2000/svg", "svg"); el.setAttribute("class", "sig-ring");
+      el.setAttribute("viewBox", "0 0 36 36"); el.setAttribute("aria-hidden", "true");
+      el.innerHTML = '<circle class="bg" cx="18" cy="18" r="14"/><circle class="vg" cx="18" cy="18" r="14" pathLength="100"/>';
+      f.appendChild(el); uhr = setTimeout(function () { stoppe(); o.dann(); }, 1500);
+    }
+    function plane() { stoppe(); if (!o.bereit()) return; if (o.voll()) los(); else ruhe = setTimeout(los, 3000); }
+    return { plane: plane, stoppe: stoppe };
+  }
+  // gegen(ziel, zeilen): deine Rechnung rot über der richtigen grün, „=“ untereinander. zeile = [links, rechts, "f"|"r"];
+  // ist links leer, steht „deine Antwort“ bzw. „richtig“ als Beschriftung.
+  function gegen(ziel, zeilen) {
+    var g = document.createElement("div"); g.className = "sig-geg"; g.setAttribute("role", "status");
+    zeilen.forEach(function (z) {
+      var a = document.createElement("span"), b = document.createElement("span"), c = document.createElement("span");
+      if (z[0]) { a.className = "c1 " + z[2]; a.textContent = z[0]; b.className = "c2 " + z[2]; b.textContent = "="; }
+      else { a.className = "c1 lab"; a.textContent = z[2] === "f" ? "deine Antwort" : "richtig"; }
+      c.className = "c3 " + z[2]; c.textContent = z[1]; g.appendChild(a); g.appendChild(b); g.appendChild(c);
+    });
+    ziel.innerHTML = ""; ziel.appendChild(g); return g;
+  }
+  // loes(ziel, fn): Knopf „Lösung zeigen“ im zweiten Versuch; ein Tipp ruft fn (meist: Gegenüberstellung)
+  function loes(ziel, fn) {
+    var k = document.createElement("button"); k.type = "button"; k.className = "sig-loes"; k.textContent = "Lösung zeigen";
+    k.addEventListener("click", function (ev) { ev.stopPropagation(); if (k.parentNode) k.parentNode.removeChild(k); fn(); });
+    ziel.appendChild(k); return k;
+  }
+
+  window.Signal = { blitz: blitz, knopf: knopf, ringer: ringer, gegen: gegen, loes: loes };
 })();

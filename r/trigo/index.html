@@ -23,7 +23,7 @@ svg text{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font
 .wahl.drei{grid-template-columns:repeat(3,1fr)}.wahl.vier{grid-template-columns:repeat(4,1fr)}
 .wahl button{min-height:64px;border:2px solid #c5d5e4;background:#fff;border-radius:12px;font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-style:italic;font-size:1.7rem;color:#18324a;padding:6px 0}
 .wahl button:active{background:#e6eef6}
-.wahl button.r{border-color:#2a9d6a;background:#e3f5ec}.wahl button.f{border-color:#e0a23a;background:#fff6e6}
+.wahl button.r{border-color:#2a9d6a;background:#e3f5ec}.wahl button.f{border-color:#d23b3b;background:#fdecec}.wahl button.aus{opacity:.35;text-decoration:line-through}
 .wahl button:disabled{opacity:1}
 .br{display:inline-flex;flex-direction:column;text-align:center;line-height:1.05;font-size:1.35rem}
 .br span:first-child{border-bottom:2px solid currentColor;padding:0 8px 2px}.br span:last-child{padding:2px 8px 0}
@@ -34,7 +34,7 @@ svg text{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font
 .fuss{display:flex;justify-content:space-between;font-size:.82rem;color:#5b7389;margin:12px 2px 0}
 .punkte{display:flex;gap:4px;align-items:center}
 .punkte span{width:10px;height:10px;border-radius:50%;background:#d5e0ea}
-.punkte span.r{background:#2a9d6a}.punkte span.f{background:#e0a23a}
+.punkte span.r{background:#2a9d6a}.punkte span.f{background:#d23b3b}
 :focus-visible{outline:3px solid #f0a202;outline-offset:2px}
 </style></head>
 <body><main>
@@ -83,7 +83,7 @@ function neu(){
     var rest=falsch.filter(function(p){return p!==kehr}).slice(0,2);
     q.opt=misch([[z,ne],kehr].concat(rest)); q.richtig=z+"/"+ne;
   } else { q.opt=n.slice().sort(); q.richtig=seiten[rolle[art]].n; }
-  fertig=false; gezeigt=false; zeichne(); frage(); knoepfe();
+  fertig=false; gezeigt=false; versuch=1; zeichne(); frage(); knoepfe();
   var m=document.getElementById("meld"); m.className="meld"; m.textContent="";
   document.getElementById("haupt").className="haupt"; stand();
 }
@@ -136,24 +136,31 @@ function knoepfe(){
     w.appendChild(b);
   });
 }
+// W84 (Register 22.11.2; L 22.11.: in allen Web-Apps): nach falsch zweiter Versuch – die falsche Wahl ausgegraut, „Lösung zeigen“;
+// dann deine Wahl rot, die richtige grün, die gesuchte Seite in der Figur gefärbt, nach 3 s weiter; kein Regeltext; gezählt wird der erste Versuch
+var versuch=1;
 function antwort(w){
-  if(fertig)return; fertig=true; var ok=w===q.richtig; verlauf.push(ok); nr++; gezeigt=ok;
-  // Lösung nur auf Wunsch, bei richtig keine (Register 21.11.11): bei falsch zeigt erst „Lösung zeigen“ die richtige Wahl,
-  // die gesuchte Seite in der Figur und die Regel
-  function markiere(){ Array.prototype.forEach.call(document.getElementById("wahl").children,function(b){
-    if(b.dataset.w===q.richtig){b.classList.add("r");b.style.display="";}});}
-  // W83 (L 21.11.): nach richtig von selbst weiter, nach falsch nur noch, was falsch war (Eingabe weg)
-  Array.prototype.forEach.call(document.getElementById("wahl").children,function(b){
-    b.disabled=true; if(b.dataset.w===w)b.classList.add(ok?"r":"f"); else if(!ok)b.style.display="none";});
-  zeichne(); Signal.blitz(ok);
-  var m=document.getElementById("meld"); m.className="meld "+(ok?"r":"f");
-  var regel;
-  if(q.bruch){ var t=q.richtig.split("/"); regel=q.art+" "+q.wn+" = "+LANG[q.art]+" = "+t[0]+" durch "+t[1]+"."; }
-  else regel="Die "+WORT[q.art]+" "+WO[q.art].replace("dem markierten Winkel","dem Winkel "+q.wn).replace("am markierten Winkel","am Winkel "+q.wn)+": <b>"+q.richtig+"</b>.";
-  m.innerHTML=ok?"Richtig.":"";   // W84: kein „Noch nicht“ (L 22.11.)
-  if(!ok) Signal.knopf(m,regel,function(){gezeigt=true; markiere(); zeichne();});
-  var h=document.getElementById("haupt"); h.className="haupt da"; h.textContent=verlauf.length>=N?"Auswerten":"Weiter"; stand();
-  if(ok){var n0=nr,t0=h.textContent;setTimeout(function(){if(nr===n0&&fertig&&h.textContent===t0)h.click();},1000);}   // W84: nicht doppelt klicken (Ende sprang auf „Neue Runde“)
+  if(fertig)return; var ok=w===q.richtig, bs=document.getElementById("wahl").children, m=document.getElementById("meld");
+  if(ok){ if(versuch===1){verlauf.push(true);nr++;} fertig=true; gezeigt=true;
+    Array.prototype.forEach.call(bs,function(b){b.disabled=true; if(b.dataset.w===w)b.classList.add("r");});
+    zeichne(); Signal.blitz(true); m.className="meld"; m.innerHTML=""; knopf(1000); stand(); return; }
+  Signal.blitz(false);
+  if(versuch===1){ verlauf.push(false); nr++; versuch=2;
+    Array.prototype.forEach.call(bs,function(b){if(b.dataset.w===w){b.disabled=true;b.classList.add("aus");}});
+    m.className="meld"; m.innerHTML=""; Signal.loes(m,function(){aufloesen(null)}); stand(); return; }
+  aufloesen(w);
+}
+function aufloesen(w){
+  fertig=true; gezeigt=true; var m=document.getElementById("meld"); m.className="meld"; m.innerHTML="";
+  Array.prototype.forEach.call(document.getElementById("wahl").children,function(b){ b.disabled=true;
+    if(b.dataset.w===q.richtig) b.classList.add("r");
+    else if(b.dataset.w===w||b.classList.contains("aus")){ b.classList.remove("aus"); b.classList.add("f"); }
+    else b.style.visibility="hidden"; });
+  zeichne(); knopf(3000); stand();
+}
+function knopf(ms){
+  var h=document.getElementById("haupt"); h.className="haupt da"; h.textContent=verlauf.length>=N?"Auswerten":"Weiter";
+  var n0=nr,t0=h.textContent; setTimeout(function(){if(nr===n0&&fertig&&h.textContent===t0)h.click();},ms);
 }
 document.getElementById("haupt").addEventListener("click",function(){
   if(verlauf.length>=N && this.textContent==="Auswerten"){

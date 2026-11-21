@@ -30,7 +30,7 @@ svg text{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font
 .fuss{display:flex;justify-content:space-between;font-size:.82rem;color:#5b7389;margin:12px 2px 0}
 .punkte{display:flex;gap:4px;align-items:center}
 .punkte span{width:10px;height:10px;border-radius:50%;background:#d5e0ea}
-.punkte span.r{background:#2a9d6a}.punkte span.f{background:#e0a23a}
+.punkte span.r{background:#2a9d6a}.punkte span.f{background:#d23b3b}
 :focus-visible{outline:3px solid #f0a202;outline-offset:2px}
 </style></head>
 <body><main>
@@ -40,7 +40,7 @@ svg text{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font
   <p class="frage" id="frage" aria-live="polite"></p>
   <div class="ant" id="ant" aria-label="deine Antwort"></div>
   <div class="tasten" id="tasten"></div>
-  <button class="haupt" id="haupt">Prüfen</button>
+  <button class="haupt" id="haupt" style="display:none">Weiter</button>
   <div class="meld" id="meld" role="status"></div>
   <div class="fuss"><div class="punkte" id="punkte" aria-hidden="true"></div><div id="stand"></div></div>
 </div>
@@ -97,7 +97,7 @@ function neu(){
   document.getElementById("frage").textContent=frage;
   var a2=document.getElementById("ant"); a2.className="ant"; a2.textContent="";
   var m=document.getElementById("meld"); m.className="meld"; m.textContent="";
-  document.getElementById("haupt").textContent="Prüfen"; stand(); T.style.display="";
+  document.getElementById("haupt").style.display="none"; a2.style.display=""; versuch=1; erste=""; if(typeof R!=="undefined")R.stoppe(); stand(); T.style.display="";
 }
 var T=document.getElementById("tasten");
 ["7","8","9","4","5","6","1","2","3","⌫","0"].forEach(function(t){
@@ -108,24 +108,37 @@ var T=document.getElementById("tasten");
 T.addEventListener("click",function(ev){
   var b=ev.target.closest("button"); if(!b||geprueft)return; var t=b.dataset.t;
   if(t==="⌫") ein=ein.slice(0,-1); else if(ein.length<3) ein+=t;
-  document.getElementById("ant").textContent=ein===""?"":ein+"°";
+  document.getElementById("ant").textContent=ein===""?"":ein+"°"; R.plane();
 });
+// W84 (Register 22.11.1, 22.11.2; L 22.11.: in allen Web-Apps): kein „Prüfen“ – Ring; nach falsch zweiter Versuch mit „Lösung zeigen“,
+// dann „? = 140°“ rot über „? = 150°“ grün; gezählt wird der erste Versuch; der Rechenweg steht nicht mehr da
+var versuch=1, erste="";
+var R=Signal.ringer({feld:function(){return document.getElementById("ant")},bereit:function(){return ein!==""},
+  voll:function(){return ein.length===String(q.such).length},dann:pruef});
+function pruef(){
+  var a=document.getElementById("ant"), m=document.getElementById("meld");
+  R.stoppe(); if(geprueft||ein==="")return; var ok=parseInt(ein,10)===q.such;
+  if(ok){ if(versuch===1){verlauf.push(true);nr++;}
+    geprueft=true; a.className="ant r"; m.className="meld"; m.innerHTML=""; Signal.blitz(true); T.style.display="none"; knopf(1000); stand(); return; }
+  Signal.blitz(false);
+  if(versuch===1){ verlauf.push(false); nr++; versuch=2; erste=ein; ein=""; a.textContent=""; m.className="meld"; m.innerHTML="";
+    Signal.loes(m,function(){gegen(erste)}); stand(); return; }
+  gegen(ein);
+}
+function gegen(t){
+  geprueft=true; R.stoppe(); T.style.display="none"; document.getElementById("ant").style.display="none";
+  var m=document.getElementById("meld"); m.className="meld"; Signal.gegen(m,[["?",t+"°","f"],["?",q.such+"°","r"]]); knopf(3000); stand();
+}
+function knopf(ms){
+  var h=document.getElementById("haupt"); h.style.display=""; h.textContent=verlauf.length>=N?"Auswerten":"Weiter";
+  var n0=nr; setTimeout(function(){if(nr===n0&&geprueft===true)h.click();},ms);
+}
 document.getElementById("haupt").addEventListener("click",function(){
-  var m=document.getElementById("meld"), a=document.getElementById("ant");
+  var m=document.getElementById("meld");
   if(geprueft==="ende"){verlauf=[];nr=0;neu();return}
-  if(!geprueft){
-    if(ein===""){m.className="meld f";m.textContent="Tipp die Gradzahl ein.";return}
-    var ok=parseInt(ein,10)===q.such; geprueft=true; verlauf.push(ok); nr++;
-    a.className="ant "+(ok?"r":"f"); m.className="meld "+(ok?"r":"f"); Signal.blitz(ok);
-    m.textContent=ok?"Richtig.":"";   // W84: kein „Noch nicht“ (L 22.11.)   // Lösung nur auf Wunsch, bei richtig keine (Register 21.11.11)
-    if(!ok) Signal.knopf(m,function(sp){sp.textContent=q.weg+(q.weg.slice(-1)==="."?"":".");});
-    this.textContent=verlauf.length>=N?"Auswerten":"Weiter"; stand();
-    // W83 (L 21.11.): nach richtig von selbst weiter, nach falsch nur noch, was falsch war (Eingabe weg)
-    if(ok){var h=this,n0=nr;setTimeout(function(){if(nr===n0&&geprueft===true)h.click();},1000);} else T.style.display="none";
-    return;
-  }
+  if(!geprueft){ pruef(); return; }
   if(verlauf.length>=N){
-    var r=verlauf.filter(Boolean).length;
+    var r=verlauf.filter(Boolean).length; document.getElementById("ant").style.display="none";
     m.className="meld r"; m.textContent=r+" von "+N+" richtig."+(r>=N-1?" Das sitzt.":" Noch eine Runde macht es sicher.");
     geprueft="ende"; this.textContent="Neue Runde"; return;
   }

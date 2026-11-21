@@ -42,7 +42,7 @@ canvas{display:block;width:100%;height:auto;border-radius:8px;touch-action:manip
 .fuss{display:flex;justify-content:space-between;font-size:.82rem;color:#5b7389;margin:10px 2px 0}
 .punkte{display:flex;gap:4px}
 .punkte span{width:10px;height:10px;border-radius:50%;background:#d5e0ea}
-.punkte span.r{background:#2a9d6a}.punkte span.f{background:#d9695d}
+.punkte span.r{background:#2a9d6a}.punkte span.f{background:#d23b3b}
 :focus-visible{outline:3px solid #f0a202;outline-offset:2px}
 @media (prefers-reduced-motion:no-preference){.meld{animation:ein .18s ease-out}@keyframes ein{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}}
 </style></head>
@@ -74,7 +74,7 @@ var STUFEN=[
  {k:"mix",name:"Gemischt",   text:"Welche Gleichung hat die Parabel?", frei:{a:1,d:1,e:1}, mix:1}
 ];
 var N=8, LS="parabel-ablesen-1";
-var st=0, soll=null, ist={a:1,d:0,e:0}, geprueft=false, verlauf=[], vorher="";
+var st=0, soll=null, ist={a:1,d:0,e:0}, geprueft=false, verlauf=[], vorher="", versuch=1;
 var fertig={}; try{fertig=JSON.parse(localStorage.getItem(LS)||"{}")}catch(x){}
 
 function zuf(a,b){return a+Math.floor(Math.random()*(b-a+1))}
@@ -101,10 +101,10 @@ function neu(){
     i++;
   }while((!passt || schl===vorher || schl==="1|0|0") && i<60);
   vorher=p.a+"|"+p.d+"|"+p.e;
-  soll=p; ist={a:1,d:0,e:0}; geprueft=false;
+  soll=p; ist={a:1,d:0,e:0}; geprueft=false; versuch=1;
   zeichne(); regler(); gleichung();
   document.getElementById("frage").textContent=S.text;
-  var m=document.getElementById("meld"); m.className="meld"; m.innerHTML="";
+  var m=document.getElementById("meld"); m.className="meld"; m.innerHTML=""; m.style.display=""; m.style.background="";
   document.getElementById("haupt").textContent="Prüfen"; document.getElementById("regler").style.display="";
 }
 
@@ -191,22 +191,28 @@ function hinweis(){
   }
   return t.join(" ");
 }
+// W84 (Register 22.11.2; L 22.11.: in allen Web-Apps): „Prüfen“ bleibt (Regler). Nach falsch zweiter Versuch mit „Lösung zeigen“;
+// dann deine Parabel rot gestrichelt über der gesuchten und „deine Antwort f(x) = …“ rot über „richtig f(x) = …“ grün, nach 3 s weiter
 function pruefen(){
-  geprueft=true; var ok=gleich(), m=document.getElementById("meld");
-  verlauf.push(ok); zeichne();
-  Signal.blitz(ok);   // Lösung nur auf Wunsch, bei richtig keine (Register 21.11.11)
-  if(ok){m.className="meld r"; m.innerHTML="<b>Richtig.</b>";}
-  else{m.className="meld f"; m.innerHTML="Deine Parabel ist rot gestrichelt.";
-    Signal.knopf(m,hinweis()+"<br>Gesucht: "+gl(soll));}
-  var ende=verlauf.length>=N;
-  document.getElementById("haupt").textContent=ende?"Runde auswerten":"Weiter";
-  stand();
-  // W83 (L 21.11.): nach richtig von selbst weiter, nach falsch nur noch, was falsch war (Eingabe weg)
-  if(ok){var n0=verlauf.length;setTimeout(function(){if(verlauf.length===n0&&geprueft===true)document.getElementById("haupt").click();},1000);}
-  else document.getElementById("regler").style.display="none";
+  var ok=gleich(), m=document.getElementById("meld"), h=document.getElementById("haupt");
+  if(ok){ if(versuch===1) verlauf.push(true); geprueft=true; zeichne(); Signal.blitz(true); m.className="meld"; m.innerHTML=""; knopf(1000); stand(); return; }
+  Signal.blitz(false);
+  if(versuch===1){ verlauf.push(false); versuch=2; m.className="meld"; m.innerHTML=""; m.style.display="block"; m.style.background="none";
+    Signal.loes(m,function(){gegen()}); stand(); return; }
+  gegen();
+}
+function gegen(){
+  geprueft=true; zeichne(); document.getElementById("regler").style.display="none";
+  var m=document.getElementById("meld"); m.className="meld"; m.style.display="block"; m.style.background="none";
+  var g=Signal.gegen(m,[["","x","f"],["","x","r"]]), c=g.querySelectorAll(".c3"); c[0].innerHTML=gl(ist); c[1].innerHTML=gl(soll); g.style.fontSize="22px";
+  knopf(3000); stand();
+}
+function knopf(ms){
+  var h=document.getElementById("haupt"); h.textContent=verlauf.length>=N?"Runde auswerten":"Weiter";
+  var n0=verlauf.length; setTimeout(function(){if(verlauf.length===n0&&geprueft===true)h.click();},ms);
 }
 function auswerten(){
-  var r=verlauf.filter(Boolean).length, m=document.getElementById("meld"), S=STUFEN[st];
+  var r=verlauf.filter(Boolean).length, m=document.getElementById("meld"), S=STUFEN[st]; m.style.display=""; m.style.background="";
   if(r>=N-1){fertig[S.k]=1; try{localStorage.setItem(LS,JSON.stringify(fertig))}catch(x){} }
   m.className="meld "+(r>=N-1?"r":"f");
   m.innerHTML="<b>"+r+" von "+N+" richtig.</b> "+(r>=N-1?(st<STUFEN.length-1?"Weiter mit der Stufe „"+STUFEN[st+1].name+"“.":"Alle Stufen sitzen."):"Noch eine Runde auf dieser Stufe.");

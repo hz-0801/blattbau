@@ -11,7 +11,7 @@ h1{font-size:26px;margin:6px 0 2px}
 p{font-size:18px;line-height:1.4;margin:8px 0}
 .balken{display:flex;gap:5px;margin:4px 0 14px}
 .balken i{flex:1;height:9px;border-radius:5px;background:#d5e1ec}
-.balken i.r{background:#2e9e5b}.balken i.f{background:#e8a33d}.balken i.j{background:#1f5f8b}
+.balken i.r{background:#2e9e5b}.balken i.f{background:#d23b3b}.balken i.j{background:#1f5f8b}
 .frage{font-size:54px;font-weight:700;text-align:center;margin:18px 0 6px;letter-spacing:1px}
 .wort{font-size:26px;font-weight:600;text-align:center;margin:26px 0 0}
 .feld{height:74px;border-radius:14px;background:#fff;border:3px solid #1f5f8b;font-size:46px;font-weight:700;
@@ -60,11 +60,14 @@ const BASIS = [
   () => { const a = z(2, 9), b = z(2, 9); return aus([[(a * b) + " : " + a, b], ["Das Doppelte von " + z(11, 45), null]]); }
 ];
 const STUFEN = q.get("m") === "alltag" ? ALLTAG : BASIS;
-let stufe, folge, i, urteile, aufgabe, eingabe, gesperrt, letzte;
+let stufe, folge, i, urteile, aufgabe, eingabe, gesperrt, letzte, versuch = 1, erste = "";
+// W84 (Register 22.11.1, 22.11.2; L 22.11.: in allen Web-Apps): kein „OK“ – Ring; nach falsch zweiter Versuch mit „Lösung zeigen“,
+// dann „7 · 8 = 54“ rot über „7 · 8 = 56“ grün, nach 3 s weiter; Stufe und Urteil zählen den ersten Versuch
+const R = Signal.ringer({ feld: () => app.querySelector(".feld"), bereit: () => eingabe !== "", voll: () => eingabe.length === String(aufgabe[1]).length, dann: () => pruef() });
 function neu() {
   let t;
   do { t = STUFEN[stufe](); if (t[1] === null) { const n = +t[0].split(" ").pop(); t[1] = 2 * n; } } while (t[0] === letzte);
-  letzte = t[0]; aufgabe = t; eingabe = ""; gesperrt = false; zeig();
+  letzte = t[0]; aufgabe = t; eingabe = ""; gesperrt = false; versuch = 1; erste = ""; R.stoppe(); zeig();
 }
 function balken() { let h = '<div class="balken">'; for (let k = 0; k < N; k++) h += '<i class="' + (urteile[k] || (k === i ? "j" : "")) + '"></i>'; return h + "</div>"; }
 function zeig(klasse, hinweis) {
@@ -73,33 +76,38 @@ function zeig(klasse, hinweis) {
     '<div class="feld ' + (klasse || "") + '">' + (eingabe || "&nbsp;") + "</div>" +
     '<div class="hin ' + (klasse || "") + '">' + (hinweis || "") + "</div>" +
     '<div class="tasten">' + [1, 2, 3, 4, 5, 6, 7, 8, 9].map(n => '<button data-t="' + n + '">' + n + "</button>").join("") +
-    '<button data-t="x">⌫</button><button data-t="0">0</button><button class="ok" data-t="ok">OK</button></div>';
+    '<button data-t="x">⌫</button><button data-t="0">0</button><span></span></div>';
+  if (versuch === 2 && !gesperrt) Signal.loes(app.querySelector(".hin"), () => gegen(erste));
 }
 app.addEventListener("click", e => {
   const b = e.target.closest("button"); if (!b) return;
   const t = b.dataset.t;
   if (t === "los") return start();
-  if (t === "weiter") return weiter();
+  if (t === "weiter") { const i0 = i; return weiter(i0); }
   if (gesperrt || t === undefined) return;
   if (t === "x") eingabe = eingabe.slice(0, -1);
   else if (t === "ok") { if (eingabe !== "") pruef(); return; }
   else if (eingabe.length < 3) eingabe += t;
-  zeig();
+  zeig(); R.plane();
 });
 function pruef() {
-  gesperrt = true;
+  R.stoppe(); if (gesperrt || eingabe === "") return;
   if (+eingabe === aufgabe[1]) {
-    urteile[i] = "r"; folge++; if (folge >= 2 && stufe < STUFEN.length - 1) { stufe++; folge = 0; }
-    Signal.blitz(true); zeig("r", aus(["Richtig!", "Genau!", "Super!", "Stimmt!"])); setTimeout(weiter, 1000);
-  } else {
-    urteile[i] = "f"; folge = 0; if (stufe > 0) stufe--;
-    const wort = aufgabe[0].length > 9;
-    Signal.blitz(false); zeig("f", "");   // W84: kein „Noch nicht“ (L 22.11.)   // Lösung nur auf Wunsch (Register 21.11.11)
-    Signal.knopf(app.querySelector(".hin"), sp => { sp.textContent = aufgabe[0] + (wort ? ": " : " = ") + aufgabe[1]; });
-    app.querySelector(".tasten").outerHTML = '<button class="ok gross" data-t="weiter">Weiter</button>';
+    if (versuch === 1) { urteile[i] = "r"; folge++; if (folge >= 2 && stufe < STUFEN.length - 1) { stufe++; folge = 0; } }
+    gesperrt = true; Signal.blitz(true); zeig("r", ""); const i0 = i; setTimeout(() => { if (i === i0) weiter(); }, 1000); return;
   }
+  Signal.blitz(false);
+  if (versuch === 1) { urteile[i] = "f"; folge = 0; if (stufe > 0) stufe--; versuch = 2; erste = eingabe; eingabe = ""; zeig(); return; }
+  gegen(eingabe);
 }
-function weiter() { i++; if (i >= N) return ende(); neu(); }
+function gegen(t) {
+  gesperrt = true; R.stoppe(); const wort = aufgabe[0].length > 9 || aufgabe[0].includes("?");
+  app.innerHTML = balken() + '<div class="' + (wort ? "wort" : "frage") + '">' + aufgabe[0] + (wort ? "" : " =") + '</div><div class="hin"></div>' +
+    '<button class="ok gross" data-t="weiter">Weiter</button>';
+  Signal.gegen(app.querySelector(".hin"), [[wort ? "" : aufgabe[0], t, "f"], [wort ? "" : aufgabe[0], String(aufgabe[1]), "r"]]);
+  const i0 = i; setTimeout(() => { if (i === i0) weiter(); }, 3000);
+}
+function weiter(i0) { if (i0 !== undefined && i0 !== i) return; i++; if (i >= N) return ende(); neu(); }
 function start() { stufe = 0; folge = 0; i = 0; urteile = []; letzte = ""; neu(); }
 function ende() {
   const r = urteile.filter(u => u === "r").length;

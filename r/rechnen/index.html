@@ -27,7 +27,7 @@ h1{font-size:1.05rem;margin:2px 2px 10px;font-weight:650}
 .fuss{display:flex;justify-content:space-between;font-size:.82rem;color:#5b7389;margin:12px 2px 0}
 .punkte{display:flex;gap:4px;align-items:center}
 .punkte span{width:10px;height:10px;border-radius:50%;background:#d5e0ea}
-.punkte span.r{background:#2a9d6a}.punkte span.f{background:#e0a23a}
+.punkte span.r{background:#2a9d6a}.punkte span.f{background:#d23b3b}
 :focus-visible{outline:3px solid #f0a202;outline-offset:2px}
 </style></head>
 <body><main>
@@ -36,7 +36,7 @@ h1{font-size:1.05rem;margin:2px 2px 10px;font-weight:650}
   <div class="auf" id="auf" aria-live="polite"></div>
   <div class="ant" id="ant" aria-label="deine Antwort"></div>
   <div class="tasten" id="tasten"></div>
-  <button class="haupt" id="haupt">Prüfen</button>
+  <button class="haupt" id="haupt" style="display:none">Weiter</button>
   <div class="meld" id="meld" role="status"></div>
   <div class="fuss"><div class="punkte" id="punkte" aria-hidden="true"></div><div id="stand"></div></div>
 </div>
@@ -75,7 +75,7 @@ function zeige(){
   document.getElementById("auf").textContent=q.t+" =";
   var a=document.getElementById("ant"); a.className="ant"; a.textContent="";
   var m=document.getElementById("meld"); m.className="meld"; m.textContent="";
-  document.getElementById("haupt").textContent="Prüfen"; stand(); T.style.display="";
+  document.getElementById("haupt").style.display="none"; a.style.display=""; versuch=1; erste=""; if(typeof R!=="undefined")R.stoppe(); stand(); T.style.display="";
 }
 var T=document.getElementById("tasten");
 ["7","8","9","4","5","6","1","2","3","⌫","0"].forEach(function(t){
@@ -86,28 +86,41 @@ var T=document.getElementById("tasten");
 T.addEventListener("click",function(ev){
   var b=ev.target.closest("button"); if(!b||geprueft)return; var t=b.dataset.t;
   if(t==="⌫") ein=ein.slice(0,-1); else if(ein.length<3) ein+=t;
-  document.getElementById("ant").textContent=ein;
+  document.getElementById("ant").textContent=ein; R.plane();
 });
+// W84 (Register 22.11.1, 22.11.2; L 22.11.: in allen Web-Apps): kein „Prüfen“ – Ring; nach falsch zweiter Versuch mit „Lösung zeigen“,
+// dann „7 · 8 = 54“ rot über „7 · 8 = 56“ grün; gezählt wird der erste Versuch
+var versuch=1, erste="";
+var R=Signal.ringer({feld:function(){return document.getElementById("ant")},bereit:function(){return ein!==""},
+  voll:function(){return ein.length===String(liste[pos].w).length},dann:pruef});
+function pruef(){
+  var q=liste[pos], a=document.getElementById("ant"), m=document.getElementById("meld");
+  R.stoppe(); if(geprueft||ein==="")return; var ok=parseInt(ein,10)===q.w;
+  if(ok){ if(versuch===1&&!q.nochmal) verlauf.push(true);
+    geprueft=true; a.className="ant r"; m.className="meld"; m.innerHTML=""; Signal.blitz(true); T.style.display="none"; knopf(1000); stand(); return; }
+  Signal.blitz(false);
+  if(versuch===1){
+    if(!q.nochmal){ verlauf.push(false); liste.splice(Math.min(pos+3,liste.length),0,{t:q.t,w:q.w,weg:q.weg,nochmal:true}); }
+    versuch=2; erste=ein; ein=""; a.textContent=""; m.className="meld"; m.innerHTML=""; Signal.loes(m,function(){gegen(erste)}); stand(); return;
+  }
+  gegen(ein);
+}
+function gegen(t){
+  var q=liste[pos]; geprueft=true; R.stoppe(); T.style.display="none"; document.getElementById("ant").style.display="none";
+  var m=document.getElementById("meld"); m.className="meld"; Signal.gegen(m,[[q.t,t,"f"],[q.t,String(q.w),"r"]]); knopf(3000); stand();
+}
+function knopf(ms){
+  var h=document.getElementById("haupt"); h.style.display=""; h.textContent=pos>=liste.length-1?"Fertig":"Weiter";
+  var p0=pos; setTimeout(function(){if(pos===p0&&geprueft===true)h.click();},ms);
+}
 document.getElementById("haupt").addEventListener("click",function(){
   var m=document.getElementById("meld"), a=document.getElementById("ant");
   if(geprueft==="ende"){runde();return}
-  if(!geprueft){
-    if(ein===""){m.className="meld f";m.textContent="Tipp dein Ergebnis ein.";return}
-    var q=liste[pos], ok=parseInt(ein,10)===q.w; geprueft=true;
-    if(!q.nochmal) verlauf.push(ok);
-    a.className="ant "+(ok?"r":"f"); m.className="meld "+(ok?"r":"f"); Signal.blitz(ok);
-    m.textContent=ok?wahl(lob):(q.nochmal?"":"Die kommt gleich noch einmal.");   // W84: kein „Noch nicht“
-    if(!ok && !q.nochmal) liste.splice(Math.min(pos+3,liste.length),0,{t:q.t,w:q.w,weg:q.weg,nochmal:true});
-    if(!ok) Signal.knopf(m,function(sp){sp.textContent=q.weg;});   // Lösung nur auf Wunsch (Register 21.11.11)
-    this.textContent=pos>=liste.length-1?"Fertig":"Weiter"; stand();
-    // W83 (L 21.11.): nach richtig von selbst weiter, nach falsch nur noch, was falsch war (Eingabe weg)
-    if(ok){var h=this,p0=pos;setTimeout(function(){if(pos===p0&&geprueft===true)h.click();},1000);} else T.style.display="none";
-    return;
-  }
+  if(!geprueft){ pruef(); return; }
   if(pos>=liste.length-1){
     var r=verlauf.filter(Boolean).length;
     m.className="meld r"; m.textContent=r+" von "+N+" beim ersten Mal richtig."+(r===N?" Alles richtig!":"");
-    document.getElementById("auf").textContent="Geschafft"; a.className="ant"; a.textContent="";
+    document.getElementById("auf").textContent="Geschafft"; a.className="ant"; a.textContent=""; a.style.display="none";
     geprueft="ende"; this.textContent="Noch eine Runde"; return;
   }
   pos++; zeige();
