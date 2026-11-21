@@ -271,7 +271,7 @@ function ende() {   // W83 (L 21.11.: „die letzte Seite schmaler … Groß 6 v
   const status = el("p", "leise", ""); status.id = "status"; m.appendChild(status);
   if ((runde.quellen || []).some(q => q.lizenz)) m.appendChild(quellen());   // Namensnennung nur, wo die Lizenz sie verlangt
   app.appendChild(m); formeln(m);
-  if (!gesendet) melde(status); else status.textContent = "Dein Ergebnis ist beim Lehrer.";
+  if (!gesendet) melde(status);
 }
 function quellen() {
   const d = el("details", "quellen"); d.appendChild(el("summary", "", "Quellen"));
@@ -292,7 +292,7 @@ function melde(status) {   // eine Zeile an die Rückkanal-Tabelle; die Antwort 
     const f = el("form"); f.method = "POST"; f.action = FORM.url; f.target = "ziel"; f.style.display = "none";
     const e = el("input"); e.type = "hidden"; e.name = FORM.meldung; e.value = wert; f.appendChild(e);
     const rahmen = document.querySelector("iframe"); let da = false;
-    rahmen.addEventListener("load", () => { da = true; gesendet = true; const s = document.getElementById("status"); if (s) s.textContent = "Dein Ergebnis ist beim Lehrer."; }, { once: true });
+    rahmen.addEventListener("load", () => { da = true; gesendet = true; const s = document.getElementById("status"); if (s) s.textContent = ""; }, { once: true });   // W83 (L 21.11.: schmal): bei Erfolg keine Zeile, nur wenn es scheitert
     setTimeout(() => { const s = document.getElementById("status"); if (!da && s) { s.textContent = "Das Senden hat nicht geklappt. Hast du Netz? "; const b = el("button", "klein", "Noch einmal senden"); b.style.padding = "0 14px"; b.onclick = () => { s.textContent = "Sende …"; melde(s); }; s.appendChild(b); } }, 10000);
     document.body.appendChild(f); f.submit(); f.remove(); status.textContent = "Sende …";
   } catch (x) { status.textContent = "Das Senden hat nicht geklappt."; }
