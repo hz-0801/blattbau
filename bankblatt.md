@@ -1,10 +1,11 @@
-# Blatt bestellen – v13x (21.11.2026)
+# Blatt bestellen – v13y (21.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
 einfüge?“). Geändert wird sie per Commit aus der Werkstatt, nie im Bestell-Chat. Vorgänger: `archiv/bankblatt-v12s.md`.
 Grundlage: mathe-nachhilfe plan.md, Register 26.10.4 (Bestellung holt aus dem Vorrat), 19.10. (P10 in drei Stufen),
-09.11.14 und 10.11.8–13 (QR-Rückmeldung, Sperre, Anweisung im Repo, QR-Seite mit Rechenweg, vier Wochen online).
+09.11.14 und 10.11.8–13 (QR-Rückmeldung, Sperre, Anweisung im Repo, QR-Seite mit Rechenweg, vier Wochen online),
+21.11.12 (Paket Montag: Kopf, QR mit Buchstabe, Initialen, Drive).
 
 ## Rolle
 
@@ -70,7 +71,8 @@ wenn Tag oder Person unklar sind; Tests eines Schülers sind keine Termine (Absc
 
 ## Start (Lehrer 17.11. Werkstatt 57)
 
-Nach dem Klonen und der Tagesmarke, vor allem anderen, veröffentlichst du die Tagesseite neu (Weg unter „Antworten“).
+Nach dem Klonen und der Tagesmarke, vor allem anderen, veröffentlichst du die Tagesseite neu (Weg unter „Antworten“);
+davor lädst du die Blätter der Schüler des Tages nach Drive, die dort noch fehlen (Abschnitt „Drive“).
 Davor, still: Was der Lehrer auf der Seite als „gedruckt“ / „✕ verworfen“ getippt hat (Speicher `tisch` / `weg`), holst du in die Lieferliste
 (Werkstatt 61, offen/betrieb.md [209]): `db_list` mit dem Slug der Tagesseite und der Sammlung `stueck`, je Dokument
 (id = Tag) die Daten als JSON nach `/home/claude/stueck-<Tag>.json`, dann im Ordner aufgabenbank-privat
@@ -162,13 +164,23 @@ Am 17.11. hat der Lehrer vorsorglich bestellt und dann umbestellt, weil den Sch�
   gingen Blätter mit 5 und 8 Seiten raus und wurden Minuten später ersetzt („schmaler“); ganze Blätter „gehen an der Realität
   vorbei“. Grenze – Prüfungsblatt und Basiszettel bleiben, wie sie sind; verlangt der Lehrer ausdrücklich das ganze Blatt, bekommt er es.
 - **Kein Blatt ohne QR-Code.** Jedes Blatt, das rausgeht, trägt einen QR-Code, auch Prüfungsblatt, Auswahl daraus und alles
-  von Hand Gesetzte – ohne ihn erfährt niemand, ob es am Tisch lag. Alltagsblatt und Test: wie bisher. Prüfungsblatt, bis
-  `bestellen.py` es selbst kann: QR oben rechts auf Seite 1, Kennung `p10-<stichwort>-<TTMM>`, Daten `blattbau/r/t/<Kennung>.json`
-  in der Form von `r/t/p10-pythagoras-1711.json` (je Aufgabe Ergebnis und Ansatz aus der Lösung des Kapitelblatts); Lieferzeile mit
+  von Hand Gesetzte – ohne ihn erfährt niemand, ob es am Tisch lag. Form (Paket Montag, Register 21.11.12; Lehrer 21.11.): Code
+  oben rechts mit einem Buchstaben in der Mitte – L führt zu den Lösungen, A zu einer Web-App –, daneben nichts; die Initialen
+  des Schülers klein oben links („M.“, mit Nachnamen „M. K.“ – aus `schueler.md`), die Kennung klein unten rechts; der Titel nur
+  das Thema, ohne Klasse und ohne Niveau („ganz leicht“, „nur Kern“ sieht der Schüler nicht). Das machen die Werkzeuge selbst
+  (aufgabenbank `werkzeuge/qrmarke.py`); nie von Hand nachsetzen. Hält eines an, weil Text unter Code oder Kennung läge:
+  Titel kürzen (`qr-blatt.py … --titel "<Thema>"`). Alltagsblatt, Test, Basiszettel: wie in ihren Abschnitten. Prüfungsblatt, bis
+  `bestellen.py` es selbst kann: `python3 werkzeuge/qrmarke.py stempel <PDF> --kennung p10-<stichwort>-<TTMM> --snr <Nr>
+  --verdecken <Kennung des Kapitelblatts, z. B. PG50 A> --aus ../aufgabenbank-privat/lieferungen/<JJJJ-MM-TT>-<vorname>-p10-<stichwort>`
+  (Code, Kennung, Initialen; prüft, dass der Code lesbar ist), Daten `blattbau/r/t/<Kennung>.json` in der Form von
+  `r/t/p10-pythagoras-1711.json` (je Aufgabe Ergebnis und Ansatz aus der Lösung des Kapitelblatts); Lieferzeile mit
   „QR <Kennung>“. Scheitert das, geht das Blatt trotzdem raus, mit der Warnzeile „⚠ ohne QR“.
 - **Web-App anbieten.** Passt zu dem Stück, das du lieferst, ohne Umbau eine Handy-Übung – eine vorhandene Seite unter blattbau
   `r/` (trigo, nebenwinkel, parabel, parabel-graph, rechnen) oder eine Runde aus `runde.py` zum selben Thema –, steht unter den
-  Karten die Zeile „Handy dazu: ‚<Name> <Thema> Handy‘“. Gebaut wird sie erst auf dieses Wort. Warum – ein paar Minuten Ruhe am
+  Karten die Zeile „Handy dazu: ‚<Name> <Thema> Handy‘“. Gebaut wird sie erst auf dieses Wort. Den QR-Zettel einer vorhandenen
+  Seite setzt `python3 werkzeuge/qrmarke.py zettel --url https://hz-0801.github.io/blattbau/r/<seite>/ --titel "<Thema>"
+  --kennung r-<seite>-<TTMM> --snr <Nr> --aus ../aufgabenbank-privat/lieferungen/<JJJJ-MM-TT>-<Nr>-<seite>-zettel` (Buchstabe A,
+  wie der Zettel einer Runde aus `runde.py`); Signal und „Lösung zeigen“ haben alle Seiten unter `r/` gemeinsam (`r/signal.js`). Warum – ein paar Minuten Ruhe am
   Tisch und eine Rückmeldung, wie es sitzt (Lehrer 17.11. W58). Grenze – nur wenn es „problemlos passt“; Neues lernen, Skizzen und
   Begründen bleiben Papier. Neue Seiten unter `r/` melden noch nichts zurück (offen/betrieb.md [206]); Runden aus `runde.py` schon.
 - **Einstieg (Bestellung „<Name> Einstieg“).** Die Werkstatt trägt nach jedem Unterrichtstag in aufgabenbank-privat
@@ -373,9 +385,24 @@ eins passt. Fehlt der Einheitsordner `bank/vorrat/<eintrag>-e<einheit>/`, leg ih
 
 ## Nach jeder Lieferung
 
-Committen und pushen, was sich in aufgabenbank, aufgabenbank-privat und blattbau (`r/t/`) geändert hat (vor dem Push
-`git pull --rebase`; die Nachricht nennt die Bestellung mit der Nummer, nie mit dem Namen). Die QR-Seite kennt das
-Blatt etwa eine Minute nach dem Push von blattbau – erst dann ist die Lieferung fertig.
+Erst das Blatt nach Drive (Abschnitt „Drive“), dann committen und pushen, was sich in aufgabenbank, aufgabenbank-privat und
+blattbau (`r/t/`) geändert hat (vor dem Push `git pull --rebase`; die Nachricht nennt die Bestellung mit der Nummer, nie mit
+dem Namen). Die QR-Seite kennt das Blatt etwa eine Minute nach dem Push von blattbau – erst dann ist die Lieferung fertig.
+
+## Drive (Paket Montag, Lehrer 21.11. W82; Register 21.11.12)
+
+Jedes gelieferte Blatt (PDF) liegt auch im Drive-Ordner „Tagesseite – Blätter“; die Tagesseite verlinkt es in „Heute“ (der Titel)
+und in „Zuletzt“ (je Termin die Blätter) – ein Klick öffnet es in Edge, dort druckt der Lehrer. Warum – aus dem Artefakt ließ sich
+nicht drucken; aus Drive ging es am 21.11. direkt (Befund 5). So geht es, im Ordner aufgabenbank-privat:
+1. `python3 werkzeuge/drive.py offen --tag <Bestelltag>` – listet, was fehlt: alles vom Tag und die Blätter der letzten zwei
+   Termine der Schüler des Tages (laut Kalender). Leer → fertig.
+2. Je Eintrag das Drive-Werkzeug `create_file` mit `title` = `titel`, `parentId` = `ordner`, `base64Content` = `verweis`
+   (ein Dateiverweis „sha256:…:<Pfad>“ – der Inhalt geht nicht durch den Chat), `contentMimeType` = `application/pdf`,
+   `disableConversionToGoogleType` = true; mehrere Einträge in einem Zug.
+3. `python3 werkzeuge/drive.py eintragen <datei>=<id> …` mit der `id` jeder Antwort; mit der Lieferung committen.
+Beim Start nach der Tagesmarke, nach jeder Lieferung vor dem Veröffentlichen der Tagesseite. Im Chat steht dazu nichts. Fehlt
+die Drive-Verbindung oder scheitert das Hochladen zweimal: einmal je Chat die Warnzeile „⚠ Drive nicht erreichbar – Blätter nur
+als Karte“; die Seite zeigt das Blatt dann wie bisher in sich. Grenze – nur PDFs aus der Lieferliste; nichts in Drive löschen.
 
 ## Messung (5 Bestelltage, Lehrer 16.11. W52, Register 16.11.8)
 
