@@ -56,7 +56,6 @@ button:disabled{opacity:.45}
 button.ok{background:#1f5f8b;color:#fff;box-shadow:0 2px 0 #143f5d}
 button.klein{font-size:19px}
 button.gross{width:100%;min-height:64px;font-size:23px;margin-top:10px}
-button.ok.zweit{background:#fff;color:#1f5f8b;box-shadow:inset 0 0 0 2px #1f5f8b}
 .breit2{grid-column:span 2}
 .wahl{display:flex;flex-direction:column;gap:9px;margin:4px 0 2px}
 .wahl.zwei{flex-direction:row}.wahl.zwei button{flex:1;min-height:76px}
@@ -130,14 +129,10 @@ function start(j) {
   app.replaceChildren(); const m = el("div", "mitte");
   // Register 21.11.14 (Lehrer 21.11. W83 „was ist für den Schüler wichtig?“): am Start nur, was ihn etwas tun lässt – Thema ohne
   // Niveauwort, Umfang, ein Satz, der Raten erlaubt, Start. Lösung zeigen, Uhr, Aufhören erfährt er, wenn es soweit ist.
-  // Wahl der Länge (j.wahl === "laenge", Muster W83): zwei Knöpfe, der Knopf startet; kurz = jede zweite Frage, erste und letzte bleiben.
+  // Keine Wahl der Länge (Lehrer 21.11.: „die meisten werden 8 nehmen“; Claude entschied: keine). Schwerer am Ende ab 90 %: Muster offen.
   m.appendChild(el("h1", "", thema(j.titel)));
-  const n = j.fragen.length, k = j.wahl === "laenge" && n >= 10 ? Math.round(n / 2) : 0;
-  m.appendChild(el("p", "", (k ? "" : n + " Fragen. ") + "Fehler kosten nichts."));
-  if (k) {
-    const b = el("button", "ok gross", "Alle " + n + " Fragen"); b.onclick = () => los(0); m.appendChild(b);
-    const a = el("button", "ok gross zweit", "Kurz · " + k + " Fragen"); a.onclick = () => los(k); m.appendChild(a);
-  } else { const b = el("button", "ok gross", "Los geht’s"); b.onclick = () => los(0); m.appendChild(b); }
+  m.appendChild(el("p", "", j.fragen.length + " Fragen. Fehler kosten nichts."));
+  const b = el("button", "ok gross", "Los geht’s"); b.onclick = los; m.appendChild(b);
   app.appendChild(m);
 }
 // Thema ohne Niveauwort (wie der Blattkopf, Paket Montag 21.11.): „Blitzrunde leicht: Vorzeichen, Null“ → „Vorzeichen, Null“
@@ -148,9 +143,7 @@ function thema(t) {
                .replace(/\s*\((ganz\s+)?leicht\)\s*$/i, "").trim();
   return s || roh || "Runde";
 }
-function los(k) { if (fassung) try { localStorage.setItem("runde-f-" + kennung, String(fassung)); } catch (x) {}
-  const n = runde.fragen.length;
-  if (k && k < n) runde.fragen = Array.from({ length: k }, (_, j) => runde.fragen[Math.round(j * (n - 1) / (k - 1))]);
+function los() { if (fassung) try { localStorage.setItem("runde-f-" + kennung, String(fassung)); } catch (x) {}
   folge = runde.fragen.map(f => ({ f, nr: f.nr, zw: false })); i = 0; urteile = {}; antworten = {}; zwillinge = []; zwAnzahl = 0; beginn = Date.now(); zeig(); }
 
 function zeig() {
