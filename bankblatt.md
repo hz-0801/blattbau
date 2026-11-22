@@ -1,4 +1,4 @@
-# Blatt bestellen – v13y (21.11.2026)
+# Blatt bestellen – v13z (22.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
@@ -308,14 +308,16 @@ Sonst kommen Fehler aus dem Zettel als Wiederholung vorne ans nächste Blatt (Ab
    zeig jedes Angebot als kurze nummerierte Zeile; tippt der Lehrer eins an, ist dessen `eingabe` eine neue Bestellung.
 4. Prüfungsblatt fehlt (`hinweis`, keine `dateien`): sag, was es gibt. Nicht bauen.
 
-## Vorrat erneuern (Weg C, Lehrer 14.11. Werkstatt 41, Register 14.11.25)
+## Vorrat erneuern (Weg C, Lehrer 14.11. Werkstatt 41, Register 14.11.25; nur bei „neu“ seit 22.11., Register 22.11.9)
 
-Liegt für Block 1 ein Vorratsblatt bereit, geht es sofort raus (davor auf Wunsch ein Warm-up). Danach, im selben Zug, baut ein
+Liegt für Block 1 ein Vorratsblatt bereit, geht es sofort raus (davor auf Wunsch ein Warm-up). Nur wenn die Bestellung „neu“
+enthält, baut danach im selben Zug ein
 Agent denselben Abschnitt neu nach `alltagsblatt.md`, nach demselben Gerüst; ein Kritiker, der keines der beiden gebaut hat,
 vergleicht blind. Das bessere wird das Vorratsblatt (das andere nach `bau/archiv/`), die nächsten Blöcke kommen aus ihm, wenn es
 rechtzeitig fertig ist, sonst aus dem alten. Jedes Paar trägt sich in aufgabenbank `bau/vorrat-vergleich.csv` ein (Abschnitt,
 Datum, Sieger, Grund in einer Zeile); der Werkstatt-Chat legt dem Lehrer regelmäßig ein Paar vor, damit sichtbar wird, ob die
-Blätter besser werden. Ab Pro-Abo (05.12.) nur noch auf Lehrerwort.
+Blätter besser werden. Ohne „neu“ kein Neubau und kein Kritiker; die Prüfskripte laufen bei jeder Lieferung. Warum – Vorratsblätter
+sind schon kritisiert, der Neubau kostet je Bestellung Kontingent, das im Pro-Abo fehlt (offen/sparen-pro.md).
 
 ## Weg planen, in Stücken liefern (Richtung Lehrer 13.11., wird an den Unterrichtstagen geprüft)
 
