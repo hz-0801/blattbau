@@ -245,7 +245,7 @@ sagen, eine Alternative anbieten (anderer Abschnitt, Test, Prüfungsblatt), nich
 3. Liefern, immer mit QR: `python3 werkzeuge/qr-blatt.py <Ordner von blatt> --kennung a<klasse>-<stichwort>-<TTMM>
    --snr <eingabe_nr> --aus ../aufgabenbank-privat/lieferungen/<JJJJ-MM-TT>-<vorname>-<stichwort>-qr`
    (Stichwort: ein Wort aus dem Titel, klein, ohne Umlaute; dasselbe Blatt am selben Tag für zwei Schüler behält die
-   Kennung). Es setzt das Blatt ohne Ergebnis-Fuß mit QR-Code und schreibt für die Seite je Teilaufgabe Ergebnis und
+   Kennung). Es setzt das Blatt mit QR-Code und unten kopfüber klein nur die Ergebnisse (Register 22.11.10; für einen Check `--ohne-fuss`) und schreibt für die Seite je Teilaufgabe Ergebnis und
    Rechenweg (antippen muss der Schüler nur wenige Stellen) und, bei eigenen Aufgaben, Blatt und Lösung als eine PDF-Datei
    zum Speichern. Schick das neue PDF; `loesung` nur, wenn der Lehrer nach der Lösung fragt (Register 14.11.29).
 4. `cd ../aufgabenbank-privat && python3 werkzeuge/geliefert.py --name <Name> --projekt erzeugeBlatt --bestellung
