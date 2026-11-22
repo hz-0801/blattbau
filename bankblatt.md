@@ -387,6 +387,11 @@ eins passt. Fehlt der Einheitsordner `bank/vorrat/<eintrag>-e<einheit>/`, leg ih
 
 ## Nach jeder Lieferung
 
+Unter jedes gelieferte Blatt mit QR-Code steht eine Zeile „Lösung“ als Link auf die Lehreransicht
+`https://hz-0801.github.io/blattbau/r/#t=<Kennung>&l=1` (Ergebnisse und Wege, keine Knöpfe, keine Meldung). Ein Lösungs-PDF
+bietest du nicht an; nur auf ausdrückliche Nachfrage. Warum – L schaut am Tisch nach, ohne den Schüler zu fragen; der Link
+zählt nicht als Öffnen durch den Schüler (Register 22.11.11). Beispiel – „Lösung: [ansehen](…#t=a11-aenderungsrate-2311&l=1)“.
+
 Erst das Blatt nach Drive (Abschnitt „Drive“), dann committen und pushen, was sich in aufgabenbank, aufgabenbank-privat und
 blattbau (`r/t/`) geändert hat (vor dem Push `git pull --rebase`; die Nachricht nennt die Bestellung mit der Nummer, nie mit
 dem Namen). Die QR-Seite kennt das Blatt etwa eine Minute nach dem Push von blattbau – erst dann ist die Lieferung fertig.

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Lösungen</title>
-<!-- Rückmeldeseite (mathe-nachhilfe plan.md Register 09.11.14, 10.11.8, 10.11.11–13). Aufruf: …/r/#t=<Kennung>&s=<Schülernummer>.
+<!-- Rückmeldeseite (mathe-nachhilfe plan.md Register 09.11.14, 10.11.8, 10.11.11–13). Aufruf: …/r/#t=<Kennung>&s=<Schülernummer>; Lehreransicht …/r/#t=<Kennung>&l=1 (ohne Meldung).
      Daten t/<Kennung>.json, zwei Formen:
        {"titel", "l": [[Ergebnis, Ansatz, Bild?], …]}                      5-Minuten-Test, Basiszettel, Blätter bis 10.11.: Urteil je Zeile
        {"titel", "p": [[nr, teil, Ergebnis, Weg, Urteil?], …], "b": {nr: Bild}, "pdf": Datei}
@@ -28,6 +28,7 @@
   .e { flex:1 1 auto; max-width:100%; }
   .e small { display:block; color:var(--grau); }
   .katex { white-space:nowrap; }
+  .lehrer #gef, .lehrer #nr, .lehrer #ab { display:none !important; }
   .wk { display:inline-flex; align-items:center; min-height:2.5rem; margin-left:.5rem; padding:.2rem .85rem; font-size:.95rem; font-weight:600; color:#0b57d0; background:#e8f0fe; border:1.5px solid #0b57d0; border-radius:8px; white-space:nowrap; }
   .w { display:none; flex:1 1 100%; font-size:.95rem; margin:.25rem 0 .2rem; padding:.3rem .6rem; background:#f6f6f6; border-radius:6px; overflow-x:auto; }
   .w.auf { display:block; } .w .katex { white-space:normal; }
@@ -83,11 +84,14 @@ const PROBE = { "ek10": { titel: "", l: [
 const q = new URLSearchParams(location.hash.slice(1));
 const t = (q.get("t") || "ek10").replace(/[^a-z0-9-]/g, "").slice(0, 24);
 const s = (q.get("s") || "").replace(/[^0-9]/g, "").slice(0, 4);
+// Lehreransicht (&l=1, Register 22.11.11): nur Ergebnisse und Wege, keine Knöpfe, keine Meldung – der Lehrer schaut nach, ohne als Schüler zu zählen.
+const lehrer = q.get("l") === "1";
+if (lehrer) { document.documentElement.classList.add("lehrer"); }
 const liste = document.getElementById("liste"), ab = document.getElementById("ab"), m = document.getElementById("m");
 const el = (art, klasse, text) => { const e = document.createElement(art); if (klasse) e.className = klasse; if (text != null) e.textContent = text; return e; };
 const nummer = () => s || (document.getElementById("snr").value || "").replace(/[^0-9]/g, "").slice(0, 4) || "0";
 const geoeffnet = new Set(), gemeldet = new Set();   // aufgeklappte Wege ("2a"), schon gemeldete
-const melde = (wert, ziel) => { const f = el("form"); f.method = "POST"; f.action = FORM.url; f.target = ziel; f.style.display = "none";
+const melde = (wert, ziel) => { if (lehrer) return; const f = el("form"); f.method = "POST"; f.action = FORM.url; f.target = ziel; f.style.display = "none";
   const e = el("input"); e.type = "hidden"; e.name = FORM.meldung; e.value = wert; f.appendChild(e); document.body.appendChild(f); f.submit(); };
 const bildname = b => b && /^[a-z0-9-]+\.(png|svg|jpg)$/.test(b) ? b : "";
 const start = j => {
@@ -95,12 +99,13 @@ const start = j => {
   // Beide Datenformen auf eine Zeilenform bringen: Nummer, Teil, Ergebnis, kleiner Zusatz, Weg zum Aufklappen, Bild, Urteil ja/nein.
   const zeilen = j.l ? j.l.map(([erg, an, bild], i) => ({ nr: i + 1, teil: "", erg, klein: an, weg: "", bild: bildname(bild), urteil: true }))
                      : j.p.map(([nr, teil, erg, weg, urteil]) => ({ nr, teil, erg, klein: "", weg, bild: bildname(j.b && j.b[nr]), urteil: !!urteil }));
+  if (lehrer) zeilen.forEach(z => { z.urteil = false; });
   const stellen = zeilen.filter(z => z.urteil);   // nur diese gehen in die Meldung
   const wahl = stellen.map(() => ""); let offenGefragt = false;
   if (j.titel) document.getElementById("kopf").textContent = "Lösungen · " + j.titel;
   // Geöffnet zählt als vorgelegt (Lehrer 11.11.): eine Meldung "Kennung;Nummer;auf" beim Laden, höchstens einmal je Gerät und Blatt.
   try { const merk = "auf-" + t + "-" + s;
-    if (!PROBE[t] && !localStorage.getItem(merk)) { const f = el("form"); f.method = "POST"; f.action = FORM.url; f.target = "auf"; f.style.display = "none";
+    if (!lehrer && !PROBE[t] && !localStorage.getItem(merk)) { const f = el("form"); f.method = "POST"; f.action = FORM.url; f.target = "auf"; f.style.display = "none";
       const e = el("input"); e.type = "hidden"; e.name = FORM.meldung; e.value = [t, s || "0", "auf"].join(";"); f.appendChild(e);
       document.body.appendChild(f); f.submit(); localStorage.setItem(merk, "1"); } } catch (x) {}
   if (stellen.length) { ab.style.display = "block"; if (!s) document.getElementById("nr").style.display = "block"; }
@@ -142,7 +147,7 @@ const start = j => {
       melde([t, nummer(), "gef", "g=" + b.dataset.g, "w=" + [...geoeffnet].join(",")].join(";"), "gefr");
       geoeffnet.forEach(x => gemeldet.add(x)); m.textContent = "Danke!"; });
     // Wer nur Wege aufklappt und nichts antippt: beim Verlassen der Seite still melden, was neu aufgeklappt wurde.
-    const still = () => { const neu = [...geoeffnet].filter(x => !gemeldet.has(x)); if (!neu.length || !navigator.sendBeacon) return;
+    const still = () => { if (lehrer) return; const neu = [...geoeffnet].filter(x => !gemeldet.has(x)); if (!neu.length || !navigator.sendBeacon) return;
       try { navigator.sendBeacon(FORM.url, new URLSearchParams({ [FORM.meldung]: [t, nummer(), "weg", "-", "w=" + neu.join(",")].join(";") }));
         neu.forEach(x => gemeldet.add(x)); } catch (x) {} };
     document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") still(); });
