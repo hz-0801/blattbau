@@ -291,6 +291,9 @@ Bestellung mit „Basiszettel“ (auch „Basis“, „Basisaufgaben“), wahlwe
 bestellt – nie als Vorschlag des Chats, nie zwei an einem Tag, keiner binnen 14 Tagen nach dem letzten. Warum – Timo bekam
 16.11. Zettel 2026 A und 23.11. ungefragt 2026 B und 2025 A: dieselben Aufgabentypen mit anderen Zahlen. Grenze – will der
 Lehrer ausdrücklich noch einen, `--trotzdem`; das Skript hält sonst an.
+**Reihenfolge** (Lehrer 23.11. W90): erst die Originale – Basisteil der echten P10 bis zurück 2021 –, der Reihe nach oder
+querbeet, abwechslungsreich; die eigenen Varianten („nach 2026 · A/B“) erst, wenn die Originale bis 2021 abgearbeitet sind.
+Bis basiszettel-wahl.py die Originale kennt, nennt der Chat den Original-Jahrgang und baut ihn nicht als Variante nach.
 
 1. `cd aufgabenbank && python3 werkzeuge/basiszettel-wahl.py "<Name>" [Jahr] [A|B]` – wählt den nächsten Zettel, den der
    Schüler noch nicht hatte (jüngster Jahrgang zuerst), und nennt die Befehle. „HALT: kein freier Basiszettel“: in einer
