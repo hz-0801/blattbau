@@ -116,6 +116,15 @@ dann gerundet („√65 ≈ 8,1“).
 (berechne, gib an, begründe, entscheide); ein Fachwort beim ersten Mal mit dem Alltagswort; Buchstaben und Schreibweise nach
 4.3 und den Regeln des Projekts, was das Buch des Schülers anders nennt, einmal als Lesart (mathe-nachhilfe allgemein.md 2.7); Division als Bruch.
 
+**4.2a Aufgabenstellung und Führung** (Register 23.11.8, auf Probe; gilt beim Lernen der Techniken, nicht am Ende der
+Kette). (1) Jede Aufgabe versteht der Schüler ohne Rückfrage. (2) Was eine Teilaufgabe verlangt, steht bei ihr, nie vorab
+im Kopf der Nummer („a) …, b) …“ oben ist falsch); gilt ein Auftrag für alle Teile, steht er einmal oben. (3) Den Weg
+findet der Schüler selbst; ist der Sprung zu groß, führst du über mehr und kleinere Teilaufgaben, vor allem am Anfang –
+nie über Kommentare oder Hinweise im Text. (4) Gibt es zum Stoff eine Web-App, kommt ihr QR-Code an die Stelle, an der sie
+hilft. Warum – Block 2 Trigonometrie W91: „deine Fragestellungen sind Kommentare“, „du lenkst den Blick vom Wesentlichen
+weg“. Beispiel – nicht „Dasselbe Muster: a) Ankathete mit dem Kosinus, b) …“, sondern a) und b) als Skizzen unter
+„Berechne x“. Grenze – Prüfungshöhe und Originale in der Form der Prüfung; Urteil am Tisch geht vor dem Kritiker.
+
 **4.3 Schreibweise in Beispiel und Lösung.** Was im Kopf geht, steht in einer Zeile („|u⃗| = √(0,6² + 0,8²) = 1“);
 Umformungen stehen untereinander, am Gleichheitszeichen ausgerichtet, mit Auftragsstrich. ⇒ steht, wo ein Schritt Wissen
 anwendet statt zu rechnen (Nullprodukt, Wurzel ziehen, Ablesen), nicht zwischen Umformungen; nie ⇔. Gleichungssysteme und
