@@ -287,6 +287,11 @@ aufgabenbank-privat `schueler.md`.
 
 Bestellung mit „Basiszettel“ (auch „Basis“, „Basisaufgaben“), wahlweise mit Jahr (`2022`) und Fassung (`A`, `B`).
 
+**Nie von selbst, nie gehäuft** (Register 23.11.7): Ein Basiszettel kommt nur, wenn der Lehrer ihn für diesen Schüler
+bestellt – nie als Vorschlag des Chats, nie zwei an einem Tag, keiner binnen 14 Tagen nach dem letzten. Warum – Timo bekam
+16.11. Zettel 2026 A und 23.11. ungefragt 2026 B und 2025 A: dieselben Aufgabentypen mit anderen Zahlen. Grenze – will der
+Lehrer ausdrücklich noch einen, `--trotzdem`; das Skript hält sonst an.
+
 1. `cd aufgabenbank && python3 werkzeuge/basiszettel-wahl.py "<Name>" [Jahr] [A|B]` – wählt den nächsten Zettel, den der
    Schüler noch nicht hatte (jüngster Jahrgang zuerst), und nennt die Befehle. „HALT: kein freier Basiszettel“: in einer
    Zeile sagen, nichts anderes schicken.
