@@ -9,7 +9,10 @@
      Fassung 2 (Lehrer 17.11.: „nicht gut dargestellt … f(x) = x² ohne zu wissen, um was es geht“): Scheitelpunktform steht groß und
      farbig über der Funktion, die Felder tragen dieselben Farben, nach dem Prüfen steht die Funktion ausgeschrieben da.
      Eine Gleichung je Bildschirm, drei Felder, eigenes Zifferfeld. Erst der volle Fall, dann die Sonderfälle: kein a (a = 1),
-     nur Minus (a = −1), keine Klammer (d = 0), kein e (e = 0), Kommazahl, e vorn. Keine Uhr, keine Meldung, keine Namen. -->
+     nur Minus (a = −1), keine Klammer (d = 0), kein e (e = 0), Kommazahl, e vorn. Keine Uhr, keine Meldung, keine Namen.
+     Betriebsart „Scheitel“ unter #scheitel (Bestell-Chat 24.11.2026, Lehrer Weg A: „weil ich dinge wiederverwenden möchte“):
+     dieselben Gleichungen und Sonderfälle, gefragt ist S(x | y) = S(−d | e) in zwei Feldern; a ändert den Scheitel nicht.
+     Ohne Hash wie bisher a, d, e. Entdecken mit Schiebern liegt unter ../parabel-schieber/. -->
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;min-height:100%;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:#f3f7fb;color:#18324a}
@@ -28,7 +31,8 @@ h1{font-size:1.05rem;margin:2px 2px 4px;font-weight:650}
 .karte{background:#fff;border-radius:14px;box-shadow:0 1px 3px rgba(24,50,74,.12);padding:14px}
 .gl{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-size:1.85rem;white-space:nowrap}
 .gl i,.form i,.voll i{font-style:italic}.gl sup,.form sup,.voll sup{font-size:.62em}
-.felder{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.felder{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.felder.zwei{grid-template-columns:repeat(2,1fr)}
+.feld .n sub{font-size:.65em}
 .feld{border:2px solid #c5d5e4;border-radius:12px;background:#fff;padding:8px 6px 10px;text-align:center;font:inherit;color:inherit}
 .feld .n{display:block;font-family:"Cambria Math","Times New Roman",serif;font-style:italic;font-size:1.2rem;font-weight:bold}
 .feld .w{display:block;font-size:1.5rem;min-height:2rem;font-variant-numeric:tabular-nums}
@@ -67,7 +71,16 @@ h1{font-size:1.05rem;margin:2px 2px 4px;font-weight:650}
 <script>
 (function(){
 "use strict";
-var N=10, soll, ein={a:"",d:"",e:""}, aktiv="a", geprueft=false, verlauf=[], nr=0, vorher="", versuch=1, fest={};
+var SCH=/scheitel/.test(location.hash), K=SCH?["x","y"]:["a","d","e"];
+window.addEventListener("hashchange",function(){location.reload()});
+if(SCH){ document.title="Scheitelpunkt ablesen";
+  document.querySelector("h1").textContent="Scheitelpunkt ablesen";
+  document.querySelector(".intro").innerHTML="Vergleiche deine Funktion mit der Scheitelpunktform. Wo liegt der Scheitelpunkt <i>S</i>?";
+  document.querySelector(".form").insertAdjacentHTML("afterend",'<div class="form" style="font-size:1.3rem;margin-top:4px"><i>S</i>(<b class="cd">−<i>d</i></b> | <b class="ce"><i>e</i></b>)</div>');
+  document.getElementById("felder").classList.add("zwei"); }
+function leer(){var o={};K.forEach(function(k){o[k]=""});return o}
+var NAME={a:"a",d:"d",e:"e",x:"xₛ",y:"yₛ"}, FARBE={a:"a",d:"d",e:"e",x:"d",y:"e"};
+var N=10, soll, ein=leer(), aktiv=K[0], geprueft=false, verlauf=[], nr=0, vorher="", versuch=1, fest={};
 function zuf(a,b){return a+Math.floor(Math.random()*(b-a+1))}
 function wahl(l){return l[zuf(0,l.length-1)]}
 function ohne0(a,b){var v;do{v=zuf(a,b)}while(v===0);return v}
@@ -89,7 +102,7 @@ function neu(){
     if(Math.random()<.5 && (art==="ohnea"||art==="minus"||art==="voll")) {}
     i++;
   }while(JSON.stringify(p)===vorher && i<20);
-  vorher=JSON.stringify(p); soll=p; ein={a:"",d:"",e:""}; aktiv="a"; geprueft=false; versuch=1; fest={};
+  vorher=JSON.stringify(p); soll=p; soll.x=p.d===0?0:-p.d; soll.y=p.e; ein=leer(); aktiv=K[0]; geprueft=false; versuch=1; fest={};
   document.getElementById("gl").innerHTML=gl(p);
   var m=document.getElementById("meld"); m.className="meld"; m.innerHTML=""; m.style.display=""; m.style.background="";
   document.getElementById("voll").className="voll";
@@ -112,11 +125,11 @@ function voll(){
 }
 function felder(){
   var f=document.getElementById("felder"); f.innerHTML="";
-  ["a","d","e"].forEach(function(k){
+  K.forEach(function(k){
     var b=document.createElement("button"); b.type="button"; b.className="feld"; b.dataset.k=k;
     b.setAttribute("aria-pressed",(!geprueft&&k===aktiv)?"true":"false");
     if(geprueft) b.classList.add(richtig(k)?"r":"f"); else if(fest[k]) b.classList.add("r");
-    b.innerHTML='<span class="n c'+k+'">'+k+' =</span><span class="w">'+(ein[k]===""?"&nbsp;":ein[k].replace("-","−"))+'</span>';
+    b.innerHTML='<span class="n c'+FARBE[k]+'">'+(SCH?'<i>'+k+'</i><sub>S</sub>':k)+' =</span><span class="w">'+(ein[k]===""?"&nbsp;":ein[k].replace("-","−"))+'</span>';
     b.addEventListener("click",function(){if(geprueft||fest[k])return;aktiv=k;felder();});
     f.appendChild(b);
   });
@@ -136,7 +149,7 @@ T.addEventListener("click",function(ev){
   if(t==="⌫") s=s.slice(0,-1);
   else if(t==="−") s=s.charAt(0)==="-"?s.slice(1):"-"+s;
   else if(t===","){ if(s.indexOf(",")<0) s=(s===""||s==="-"?s+"0":s)+","; }
-  else if(t==="→"){ aktiv=aktiv==="a"?"d":aktiv==="d"?"e":"a"; felder(); return; }
+  else if(t==="→"){ aktiv=K[(K.indexOf(aktiv)+1)%K.length]; felder(); return; }
   else if(s.replace("-","").length<4) s+=t;
   ein[aktiv]=s; felder();
 });
@@ -165,7 +178,7 @@ document.getElementById("haupt").addEventListener("click",function(){
   var m=document.getElementById("meld");
   if(geprueft==="ende"){verlauf=[];nr=0;neu();return}
   if(!geprueft){
-    if(ein.a===""&&ein.d===""&&ein.e===""){m.className="meld f";m.textContent="Tipp auf ein Feld und gib die Zahl ein.";return}
+    if(K.every(function(k){return ein[k]===""})){m.className="meld f";m.textContent="Tipp auf ein Feld und gib die Zahl ein.";return}
     pruefe(this); return;
   }
   if(verlauf.length>=N){
@@ -179,19 +192,19 @@ document.getElementById("haupt").addEventListener("click",function(){
 // W84 (Register 22.11.2; L 22.11.: in allen Web-Apps): „Prüfen“ bleibt (drei Felder). Nach falsch zweiter Versuch: richtige Felder
 // bleiben grün und fest, falsche leer, „Lösung zeigen“; dann je falschem Wert „d = 4“ rot über „d = −4“ grün, nach 3 s weiter; kein Hinweistext
 function pruefe(h){
-  var m=document.getElementById("meld"), ok=richtig("a")&&richtig("d")&&richtig("e");
+  var m=document.getElementById("meld"), ok=K.every(richtig);
   if(ok){ if(versuch===1){verlauf.push(true);nr++;} geprueft=true; Signal.blitz(true); m.className="meld"; m.innerHTML="";
     felder(); stand(); knopf(h,1000); return; }
   Signal.blitz(false);
-  if(versuch===1){ verlauf.push(false); nr++; versuch=2; var erste={a:ein.a,d:ein.d,e:ein.e};
-    ["a","d","e"].forEach(function(k){ if(richtig(k)) fest[k]=true; else ein[k]=""; });
-    aktiv=["a","d","e"].filter(function(k){return !fest[k]})[0];
+  if(versuch===1){ verlauf.push(false); nr++; versuch=2; var erste=JSON.parse(JSON.stringify(ein));
+    K.forEach(function(k){ if(richtig(k)) fest[k]=true; else ein[k]=""; });
+    aktiv=K.filter(function(k){return !fest[k]})[0];
     m.className="meld"; m.innerHTML=""; m.style.display="block"; m.style.background="none"; Signal.loes(m,function(){gegen(erste,h)}); felder(); stand(); return; }
-  gegen({a:ein.a,d:ein.d,e:ein.e},h);
+  gegen(JSON.parse(JSON.stringify(ein)),h);
 }
 function gegen(src,h){
   geprueft=true; ein=src; T.style.display="none"; var m=document.getElementById("meld"); m.className="meld"; m.style.display="block"; m.style.background="none";
-  var z=[]; ["a","d","e"].forEach(function(k){ if(zahl(src[k])!==soll[k]){ z.push([k,src[k]===""?"leer":src[k].replace("-","−"),"f"]); z.push([k,mz(soll[k]),"r"]); } });
+  var z=[]; K.forEach(function(k){ if(zahl(src[k])!==soll[k]){ z.push([NAME[k],src[k]===""?"leer":src[k].replace("-","−"),"f"]); z.push([NAME[k],mz(soll[k]),"r"]); } });
   Signal.gegen(m,z); felder(); stand(); knopf(h,3000);
 }
 function knopf(h,ms){ h.textContent=verlauf.length>=N?"Auswerten":"Weiter"; var n0=nr; setTimeout(function(){if(nr===n0&&geprueft===true)h.click();},ms); }

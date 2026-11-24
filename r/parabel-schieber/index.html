@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Parabel verschieben und strecken</title>
+<!-- Entdecken: wie a, d und e die Parabel verändern (Bestell-Chat 24.11.2026, Lehrer: „eine web app in der man sieht welchen
+     einfluss die parameter auf dies form haben“; Weg A: getrennt nach Tätigkeit, „weil ich dinge wiederverwenden möchte“).
+     Schreibweise der Schule: f(x) = a(x + d)² + e, Scheitel S(−d | e). Kein Prüfen, kein Signal, keine Meldung, keine Namen –
+     üben: ../parabel-graph/ (am Graphen), ../parabel/ (aus der Gleichung), ../parabel/#scheitel (Scheitel aus der Gleichung).
+     Grau die Normalparabel; vom Scheitel aus „1 nach rechts, a nach oben“ in der Farbe von a; Pfeil vom Ursprung zum Scheitel.
+     Wiederverwenden über die Adresse: #a=2&d=-3&e=1 setzt den Start, #nur=e (oder nur=de, nur=a) zeigt nur diese Schieber,
+     die übrigen stehen fest. Beispiel Blatt „nur e“: …/r/parabel-schieber/#nur=e -->
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:#f3f7fb;color:#18324a}
+body{display:flex;justify-content:center}
+main{width:100%;max-width:460px;padding:12px 14px calc(18px + env(safe-area-inset-bottom))}
+h1{font-size:1.05rem;margin:2px 2px 4px;font-weight:650}
+.intro{font-size:.95rem;margin:0 2px 8px;color:#3d566c}
+.karte{background:#fff;border-radius:14px;box-shadow:0 1px 3px rgba(24,50,74,.12);padding:10px}
+canvas{display:block;width:100%;height:auto;border-radius:8px}
+.gl,.sp{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;text-align:center;white-space:nowrap}
+.gl{font-size:1.5rem;margin:10px 0 0;min-height:2.2rem}
+.sp{font-size:1.2rem;margin:2px 0 10px;color:#3d566c}
+.gl i,.sp i{font-style:italic}.gl sup{font-size:.62em}
+.gl .br{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;font-size:.72em;line-height:1.05;margin:0 1px}
+.gl .br span:first-child{border-bottom:1.5px solid currentColor;padding:0 3px}
+.ca{color:#b5471f}.cd{color:#1f6fb2}.ce{color:#2a7d4f}
+.regler{display:grid;grid-template-columns:1.6rem 44px minmax(0,1fr) 44px 2.8rem;gap:10px 8px;align-items:center}
+.regler .n{font-family:"Cambria Math","Times New Roman",serif;font-style:italic;font-weight:bold;font-size:1.3rem;text-align:center}
+.regler .w{text-align:right;font-variant-numeric:tabular-nums;font-size:1.15rem}
+.regler button{height:44px;border:1.5px solid #c5d5e4;background:#fff;border-radius:10px;font-size:1.4rem;line-height:1;color:#18324a}
+.regler button:active{background:#e6eef6}
+input[type=range]{width:100%;height:44px;margin:0;accent-color:#18324a}
+input.ra{accent-color:#b5471f}input.rd{accent-color:#1f6fb2}input.re{accent-color:#2a7d4f}
+.fest{grid-column:1/-1;font-size:.85rem;color:#5b7389;text-align:center}
+.zur{width:100%;margin-top:12px;height:46px;border:1.5px solid #c5d5e4;border-radius:12px;background:#fff;color:#18324a;font:inherit;font-size:1rem}
+.weiter{display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:center;font-size:.92rem;margin:12px 2px 0}
+.weiter a{color:#1f6fb2;padding:6px 0}
+:focus-visible{outline:3px solid #f0a202;outline-offset:2px}
+</style></head>
+<body><main>
+<h1>Parabel verschieben und strecken</h1>
+<p class="intro">Zieh an <i>a</i>, <i>d</i> und <i>e</i>. Grau ist die Normalparabel <span style="white-space:nowrap"><i>y</i> = <i>x</i>²</span>.</p>
+<div class="karte">
+  <canvas id="c" width="840" height="840" aria-label="Koordinatensystem mit Normalparabel und deiner Parabel"></canvas>
+  <div class="gl" id="gl" aria-live="polite"></div>
+  <div class="sp" id="sp"></div>
+  <div class="regler" id="regler"></div>
+  <button class="zur" id="zur" type="button">Zurück zur Normalparabel</button>
+</div>
+<div class="weiter"><a href="../parabel-graph/">Üben: Parabel ablesen</a><a href="../parabel/">a, d, e aus der Gleichung</a><a href="../parabel/#scheitel">Scheitel aus der Gleichung</a></div>
+</main>
+<script>
+{
+"use strict";
+const WERTE={a:[-3,-2,-1,-0.5,-0.25,0.25,0.5,1,2,3],d:[-5,-4,-3,-2,-1,0,1,2,3,4,5],e:[-5,-4,-3,-2,-1,0,1,2,3,4,5]};
+const START={a:1,d:0,e:0};
+const ist={...START};
+// Adresse lesen: #a=2&d=-3&e=1&nur=de
+const H={}; location.hash.slice(1).split("&").forEach(t=>{const [k,v]=t.split("=");if(k)H[k]=decodeURIComponent(v||"")});
+["a","d","e"].forEach(k=>{if(H[k]!==undefined){const v=parseFloat(H[k].replace(",","."));if(WERTE[k].includes(v))ist[k]=v;}});
+const anfang={...ist};
+const NUR=H.nur?["a","d","e"].filter(k=>H.nur.includes(k)):["a","d","e"];
+
+const C=document.getElementById("c"), X=C.getContext("2d"), B=840, R=6, F=B/(2*R);
+const px=x=>B/2+x*F, py=y=>B/2-y*F;
+function kurve(a,d,e,farbe,breite,strich){
+  X.save();X.beginPath();X.rect(0,0,B,B);X.clip();X.beginPath();let erst=true;
+  for(let x=-R;x<=R+0.001;x+=0.02){const y=a*(x+d)*(x+d)+e;if(Math.abs(y)>R+4){erst=true;continue}
+    if(erst){X.moveTo(px(x),py(y));erst=false}else X.lineTo(px(x),py(y));}
+  X.strokeStyle=farbe;X.lineWidth=breite;X.setLineDash(strich||[]);X.lineJoin="round";X.stroke();X.restore();
+}
+function pfeil(x1,y1,x2,y2,farbe){
+  const L=Math.hypot(x2-x1,y2-y1); if(L<20)return; const ux=(x2-x1)/L, uy=(y2-y1)/L;
+  X.save();X.strokeStyle=farbe;X.fillStyle=farbe;X.lineWidth=3;X.setLineDash([10,8]);
+  X.beginPath();X.moveTo(x1,y1);X.lineTo(x2-ux*16,y2-uy*16);X.stroke();X.setLineDash([]);
+  X.beginPath();X.moveTo(x2,y2);X.lineTo(x2-ux*22-uy*9,y2-uy*22+ux*9);X.lineTo(x2-ux*22+uy*9,y2-uy*22-ux*9);X.closePath();X.fill();X.restore();
+}
+function de(v){return String(v).replace(".",",").replace("-","−")}
+function zeichne(){
+  X.fillStyle="#fff";X.fillRect(0,0,B,B);
+  X.lineWidth=1.5;X.strokeStyle="#dbe5ee";X.beginPath();
+  for(let i=-R;i<=R;i++){X.moveTo(px(i),0);X.lineTo(px(i),B);X.moveTo(0,py(i));X.lineTo(B,py(i));}X.stroke();
+  X.strokeStyle="#18324a";X.lineWidth=3;X.beginPath();X.moveTo(0,py(0));X.lineTo(B-4,py(0));X.moveTo(px(0),B);X.lineTo(px(0),4);X.stroke();
+  X.fillStyle="#18324a";X.beginPath();X.moveTo(B,py(0));X.lineTo(B-22,py(0)-10);X.lineTo(B-22,py(0)+10);X.closePath();X.fill();
+  X.beginPath();X.moveTo(px(0),0);X.lineTo(px(0)-10,22);X.lineTo(px(0)+10,22);X.closePath();X.fill();
+  X.font="26px system-ui,sans-serif";X.fillStyle="#4a6278";
+  for(let i=-R;i<=R;i++){ if(i===0)continue;
+    X.beginPath();X.moveTo(px(i),py(0)-7);X.lineTo(px(i),py(0)+7);X.moveTo(px(0)-7,py(i));X.lineTo(px(0)+7,py(i));X.strokeStyle="#18324a";X.lineWidth=2;X.stroke();
+    if(Math.abs(i)<R&&(i%2===0||Math.abs(i)===1)){X.textAlign="center";X.textBaseline="top";X.fillText(de(i),px(i),py(0)+12);
+      X.textAlign="right";X.textBaseline="middle";X.fillText(de(i),px(0)-13,py(i));}
+  }
+  X.font="italic 30px 'Times New Roman',serif";X.fillStyle="#18324a";X.textAlign="right";X.textBaseline="bottom";X.fillText("x",B-8,py(0)-12);
+  X.textAlign="left";X.textBaseline="top";X.fillText("y",px(0)+14,6);
+  kurve(1,0,0,"#9aa9b6",4,[14,10]);
+  const sx=-ist.d, sy=ist.e;
+  pfeil(px(0),py(0),px(sx),py(sy),"#5b7389");
+  kurve(ist.a,ist.d,ist.e,"#1f6fb2",5);
+  // 1 nach rechts, a nach oben (unten)
+  X.save();X.lineWidth=4;X.strokeStyle="#18324a";X.beginPath();X.moveTo(px(sx),py(sy));X.lineTo(px(sx+1),py(sy));X.stroke();
+  X.strokeStyle="#b5471f";X.beginPath();X.moveTo(px(sx+1),py(sy));X.lineTo(px(sx+1),py(sy+ist.a));X.stroke();
+  X.font="bold 26px system-ui,sans-serif";X.textAlign="center";X.textBaseline=ist.a>0?"top":"bottom";X.fillStyle="#18324a";
+  X.fillText("1",px(sx+0.5),py(sy)+(ist.a>0?8:-8));
+  X.textAlign="left";X.textBaseline="middle";X.fillStyle="#b5471f";X.font="italic bold 30px 'Times New Roman',serif";
+  X.fillText("a",px(sx+1)+10,py(sy+ist.a/2));X.restore();
+  X.beginPath();X.arc(px(sx),py(sy),11,0,6.3);X.fillStyle="#1f6fb2";X.fill();X.lineWidth=4;X.strokeStyle="#fff";X.stroke();
+  X.font="bold 28px system-ui,sans-serif";X.fillStyle="#18324a";X.textAlign=sx>3?"right":"left";X.textBaseline=ist.a>0?"top":"bottom";
+  const tx=px(sx)+(sx>3?-16:16), ty=py(sy)+(ist.a>0?14:-14);
+  X.lineWidth=7;X.strokeStyle="#fff";X.strokeText("S("+de(sx)+" | "+de(sy)+")",tx,ty);X.fillText("S("+de(sx)+" | "+de(sy)+")",tx,ty);
+}
+function bruch(z,n){return '<span class="br"><span>'+z+'</span><span>'+n+'</span></span>'}
+function betrag(v){const b=Math.abs(v);return b===0.5?bruch(1,2):b===0.25?bruch(1,4):String(b)}
+function gleichung(){
+  const a=ist.a,d=ist.d,e=ist.e;
+  const vor=(a<0?"−":"")+(Math.abs(a)===1?"":betrag(a));
+  let s='<i>f</i>(<i>x</i>) = <span class="ca">'+vor+'</span>';
+  s+=d===0?'<i>x</i><sup>2</sup>':'(<i>x</i> <span class="cd">'+(d>0?"+":"−")+' '+Math.abs(d)+'</span>)<sup>2</sup>';
+  if(e!==0)s+=' <span class="ce">'+(e>0?"+":"−")+' '+Math.abs(e)+'</span>';
+  document.getElementById("gl").innerHTML=s;
+  document.getElementById("sp").innerHTML='<i>S</i>(<span class="cd">'+de(-d===0?0:-d)+'</span> | <span class="ce">'+de(e)+'</span>)';
+}
+function wert(k){const v=ist[k];return k==="a"&&Math.abs(v)<1?(v<0?"−":"")+(Math.abs(v)===0.5?"½":"¼"):de(v)}
+function regler(){
+  const r=document.getElementById("regler");
+  r.innerHTML=NUR.map(k=>'<div class="n c'+k+'">'+k+'</div><button type="button" data-k="'+k+'" data-r="-1" aria-label="'+k+' kleiner">−</button>'+
+    '<input type="range" class="r'+k+'" id="r'+k+'" min="0" max="'+(WERTE[k].length-1)+'" step="1" value="'+WERTE[k].indexOf(ist[k])+'" aria-label="'+k+'">'+
+    '<button type="button" data-k="'+k+'" data-r="1" aria-label="'+k+' größer">+</button><div class="w" id="w'+k+'"></div>').join("");
+  const fest=["a","d","e"].filter(k=>!NUR.includes(k));
+  if(fest.length)r.insertAdjacentHTML("beforeend",'<div class="fest">'+fest.map(k=>'<i>'+k+'</i> = '+de(ist[k])).join(" · ")+' bleibt fest</div>');
+}
+function neu(){
+  NUR.forEach(k=>{document.getElementById("r"+k).value=WERTE[k].indexOf(ist[k]);document.getElementById("w"+k).textContent=wert(k)});
+  gleichung();zeichne();
+}
+const RG=document.getElementById("regler");
+RG.addEventListener("input",ev=>{const k=ev.target.id.slice(1);if(!WERTE[k])return;ist[k]=WERTE[k][+ev.target.value];neu();});
+RG.addEventListener("click",ev=>{const b=ev.target.closest("button");if(!b)return;const k=b.dataset.k,l=WERTE[k];
+  const i=Math.min(l.length-1,Math.max(0,l.indexOf(ist[k])+(+b.dataset.r)));ist[k]=l[i];neu();});
+document.getElementById("zur").addEventListener("click",()=>{Object.assign(ist,H.nur?anfang:START);
+  if(H.nur)NUR.forEach(k=>{ist[k]=START[k]});neu();});
+window.addEventListener("hashchange",()=>location.reload());
+regler();neu();
+}
+</script>
+</body></html>
