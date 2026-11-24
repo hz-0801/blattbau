@@ -1,4 +1,4 @@
-# Bestellauftrag – Bestellen im Projekt verbessereBlätter() (v1, 24.11.2026)
+# Bestellauftrag – Bestellen im Projekt verbessereBlätter() (v1a, 24.11.2026)
 
 Grundlage: mathe-nachhilfe plan.md Register 23.11.6 (Bestellen und Werkstatt zusammen) und 24.11.5 (eine Anweisung für
 Werkstatt und Bestellung). Gilt für einen frischen Chat im Projekt verbessereBlätter(), dessen erste Nachricht mit
@@ -20,10 +20,11 @@ Bauanweisung: blattbau/bauanweisung.md
 Prüfung vor jeder Lieferung wie bisher (`alltagsblatt-pruef.py`, `qr-blatt.py`); die Wache
 `python3 aufgabenbank/werkzeuge/form-eine-stelle.py` läuft beim Start und muss OK melden – sonst eine „⚠“-Zeile an den Lehrer.
 
-## Vorrat
-Die Vorratsblätter aus `auswahl.py` sind in der Form vor dem 19.11. gebaut. Ein Alltagsblatt baust du darum neu nach der
-Bauanweisung und dem Weg aus „Weg planen, in Stücken liefern“; ein Vorratsblatt lieferst du nur, wenn der Lehrer „aus dem
-Vorrat“ sagt. Gebautes legst du ab wie bisher und lieferst es mit `qr-blatt.py` und `geliefert.py`.
+## Vorrat (Register 24.11.6)
+Vorrang hat das Neubauen: Ein Alltagsblatt baust du nach der Bauanweisung und dem Weg aus „Weg planen, in Stücken
+liefern“. Passen Vorratsblätter (`auswahl.py`), bietest du sie zusätzlich an – bis die Tagesseite das zeigt, als eine Zeile unter
+den Karten: „Vorrat: <n> passen – ‚<Nr> Vorrat zeigen‘“. Auf dieses Wort schickst du sie zum Ansehen; geliefert wird ein
+Vorratsblatt nur, wenn der Lehrer es nimmt. Gebautes legst du ab wie bisher und lieferst es mit `qr-blatt.py` und `geliefert.py`.
 
 ## Für die Form ersetzt die Bauanweisung, was in diesen Abschnitten von bankblatt.md steht
 - Was es gibt
