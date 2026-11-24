@@ -1,4 +1,4 @@
-# Blatt bestellen – v13z1 (24.11.2026)
+# Blatt bestellen – v13z2 (24.11.2026)
 
 Anweisung für das Projekt neu*erzeugeBlatt(). Seit 24.11. wird im Projekt verbessereBlätter() nach `bestellauftrag.md`
 bestellt (Register 23.11.6, 24.11.5); die Form steht nur in `bauanweisung.md`. Sie liegt hier im Repo; die Projektanweisung dort ist nur die
@@ -295,10 +295,11 @@ bestellt – nie als Vorschlag des Chats, nie zwei an einem Tag, keiner binnen 1
 Lehrer ausdrücklich noch einen, `--trotzdem`; das Skript hält sonst an.
 **Reihenfolge** (Lehrer 23.11. W90): erst die Originale – Basisteil der echten P10 bis zurück 2021 –, der Reihe nach oder
 querbeet, abwechslungsreich; die eigenen Varianten („nach 2026 · A/B“) erst, wenn die Originale bis 2021 abgearbeitet sind.
-Bis basiszettel-wahl.py die Originale kennt, nennt der Chat den Original-Jahrgang und baut ihn nicht als Variante nach.
+basiszettel-wahl.py wählt so: erst ein Original 2021–2026, das der Schüler noch nicht hatte (auch nicht als ganzes Heft), nie der
+Jahrgang des letzten Zettels, sonst zufällig; Varianten erst danach. Ein Original setzt `basis-original.py` (Heftseiten mit QR).
 
 1. `cd aufgabenbank && python3 werkzeuge/basiszettel-wahl.py "<Name>" [Jahr] [A|B]` – wählt den nächsten Zettel, den der
-   Schüler noch nicht hatte (jüngster Jahrgang zuerst), und nennt die Befehle. „HALT: kein freier Basiszettel“: in einer
+   Schüler noch nicht hatte (Reihenfolge oben), und nennt die Befehle. „HALT: kein freier Basiszettel“: in einer
    Zeile sagen, nichts anderes schicken.
 2. `befehl_setzen` ausführen: setzt die Schülerfassung (eine Seite, QR oben rechts) und schreibt die Lösungen für die
    Seite. Schick `schueler_pdf`; `lehrer_pdf` (Seite 2 sind die Lösungen) nur auf Nachfrage (Register 14.11.29).
