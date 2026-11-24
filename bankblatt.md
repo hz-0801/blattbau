@@ -1,6 +1,7 @@
-# Blatt bestellen – v13z (22.11.2026)
+# Blatt bestellen – v13z1 (24.11.2026)
 
-Anweisung für das Projekt neu*erzeugeBlatt(). Sie liegt hier im Repo; die Projektanweisung dort ist nur die
+Anweisung für das Projekt neu*erzeugeBlatt(). Seit 24.11. wird im Projekt verbessereBlätter() nach `bestellauftrag.md`
+bestellt (Register 23.11.6, 24.11.5); die Form steht nur in `bauanweisung.md`. Sie liegt hier im Repo; die Projektanweisung dort ist nur die
 Kurz-Anweisung am Ende dieser Datei (Lehrer 10.11.: „warum müssen wir das so umständlich machen, dass ich das immer
 einfüge?“). Geändert wird sie per Commit aus der Werkstatt, nie im Bestell-Chat. Vorgänger: `archiv/bankblatt-v12s.md`.
 Grundlage: mathe-nachhilfe plan.md, Register 26.10.4 (Bestellung holt aus dem Vorrat), 19.10. (P10 in drei Stufen),
@@ -67,7 +68,8 @@ Nennt der Lehrer Person und Tag („morgen kommt Max nochmal“, „Lena fällt 
 in Outlook ein – neu, verschoben oder abgesagt nach anweisungen global.md „Termine“ – und meldest es in einer Zeile
 („Eingetragen: Max, Do 19.11.“). Warum – am 17.11. ging „morgen kommt [Nr. 6] nochmal“ verloren; die globale Regel griff
 hier nicht. Beispiel – Absage: Name im Betreff hinter „ – abgesagt: “, aktive Namen vorn, nichts löschen. Grenze – fragen nur,
-wenn Tag oder Person unklar sind; Tests eines Schülers sind keine Termine (Abschnitt „Tests“); Outlook nicht verbunden → ein Satz.
+wenn Tag oder Person unklar sind; Tests eines Schülers sind keine Termine (Abschnitt „Tests“); Outlook nicht verbunden → ein Satz. Kalender: „Birkenwerder, Unterricht“ (bei der Suche als Kalendername angeben;
+der Standardkalender enthält die Nachhilfe nicht).
 
 ## Start (Lehrer 17.11. Werkstatt 57)
 
