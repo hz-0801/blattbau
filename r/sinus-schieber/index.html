@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<!-- Entdecken und Nachbauen: allgemeine Sinusfunktion f(x) = a·sin(b(x − c)) + d (Werkstatt 26.11.2026, Lehrer: „erstelle app …
+     und eine erklärende übersicht zu f(x) = asin(b(x-c)) +d“). Schreibweise der Schule: Amplitude |a|, Periode p = 2π : b.
+     Kein Signal, keine Meldung, keine Namen. Quelle: aufgabenbank-privat bau/jesse-2026-11-26-sinusfunktion/index.html -->
+<title>Allgemeine Sinusfunktion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* VOICE: ruhig, klar, für einen Zehntklässler vor dem Test – zeigen statt erklären.
+   IDEA: Karopapier im Matheheft, auf dem der Graph lebt; jeder Parameter hat seine Farbe.
+   PICTURE: der große Graph mit Mittellinie, Amplitude, Periode und Verschiebung, live.
+   COLOUR and TYPE: Papierweiß, Tinte; a rot, b blau, c grün, d orange. Atkinson Hyperlegible.
+   LAYOUT: Formel – Graph – Regler; darunter Nachbauen; dann die Übersicht. */
+:root{color-scheme:light dark;
+ --bg:light-dark(#fbfbf8,#14161a);--ink:light-dark(#16181d,#eceef2);--mut:light-dark(#5b606b,#a3a9b5);
+ --grid:light-dark(#e4e8ee,#262a31);--grid2:light-dark(#cfd6df,#353a43);--card:light-dark(#ffffff,#1b1e23);
+ --line:light-dark(#d6dbe2,#2f343c);
+ --a:light-dark(#d1342b,#ff6b5f);--b:light-dark(#1f5fbf,#6aa5ff);--c:light-dark(#1d8a4b,#4fd18a);
+ --d:light-dark(#d97706,#ffb347);--f:light-dark(#16181d,#f4f5f8);--ziel:light-dark(#9b59b6,#c39bd3)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 "Atkinson Hyperlegible",system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(20px,3.5vw,48px) max(4vw,14px)}
+.wrap{max-width:1100px;margin:0 auto}
+h1{font-size:clamp(28px,4.4vw,44px);line-height:1.05;margin:0 0 .3rem;text-wrap:balance}
+h2{font-size:clamp(22px,3vw,30px);line-height:1.1;margin:0 0 .8rem}
+.unter{color:var(--mut);margin:0 0 1rem}
+.formel{font-size:clamp(22px,4vw,34px);font-style:italic;margin:.2rem 0 .8rem;line-height:1.3}
+.formel span{font-style:normal;font-weight:700}
+.ca{color:var(--a)}.cb{color:var(--b)}.cc{color:var(--c)}.cd{color:var(--d)}
+.app{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:clamp(14px,2.4vw,28px);align-items:start}
+.fig{position:relative;height:clamp(300px,46vw,460px);background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+.regler{display:grid;gap:.75rem}
+.r{display:grid;grid-template-columns:2.2rem minmax(0,1fr) 4.6rem;align-items:center;gap:.5rem}
+.r b{font-size:1.25rem;font-style:italic}
+.r output{text-align:right;font-weight:700;white-space:nowrap}
+input[type=range]{width:100%;height:44px;margin:0;background:none}
+input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:3px;background:var(--grid2)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;margin-top:-10px;background:var(--k);border:3px solid var(--card);box-shadow:0 1px 4px #0005}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--k);border:3px solid var(--card)}
+input[type=range]{-webkit-appearance:none;appearance:none}
+input:focus-visible,button:focus-visible{outline:3px solid var(--b);outline-offset:2px}
+.werte{margin:.4rem 0 0;padding:.7rem .9rem;background:var(--card);border:1px solid var(--line);border-radius:10px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:.2rem .8rem;font-size:16px}
+.werte dt{color:var(--mut)}.werte dd{margin:0;font-weight:700}
+.knoepfe{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.2rem}
+button{font:inherit;font-size:16px;min-height:44px;padding:.4rem .9rem;border-radius:22px;border:1.5px solid var(--ink);background:var(--card);color:var(--ink);cursor:pointer}
+button.voll{background:var(--ink);color:var(--bg)}
+label.schalter{display:flex;align-items:center;gap:.45rem;color:var(--mut);font-size:16px;min-height:44px}
+label.schalter input{width:20px;height:20px}
+.ziel{margin-top:1.2rem;padding:.9rem 1rem;border-radius:10px;border:1.5px dashed var(--ziel)}
+.ziel p{margin:.2rem 0 .5rem}
+#meldung{font-weight:700;min-height:1.6em}
+.ok{color:var(--c)}
+.ueb{border-top:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;background:var(--card);border-radius:10px;overflow:hidden}
+th,td{text-align:left;padding:.65rem .8rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:15px;color:var(--mut);font-weight:400}
+td:first-child{font-size:1.3rem;font-style:italic;font-weight:700;width:3rem}
+.zwei{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(14px,2.4vw,28px);margin-top:1.4rem}
+.kasten{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:.9rem 1.1rem}
+.kasten h3{margin:0 0 .5rem;font-size:19px}
+ol,ul{margin:0;padding-left:1.3rem}li{margin:.25rem 0}
+.m{font-style:italic;white-space:nowrap}
+.falsch{color:var(--a);font-weight:700}.richtig{color:var(--c);font-weight:700}
+.klein{font-size:14px;color:var(--mut)}
+@media(max-width:760px){.app,.zwei{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){table{font-size:15px}.stack thead{display:none}.stack tr{display:grid;padding-block:8px}.stack td{display:flow-root;border:0;padding:3px .8rem;padding-inline-start:7.2em;text-align:start;width:auto}.stack td::before{content:attr(data-l);float:inline-start;width:6.8em;margin-inline-start:-7em;white-space:normal;color:var(--mut);font-size:14px;font-style:normal;font-weight:400}.stack td:first-child{padding-inline-start:.8rem}.stack td:first-child::before{content:none}}
+@media(prefers-reduced-motion:no-preference){#kurve{transition:none}}
+</style>
+<script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
+</head>
+<body>
+<section class="band"><div class="wrap">
+  <h1>Allgemeine Sinusfunktion</h1>
+  <p class="unter">Schieb an den Reglern und sieh zu, was jeder Buchstabe mit dem Graphen macht. Grau gestrichelt: <span class="m">y = sin(x)</span> zum Vergleich.</p>
+  <div class="formel" id="formel" aria-live="polite"></div>
+  <div class="app">
+    <div class="fig" id="fig"><svg id="svg" role="img" aria-label="Graph der Funktion"></svg></div>
+    <div>
+      <div class="regler">
+        <div class="r" style="--k:var(--a)"><b class="ca">a</b><input id="ra" type="range" min="-6" max="6" step="1" value="2" aria-label="a"><output id="oa" class="ca"></output></div>
+        <div class="r" style="--k:var(--b)"><b class="cb">b</b><input id="rb" type="range" min="1" max="8" step="1" value="2" aria-label="b"><output id="ob" class="cb"></output></div>
+        <div class="r" style="--k:var(--c)"><b class="cc">c</b><input id="rc" type="range" min="-4" max="4" step="1" value="0" aria-label="c"><output id="oc" class="cc"></output></div>
+        <div class="r" style="--k:var(--d)"><b class="cd">d</b><input id="rd" type="range" min="-4" max="4" step="1" value="0" aria-label="d"><output id="od" class="cd"></output></div>
+      </div>
+      <dl class="werte" id="werte"></dl>
+      <div class="knoepfe">
+        <button type="button" id="null">Zurück auf sin(x)</button>
+        <label class="schalter"><input type="checkbox" id="ref" checked> sin(x) zeigen</label>
+      </div>
+      <div class="ziel">
+        <p><b>Nachbauen:</b> Ein lila Graph erscheint. Stell die Regler so ein, dass deiner genau darauf liegt.</p>
+        <div class="knoepfe">
+          <button type="button" class="voll" id="neu">Neuer Ziel-Graph</button>
+          <button type="button" id="aufloesen" hidden>Lösung zeigen</button>
+        </div>
+        <p id="meldung" aria-live="polite"></p>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="band ueb"><div class="wrap">
+  <h2>Übersicht: <span class="m">f(x) = <span class="ca">a</span> · sin(<span class="cb">b</span>(x − <span class="cc">c</span>)) + <span class="cd">d</span></span></h2>
+  <table class="stack">
+    <thead><tr><th></th><th>Was passiert</th><th>Am Graphen ablesen</th></tr></thead>
+    <tbody>
+      <tr><td class="ca">a</td><td>Streckung in y-Richtung. <b>Amplitude = |a|</b>. Ist a negativ, wird an der Mittellinie gespiegelt.</td><td class="m">|a| = (Hochwert − Tiefwert) : 2</td></tr>
+      <tr><td class="cb">b</td><td>Streckung in x-Richtung. <b>Periode p = 2π : b</b>. b &gt; 1: enger, b &lt; 1: breiter.</td><td>p = Abstand zweier Hochpunkte, dann <span class="m">b = 2π : p</span></td></tr>
+      <tr><td class="cc">c</td><td>Verschiebung in x-Richtung. c &gt; 0: nach <b>rechts</b>, c &lt; 0: nach <b>links</b>.</td><td>Wo die Welle die Mittellinie aufwärts kreuzt (bei a &gt; 0)</td></tr>
+      <tr><td class="cd">d</td><td>Verschiebung in y-Richtung. <b>Mittellinie y = d</b>.</td><td class="m">d = (Hochwert + Tiefwert) : 2</td></tr>
+    </tbody>
+  </table>
+  <p class="klein">Wertebereich: <span class="m">W = [d − |a| ; d + |a|]</span></p>
+
+  <div class="zwei">
+    <div class="kasten">
+      <h3>So zeichnest du den Graphen</h3>
+      <ol>
+        <li><span class="cd">Mittellinie</span> <span class="m">y = d</span> zeichnen.</li>
+        <li>Hoch- und Tiefwert: <span class="m">d + |a|</span> und <span class="m">d − |a|</span>.</li>
+        <li><span class="cc">Start</span> bei <span class="m">x = c</span> auf der Mittellinie – aufwärts (a &gt; 0) oder abwärts (a &lt; 0).</li>
+        <li>Eine <span class="cb">Periode</span> in vier gleiche Teile: Mitte → Hoch → Mitte → Tief → Mitte.</li>
+      </ol>
+    </div>
+    <div class="kasten">
+      <h3>Vorsicht, Fallen</h3>
+      <ul>
+        <li><span class="m">sin(2x − π/2)</span>: erst ausklammern: <span class="m">sin(2(x − π/4))</span>. Also <span class="richtig">c = π/4</span>, <span class="falsch">nicht π/2</span>.</li>
+        <li><span class="m">sin(x + π/3) = sin(x − (−π/3))</span>: <span class="richtig">c = −π/3</span>, also nach <b>links</b>.</li>
+        <li>Periode ist <span class="m">2π : b</span>, <span class="falsch">nicht 2π · b</span>.</li>
+        <li>Amplitude ist <span class="m">|a|</span>, also nie negativ.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="kasten" style="margin-top:1.4rem">
+    <h3>Beispiel: <span class="m">f(x) = 2 · sin(½(x + π)) + 1</span></h3>
+    <p style="margin:.2rem 0 .6rem">Amplitude <b>2</b> · Periode <span class="m">2π : ½ =</span> <b>4π</b> · <b>π nach links</b> (c = −π) · <b>1 nach oben</b> · Wertebereich <b>[−1 ; 3]</b></p>
+    <button type="button" id="bsp">Im Graphen zeigen ↑</button>
+  </div>
+</div></section>
+
+<script>
+{
+const $=id=>document.getElementById(id);
+const R={a:$('ra'),b:$('rb'),c:$('rc'),d:$('rd')};
+let ziel=null;
+const PI=Math.PI;
+const wert=()=>({a:+R.a.value/2,b:+R.b.value/2,c:+R.c.value*PI/4,d:+R.d.value/2});
+const zahl=v=>{const s=(Math.round(v*100)/100).toString().replace('.',',');return v<0?'−'+s.slice(1):s;};
+const bruch=v=>{const n=v/0.5;return Number.isInteger(v)?zahl(v):(Math.abs(n)===1?(v<0?'−½':'½'):zahl(v));};
+function piB(v){ // v als Vielfaches von π, Nenner bis 8
+  if(Math.abs(v)<1e-9)return '0';
+  const q=v/PI;let best=null;
+  for(let den=1;den<=8;den++){const z=Math.round(q*den);if(Math.abs(z/den-q)<1e-9){best=[z,den];break;}}
+  if(!best)return zahl(v);
+  let [z,den]=best;const g=(x,y)=>y?g(y,x%y):x;const t=g(Math.abs(z),den);z/=t;den/=t;
+  const s=z<0?'−':'';z=Math.abs(z);
+  const zae=(z===1?'':z)+'π';return s+(den===1?zae:zae+'/'+den);
+}
+function formel(p){
+  const a=p.a,b=p.b,c=p.c,d=p.d;
+  let s='f(x) = ';
+  if(a===0) s+='<span class="ca">0</span>';
+  else{
+    s+=(a===1?'':a===-1?'<span class="ca">−</span>':'<span class="ca">'+bruch(a)+'</span> · ')+'sin(';
+    const innen=c===0?'x':(c>0?'x − <span class="cc">'+piB(c)+'</span>':'x + <span class="cc">'+piB(-c)+'</span>');
+    if(b===1) s+=innen; else s+='<span class="cb">'+bruch(b)+'</span>'+(c===0?innen:'('+innen+')');
+    s+=')';
+  }
+  if(d!==0) s+=(d>0?' + ':' − ')+'<span class="cd">'+bruch(Math.abs(d))+'</span>';
+  return s;
+}
+const f=(p,x)=>p.a*Math.sin(p.b*(x-p.c))+p.d;
+const X0=-2*PI,X1=2*PI,Y0=-5,Y1=5;
+function zeichne(){
+  const s=$('svg'),W=s.clientWidth,H=s.clientHeight;if(!W||!H)return;
+  const p=wert(),sx=x=>(x-X0)/(X1-X0)*W,sy=y=>H-(y-Y0)/(Y1-Y0)*H,schmal=W<520;
+  
+  let g='';
+  for(let k=-8;k<=8;k++){const x=sx(k*PI/4);g+=`<line x1="${x}" y1="0" x2="${x}" y2="${H}" style="stroke:var(--${k%2?'grid':'grid2'})" stroke-width="1"/>`;}
+  for(let y=Y0;y<=Y1;y++){const yy=sy(y);g+=`<line x1="0" y1="${yy}" x2="${W}" y2="${yy}" style="stroke:var(--grid)" stroke-width="1"/>`;}
+  g+=`<line x1="0" y1="${sy(0)}" x2="${W}" y2="${sy(0)}" style="stroke:var(--ink)" stroke-width="1.4"/><line x1="${sx(0)}" y1="0" x2="${sx(0)}" y2="${H}" style="stroke:var(--ink)" stroke-width="1.4"/>`;
+  for(let k=-3;k<=3;k++){ if(k===0)continue; if(schmal&&k%2)continue;
+    g+=`<text x="${sx(k*PI/2)}" y="${sy(0)+16}" font-size="13" text-anchor="middle" style="fill:var(--mut)">${piB(k*PI/2)}</text>`;}
+  for(let y=-4;y<=4;y+=2){ if(!y)continue; g+=`<text x="${sx(0)-6}" y="${sy(y)+4}" font-size="13" text-anchor="end" style="fill:var(--mut)">${zahl(y)}</text>`;}
+  const pfad=(q,n=400)=>{let d='';for(let i=0;i<=n;i++){const x=X0+(X1-X0)*i/n;d+=(i?'L':'M')+sx(x).toFixed(1)+' '+sy(q(x)).toFixed(1);}return d;};
+  if($('ref').checked) g+=`<path d="${pfad(x=>Math.sin(x))}" fill="none" style="stroke:var(--mut)" stroke-width="1.6" stroke-dasharray="5 5"/>`;
+  if(ziel) g+=`<path d="${pfad(x=>f(ziel,x))}" fill="none" style="stroke:var(--ziel)" stroke-width="9" stroke-opacity=".38" stroke-linecap="round"/>`;
+  // Mittellinie
+  g+=`<line x1="0" y1="${sy(p.d)}" x2="${W}" y2="${sy(p.d)}" style="stroke:var(--d)" stroke-width="2" stroke-dasharray="8 6"/>`;
+  g+=`<text x="${W-8}" y="${sy(p.d)-7}" font-size="14" text-anchor="end" style="fill:var(--d)" font-weight="700">y = ${zahl(p.d)}</text>`;
+  if(p.a!==0){
+    const per=2*PI/p.b,xh=p.c+(p.a>0?per/4:3*per/4);let xH=xh;while(xH-per>X0+0.3)xH-=per;while(xH<X0+0.3)xH+=per;
+    // Amplitude
+    g+=`<line x1="${sx(xH)}" y1="${sy(p.d)}" x2="${sx(xH)}" y2="${sy(p.d+Math.abs(p.a))}" style="stroke:var(--a)" stroke-width="3"/>`;
+    g+=`<text x="${sx(xH)+7}" y="${(sy(p.d)+sy(p.d+Math.abs(p.a)))/2+5}" font-size="14" style="fill:var(--a)" font-weight="700">|a|</text>`;
+    // Periode ab c
+    const yb=sy(p.d-Math.abs(p.a))+22;let xs=p.c;while(xs<X0)xs+=per;
+    const teil=sx(xs+per)<=W+1?1:2, lang=per/teil;   // passt die Periode nicht ins Bild: halbe Periode
+    if(yb<H-4&&sx(xs+lang)<=W+1){g+=`<path d="M${sx(xs)} ${yb-6}V${yb}H${sx(xs+lang)}V${yb-6}" fill="none" style="stroke:var(--b)" stroke-width="2.4"/>`;
+      g+=`<text x="${(sx(xs)+sx(xs+lang))/2}" y="${yb+16}" font-size="14" text-anchor="middle" style="fill:var(--b)" font-weight="700">${teil===1?'p = '+piB(per):'p/2 = '+piB(lang)}</text>`;}
+    // Verschiebung c
+    if(p.c!==0){g+=`<path d="M${sx(0)} ${sy(p.d)}H${sx(p.c)}" style="stroke:var(--c)" stroke-width="3"/><path d="M${sx(p.c)} ${sy(p.d)}l${p.c>0?-9:9} -6v12z" style="fill:var(--c)"/>`;}
+    g+=`<circle cx="${sx(p.c)}" cy="${sy(p.d)}" r="5.5" style="fill:var(--c)"/>`;
+  }
+  g+=`<path d="${pfad(x=>f(p,x))}" fill="none" style="stroke:var(--f)" stroke-width="3.2" stroke-linejoin="round"/>`;
+  s.innerHTML=g;
+}
+function werte(){
+  const p=wert(),A=Math.abs(p.a),per=2*PI/p.b;
+  $('oa').textContent=bruch(p.a);$('ob').textContent=bruch(p.b);$('oc').textContent=piB(p.c);$('od').textContent=bruch(p.d);
+  $('formel').innerHTML=formel(p);
+  const zeilen=[['Amplitude',p.a===0?'0 (keine Welle)':zahl(A)+(p.a<0?' · gespiegelt':'')],['Periode','2π : '+bruch(p.b)+' = '+piB(per)],
+    ['x-Richtung',p.c===0?'keine Verschiebung':piB(Math.abs(p.c))+' nach '+(p.c>0?'rechts':'links')],
+    ['y-Richtung',p.d===0?'keine Verschiebung':zahl(Math.abs(p.d))+' nach '+(p.d>0?'oben':'unten')],
+    ['Wertebereich','['+zahl(p.d-A)+' ; '+zahl(p.d+A)+']']];
+  $('werte').innerHTML=zeilen.map(z=>'<dt>'+z[0]+'</dt><dd>'+z[1]+'</dd>').join('');
+  pruefe();zeichne();
+}
+function gleich(p,q){for(let i=0;i<=60;i++){const x=X0+(X1-X0)*i/60;if(Math.abs(f(p,x)-f(q,x))>1e-6)return false;}return true;}
+function pruefe(){
+  if(!ziel){$('meldung').textContent='';return;}
+  const ok=gleich(wert(),ziel);$('meldung').className=ok?'ok':'';
+  $('meldung').textContent=ok?'Passt genau! Lies jetzt die Gleichung oben ab.':'Noch nicht – vergleich Mittellinie, Höhe, Breite, Start.';
+}
+const zufall=a=>a[Math.floor(Math.random()*a.length)];
+function setze(q){R.a.value=Math.round(q.a*2);R.b.value=Math.round(q.b*2);R.c.value=Math.round(q.c/(PI/4));R.d.value=Math.round(q.d*2);werte();}
+$('neu').addEventListener('click',()=>{
+  let q;do{q={a:zufall([-3,-2,-1.5,-1,-0.5,0.5,1,1.5,2,3]),b:zufall([0.5,1,1,2,2,3]),c:zufall([-2,-1,0,1,2,3,-3])*PI/4,d:zufall([-2,-1,-0.5,0,0.5,1,2])};}
+  while(gleich(q,wert()));
+  ziel=q;$('aufloesen').hidden=false;werte();
+});
+$('aufloesen').addEventListener('click',()=>{if(ziel)setze(ziel);});
+$('null').addEventListener('click',()=>{ziel=null;$('aufloesen').hidden=true;setze({a:1,b:1,c:0,d:0});});
+$('bsp').addEventListener('click',()=>{ziel=null;$('aufloesen').hidden=true;setze({a:2,b:0.5,c:-PI,d:1});$('formel').scrollIntoView({behavior:'smooth',block:'start'});});
+Object.values(R).forEach(r=>r.addEventListener('input',werte));
+$('ref').addEventListener('change',zeichne);
+const ro=new ResizeObserver(zeichne);ro.observe($('svg'));
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',zeichne);
+new MutationObserver(zeichne).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+werte();
+}
+</script>
+</body>
+</html>
