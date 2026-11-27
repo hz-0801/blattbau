@@ -2,6 +2,7 @@
 <html lang="de"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
+<link rel="icon" href="data:,">
 <title>Sekante wird Tangente</title>
 <!-- Entdecken: Q wandert auf dem Graphen zu P, die Sekante PQ dreht sich zur Tangente (Lehrer, aufgabenbank bau/befunde-M10.md #336:
      Q soll als Animation zu P wandern; Runde Blockblätter W114 P2, Blockblatt „Ableitung mit der h-Methode“, QR neben der Skizze
@@ -53,16 +54,16 @@ label.schalter input{width:22px;height:22px;margin:0;accent-color:#b5471f}
 .abl[hidden]{display:none}
 .tab{max-height:17.5rem;overflow-y:auto;margin-top:10px;border:1px solid #dbe5ee;border-radius:10px}
 table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;font-size:1.05rem}
-caption{caption-side:top;text-align:left;font-size:.88rem;color:#5b7389;padding:6px 10px 2px}
 th,td{padding:7px 12px;text-align:right;border-bottom:1px solid #eef3f8}
 th{position:sticky;top:0;background:#fff;font-family:"Cambria Math","Times New Roman",serif;font-style:italic;font-size:1.15rem;border-bottom:1.5px solid #c5d5e4}
 td:first-child,th:first-child{color:#2a7d4f}td:last-child,th:last-child{color:#1f6fb2}
 tr.neu td{background:#eef5fc;font-weight:650}
+#ablf{white-space:nowrap;font-size:1.1rem}
 #weg{width:100%;margin-top:10px;height:44px;border:1.5px solid #c5d5e4;border-radius:12px;background:#fff;color:#18324a;font:inherit;font-size:1rem}
 :focus-visible{outline:3px solid #f0a202;outline-offset:2px}
 @media (min-width:900px){
-  main{max-width:1060px}
-  .spalten{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:16px;align-items:start}
+  main{max-width:1000px}
+  .spalten{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:start}
   .karte+.karte{margin-top:0}
   .tab{max-height:22rem}
 }
@@ -93,7 +94,8 @@ tr.neu td{background:#eef5fc;font-weight:650}
   <p class="marke">Steigung der Sekante PQ – Differenzenquotient:</p>
   <div class="dq" id="dq" aria-live="polite"></div>
   <div class="abl" id="abl" hidden></div>
-  <div class="tab" id="tabk"><table><caption id="cap"></caption><thead><tr><th>h</th><th>m</th></tr></thead><tbody id="tb"></tbody></table></div>
+  <p class="marke" id="cap"></p>
+  <div class="tab" id="tabk"><table><thead><tr><th>h</th><th>m</th></tr></thead><tbody id="tb"></tbody></table></div>
   <button type="button" id="weg">Tabelle löschen</button>
 </div>
 </div>
@@ -123,9 +125,9 @@ function zahl(v){let s=r6(v).toFixed(6);if(s.includes("."))s=s.replace(/0+$/,"")
 const zH=v=>zahl(v).replace(".",",").replace("-","−");                                              // −0,5
 const zT=v=>zahl(v).replace(".","{,}");                                                             // -0{,}5
 const zTk=v=>v<0?"("+zT(v)+")":zT(v);
-function texDQ(fk,x0,h){   // drei Zeilen: allgemein · eingesetzt · ausgerechnet
+function texDQ(fk,x0,h){   // vier Zeilen: allgemein · eingesetzt · Funktionswerte · ausgerechnet
   const r=rechne(fk,x0,h);
-  return "\\begin{aligned}m&=\\frac{f(x_0+h)-f(x_0)}{h}=\\frac{f("+zT(r.x1)+")-f("+zT(x0)+")}{"+zT(h)+"}\\\\"+
+  return "\\begin{aligned}m&=\\frac{f(x_0+h)-f(x_0)}{h}\\\\&=\\frac{f("+zT(r.x1)+")-f("+zT(x0)+")}{"+zT(h)+"}\\\\"+
          "&=\\frac{"+zT(r.y1)+"-"+zTk(r.y0)+"}{"+zT(h)+"}\\\\"+
          "&=\\frac{"+zT(r.dy)+"}{"+zT(h)+"}=\\mathbf{"+zT(r.m)+"}\\end{aligned}";
 }
@@ -144,26 +146,47 @@ const C=$("c"),X=C.getContext("2d"),BW=C.width,BH=C.height;
 let fen=null;
 const px=x=>(x-fen.xmin)/(fen.xmax-fen.xmin)*BW, py=y=>BH-(y-fen.ymin)/(fen.ymax-fen.ymin)*BH;
 function fenster(){
-  const F=FUNK[ist.f],x0=ist.x0,xmin=Math.min(-1,x0-2.6),xmax=Math.max(1,x0+2.6);
+  const F=FUNK[ist.f],x0=ist.x0,xmin=Math.min(-1.4,x0-2.6),xmax=Math.max(1.4,x0+2.6);
   let lo=0,hi=0;for(let x=x0-2;x<=x0+2.0001;x+=0.05){const y=F.f(x);lo=Math.min(lo,y);hi=Math.max(hi,y)}
-  const sp=hi-lo||1,ymin=lo-0.17*sp,ymax=hi+0.1*sp;
+  const sp=hi-lo||1,unten=-lo<hi,ymin=lo-(unten?0.17:0.1)*sp,ymax=hi+(unten?0.1:0.17)*sp;   // Platz für x₀ und x₀ + h auf der leeren Seite der x-Achse
   const st=[0.5,1,2,5,10,20,25,50,100].find(s=>(ymax-ymin)/s<=9);
   fen={xmin,xmax,ymin,ymax,st};
 }
 const de=v=>zH(v);
 function halo(t,x,y,farbe,font){X.font=font;X.lineWidth=8;X.strokeStyle="rgba(255,255,255,.92)";X.lineJoin="round";X.strokeText(t,x,y);X.fillStyle=farbe;X.fillText(t,x,y)}
-function gerade(x0,y0,m,farbe,strich,wort,ende){
-  // sichtbarer Teil der Geraden y = y0 + m(x − x0)
+function gerade(x0,y0,m,farbe,strich){
+  // zeichnet y = y0 + m(x − x0) und gibt den sichtbaren Teil zurück
   let xl=fen.xmin,xr=fen.xmax;
   if(m!==0){const a=x0+(fen.ymin-y0)/m,b=x0+(fen.ymax-y0)/m;xl=Math.max(xl,Math.min(a,b));xr=Math.min(xr,Math.max(a,b))}
   X.save();X.beginPath();X.rect(0,0,BW,BH);X.clip();
   X.beginPath();X.moveTo(px(fen.xmin),py(y0+m*(fen.xmin-x0)));X.lineTo(px(fen.xmax),py(y0+m*(fen.xmax-x0)));
   X.strokeStyle=farbe;X.lineWidth=4.5;X.setLineDash(strich);X.stroke();X.restore();
-  if(xr<=xl)return;
-  const xs=ende==="r"?xr-0.13*(xr-xl):xl+0.13*(xr-xl),ys=y0+m*(xs-x0);
-  X.font="bold 34px system-ui,sans-serif";const w=X.measureText(wort).width;
-  let tx=Math.min(BW-w-10,Math.max(10,px(xs)-w/2)),ty=Math.min(BH-12,Math.max(44,py(ys)-14));
-  X.textAlign="left";X.textBaseline="bottom";halo(wort,tx,ty,farbe,"bold 34px system-ui,sans-serif");
+  return {x0,y0,m,xl,xr,farbe};
+}
+const FW="bold 34px system-ui,sans-serif";
+const schneidet=(a,b)=>a.x<b.x+b.w&&b.x<a.x+a.w&&a.y<b.y+b.h&&b.y<a.y+a.h;
+function wort(g,text,unten,lage,meiden){
+  // Wort an der Geraden: erste Stelle (Anteile in lage, von links gezählt), die im Bild liegt und nichts in meiden trifft
+  X.font=FW;const w=X.measureText(text).width+8,hh=38,ay=py(0);let erst=null;
+  if(g.xr>g.xl)for(const t of lage){const xs=g.xl+t*(g.xr-g.xl),cx=px(xs),cy=py(g.y0+g.m*(xs-g.x0));
+    const r={x:cx-w/2,y:unten?cy+14:cy-14-hh,w,h:hh};if(!erst)erst=r;
+    if(r.x<6||r.x+r.w>BW-6||r.y<6||r.y+r.h>BH-6)continue;
+    if(schneidet(r,{x:0,y:ay-8,w:BW,h:56})||meiden.some(m=>schneidet(r,m)))continue;
+    erst=r;erst.gut=1;break}
+  if(!erst)return null;
+  const x=Math.min(BW-erst.w-6,Math.max(6,erst.x)),y=Math.min(BH-erst.h-6,Math.max(6,erst.y));
+  X.textAlign="left";X.textBaseline="top";halo(text,x+4,y+2,g.farbe,FW);return {x,y,w:erst.w,h:erst.h};
+}
+function kastenOrt(F,z1,z2,pq){
+  // die Ecke, in der der Kasten am wenigsten verdeckt: Graph, P und Q, x-Achse mit Zahlen, y-Achse
+  X.font="bold 36px system-ui,sans-serif";const w=Math.max(X.measureText(z1).width,z2?X.measureText(z2).width:0)+28,h=z2?100:56;
+  const ax=px(0),ay=py(0);let best=null;
+  for(const [x,y] of [[ax+64,14],[BW-w-40,14],[14,14],[ax-w-84,14],[ax+64,BH-h-14],[BW-w-40,BH-h-14],[14,BH-h-14],[ax-w-84,BH-h-14]]){
+    const k={x,y,w,h};if(x<6||x+w>BW-6)continue;let n=0;
+    for(let i=0;i<=200;i++){const xx=fen.xmin+i/200*(fen.xmax-fen.xmin),q={x:px(xx)-6,y:py(F.f(xx))-6,w:12,h:12};if(schneidet(k,q))n++}
+    if(schneidet(k,{x:0,y:ay-95,w:BW,h:190}))n+=60;if(schneidet(k,{x:ax-60,y:0,w:80,h:BH}))n+=60;pq.forEach(q=>{if(schneidet(k,q))n+=200});
+    if(!best||n<best.n)best={...k,n};}
+  return best;
 }
 function punkt(x,y,farbe){X.beginPath();X.arc(px(x),py(y),12,0,6.3);X.fillStyle=farbe;X.fill();X.lineWidth=4;X.strokeStyle="#fff";X.stroke()}
 let mZeige=null;   // zuletzt gezeigte Rechnung (bleibt während der Fahrt zwischen zwei Halten stehen)
@@ -199,37 +222,44 @@ function zeichne(hBild,fahrt){
   // Lote auf die x-Achse, x₀ und x₀ + h
   X.save();X.setLineDash([8,8]);X.strokeStyle="#9aa9b6";X.lineWidth=2.5;X.beginPath();
   X.moveTo(px(x0),py(y0));X.lineTo(px(x0),ay);X.moveTo(px(x1),py(y1));X.lineTo(px(x1),ay);X.stroke();X.restore();
-  const abst=Math.abs(px(x1)-px(x0)),zy=ay+48;
-  X.textBaseline="top";X.textAlign="center";
+  const abst=Math.abs(px(x1)-px(x0)),oben=y0<0,zy=oben?ay-14:ay+48;
+  X.textBaseline=oben?"bottom":"top";X.textAlign="center";
   halo("x₀",px(x0)+(abst<110?(hBild>0?-14:14):0),zy,"#18324a","italic 34px 'Times New Roman',serif");
   if(abst>=110)halo("x₀ + h",px(x1),zy,"#18324a","italic 34px 'Times New Roman',serif");
   // Tangente
-  if(ist.t)gerade(x0,y0,F.f1(x0),"#b5471f",[20,12],"Tangente","l");
+  const gt=ist.t?gerade(x0,y0,F.f1(x0),"#b5471f",[20,12]):null;
   // Steigungsdreieck: von P waagrecht um h, dann senkrecht um Δy bis Q
   X.save();X.lineWidth=5;X.strokeStyle="#2a7d4f";X.lineCap="round";X.beginPath();
   X.moveTo(px(x0),py(y0));X.lineTo(px(x1),py(y0));X.lineTo(px(x1),py(y1));X.stroke();X.restore();
   // Sekante
-  gerade(x0,y0,(y1-y0)/hBild,"#1f6fb2",[],"Sekante","r");
+  const gs=gerade(x0,y0,(y1-y0)/hBild,"#1f6fb2",[]);
   // Beschriftung des Dreiecks (nur wenn Platz ist, nicht während der Fahrt)
+  const belegt=[];
   if(!fahrt){
-    const r=rechne(ist.f,x0,hBild),fb="#2a7d4f",ft="bold 32px system-ui,sans-serif";
-    if(abst>=120){X.textAlign="center";X.textBaseline=r.dy>=0?"top":"bottom";
-      halo("h = "+de(hBild),(px(x0)+px(x1))/2,py(y0)+(r.dy>=0?10:-10),fb,ft)}
-    const hoch=Math.abs(py(y1)-py(y0));
-    if(hoch>=70){X.textBaseline="middle";X.textAlign=hBild>0?"left":"right";
-      halo("Δy = "+de(r.dy),px(x1)+(hBild>0?14:-14),(py(y0)+py(y1))/2,fb,ft)}
+    // außen am Dreieck; ragt das Wort aus dem Bild oder liegt es auf den Zahlen der x-Achse, dann innen
+    const r=rechne(ist.f,x0,hBild),fb="#2a7d4f",ft="bold 32px system-ui,sans-serif";X.font=ft;
+    const band={x:0,y:oben?ay-90:ay-8,w:BW,h:oben?136:100},drin=q=>q.x>=6&&q.y>=6&&q.x+q.w<=BW-6&&q.y+q.h<=BH-6;
+    const setze=(t,lagen)=>{const w=X.measureText(t).width+6;let q=null;
+      for(const [x,y] of lagen){const k={x,y,w,h:36};if(!q)q=k;if(drin(k)&&!schneidet(k,band)){q=k;break}}
+      q.x=Math.min(BW-q.w-6,Math.max(6,q.x));q.y=Math.min(BH-q.h-6,Math.max(6,q.y));X.textAlign="left";X.textBaseline="top";halo(t,q.x+3,q.y,fb,ft);belegt.push(q)};
+    const ty=py(y0),qy=py(y1),mx=(px(x0)+px(x1))/2,tw=X.measureText("h = "+de(hBild)).width+6;
+    if(abst>=120)setze("h = "+de(hBild),qy<ty?[[mx-tw/2,ty+8],[mx-tw/2,ty-44]]:[[mx-tw/2,ty-44],[mx-tw/2,ty+8]]);
+    const hoch=Math.abs(qy-ty),dw=X.measureText("Δy = "+de(r.dy)).width+6,vx=px(x1),my=(ty+qy)/2-18;
+    if(hoch>=70)setze("Δy = "+de(r.dy),hBild>0?[[vx+12,my],[vx-12-dw,my]]:[[vx-12-dw,my],[vx+12,my]]);
   }
   // Punkte
   punkt(x0,y0,"#18324a");punkt(x1,y1,"#1f6fb2");
   X.textBaseline="bottom";
   X.textAlign=hBild>0?"right":"left";halo("P",px(x0)+(hBild>0?-14:14),py(y0)-10,"#18324a","italic bold 40px 'Times New Roman',serif");
   X.textAlign=hBild>0?"left":"right";halo("Q",px(x1)+(hBild>0?14:-14),py(y1)-10,"#1f6fb2","italic bold 40px 'Times New Roman',serif");
-  // Kasten mit m (und f′(x₀)) in der Ecke, wo der Graph tiefer liegt
+  // Kasten mit m (und f′(x₀)) in der Ecke, wo der Graph tiefer liegt; Wörter Sekante und Tangente so, dass nichts überdeckt wird
+  const z1=mZeige?"m = "+de(mZeige.m):"",z2=mZeige&&ist.t?"f′("+de(x0)+") = "+de(mZeige.abl):"",um=(x,y)=>({x:px(x)-75,y:py(y)-75,w:150,h:150}),ka=kastenOrt(F,z1,z2,[um(x0,y0),um(x1,y1)]);
+  const meiden=[ka,um(x0,y0),um(x1,y1),...belegt];
+  const vorn=[],hinten=[];for(let t=0.06;t<0.95;t+=0.04){vorn.push(t);hinten.unshift(t)}
+  const ws=wort(gs,"Sekante",false,hinten,meiden);if(ws)meiden.push(ws);
+  if(gt)wort(gt,"Tangente",true,vorn.concat(hinten),meiden);
   if(mZeige){
-    const links=F.f(fen.xmin+0.2*(fen.xmax-fen.xmin))<=F.f(fen.xmax-0.2*(fen.xmax-fen.xmin));
-    const z1="m = "+de(mZeige.m),z2=ist.t?"f′("+de(x0)+") = "+de(mZeige.abl):"";
-    X.font="bold 36px system-ui,sans-serif";const w=Math.max(X.measureText(z1).width,z2?X.measureText(z2).width:0)+28,hh=z2?100:56;
-    const bx=links?ax>BW*0.45?14:ax+16:BW-w-40,by=14;
+    X.font="bold 36px system-ui,sans-serif";const bx=ka.x,by=ka.y,w=ka.w,hh=ka.h;
     X.fillStyle="rgba(255,255,255,.93)";X.strokeStyle="#c5d5e4";X.lineWidth=2;X.beginPath();X.roundRect(bx,by,w,hh,10);X.fill();X.stroke();
     X.textAlign="left";X.textBaseline="top";X.fillStyle="#1f6fb2";X.fillText(z1,bx+14,by+10);
     if(z2){X.fillStyle="#b5471f";X.fillText(z2,bx+14,by+54)}
@@ -241,13 +271,13 @@ function zeigeRechnung(){
   $("pq").innerHTML='<span><i>f</i>(<i>x</i>) = '+F.name.replace(/x/g,"<i>x</i>")+'</span><span><i>P</i>('+de(ist.x0)+' | '+de(r.y0)+')</span><span style="color:#1f6fb2"><i>Q</i>('+de(r.x1)+' | '+de(r.y1)+')</span>';
   texIn($("dq"),texDQ(ist.f,ist.x0,ist.h),true);
   const a=$("abl");a.hidden=!ist.t;
-  if(ist.t)texIn(a,"\\text{Tangente in }P\\text{: }m=f'("+zT(ist.x0)+")="+zT(r.abl)+"\\quad\\text{– die Ableitung}",false);
+  if(ist.t){a.innerHTML='Tangente in <i>P</i>, Ableitung: <span id="ablf"></span>';texIn($("ablf"),"m=f'("+zT(ist.x0)+")="+zT(r.abl),false)}
   $("wh").textContent=de(ist.h);$("rh").value=HW.indexOf(ist.h);
 }
 // Tabelle h | m: jedes neue h eine Zeile
 let zeilen=[];
 function tabelle(){
-  $("cap").innerHTML='<i>f</i>(<i>x</i>) = '+FUNK[ist.f].name.replace(/x/g,"<i>x</i>")+', <i>x</i><sub>0</sub> = '+de(ist.x0);
+  $("cap").innerHTML='Tabelle für <i>f</i>(<i>x</i>) = '+FUNK[ist.f].name.replace(/x/g,"<i>x</i>")+', <i>x</i><sub>0</sub> = '+de(ist.x0);
   $("tb").innerHTML=zeilen.map(z=>'<tr'+(z.h===ist.h?' class="neu"':'')+'><td>'+de(z.h)+'</td><td>'+de(z.m)+'</td></tr>').join("");
   const n=$("tb").querySelector("tr.neu");if(n){const k=$("tabk");k.scrollTop=n.offsetTop-k.clientHeight+n.offsetHeight+4}
 }
